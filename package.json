@@ -15,16 +15,20 @@
     "release": "rollup -c rollup.config.js --environment release",
     "server": "browser-sync start --server docs --reload-delay 200 --port=9876 --files **/* --index index.html",
     "start": "run-p watch server",
-    "lint": "run-p lint:css lint:js",
+    "lint": "run-p lint:css lint:js lint:vue",
     "lint:css": "stylelint \"./src/**/*.css\"",
-    "lint:js": "eslint \"./src/**/*.js\""
+    "lint:js": "eslint \"./src/**/*.js\"",
+    "lint:vue": "eslint \"./src/**/*.vue\""
   },
   "lint-staged": {
     "src/**/*.css": [
-      "lint:css"
+      "stylelint"
     ],
     "src/**/*.js": [
-      "lint:script"
+      "eslint"
+    ],
+    "src/**/*.vue": [
+      "eslint"
     ]
   },
   "repository": {
@@ -46,9 +50,11 @@
     "vue": "^2.4.0"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
     "browser-sync": "^2.18.13",
     "eslint": "^4.3.0",
     "eslint-config-neat": "^1.0.0",
+    "eslint-plugin-html": "^3.1.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
