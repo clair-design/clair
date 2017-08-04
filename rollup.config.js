@@ -7,15 +7,21 @@ import postcssfor from 'postcss-for'
 
 const isRelease = process.env.release
 const distDir = isRelease ? 'dist' : 'docs/resources'
+const targets = [
+  { dest: `${distDir}/js/clair.js`, format: 'umd' },
+  { dest: `${distDir}/js/clair.common.js`, format: 'cjs' },
+  { dest: `${distDir}/js/clair.esm.js`, format: 'es' }
+]
 
 export default [
 
   // clair Vue components
   {
-    entry: 'src/js/main.js',
-    dest: `${distDir}/js/clair.js`,
+    sourceMap: true,
+    useStrict: true,
     moduleName: 'Clair',
-    format: 'umd',
+    entry: 'src/js/main.js',
+    targets: isRelease ? targets : targets.slice(0, 1),
     plugins: [
       rollupVue(),
       postcss({
@@ -29,6 +35,7 @@ export default [
   {
     entry: 'docs/src/js/main.js',
     dest: `docs/resources/js/main.js`,
+    format: 'iife',
     plugins: [
       resolve(),
       rollupVue(),
