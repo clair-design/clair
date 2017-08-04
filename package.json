@@ -4,11 +4,18 @@
   "description": "A design system including principles, Vue components and resources",
   "main": "dist/clair.js",
   "scripts": {
+    "precommit": "lint-staged",
     "test": "karma",
     "watch": "rollup -c rollup.config.js -w",
     "release": "rollup -c rollup.config.js --environment release",
     "server": "live-server --port=9876 --watch=docs/ docs/",
-    "start": "npm run watch & npm run server"
+    "start": "npm run watch & npm run server",
+    "lint:css": "stylelint \"./src/**/*.css\"",
+    "lint:script": "eslint \"./src/**/*.js\""
+  },
+  "lint-staged": {
+    "*.css": ["lint:css"],
+    "*.js": ["lint:script"]
   },
   "repository": {
     "type": "git",
@@ -35,10 +42,13 @@
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.0.2",
     "live-server": "^1.2.0",
     "postcss-cssnext": "^3.0.2",
     "postcss-for": "^2.1.1",
     "postcss-import": "^10.0.0",
+    "pug": "^2.0.0-rc.3",
     "rollup": "^0.45.2",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-postcss": "^0.5.4",
