@@ -5,20 +5,27 @@
   "main": "dist/clair.common.js",
   "module": "dist/clair.esm.js",
   "unpkg": "dist/clair.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "precommit": "lint-staged",
     "test": "karma",
     "watch": "rollup -c rollup.config.js -w",
     "release": "rollup -c rollup.config.js --environment release",
-    "server": "live-server --port=9876 --watch=docs/ docs/",
-    "start": "npm run watch & npm run server",
+    "server": "browser-sync start --server docs --reload-delay 200 --port=9876 --files **/* --index index.html",
+    "start": "run-p watch server",
+    "lint": "run-p lint:css lint:js",
     "lint:css": "stylelint \"./src/**/*.css\"",
-    "lint:script": "eslint \"./src/**/*.js\""
+    "lint:js": "eslint \"./src/**/*.js\""
   },
   "lint-staged": {
-    "src/**/*.css": ["lint:css"],
-    "src/**/*.js": ["lint:script"]
+    "src/**/*.css": [
+      "lint:css"
+    ],
+    "src/**/*.js": [
+      "lint:script"
+    ]
   },
   "repository": {
     "type": "git",
@@ -39,6 +46,7 @@
     "vue": "^2.4.0"
   },
   "devDependencies": {
+    "browser-sync": "^2.18.13",
     "eslint": "^4.3.0",
     "eslint-config-neat": "^1.0.0",
     "eslint-plugin-import": "^2.7.0",
@@ -47,7 +55,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3",
     "lint-staged": "^4.0.2",
-    "live-server": "^1.2.0",
+    "npm-run-all": "^4.0.2",
     "postcss-cssnext": "^3.0.2",
     "postcss-for": "^2.1.1",
     "postcss-import": "^10.0.0",
