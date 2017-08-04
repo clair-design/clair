@@ -156,3 +156,11 @@ a {
 a:hover {
   color: inherit;
 }
+* {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}

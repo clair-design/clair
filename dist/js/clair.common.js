@@ -1,8 +1,4 @@
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define(factory) :
-	(global.Clair = factory());
-}(this, (function () { 'use strict';
+'use strict';
 
 /**
  * @desc get Vue props definitions from modifier list
@@ -58,7 +54,5 @@ const Clair = {
   }
 };
 
-return Clair;
-
-})));
-//# sourceMappingURL=clair.js.map
+module.exports = Clair;
+//# sourceMappingURL=clair.common.js.map
