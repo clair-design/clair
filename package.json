@@ -2,7 +2,10 @@
   "name": "clair",
   "version": "0.1.0",
   "description": "A design system including principles, Vue components and resources",
-  "main": "dist/clair.js",
+  "main": "dist/clair.common.js",
+  "module": "dist/clair.esm.js",
+  "unpkg": "dist/clair.js",
+  "files": ["dist"],
   "scripts": {
     "precommit": "lint-staged",
     "test": "karma",
