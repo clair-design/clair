@@ -1,0 +1,14 @@
+.c-button {
+  display: inline-block;
+  line-height: 2;
+  padding: 0 1em;
+}
+
+.c-button--primary {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.c-button--flat {
+  background: none;
+}
