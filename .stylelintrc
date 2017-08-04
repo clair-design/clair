@@ -6,5 +6,5 @@
       "ignoreAtRules": ["for"]
     }]
   },
-  "ignoreFiles": "dist/*"
+  "ignoreFiles": "dist/**/*.css"
 }

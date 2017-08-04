@@ -177,3 +177,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+## Ignore sourceMaps
+*.map

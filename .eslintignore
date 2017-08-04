@@ -1,2 +1,2 @@
-dist/*
-docs/resources/js/clair.js
+dist/**/*.js
+docs/resources/js/clair*.js
