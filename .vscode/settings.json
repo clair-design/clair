@@ -1,0 +1,5 @@
+{
+  "javascript.format.enable": false,
+  "javascript.validate.enable": false,
+  "puglint.enable": true
+}
