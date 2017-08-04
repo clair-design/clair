@@ -17,8 +17,8 @@
     "lint:script": "eslint \"./src/**/*.js\""
   },
   "lint-staged": {
-    "*.css": ["lint:css"],
-    "*.js": ["lint:script"]
+    "src/**/*.css": ["lint:css"],
+    "src/**/*.js": ["lint:script"]
   },
   "repository": {
     "type": "git",
