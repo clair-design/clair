@@ -1,7 +1,7 @@
-<template lang="jade">
+<template lang="pug">
   button(
-    class=".c-button"
-    :class="className"
+    class="c-button"
+    :class="classNames"
   )
     slot
 </template>
@@ -13,7 +13,7 @@
   } from '../../js/util'
 
   const name = 'button'
-  const block = `.c-${name}`
+  const block = `c-${name}`
   const modifiers = [
     'primary',
     'readonly',
