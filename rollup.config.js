@@ -25,6 +25,10 @@ export default [
     entry: 'src/js/main.js',
     targets,
     plugins: [
+      resolve({
+        jsnext: true,
+        main: true
+      }),
       rollupVue(),
       postcss({
         plugins: postCSSPlugins,
@@ -40,7 +44,10 @@ export default [
     format: 'es',
     moduleName: 'Clair',
     plugins: [
-      resolve(),
+      resolve({
+        jsnext: true,
+        main: true
+      }),
       rollupVue(),
       postcss({
         plugins: postCSSPlugins,
