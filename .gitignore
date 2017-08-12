@@ -180,3 +180,7 @@ $RECYCLE.BIN/
 
 ## Ignore sourceMaps
 *.map
+
+## Ignore nuxt temp files
+.nuxt
+# document/

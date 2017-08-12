@@ -35,7 +35,7 @@ function toClassNames (block, modifiers) {
 }
 
 const name = 'button';
-const block = `.c-${name}`;
+const block = `c-${name}`;
 const modifiers = [
   'primary',
   'readonly',
@@ -44,7 +44,7 @@ const modifiers = [
 const props = toVueProps(modifiers);
 const classNames = toClassNames(block, modifiers);
 
-var Button = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',{staticClass:".c-button",class:_vm.className},[_vm._t("default")],2)},staticRenderFns: [],
+var Button = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',{staticClass:"c-button",class:_vm.classNames},[_vm._t("default")],2)},staticRenderFns: [],
   name,
   props,
   computed: { classNames }
