@@ -2,7 +2,7 @@
 import '../css/main.css'
 
 // components
-import Button from '../components/button/button.vue'
+import Button from '../components/button/index.vue'
 
 const Clair = {
   install (Vue) {

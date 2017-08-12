@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * @desc get Vue props definitions from modifier list
  * @param modifiers {Array}
@@ -55,5 +53,4 @@ const Clair = {
   }
 };
 
-module.exports = Clair;
-//# sourceMappingURL=clair.common.js.map
+export default Clair;
