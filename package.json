@@ -10,6 +10,7 @@
   ],
   "scripts": {
     "precommit": "lint-staged",
+    "nuxt": "nuxt dev",
     "test": "karma",
     "watch": "rollup -c rollup.config.js -w",
     "release": "rollup -c rollup.config.js --environment release",
