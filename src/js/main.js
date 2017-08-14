@@ -3,18 +3,13 @@ import '../css/main.css'
 
 // importing components
 import Button from '../components/button/index.vue'
-// __import_next_compoent__(DO NOT remove this line)
 
-const components = [
-  Button
-  // __import_next_compoent__(DO NOT remove this line)
-]
-
+const install = (Vue, component) => {
+  Vue.component(component.name, component)
+}
 const Clair = {
   install (Vue) {
-    components.forEach(Component => {
-      Vue.component(Component.name, Component)
-    })
+    install(Vue, Button)
   }
 }
 
