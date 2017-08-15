@@ -13,22 +13,32 @@
     nuxt
 </template>
 
+<style>
+.markdown-body {
+  max-width: 1000px;
+  margin: 100px auto;
+}
+</style>
+
 <script>
-  const navigation = [
-    { title: '首页', link: '/' },
-    { title: '设计原则', link: '/principle' },
-    { title: '组件', link: '/component' },
-    { title: '资源', link: '/resource' }
-  ]
-  export default {
-    data () {
-      return {
-        navs: navigation
-      }
+import 'github-markdown-css/github-markdown.css'
+import 'highlight.js/styles/atom-one-dark.css'
+
+const navigation = [
+  { title: '首页', link: '/' },
+  { title: '设计原则', link: '/principle' },
+  { title: '组件', link: '/component' },
+  { title: '资源', link: '/resource' }
+]
+export default {
+  data () {
+    return {
+      navs: navigation
     }
   }
+}
 </script>
 
 <style>
-  @import "../assets/main.css"
+@import "../assets/main.css";
 </style>

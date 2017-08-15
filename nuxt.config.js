@@ -20,7 +20,9 @@ module.exports = {
   plugins: ['~plugins/clair.js'],
   build: {
     postcss: [
-      require('postcss-cssnext')(),
+      require('postcss-cssnext')({
+        warnForDuplicates: false
+      }),
       require('postcss-import')(),
       require('postcss-for')()
     ]
