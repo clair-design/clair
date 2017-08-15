@@ -1,0 +1,6 @@
+.nuxt/
+nuxt.config.js
+.vscode/
+document/
+site/
+src/
