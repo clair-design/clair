@@ -1,9 +1,8 @@
 module.exports = {
   generate: {
     dir: './site',
-    minify: {
-      decodeEntities: false
-    }
+    // avoid error with pre/code
+    minify: false
   },
   srcDir: './document/',
   loading: false,
