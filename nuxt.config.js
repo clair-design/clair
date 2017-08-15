@@ -24,6 +24,7 @@ module.exports = {
   },
   plugins: ['~plugins/clair.js'],
   build: {
+    extractCSS: true,
     publicPath: '/static/',
     postcss: [
       require('postcss-cssnext')({
