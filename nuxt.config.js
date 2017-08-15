@@ -1,7 +1,9 @@
 module.exports = {
   generate: {
     dir: './site',
-    minify: false
+    minify: {
+      decodeEntities: false
+    }
   },
   srcDir: './document/',
   loading: false,
@@ -23,6 +25,7 @@ module.exports = {
   },
   plugins: ['~plugins/clair.js'],
   build: {
+    publicPath: '/static/',
     postcss: [
       require('postcss-cssnext')({
         warnForDuplicates: false

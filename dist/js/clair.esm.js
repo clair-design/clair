@@ -57,3 +57,4 @@ const Clair = {
 };
 
 export default Clair;
+//# sourceMappingURL=clair.esm.js.map
