@@ -1,2 +1,3 @@
 dist/**/*.js
 document/assets/clair*.js
+site/**/*.js

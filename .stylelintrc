@@ -8,6 +8,7 @@
   },
   "ignoreFiles": [
     "dist/**/*.css",
-    "document/assets/clair*.css"
+    "document/assets/clair*.css",
+    "site/**/*.css"
   ]
 }
