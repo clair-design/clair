@@ -1,4 +1,8 @@
 module.exports = {
+  generate: {
+    dir: './site',
+    minify: false
+  },
   srcDir: './document/',
   loading: false,
   head: {
