@@ -146,10 +146,12 @@
       VueDemo0, VueDemo1
     },
 
-    head() {
-      return '测试'
+    head () {
+      return {
+        title: '组件'
+      }
     },
-    layout: "component"
+    layout: 'component'
 
   }
 </script>
