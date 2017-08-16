@@ -22,7 +22,10 @@ module.exports = {
       }
     ]
   },
-  plugins: ['~plugins/clair.js'],
+  plugins: [
+    '~plugins/clair.js',
+    '~plugins/style.js'
+  ],
   build: {
     extractCSS: true,
     publicPath: '/static/',

@@ -21,9 +21,6 @@
 </style>
 
 <script>
-import 'github-markdown-css/github-markdown.css'
-import 'highlight.js/styles/atom-one-dark.css'
-
 const navigation = [
   { title: '首页', link: '/' },
   { title: '设计原则', link: '/principle' },
@@ -38,7 +35,3 @@ export default {
   }
 }
 </script>
-
-<style>
-@import "../assets/main.css";
-</style>
