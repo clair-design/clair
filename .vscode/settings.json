@@ -1,0 +1,26 @@
+{
+  // disable editor's default behaviors
+  "javascript.format.enable": false,
+  "javascript.validate.enable": false,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.wordWrap": "on",
+  "editor.wordWrapColumn": 150,
+  "editor.renderWhitespace": "all",
+  "files.associations": {
+    "*.vue": "vue"
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "vue"
+  ],
+  "emmet.syntaxProfiles": {
+    "vue": "css"
+  },
+  "emmet.showAbbreviationSuggestions": true,
+  "vetur.validation.template": true,
+  "vetur.format.scriptInitialIndent": false,
+  "vetur.validation.script": true,
+  "vetur.validation.style": true
+}

@@ -6,5 +6,9 @@
       "ignoreAtRules": ["for"]
     }]
   },
-  "ignoreFiles": "dist/*"
+  "ignoreFiles": [
+    "dist/**/*.css",
+    "document/assets/clair*.css",
+    "site/**/*.css"
+  ]
 }

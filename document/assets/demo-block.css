@@ -1,0 +1,78 @@
+
+.vue-demo-block {
+  display: inline-block;
+  width: 100%;
+  transition: box-shadow 0.2s;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.vue-demo-block:hover {
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.3);
+}
+
+.vue-demo-block > .vue-demo {
+  margin: 2em;
+}
+
+.vue-demo-block > pre {
+  transition: max-height 0.3s ease;
+  margin: 0;
+  padding: 0;
+  max-height: 0;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.vue-demo-block > pre > code {
+  display: block;
+  padding: 1.5em 2.5em;
+}
+
+.vue-demo-block > input[type="checkbox"] {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+.vue-demo-block > input:checked ~ pre {
+  display: block;
+  max-height: 50em;
+  overflow: auto;
+}
+
+.vue-demo-block > label {
+  display: block;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 3;
+  text-align: center;
+  background: #fafafa;
+}
+
+.vue-demo-block > label:hover {
+  color: #2196f3;
+  background: #eff3f6;
+}
+
+.vue-demo-block > label::after {
+  content: '⇓ 显示代码';
+}
+
+.vue-demo-block > input:checked ~ label {
+  border-bottom: 1px dashed #ddd;
+}
+
+.vue-demo-block > input:checked ~ label::after {
+  content: '⇑ 隐藏代码';
+}
+
+.vue-demo-block > pre::-webkit-scrollbar {
+  width: 4px;
+  height: 3px;
+  background-color: #eee;
+}
+
+.vue-demo-block > pre::-webkit-scrollbar-thumb {
+  background: #cecece;
+}
+

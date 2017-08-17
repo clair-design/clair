@@ -177,3 +177,11 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+## Ignore sourceMaps
+*.map
+
+## Ignore nuxt temp files
+.nuxt
+# document/
+site/

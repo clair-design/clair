@@ -1,9 +1,3 @@
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define(factory) :
-	(global.Clair = factory());
-}(this, (function () { 'use strict';
-
 /**
  * @desc get Vue props definitions from modifier list
  * @param modifiers {Array}
@@ -34,8 +28,9 @@ function toClassNames (block, modifiers) {
   }
 }
 
-const name = 'button';
-const block = `.c-${name}`;
+// import css
+const name = 'c-button';
+const block = `c-button`;
 const modifiers = [
   'primary',
   'readonly',
@@ -44,20 +39,21 @@ const modifiers = [
 const props = toVueProps(modifiers);
 const classNames = toClassNames(block, modifiers);
 
-var Button = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',{staticClass:".c-button",class:_vm.className},[_vm._t("default")],2)},staticRenderFns: [],
+var Button = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',{staticClass:"c-button",class:_vm.classNames},[_vm._t("default")],2)},staticRenderFns: [],
   name,
   props,
   computed: { classNames }
 };
 
 // styles
-// components
+// importing components
+const install = (Vue, component) => {
+  Vue.component(component.name, component);
+};
 const Clair = {
   install (Vue) {
-    Vue.component(Button.name, Button);
+    install(Vue, Button);
   }
 };
 
-return Clair;
-
-})));
+export default Clair;

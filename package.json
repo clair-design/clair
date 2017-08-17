@@ -2,13 +2,37 @@
   "name": "clair",
   "version": "0.1.0",
   "description": "A design system including principles, Vue components and resources",
-  "main": "dist/clair.js",
+  "main": "dist/clair.common.js",
+  "module": "dist/clair.esm.js",
+  "unpkg": "dist/clair.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "precommit": "lint-staged",
+    "nuxt": "nuxt dev",
+    "nuxt-gen": "nuxt generate && echo 'clair.wemlion.com' > site/CNAME",
+    "deploy": "gh-pages -d site",
     "test": "karma",
     "watch": "rollup -c rollup.config.js -w",
     "release": "rollup -c rollup.config.js --environment release",
-    "server": "live-server --port=9876 --watch=docs/ docs/",
-    "start": "npm run watch & npm run server"
+    "serve-static": "live-server --port=9876 --watch=site/ site/",
+    "start": "run-p watch nuxt",
+    "lint": "run-p lint:css lint:js lint:vue",
+    "lint:css": "stylelint \"./src/**/*.css\"",
+    "lint:js": "eslint \"./src/**/*.js\"",
+    "lint:vue": "eslint \"./src/**/*.vue\""
+  },
+  "lint-staged": {
+    "src/**/*.css": [
+      "stylelint"
+    ],
+    "src/**/*.js": [
+      "eslint"
+    ],
+    "src/**/*.vue": [
+      "eslint"
+    ]
   },
   "repository": {
     "type": "git",
@@ -29,16 +53,26 @@
     "vue": "^2.4.0"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
     "eslint": "^4.3.0",
     "eslint-config-neat": "^1.0.0",
+    "eslint-plugin-html": "^3.1.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-pug": "^1.1.0",
     "eslint-plugin-standard": "^3.0.1",
+    "gh-pages": "^1.0.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.0.2",
     "live-server": "^1.2.0",
+    "npm-run-all": "^4.0.2",
+    "nuxt": "^1.0.0-rc4",
     "postcss-cssnext": "^3.0.2",
     "postcss-for": "^2.1.1",
     "postcss-import": "^10.0.0",
+    "postcss-loader": "^2.0.6",
+    "pug": "^2.0.0-rc.3",
     "rollup": "^0.45.2",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-postcss": "^0.5.4",
@@ -48,5 +82,9 @@
     "stylelint-config-standard": "^17.0.0",
     "vue": "^2.4.0",
     "vue-router": "^2.7.0"
+  },
+  "dependencies": {
+    "github-markdown-css": "^2.8.0",
+    "highlight.js": "^9.12.0"
   }
 }

@@ -1,19 +1,22 @@
-<template lang="jade">
+<template lang="pug">
   button(
-    class=".c-button"
-    :class="className"
+    class="c-button"
+    :class="classNames"
   )
     slot
 </template>
 
 <script>
+  // import css
+  import './index.css'
+
   import {
     toVueProps,
     toClassNames
   } from '../../js/util'
 
-  const name = 'button'
-  const block = `.c-${name}`
+  const name = 'c-button'
+  const block = `c-button`
   const modifiers = [
     'primary',
     'readonly',

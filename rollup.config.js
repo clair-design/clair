@@ -5,38 +5,54 @@ import cssnext from 'postcss-cssnext'
 import cssimport from 'postcss-import'
 import postcssfor from 'postcss-for'
 
-const isRelease = process.env.release
-const distDir = isRelease ? 'dist' : 'docs/resources'
+const targets = [
+  { dest: `dist/js/clair.js`, format: 'umd' },
+  { dest: `dist/js/clair.common.js`, format: 'cjs' },
+  { dest: `dist/js/clair.esm.js`, format: 'es' }
+]
+const postCSSPlugins = [
+  cssimport(),
+  postcssfor(),
+  cssnext()
+]
 
 export default [
-
   // clair Vue components
   {
-    entry: 'src/js/main.js',
-    dest: `${distDir}/js/clair.js`,
+    sourceMap: true,
+    useStrict: true,
     moduleName: 'Clair',
-    format: 'umd',
+    entry: 'src/js/main.js',
+    targets,
     plugins: [
+      resolve({
+        jsnext: true,
+        main: true
+      }),
       rollupVue(),
       postcss({
-        plugins: [ cssimport(), postcssfor(), cssnext() ],
-        extract: `${distDir}/css/clair.css`
+        plugins: postCSSPlugins,
+        extract: `dist/css/clair.css`
       })
     ]
   },
 
   // clair design system website
   {
-    entry: 'docs/src/js/main.js',
-    dest: `docs/resources/js/main.js`,
+    entry: 'src/js/main.js',
+    dest: 'document/assets/clair.bundle.js',
+    format: 'es',
+    moduleName: 'Clair',
     plugins: [
-      resolve(),
+      resolve({
+        jsnext: true,
+        main: true
+      }),
       rollupVue(),
       postcss({
-        plugins: [ cssimport(), postcssfor(), cssnext() ],
-        extract: `docs/resources/css/main.css`
+        plugins: postCSSPlugins,
+        extract: 'document/assets/clair.bundle.css'
       })
     ]
   }
-
 ]
