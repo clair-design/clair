@@ -3,6 +3,7 @@ const rollup = require('rollup')
 const chokidar = require('chokidar')
 const postcss = require('rollup-plugin-postcss')
 const rollupVue = require('rollup-plugin-vue')
+const buble = require('rollup-plugin-buble')
 const resolve = require('rollup-plugin-node-resolve')
 const cssnext = require('postcss-cssnext')
 const cssimport = require('postcss-import')
@@ -32,7 +33,8 @@ const getPlugins = () => {
         cssnext({ warnForDuplicates: false })
       ],
       extract: `${isProd ? 'dist/' : 'document/assets/'}/clair.css`
-    })
+    }),
+    buble()
   ]
 }
 

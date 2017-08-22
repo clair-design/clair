@@ -1,25 +1,21 @@
-const shell = require('shelljs')
-
-const {
-  log,
-  toLog,
-  setNodeEnv
-} = require('./util')
-
-const markdown = require('./markdown')
-const rollup = require('./rollup')
-const nuxtServe = require('./nuxt.server')
-
-const BIN = require('path').join(__dirname, '../node_modules/.bin')
 const argv = [...process.argv.slice(2)]
-
 if (argv.length === 0) {
   throw new Error('[ERROR] command name required')
 }
 
+const opn = require('opn')
+const shell = require('shelljs')
+const { log, toLog, setNodeEnv } = require('./util')
+
+const markdown = require('./markdown')
+const rollup = require('./rollup')
+const nuxtServe = require('./nuxt.server')
+const BIN = require('path').join(__dirname, '../node_modules/.bin')
+const PORT = 5432
 const [ cmdName ] = argv
 
 /* eslint-disable default-case */
+/* eslint-disable-next-line no-magic-numbers */
 switch (cmdName) {
   case 'build':
     Promise
@@ -27,6 +23,7 @@ switch (cmdName) {
       .then(toLog('Start rollup bundling...'))
       .then(rollup.build)
       .then(toLog('Bundling done.'))
+      .catch(log)
     break
 
   case 'dev':
@@ -42,7 +39,8 @@ switch (cmdName) {
           if (code === 'END') {
             watcher.removeListener('event', listener)
             log('Serving with nuxt.js...')
-            nuxtServe()
+            nuxtServe({ port: PORT })
+            opn(`http://127.0.0.1:${PORT}`)
           }
         })
       })
@@ -57,13 +55,10 @@ switch (cmdName) {
       .then(toLog('Rollup Bundling...'))
       .then(rollup.build)
       .then(toLog('Generate static files and deploy to gh-pages...'))
-      .then(() => {
-        return execAsPromise(`${BIN}/nuxt generate -c ./build/nuxt.config.js`)
-      })
-      .then(() => {
-        shell.exec('echo clair.wemlion.com > site/CNAME')
-        return execAsPromise(`${BIN}/gh-pages -d site`)
-      })
+      .then(() => execAsPromise(`${BIN}/nuxt generate -c ./build/nuxt.config.js`))
+      .then(() => execAsPromise('echo clair.wemlion.com > site/CNAME'))
+      .then(() => execAsPromise(`${BIN}/gh-pages -d site`))
+      .catch(log)
     break
 }
 

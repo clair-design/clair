@@ -3,7 +3,7 @@
 <h2>TEST</h2>
 <div class="vue-demo-block">
 <md2vuedemo0></md2vuedemo0>
-<input id="vdNTAwMzk4NTI" type="checkbox" /><label for="vdNTAwMzk4NTI"></label>
+<input id="vdMTAzMjIxNjA" type="checkbox" /><label for="vdMTAzMjIxNjA"></label>
 <pre v-pre class="lang-html">
 <code><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
 <span class="hljs-selector-class">.wrapper</span> <span class="hljs-selector-tag">input</span> {

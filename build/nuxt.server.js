@@ -1,11 +1,10 @@
-module.exports = function () {
+module.exports = function ({
+  port
+}) {
   /* eslint-disable no-console */
   const { Nuxt, Builder } = require('nuxt')
   const app = require('express')()
   const isProd = (process.env.NODE_ENV === 'production')
-
-  // eslint-disable-next-line no-magic-numbers
-  const port = process.env.PORT || 3000
 
   // We instantiate nuxt.js with the options
   const config = require('./nuxt.config.js')
@@ -25,6 +24,6 @@ module.exports = function () {
   }
 
   // Listen the server
-  app.listen(port, '0.0.0.0')
+  app.listen(port, '127.0.0.1')
   console.log(`Server listening on localhost: ${port}`)
 }

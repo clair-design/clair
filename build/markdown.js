@@ -49,9 +49,7 @@ function compileWrite (file, outputDir) {
       compile2vue(file),
       fs.ensureFile(dest)
     ])
-    .then(([code]) => {
-      fs.writeFile(dest, code)
-    })
+    .then(([code]) => fs.writeFile(dest, code))
     .catch(log)
 }
 

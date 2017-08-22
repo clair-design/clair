@@ -7,7 +7,7 @@
  * @see https://vuejs.org/v2/guide/components.html#Props
  */
 function toVueProps (modifiers) {
-  return modifiers.reduce((props, modifier) => {
+  return modifiers.reduce(function (props, modifier) {
     props[modifier] = Boolean;
     return props
   }, {})
@@ -23,37 +23,39 @@ function toVueProps (modifiers) {
  */
 function toClassNames (block, modifiers) {
   return function () {
-    return modifiers.reduce((classNames, modifier) => {
-      classNames[`${block}--${modifier}`] = this[modifier];
+    var this$1 = this;
+
+    return modifiers.reduce(function (classNames, modifier) {
+      classNames[(block + "--" + modifier)] = this$1[modifier];
       return classNames
     }, {})
   }
 }
 
 // import css
-const name = 'c-button';
-const block = `c-button`;
-const modifiers = [
+var name = 'c-button';
+var block = "c-button";
+var modifiers = [
   'primary',
   'readonly',
   'disabled'
 ];
-const props = toVueProps(modifiers);
-const classNames = toClassNames(block, modifiers);
+var props = toVueProps(modifiers);
+var classNames = toClassNames(block, modifiers);
 
 var Button = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('button',{staticClass:"c-button",class:_vm.classNames},[_vm._t("default")],2)},staticRenderFns: [],
-  name,
-  props,
-  computed: { classNames }
+  name: name,
+  props: props,
+  computed: { classNames: classNames }
 };
 
 // styles
 // importing components
-const install = (Vue, component) => {
+var install = function (Vue, component) {
   Vue.component(component.name, component);
 };
-const Clair = {
-  install (Vue) {
+var Clair = {
+  install: function install$1 (Vue) {
     install(Vue, Button);
   }
 };
