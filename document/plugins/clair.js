@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import '../assets/clair.bundle.css'
-import Clair from '../assets/clair.bundle'
+import '../assets/clair.css'
+import Clair from '../assets/clair'
 
 Vue.use(Clair)

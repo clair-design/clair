@@ -1,10 +1,10 @@
 module.exports = {
   generate: {
-    dir: './site',
+    dir: 'site',
     // avoid error with pre/code
     minify: false
   },
-  srcDir: './document/',
+  srcDir: 'document/',
   loading: false,
   head: {
     meta: [
