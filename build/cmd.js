@@ -1,11 +1,14 @@
+/* eslint-disable default-case */
+/* eslint-disable no-magic-numbers */
 const argv = [...process.argv.slice(2)]
+
 if (argv.length === 0) {
   throw new Error('[ERROR] command name required')
 }
 
 const opn = require('opn')
 const shell = require('shelljs')
-const { log, toLog, setNodeEnv } = require('./util')
+const { log, toLog, setNodeEnv, camelCase } = require('./util')
 
 const markdown = require('./markdown')
 const rollup = require('./rollup')
@@ -14,8 +17,6 @@ const BIN = require('path').join(__dirname, '../node_modules/.bin')
 const PORT = 5432
 const [ cmdName ] = argv
 
-/* eslint-disable default-case */
-/* eslint-disable-next-line no-magic-numbers */
 switch (cmdName) {
   case 'build':
     Promise
@@ -34,7 +35,7 @@ switch (cmdName) {
       .then(toLog('Watching components and js files...'))
       .then(rollup.watchBuild)
       .then(watcher => {
-        // bundling ended, then serve nuxt.js
+        // serve nuxt.js after bundling done for the first time
         watcher.on('event', function listener ({ code }) {
           if (code === 'END') {
             watcher.removeListener('event', listener)
@@ -60,6 +61,14 @@ switch (cmdName) {
       .then(() => execAsPromise(`${BIN}/gh-pages -d site`))
       .catch(log)
     break
+  // case 'add':
+  //   Promise
+  //     .resolve(argv[1])
+  //     .then(name => [camelCase(name), name])
+  //     .then(([compName, dirName]) => {
+  //       console.log(compName, dirName)
+  //     })
+  //   break
 }
 
 function execAsPromise (cmd) {

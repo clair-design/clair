@@ -1,5 +1,3 @@
-const child_process = require('child_process')
-
 const consoleLog = function (...args) {
   /* eslint-disable no-console */
   console.log.apply(console, args)
@@ -21,3 +19,8 @@ exports.toLog = (...args) => consoleLog(...args)
 exports.setNodeEnv = (s) => {
   process.env.NODE_ENV = s
 }
+
+exports.camelCase = s => s.replace(
+  /[-_]{1}([a-zA-Z\d])/g,
+  (m, g) => g.toUpperCase()
+)

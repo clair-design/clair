@@ -9,6 +9,7 @@ const install = (Vue, component) => {
 }
 const Clair = {
   install (Vue) {
+    // installing components
     install(Vue, Button)
   }
 }
