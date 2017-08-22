@@ -4,7 +4,7 @@
 <h2>示例</h2>
 <div class="vue-demo-block">
 <md2vuedemo0></md2vuedemo0>
-<input id="vdMTA2NzYyNTM" type="checkbox" /><label for="vdMTA2NzYyNTM"></label>
+<input id="vdNDQwODAzOTY" type="checkbox" /><label for="vdNDQwODAzOTY"></label>
 <pre v-pre class="lang-html">
 <code><span class="hljs-tag">&lt;<span class="hljs-name">c-button</span>&gt;</span>默认按钮<span class="hljs-tag"><span>&lt;</span>/<span class="hljs-name">c-button</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">c-button</span> <span class="hljs-attr">primary</span>&gt;</span>主操作按钮<span class="hljs-tag"><span>&lt;</span>/<span class="hljs-name">c-button</span>&gt;</span>

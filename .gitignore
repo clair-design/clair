@@ -182,6 +182,5 @@ $RECYCLE.BIN/
 *.map
 
 ## Ignore nuxt temp files
-.nuxt
-# document/
+.nuxt/
 site/

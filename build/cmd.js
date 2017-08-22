@@ -6,14 +6,15 @@ if (argv.length === 0) {
   throw new Error('[ERROR] command name required')
 }
 
+const path = require('path')
 const opn = require('opn')
 const shell = require('shelljs')
-const { log, toLog, setNodeEnv, camelCase } = require('./util')
+const { log, toLog, setNodeEnv } = require('./util')
 
 const markdown = require('./markdown')
 const rollup = require('./rollup')
 const nuxtServe = require('./nuxt.server')
-const BIN = require('path').join(__dirname, '../node_modules/.bin')
+const BIN = path.join(__dirname, '../node_modules/.bin')
 const PORT = 5432
 const [ cmdName ] = argv
 
@@ -60,6 +61,10 @@ switch (cmdName) {
       .then(() => execAsPromise('echo clair.wemlion.com > site/CNAME'))
       .then(() => execAsPromise(`${BIN}/gh-pages -d site`))
       .catch(log)
+    break
+
+  case 'clean':
+    shell.rm('-rf', '.nuxt', 'site', 'dist')
     break
   // case 'add':
   //   Promise

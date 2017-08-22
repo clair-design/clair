@@ -60,6 +60,7 @@ var install = function (Vue, component) {
 };
 var Clair = {
   install: function install$1 (Vue) {
+    // installing components
     install(Vue, Button);
   }
 };

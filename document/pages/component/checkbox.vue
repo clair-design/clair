@@ -1,9 +1,9 @@
 <template>
 <article class="markdown-body">
-<h2>TEST</h2>
+<h2>CHECKBOX 多选框</h2>
 <div class="vue-demo-block">
 <md2vuedemo0></md2vuedemo0>
-<input id="vdMTAzMjIxNjA" type="checkbox" /><label for="vdMTAzMjIxNjA"></label>
+<input id="vdODcwNjI1" type="checkbox" /><label for="vdODcwNjI1"></label>
 <pre v-pre class="lang-html">
 <code><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
 <span class="hljs-selector-class">.wrapper</span> <span class="hljs-selector-tag">input</span> {

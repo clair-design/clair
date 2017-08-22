@@ -10,6 +10,7 @@
   ],
   "scripts": {
     "precommit": "lint-staged",
+    "clean": "node ./build/cmd.js clean",
     "dev": "node ./build/cmd.js dev",
     "build": "node ./build/cmd.js build",
     "deploy": "node ./build/cmd.js deploy",
