@@ -70,7 +70,9 @@ switch (cmdName) {
       .then(toLog('Rollup Bundling...'))
       .then(rollup.build)
       .then(toLog('Generate static files and deploy to gh-pages...'))
-      .then(() => execAsPromise(`${BIN}/nuxt generate -c ./build/nuxt.config.js`))
+      .then(() => execAsPromise(
+        `${BIN}/nuxt generate -c ./build/nuxt.config.js`
+      ))
       .then(() => execAsPromise('echo clair.wemlion.com > site/CNAME'))
       .then(() => execAsPromise(`${BIN}/gh-pages -d site`))
       .catch(log)
@@ -107,8 +109,11 @@ function createBoilerplate (arr) {
       shell.ShellString(vueTemplate(tagName, compName)).to(`${file}.vue`)
       log(`[DONE] ${dirName} created at ${dir}.`)
     } else {
-      // eslint-disable no-console
-      console.warn(`[Warning] Skipping component ${dirName}, it already exisits at ${dir}.`)
+      // eslint-disable-next-line no-console
+      console.warn(
+        `[Warning] Skipping component ${dirName}` +
+        `, it already exisits at ${dir}.`
+      )
     }
   })
 }

@@ -15,18 +15,14 @@
     "dev": "node ./build/cmd --dev",
     "build": "node ./build/cmd --build",
     "deploy": "node ./build/cmd --deploy",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "lint": "eslint ./build/*.js"
   },
   "lint-staged": {
-    "src/**/*.css": [
-      "stylelint"
-    ],
-    "src/**/*.js": [
-      "eslint"
-    ],
-    "src/**/*.vue": [
-      "eslint"
-    ]
+    "src/**/*.css": [ "stylelint" ],
+    "src/**/*.js": [ "eslint" ],
+    "src/**/*.vue": [ "eslint" ],
+    "build/**/*.vue": [ "eslint" ]
   },
   "repository": {
     "type": "git",
