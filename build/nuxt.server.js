@@ -1,6 +1,4 @@
-module.exports = function ({
-  port
-}) {
+module.exports = function (port) {
   /* eslint-disable no-console */
   const { Nuxt, Builder } = require('nuxt')
   const app = require('express')()
