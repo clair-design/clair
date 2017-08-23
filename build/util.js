@@ -46,15 +46,16 @@ function pascalCase (name) {
 
 function findAPortNotInUse (ports) {
   return new Promise((resolve, reject) => {
-    require('portscanner').findAPortNotInUse(ports, '127.0.0.1', (err, port) => {
-      if (err) {
-        reject(err)
-      } else if (port === false) {
-        reject(new Error(`${ports} are all in use...`))
-      } else {
-        resolve(port)
-      }
-    })
+    require('portscanner')
+      .findAPortNotInUse(ports, '127.0.0.1', (err, port) => {
+        if (err) {
+          reject(err)
+        } else if (port === false) {
+          reject(new Error(`${ports} are all in use...`))
+        } else {
+          resolve(port)
+        }
+      })
   })
 }
 

@@ -6,6 +6,7 @@ const glob = require('glob')
 const fs = require('fs-extra')
 const md2vue = require('md2vue')
 const chokidar = require('chokidar')
+const yamlFront = require('yaml-front-matter')
 
 const { log } = require('./util')
 const OUTPUT_DIR = path.join(process.cwd(), '/document/pages/component')
@@ -59,15 +60,42 @@ function compileWrite (file, outputDir) {
  * @returns {String} .vue code
  */
 function compile2vue (file) {
-  const vueInjection = `
-layout: 'component',
-scrollToTop: true
-`
+  const defaults = {
+    title: 'Component',
+    layout: 'component',
+    scrollTop: true
+  }
 
   return fs.readFile(file)
     .then(bf => bf.toString())
-    .then(raw => md2vue(raw, {
-      vueInjection,
-      toggleCode: true
-    }))
+    .then(getFrontMatter)
+    .then(({ source, config }) => {
+      const {
+        layout, scrollTop, title
+      } = Object.assign({}, defaults, config)
+
+      return md2vue(source, {
+        toggleCode: true,
+        vueInjection: `
+layout: '${layout}',
+scrollTop: ${scrollTop},
+head(){
+  return {
+    title: '${title}'
+  }
+}
+`
+      })
+    })
+}
+
+function getFrontMatter (source) {
+  const result = yamlFront.loadFront(source, '__mdContent')
+  const { __mdContent } = result
+  delete result.__mdContent
+
+  return {
+    source: __mdContent,
+    config: result
+  }
 }
