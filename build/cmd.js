@@ -9,14 +9,21 @@ if (argv.length === 0) {
 const path = require('path')
 const opn = require('opn')
 const shell = require('shelljs')
-const { log, toLog, setNodeEnv } = require('./util')
+const { log, toLog, setNodeEnv, findAvailablePort } = require('./util')
 
 const markdown = require('./markdown')
 const rollup = require('./rollup')
 const nuxtServe = require('./nuxt.server')
 const BIN = path.join(__dirname, '../node_modules/.bin')
-const PORT = 5432
+const PORT = 3000
 const [ cmdName ] = argv
+
+const startDevServer = () => findAvailablePort(PORT)
+  .then(toLog('Serving with nuxt.js...'))
+  .then(port => {
+    nuxtServe(port)
+    opn(`http://127.0.0.1:${port}`)
+  })
 
 switch (cmdName) {
   case 'build':
@@ -40,9 +47,7 @@ switch (cmdName) {
         watcher.on('event', function listener ({ code }) {
           if (code === 'END') {
             watcher.removeListener('event', listener)
-            log('Serving with nuxt.js...')
-            nuxtServe({ port: PORT })
-            opn(`http://127.0.0.1:${PORT}`)
+            startDevServer()
           }
         })
       })
