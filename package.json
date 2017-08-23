@@ -80,7 +80,8 @@
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0",
     "vue": "^2.4.0",
-    "vue-router": "^2.7.0"
+    "vue-router": "^2.7.0",
+    "yaml-front-matter": "^3.4.0"
   },
   "dependencies": {
     "github-markdown-css": "^2.8.0",

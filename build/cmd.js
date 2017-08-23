@@ -114,7 +114,13 @@ function createBoilerplate (arr) {
 }
 
 function mdTemplate (tagName, compName) {
-  return `# ${compName}
+  return `---
+title: ${compName}
+layout: 'component'
+scrollTop: true
+---
+
+# ${compName}
 
 ## Demo
 
