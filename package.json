@@ -15,8 +15,7 @@
     "dev": "node ./build/cmd --dev",
     "build": "node ./build/cmd --build",
     "deploy": "node ./build/cmd --deploy",
-    "start": "npm run dev",
-    "lint": "eslint ./build/*.js"
+    "start": "npm run dev"
   },
   "lint-staged": {
     "src/**/*.css": [ "stylelint" ],
