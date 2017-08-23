@@ -183,4 +183,7 @@ $RECYCLE.BIN/
 
 ## Ignore nuxt temp files
 .nuxt/
+## Ignore nuxt static files
 site/
+## Ignore md2vue generated files
+document/pages/component/
