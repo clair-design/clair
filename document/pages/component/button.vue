@@ -4,7 +4,7 @@
 <h2>示例</h2>
 <div class="vue-demo-block">
 <md2vuedemo0></md2vuedemo0>
-<input id="vdNDQwODAzOTY" type="checkbox" /><label for="vdNDQwODAzOTY"></label>
+<input id="vdMzg5NDk3Mzc" type="checkbox" /><label for="vdMzg5NDk3Mzc"></label>
 <pre v-pre class="lang-html">
 <code><span class="hljs-tag">&lt;<span class="hljs-name">c-button</span>&gt;</span>默认按钮<span class="hljs-tag"><span>&lt;</span>/<span class="hljs-name">c-button</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">c-button</span> <span class="hljs-attr">primary</span>&gt;</span>主操作按钮<span class="hljs-tag"><span>&lt;</span>/<span class="hljs-name">c-button</span>&gt;</span>
@@ -47,9 +47,19 @@
   })()
   if (module.exports.__esModule) module.exports = module.exports.default
   var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+  if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
   __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vue-demo"},[_c('c-button',[_vm._v("默认按钮")]),_vm._v(" "),_c('c-button',{attrs:{"primary":""}},[_vm._v("主操作按钮")]),_vm._v(" "),_c('c-button',{attrs:{"disabled":""}})],1)}
   __vue__options__.staticRenderFns = []
-
+  if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+    hotAPI.install(require("vue"), true)
+    if (!hotAPI.compatible) return
+    module.hot.accept()
+    if (!module.hot.data) {
+      hotAPI.createRecord("data-v-bba68bf6", __vue__options__)
+    } else {
+      hotAPI.reload("data-v-bba68bf6", __vue__options__)
+    }
+  })()}
     return module.exports;
   })({});
 

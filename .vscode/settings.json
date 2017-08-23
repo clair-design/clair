@@ -6,7 +6,7 @@
   "editor.insertSpaces": true,
   "editor.wordWrap": "on",
   "editor.wordWrapColumn": 150,
-  "editor.renderWhitespace": "all",
+  "editor.renderWhitespace": "boundary",
   "files.associations": {
     "*.vue": "vue"
   },
