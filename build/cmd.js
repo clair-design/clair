@@ -154,7 +154,7 @@ export default {
   name: '${tagName}',
   props: {},
 
-  data() {
+  data () {
     return {}
   },
 
