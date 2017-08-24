@@ -12,7 +12,7 @@ const { log } = require('./util')
 const OUTPUT_DIR = path.join(process.cwd(), '/document/pages/')
 const MARKDOWN_GLOBS = [
   'src/components/**/index.md',
-  'docs/**/*.md'
+  'document/content/**/*.md'
 ]
 
 /**

@@ -1,6 +1,6 @@
 <template lang="pug">
-header.flex.toolbar
-  h1.stretch
+header.c-row.toolbar
+  h1.c-flex
     | Clair Design
 
   nav.navbar
@@ -14,8 +14,8 @@ header.flex.toolbar
 <script>
 const navigation = [
   { title: '首页', link: '/' },
-  { title: '设计原则', link: '/principle' },
-  { title: '组件', link: '/component' },
+  { title: '设计原则', link: '/principle/introduction' },
+  { title: '组件', link: '/component/install' },
   { title: '资源', link: '/resource' }
 ]
 export default {
