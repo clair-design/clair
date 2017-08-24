@@ -103,7 +103,7 @@ function createBoilerplate (arr) {
     if (!shell.test('-d', dir)) {
       shell.mkdir('-p', dir)
 
-      shell.ShellString(mdTemplate(tagName, compName)).to(`${file}.md`)
+      shell.ShellString(mdTemplate(tagName, compName, dirName)).to(`${file}.md`)
       shell.ShellString(jsTemplate(tagName, compName)).to(`${file}.js`)
       shell.ShellString(cssTemplate(tagName, compName)).to(`${file}.css`)
       shell.ShellString(vueTemplate(tagName, compName)).to(`${file}.vue`)
@@ -118,11 +118,12 @@ function createBoilerplate (arr) {
   })
 }
 
-function mdTemplate (tagName, compName) {
+function mdTemplate (tagName, compName, dirName) {
   return `---
 title: ${compName}
-layout: 'component'
+layout: component
 scrollTop: true
+route: component/${dirName}
 ---
 
 # ${compName}
