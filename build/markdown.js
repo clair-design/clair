@@ -6,52 +6,35 @@ const glob = require('glob')
 const fs = require('fs-extra')
 const md2vue = require('md2vue')
 const chokidar = require('chokidar')
+const yamlFront = require('yaml-front-matter')
 
 const { log } = require('./util')
-const OUTPUT_DIR = path.join(process.cwd(), '/document/pages/component')
-const compileMd = file => compileWrite(file, OUTPUT_DIR)
+const OUTPUT_DIR = path.join(process.cwd(), '/document/pages/')
+const MARKDOWN_GLOBS = [
+  'src/components/**/index.md',
+  'docs/**/*.md'
+]
 
 /**
  * build once
  */
-exports.build = () => glob
-  .sync('./src/components/**/index.md')
-  .forEach(compileMd)
+exports.build = () => MARKDOWN_GLOBS
+  .reduce((acc, pattern) => [...acc, glob.sync(pattern)], [])
+  .forEach(compile2vue)
 
 /**
  * watch mode
  */
 exports.watchBuild = () => chokidar
-  .watch('./src/components/**/*.md', { persistent: true })
+  .watch(MARKDOWN_GLOBS, { persistent: true })
   .on('add', file => {
     log(`File ${file} added.`)
-    compileMd(file)
+    compile2vue(file)
   })
   .on('change', file => {
     log(`File ${file} has been changed.`)
-    compileMd(file)
+    compile2vue(file)
   })
-
-/**
- * compile markdown documents to .vue code
- * and write it to output directory
- * @param {String} file       file path
- * @param {String} outputDir  output directory
- * @returns {Promise}
- */
-function compileWrite (file, outputDir) {
-  // src/components/button/index.md => button => button.vue
-  const name = path.basename(path.dirname(file))
-  const dest = path.join(outputDir, `${name}.vue`)
-
-  return Promise
-    .all([
-      compile2vue(file),
-      fs.ensureFile(dest)
-    ])
-    .then(([code]) => fs.writeFile(dest, code))
-    .catch(log)
-}
 
 /**
  * compile markdown document to .vue code
@@ -59,15 +42,48 @@ function compileWrite (file, outputDir) {
  * @returns {String} .vue code
  */
 function compile2vue (file) {
-  const vueInjection = `
-layout: 'component',
-scrollToTop: true
-`
+  // src/components/button/index.md => button => button.vue
+  const name = path.basename(path.dirname(file))
+  const defaults = {
+    title: 'Component',
+    layout: 'component',
+    scrollTop: true,
+    route: `component/${name}`
+  }
 
   return fs.readFile(file)
     .then(bf => bf.toString())
-    .then(raw => md2vue(raw, {
-      vueInjection,
-      toggleCode: true
-    }))
+    .then(getFrontMatter)
+    .then(({ source, config }) => {
+      const {
+        layout, scrollTop, title, route
+      } = Object.assign({}, defaults, config)
+
+      const dest = path.join(OUTPUT_DIR, `${route}.vue`)
+      const vueInjection = `
+layout: '${layout}',
+scrollTop: ${scrollTop},
+head () {
+  return { title: '${title}' }
+}
+`
+      return Promise
+        .all([
+          md2vue(source, { toggleCode: true, vueInjection }),
+          fs.ensureFile(dest)
+        ])
+        .then(([code]) => fs.writeFile(dest, code))
+        .catch(log)
+    })
+}
+
+function getFrontMatter (source) {
+  const result = yamlFront.loadFront(source, '__mdContent')
+  const { __mdContent } = result
+  delete result.__mdContent
+
+  return {
+    source: __mdContent,
+    config: result
+  }
 }

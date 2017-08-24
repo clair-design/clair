@@ -26,6 +26,9 @@
     ],
     "src/**/*.vue": [
       "eslint"
+    ],
+    "build/**/*.vue": [
+      "eslint"
     ]
   },
   "repository": {
@@ -62,7 +65,7 @@
     "glob": "^7.1.2",
     "husky": "^0.14.3",
     "lint-staged": "^4.0.2",
-    "md2vue": "^1.1.0",
+    "md2vue": "^1.2.0",
     "nuxt": "^1.0.0-rc4",
     "opn": "^5.1.0",
     "portscanner": "^2.1.1",
@@ -80,7 +83,8 @@
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0",
     "vue": "^2.4.0",
-    "vue-router": "^2.7.0"
+    "vue-router": "^2.7.0",
+    "yaml-front-matter": "^3.4.0"
   },
   "dependencies": {
     "github-markdown-css": "^2.8.0",
