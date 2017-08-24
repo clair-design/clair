@@ -1,0 +1,23 @@
+.c-row {
+  display: flex;
+  margin-left: calc(var(--grid-gap) * -0.5);
+  margin-right: calc(var(--grid-gap) * -0.5);
+  flex-direction: row;
+
+  & > .c-flex,
+  & > .c-spacer {
+    flex: 1;
+  }
+
+  & > .c-col {
+    padding-left: calc(var(--grid-gap) * 0.5);
+    padding-right: calc(var(--grid-gap) * 0.5);
+  }
+}
+
+/* stylelint-disable function-whitespace-after */
+@for $i from 1 to 11 {
+  .c-row > .c-col-$i {
+    width: calc($i / 12 * 100)%;
+  }
+}

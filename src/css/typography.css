@@ -1,0 +1,18 @@
+/**
+ * typography
+ */
+.x-large {
+  font-size: 3em;
+}
+
+.large {
+  font-size: 1.5em;
+}
+
+.small {
+  font-size: 0.875em;
+}
+
+.x-small {
+  font-size: 0.75em;
+}

@@ -11,51 +11,6 @@ body {
   font: 14px/1.6 sans-serif;
 }
 
-/**
- * typography
- */
-.x-large {
-  font-size: 3em;
-}
-
-.large {
-  font-size: 1.5em;
-}
-
-.small {
-  font-size: 0.875em;
-}
-
-.x-small {
-  font-size: 0.75em;
-}
-
-/**
- * gird layout
- */
-.flex {
-  display: flex;
-}
-
-.flex > * {
-  padding-left: var(--gap);
-}
-
-.flex > :first-child {
-  padding-left: 0;
-}
-
-.flex > .stretch {
-  flex: 1;
-}
-
-/* stylelint-disable function-whitespace-after */
-@for $i from 1 to 11 {
-  .flex .col-$i {
-    width: calc($i / 12 * 100)%;
-  }
-}
-
 .content-wrap {
   max-width: var(--content-width);
   margin-left: auto;
