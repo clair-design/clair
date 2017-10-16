@@ -1,0 +1,9 @@
+.c-toolbar {
+  display: flex;
+  background: var(--primary-color);
+
+  & > .c-toolbar__items {
+    display: flex;
+  }
+}
+

@@ -48,6 +48,7 @@ var Button = {render: function(){var _vm=this;var _h=_vm.$createElement;var _c=_
 };
 
 // styles
+// importing components
 var install = function (Vue, component) {
   Vue.component(component.name, component);
 };
