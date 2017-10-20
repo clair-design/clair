@@ -16,3 +16,7 @@
 .x-small {
   font-size: 0.75em;
 }
+
+.text-slim {
+  font-weight: 100;
+}
