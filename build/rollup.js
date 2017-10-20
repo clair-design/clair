@@ -16,7 +16,7 @@ const buildTargets = [
   { dest: `dist/clair.js`, format: 'umd' },
   { dest: `dist/clair.common.js`, format: 'cjs' },
   { dest: `dist/clair.esm.js`, format: 'es' },
-  { dest: `document/assets/clair.js`, format: 'es' }
+  { dest: `document/assets/js/clair.js`, format: 'es' }
 ]
 const getPlugins = () => {
   const isProd = process.env.NODE_ENV === 'production'
@@ -32,7 +32,7 @@ const getPlugins = () => {
         postcssfor(),
         cssnext({ warnForDuplicates: false })
       ],
-      extract: `${isProd ? 'dist/' : 'document/assets/'}/clair.css`
+      extract: `${isProd ? 'dist/' : 'document/assets/css'}/clair.css`
     }),
     buble()
   ]
@@ -55,7 +55,7 @@ exports.watchBuild = () => {
     entry,
     moduleName,
     plugins: getPlugins(),
-    dest: 'document/assets/clair.js',
+    dest: 'document/assets/js/clair.js',
     format: 'es',
     watch: {
       chokidar

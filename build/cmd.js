@@ -52,7 +52,11 @@ switch (cmdName) {
       .then(rollup.watchBuild)
       .then(watcher => {
         // serve nuxt.js after bundling done for the first time
-        watcher.on('event', function listener ({ code }) {
+        watcher.on('event', function listener ({ code, error }) {
+          if (error) {
+            log(error)
+            process.exit()
+          }
           if (code === 'END') {
             watcher.removeListener('event', listener)
             startDevServer()

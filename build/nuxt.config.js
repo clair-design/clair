@@ -6,6 +6,9 @@ module.exports = {
   },
   srcDir: 'document/',
   loading: false,
+  router: {
+    linkExactActiveClass: 'is-active'
+  },
   head: {
     meta: [
       {
