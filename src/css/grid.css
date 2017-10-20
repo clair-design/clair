@@ -1,7 +1,5 @@
 .c-row {
   display: flex;
-  margin-left: calc(var(--grid-gap) * -0.5);
-  margin-right: calc(var(--grid-gap) * -0.5);
   flex-direction: row;
 
   & > .c-flex,
@@ -12,6 +10,19 @@
   & > .c-col {
     padding-left: calc(var(--grid-gap) * 0.5);
     padding-right: calc(var(--grid-gap) * 0.5);
+  }
+
+  & > .c-col:first-child {
+    padding-left: 0;
+  }
+
+  & > .c-col:last-child {
+    padding-right: 0;
+  }
+
+  & > .no-gap {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
