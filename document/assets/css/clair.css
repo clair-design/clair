@@ -168,8 +168,6 @@ html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-left: -0.5em;
-  margin-right: -0.5em;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -184,6 +182,16 @@ html {
 .c-row > .c-col {
   padding-left: 0.5em;
   padding-right: 0.5em;
+}
+.c-row > .c-col:first-child {
+  padding-left: 0;
+}
+.c-row > .c-col:last-child {
+  padding-right: 0;
+}
+.c-row > .no-gap {
+  padding-left: 0;
+  padding-right: 0;
 }
 /* stylelint-disable function-whitespace-after */
 .c-row > .c-col-1 {
@@ -234,11 +242,22 @@ html {
 .x-small {
   font-size: 0.75em;
 }
+.text-slim {
+  font-weight: 100;
+}
 
 .c-button {
   display: inline-block;
-  line-height: 2;
+  line-height: 2.4;
   padding: 0 1em;
+  border: none;
+  background: #738699;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.c-button + .c-button {
+  margin-left: 1em;
 }
 
 .c-button--primary {

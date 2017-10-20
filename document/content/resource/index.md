@@ -5,17 +5,24 @@ scrollTop: true
 route: resource
 ---
 
-# 设计资源
-
-## Axure 组件库
-
-敬请期待
-
-## Sketch 模版
-
-敬请期待
-
-## Photoshop 模版
-
- 敬请期待
+<div class="content-wrap c-row resources">
+  <div class="c-col c-flex">
+    <div class="resource">
+      <img src="https://p4.ssl.qhimg.com/t014af1c0b0999f8f27.png">
+      <p>Axure 组件库开发中...</p>
+    </div>
+  </div>
+  <div class="c-col c-flex">
+    <div class="resource">
+      <img src="https://p2.ssl.qhimg.com/t01fb50e8871d6cadcf.png">
+      <p>Sketch 模版开发中...</p>
+    </div>
+  </div>
+  <div class="c-col c-flex">
+    <div class="resource">
+      <img src="https://p2.ssl.qhimg.com/t0161abd1ffd65ab947.png">
+      <p>Photoshop 模版开发中...</p>
+    </div>
+  </div>
+</div>
 

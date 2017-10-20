@@ -1,5 +1,8 @@
 :root {
-  --primary-color: #17a2e8;
+  --primary-color: #498ff2;
+  --link-color: #53637a;
+  --text-color: #4f4f4f;
+  --weak-text-color: #999;
   --gap: 0.75rem;
   --content-width: 960px;
 }
@@ -7,26 +10,24 @@
 /**
  * common
  */
-body {
-  font: 14px/1.6 sans-serif;
+html {
+  font: 16px/1.6 Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+  color: var(--text-color);
 }
 
 .content-wrap {
   max-width: var(--content-width);
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /**
  * header
  */
 .toolbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.3);
-  color: #fff;
+  background: #fff;
+  color: var(--link-color);
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   line-height: 5;
   padding: 0 1em;
 }
@@ -36,14 +37,90 @@ body {
 }
 
 .navbar__item {
+  display: block;
   padding: 0 1em;
 }
 
-.hero {
-  height: 100vh;
-  background-image: linear-gradient(150deg, #17a2e8 0%, #17e8a2 100%);
-  padding-top: 10em;
+.navbar__item.is-active {
+  background: var(--primary-color);
   color: #fff;
+}
+
+.navbar.is-stacked {
+  flex-direction: column;
+}
+
+.navbar.is-stacked .navbar__item {
+  line-height: 3;
+}
+
+.navbar.is-stacked .navbar__item.is-active {
+  background: #f0f6fe;
+  color: var(--primary-color);
+  border-right: 2px solid;
+  margin-right: -1px;
+}
+
+.navbar.is-stacked .subnav__title {
+  display: block;
+  padding: 0 1em;
+  line-height: 3;
+  font-size: 0.9em;
+  color: var(--weak-text-color);
+}
+
+.navbar.is-stacked .subnav .navbar__item {
+  padding-left: 2.2em;
+}
+
+.hero {
+  min-height: calc(100vh - 10em);
+  padding: 10em 0 2em 2em;
+  padding-top: calc(50vh - 12em);
+  background: url(https://p3.ssl.qhimg.com/t0125747e428172cb50.png) repeat;
+}
+
+.hero h1 {
+  color: var(--primary-color);
+}
+
+.hero p {
+  margin: 1em 0;
+}
+
+.markdown-body {
+  min-height: calc(100vh - 10em);
+}
+
+/**
+ * footer
+ */
+footer {
+  line-height: 5rem;
+  background: #eef4f6;
+  font-size: 0.75em;
+  text-align: center;
+  color: #828282;
+}
+
+footer.in-article {
+  margin-top: -5rem;
+  padding-left: 20%;
+}
+
+footer a {
+  margin: 0 0.5em;
+  text-decoration: underline;
+}
+
+/**
+ * sidebar
+ */
+.sidebar {
+  font-size: 14px;
+  position: relative;
+  background: #fff;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
 }
 
 /**
@@ -51,4 +128,34 @@ body {
  */
 .transparent {
   background: transparent;
+}
+
+/**
+ * content
+ */
+.markdown-body {
+  color: var(--text-color);
+  padding: 2em 2em 7em;
+  line-height: 1.8;
+}
+
+.markdown-body:empty {
+  display: none;
+}
+
+/**
+ * resoueces
+ */
+.resources {
+  margin: auto;
+  padding-top: 5em;
+}
+
+.resource {
+  width: 240px;
+  margin: auto;
+  padding: 2em;
+  text-align: center;
+  font-size: 12px;
+  color: var(--weak-text-color);
 }
