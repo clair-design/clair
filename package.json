@@ -14,7 +14,7 @@
     "clean": "node ./build/cmd --clean",
     "dev": "node ./build/cmd --dev",
     "build": "node ./build/cmd --build",
-    "deploy": "node ./build/cmd --deploy",
+    "release": "node ./build/cmd --release",
     "start": "npm run dev"
   },
   "lint-staged": {
@@ -50,6 +50,7 @@
     "vue": "^2.4.0"
   },
   "devDependencies": {
+    "@nuxtjs/workbox": "^1.2.2",
     "babel-eslint": "^7.2.3",
     "chokidar": "^1.7.0",
     "eslint": "^4.3.0",
@@ -61,7 +62,9 @@
     "eslint-plugin-pug": "^1.1.0",
     "eslint-plugin-standard": "^3.0.1",
     "express": "^4.15.4",
+    "github-markdown-css": "^2.8.0",
     "glob": "^7.1.2",
+    "highlight.js": "^9.12.0",
     "husky": "^0.14.3",
     "lint-staged": "^4.0.2",
     "md2vue": "^1.2.0",
@@ -84,9 +87,5 @@
     "vue": "^2.4.0",
     "vue-router": "^2.7.0",
     "yaml-front-matter": "^3.4.0"
-  },
-  "dependencies": {
-    "github-markdown-css": "^2.8.0",
-    "highlight.js": "^9.12.0"
   }
 }

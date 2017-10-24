@@ -32,6 +32,7 @@ module.exports = {
     '~plugins/clair.js',
     '~plugins/style.js'
   ],
+  modules: ['@nuxtjs/workbox'],
   build: {
     extractCSS: true,
     publicPath: '/static/',

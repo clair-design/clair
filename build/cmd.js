@@ -34,15 +34,7 @@ const startDevServer = () => findAvailablePort(PORT)
   })
 
 switch (cmdName) {
-  case '--build':
-    Promise
-      .resolve(setNodeEnv('production'))
-      .then(toLog('Start rollup bundling...'))
-      .then(rollup.build)
-      .then(toLog('Bundling done.'))
-      .catch(log)
-    break
-
+  // start watch bundling
   case '--dev':
     Promise
       .resolve(setNodeEnv('development'))
@@ -66,7 +58,18 @@ switch (cmdName) {
       .catch(log)
     break
 
-  case '--deploy':
+  // rollup our lib
+  case '--build':
+    Promise
+      .resolve(setNodeEnv('production'))
+      .then(toLog('Start rollup bundling...'))
+      .then(rollup.build)
+      .then(toLog('Bundling done.'))
+      .catch(log)
+    break
+
+  // build lib and docs
+  case '--release':
     Promise
       .resolve(setNodeEnv('production'))
       .then(toLog('Building documentation...'))
@@ -80,10 +83,12 @@ switch (cmdName) {
       .catch(log)
     break
 
+  // clean dirs
   case '--clean':
     shell.rm('-rf', '.nuxt', 'site', 'dist')
     break
 
+  // generate component boilerplate
   case '--add':
     Promise
       .resolve(args.map(n => [kebabCase(n), pascalCase(n)]))
