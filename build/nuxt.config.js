@@ -5,7 +5,10 @@ module.exports = {
     minify: false
   },
   srcDir: 'document/',
-  loading: false,
+  loading: {
+    color: '#56bf8b',
+    duration: 3000
+  },
   router: {
     linkExactActiveClass: 'is-active'
   },
