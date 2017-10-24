@@ -143,6 +143,10 @@ footer a {
   display: none;
 }
 
+.markdown-body li {
+  list-style: disc;
+}
+
 /**
  * resoueces
  */
@@ -158,4 +162,11 @@ footer a {
   text-align: center;
   font-size: 12px;
   color: var(--weak-text-color);
+  border-radius: 3px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.resource img {
+  width: 64px;
+  height: 64px;
 }
