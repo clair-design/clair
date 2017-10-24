@@ -83,7 +83,8 @@ typings/
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -187,3 +188,6 @@ $RECYCLE.BIN/
 site/
 ## Ignore md2vue generated files
 document/pages/
+
+## In case that files in `src` were ignored unexpectedly
+!src/**/*
