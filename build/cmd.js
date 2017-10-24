@@ -73,18 +73,17 @@ switch (cmdName) {
       .then(markdown.build)
       .then(toLog('Rollup Bundling...'))
       .then(rollup.build)
-      .then(toLog('Generate static files and deploy to gh-pages...'))
+      .then(toLog('Generate static files...'))
       .then(() => execAsPromise(
         `${BIN}/nuxt generate -c ./build/nuxt.config.js`
       ))
-      .then(() => execAsPromise('echo clair.wemlion.com > site/CNAME'))
-      .then(() => execAsPromise(`${BIN}/gh-pages -d site`))
       .catch(log)
     break
 
   case '--clean':
     shell.rm('-rf', '.nuxt', 'site', 'dist')
     break
+
   case '--add':
     Promise
       .resolve(args.map(n => [kebabCase(n), pascalCase(n)]))
