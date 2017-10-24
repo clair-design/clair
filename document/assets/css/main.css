@@ -176,6 +176,13 @@ footer a {
  * error
  */
 .error-container {
-  color: var(--danger-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 10em);
   padding: 2em;
+  color: var(--danger-color);
+  line-height: 3;
+  text-align: center;
 }
