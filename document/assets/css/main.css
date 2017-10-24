@@ -2,6 +2,7 @@
   --primary-color: #498ff2;
   --link-color: #53637a;
   --text-color: #4f4f4f;
+  --danger-color: #e5675c;
   --weak-text-color: #999;
   --gap: 0.75rem;
   --content-width: 960px;
@@ -169,4 +170,12 @@ footer a {
 .resource img {
   width: 64px;
   height: 64px;
+}
+
+/**
+ * error
+ */
+.error-container {
+  color: var(--danger-color);
+  padding: 2em;
 }
