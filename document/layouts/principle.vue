@@ -24,7 +24,7 @@ export default {
           link: '/principle/introduction'
         },
         {
-          title: '设计原则',
+          title: '组件设计规范',
           link: '/principle/guides'
         }
       ]
