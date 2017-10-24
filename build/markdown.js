@@ -19,7 +19,7 @@ const MARKDOWN_GLOBS = [
  * build once
  */
 exports.build = () => MARKDOWN_GLOBS
-  .reduce((acc, pattern) => [...acc, glob.sync(pattern)], [])
+  .reduce((acc, pattern) => acc.concat(glob.sync(pattern)), [])
   .forEach(compile2vue)
 
 /**
