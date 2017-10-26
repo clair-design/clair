@@ -23,9 +23,6 @@
     ],
     "src/**/*.vue": [
       "eslint"
-    ],
-    "build/**/*.vue": [
-      "eslint"
     ]
   },
   "repository": {

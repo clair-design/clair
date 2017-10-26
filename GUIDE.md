@@ -1,8 +1,14 @@
 #  开发指南
 
-## 依赖安装
+## 依赖安装（重要）
 
-**请务必使用 [yarn](https://yarnpkg.com/) 进行操作。**
+因 vuefify 和 nuxt 之间依赖不同的问题，开发请注意以下几点：
+
+- **请务必使用 [yarn](https://yarnpkg.com/) 进行操作。**
+- 不要提交 yarn.lock
+- nuxt 目前使用的是 github 上的 dev 分支，待日后处理
+
+（更新于 2017-10-26）
 
 ## 代码风格
 
@@ -33,4 +39,7 @@
 
 ## 构建脚本
 
-* `npm start`：开启 rollup 以及 PostCSS 编译，并启动文档页面的服务器。
+* `yarn start` 或 `npm start`：开启 rollup 以及 PostCSS 编译，并启动文档页面的服务器。
+* `yarn build` 或 `npm run build`：文件打包，并生成 nuxt 静态文档
+* `yarn new <name>` 或 `npm run new <name>`：自动创建新组件
+
