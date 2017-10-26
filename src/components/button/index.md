@@ -7,6 +7,7 @@ Button 组件提供了不同的按钮风格以及状态、尺寸等选项。
 ```html
 <c-button>默认按钮</c-button>
 <c-button primary>主操作按钮</c-button>
+<c-button primary :href="'/'">主操作按钮</c-button>
 <c-button disabled></c-button>
 ```
 

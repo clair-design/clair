@@ -1,3 +1,5 @@
+@import url('variables.css');
+
 .c-row {
   display: flex;
   flex-direction: row;

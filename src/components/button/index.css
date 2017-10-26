@@ -1,3 +1,5 @@
+@import url('../../css/variables.css');
+
 .c-button {
   display: inline-block;
   line-height: 2.4;

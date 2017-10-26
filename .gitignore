@@ -187,6 +187,8 @@ $RECYCLE.BIN/
 
 ## Ignore nuxt static files
 site/
+## Ignore build files
+dist/
 
 ## Ignore md2vue generated files
 document/pages/

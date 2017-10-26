@@ -1,6 +1,6 @@
 <template lang="pug">
   button(
-    class="c-button"
+    class="c-checkbox"
     :class="classNames"
   )
     slot
@@ -15,8 +15,8 @@
     toClassNames
   } from '../../js/util'
 
-  const name = 'c-button'
-  const block = `c-button`
+  const name = 'c-checkbox'
+  const block = `c-checkbox`
   const modifiers = [
     'primary',
     'readonly',

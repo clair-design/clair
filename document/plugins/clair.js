@@ -1,6 +1,7 @@
 import Vue from 'vue'
-import '../assets/css/clair.css'
-import Clair from '../assets/js/clair'
+import '../../dist/clair.css'
+import Clair from '../../dist/clair.esm'
+
 import Header from '../layouts/includes/header.vue'
 import Footer from '../layouts/includes/footer.vue'
 

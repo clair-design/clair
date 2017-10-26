@@ -1,5 +1,9 @@
 #  开发指南
 
+## 依赖安装
+
+**请务必使用 [yarn](https://yarnpkg.com/) 进行操作。**
+
 ## 代码风格
 
 本项目使用 2 个空格缩进，`UTF-8` 编码。你可以为你的编辑器下载 [EditorConfig](http://editorconfig.org/) 插件，让你的编辑器自动应用这些配置。
