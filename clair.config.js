@@ -11,11 +11,11 @@ exports.md2vue = {
   // documents to be transformed into `.vue` files
   globs: [
     './src/components/**/index.md',
-    './document/content/**/*.md'
+    './docs/content/**/*.md'
   ],
 
   // where to write generated `.vue` files
-  output: './document/pages'
+  output: './docs/pages'
 }
 
 exports.rollup = {
@@ -71,7 +71,7 @@ exports.nuxt = {
     // avoid error with pre/code
     minify: false
   },
-  srcDir: './document',
+  srcDir: './docs',
   loading: {
     color: '#56bf8b',
     duration: 3000
