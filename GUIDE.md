@@ -38,3 +38,7 @@
 * `yarn build` 或 `npm run build`：文件打包，并生成 nuxt 静态文档
 * `yarn new <name>` 或 `npm run new <name>`：自动创建新组件
 
+## 构建工具
+
+- [clair-design/clair-scripts](https://github.com/clair-design/clair-scripts)
+
