@@ -10,35 +10,35 @@ module.exports = {
     // globs identifying those `.md` files
     // to be transformed into `.vue`
     globs: [
-      './src/components/**/index.md',
-      './docs/content/**/*.md'
+      'src/components/**/index.md',
+      'docs/content/**/*.md'
     ],
     // where to write `.vue`
-    output: './docs/pages'
+    output: 'docs/pages'
   },
 
   rollup: {
     name: 'Clair',
-    input: './src/js/entry.js',
+    input: 'src/js/entry.js',
     output: [
       {
         format: 'umd',
-        file: './dist/clair.js'
+        file: 'dist/clair.js'
       },
       {
         format: 'es',
-        file: './dist/clair.esm.js'
+        file: 'dist/clair.esm.js'
       },
       {
         format: 'cjs',
-        file: './dist/clair.common.js'
+        file: 'dist/clair.common.js'
       }
     ],
 
     plugins: [
       installVueComps({
-        entry: './src/js/entry.js',
-        vues: './src/components/**/index.vue'
+        entry: 'src/js/entry.js',
+        vues: 'src/components/**/index.vue'
       }),
       require('rollup-plugin-node-resolve')({
         jsnext: true,
@@ -54,14 +54,14 @@ module.exports = {
             warnForDuplicates: false
           })
         ],
-        extract: './dist/clair.css'
+        extract: 'dist/clair.css'
       }),
       require('rollup-plugin-buble')()
     ]
   },
 
   nuxt: {
-    srcDir: './docs',
+    srcDir: 'docs',
     generate: {
       dir: '.site',
       // avoid error with pre/code
@@ -120,7 +120,7 @@ function installVueComps ({ entry, vues }) {
 
     const components = require('glob')
       .sync(vues)
-      .map(file => path.relative('./src/js', file))
+      .map(file => path.relative('src/js', file))
       .map(file => {
         const [, name] = file.split(path.sep).reverse()
         return {
