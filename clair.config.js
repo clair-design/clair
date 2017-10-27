@@ -1,115 +1,111 @@
-exports.boilerpate = {
-  // where to place generated components
-  dir: 'src/components',
+module.exports = {
+  boilerpate: {
+    // where to place generated components
+    dir: 'src/components',
+    // prefix of the tag of a component
+    prefix: 'c'
+  },
 
-  // prefix of the tag of a component
-  prefix: 'c'
-}
+  md2vue: {
+    // globs identifying those `.md` files
+    // to be transformed into `.vue`
+    globs: [
+      './src/components/**/index.md',
+      './docs/content/**/*.md'
+    ],
+    // where to write `.vue`
+    output: './docs/pages'
+  },
 
-exports.md2vue = {
-  // markdown globs identifying those
-  // documents to be transformed into `.vue` files
-  globs: [
-    './src/components/**/index.md',
-    './docs/content/**/*.md'
-  ],
+  rollup: {
+    name: 'Clair',
+    input: './src/js/entry.js',
+    output: [
+      {
+        format: 'umd',
+        file: './dist/clair.js'
+      },
+      {
+        format: 'es',
+        file: './dist/clair.esm.js'
+      },
+      {
+        format: 'cjs',
+        file: './dist/clair.common.js'
+      }
+    ],
 
-  // where to write generated `.vue` files
-  output: './docs/pages'
-}
+    plugins: [
+      installVueComps({
+        entry: './src/js/entry.js',
+        vues: './src/components/**/index.vue'
+      }),
+      require('rollup-plugin-node-resolve')({
+        jsnext: true,
+        main: true
+      }),
+      require('rollup-plugin-commonjs')(),
+      require('rollup-plugin-vue')(),
+      require('rollup-plugin-postcss')({
+        plugins: [
+          require('postcss-import')(),
+          require('postcss-for')(),
+          require('postcss-cssnext')({
+            warnForDuplicates: false
+          })
+        ],
+        extract: './dist/clair.css'
+      }),
+      require('rollup-plugin-buble')()
+    ]
+  },
 
-exports.rollup = {
-  // module name
-  name: 'Clair',
-
-  // entry
-  input: './src/js/entry.js',
-
-  // scripts output
-  output: [
-    {
-      format: 'umd',
-      file: './dist/clair.js'
+  nuxt: {
+    srcDir: './docs',
+    generate: {
+      dir: '.site',
+      // avoid error with pre/code
+      minify: false
     },
-    {
-      format: 'es',
-      file: './dist/clair.esm.js'
+    loading: {
+      color: '#56bf8b',
+      duration: 3000
     },
-    {
-      format: 'cjs',
-      file: './dist/clair.common.js'
-    }
-  ],
-
-  plugins: [
-    installVueComps({
-      entry: './src/js/entry.js',
-      vues: './src/components/**/index.vue'
-    }),
-    require('rollup-plugin-node-resolve')({
-      jsnext: true,
-      main: true
-    }),
-    require('rollup-plugin-vue')(),
-    require('rollup-plugin-postcss')({
-      plugins: [
+    router: {
+      linkExactActiveClass: 'is-active'
+    },
+    head: {
+      meta: [
+        {
+          charset: 'utf-8'
+        },
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1'
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Clair Design，一套包含设计规范、Vue 组件和配套资源的设计系统。'
+        }
+      ]
+    },
+    plugins: [
+      '~plugins/clair.js',
+      '~plugins/style.js'
+    ],
+    modules: ['@nuxtjs/workbox'],
+    build: {
+      extractCSS: true,
+      publicPath: '/static/',
+      postcss: [
         require('postcss-import')(),
         require('postcss-for')(),
         require('postcss-cssnext')({
           warnForDuplicates: false
         })
-      ],
-      extract: './dist/clair.css'
-    }),
-    require('rollup-plugin-buble')()
-  ]
-}
-
-exports.nuxt = {
-  generate: {
-    dir: '.site',
-    // avoid error with pre/code
-    minify: false
-  },
-  srcDir: './docs',
-  loading: {
-    color: '#56bf8b',
-    duration: 3000
-  },
-  router: {
-    linkExactActiveClass: 'is-active'
-  },
-  head: {
-    meta: [
-      {
-        charset: 'utf-8'
-      },
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1'
-      },
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'Clair Design，一套包含设计规范、Vue 组件和配套资源的设计系统。'
-      }
-    ]
-  },
-  plugins: [
-    '~plugins/clair.js',
-    '~plugins/style.js'
-  ],
-  modules: ['@nuxtjs/workbox'],
-  build: {
-    extractCSS: true,
-    publicPath: '/static/',
-    postcss: [
-      require('postcss-import')(),
-      require('postcss-for')(),
-      require('postcss-cssnext')({
-        warnForDuplicates: false
-      })
-    ]
+      ]
+    }
   }
 }
 

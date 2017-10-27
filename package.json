@@ -10,6 +10,7 @@
   ],
   "scripts": {
     "precommit": "lint-staged",
+    "clean": "rimraf dist .site .nuxt yarn.lock",
     "new": "clair add",
     "build": "clair build",
     "start": "clair start"
@@ -43,7 +44,7 @@
   "devDependencies": {
     "@nuxtjs/workbox": "^1.2.2",
     "babel-eslint": "^7.2.3",
-    "clair-scripts": "1.0.6",
+    "clair-scripts": "1.0.7",
     "eslint": "^4.3.0",
     "eslint-config-neat": "^1.0.0",
     "eslint-plugin-html": "^3.1.1",
@@ -62,12 +63,15 @@
     "postcss-for": "^2.1.1",
     "postcss-import": "^10.0.0",
     "pug": "^2.0.0-rc.4",
+    "rimraf": "^2.6.2",
     "rollup-plugin-buble": "^0.15.0",
+    "rollup-plugin-commonjs": "^8.2.5",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-postcss": "^0.5.4",
     "rollup-plugin-vue": "^2.4.1",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0",
+    "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
   "dependencies": {
