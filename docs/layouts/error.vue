@@ -4,11 +4,11 @@
     <h1 v-else>加载内容失败</h1>
     <div>
       <c-button primary @click="back">
-        <c-icon type="arrow-left"></c-icon>
+        <c-icon name="arrow-left"></c-icon>
         返回
       </c-button>
       <c-button href="/">
-        <c-icon type="home"></c-icon>
+        <c-icon name="home"></c-icon>
         首页
       </c-button>
     </div>

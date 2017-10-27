@@ -1,13 +1,21 @@
 <template lang="pug">
-  i(:class="classNames")
+  i(class="c-icon" :class="classNames")
 </template>
 
 <script>
+import './index.css'
 
 export default {
   name: 'c-icon',
   props: {
-    type: String
+    type: {
+      type: String,
+      default: 'fa'
+    },
+    name: {
+      type: String,
+      required: true
+    }
   },
 
   data () {
@@ -16,11 +24,7 @@ export default {
 
   computed: {
     classNames () {
-      const names = {
-        fa: true
-      }
-      names[`fa-${this.type}`] = true
-      return names
+      return `${this.type} fa-${this.name}`
     }
   }
 }

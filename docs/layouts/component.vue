@@ -6,7 +6,7 @@
         .navbar.is-stacked
           .subnav(v-for="item in menu")
             .subnav__title
-              c-icon(:type="item.icon")
+              c-icon(:name="item.icon")
               |  {{ item.title }}
             nuxt-link.navbar__item(
               v-for="sub in item.children",

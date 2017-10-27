@@ -8,10 +8,10 @@
         p 一套包含设计规范、Vue 组件和配套资源的设计系统。
         p
           c-button(href="/principle/introduction" primary)
-            c-icon(type="book")
+            c-icon(name="book")
             |  设计原则
           c-button(href="/component/install")
-            c-icon(type="cubes")
+            c-icon(name="cubes")
             |  Vue 组件
     nuxt
     c-footer

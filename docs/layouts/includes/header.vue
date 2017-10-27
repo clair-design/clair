@@ -12,7 +12,7 @@ header.c-row.toolbar
       :class="{'is-active': nav.isActiveReg.test($route.path)}"
     ) {{nav.title}}
   a(href="https://github.com/clair-design/clair")
-    c-icon.large(type="github")
+    c-icon.large(name="github")
 </template>
 
 <script>

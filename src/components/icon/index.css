@@ -2,3 +2,8 @@
  * c-icon
  */
 @import url('../../css/variables.css');
+
+.c-icon {
+  width: 1em;
+  text-align: center;
+}
