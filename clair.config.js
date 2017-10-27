@@ -88,6 +88,12 @@ module.exports = {
           name: 'description',
           content: 'Clair Design，一套包含设计规范、Vue 组件和配套资源的设计系统。'
         }
+      ],
+      link: [
+        {
+          href: 'https://lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css',
+          rel: 'stylesheet'
+        }
       ]
     },
     plugins: [
