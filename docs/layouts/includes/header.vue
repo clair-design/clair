@@ -1,7 +1,7 @@
 <template lang="pug">
 header.c-row.toolbar
   h1.c-col.c-col-2
-    nuxt-link.logo(href="/")
+    nuxt-link.logo(to="/")
       img(src="~assets/img/logo.svg" alt="clair")
 
   nav.navbar.c-flex
