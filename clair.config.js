@@ -23,7 +23,7 @@ exports.rollup = {
   name: 'Clair',
 
   // entry
-  input: './src/js/main.js',
+  input: './src/js/entry.js',
 
   // scripts output
   output: [
@@ -43,7 +43,7 @@ exports.rollup = {
 
   plugins: [
     installVueComps({
-      entry: './src/js/main.js',
+      entry: './src/js/entry.js',
       vues: './src/components/**/index.vue'
     }),
     require('rollup-plugin-node-resolve')({

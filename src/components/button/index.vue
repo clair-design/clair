@@ -11,6 +11,7 @@
     v-else
     class="c-button"
     :class="classNames"
+    @click="onClick"
   )
     slot
 </template>
@@ -42,6 +43,11 @@
   export default {
     name,
     props,
-    computed: { classNames }
+    computed: { classNames },
+    methods: {
+      onClick (e) {
+        this.$emit('click', e)
+      }
+    }
   }
 </script>
