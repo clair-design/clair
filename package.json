@@ -44,7 +44,7 @@
   "devDependencies": {
     "@nuxtjs/workbox": "^1.2.2",
     "babel-eslint": "^7.2.3",
-    "clair-scripts": "1.0.7",
+    "clair-scripts": "2.0.1",
     "eslint": "^4.3.0",
     "eslint-config-neat": "^1.0.0",
     "eslint-plugin-html": "^3.1.1",
@@ -70,11 +70,6 @@
     "rollup-plugin-postcss": "^0.5.4",
     "rollup-plugin-vue": "^2.4.1",
     "stylelint": "^8.0.0",
-    "stylelint-config-standard": "^17.0.0",
-    "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
-  },
-  "dependencies": {
-    "chokidar": "^1.7.0"
+    "stylelint-config-standard": "^17.0.0"
   }
 }

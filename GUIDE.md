@@ -1,14 +1,10 @@
 #  开发指南
 
-## 依赖安装（重要）
+## 依赖安装
 
-因 vuefify 和 nuxt 之间依赖不同的问题，开发请注意以下几点：
-
-- **请务必使用 [yarn](https://yarnpkg.com/) 进行操作。**
-- 不要提交 yarn.lock
-- nuxt 目前使用的是 github 上的 dev 分支，待日后处理
-
-（更新于 2017-10-26）
+```bash
+$ yarn install
+```
 
 ## 代码风格
 
@@ -41,4 +37,9 @@
 ## 构建工具
 
 - [clair-design/clair-scripts](https://github.com/clair-design/clair-scripts)
+
+## 文档工具相关
+
+- [nuxt.js](https://github.com/nuxt/nuxt.js)
+- [nuxt.js 0.10.7 中文文档](https://zh.nuxtjs.org)
 
