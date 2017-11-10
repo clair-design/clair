@@ -44,7 +44,7 @@
   "devDependencies": {
     "@nuxtjs/workbox": "^1.2.2",
     "babel-eslint": "^7.2.3",
-    "clair-scripts": "^2.1.1",
+    "clair-scripts": "^2.1.2",
     "eslint": "^4.3.0",
     "eslint-config-neat": "^1.0.0",
     "eslint-plugin-html": "^3.1.1",
