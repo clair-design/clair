@@ -1,7 +1,14 @@
+const boilerplates = readDirFiles('./boilerplate/')
+Object.keys(boilerplates).forEach(key => {
+  const val = boilerplates[key]
+  boilerplates[key] = o => val.replace(/\$\{(\w+)\}/g, (_, g1) => o[g1])
+})
+
 module.exports = {
-  boilerpate: {
+  boilerplate: {
     // where to place generated components
     dir: 'src/components',
+    files: boilerplates,
     // prefix of the tag of a component
     prefix: 'c'
   },
@@ -14,7 +21,10 @@ module.exports = {
       'docs/content/**/*.md'
     ],
     // where to write `.vue`
-    output: 'docs/pages'
+    output: 'docs/pages',
+    vueTools () {
+      return `<h1>vueTools</h1>`
+    }
   },
 
   rollup: {
@@ -153,4 +163,31 @@ export default {
       .replace(/-([0-9a-zA-Z])/g, (m, g1) => g1.toUpperCase())
       .replace(/^[a-z]/, m => m.toUpperCase())
   }
+}
+
+/* eslint-disable no-param-reassign */
+function readDirFiles (dir, encoding, recursive) {
+  const fs = require('fs')
+  const path = require('path')
+
+  const result = {}
+
+  if (typeof encoding === 'boolean') {
+    recursive = encoding
+    encoding = null
+  }
+  typeof recursive === 'undefined' && (recursive = true)
+  typeof encoding === 'string' || (encoding = null)
+
+  const entries = fs.readdirSync(dir)
+
+  entries.forEach(function (entry) {
+    const entryPath = path.join(dir, entry)
+    if (fs.statSync(entryPath).isDirectory()) {
+      return recursive && (result[entry] = readDirFiles(entryPath, encoding))
+    }
+
+    result[entry] = fs.readFileSync(entryPath, encoding).toString()
+  })
+  return result
 }
