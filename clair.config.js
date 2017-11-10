@@ -152,7 +152,7 @@ ${components.map(({ path, comp }) => `import ${comp} from '${path}'`).join('\n')
 
 export default {
   install (Vue) {
-    // main.install(Vue)
+    main.install(Vue)
     const comps = [${components.map(c => c.comp).join(', ')}]
     comps.forEach(comp => comp.name && Vue.component(comp.name, comp))
   }
