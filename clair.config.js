@@ -38,7 +38,7 @@ module.exports = {
     plugins: [
       installVueComps({
         entry: 'src/js/entry.js',
-        vues: 'src/components/**/index.vue'
+        vues: 'src/components/**/!(_)*.vue'
       }),
       require('rollup-plugin-node-resolve')({
         jsnext: true,
@@ -128,11 +128,12 @@ function installVueComps ({ entry, vues }) {
       .sync(vues)
       .map(file => path.relative('src/js', file))
       .map(file => {
-        const [, name] = file.split(path.sep).reverse()
+        const { name, dir } = path.parse(file)
+        const componentName = name === 'index' ? path.basename(dir) : name
         return {
           path: file.replace(/\\/g, '/'),
-          comp: pascalCase(name),
-          name: name
+          comp: pascalCase(componentName),
+          name: componentName
         }
       })
 
@@ -141,6 +142,7 @@ ${components.map(({ path, comp }) => `import ${comp} from '${path}'`).join('\n')
 
 export default {
   install (Vue) {
+    main.install(Vue)
     const comps = [${components.map(c => c.comp).join(', ')}]
     comps.forEach(comp => comp.name && Vue.component(comp.name, comp))
   }
