@@ -22,8 +22,8 @@ module.exports = {
     ],
     // where to write `.vue`
     output: 'docs/pages',
-    vueTools () {
-      return `<h1>vueTools</h1>`
+    vueTools (name, uid) {
+      return `<input id="${uid}" type="checkbox" /><label for="${uid}"></label>`
     }
   },
 
@@ -152,7 +152,7 @@ ${components.map(({ path, comp }) => `import ${comp} from '${path}'`).join('\n')
 
 export default {
   install (Vue) {
-    main.install(Vue)
+    // main.install(Vue)
     const comps = [${components.map(c => c.comp).join(', ')}]
     comps.forEach(comp => comp.name && Vue.component(comp.name, comp))
   }
