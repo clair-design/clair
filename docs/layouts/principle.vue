@@ -1,16 +1,16 @@
 <template lang="pug">
   #app
     c-header
-    .c-row.main
-      .c-col.c-col-2.sidebar.no-gap
+    c-box.main.no-gap
+      c-box-item.sidebar(xs=12 sm=3 md=2)
         .navbar.is-stacked
           nuxt-link.navbar__item(
             v-for="item in menu",
             :to="item.link",
             :key="item.title"
           ) {{item.title}}
-      .c-flex
-        nuxt.content-wrap
+      c-box-item.is-flex
+        nuxt.container.lg
     c-footer.in-article
 </template>
 

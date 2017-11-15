@@ -1,36 +1,97 @@
 @import url('variables.css');
 
-.c-row {
-  display: flex;
-  flex-direction: row;
+.container {
+  padding-left: 2em;
+  padding-right: 2em;
 
-  & > .c-flex,
+  &.sm {
+    max-width: 600px;
+  }
+
+  &.md {
+    max-width: 800px;
+  }
+
+  &.lg {
+    max-width: 960px;
+  }
+}
+
+.c-box {
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: calc(var(--grid-gap) * -0.5);
+  margin-right: calc(var(--grid-gap) * -0.5);
+
+  & > .is-flex,
   & > .c-spacer {
     flex: 1;
   }
 
-  & > .c-col {
+  & > .c-box__item {
     padding-left: calc(var(--grid-gap) * 0.5);
     padding-right: calc(var(--grid-gap) * 0.5);
   }
 
-  & > .c-col:first-child {
-    padding-left: 0;
+  &.is-justify-start {
+    justify-content: flex-start;
   }
 
-  & > .c-col:last-child {
-    padding-right: 0;
+  &.is-justify-end {
+    justify-content: flex-end;
   }
 
-  & > .no-gap {
+  &.is-justify-center {
+    justify-content: center;
+  }
+
+  &.is-justify-space-between {
+    justify-content: space-between;
+  }
+
+  &.is-justify-space-around {
+    justify-content: space-around;
+  }
+
+  &.is-align-start {
+    align-items: flex-start;
+  }
+
+  &.is-align-end {
+    align-items: flex-end;
+  }
+
+  &.is-align-center {
+    align-items: center;
+  }
+
+  &.is-align-baseline {
+    align-items: baseline;
+  }
+
+  &.is-align-stretch {
+    align-items: stretch;
+  }
+}
+
+.c-box.no-gap {
+  margin-left: 0;
+  margin-right: 0;
+
+  & > * {
     padding-left: 0;
     padding-right: 0;
   }
 }
 
-/* stylelint-disable function-whitespace-after */
-@for $i from 1 to 11 {
-  .c-row > .c-col-$i {
+/* stylelint-disable function-whitespace-after, at-rule-no-unknown */
+@each $i in 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 {
+  .c-box > .is-offset-$i {
+    margin-left: calc($i / 12 * 100)%;
+  }
+
+  .c-box > .is-$i {
     width: calc($i / 12 * 100)%;
   }
 }
+

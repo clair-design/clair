@@ -1,18 +1,24 @@
 <template lang="pug">
-header.c-row.toolbar
-  h1.c-col.c-col-2
+c-box.toolbar.container(gap="0" align="center")
+  c-box-item(xs=12 sm=3 md=2)
     nuxt-link.logo(to="/")
       img(src="~assets/img/logo.svg" alt="clair")
 
-  nav.navbar.c-flex
-    nuxt-link.navbar__item(
-      v-for="nav in navs",
-      :to="nav.link",
-      :key="nav.title"
-      :class="{'is-active': nav.isActiveReg.test($route.path)}"
-    ) {{nav.title}}
-  a(href="https://github.com/clair-design/clair")
-    c-icon.large(name="github")
+  c-box-item.is-flex(xs="text-xs" md="text-normal")
+    c-box.navbar.no-gap
+      c-box-item(
+        v-for="nav in navs",
+        :key="nav.title"
+        xs="12"
+        sm="auto"
+      )
+        nuxt-link.navbar__item(
+          :to="nav.link",
+          :class="{'is-active': nav.isActiveReg.test($route.path)}"
+        ) {{nav.title}}
+  c-box-item
+    a.xs-12.sm-a(href="https://github.com/clair-design/clair")
+      c-icon.is-text-xl(name="github")
 </template>
 
 <script>
@@ -30,3 +36,4 @@ export default {
   }
 }
 </script>
+

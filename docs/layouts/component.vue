@@ -1,8 +1,8 @@
 <template lang="pug">
   #app
     c-header
-    .c-row.main
-      .c-col.c-col-2.sidebar.no-gap
+    c-box.main.no-gap
+      c-box-item.sidebar(xs=12 sm=3 md=2)
         .navbar.is-stacked
           .subnav(v-for="item in menu")
             .subnav__title
@@ -13,8 +13,8 @@
               :to="sub.link",
               :key="sub.title"
             ) {{sub.title}}
-      .c-flex
-        nuxt
+      c-box-item.is-flex
+        nuxt.container.lg
     c-footer.in-article
 </template>
 
@@ -35,7 +35,7 @@ export default {
           title: '基础组件',
           icon: 'cube',
           children: [
-            { title: '布局', link: '/component/layout' },
+            { title: '布局', link: '/component/grid' },
             { title: '颜色', link: '/component/color' },
             { title: '字体', link: '/component/typography' },
             { title: '图标', link: '/component/icon' }
