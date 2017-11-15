@@ -107,11 +107,8 @@ module.exports = {
         }
       ]
     },
-    plugins: [
-      '~plugins/clair.js',
-      '~plugins/style.js'
-    ],
-    css: [ '~assets/css/main.css' ],
+    plugins: ['~plugins/clair.js'],
+    css: ['~assets/css/main.css'],
     modules: ['@nuxtjs/workbox'],
     build: {
       extractCSS: true,
