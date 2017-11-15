@@ -1,24 +1,82 @@
 @import url('variables.css');
 
 /**
- * typography
+ * typography sizing
  */
-.x-large {
-  font-size: 3em;
+.is-text-xxl {
+  font-size: 2.25em;
 }
 
-.large {
+.is-text-xl {
   font-size: 1.5em;
 }
 
-.small {
+.is-text-lg {
+  font-size: 1.125em;
+}
+
+.is-text-normal {
+  font-size: 1em;
+}
+
+.is-text-sm {
   font-size: 0.875em;
 }
 
-.x-small {
+.is-text-xs {
+  font-size: 0.8125em;
+}
+
+.is-text-xxs {
   font-size: 0.75em;
 }
 
-.text-slim {
+.is-weight-bold {
+  font-weight: bold;
+}
+
+.is-weight-normal {
+  font-weight: normal;
+}
+
+.is-weight-light {
   font-weight: 100;
+}
+
+/**
+ * text align
+ */
+.is-text-left {
+  text-align: left;
+}
+
+.is-text-center {
+  text-align: center;
+}
+
+.is-text-right {
+  text-align: right;
+}
+
+/**
+ * line height
+ */
+.is-leading-none {
+  line-height: 1;
+}
+
+.is-leading-tight {
+  line-height: 1.25;
+}
+
+.is-leading-normal {
+  line-height: 1.6;
+}
+
+.is-leading-loose {
+  line-height: 2;
+}
+
+.is-leading-huge {
+  line-height: 3;
 }
