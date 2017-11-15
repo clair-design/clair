@@ -23,7 +23,8 @@ module.exports = {
     // where to write `.vue`
     output: 'docs/pages',
     vueTools (name, uid) {
-      return `<input id="${uid}" type="checkbox" /><label for="${uid}"></label><c-run-online uid="${uid}"/>`
+      // return `<input id="${uid}" type="checkbox" /><label for="${uid}"></label><c-run-online uid="${uid}"/>`
+      return `<input id="${uid}" type="checkbox" /><label for="${uid}"></label>`
     }
   },
 
