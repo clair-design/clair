@@ -60,6 +60,7 @@ module.exports = {
         plugins: [
           require('postcss-import')(),
           require('postcss-for')(),
+          require('postcss-each')(),
           require('postcss-cssnext')({
             warnForDuplicates: false
           })
