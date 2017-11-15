@@ -1,7 +1,32 @@
 :root {
   /*
-   *  颜色设置
+   * basic color
    */
-  --primary-color: #2196f3;
+  --red: hsl(5, 72%, 63%);
+  --orange: hsl(25, 75%, 58%);
+  --yellow: hsl(45, 88%, 57%);
+  --green: hsl(120, 45%, 54%);
+  --cyan: hsl(185, 50%, 60%);
+  --blue: hsl(210, 70%, 67%);
+  --indigo: hsl(235, 45%, 65%);
+  --purple: hsl(259, 45%, 60%);
+  --pink: hsl(309, 31%, 64%);
+  --gray: hsl(208, 6%, 53%);
+  --white: #fff;
+  --dark: #444;
+  --black: #000;
+
+  /**
+   * functional color names
+   */
+  --primary-color: var(--blue);
+  --success-color: var(--green);
+  --warning-color: var(--yellow);
+  --danger-color: var(--red);
+  --text-color: var(--dark);
+
+  /**
+   * layout
+   */
   --grid-gap: 1em;
 }
