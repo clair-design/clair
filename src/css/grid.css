@@ -25,7 +25,7 @@
 
   & > .is-flex,
   & > .c-spacer {
-    flex: 1;
+    flex: 1 0 0;
   }
 
   & > .c-box__item {

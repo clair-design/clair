@@ -7,12 +7,14 @@ route: component/color
 
 # 颜色
 
-色彩，在界面设计中的使用应同时具备品牌识别性以及界面设计功能性，任何颜色的选取和使用应该是有意义的。尽管同一种颜色传达的含义会受到文化和地域的影响。为了避免视觉传达差异，统一使用一套特定的调色板来规定颜色，定义不同基色并衍生出九宫格色板，再配以黑白叠加的方式实现色彩明暗的效果，可为产品提供一致的外观视觉感受。
+色彩，在界面设计中的使用应同时具备品牌识别性以及界面设计功能性，任何颜色的选取和使用应该是有意义的。尽管同一种颜色传达的含义会受到文化和地域的影响。
+
+为了避免视觉传达差异，统一使用一套特定的调色板来规定颜色，定义不同基色并衍生出九宫格色板，再配以黑白叠加的方式实现色彩明暗的效果，可为产品提供一致的外观视觉感受。
 
 ## 色板
 
 ```html
-<c-box>
+<c-box class="no-gap">
   <c-box-item v-for="color in colors" xs="4" sm="2" lg="flex">
     <h3 class="is-text-align-center">{{ color }}</h3>
     <div
@@ -41,8 +43,10 @@ export default {
 
 <style>
 .color-block {
+  flex-basis: 10em;
   font-size: 0.8em;
-  padding: 1em;
+  white-space: nowrap;
+  padding: 1em 0.5em;
 }
 </style>
 ```

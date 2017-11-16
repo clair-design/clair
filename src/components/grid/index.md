@@ -38,23 +38,19 @@ Vue.prototype.$clair.breakpoints = [
 值得注意的是，我们提供的响应式方案是**移动优先（Mobile First）**的。这意味着，`xs="3"` 会在所有视口下显示为 `25%`，除非你指定了更大视口下的宽度。比如 `<c-box-item xs="6" lg="3" />` 表示在 Extra Small、Small 及 Medium 的视口下是 50% 宽度，在 Large 及 Extra Large 视口下是 25% 的宽度。
 
 ```html
-<c-box class="is-text-align-center">
-  <c-box-item v-for="i in 12" xs="1"><div class="is-bg-light-gray">1</div></c-box-item>
+<c-box class="is-text-center">
+  <c-box-item v-for="i in 12" xs="1"><div class="is-bg-gray-2">1</div></c-box-item>
 </c-box>
-<c-box>
-  <c-box-item v-for="i in 4" xs="3"><div class="is-bg-light-gray">3</div></c-box-item>
+<c-box class="is-text-center">
+  <c-box-item v-for="i in 4" xs="3"><div class="is-bg-gray-2">3</div></c-box-item>
 </c-box>
-<c-box>
-  <c-box-item xs="4"><div class="is-bg-gray">4</div></c-box-item>
-  <c-box-item xs="8"><div class="is-bg-gray">8</div></c-box-item>
+<c-box class="is-text-center">
+  <c-box-item xs="4"><div class="is-bg-gray-2">4</div></c-box-item>
+  <c-box-item xs="8"><div class="is-bg-gray-2">8</div></c-box-item>
 </c-box>
-<c-box>
-  <c-box-item xs="5"><div class="is-bg-gray">5</div></c-box-item>
-  <c-box-item xs="flex"><div class="is-bg-gray">flex</div></c-box-item>
-</c-box>
-<c-box>
-  <c-box-item xs="auto"><div class="is-bg-gray">auto</div></c-box-item>
-  <c-box-item xs="auto"><div class="is-bg-gray">auto</div></c-box-item>
+<c-box class="is-text-center">
+  <c-box-item xs="5"><div class="is-bg-gray-2">5</div></c-box-item>
+  <c-box-item xs="flex"><div class="is-bg-gray-2">flex</div></c-box-item>
 </c-box>
 
 <style>
@@ -69,23 +65,18 @@ Vue.prototype.$clair.breakpoints = [
 你可以使用 `offset` 将一个 `c-box-item` 向右进行移动。
 
 ```html
-<c-box>
-  <c-box-item xs="4 offset-4"><div class="is-bg-gray">4 offset-4</div></c-box-item>
-  <c-box-item xs="4"><div class="is-bg-gray">4</div></c-box-item>
+<c-box class="is-text-center">
+  <c-box-item xs="4 offset-4"><div class="is-bg-gray-2">4 offset-4</div></c-box-item>
+  <c-box-item xs="4"><div class="is-bg-gray-2">4</div></c-box-item>
 </c-box>
-<c-box>
-  <c-box-item xs="8"><div class="is-bg-gray">8</div></c-box-item>
-  <c-box-item xs="3 offset-1"><div class="is-bg-gray">3 offset-1</div></c-box-item>
+<c-box class="is-text-center">
+  <c-box-item xs="8"><div class="is-bg-gray-2">8</div></c-box-item>
+  <c-box-item xs="3 offset-1"><div class="is-bg-gray-2">3 offset-1</div></c-box-item>
 </c-box>
 
 <style>
 .c-box {
   margin: 1em 0;
-}
-.bg-gray {
-  border-radius: 3px;
-  background: #ddd;
-  text-align: center;
 }
 </style>
 ```
@@ -95,12 +86,12 @@ Vue.prototype.$clair.breakpoints = [
 分别使用 `xs`、`sm`、`md`、`lg` 和 `xl` 属性来指定不同视口大小下元素的宽度、偏移、对齐等。
 
 ```html
-<c-box>
+<c-box class="is-text-center is-text-sm">
   <c-box-item xs="12" sm="6" md="3">
-    <div class="is-bg-gray">手机独占一行<br>小屏幕占 50%<br>更大屏幕占 25%</div>
+    <div class="is-bg-orange-2">手机独占一行<br>小屏幕占 50%<br>更大屏幕占 25%</div>
   </c-box-item>
   <c-box-item xs="12" sm="6" md="9">
-    <div class="is-bg-gray">手机独占一行<br>小屏幕占 50%<br>更大屏幕占 75%</div>
+    <div class="is-bg-blue-2">手机独占一行<br>小屏幕占 50%<br>更大屏幕占 75%</div>
   </c-box-item>
 </c-box>
 
@@ -108,15 +99,8 @@ Vue.prototype.$clair.breakpoints = [
 .c-box {
   margin: 1em 0;
 }
-.c-box__item {
-  margin-bottom: 1em;
-}
-.bg-gray {
-  padding: 0.5em;
-  border-radius: 3px;
-  background: #ddd;
-  text-align: center;
-  font-size: 75%;
+.c-box__item > div {
+  padding: 1em;
 }
 </style>
 ```
@@ -127,20 +111,20 @@ Vue.prototype.$clair.breakpoints = [
 
 ```html
 <c-box gap="4em">
-  <c-box-item xs="3"><div class="is-bg-blue"></div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-green"></div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-pink-purple"></div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-red"></div></c-box-item>
+  <c-box-item xs="3"><div class="is-bg-gray-2"></div></c-box-item>
+  <c-box-item xs="3"><div class="is-bg-gray-2"></div></c-box-item>
+  <c-box-item xs="3"><div class="is-bg-gray-2"></div></c-box-item>
+  <c-box-item xs="3"><div class="is-bg-gray-2"></div></c-box-item>
 </c-box>
 <c-box gap="5%">
-  <c-box-item xs="4"><div class="is-bg-blue"></div></c-box-item>
-  <c-box-item xs="4"><div class="is-bg-green"></div></c-box-item>
-  <c-box-item xs="4"><div class="is-bg-pink-purple"></div></c-box-item>
+  <c-box-item xs="4"><div class="is-bg-gray-2"></div></c-box-item>
+  <c-box-item xs="4"><div class="is-bg-gray-2"></div></c-box-item>
+  <c-box-item xs="4"><div class="is-bg-gray-2"></div></c-box-item>
 </c-box>
 <c-box gap="0">
-  <c-box-item xs="4"><div class="is-bg-blue"></div></c-box-item>
-  <c-box-item xs="4"><div class="is-bg-green"></div></c-box-item>
-  <c-box-item xs="4"><div class="is-bg-pink-purple"></div></c-box-item>
+  <c-box-item xs="4"><div class="is-bg-gray-2"></div></c-box-item>
+  <c-box-item xs="4"><div class="is-bg-gray-2"></div></c-box-item>
+  <c-box-item xs="4"><div class="is-bg-gray-2"></div></c-box-item>
 </c-box>
 
 <style>
@@ -159,33 +143,33 @@ Vue.prototype.$clair.breakpoints = [
 
 ```html
 <c-box justify="start">
-  <c-box-item xs="3"><div class="is-bg-blue is-text-white is-text-align-center">start</div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-blue is-text-white is-text-align-center">start</div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-blue is-text-white is-text-align-center">start</div></c-box-item>
+  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">start</div></c-box-item>
+  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">start</div></c-box-item>
+  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">start</div></c-box-item>
 </c-box>
 
 <c-box justify="center">
-  <c-box-item xs="3"><div class="is-bg-green is-text-white is-text-align-center">center</div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-green is-text-white is-text-align-center">center</div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-green is-text-white is-text-align-center">center</div></c-box-item>
+  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">center</div></c-box-item>
+  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">center</div></c-box-item>
+  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">center</div></c-box-item>
 </c-box>
 
 <c-box justify="end">
-  <c-box-item xs="3"><div class="is-bg-yellow is-text-white is-text-align-center">end</div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-yellow is-text-white is-text-align-center">end</div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-yellow is-text-white is-text-align-center">end</div></c-box-item>
+  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">end</div></c-box-item>
+  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">end</div></c-box-item>
+  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">end</div></c-box-item>
 </c-box>
 
 <c-box justify="space-between">
-  <c-box-item xs="3"><div class="is-bg-yellow is-text-white is-text-align-center">space-between</div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-yellow is-text-white is-text-align-center">space-between</div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-yellow is-text-white is-text-align-center">space-between</div></c-box-item>
+  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">between</div></c-box-item>
+  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">between</div></c-box-item>
+  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">between</div></c-box-item>
 </c-box>
 
 <c-box justify="space-around">
-  <c-box-item xs="3"><div class="is-bg-yellow is-text-white is-text-align-center">space-around</div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-yellow is-text-white is-text-align-center">space-around</div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-yellow is-text-white is-text-align-center">space-around</div></c-box-item>
+  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">around</div></c-box-item>
+  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">around</div></c-box-item>
+  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">around</div></c-box-item>
 </c-box>
 
 <style>
@@ -200,38 +184,40 @@ Vue.prototype.$clair.breakpoints = [
 默认情况下， `c-box` 下的子元素的高度会自动伸展到容器高度。可以使用 `align` 属性可以控制子元素在垂直方向上的对齐方式。它的取值可以是 `start`、`end`、`center`、`stretch` 和 `baseline` 中的一个。
 
 ```html
-<c-box>
-  <c-box-item xs="4" class="is-bg-blue is-text-white is-text-align-center">default</c-box-item>
-  <c-box-item xs="4" class="is-bg-green is-text-white is-text-align-center large">default</c-box-item>
-  <c-box-item xs="4" class="is-bg-yellow is-text-white is-text-align-center x-large">default</c-box-item>
-</c-box>
-<c-box align="start">
-  <c-box-item xs="4" class="is-bg-blue is-text-white is-text-align-center">start</c-box-item>
-  <c-box-item xs="4" class="is-bg-green is-text-white is-text-align-center large">start</c-box-item>
-  <c-box-item xs="4" class="is-bg-yellow is-text-white is-text-align-center x-large">start</c-box-item>
-</c-box>
+<div class="is-text-center is-leading-loose">
+  <c-box>
+    <c-box-item xs="4" class="is-bg-blue-3 is-text-xs">默认</c-box-item>
+    <c-box-item xs="4" class="is-bg-green-3 is-text-lg">&nbsp;</c-box-item>
+    <c-box-item xs="4" class="is-bg-yellow-3 is-text-xxl">&nbsp;</c-box-item>
+  </c-box>
+  <c-box align="start">
+    <c-box-item xs="4" class="is-bg-blue-3 is-text-xs">start</c-box-item>
+    <c-box-item xs="4" class="is-bg-green-3 is-text-lg">&nbsp;</c-box-item>
+    <c-box-item xs="4" class="is-bg-yellow-3 is-text-xxl">&nbsp;</c-box-item>
+  </c-box>
 
-<c-box align="center">
-  <c-box-item xs="4" class="is-bg-blue is-text-white is-text-align-center">center</c-box-item>
-  <c-box-item xs="4" class="is-bg-green is-text-white is-text-align-center large">center</c-box-item>
-  <c-box-item xs="4" class="is-bg-yellow is-text-white is-text-align-center x-large">center</c-box-item>
-</c-box>
+  <c-box align="center">
+    <c-box-item xs="4" class="is-bg-blue-3 is-text-xs">center</c-box-item>
+    <c-box-item xs="4" class="is-bg-green-3 is-text-lg">&nbsp;</c-box-item>
+    <c-box-item xs="4" class="is-bg-yellow-3 is-text-xxl">&nbsp;</c-box-item>
+  </c-box>
 
-<c-box align="end">
-  <c-box-item xs="4" class="is-bg-blue is-text-white is-text-align-center">end</c-box-item>
-  <c-box-item xs="4" class="is-bg-green is-text-white is-text-align-center large">end</c-box-item>
-  <c-box-item xs="4" class="is-bg-yellow is-text-white is-text-align-center x-large">end</c-box-item>
-</c-box>
+  <c-box align="end">
+    <c-box-item xs="4" class="is-bg-blue-3 is-text-xs">end</c-box-item>
+    <c-box-item xs="4" class="is-bg-green-3 is-text-lg">&nbsp;</c-box-item>
+    <c-box-item xs="4" class="is-bg-yellow-3 is-text-xxl">&nbsp;</c-box-item>
+  </c-box>
 
-<c-box align="baseline">
-  <c-box-item xs="4" class="is-bg-blue is-text-white is-text-align-center">baseline</c-box-item>
-  <c-box-item xs="4" class="is-bg-green is-text-white is-text-align-center large">baseline</c-box-item>
-  <c-box-item xs="4" class="is-bg-yellow is-text-white is-text-align-center x-large">baseline</c-box-item>
-</c-box>
+  <c-box align="baseline">
+    <c-box-item xs="4" class="is-bg-blue-3 is-text-xs">baseline</c-box-item>
+    <c-box-item xs="4" class="is-bg-green-3 is-text-lg">&nbsp;</c-box-item>
+    <c-box-item xs="4" class="is-bg-yellow-3 is-text-xxl">&nbsp;</c-box-item>
+  </c-box>
+</div>
 
 <style>
 .c-box {
-  background: #f0f0f0;
+  background: #f5f5f5;
   margin-top: 1em;
 }
 </style>
@@ -242,11 +228,11 @@ Vue.prototype.$clair.breakpoints = [
 `c-box` 中的元素默认按照 DOM 中出现的顺序从左到右排列。可以通过设置 `order` 属性，让子元素按照指定顺序排列。
 
 ```html
-<c-box>
-  <c-box-item order="4" class="is-bg-blue is-text-white is-text-align-center">a order-4</c-box-item>
-  <c-box-item order="3" class="is-bg-green is-text-white is-text-align-center">b order-3</c-box-item>
-  <c-box-item order="2" class="is-bg-yellow is-text-white is-text-align-center">c order-2</c-box-item>
-  <c-box-item order="1" class="is-bg-red is-text-white is-text-align-center">d order-1</c-box-item>
+<c-box class="is-leading-loose is-text-center is-text-sm">
+  <c-box-item xs=3 order=4 class="is-bg-blue-2">a order-4</c-box-item>
+  <c-box-item xs=3 order=3 class="is-bg-green-2">b order-3</c-box-item>
+  <c-box-item xs=3 order=2 class="is-bg-yellow-2">c order-2</c-box-item>
+  <c-box-item xs=3 order=1 class="is-bg-red-2">d order-1</c-box-item>
 </c-box>
 ```
 

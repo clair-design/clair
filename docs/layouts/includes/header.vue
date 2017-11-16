@@ -4,7 +4,7 @@ c-box.toolbar.container(gap="0" align="center")
     nuxt-link.logo(to="/")
       img(src="~assets/img/logo.svg" alt="clair")
 
-  c-box-item.is-flex(xs="text-xs" md="text-normal")
+  c-box-item(xs="12 text-sm" sm="8" md="9 text-normal")
     c-box.navbar.no-gap
       c-box-item(
         v-for="nav in navs",
@@ -16,7 +16,7 @@ c-box.toolbar.container(gap="0" align="center")
           :to="nav.link",
           :class="{'is-active': nav.isActiveReg.test($route.path)}"
         ) {{nav.title}}
-  c-box-item
+  c-box-item.is-text-right(xs="12" sm="1")
     a.xs-12.sm-a(href="https://github.com/clair-design/clair")
       c-icon.is-text-xl(name="github")
 </template>

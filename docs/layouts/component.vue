@@ -13,7 +13,7 @@
               :to="sub.link",
               :key="sub.title"
             ) {{sub.title}}
-      c-box-item.is-flex
+      c-box-item(xs=12 sm=9 md=10)
         nuxt.container.lg
     c-footer.in-article
 </template>
@@ -32,12 +32,12 @@ export default {
           ]
         },
         {
-          title: '基础组件',
+          title: '基础样式',
           icon: 'cube',
           children: [
             { title: '布局', link: '/component/grid' },
             { title: '颜色', link: '/component/color' },
-            { title: '字体', link: '/component/typography' },
+            { title: '文本样式', link: '/component/typography' },
             { title: '图标', link: '/component/icon' }
           ]
         },
