@@ -7,7 +7,7 @@ route: component/icon
 
 # Icon
 
-图标默认使用 [fontawsome](http://fontawesome.io/)。
+图标默认使用 [FontAwesome](http://fontawesome.io/)。
 
 > **注意**：
 > 请自行引入 fontawsome CSS 文件，如：
