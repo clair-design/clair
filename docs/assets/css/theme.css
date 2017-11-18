@@ -46,6 +46,10 @@ html {
   background: color(var(--primary-color) l(95%));
 }
 
+.navbar__item:focus {
+  outline-offset: -0.12em;
+}
+
 .navbar__item.is-active,
 .navbar__item.router-link-exact-active {
   background: var(--primary-color);
@@ -125,7 +129,7 @@ footer a {
  * sidebar
  */
 .sidebar {
-  font-size: 14px;
+  font-size: 0.875em;
   position: relative;
   background: #fff;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);

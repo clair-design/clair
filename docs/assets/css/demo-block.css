@@ -2,6 +2,7 @@
 .vue-demo-block {
   display: inline-block;
   width: 100%;
+  margin-bottom: 1em;
   transition: box-shadow 0.2s;
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
