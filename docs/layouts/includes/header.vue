@@ -1,10 +1,10 @@
 <template lang="pug">
-c-box.toolbar.container(gap="0" align="center")
+c-box.toolbar.c-container.no-gap(align="center")
   c-box-item(xs=12 sm=3 md=2)
     nuxt-link.logo(to="/")
       img(src="~assets/img/logo.svg" alt="clair")
 
-  c-box-item(xs="12 text-sm" sm="8" md="9 text-normal")
+  c-box-item(xs=12 sm=8 md=9)
     c-box.navbar.no-gap
       c-box-item(
         v-for="nav in navs",

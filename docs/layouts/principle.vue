@@ -10,7 +10,7 @@
             :key="item.title"
           ) {{item.title}}
       c-box-item.is-flex
-        nuxt.container.lg
+        nuxt.c-container.is-lg
     c-footer.in-article
 </template>
 

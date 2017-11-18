@@ -13,9 +13,9 @@ Object.assign = objectAssign
 export default {
   install (Vue) {
     if (!('$clair' in Vue.prototype)) {
-      const { breakpoints, responsive } = responsiveFun(Vue)
+      const responsive = responsiveFun(Vue)
       const $clair = new Vue({
-        data: { breakpoints, responsive }
+        data: { responsive }
       })
       Object.defineProperty(Vue.prototype, '$clair', {
         get () { return $clair }

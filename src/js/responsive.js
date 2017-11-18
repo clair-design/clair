@@ -1,28 +1,27 @@
 import { breakpoints } from './config.js'
 
 export default function (Vue) {
-  // get media type from window width
-  const getMedia = function () {
-    const defaultWidth = 1200
-    const width = typeof window === 'object' ? window.innerWidth : defaultWidth
-    const media = breakpoints.find(b => width <= b.width)
-    return media.name
-  }
-
   const responsive = new Vue({
-    data: { media: getMedia() }
+    data: { media: breakpoints[0] }
   })
 
   // create an element to listen viewport change
   if (typeof window == 'object') {
-    window.addEventListener('resize', e => {
-      const media = getMedia()
+    const element = document.createElement('div')
+    element.className = 'c-responsive-listener'
+    document.body.appendChild(element)
+    const getMediaType = _ => {
+      return breakpoints[element.clientWidth]
+    }
+    element.addEventListener('transitionend', e => {
       const oldMedia = responsive.media
+      const media = getMediaType()
       if (oldMedia === media) return // no media change
       responsive.$emit('change', media, oldMedia)
       responsive.media = media
     })
+    responsive.media = getMediaType()
   }
 
-  return { breakpoints, responsive }
+  return responsive
 }

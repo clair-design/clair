@@ -8,29 +8,14 @@ import { multiply } from './util.js'
 import { breakpoints } from '../../js/config.js'
 
 const props = breakpoints
-  .map(bp => bp.name)
-  .concat(['order'])
+  .map(bp => `${bp}-only`)
+  .concat(breakpoints)
+  .concat(['order', 'span', 'offset'])
 
-/**
- * get matched media
- * eg: 'md' => ['md', 'sm', 'xs']
- */
-const getMatchedMedia = function (media) {
-  const mediaList = []
-  for (let i = 0; i < breakpoints.length; i++) {
-    const { name } = breakpoints[i]
-    mediaList.push(name)
-    if (media === name) break
-  }
-  return mediaList.reverse()
-}
-
-const isWidth = v => /^(\d+|auto|flex)$/.test(v)
-const isOffset = v => /^offset-\d+$/.test(v)
-const isTextSize = v => /^text-(xxl|xl|lg|normal|sm|xs|xxs)$/.test(v)
-const getClassName = (values, condition) => {
-  const value = values.find(condition)
-  return value ? `is-${value}` : ''
+const getClassName = (values, media) => {
+  if (!values) return []
+  return values.split(/\s+/)
+    .map(val => `${media}-${val}`)
 }
 
 export default {
@@ -42,25 +27,15 @@ export default {
      * get class name list of the box item
      */
     classNames () {
-      const { media } = this.$clair.responsive
-      const matchedMedia = getMatchedMedia(media)
-      let widthClass, offsetClass, textSizeClass
-      matchedMedia.forEach(media => {
-        const values = (this[media] || '').split(/\s+/)
-        if (!widthClass) {
-          const foundWidthClass = getClassName(values, isWidth)
-          if (foundWidthClass) widthClass = foundWidthClass
-        }
-        if (!offsetClass) {
-          const foundOffsetClass = getClassName(values, isOffset)
-          if (foundOffsetClass) offsetClass = foundOffsetClass
-        }
-        if (!textSizeClass) {
-          const foundSizeClass = getClassName(values, isTextSize)
-          if (foundSizeClass) textSizeClass = foundSizeClass
-        }
-      })
-      return [widthClass, offsetClass, textSizeClass]
+      const classNames = breakpoints
+        .reduce((classNames, bp) => {
+          classNames.push(...getClassName(this[bp], bp))
+          classNames.push(...getClassName(this[`${bp}Only`], `${bp}-only`))
+          return classNames
+        }, [])
+      if (this.span) classNames.push(`is-${this.span}`)
+      if (this.offset) classNames.push(`is-offset-${this.offset}`)
+      return classNames
     },
 
     /**

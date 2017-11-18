@@ -169,6 +169,16 @@ a:hover {
   color: inherit;
 }
 
+a:focus {
+  outline: 0.12em solid;
+  outline-offset: 0.12em;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
+}
+
 * {
   box-sizing: inherit;
 }

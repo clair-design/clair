@@ -1,130 +1,120 @@
 ---
-title: Grid
+title: Layout
 layout: component
 scrollTop: true
-route: component/grid
+route: component/layout
 ---
 
 # 布局
 
-Clair 提供了基于 FlexBox 实现的 12 栅格布局系统，同时提供一些配置项，让你灵活地实现对齐、偏移、排序等。它还是一个支持 5 种屏幕尺寸的响应式设计系统。
+Clair 提供了基于 FlexBox 的栅格系统，以及一些辅助的 CSS 类来实现复杂的布局。同时，还提供了一套支持 5 种屏幕尺寸的响应式设计系统。
 
-## 视口大小的分类
+## 布局容器
 
-| 视口大小    | 缩写 | 像素         |
-|-------------|------|--------------|
-| Extra Small | xs   | < 600px      |
-| Small       | sm   | < 960px      |
-| Medium      | md   | < 1200px     |
-| Large       | lg   | < 1920px     |
-| Extra Large | xl   | > 1920px     |
+Clair 中的 `c-container` 是一个有最大宽度限制的容器，用来包裹其中的内容。比如我们要把页面的主体内容展示在最大 960px 的居中的盒子内，就可以使用 `c-container` 来实现。
 
-如果你的项目中需要的视口宽度范围和上面的不一样，可以通过下面的方式进行修改：
+### 容器大小
 
-```javascript
-Vue.prototype.$clair.breakpoints = [
-  { name: 'xs', width: 600 },
-  { name: 'sm', width: 960 },
-  { name: 'md', width: 1200 },
-  { name: 'lg', width: 1920 },
-  { name: 'xl', width: Infinity }
-]
-```
-
-## 基本栅格
-
-使用 `c-box` 和 `c-box-item` 分别表示布局容器及其子元素。可以通过 `xs / sm / md / lg /xl` 等属性指定在不同视口宽度下 `c-box-item` 的展示宽度。比如 `xs="3"`，表示在超小屏幕下宽度为 `3/12 = 25%`。
-
-值得注意的是，我们提供的响应式方案是**移动优先（Mobile First）**的。这意味着，`xs="3"` 会在所有视口下显示为 `25%`，除非你指定了更大视口下的宽度。比如 `<c-box-item xs="6" lg="3" />` 表示在 Extra Small、Small 及 Medium 的视口下是 50% 宽度，在 Large 及 Extra Large 视口下是 25% 的宽度。
+通过将其 `size` 属性设置为 `sm`、`md` 或 `lg` 可以给容器的不同的宽度限制。
 
 ```html
-<c-box class="is-text-center">
-  <c-box-item v-for="i in 12" xs="1"><div class="is-bg-gray-2">1</div></c-box-item>
-</c-box>
-<c-box class="is-text-center">
-  <c-box-item v-for="i in 4" xs="3"><div class="is-bg-gray-2">3</div></c-box-item>
-</c-box>
-<c-box class="is-text-center">
-  <c-box-item xs="4"><div class="is-bg-gray-2">4</div></c-box-item>
-  <c-box-item xs="8"><div class="is-bg-gray-2">8</div></c-box-item>
-</c-box>
-<c-box class="is-text-center">
-  <c-box-item xs="5"><div class="is-bg-gray-2">5</div></c-box-item>
-  <c-box-item xs="flex"><div class="is-bg-gray-2">flex</div></c-box-item>
-</c-box>
+<div class="is-text-center is-leading-huge is-text-sm">
+  <c-container size="sm" class="is-bg-gray-2">小号容器</c-container>
+  <c-container size="md" class="is-bg-gray-2">中号容器</c-container>
+  <c-container size="lg" class="is-bg-gray-2">大号容器</c-container>
+</div>
 
 <style>
-.c-box {
-  margin: 1em 0;
-}
+  .c-container {
+    margin-bottom: 1em
+  }
 </style>
 ```
 
-## 偏移
+### 容器对齐方式
 
-你可以使用 `offset` 将一个 `c-box-item` 向右进行移动。
+如上面例子所示，`c-container` 在页面中默认是居中对齐的。你可以通过 `align` 属性将其设置为左对齐或右对齐。
 
 ```html
-<c-box class="is-text-center">
-  <c-box-item xs="4 offset-4"><div class="is-bg-gray-2">4 offset-4</div></c-box-item>
-  <c-box-item xs="4"><div class="is-bg-gray-2">4</div></c-box-item>
-</c-box>
-<c-box class="is-text-center">
-  <c-box-item xs="8"><div class="is-bg-gray-2">8</div></c-box-item>
-  <c-box-item xs="3 offset-1"><div class="is-bg-gray-2">3 offset-1</div></c-box-item>
-</c-box>
+<div class="is-text-center is-leading-huge is-text-sm">
+  <c-container size="sm" align="left" class="is-bg-gray-2">左对齐容器</c-container>
+  <c-container size="sm" align="right" class="is-bg-gray-2">右对齐容器</c-container>
+</div>
 
 <style>
-.c-box {
-  margin: 1em 0;
-}
+  .c-container {
+    margin-bottom: 1em
+  }
 </style>
 ```
 
-## 响应式
+## 基本栅格布局
 
-分别使用 `xs`、`sm`、`md`、`lg` 和 `xl` 属性来指定不同视口大小下元素的宽度、偏移、对齐等。
+Clair 基于 FlexBox 实现了一套 12 栏栅格系统。使用 `c-box` 组件表示一个栅格布局，`c-box-item` 表示栅格中的每一项。
 
 ```html
-<c-box class="is-text-center is-text-sm">
-  <c-box-item xs="12" sm="6" md="3">
-    <div class="is-bg-orange-2">手机独占一行<br>小屏幕占 50%<br>更大屏幕占 25%</div>
+<c-box>
+  <c-box-item v-for="i in 3">
+    <div class="is-bg-gray-2 is-text-center">column</div>
   </c-box-item>
-  <c-box-item xs="12" sm="6" md="9">
-    <div class="is-bg-blue-2">手机独占一行<br>小屏幕占 50%<br>更大屏幕占 75%</div>
+</c-box>
+```
+
+### 设置宽度
+
+默认每一列的宽度都是相等的。如果想自己控制每一列宽度，可以设置 `span` 属性。
+
+```html
+<c-box>
+  <c-box-item v-for="i in 4" :span="i">
+    <div class="is-bg-gray-2 is-text-center">{{ i }}</div>
+  </c-box-item>
+</c-box>
+
+<c-box class="is-text-center">
+  <c-box-item span="4">
+    <div class="is-bg-gray-2">4</div>
+  </c-box-item>
+  <c-box-item>
+    <div class="is-bg-gray-2">auto</div>
   </c-box-item>
 </c-box>
 
 <style>
 .c-box {
-  margin: 1em 0;
-}
-.c-box__item > div {
-  padding: 1em;
+margin-bottom: 1em
 }
 </style>
 ```
 
-## 间距
+### 设置栅格偏移
 
-栅格之间默认有 `1em` 的间距，这个值可以通过自定义样式进行全局配置。如果要为某一个栅格指定特定的间距，可以使用 `gap` 属性，属性值可以用 `em`、`px`、`rem`、`%`、`vw` 等做单位。
+通过 `offset` 属性可以指定某一列向右的偏移多少格。
+
+```html
+<c-box class="is-text-center">
+  <c-box-item span="4" offset="1">
+    <div class="is-bg-gray-2">宽度 4 offset 1</div>
+  </c-box-item>
+  <c-box-item offset="2">
+    <div class="is-bg-gray-2">宽度自动 offset 2</div>
+  </c-box-item>
+</c-box>
+```
+
+### 设置列间距
+
+相邻列之间默认有 `1em` 的间距，这个值可以通过自定义样式进行全局配置。如果要为某一个栅格指定特定的间距，可以使用 `gap` 属性，属性值可以用 `em`、`px`、`rem`、`%`、`vw` 等做单位。
 
 ```html
 <c-box gap="4em">
-  <c-box-item xs="3"><div class="is-bg-gray-2"></div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-gray-2"></div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-gray-2"></div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-gray-2"></div></c-box-item>
+  <c-box-item xs="3" v-for="i in 4"><div class="is-bg-gray-2"></div></c-box-item>
 </c-box>
 <c-box gap="5%">
-  <c-box-item xs="4"><div class="is-bg-gray-2"></div></c-box-item>
-  <c-box-item xs="4"><div class="is-bg-gray-2"></div></c-box-item>
-  <c-box-item xs="4"><div class="is-bg-gray-2"></div></c-box-item>
+  <c-box-item xs="4" v-for="i in 3"><div class="is-bg-gray-2"></div></c-box-item>
 </c-box>
 <c-box gap="0">
-  <c-box-item xs="4"><div class="is-bg-gray-2"></div></c-box-item>
-  <c-box-item xs="4"><div class="is-bg-gray-2"></div></c-box-item>
-  <c-box-item xs="4"><div class="is-bg-gray-2"></div></c-box-item>
+  <c-box-item xs="4" v-for="i in 3"><div class="is-bg-gray-2"></div></c-box-item>
 </c-box>
 
 <style>
@@ -137,40 +127,42 @@ Vue.prototype.$clair.breakpoints = [
 </style>
 ```
 
-## 水平方向对齐
+### 水平方向对齐
 
 在 `c-box` 上使用 `justify` 属性可以控制子元素在水平方向上的对齐方式。它的取值可以是 `start`、`end`、`center`、`space-between` 和 `space-around` 中的一个。
 
 ```html
-<c-box justify="start">
-  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">start</div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">start</div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">start</div></c-box-item>
-</c-box>
+<div class="is-text-center">
+  <c-box justify="start">
+    <c-box-item span="2" v-for="i in 3">
+      <div class="is-bg-gray-2">start</div>
+    </c-box-item>
+  </c-box>
 
-<c-box justify="center">
-  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">center</div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">center</div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">center</div></c-box-item>
-</c-box>
+  <c-box justify="center">
+    <c-box-item span="2" v-for="i in 3">
+      <div class="is-bg-gray-2">center</div>
+    </c-box-item>
+  </c-box>
 
-<c-box justify="end">
-  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">end</div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">end</div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">end</div></c-box-item>
-</c-box>
+  <c-box justify="end">
+    <c-box-item span="2" v-for="i in 3">
+      <div class="is-bg-gray-2">end</div>
+    </c-box-item>
+  </c-box>
 
-<c-box justify="space-between">
-  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">between</div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">between</div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">between</div></c-box-item>
-</c-box>
+  <c-box justify="space-between">
+    <c-box-item span="2" v-for="i in 3">
+      <div class="is-bg-gray-2">between</div>
+    </c-box-item>
+  </c-box>
 
-<c-box justify="space-around">
-  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">around</div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">around</div></c-box-item>
-  <c-box-item xs="3"><div class="is-bg-gray-2 is-text-center">around</div></c-box-item>
-</c-box>
+  <c-box justify="space-around">
+    <c-box-item span="2" v-for="i in 3">
+      <div class="is-bg-gray-2">around</div>
+    </c-box-item>
+  </c-box>
+</div>
 
 <style>
 .c-box {
@@ -179,60 +171,128 @@ Vue.prototype.$clair.breakpoints = [
 </style>
 ```
 
-## 垂直方向对齐
+### 垂直方向对齐
 
 默认情况下， `c-box` 下的子元素的高度会自动伸展到容器高度。可以使用 `align` 属性可以控制子元素在垂直方向上的对齐方式。它的取值可以是 `start`、`end`、`center`、`stretch` 和 `baseline` 中的一个。
 
 ```html
-<div class="is-text-center is-leading-loose">
-  <c-box>
-    <c-box-item xs="4" class="is-bg-blue-3 is-text-xs">默认</c-box-item>
-    <c-box-item xs="4" class="is-bg-green-3 is-text-lg">&nbsp;</c-box-item>
-    <c-box-item xs="4" class="is-bg-yellow-3 is-text-xxl">&nbsp;</c-box-item>
-  </c-box>
+<div class="is-text-center is-text-sm">
   <c-box align="start">
-    <c-box-item xs="4" class="is-bg-blue-3 is-text-xs">start</c-box-item>
-    <c-box-item xs="4" class="is-bg-green-3 is-text-lg">&nbsp;</c-box-item>
-    <c-box-item xs="4" class="is-bg-yellow-3 is-text-xxl">&nbsp;</c-box-item>
+    <c-box-item
+      v-for="i in 3"
+      span="4"
+      :style="{lineHeight: i * 2}"
+    >
+      <div class="is-bg-gray-2">start</div>
+    </c-box-item>
   </c-box>
 
   <c-box align="center">
-    <c-box-item xs="4" class="is-bg-blue-3 is-text-xs">center</c-box-item>
-    <c-box-item xs="4" class="is-bg-green-3 is-text-lg">&nbsp;</c-box-item>
-    <c-box-item xs="4" class="is-bg-yellow-3 is-text-xxl">&nbsp;</c-box-item>
+    <c-box-item
+      v-for="i in 3"
+      span="4"
+      :style="{lineHeight: i * 2}"
+    >
+      <div class="is-bg-gray-2">center</div>
+    </c-box-item>
   </c-box>
 
   <c-box align="end">
-    <c-box-item xs="4" class="is-bg-blue-3 is-text-xs">end</c-box-item>
-    <c-box-item xs="4" class="is-bg-green-3 is-text-lg">&nbsp;</c-box-item>
-    <c-box-item xs="4" class="is-bg-yellow-3 is-text-xxl">&nbsp;</c-box-item>
-  </c-box>
-
-  <c-box align="baseline">
-    <c-box-item xs="4" class="is-bg-blue-3 is-text-xs">baseline</c-box-item>
-    <c-box-item xs="4" class="is-bg-green-3 is-text-lg">&nbsp;</c-box-item>
-    <c-box-item xs="4" class="is-bg-yellow-3 is-text-xxl">&nbsp;</c-box-item>
+    <c-box-item
+      v-for="i in 3"
+      span="4"
+      :style="{lineHeight: i * 2}"
+    >
+      <div class="is-bg-gray-2">end</div>
+    </c-box-item>
   </c-box>
 </div>
 
 <style>
 .c-box {
-  background: #f5f5f5;
-  margin-top: 1em;
+  margin-bottom: 2em;
 }
 </style>
 ```
 
-## 排序
+### 列排序
 
-`c-box` 中的元素默认按照 DOM 中出现的顺序从左到右排列。可以通过设置 `order` 属性，让子元素按照指定顺序排列。
+`c-box` 中的列默认按照 DOM 中出现的顺序从左到右排列。可以设置 `order` 属性，让各列按照指定顺序排列。
 
 ```html
 <c-box class="is-leading-loose is-text-center is-text-sm">
-  <c-box-item xs=3 order=4 class="is-bg-blue-2">a order-4</c-box-item>
-  <c-box-item xs=3 order=3 class="is-bg-green-2">b order-3</c-box-item>
-  <c-box-item xs=3 order=2 class="is-bg-yellow-2">c order-2</c-box-item>
-  <c-box-item xs=3 order=1 class="is-bg-red-2">d order-1</c-box-item>
+  <c-box-item order=4>
+    <div class="is-bg-gray-2">a order-4</div>
+  </c-box-item>
+  <c-box-item order=3>
+    <div class="is-bg-gray-2">b order-3</div>
+  </c-box-item>
+  <c-box-item order=2>
+    <div class="is-bg-gray-2">c order-2</div>
+  </c-box-item>
+  <c-box-item order=1>
+    <div class="is-bg-gray-2">d order-1</div>
+  </c-box-item>
+</c-box>
+```
+
+
+## 响应式布局
+
+为了支持响应式布局，Clair 定义了五种屏幕宽度的媒体，从小到大依次缩写为 `xs`、`sm`、`md`、`lg` 和 `xl`。他们的宽度范围如下表：
+
+| 屏幕大小    | 缩写 | 宽度范围        | 适用设备 |
+|-------------|------|-----------------|----------|
+| Extra Small | xs   | < 600px         | 手机     |
+| Small       | sm   | 600px ~ 960px   | 平板电脑 |
+| Medium      | md   | 960px ~ 1200px  | 小屏幕笔记本 |
+| Large       | lg   | 1200px ~ 1920px | 大屏笔记本、PC 显示器 |
+| Extra Large | xl   | > 1920px        | 4K 电视 |
+
+如果你的项目中需要的屏幕宽度范围和上面的不一样，可以通过自定义主题进行修改。
+
+通过 `xs / sm / md / lg /xl` 等属性指定在不同视口宽度下 `c-box-item` 的展示宽度。比如 `xs="3"`，表示在超小屏幕下宽度为 `3/12 = 25%`。
+
+值得注意的是，Clair 提供的响应式方案是**移动优先（Mobile First）**的。这意味着，`xs="3"` 会在所有设备下显示为 `25%`，除非你指定了更大视口下的宽度。比如 `<c-box-item xs="6" lg="3" />` 表示在 Extra Small、Small 及 Medium 的视口下是 50% 宽度，在 Large 及 Extra Large 视口下是 25% 的宽度。
+
+```html
+<c-box class="is-text-center is-text-sm">
+  <c-box-item xs="12" sm="6" md="3">
+    <div class="is-bg-gray-2">手机独占一行<br>小屏幕占 50%<br>更大屏幕占 25%</div>
+  </c-box-item>
+  <c-box-item xs="12" sm="6" md="9">
+    <div class="is-bg-gray-2">手机独占一行<br>小屏幕占 50%<br>更大屏幕占 75%</div>
+  </c-box-item>
+</c-box>
+
+<style>
+.c-box__item > div {
+  padding: 1em;
+}
+</style>
+```
+
+### 不同设备，不同样式
+
+除了宽度之外，Clair 也可以实现在不同设备上显示不同的偏移（offset）、可见性、排列方式等样式。
+
+```html
+<c-box>
+  <c-box-item
+    xs="12 offset-0"
+    md="6 offset-2"
+    class="is-bg-gray-2"
+  >
+    大屏有左边距，小屏没有
+  </c-box-item>
+
+  <c-box-item
+    xs="d-none"
+    md="3 offset-1 d-block"
+    class="is-bg-gray-2"
+  >
+    大屏显示，小屏隐藏
+  </c-box-item>
 </c-box>
 ```
 
