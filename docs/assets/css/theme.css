@@ -151,6 +151,10 @@ footer a {
   line-height: 1.8;
 }
 
+.markdown-body a {
+  color: var(--primary-color);
+}
+
 .markdown-body:empty {
   display: none;
 }
