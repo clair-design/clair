@@ -6,14 +6,18 @@
     :class="classNames"
     :to="href"
   )
-    slot
+    c-icon(v-if="iconType" :name="iconType")
+    span(v-if="$slots.default")
+      slot
   button(
     v-else
     class="c-button"
     :class="classNames"
     @click="onClick"
   )
-    slot
+    c-icon(v-if="iconType" :name="iconType")
+    span(v-if="$slots.default")
+      slot
 </template>
 
 <script>
@@ -29,12 +33,16 @@
   const block = `c-button`
   const modifiers = [
     'primary',
-    'readonly',
-    'disabled'
+    'danger',
+    'round',
+    'outline',
+    'loading'
   ]
   const props = Object.assign(
     {
-      href: String
+      href: String,
+      size: String,
+      icon: String
     },
     toVueProps(modifiers)
   )
@@ -43,7 +51,16 @@
   export default {
     name,
     props,
-    computed: { classNames },
+    computed: {
+      iconType () {
+        return this.loading ? 'spinner' : this.icon
+      },
+      classNames () {
+        const classList = classNames.call(this)
+        if (this.size) classList.push(`c-button--${this.size}`)
+        return classList
+      }
+    },
     methods: {
       onClick (e) {
         this.$emit('click', e)

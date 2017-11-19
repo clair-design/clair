@@ -1,6 +1,6 @@
 <template lang="pug">
   .c-button-group
-    | ButtonGroup
+    slot
 </template>
 
 <script>

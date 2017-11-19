@@ -6,12 +6,10 @@
         h1.is-text-xxl.is-weight-light Clair Design
         p 一套包含设计规范、Vue 组件和配套资源的设计系统。
         p
-          c-button(href="/principle/introduction" primary)
-            c-icon(name="book")
-            |  设计原则
-          c-button(href="/component/install")
-            c-icon(name="cubes")
-            |  Vue 组件
+          c-button(href="/principle/introduction" primary icon="book")
+            | 设计原则
+          c-button(href="/component/install" icon="cubes")
+            | Vue 组件
     nuxt
     c-footer
 </template>
