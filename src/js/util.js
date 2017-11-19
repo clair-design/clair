@@ -21,9 +21,8 @@ export function toVueProps (modifiers) {
  */
 export function toClassNames (block, modifiers) {
   return function () {
-    return modifiers.reduce((classNames, modifier) => {
-      classNames[`${block}--${modifier}`] = this[modifier]
-      return classNames
-    }, {})
+    return modifiers
+      .filter(m => this[m])
+      .map(m => `${block}--${m}`)
   }
 }
