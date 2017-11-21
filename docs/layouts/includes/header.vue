@@ -17,7 +17,7 @@ c-box.toolbar.c-container.no-gap(align="center")
           :class="{'is-active': nav.isActiveReg.test($route.path)}"
         ) {{nav.title}}
   c-box-item.is-text-right(xs="12" sm="1")
-    a.xs-12.sm-a(href="https://github.com/clair-design/clair")
+    a.xs-12.sm-a(href="https://github.com/clair-design/clair" target="_blank")
       c-icon.is-text-xl(name="github")
 </template>
 
