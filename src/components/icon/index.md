@@ -7,29 +7,24 @@ route: component/icon
 
 # 字体图标
 
-字体图标默认类型为 [FontAwesome](http://fontawesome.io/icons/)。如需使用，请**自行引入** fontawsome CSS 文件，如：
+图标默认使用 [feather](https://feathericons.com/) 所提供的 SVG icon。
+
+如需使用其他类型的图标，请**自行引入** 相关 CSS 和字体，如 [FontAwesome](http://fontawesome.io/icons/)：
 
 ```xml
 <link href="https://lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 ```
 
-PS: 带动画效果的 FontAwesome，可参考 [font-awesome-animation](https://github.com/l-lin/font-awesome-animation)。
-
 ## 效果展示
 
+下面两个图标，分别是内置的 feather 和另外引入的 FontAwesome 效果。
+
 ```html
-<c-icon type="fa" name="github" color="#498ff2" size="1.5em" />
-<c-icon type="fa" name="github" color="#498ff2" size="3ch" />
-<c-icon type="fa" name="github" color="#498ff2" size="32px" />
-<c-icon type="fa" name="github" color="#498ff2" size="220%" />
-<br>
-<c-icon type="fa" name="github" color="#498ff2" size="1.5em" valign="middle" />
-<c-icon type="fa" name="github" color="#498ff2" size="3ch" valign="middle" />
-<c-icon type="fa" name="github" color="#498ff2" size="32px" valign="middle" />
-<c-icon type="fa" name="github" color="#498ff2" size="220%" valign="middle" />
+<c-icon type="feather" name="github" color="#498ff2" size="36" valign="middle" />
+<c-icon type="fa" name="github" color="#498ff2" size="40px" valign="middle" />
 ```
 
-FontAwesome 图标通过 `<i>` 标签及其 class 值 `{类型} {类型}-{图标名}` 实现。使用其他图标系统时，请自行引入相关 CSS 和 Font。例如，根据 [font-mfizz](http://fizzed.com/oss/font-mfizz/) 的文档，图标使用方式为 `<i class="icon-angular"></i>`，则使用方法如下：
+像 FontAwesome 这种外部图标的使用，是通过 `<i>` 标签及其 class 值 `{类型} {类型}-{图标名}` 实现的。例如，根据 [font-mfizz](http://fizzed.com/oss/font-mfizz/) 的文档，图标使用方式为 `<i class="icon-angular"></i>`，则使用方法如下：
 
 ```html
 <template>
@@ -56,11 +51,105 @@ FontAwesome 图标通过 `<i>` 标签及其 class 值 `{类型} {类型}-{图标
 
 | 属性 | 类型 | 默认值 | 说明 |
 |-----|------|-------|-----|
-| type | String | fa | 图标类型（ class 前缀） |
+| type | String | feather | 图标类型（ class 前缀） |
 | name | String | 无，必填 | 图标名称 |
-| color | String | inherit | 默认来自继承 |
+| color | String | - | 默认继承 |
 | size | String | 1em | 字体大小，可使用合法单位 |
 | valign | String | baseline | vertical align |
+
+
+## Feather 图标集合
+
+下面列出了 feather 中的全部图标，点击可复制对应标签：
+
+```html
+<style>
+  .icon-item {
+    display: block;
+    padding: 10px 0;
+  }
+  p {
+    margin: 0
+  }
+</style>
+
+<template>
+  <c-box gap="5%" class="is-text-center">
+    <c-box-item v-if="icons.length === 0" xs="12">
+      数据加载中....
+    </c-box-item>
+
+    <c-box-item
+      xs="12"
+      sm="3"
+      v-for="ico in icons"
+      :key="ico"
+      style="transition: all 0.5s"
+    >
+      <a
+        class="icon-item"
+        @mouseenter="mouseEnter"
+        @mouseleave="mouseLeave"
+        :data-clipboard-text='`<c-icon type="feather" color="#498ff2" name="${ico}" size="24" />`'
+      >
+        <c-icon type="feather" color="#498ff2" :name="ico" size="24" />
+        <p>{{ico}}</p>
+      </a>
+    </c-box-item>
+  </c-box>
+</template>
+
+<script>
+  const hoverClass = 'is-bg-gray-1'
+  const fetchJSON = url => fetch(url).then(r => r.json())
+  const loadScript = function (src) {
+    var s = document.createElement('script')
+    s.async = true
+    s.src = src
+    document.body.appendChild(s)
+    return new window.Promise(function (resolve, reject) {
+      s.onload = resolve
+      s.onerror = reject
+    })
+  }
+
+  export default {
+    data () {
+      return {
+        icons: []
+      }
+    },
+
+    created () {
+      if (process.BROWSER_BUILD) {
+        window.Promise.all([
+          fetchJSON('https://unpkg.com/feather-icons/dist/icons.json'),
+          loadScript('https://lib.baomitu.com/clipboard.js/1.7.1/clipboard.min.js')
+        ]).then(([obj]) => {
+          this.icons = window.Object.keys(obj)
+          new window.Clipboard('.icon-item')
+        })
+      }
+    },
+
+    mounted () {
+      if (process.BROWSER_BUILD) {
+        const container = this.$el.parentNode
+        container.classList.add('hide-source')
+      }
+    },
+
+    methods: {
+      mouseEnter(e) {
+        e.currentTarget.parentNode.classList.add(hoverClass)
+      },
+      mouseLeave(e) {
+        e.currentTarget.parentNode.classList.remove(hoverClass)
+      }
+    }
+  }
+</script>
+```
 
 ## FontAwesome 图标列表
 
@@ -94,9 +183,9 @@ FontAwesome 图标通过 `<i>` 标签及其 class 值 `{类型} {类型}-{图标
         class="icon-item"
         @mouseenter="mouseEnter"
         @mouseleave="mouseLeave"
-        :data-clipboard-text='`<c-icon color="#498ff2" name="${ico}" />`'
+        :data-clipboard-text='`<c-icon type="fa" color="#498ff2" name="${ico}" />`'
       >
-        <c-icon color="#498ff2" :name="ico" />
+        <c-icon type="fa" color="#498ff2" :name="ico" />
         <p>{{ico}}</p>
       </a>
     </c-box-item>

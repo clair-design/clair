@@ -15,8 +15,12 @@ export default {
     if (!('$clair' in Vue.prototype)) {
       const responsive = responsiveFun(Vue)
       const $clair = new Vue({
-        data: { responsive }
+        data: {
+          responsive,
+          icon: 'feather'
+        }
       })
+
       Object.defineProperty(Vue.prototype, '$clair', {
         get () { return $clair }
       })
