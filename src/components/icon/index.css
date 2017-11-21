@@ -4,6 +4,12 @@
 @import url('../../css/variables.css');
 
 .c-icon {
+  display: inline-block;
   width: 1em;
   text-align: center;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
 }
