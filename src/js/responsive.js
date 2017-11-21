@@ -6,7 +6,7 @@ export default function (Vue) {
   })
 
   // create an element to listen viewport change
-  if (typeof window == 'object') {
+  if (typeof window === 'object') {
     const element = document.createElement('div')
     element.className = 'c-responsive-listener'
     document.body.appendChild(element)

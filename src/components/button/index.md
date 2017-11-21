@@ -24,7 +24,7 @@ Button 组件提供了不同的按钮风格以及状态、尺寸等选项。
 <p>
   <c-button primary icon="home" href="/">带链接的按钮</c-button>
   <c-button primary icon="search">图标按钮</c-button>
-  <c-button primary icon="paper-plane"></c-button>
+  <c-button primary icon="sun"></c-button>
   <c-button danger outline round icon="trash"></c-button>
 </p>
 ```
@@ -44,7 +44,7 @@ Button 组件提供了不同的按钮风格以及状态、尺寸等选项。
 
 ```html
 <c-button primary size="xs">超小按钮</c-button>
-<c-button primary size="sm" icon="cog">设置</c-button>
+<c-button primary size="sm" icon="settings">设置</c-button>
 <c-button primary>Default</c-button>
 <c-button primary round outline size="lg">大号按钮</c-button>
 <c-button primary round outline size="xl" icon="save"></c-button>
@@ -68,9 +68,9 @@ Button 组件提供了不同的按钮风格以及状态、尺寸等选项。
 </c-button-group>
 
 <c-button-group>
-  <c-button outline icon="weibo"></c-button>
-  <c-button outline icon="weixin"></c-button>
-  <c-button outline icon="qq"></c-button>
+  <c-button outline icon="twitter"></c-button>
+  <c-button outline icon="facebook"></c-button>
+  <c-button outline icon="github"></c-button>
 </c-button-group>
 
 <c-button-group>

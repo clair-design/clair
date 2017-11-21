@@ -79,6 +79,11 @@ html {
   line-height: 3;
   font-size: 0.9em;
   color: var(--weak-text-color);
+
+}
+
+.subnav__title > * {
+  vertical-align: middle;
 }
 
 .navbar.is-stacked .subnav .navbar__item {

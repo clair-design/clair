@@ -58,7 +58,6 @@
     "highlight.js": "^9.12.0",
     "husky": "^0.14.3",
     "lint-staged": "^4.0.2",
-    "object-assign": "^4.1.1",
     "postcss-cssnext": "^3.0.2",
     "postcss-each": "^0.10.0",
     "postcss-for": "^2.1.1",
@@ -67,10 +66,15 @@
     "rimraf": "^2.6.2",
     "rollup-plugin-buble": "^0.15.0",
     "rollup-plugin-commonjs": "^8.2.5",
+    "rollup-plugin-json": "^2.3.0",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-postcss": "^0.5.4",
     "rollup-plugin-vue": "^2.4.1",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0"
+  },
+  "dependencies": {
+    "feather-icons": "^4.0.1",
+    "object-assign": "^4.1.1"
   }
 }

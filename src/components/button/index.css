@@ -49,6 +49,10 @@
     margin-right: -0.23em;
   }
 
+  & > span {
+    vertical-align: middle;
+  }
+
   & span:empty {
     display: none;
   }
@@ -212,18 +216,16 @@
  */
 .c-button--loading {
   & .c-icon {
-    animation: c-loading 0.5s infinite steps(8);
+    animation: fa-spin 2s infinite linear;
   }
 }
 
 @keyframes c-loading {
   0% {
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
 
   100% {
-    -webkit-transform: rotate(359deg);
     transform: rotate(359deg);
   }
 }

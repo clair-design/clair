@@ -3,7 +3,17 @@
  */
 @import url('../../css/variables.css');
 
-.c-icon {
-  width: 1em;
+i.c-icon {
+  display: inline-block;
   text-align: center;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+}
+
+span.c-icon {
+  display: inline-block;
+  line-height: 0;
 }

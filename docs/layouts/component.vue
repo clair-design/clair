@@ -6,8 +6,8 @@
         .navbar.is-stacked
           .subnav(v-for="item in menu")
             .subnav__title
-              c-icon(:name="item.icon")
-              |  {{ item.title }}
+              c-icon(:name="item.icon" size="12")
+              span  {{ item.title }}
             nuxt-link.navbar__item(
               v-for="sub in item.children",
               :to="sub.link",
@@ -33,7 +33,7 @@ export default {
         },
         {
           title: '基础样式',
-          icon: 'cube',
+          icon: 'layout',
           children: [
             { title: '布局', link: '/component/layout' },
             { title: '颜色', link: '/component/color' },
@@ -43,7 +43,7 @@ export default {
         },
         {
           title: '表单',
-          icon: 'check-square-o',
+          icon: 'check-circle',
           children: [
             { title: '按钮', link: '/component/button' },
             { title: '文本框', link: '/component/input' },
@@ -54,7 +54,7 @@ export default {
         },
         {
           title: '导航',
-          icon: 'bars',
+          icon: 'navigation',
           children: [
             { title: '标签页', link: '/component/tab' },
             { title: '导航栏', link: '/component/navbar' },
@@ -64,7 +64,7 @@ export default {
         },
         {
           title: '数据展示',
-          icon: 'table',
+          icon: 'bar-chart-2',
           children: [
             { title: '表格', link: '/component/table' },
             { title: '分页', link: '/component/pagination' },
@@ -73,7 +73,7 @@ export default {
         },
         {
           title: '视觉反馈',
-          icon: 'exclamation-triangle',
+          icon: 'alert-triangle',
           children: [
             { title: '对话框', link: '/component/dialog' },
             { title: '提示框', link: '/component/tip' },

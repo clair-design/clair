@@ -8,7 +8,7 @@
         p
           c-button(href="/principle/introduction" primary icon="book")
             | 设计原则
-          c-button(href="/component/install" icon="cubes")
+          c-button(href="/component/install" icon="layers")
             | Vue 组件
     nuxt
     c-footer

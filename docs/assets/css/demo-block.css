@@ -77,3 +77,11 @@
   background: #cecece;
 }
 
+.hide-source > * {
+  display: none !important;
+}
+
+.hide-source > .vue-demo {
+  display: block !important;
+}
+

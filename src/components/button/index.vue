@@ -6,7 +6,7 @@
     :class="classNames"
     :to="href"
   )
-    c-icon(v-if="iconType" :name="iconType")
+    c-icon(v-if="iconName" :name="iconName" valign="middle")
     span(v-if="$slots.default")
       slot
   button(
@@ -15,7 +15,7 @@
     :class="classNames"
     @click="onClick"
   )
-    c-icon(v-if="iconType" :name="iconType")
+    c-icon(v-if="iconName" :name="iconName" valign="middle")
     span(v-if="$slots.default")
       slot
 </template>
@@ -52,8 +52,8 @@
     name,
     props,
     computed: {
-      iconType () {
-        return this.loading ? 'spinner' : this.icon
+      iconName () {
+        return this.loading ? 'loader' : this.icon
       },
       classNames () {
         const classList = classNames.call(this)
