@@ -39,23 +39,41 @@ route: component/icon
 <style>
   /* 这里使用 import 只是为了方便 */
   @import 'https://lib.baomitu.com/font-mfizz/2.4.1/font-mfizz.min.css';
-
-  .c-icon {
+  @import 'https://lib.baomitu.com/material-design-icons/3.0.1/iconfont/material-icons.css';
+  .c-icon, button {
     margin-right: 20px;
   }
 </style>
+```
 
+另外，还能兼容使用了 [ligature](https://alistapart.com/article/the-era-of-symbol-fonts) 技术的字体图标（如 [Material Icons](https://google.github.io/material-design-icons/#what-are-material-icons-)）。
+
+```html
+<c-icon
+  ligature
+  type="material-icons"
+  name="face"
+  color="#212121"
+  size="3em"
+  valign="middle"
+/>
+
+<style>
+  /* 这里使用 import 只是为了方便 */
+  @import 'https://lib.baomitu.com/material-design-icons/3.0.1/iconfont/material-icons.css';
+</style>
 ```
 
 ## 属性说明
 
 | 属性 | 类型 | 默认值 | 说明 |
 |-----|------|-------|-----|
-| type | String | feather | 图标类型（ class 前缀） |
+| type | String | feather | 标识图标类型，一般是公共类名或公共类名前缀 |
 | name | String | 无，必填 | 图标名称 |
 | color | String | - | 默认继承 |
 | size | String | 1em | 字体大小，可使用合法单位 |
 | valign | String | baseline | vertical align |
+| ligature | Boolean | false | 是否是 ligature |
 
 
 ## Feather 图标集合

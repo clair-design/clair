@@ -1,6 +1,11 @@
 <template lang="pug">
-  span(v-if="isSvg", class="c-icon")
-      svg(
+  i(
+    v-if="ligature",
+    :class="iconType",
+    :style="{ color: iconColor, fontSize: size, verticalAlign: valign }"
+  ) {{ name }}
+  span(v-else-if="isSvg", class="c-icon")
+    svg(
       :class="classNames",
       :style="{verticalAlign: valign}"
       :width="size",
@@ -46,6 +51,10 @@ export default {
     valign: {
       type: String,
       default: 'baseline'
+    },
+    ligature: {
+      type: Boolean,
+      default: false
     }
   },
 
