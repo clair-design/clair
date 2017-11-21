@@ -56,6 +56,7 @@ module.exports = {
         main: true
       }),
       require('rollup-plugin-commonjs')(),
+      require('rollup-plugin-json')(),
       require('rollup-plugin-vue')(),
       require('rollup-plugin-postcss')({
         plugins: [
