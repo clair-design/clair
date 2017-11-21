@@ -11,4 +11,3 @@ Vue.use(Clair)
 Vue.component('c-header', Header)
 Vue.component('c-footer', Footer)
 Vue.component('c-run-online', RunOnline)
-
