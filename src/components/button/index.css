@@ -261,6 +261,11 @@
       border-left: 0;
     }
   }
+
+  & .c-button:focus {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 .c-button-group .c-button--primary:not(.c-button--outline) {
