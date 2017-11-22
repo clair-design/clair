@@ -203,5 +203,5 @@ yarn.lock
 ## In case that files in `src` were ignored unexpectedly
 !src/**/*
 
-##Ignore .idea document in webstorm IDE
+## Ignore .idea document in webstorm IDE
 .idea
