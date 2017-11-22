@@ -13,8 +13,14 @@ Vue.component('c-footer', Footer)
 Vue.component('c-run-online', RunOnline)
 Vue.directive('effect', {
   inserted (el) {
-    if (el.parentNode && el.parentNode.parentNode) {
-      el.parentNode.parentNode.classList.add('hide-source')
+    let node = el.parentNode
+
+    while (node) {
+      if (node.classList.contains('vue-demo-block')) {
+        node.classList.add('hide-source')
+        break
+      }
+      node = node.parentNode
     }
   }
 })
