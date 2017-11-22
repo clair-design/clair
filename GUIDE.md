@@ -23,6 +23,14 @@ $ yarn install
 * [posva/vim-vue](https://github.com/posva/vim-vue)
 * [w0rp/ale](https://github.com/w0rp/ale)
 
+### 提交修改
+
+建议按照以下两篇文章的风格来书写 commit message：
+
+* [Git Commit Guidelines](https://gist.github.com/brianclements/841ea7bffdb01346392c)
+* [利用commitizen来规范化你的commit-message](http://www.jianshu.com/p/55f681604fca)
+* [Commit message 和 Change log 编写指南](http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html)
+
 ## 文件目录结构
 - `clair.config.js` 用于设置项目开发、构建工作的各种配置项
 - `src` 为项目源码的目录，所有的组件代码都在其下的 `components` 目录中
