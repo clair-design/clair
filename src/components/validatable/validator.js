@@ -1,4 +1,5 @@
 import ruleset from './ruleset'
+import { toString } from './util'
 
 export default { validate }
 
@@ -11,12 +12,18 @@ export default { validate }
 function validate (value, rules = {}) {
   // msg 为自定义错误信息
   const { msg } = rules
+  const pass = { valid: true }
+  const isValueEmpty = toString(value).length === 0
+
+  // 非必填项且没有填写时，不进行校验
+  if (!rules.required && isValueEmpty) return pass
+
   const results = Object.keys(rules)
     .filter(ruleName => canValidate(ruleName, rules[ruleName]))
     .map(ruleName => checkSingleRule(ruleName, rules[ruleName], value, msg))
 
   const failedResult = results.find(result => !result.valid)
-  return failedResult || { valid: true }
+  return failedResult || pass
 }
 
 /**

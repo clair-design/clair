@@ -158,7 +158,7 @@ route: component/input
     data() {
       return {
         mail: '',
-        mobNum: ''
+        mobile: ''
       }
     }
   }
@@ -170,3 +170,135 @@ route: component/input
 }
 </style>
 ```
+
+Clair 目前支持验证的 `type` 有：
+
+- email：邮箱
+- mobile：手机号码
+- tel：固定电话号码
+- number：数字
+- integer：整数
+
+### 正则表达式验证
+
+用来验证用户输入是否符合通过 `pattern` 属性指定的正则表达式。例如：
+
+```html
+<c-input v-model="id" :rules="rules" placeholder="请输入六位数字" />
+
+<script>
+  export default {
+    data() {
+      return {
+        id: '',
+        rules: {
+          pattern: /^\d{6}$/
+        }
+      }
+    }
+  }
+</script>
+```
+
+### 自定义错误提示
+
+在指定规则时，可以通过给规则对象添加 msg 属性来实现自定义消息。
+
+```html
+<c-input v-model="id" :rules="rules" placeholder="2-6个字" />
+
+<script>
+  export default {
+    data() {
+      return {
+        id: '',
+        rules: {
+          required: true,
+          minlength: 2,
+          maxlength: 6,
+          msg: '请输入2-6个字符哦～'
+        }
+      }
+    }
+  }
+</script>
+```
+
+在上面的例子中，不管发生了哪种类型的格式错误，都会显示固定的错误消息。你也可以针对不同类型的错误，显示不同的消息：
+
+```html
+<c-input v-model="id" :rules="rules" placeholder="2-6个字" />
+
+<script>
+  export default {
+    data() {
+      return {
+        id: '',
+        rules: {
+          required: true,
+          minlength: 2,
+          maxlength: 6,
+          msg: {
+            required: '不填可不行哦～',
+            minlength: '一个字太少了吧～',
+            maxlength: '不能超过6个字～'
+          }
+        }
+      }
+    }
+  }
+</script>
+```
+
+### 手动调用验证
+
+如果你想通过 JavaScript 获取到某个输入框的输入有效性，可以获取到 `c-input` 组件的引用，然后调用该组件的 `validate` 方法。
+
+该方法返回结果是一个对象，包括 `valid` 和 `msg` 两个字段，分别表示是否合法以及错误提示。
+
+```html
+<c-input v-model="id" :rules="rules" placeholder="请输入六位数字" ref="input" />
+<c-button @click="onClick" primary>检查输入有效性</c-button>
+
+<script>
+  export default {
+    data() {
+      return {
+        id: '',
+        rules: {
+          required: true,
+          pattern: /^\d{6}$/
+        }
+      }
+    },
+    methods: {
+      onClick: function(e) {
+        var validity = this.$refs.input.validate();
+        if (validity.valid) {
+          alert('输入正确');
+        } else {
+          alert('输入错误：' + validity.msg)
+        }
+      }
+    }
+  }
+</script>
+```
+
+## 属性说明
+
+| 属性 | 类型 | 默认值 | 说明 |
+|-----|------|-------|-----|
+| value | String, Number | 无 | 默认值 |
+| placeholder | String | 无 | 同 HTML input 元素的 placeholder |
+| size | String | md | 输入框整体大小，可以取 `xs`、`sm`、`md`、`lg`、`xl` |
+| width | String | normal | 输入框宽度，可以取 `shortest`、`shorter`、`normal`、`long`、`longer` 等 |
+| readonly | Boolean | false | 是否只读 |
+| disabled | Boolean | false | 是否禁用 |
+| multi-line | Boolean | false | 是否可以输入多行文字 |
+| type | String | text | 参考 HTML input 元素的 type 属性 |
+| name | String | 无 | 参考 HTML input 元素的 name 属性 |
+| rows | Number | 3 | 输入框展示的高度 |
+| cols | Number | 60 | 输入框展示的宽度 |
+| maxlength | Number | 无 | 最多输入多少字符 |
+| rules | Object | 无 | 输入验证规则，详见上面「输入验证」部分 |
