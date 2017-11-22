@@ -26,20 +26,19 @@ route: component/icon
 
 像 FontAwesome 这种外部图标的使用，是通过 `<i>` 标签及其 class 值 `{类型} {类型}-{图标名}` 实现的。例如，根据 [font-mfizz](http://fizzed.com/oss/font-mfizz/) 的文档，图标使用方式为 `<i class="icon-angular"></i>`，则使用方法如下：
 
+<!-- 引入 CSS -->
+<link href="https://lib.baomitu.com/font-mfizz/2.4.1/font-mfizz.min.css" rel="stylesheet" />
+
 ```html
-<template>
-  <c-icon type="icon" name="angular" color="red" size="3em" valign="middle" />
-  <c-icon type="icon" name="reactjs" color="blue" size="3em" valign="middle" />
-  <c-button primary>
-    <c-icon type="icon" name="angular" />
-    <span>测试</span>
-  </c-button>
-</template>
+<c-icon type="icon" name="angular" color="red" size="3em" valign="middle" />
+<c-icon type="icon" name="reactjs" color="blue" size="3em" valign="middle" />
+<c-button primary>
+  <c-icon type="icon" name="angular" />
+  <span>测试</span>
+</c-button>
 
 <style>
-  /* 这里使用 import 只是为了方便 */
-  @import 'https://lib.baomitu.com/font-mfizz/2.4.1/font-mfizz.min.css';
-  @import 'https://lib.baomitu.com/material-design-icons/3.0.1/iconfont/material-icons.css';
+  /* 请自行引入 font-mfizz.css */
   .c-icon, button {
     margin-right: 20px;
   }
@@ -47,6 +46,9 @@ route: component/icon
 ```
 
 另外，还能兼容使用了 [ligature](https://alistapart.com/article/the-era-of-symbol-fonts) 技术的字体图标（如 [Material Icons](https://google.github.io/material-design-icons/#what-are-material-icons-)）。
+
+<!-- 引入 CSS -->
+<link href="https://lib.baomitu.com/material-design-icons/3.0.1/iconfont/material-icons.css" rel="stylesheet" />
 
 ```html
 <c-icon
@@ -59,8 +61,7 @@ route: component/icon
 />
 
 <style>
-  /* 这里使用 import 只是为了方便 */
-  @import 'https://lib.baomitu.com/material-design-icons/3.0.1/iconfont/material-icons.css';
+/* 请自行引入 material-icons.css */
 </style>
 ```
 
