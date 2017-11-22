@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "precommit": "lint-staged",
-    "clean": "rimraf dist .site .nuxt",
+    "clean": "rimraf dist .site .nuxt ./docs/pages/*/  ./docs/pages/*.vue",
     "new": "clair add",
     "build": "npm run clean && clair build",
     "start": "clair start"
