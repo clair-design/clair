@@ -11,3 +11,10 @@ Vue.use(Clair)
 Vue.component('c-header', Header)
 Vue.component('c-footer', Footer)
 Vue.component('c-run-online', RunOnline)
+Vue.directive('effect', {
+  inserted (el) {
+    if (el.parentNode && el.parentNode.parentNode) {
+      el.parentNode.parentNode.classList.add('hide-source')
+    }
+  }
+})
