@@ -24,6 +24,7 @@
       :cols="cols"
       @input="onInput"
       @change="onInput"
+      ref="textArea"
     )
     em.c-input__error(v-if="!validity.valid") {{validity.msg}}
 </template>
@@ -31,6 +32,9 @@
 <script>
   import './index.css'
   import validatable from '../validatable/'
+
+  // SEE https://github.com/jackmoore/autosize
+  import autoSize from 'autosize'
 
   export default {
     name: 'c-input',
@@ -43,6 +47,7 @@
       readonly: Boolean,
       disabled: Boolean,
       multiLine: Boolean,
+      autoresize: Boolean,
       type: {
         type: String,
         default: 'text'
@@ -67,6 +72,11 @@
         return classNames
       }
     },
+    data () {
+      return {
+        origRows: this.rows
+      }
+    },
     mixins: [validatable],
     methods: {
       onInput (e) {
@@ -74,6 +84,24 @@
       },
       onChange (e) {
         this.$emit('input', e.target.value)
+      }
+    },
+    mounted () {
+      const { multiLine, autoresize } = this
+
+      // TODO
+      // How to implement accurate `maxRows`
+      if (multiLine && autoresize) {
+        const el = this.$refs.textArea
+        autoSize(el)
+      }
+    },
+    destroyed () {
+      const { multiLine, autoresize } = this
+
+      if (multiLine && autoresize) {
+        const el = this.$refs.textArea
+        autoSize.destroy(el)
       }
     }
   }
