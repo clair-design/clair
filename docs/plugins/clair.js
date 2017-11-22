@@ -17,7 +17,7 @@ Vue.directive('effect', {
 
     while (node) {
       if (node.classList.contains('vue-demo-block')) {
-        node.classList.add('hide-source')
+        node.classList.add('vue-demo-block-demo-only')
         break
       }
       node = node.parentNode

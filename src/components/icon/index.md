@@ -92,8 +92,8 @@ route: component/icon
   }
 </style>
 
-<template>
-  <c-box gap="5%" class="is-text-center" v-effect>
+<template demo-only>
+  <c-box gap="5%" class="is-text-center">
     <c-box-item v-if="icons.length === 0" xs="12">
       数据加载中....
     </c-box-item>
@@ -179,7 +179,7 @@ route: component/icon
 </style>
 
 <template>
-  <c-box gap="5%" class="is-text-center">
+  <c-box gap="5%" class="is-text-center" v-effect>
     <c-box-item v-if="icons.length === 0" xs="12">
       数据加载中....
     </c-box-item>
@@ -236,13 +236,6 @@ route: component/icon
           this.icons = window.YAML.parse(text).icons.map(i => i.id)
           new window.Clipboard('.icon-item')
         })
-      }
-    },
-
-    mounted () {
-      if (process.BROWSER_BUILD) {
-        const container = this.$el.parentNode
-        container.classList.add('hide-source')
       }
     },
 

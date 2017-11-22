@@ -77,11 +77,17 @@
   background: #cecece;
 }
 
-.hide-source > * {
+.vue-demo-block-demo-only,
+.vue-demo-block-demo-only:hover {
+  box-shadow: none;
+}
+
+.vue-demo-block-demo-only > * {
   display: none !important;
 }
 
-.hide-source > .vue-demo {
+.vue-demo-block-demo-only > .vue-demo {
   display: block !important;
+  margin: 0;
 }
 
