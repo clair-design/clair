@@ -46,7 +46,7 @@ export default {
           icon: 'check-circle',
           children: [
             { title: '按钮', link: '/component/button' },
-            { title: '文本框', link: '/component/text' },
+            { title: '文本框', link: '/component/input' },
             { title: '下拉框', link: '/component/select' },
             { title: '复选框', link: '/component/checkbox' },
             { title: '单选框', link: '/component/radio' }

@@ -1,0 +1,124 @@
+/**
+* c-input
+*/
+@import url('../../css/variables.css');
+
+/* 输入框
+ *  ===========================================================================
+ */
+
+.c-input-wrap {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 0.875em;
+
+  &.is-xs {
+    font-size: 0.75em;
+
+    & .c-input {
+      height: 2.14em;
+      padding: 0 0.2em;
+    }
+  }
+
+  &.is-sm {
+    font-size: 0.75em;
+  }
+
+  &.is-lg {
+    font-size: 1em;
+  }
+
+  &.is-xl {
+    font-size: 1.125em;
+  }
+
+  &.is-shortest .c-input {
+    width: 3em;
+  }
+
+  &.is-shorter .c-input {
+    width: 5em;
+  }
+
+  &.is-short .c-input {
+    width: 10em;
+  }
+
+  &.is-long .c-input {
+    width: 24em;
+  }
+
+  &.is-longer .c-input {
+    width: 32em;
+  }
+
+  &.is-longest .c-input {
+    width: 50em;
+  }
+
+  &.c-input--error {
+    & .c-input {
+      border-color: var(--danger-color);
+      color: var(--danger-color);
+
+      &:focus {
+        box-shadow: 0 0 0 0.2em color(var(--danger-color) l(90%));
+      }
+    }
+
+    & .c-input__error {
+      color: var(--danger-color);
+      margin-left: 0.2em;
+    }
+  }
+}
+
+.c-input {
+  height: 2.5em;
+  padding: 0 0.4em;
+  vertical-align: middle;
+  border: 1px solid color(var(--gray) l(85%));
+  border-radius: 0.2em;
+  background-color: #fff;
+  color: var(--text-color);
+  line-height: normal;
+  width: 15em;
+  margin-right: 5px;
+  box-shadow: inset 0 1px 3px #eee;
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2em color(var(--primary-color) l(90%));
+  }
+
+  &[readonly] {
+    background-color: color(var(--gray) l(97%));
+    color: color(var(--gray) l(65%));
+    cursor: default;
+    box-shadow: none;
+  }
+
+  &[disabled] {
+    background-color: color(var(--gray) l(90%));
+    color: color(var(--gray) l(75%));
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+
+  &.c-input--error {
+    border-color: var(--danger-color);
+  }
+
+  &::-ms-clear {
+    display: none;
+  }
+}
+
+textarea.c-input {
+  height: auto;
+  padding: 0.4em;
+}
+

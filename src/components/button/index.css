@@ -6,6 +6,7 @@
 .c-button {
   box-sizing: border-box;
   display: inline-block;
+  vertical-align: middle;
   line-height: 2.54;
   padding: 0 1em;
   font-size: 0.875em;
