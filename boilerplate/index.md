@@ -11,6 +11,8 @@ Description.....
 
 ## Demo
 
+**注意在写 demo 中的脚本时，对 window 的操作以及特殊全局变量的使用要特别小心。必要时请参考 icon 组件的文档。**
+
 下面是可以查看代码的 demo：
 
 ```html
