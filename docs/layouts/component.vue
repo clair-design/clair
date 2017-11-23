@@ -30,9 +30,6 @@
 
 <script>
 import throttle from 'lodash/throttle'
-import smoothscroll from 'smoothscroll-polyfill'
-
-smoothscroll.polyfill()
 
 export default {
   data () {
