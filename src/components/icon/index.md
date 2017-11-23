@@ -102,7 +102,7 @@ route: component/icon
       xs="12"
       sm="3"
       v-for="ico in icons"
-      :key="ico"
+      :key="$index"
       style="transition: all 0.5s"
     >
       <a
@@ -178,7 +178,7 @@ route: component/icon
   }
 </style>
 
-<template>
+<template demo-only>
   <c-box gap="5%" class="is-text-center" v-effect>
     <c-box-item v-if="icons.length === 0" xs="12">
       数据加载中....
@@ -188,7 +188,7 @@ route: component/icon
       xs="12"
       sm="3"
       v-for="ico in icons"
-      :key="ico"
+      :key="$index"
       style="transition: all 0.5s"
     >
       <a
