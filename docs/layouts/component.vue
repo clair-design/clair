@@ -16,12 +16,28 @@
       c-box-item(xs=12 sm=9 md=10)
         nuxt.c-container.is-lg
     c-footer.in-article
+    c-button(
+      primary
+      outline
+      round
+      icon="navigation-2"
+      style="position: fixed; right: 50px; bottom: 100px;"
+      @click="scrollToTop"
+      title="回到顶部"
+      v-show="showToTop"
+    )
 </template>
 
 <script>
+import throttle from 'lodash/throttle'
+import smoothscroll from 'smoothscroll-polyfill'
+
+smoothscroll.polyfill()
+
 export default {
   data () {
     return {
+      showToTop: false,
       menu: [
         {
           title: '使用说明',
@@ -81,6 +97,39 @@ export default {
           ]
         }
       ]
+    }
+  },
+  methods: {
+    scrollToTop () {
+      if (typeof window === 'object') {
+        const obj = { top: 0 }
+        const docElem = document.documentElement
+        const maxSmoothHeight = docElem.clientHeight * 2
+
+        if (docElem.scrollTop < maxSmoothHeight) {
+          obj.behavior = 'smooth'
+        }
+
+        window.scroll(obj)
+      }
+    },
+    onScroll () {
+      if (typeof window === 'object') {
+        const threshold = 80
+        this.showToTop = document.documentElement.scrollTop > threshold
+      }
+    }
+  },
+  created () {
+    if (typeof window === 'object') {
+      const throttleTime = 200
+      this.onScroll = throttle(this.onScroll.bind(this), throttleTime)
+      window.addEventListener('scroll', this.onScroll)
+    }
+  },
+  destroyed () {
+    if (typeof window === 'object') {
+      window.removeEventListener('scroll', this.onScroll)
     }
   }
 }
