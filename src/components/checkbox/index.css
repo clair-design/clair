@@ -1,3 +1,67 @@
-/* TODO */
-
 @import url('../../css/variables.css');
+
+.c-checkbox {
+  position: relative;
+  margin-right: 1em;
+  cursor: pointer;
+  user-select: none;
+
+  & > input {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  & > .c-checkbox__box {
+    position: relative;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    border: 0.07em solid var(--gray);
+    margin-right: 0.3em;
+    border-radius: 0.15em;
+    transition: all 0.2s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0.23em;
+      left: 0.13em;
+      width: 0.5em;
+      height: 0.2em;
+      border-left: 0.1em solid currentColor;
+      border-bottom: 0.1em solid currentColor;
+      transform: rotate(-45deg) scale(0);
+      transition: transform 0.2s ease;
+    }
+  }
+
+  &:hover > .c-checkbox__box {
+    border-color: var(--primary-color);
+  }
+
+  & > input:checked + .c-checkbox__box {
+    background: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+  }
+
+  & > input:checked + .c-checkbox__box::after {
+    transform: rotate(-45deg) scale(1.01);
+  }
+
+  & > input:focus + .c-checkbox__box {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.15em color(var(--primary-color) l(80%));
+  }
+
+  & > input[disabled] + .c-checkbox__box {
+    border-color: var(--gray);
+    background-color: color(var(--gray) l(90%));
+    color: color(var(--gray) l(70%));
+  }
+
+  & > .c-checkbox__label {
+    vertical-align: middle;
+  }
+}

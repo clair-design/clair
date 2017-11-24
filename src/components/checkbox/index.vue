@@ -1,33 +1,34 @@
 <template lang="pug">
-  button(
-    class="c-checkbox"
-    :class="classNames"
-  )
-    slot
+  label.c-checkbox(@change="onChange")
+    input(
+      type="checkbox"
+      :name="name"
+      :disabled="disabled"
+      :checked="value"
+    )
+    span.c-checkbox__box
+    span.c-checkbox__label {{ label }}
 </template>
 
 <script>
   // import css
   import './index.css'
 
-  import {
-    toVueProps,
-    toClassNames
-  } from '../../js/util'
-
   const name = 'c-checkbox'
-  const block = `c-checkbox`
-  const modifiers = [
-    'primary',
-    'readonly',
-    'disabled'
-  ]
-  const props = toVueProps(modifiers)
-  const classNames = toClassNames(block, modifiers)
+  const props = {
+    value: Boolean,
+    name: String,
+    label: String,
+    disabled: Boolean
+  }
 
   export default {
     name,
     props,
-    computed: { classNames }
+    methods: {
+      onChange (e) {
+        this.$emit('input', e.target.checked)
+      }
+    }
   }
 </script>

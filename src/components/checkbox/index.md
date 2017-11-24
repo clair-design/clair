@@ -1,33 +1,109 @@
-## CHECKBOX 多选框
+# Checkbox 复选框
+
+## 单独使用
+
+单独使用复选框表示在「是」、「否」两种状态之前进行选择，使用时给 `c-checkbox` 的 `v-model` 提供一个 `Boolean` 类型的值即可。
 
 ```html
-<style>
-.wrapper input {
-  width: 50px;
-  text-align: center;
-}
-</style>
-
-<template>
-  <div class="wrapper">
-    <button @click="incr(-1)">-</button>
-    <input type="text" readonly :value="count">
-    <button @click="incr(+1)">+</button>
-  </div>
-</template>
+<c-checkbox
+  v-model="autoUpdate"
+  label="开启自动更新"
+/>
 
 <script>
-export default {
-  data() {
-    return {
-      count: 0
-    }
-  },
-  methods: {
-    incr(delta) {
-      this.count += delta
+  export default {
+    data () {
+      return { autoUpdate: false }
     }
   }
-}
+</script>
+```
+
+## 禁用状态
+
+给 `c-checkbox` 添加 `disabled` 属性即可将其禁用，用户不能再修改它的状态。
+
+```html
+<c-checkbox
+  disabled
+  v-model="autoUpdate"
+  label="自动更新(开发中)"
+/>
+
+<c-checkbox
+  disabled
+  v-model="basic"
+  label="基础套餐(必选)"
+/>
+
+<script>
+  export default {
+    data () {
+      return {
+        autoUpdate: false,
+        basic: true
+      }
+    }
+  }
+</script>
+```
+
+## 多选框组
+
+```html
+<c-checkbox-group
+  v-model="selected"
+  :options="options"
+/>
+
+<p>你选择了 {{ selected }}</p>
+
+<script>
+  export default {
+    data () {
+      return {
+        options: [
+          { value: 1, label: '选项1' },
+          { value: 2, label: '选项2' },
+          { value: 3, label: '选项3', disabled: true }
+        ],
+        selected: [3]
+      }
+    }
+  }
+</script>
+```
+
+## 多选验证
+
+Clair 可以帮助你限制用户最少或最多选择多少项。
+
+```html
+<span>请选择2-4项：</span>
+<c-checkbox-group
+  v-model="selected"
+  :options="options"
+  :min-items="2"
+  :max-items="4"
+/>
+
+<p v-if="selected.length">你选择了 {{ selected.join(', ') }}</p>
+
+<script>
+  export default {
+    data () {
+      return {
+        options: [
+          { value: 1, label: '香蕉' },
+          { value: 2, label: '苹果' },
+          { value: 3, label: '梨'},
+          { value: 4, label: '芒果'},
+          { value: 5, label: '木瓜'},
+          { value: 6, label: '榴莲'}
+        ],
+        selected: []
+      }
+    }
+  }
 </script>
 ```

@@ -26,7 +26,7 @@
       @change="onInput"
       ref="textArea"
     )
-    em.c-input__error(v-if="!validity.valid") {{validity.msg}}
+    em.c-error-msg(v-if="!validity.valid") {{validity.msg}}
 </template>
 
 <script>
