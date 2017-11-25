@@ -59,9 +59,19 @@
     border-color: var(--gray);
     background-color: color(var(--gray) l(90%));
     color: color(var(--gray) l(70%));
+    cursor: not-allowed;
   }
 
   & > .c-checkbox__label {
     vertical-align: middle;
   }
+
+  & > input[disabled] ~ .c-checkbox__label {
+    color: var(--gray);
+    cursor: not-allowed;
+  }
+}
+
+.c-checkbox-group {
+  display: inline-block;
 }
