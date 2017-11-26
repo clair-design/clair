@@ -26,3 +26,13 @@ export function toClassNames (block, modifiers) {
       .map(m => `${block}--${m}`)
   }
 }
+
+/**
+ * return a 6 length random string
+ * warning: uniqueness NOT guaranteed
+ */
+export function randomString () {
+  const radix = 36
+  const length = 6
+  return Math.random().toString(radix).substr(-length)
+}
