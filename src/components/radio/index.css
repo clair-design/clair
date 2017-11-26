@@ -1,0 +1,144 @@
+/**
+* c-radio
+*/
+@import url('../../css/variables.css');
+
+.c-radio {
+  position: relative;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  cursor: pointer;
+  user-select: none;
+
+  & > input {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  & > .c-radio__box {
+    position: relative;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    border: 0.07em solid var(--gray);
+    margin-right: 0.3em;
+    border-radius: 1em;
+    transition: all 0.2s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: -0.07em;
+      left: -0.07em;
+      width: 1em;
+      height: 1em;
+      border-radius: 0.5em;
+      background-color: currentColor;
+      transform: scale(0);
+      transition: transform 0.2s ease;
+    }
+  }
+
+  &:hover > .c-radio__box {
+    border-color: var(--primary-color);
+  }
+
+  & > input:checked + .c-radio__box {
+    background: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+  }
+
+  & > input:checked + .c-radio__box::after {
+    transform: scale(0.5);
+  }
+
+  & > input:focus + .c-radio__box {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.15em color(var(--primary-color) l(80%));
+  }
+
+  & > input[disabled] + .c-radio__box {
+    border-color: var(--gray);
+    background-color: color(var(--gray) l(90%));
+    color: color(var(--gray) l(70%));
+    cursor: not-allowed;
+  }
+
+  & > .c-radio__label {
+    vertical-align: middle;
+    line-height: 1;
+  }
+
+  & > input[disabled] ~ .c-radio__label {
+    color: var(--gray);
+    cursor: not-allowed;
+  }
+}
+
+.c-radio-group {
+  display: inline-block;
+}
+
+.c-radio + .c-radio {
+  margin-left: 1em;
+}
+
+.c-radio--button {
+  position: relative;
+  float: left;
+
+  & > input {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  & > .c-radio__label {
+    position: relative;
+    display: block;
+    line-height: 1;
+    white-space: nowrap;
+    border: 1px solid color(var(--gray) l(80%));
+    padding: 0.5em 1em;
+    margin-left: -1px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+  }
+
+  &:first-child .c-radio__label {
+    margin-left: 0;
+    border-radius: 0.3em 0 0 0.3em;
+  }
+
+  &:last-child .c-radio__label {
+    border-radius: 0 0.3em 0.3em 0;
+  }
+
+  &:hover {
+    color: var(--primary-color);
+  }
+
+  & > input:checked ~ .c-radio__label {
+    z-index: 1;
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+  }
+
+  & > input:active ~ .c-radio__label {
+    z-index: 2;
+    box-shadow: 0 0 0 0.4em color(var(--gray) l(50%) a(0.2));
+  }
+
+  & > input:focus ~ .c-radio__label {
+    z-index: 1;
+    box-shadow: 0 0 0 0.2em color(var(--primary-color) l(85%));
+  }
+
+  & > input[disabled] ~ .c-radio__label {
+    background: color(var(--gray) l(95%));
+    color: color(var(--gray) l(75%));
+    cursor: not-allowed;
+  }
+}
