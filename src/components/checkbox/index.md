@@ -107,3 +107,22 @@ Clair 可以帮助你限制用户最少或最多选择多少项。
   }
 </script>
 ```
+
+## API
+
+## c-checkbox 属性
+
+| 属性 | 类型 | 默认值 | 说明 |
+|-----|------|-------|-----|
+| label | String | 无 | 复选框关联的标签 |
+| disabled | Boolean | false | 复选框是否被禁用 |
+
+## c-checkbox-group 属性
+
+| 属性 | 类型 | 默认值 | 说明 |
+|-----|------|-------|-----|
+| options | Array | 无 | 复选框组提供的选项列表 |
+| required | Boolean | false | 该选项组是否必须选择一个 |
+| min-items | Number | 无 | 最少选择几项 |
+| max-items | Number | 无 | 最多选择几项 |
+
