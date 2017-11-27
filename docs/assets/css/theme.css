@@ -113,10 +113,9 @@ html {
  */
 footer {
   line-height: 5rem;
-  background: #eef4f6;
   font-size: 0.75em;
   text-align: center;
-  color: #828282;
+  color: #666;
 }
 
 footer.in-article {
