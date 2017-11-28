@@ -98,7 +98,7 @@
   export default {
     data () {
       return {
-        options: [ 'Node', 'Nginx', { label: 'Vue.js', value: 'Vue' } ],
+        options: [ 'Node', 'Nginx', 'Vue' ],
         selected: ['Node'],
         allChecked: false,
         indeterminate: true
