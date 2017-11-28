@@ -32,7 +32,6 @@
       border-left: 0.1em solid currentColor;
       border-bottom: 0.1em solid currentColor;
       transform: rotate(-45deg) scale(0);
-      transition: transform 0.2s ease;
     }
   }
 
@@ -47,6 +46,7 @@
   }
 
   & > input:checked + .c-checkbox__box::after {
+    transition: transform 0.2s ease;
     transform: rotate(-45deg) scale(1.01);
   }
 
@@ -69,6 +69,18 @@
   & > input[disabled] ~ .c-checkbox__label {
     color: var(--gray);
     cursor: not-allowed;
+  }
+}
+
+.c-checkbox__indeterminate > input + .c-checkbox__box {
+  background: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+
+  &::after {
+    transform: scale(1.01);
+    border-left: 0;
+    left: 0.18em;
   }
 }
 

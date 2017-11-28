@@ -74,6 +74,52 @@
 </script>
 ```
 
+### indeterminate 状态
+
+`indeterminate` 通常用于展示一组**未全部被选中**（部分选中）的多选框组状态。
+
+```html
+<c-checkbox
+  v-model="allChecked"
+  :indeterminate="indeterminate"
+  label="全部选中"
+  @change="onCheckAllChange"
+/>
+<br/>
+<c-checkbox-group
+  v-model="selected"
+  :options="options"
+  @change="onCheckedResultChange"
+/>
+
+<p>你选择了 {{ selected }}</p>
+
+<script>
+  export default {
+    data () {
+      return {
+        options: [ 'Node', 'Nginx', { label: 'Vue.js', value: 'Vue' } ],
+        selected: ['Node'],
+        allChecked: false,
+        indeterminate: true
+      }
+    },
+    methods: {
+      onCheckAllChange (e) {
+        this.selected = !e ? [] : this.options
+        this.indeterminate = false
+      },
+      onCheckedResultChange (e) {
+        const total = this.options.length
+        const checked = this.selected.length
+        this.allChecked = e.length === total
+        this.indeterminate = 0 < checked && checked < total
+      }
+    }
+  }
+</script>
+```
+
 ## 多选验证
 
 Clair 可以帮助你限制用户最少或最多选择多少项。
@@ -116,6 +162,7 @@ Clair 可以帮助你限制用户最少或最多选择多少项。
 |-----|------|-------|-----|
 | label | String | 无 | 复选框关联的标签 |
 | disabled | Boolean | false | 复选框是否被禁用 |
+| indeterminate | Boolean | false | indeterminate 状态 |
 
 ## c-checkbox-group 属性
 
