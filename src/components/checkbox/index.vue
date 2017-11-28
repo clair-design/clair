@@ -26,6 +26,9 @@
 
   export default {
     name,
+    model: {
+      event: 'change'
+    },
     props,
     computed: {
       className () {
@@ -49,7 +52,6 @@
     methods: {
       onChange (e) {
         this.$emit('change', e.target.checked)
-        this.$emit('input', e.target.checked)
       }
     }
   }

@@ -57,6 +57,9 @@ const props = {
 
 export default {
   name,
+  model: {
+    event: 'change'
+  },
   props,
   mixins: [validatable],
   data () {
@@ -111,7 +114,6 @@ export default {
         .filter((_, i) => isChecked[i])
         .map(option => option.value)
 
-      this.$emit('input', checkedValues)
       this.$emit('change', checkedValues)
     }
   }
