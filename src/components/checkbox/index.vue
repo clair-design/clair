@@ -41,6 +41,11 @@
         }
       }
     },
+    mounted () {
+      if (this.$refs.input) {
+        this.$refs.input.indeterminate = this.indeterminate
+      }
+    },
     methods: {
       onChange (e) {
         this.$emit('change', e.target.checked)
