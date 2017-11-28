@@ -5,6 +5,7 @@
       v-model="isChecked[index]"
       :label="option.label"
       :disabled="option.disabled"
+      @change="onItemChange($event, index)"
     )
     em.c-error-msg(v-if="!validity.valid") {{validity.msg}}
 </template>
@@ -72,12 +73,7 @@ export default {
     })
     this.updateChecked()
     this.$watch('options', this.updateChecked)
-    this.$watch('isChecked', _ => {
-      const checkedValues = this.options
-        .filter((_, i) => this.isChecked[i])
-        .map(option => option.value)
-      this.$emit('input', checkedValues)
-    })
+    this.$watch('value', this.updateChecked)
   },
   methods: {
     updateChecked () {
@@ -85,6 +81,18 @@ export default {
         return this.value.indexOf(option.value) > -1
       })
       this.isChecked = isChecked
+    },
+
+    onItemChange (checked, index) {
+      const isChecked = [...this.isChecked]
+      isChecked[index] = checked
+
+      const checkedValues = this.options
+        .filter((_, i) => isChecked[i])
+        .map(option => option.value)
+
+      this.$emit('input', checkedValues)
+      this.$emit('change', checkedValues)
     }
   }
 }
