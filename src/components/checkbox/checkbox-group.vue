@@ -1,7 +1,7 @@
 <template lang="pug">
   div.c-checkbox-group
     c-checkbox(
-      v-for="(option, index) in options"
+      v-for="(option, index) in optionList"
       v-model="isChecked[index]"
       :label="option.label"
       :disabled="option.disabled"
@@ -65,6 +65,26 @@ export default {
       rules: {}
     }
   },
+  computed: {
+    optionList () {
+      return this.options.map(item => {
+        if (typeof item === 'string') {
+          return {
+            value: item,
+            label: item
+          }
+        }
+
+        if (item && typeof item === 'object') {
+          if (item.hasOwnProperty('label') && item.hasOwnProperty('value')) {
+            return item
+          }
+        }
+
+        throw new TypeError('Type of option prop is invalid.')
+      })
+    }
+  },
   created () {
     Object.assign(this.rules, {
       required: required.bind(this),
@@ -77,7 +97,7 @@ export default {
   },
   methods: {
     updateChecked () {
-      const isChecked = this.options.map(option => {
+      const isChecked = this.optionList.map(option => {
         return this.value.indexOf(option.value) > -1
       })
       this.isChecked = isChecked
@@ -87,7 +107,7 @@ export default {
       const isChecked = [...this.isChecked]
       isChecked[index] = checked
 
-      const checkedValues = this.options
+      const checkedValues = this.optionList
         .filter((_, i) => isChecked[i])
         .map(option => option.value)
 
