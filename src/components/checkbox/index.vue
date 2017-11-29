@@ -1,5 +1,5 @@
 <template lang="pug">
-  label.c-checkbox(@change="onChange", :class="className")
+  label.c-checkbox(@change="onChange")
     input(
       type="checkbox"
       :name="name"
@@ -30,13 +30,6 @@
       event: 'change'
     },
     props,
-    computed: {
-      className () {
-        if (this.indeterminate) {
-          return 'c-checkbox__indeterminate'
-        }
-      }
-    },
     watch: {
       indeterminate (newVal) {
         if (this.$refs.input) {

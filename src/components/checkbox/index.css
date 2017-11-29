@@ -72,7 +72,7 @@
   }
 }
 
-.c-checkbox__indeterminate > input + .c-checkbox__box {
+.c-checkbox > input:indeterminate + .c-checkbox__box {
   background: var(--primary-color);
   color: #fff;
   border-color: var(--primary-color);
