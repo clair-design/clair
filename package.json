@@ -76,7 +76,6 @@
   "dependencies": {
     "autosize": "^4.0.0",
     "feather-icons": "^4.0.1",
-    "loadash": "^1.0.0",
     "object-assign": "^4.1.1"
   }
 }
