@@ -4,42 +4,55 @@
       v-if="!multiLine"
       :type="type"
       :name="name"
-      :value="value"
+      v-model="inputValue"
       :placeholder="placeholder"
       :readonly="readonly"
       :disabled="disabled"
       :maxlength="maxlength"
-      @input="onInput"
-      @change="onInput"
+      @input="onChange"
+      @change="onChange"
     )
     textarea.c-input(
       v-if="multiLine"
       :name="name"
-      :value="value"
+      v-model="inputValue"
       :placeholder="placeholder"
       :readonly="readonly"
       :disabled="disabled"
       :maxlength="maxlength"
       :rows="rows"
       :cols="cols"
-      @input="onInput"
-      @change="onInput"
+      :wrap="wrap"
+      :style="textAreaStyle"
+      @input="onChange"
+      @change="onChange"
       ref="textArea"
     )
     em.c-error-msg(v-if="!validity.valid") {{validity.msg}}
 </template>
 
 <script>
+  import throttle from 'lodash/throttle'
   import './index.css'
   import validatable from '../validatable/'
 
   // SEE https://github.com/jackmoore/autosize
-  import autoSize from 'autosize'
+  // import autoSize from 'autosize'
+  import calculateNodeHeight from './calcNodeHeight'
 
   export default {
     name: 'c-input',
+    model: {
+      event: 'change'
+    },
+    mixins: [validatable],
     props: {
-      value: [String, Number],
+      value: {
+        type: [String, Number],
+        default () {
+          return ''
+        }
+      },
       rules: Object,
       placeholder: String,
       size: String,
@@ -47,7 +60,8 @@
       readonly: Boolean,
       disabled: Boolean,
       multiLine: Boolean,
-      autoresize: Boolean,
+      autosize: Array,
+      wrap: String,
       type: {
         type: String,
         default: 'text'
@@ -74,35 +88,46 @@
     },
     data () {
       return {
-        origRows: this.rows
+        origRows: this.rows,
+        textAreaStyle: {},
+        inputValue: ''
       }
     },
-    mixins: [validatable],
+
+    watch: {
+      value (val) {
+        this.inputValue = val
+      }
+    },
+
     methods: {
-      onInput (e) {
-        this.$emit('input', e.target.value)
-      },
       onChange (e) {
-        this.$emit('input', e.target.value)
+        this.$emit('change', e.target.value)
+        this.resizeTextArea()
+      },
+
+      resizeTextArea () {
+        const { multiLine, autosize } = this
+        if (multiLine && autosize) {
+          const [minRows, maxRows] = this.autosize
+          const node = this.$refs.textArea
+
+          this.$nextTick(() => {
+            const style = calculateNodeHeight(node, false, minRows, maxRows)
+            this.textAreaStyle = style
+          })
+        }
       }
     },
+
     mounted () {
-      const { multiLine, autoresize } = this
+      const { multiLine, autosize } = this
 
-      // TODO
-      // How to implement accurate `maxRows`
-      if (multiLine && autoresize) {
-        const el = this.$refs.textArea
-        autoSize(el)
+      if (multiLine && autosize) {
+        this.resizeTextArea()
       }
-    },
-    destroyed () {
-      const { multiLine, autoresize } = this
 
-      if (multiLine && autoresize) {
-        const el = this.$refs.textArea
-        autoSize.destroy(el)
-      }
+      this.resizeTextArea = throttle(this.resizeTextArea.bind(this), 200)
     }
   }
 </script>

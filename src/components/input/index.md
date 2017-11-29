@@ -92,13 +92,24 @@ route: component/input
 类似于 `textarea`，可以通过 `rows` 属性指定显示的高度。
 
 ```html
-<c-input type="textarea" multi-line :rows="3" width="longer" />
+<c-input
+  type="textarea"
+  multi-line
+  :rows="3"
+  width="longer"
+/>
 ```
 
-配合 `autoresize` 属性，还可以随着输入行数的增加自动调整高度（参见 [autosize](https://github.com/jackmoore/autosize)）。
+配合 `autosize` 属性，还可以随着输入行数的增加自动调整高度。
 
 ```html
-<c-input type="textarea" multi-line autoresize :rows="3" width="longer" />
+<c-input
+  type="textarea"
+  multi-line
+  :autosize="[3, 10]"
+  placeholder="多行文本"
+  width="longer"
+/>
 ```
 
 ## 输入验证
@@ -302,7 +313,8 @@ Clair 目前支持验证的 `type` 有：
 | readonly | Boolean | false | 是否只读 |
 | disabled | Boolean | false | 是否禁用 |
 | multi-line | Boolean | false | 是否可以输入多行文字 |
-| autoresize | Boolean | false | 输入多行文字时，是否允许根据内容自动调整高度 |
+| autosize | [maxRows: int, maxRows: int] | false | 输入多行文字时，是否允许根据内容自动调整高度 |
+| wrap | String | 空 | `on` `off` 控制换行 |
 | type | String | text | 参考 HTML input 元素的 type 属性 |
 | name | String | 无 | 参考 HTML input 元素的 name 属性 |
 | rows | Number | 3 | 输入框展示的高度 |

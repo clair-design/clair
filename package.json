@@ -74,8 +74,8 @@
     "stylelint-config-standard": "^17.0.0"
   },
   "dependencies": {
-    "autosize": "^4.0.0",
     "feather-icons": "^4.0.1",
+    "lodash": "^4.17.4",
     "object-assign": "^4.1.1"
   }
 }
