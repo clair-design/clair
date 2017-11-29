@@ -38,9 +38,13 @@ $ yarn install
 - `dist` 中存放构建后要发布的文件（无需同步到 Git）
 
 ## 构建脚本
-* `yarn start` 或 `npm start`：开启 rollup 以及 PostCSS 编译，并启动文档页面的服务器。
-* `yarn build` 或 `npm run build`：文件打包，并生成 nuxt 静态文档
-* `yarn new <name>` 或 `npm run new <name>`：自动创建新组件
+
+日常组件开发建议使用 `yarn dev [name]`，速度相对较快。
+
+* `yarn start` 或 `npm start`：开启 rollup 以及 PostCSS 编译，并启动 nuxt.js 文档服务
+* `yarn build` 或 `npm run build`：rollup 以及 PostCSS 编译、打包，并生成 nuxt 静态文档
+* `yarn new <name>` 或 `npm run new <name>`：根据 boilerplate 文件夹中的模板自动创建新组件
+* `yarn dev [name]` 或 `npm run dev [name]`：开启单一组件开发模式（如果组件不存在则根据模板新建）
 
 ## 构建工具
 
