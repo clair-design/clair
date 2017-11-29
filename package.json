@@ -11,6 +11,7 @@
   "scripts": {
     "precommit": "lint-staged",
     "clean": "rimraf dist .site .nuxt ./docs/pages/*/  ./docs/pages/*.vue",
+    "dev": "clair dev",
     "new": "clair add",
     "build": "npm run clean && clair build",
     "start": "clair start"
@@ -44,7 +45,7 @@
   "devDependencies": {
     "@nuxtjs/workbox": "^1.2.2",
     "babel-eslint": "^7.2.3",
-    "clair-scripts": "^2.1.2",
+    "clair-scripts": "^2.2.0",
     "eslint": "^4.3.0",
     "eslint-config-neat": "^1.0.0",
     "eslint-plugin-html": "^3.1.1",
