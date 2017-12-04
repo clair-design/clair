@@ -95,8 +95,11 @@
     },
 
     watch: {
-      value (val) {
-        this.inputValue = val
+      value: {
+        handler (val) {
+          this.inputValue = val
+        },
+        immediate: true
       }
     },
 
