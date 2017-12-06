@@ -183,6 +183,10 @@ export default {
     this.$on('option-clicked', this.onOptionClick)
   },
 
+  destroyed () {
+    this.menuEl && document.body.removeChild(this.menuEl)
+  },
+
   methods: {
     toggleOpen () {
       this.isOpen = !this.isOpen
