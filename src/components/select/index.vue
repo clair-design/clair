@@ -156,7 +156,7 @@ export default {
     selectedIndex: {
       immediate: true,
       handler: function () {
-        if (!this.multiple) return
+        if (!this.multiple || this.$isServer) return
         this.$nextTick(function () {
           const h = this.$el.querySelector('.c-select__selection').offsetHeight
           const minHeight = 12
