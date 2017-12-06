@@ -23,8 +23,15 @@ module.exports = {
     // where to write `.vue`
     output: 'docs/pages',
     vueTools (name, uid) {
-      return `<input id="${uid}" type="checkbox" tabindex="-1" aria-hidden="true"/>
-      <label for="${uid}" aria-hidden="true"></label>`
+      return `
+<input id="${uid}" type="checkbox" tabindex="-1" aria-hidden="true"/>
+<label for="${uid}" aria-hidden="true"></label>
+<div class="vue-demo-tools">
+  <div>
+    <a @click="$code.open($event)" title="在 Codepen 中打开"><c-icon type="feather" name="codepen" class="vue-demo-tools__icon"/></a>
+    <a @click="$code.copy($event)" title="复制代码"><c-icon type="feather" name="copy" class="vue-demo-tools__icon"/></a>
+  </div>
+</div>`
     }
   },
 
@@ -151,12 +158,17 @@ function installVueComps ({ entry, vues }) {
     return `${source}
 ${components.map(({ path, comp }) => `import ${comp} from '${path}'`).join('\n')}
 
-export default {
+const component = {
   install (Vue) {
     main.install(Vue)
     const comps = [${components.map(c => c.comp).join(', ')}]
     comps.forEach(comp => comp.name && Vue.component(comp.name, comp))
   }
+}
+export default component
+
+if (typeof window !== 'undefined' && window.Vue) {
+  Vue.use(component)
 }
 `
   }
