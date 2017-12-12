@@ -11,6 +11,9 @@
   border: 1px solid color(var(--gray) l(85%));
   border-radius: 0.2em;
   overflow: hidden;
+  width: 16em;
+  min-height: 2.5em;
+  cursor: pointer;
 
   &::after {
     content: '';
@@ -23,7 +26,8 @@
     pointer-events: none;
   }
 
-  &:focus {
+  &:focus,
+  &:focus-within {
     outline: none;
     box-shadow: 0 0 0 0.2em color(var(--primary-color) l(90%));
   }
@@ -47,52 +51,48 @@
     font-size: 0.75em;
   }
 
-  &.is-shortest .c-select__input {
-    width: 3em;
-  }
-
-  &.is-shorter .c-select__input {
+  &.is-shortest {
     width: 5em;
   }
 
-  &.is-short .c-select__input {
-    width: 10em;
+  &.is-shorter {
+    width: 8em;
   }
 
-  &.is-long .c-select__input {
+  &.is-short {
+    width: 12em;
+  }
+
+  &.is-long {
     width: 24em;
   }
 
-  &.is-longer .c-select__input {
+  &.is-longer {
     width: 32em;
   }
 
-  &.is-longest .c-select__input {
+  &.is-longest {
     width: 50em;
   }
-}
 
-.c-select__inner {
-  cursor: pointer;
-
-  & .c-select__input:not(.can-input) {
-    pointer-events: none;
+  &.is-flex {
+    display: block;
+    width: 100%;
   }
 }
 
 .c-select__selection {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   padding-right: 2em;
-  padding-bottom: 0.5em;
+  padding-bottom: 0.375em;
   background: #fff;
+  overflow: hidden;
+  min-height: inherit;
 
   & .c-chip {
     float: left;
-    margin-left: 0.3em;
-    margin-top: 0.3em;
+    margin-left: 0.4em;
+    margin-top: 0.4em;
 
     &.is-disabled {
       color: color(var(--gray) l(80%));
@@ -105,12 +105,21 @@
   }
 }
 
-.c-select__input {
-  border: none;
-  height: 2.5em;
-  margin: -1px;
-  padding: 0 1.5em 0 0.5em;
-  vertical-align: middle;
+.c-select__value {
+  color: var(--text-color);
+  padding: 0.5em 0.4em 0;
+  line-height: 1.5;
+  cursor: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c-select__placeholder {
+  color: color(var(--gray) l(50%));
+  padding: 0.5em 0.4em 0;
+  line-height: 1.5;
+  cursor: inherit;
 }
 
 .c-select__menu {
@@ -121,6 +130,62 @@
   font-size: 0.875em;
   border: 1px solid color(var(--gray) l(85%));
   box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.2);
+  line-height: 1.5;
+  max-height: 25em;
+  overflow-y: auto;
+  -ms-scroll-chaining: none;
+  overscroll-behavior: none;
+
+  &.is-sm {
+    font-size: 12px;
+  }
+
+  &.is-lg {
+    font-size: 16px;
+  }
+}
+
+.c-select__empty {
+  padding: 0.5em 1em;
+  color: var(--gray);
+}
+
+.c-select__input {
+  &.is-single {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    & input {
+      padding-right: 1.8em;
+    }
+  }
+
+  &.is-multiple {
+    float: left;
+    width: 4em;
+    overflow: visible;
+    margin-top: 0.5em;
+
+    & input {
+      height: 1.5em;
+      width: 20em;
+    }
+  }
+
+  & input {
+    display: block;
+    width: 100%;
+    border: none;
+    height: 2.5em;
+    padding: 0 0.5em;
+
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
 .c-select__caret {
