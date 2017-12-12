@@ -458,7 +458,7 @@ export default {
   methods: {
     search (options, query) {
       if (!query) return defaultOptions
-      return new Promise((resolve, reject) => {
+      return new window.Promise((resolve, reject) => {
         setTimeout(_ => {
           resolve([1, 2, 3].map(i => `${query}-${rdn()}`))
         }, 500)
