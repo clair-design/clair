@@ -8,51 +8,80 @@
   :tabindex="disabled ? -1 : 0"
   :class="classNames"
   @keydown="onKeyDown"
+  @click="toggleOpen"
 )
-  .c-select__inner(
-    @click="toggleOpen"
-  )
-    input.c-select__input(
-      tabindex="-1"
-      type="text"
-      :class="{ 'can-input': canInput }"
-      :placeholder="placeholder"
-      :value="selectedLabels"
+  i.c-select__caret
+  .c-select__selection
+    .c-select__placeholder(
+      v-if="showPlaceholder"
+    ) {{ placeholder }}
+    .c-select__value(
+      v-if="!multiple && selectedOptions.length"
+    ) {{ selectedOptions[0].label }}
+    .c-chip(
+      v-if="multiple"
+      v-for="option in selectedOptions"
+      :class="{ 'is-disabled': option.disabled }"
     )
-    i.c-select__caret
-  .c-select__selection(
-    v-if="multiple"
-    @click="toggleOpen"
-  )
-    slot(name="selection")
-      .c-chip(
-        v-if="multiple && selectedOptions.length"
-        v-for="option in selectedOptions"
-        :class="{ 'is-disabled': option.disabled }"
-      )
+      slot(name="selection" :option="option")
         span {{ option.label }}
-        .c-chip__close(@click.stop="unselectOption(option)")
+      .c-chip__close(@click.stop="unselectOption(option)")
+    .c-select__input(
+      v-show="showInput"
+      :class="multiple ? 'is-multiple' : 'is-single'"
+    )
+      input(
+        v-model="query"
+        autocomplete="off"
+        @click.stop
+        @blur="$el.focus()"
+        @keydown.delete="onDeleteKey"
+        @input="onSearchInput"
+      )
   transition(name="fade-in-down")
     .c-select__menu(
       role="menu"
       aria-activedescendant
       v-show="isOpen"
       :style="menuStyle"
+      :class="size ? 'is-'+size : ''"
     )
-      slot
-        c-option(
-          ref="$options"
-          v-for="(option, index) in options"
+      slot(
+        name="no-match"
+        v-if="autocomplete && !filteredOptions.length"
+      )
+        .c-select__empty 无匹配选项
+      c-option(
+        ref="$options"
+        v-for="(option, index) in filteredOptions"
+        :label="option.label"
+        :isActive="activeOption == option"
+        :isSelected="selectedOptions.indexOf(option) > -1"
+        :disabled="option.disabled"
+        :option="option"
+      )
+        slot(
+          name="menu-item"
           :label="option.label"
-          :isActive="activeIndex == index"
-          :isSelected="selectedIndex.indexOf(index) > -1"
+          :isActive="activeOption == option"
+          :isSelected="selectedOptions.indexOf(option) > -1"
           :disabled="option.disabled"
+          :index="index"
+          :option="option"
         )
 </template>
 
 <script>
 import './index.css'
-import { getPosition } from './position.js'
+import { getPosition, POSITION } from './position.js'
+
+// ensure each option has label and value
+const normalizeOptions = options => {
+  return options.map(option => {
+    if (option.label && option.value) return option
+    return { label: option, value: option }
+  })
+}
 
 export default {
 
@@ -68,9 +97,18 @@ export default {
     },
     multiple: Boolean,
     combobox: Boolean,
-    searchable: Boolean,
+    autocomplete: Boolean,
     size: String,
-    width: String
+    width: String,
+    filter: {
+      type: Function,
+      default: (options, query) => {
+        const q = query.trim().toLowerCase()
+        if (!q) return options
+        return options
+          .filter(option => option.label.toLowerCase().indexOf(q) > -1)
+      }
+    }
   },
 
   model: {
@@ -89,16 +127,25 @@ export default {
         left: 'auto',
         minWidth: 0
       },
-      activeIndex: -1,
-      selectedIndex: [],
+      activeOption: null,
+      selectedOptions: [],
+      filteredOptions: [],
       selectionEl: null,
-      menuEl: null
+      menuEl: null,
+      query: '',
+      promiseId: 0
     }
   },
 
   computed: {
+    normalizedOptions () {
+      return normalizeOptions(this.options)
+    },
     canInput () {
-      return this.combobox || this.searchable
+      return this.combobox || this.autocomplete
+    },
+    showInput () {
+      return this.canInput && this.isOpen
     },
     classNames () {
       const classNames = [
@@ -111,26 +158,20 @@ export default {
       if (this.width) classNames.push(`is-${this.width}`)
       return classNames
     },
-    selectedOptions () {
-      return this.selectedIndex.map(index => this.options[index])
-    },
-    selectedLabels () {
-      return this.selectedOptions
-        .map(option => option.label)
-        .join(', ')
-    },
     selectedValues () {
       return this.selectedOptions.map(option => option.value)
+    },
+    showPlaceholder () {
+      const empty = !this.selectedOptions.length
+      return empty && !this.isOpen
     }
   },
 
   watch: {
     isOpen () {
       if (this.isOpen) {
-        const { top, left } = getPosition(this.menuEl, this.$el)
-        this.menuStyle.top = `${top}px`
-        this.menuStyle.left = `${left}px`
         this.menuStyle.minWidth = `${this.$el.offsetWidth}px`
+        this.positionMenu()
         window.addEventListener('click', this.onBodyClick, true)
       } else {
         window.removeEventListener('click', this.onBodyClick, true)
@@ -140,29 +181,30 @@ export default {
     value: {
       immediate: true,
       handler: function (value) {
+        const isEmpty = value === void 0 || value === null || value === ''
+        if (isEmpty) return
         if (this.multiple) {
-          if (!Array.isArray(value) || value.length === 0) {
-            this.selectedIndex = []
-            return
-          }
-          this.selectedIndex = value.map(v => this.getIndex(v))
+          const isArray = Array.isArray(value)
+          const isEmptyArray = isArray && value.length === 0
+          if (isEmptyArray) return
+          const valueArr = isArray ? value : [value]
+          this.selectedOptions = valueArr
+            .map(v => this.getOption(v))
+            .filter(option => option)
         } else {
-          const index = this.getIndex(value)
-          if (index > -1) this.$set(this.selectedIndex, 0, index)
+          const option = this.getOption(value)
+          if (option) {
+            this.selectedOptions = [option]
+          }
         }
       }
     },
 
-    selectedIndex: {
-      immediate: true,
-      handler: function () {
-        if (!this.multiple) return
-        this.$nextTick(function () {
-          const h = this.$el.querySelector('.c-select__selection').offsetHeight
-          const minHeight = 12
-          this.$el.style.height = h > minHeight ? `${h}px` : 'auto'
-        })
-      }
+    selectedOptions: function () {
+      if (!this.multiple || this.$isServer) return
+      this.$nextTick(function () {
+        this.positionMenu()
+      })
     }
   },
 
@@ -176,91 +218,137 @@ export default {
 
     // hover the option
     this.$on('option-activated', option => {
-      this.activeIndex = this.$refs.$options.indexOf(option)
+      this.activeOption = option
     })
 
     // select the option
-    this.$on('option-clicked', this.onOptionClick)
+    this.$on('option-clicked', option => this.selectOption(option))
+
+    // watch options, query to filter options
+    this.$watch(
+      function () {
+        return [this.normalizedOptions, this.query, this.isOpen]
+      },
+      function filterOptions () {
+        const { autocomplete, query } = this
+        if (!autocomplete) {
+          this.filteredOptions = this.normalizedOptions
+          return
+        }
+        const filtered = this.filter(this.normalizedOptions, query)
+        if (typeof filtered.then === 'function') {
+          const promiseId = Date.now()
+          this.promiseId = promiseId
+          filtered.then(options => {
+            if (this.promiseId > promiseId) return
+            this.filteredOptions = normalizeOptions(options)
+          })
+        } else {
+          this.filteredOptions = normalizeOptions(filtered)
+        }
+      }
+    )
+  },
+
+  beforeDestroy () {
+    this.menuEl.remove()
   },
 
   methods: {
     toggleOpen () {
-      this.isOpen = !this.isOpen
+      if (this.isOpen) {
+        this.close()
+      } else {
+        this.open()
+      }
     },
 
-    getIndex (value) {
-      return this.options.findIndex(option => option.value === value)
+    getOption (value) {
+      const fn = option => option.value === value
+      return this.filteredOptions.find(fn) ||
+        this.normalizedOptions.find(fn) ||
+        this.selectedOptions.find(fn)
     },
 
     open () {
-      this.isOpen = true
-      const [ selected ] = this.selectedIndex
-      this.activeIndex = selected > -1 ? selected : 0
+      this.isOpen = true;
+      [this.activeOption] = this.filteredOptions
+      if (this.showInput) {
+        this.query = ''
+        this.$nextTick(_ => {
+          this.$el.querySelector('input').focus()
+        })
+      }
     },
 
     close () {
       this.isOpen = false
     },
 
-    getNextIndex (current) {
-      const next = this.options.findIndex((option, index) => {
-        return index > current && !option.disabled
+    getNextOption (current) {
+      const currentIndex = this.filteredOptions.indexOf(current)
+      const next = this.filteredOptions.find((option, index) => {
+        return index > currentIndex && !option.disabled
       })
-      return next > 0 ? next : current
+      return next || current
     },
 
-    getPreviousIndex (current) {
-      let prev = -1
-      for (let i = current - 1; i < this.options.length && i >= 0; i--) {
-        if (!this.options[i].disabled) {
-          prev = i
+    getPreviousOption (current) {
+      let prev = null
+      const currentIndex = this.filteredOptions.indexOf(current)
+      for (let i = currentIndex - 1; i >= 0; i--) {
+        if (!this.filteredOptions[i].disabled) {
+          prev = this.filteredOptions[i]
           break
         }
       }
-      return prev > -1 ? prev : current
+      return prev || current
     },
 
     activateNext () {
-      const next = this.getNextIndex(this.activeIndex)
-      this.activeIndex = next
+      const next = this.getNextOption(this.activeOption)
+      this.activeOption = next
     },
 
     activatePrevious () {
-      const prev = this.getPreviousIndex(this.activeIndex)
-      this.activeIndex = prev
+      const prev = this.getPreviousOption(this.activeOption)
+      this.activeOption = prev
     },
 
     selectPrevious () {
-      const prev = this.getPreviousIndex(this.selectedIndex[0])
-      this.selectIndex(prev)
+      const prev = this.getPreviousOption(this.selectedOptions[0])
+      this.selectOption(prev)
     },
 
     selectNext () {
-      const next = this.getNextIndex(this.selectedIndex[0])
-      this.selectIndex(next)
+      const next = this.getNextOption(this.selectedOptions[0])
+      this.selectOption(next)
     },
 
-    selectIndex (index) {
-      const option = this.$refs.$options[index]
+    selectOption (option) {
       if (this.multiple) {
-        if (option.isSelected) { // 已经选中则取消
-          const arrIndex = this.selectedIndex.indexOf(index)
-          this.selectedIndex.splice(arrIndex, 1)
-        } else {
-          this.selectedIndex.push(index)
-        }
+        if (this.autocomplete) this.query = ''
+        const isSelected = this.selectedOptions.includes(option)
+        if (isSelected) return this.unselectOption(option)
+        this.selectedOptions.push(option)
       } else {
-        this.$set(this.selectedIndex, 0, index)
+        this.selectedOptions = [option]
         this.close()
       }
       this.emitChange()
     },
 
     unselectOption (option) {
-      const index = this.options.indexOf(option)
-      const arrIndex = this.selectedIndex.indexOf(index)
-      this.selectedIndex.splice(arrIndex, 1)
+      const index = this.selectedOptions.indexOf(option)
+      this.selectedOptions.splice(index, 1)
       this.emitChange()
+    },
+
+    positionMenu () {
+      const pos = this.canInput ? POSITION.BOTTOM : POSITION.TOP
+      const { top, left } = getPosition(this.menuEl, this.$el, pos)
+      this.menuEl.style.top = `${top}px`
+      this.menuEl.style.left = `${left}px`
     },
 
     onBodyClick (e) {
@@ -272,9 +360,8 @@ export default {
       }
     },
 
-    onOptionClick (option) {
-      const index = this.$refs.$options.indexOf(option)
-      this.selectIndex(index)
+    onDeleteKey (e) {
+      if (!this.query) this.selectedOptions.pop()
     },
 
     onKeyDown (e) {
@@ -293,10 +380,10 @@ export default {
         multiple,
         open,
         close,
-        selectIndex,
+        selectOption,
         selectPrevious,
         selectNext,
-        activeIndex,
+        activeOption,
         activateNext,
         activatePrevious
       } = this
@@ -316,7 +403,7 @@ export default {
       if (keyCode === keys.ESC && isOpen) return close()
 
       // press enter to select
-      if (keyCode === keys.ENTER && isOpen) return selectIndex(activeIndex)
+      if (keyCode === keys.ENTER && isOpen) return selectOption(activeOption)
 
       // use left, right to navigate on closed state of non-multiple select
       const canSelect = !isOpen && !multiple
@@ -326,6 +413,10 @@ export default {
       // use up, down to navigate on open state
       if (isOpen && keyCode === keys.UP) return activatePrevious()
       if (isOpen && keyCode === keys.DOWN) return activateNext()
+    },
+
+    onSearchInput (e) {
+      this.$emit('searchinput', e.target.value)
     },
 
     emitChange () {

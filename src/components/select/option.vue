@@ -5,9 +5,10 @@
   :class="classNames"
   @mouseenter="activate"
   @mouseleave="deactivate"
+  @mousedown.prevent
   @click="onClick"
-  @mousedown.prevent="nil"
-) {{ label }}
+)
+  slot {{ label }}
 </template>
 
 <script>
@@ -18,6 +19,7 @@ export default {
     disabled: Boolean,
     isActive: Boolean,
     isSelected: Boolean,
+    option: Object,
     value: [String, Number, Object]
   },
   inject: ['$select'],
@@ -32,17 +34,16 @@ export default {
   },
   methods: {
     activate () {
-      this.$select.$emit('option-activated', this)
+      this.$select.$emit('option-activated', this.option)
     },
     deactivate () {
-      this.$select.$emit('option-deactivated', this)
+      this.$select.$emit('option-deactivated', this.option)
     },
     onClick (e) {
       e.preventDefault()
       if (this.disabled) return
-      this.$select.$emit('option-clicked', this)
-    },
-    nil (e) {}
+      this.$select.$emit('option-clicked', this.option)
+    }
   }
 }
 </script>

@@ -1,12 +1,17 @@
 /**
  * get absolute position relative to another element
  */
-export function getPosition (el, refEl) {
+export const POSITION = {
+  TOP: 'top',
+  BOTTOM: 'bottom'
+}
+export function getPosition (el, refEl, pos = POSITION.TOP) {
   const refRect = refEl.getBoundingClientRect()
-  return {
-    top: refRect.top + window.pageYOffset,
-    left: refRect.left + window.pageXOffset
-  }
+  const refTop = refRect.top + window.pageYOffset
+  const refLeft = refRect.left + window.pageXOffset
+  const left = refLeft
+  const top = pos === POSITION.TOP ? refTop : refTop + refEl.clientHeight
+  return { left, top }
 }
 
 export default { getPosition }
