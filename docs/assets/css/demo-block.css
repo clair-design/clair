@@ -91,3 +91,33 @@
   margin: 0;
 }
 
+.vue-demo-tools {
+  position: relative;
+  z-index: 999;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.vue-demo-tools > div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 4px;
+}
+
+.vue-demo-block > input:checked ~ .vue-demo-tools {
+  opacity: 1;
+}
+
+.vue-demo-tools__icon {
+  margin: 4px;
+  cursor: pointer;
+}
+
+.vue-demo-tools__icon svg {
+  stroke: #898989;
+}
+
+.vue-demo-tools__icon:hover svg{
+  stroke: #498ff2;
+}

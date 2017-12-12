@@ -1,24 +1,42 @@
 <template lang="pug">
-  c-base-range.c-range.is-bg-gray-2(
+  c-base-range.c-slider.is-bg-gray-2(
     :class="className",
     :direction="vertical ? 'v' : 'h'",
-    @change="onRangeChange"
+    @change="onRangeChange",
+    :disabled="disabled",
+    :style="height ? { height: height } : null"
   )
-    .c-range-thumb(
-      slot="thumb",
-      :style="thumbPos"
+    input(
+      type="range",
+      :value="nominal",
+      :min="min",
+      :max="max",
+      :step="step",
+      :disabled="disabled"
     )
-    .c-range-progress.is-bg-blue-5(:style="progressPos")
+    .c-slider__progress.is-bg-blue-5(:style="progressPos")
+    ul.c-slider__marks
+      li(
+        v-for="mark in normalizedMarks",
+        :style="`${vertical ? 'bottom' : 'left'}: ${mark.p}`"
+      ) {{mark.n}}
+    .c-slider__stops
+      span(
+        v-for="mark in normalizedMarks",
+        :style="`${vertical ? 'bottom' : 'left'}: ${mark.p}`"
+      )
+    .c-slider__thumb(:style="thumbPos")
+      .c-slider__tip {{formmater(this.nominal, 'tip')}}
 </template>
 
 <script>
+  import clamp from 'lodash/clamp'
+
   import './index.css'
   import baseRange from '../base-range/index.vue'
 
-  import clamp from 'lodash/clamp'
-
   export default {
-    name: 'c-range-slider',
+    name: 'c-slider',
     components: {
       'c-base-range': baseRange
     },
@@ -37,12 +55,26 @@
         default: 1
       },
       value: {
-        type: Number,
+        type: [Number, String],
         default: 0
+      },
+      marks: {
+        type: Array
+      },
+      formmater: {
+        type: Function,
+        default: id => id
       },
       vertical: {
         type: Boolean,
         default: false
+      },
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      height: {
+        type: String
       }
     },
 
@@ -54,8 +86,11 @@
 
     computed: {
       className () {
-        const { vertical } = this
-        return `c-range--${vertical ? 'vertical' : 'horizontal'}`
+        const { vertical, disabled } = this
+        return [
+          `c-slider--${vertical ? 'vertical' : 'horizontal'}`,
+          disabled ? 'c-slider--disabled' : ''
+        ]
       },
 
       precision () {
@@ -91,6 +126,20 @@
         const style = {}
         style[key] = percentage
         return style
+      },
+
+      normalizedMarks () {
+        const { marks, min, max, formmater } = this
+        const arr = marks || [min, max]
+        return arr.map(mk => {
+          const mark = clamp(mk, min, max)
+
+          return {
+            // eslint-disable-next-line
+            p: `${this.normalize(mark) * 100}%`,
+            n: formmater ? formmater(mark, 'scale') : mark
+          }
+        })
       }
     },
 
@@ -117,16 +166,20 @@
     },
 
     watch: {
-      value (newVal) {
-        const { max, min } = this
+      value: {
+        handler (newVal) {
+          const { max, min } = this
+          const val = Number(newVal)
 
-        if (newVal !== clamp(newVal, min, max)) {
-          throw new Error(`The value ${newVal} exceeded range` +
-            ` [${min}, ${max}].`
-          )
-        }
+          if (val !== clamp(val, min, max)) {
+            throw new Error(`The value ${val} exceeded range` +
+              ` [${min}, ${max}].`
+            )
+          }
 
-        this.normorlizedValue = this.normalize(newVal)
+          this.normorlizedValue = this.normalize(val)
+        },
+        immediate: true
       },
       nominal (val) {
         this.$emit('change', this.nominal)

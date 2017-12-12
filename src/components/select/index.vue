@@ -254,6 +254,10 @@ export default {
     this.menuEl.remove()
   },
 
+  destroyed () {
+    this.menuEl && document.body.removeChild(this.menuEl)
+  },
+
   methods: {
     toggleOpen () {
       if (this.isOpen) {

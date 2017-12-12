@@ -1,5 +1,8 @@
 <template lang="pug">
-.c-base-range(ref="container", @mousedown.prevent="onMousedown")
+.c-base-range(
+  ref="container",
+  @mousedown.prevent="onMousedown"
+)
   slot
   slot(name="thumb")
 </template>
@@ -23,11 +26,19 @@ export default {
     throttle: {
       type: Number,
       default: MOUSE_MOVE_DEFALT_TRHOTTLE_TIME
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
 
   methods: {
     onMousedown (e) {
+      if (this.disabled) {
+        return
+      }
+
       e.preventDefault()
 
       const onmousemove = throttle(e => {
