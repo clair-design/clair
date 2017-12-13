@@ -313,7 +313,7 @@ Clair 目前支持验证的 `type` 有：
 | readonly | Boolean | false | 是否只读 |
 | disabled | Boolean | false | 是否禁用 |
 | multi-line | Boolean | false | 是否可以输入多行文字 |
-| autosize | [maxRows: int, maxRows: int] | false | 输入多行文字时，是否允许根据内容自动调整高度 |
+| autosize | Array | null | `[minRows, maxRows]` 输入多行文字时，是否允许根据内容自动调整高度 |
 | wrap | String | 空 | `on` `off` 控制换行 |
 | type | String | text | 参考 HTML input 元素的 type 属性 |
 | name | String | 无 | 参考 HTML input 元素的 name 属性 |
