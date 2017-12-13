@@ -44,7 +44,7 @@
   "devDependencies": {
     "babel-eslint": "^7.2.3",
     "clair-scripts": "^3.0.0-alpha",
-    "dokiv": "^1.0.0",
+    "dokiv": "^1.0.1",
     "eslint": "^4.3.0",
     "eslint-config-neat": "^1.0.0",
     "eslint-plugin-html": "^3.1.1",
@@ -76,6 +76,7 @@
   "dependencies": {
     "feather-icons": "^4.0.1",
     "lodash": "^4.17.4",
+    "md2vue": "^3.0.0-beta",
     "object-assign": "^4.1.1"
   }
 }
