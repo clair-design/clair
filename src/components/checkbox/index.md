@@ -1,3 +1,10 @@
+---
+title: Checkbox 复选框
+layout: component
+scrollTop: true
+route: component/checkbox
+---
+
 # Checkbox 复选框
 
 ## 单独使用

@@ -1,3 +1,10 @@
+---
+title: ButtonGroup
+layout: component
+scrollTop: true
+route: component/button-group
+---
+
 # ButtonGroup
 
 ## Demo

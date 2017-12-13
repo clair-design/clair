@@ -10,6 +10,8 @@
             | 设计原则
           c-button(href="/component/install" icon="layers")
             | Vue 组件
-    nuxt
+    div
+      transition(name='fade')
+        router-view
     c-footer
 </template>

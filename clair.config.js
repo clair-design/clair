@@ -1,208 +1,142 @@
-const boilerplates = readDirFiles('./boilerplate/')
-Object.keys(boilerplates).forEach(key => {
-  const val = boilerplates[key]
-  boilerplates[key] = o => val.replace(/\$\{(\w+)\}/g, (_, g1) => o[g1])
-})
+const fs = require('fs')
+const path = require('path')
+const glob = require('glob')
 
-module.exports = {
-  boilerplate: {
-    // where to place generated components
-    dir: 'src/components',
-    files: boilerplates,
-    // prefix of the tag of a component
-    prefix: 'c'
-  },
+const vue = require('rollup-plugin-vue')
+const json = require('rollup-plugin-json')
+const commonjs = require('rollup-plugin-commonjs')
+const nodeResolve = require('rollup-plugin-node-resolve')
 
-  md2vue: {
-    // globs identifying those `.md` files
-    // to be transformed into `.vue`
-    globs: [
-      'src/components/**/index.md',
-      'docs/content/**/*.md'
-    ],
-    // where to write `.vue`
-    output: 'docs/pages',
-    vueTools (name, uid) {
-      return `
-<input id="${uid}" type="checkbox" tabindex="-1" aria-hidden="true"/>
-<label for="${uid}" aria-hidden="true"></label>
-<div class="vue-demo-tools">
-  <div>
-    <a @click="$code.open($event)" title="在 Codepen 中打开"><c-icon type="feather" name="codepen" class="vue-demo-tools__icon"/></a>
-    <a @click="$code.copy($event)" title="复制代码"><c-icon type="feather" name="copy" class="vue-demo-tools__icon"/></a>
-  </div>
-</div>`
-    }
-  },
+const cssFor = require('postcss-for')
+const cssEach = require('postcss-each')
+const cssNext = require('postcss-cssnext')
+const cssImport = require('postcss-import')
+const postCSS = require('rollup-plugin-postcss')
 
-  rollup: {
-    name: 'Clair',
-    input: 'src/js/entry.js',
-    output: [
-      {
-        format: 'umd',
-        file: 'dist/clair.js'
-      },
-      {
-        format: 'es',
-        file: 'dist/clair.esm.js'
-      },
-      {
-        format: 'cjs',
-        file: 'dist/clair.common.js'
-      }
-    ],
+// 单文件开发模式下自定义 HTML
+exports.devTemplate = null
 
-    plugins: [
-      installVueComps({
-        entry: 'src/js/entry.js',
-        vues: 'src/components/**/!(_)*.vue'
-      }),
-      require('rollup-plugin-node-resolve')({
-        jsnext: true,
-        main: true
-      }),
-      require('rollup-plugin-commonjs')(),
-      require('rollup-plugin-json')(),
-      require('rollup-plugin-vue')(),
-      require('rollup-plugin-postcss')({
-        plugins: [
-          require('postcss-import')(),
-          require('postcss-for')(),
-          require('postcss-each')(),
-          require('postcss-cssnext')({
-            warnForDuplicates: false
-          })
-        ],
-        extract: 'dist/clair.css'
-      }),
-      require('rollup-plugin-buble')()
-    ]
-  },
-
-  nuxt: {
-    srcDir: 'docs',
-    generate: {
-      dir: '.site',
-      // avoid error with pre/code
-      minify: false
-    },
-    loading: {
-      color: '#56bf8b',
-      duration: 3000
-    },
-    router: {
-      linkExactActiveClass: 'is-active'
-    },
-    head: {
-      meta: [
-        {
-          charset: 'utf-8'
-        },
-        {
-          name: 'viewport',
-          content: 'width=device-width, initial-scale=1'
-        },
-        {
-          hid: 'description',
-          name: 'description',
-          content: 'Clair Design，一套包含设计规范、Vue 组件和配套资源的设计系统。'
-        }
-      ],
-      link: [
-        {
-          href: 'https://lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css',
-          rel: 'stylesheet'
-        }
-      ]
-    },
-    plugins: ['~plugins/clair.js'],
-    css: ['~assets/css/main.css'],
-    modules: ['@nuxtjs/workbox'],
-    build: {
-      extractCSS: true,
-      publicPath: '/static/',
-      postcss: [
-        require('postcss-import')(),
-        require('postcss-for')(),
-        require('postcss-cssnext')({
-          warnForDuplicates: false
-        })
-      ]
-    }
-  }
+// `npm run new [component-name]`
+exports.boilerplate = {
+  // prefix of tag
+  prefix: 'c',
+  // dest
+  dir: 'src/components',
+  files: getBoilerplates('./boilerplate')
 }
 
+// rollup configuration for clair
+exports.rollup = {
+  name: 'Clair',
+  input: 'src/js/entry.js',
+  output: [
+    {
+      format: 'umd',
+      file: 'dist/clair.js'
+    },
+    {
+      format: 'es',
+      file: 'dist/clair.esm.js'
+    },
+    {
+      format: 'cjs',
+      file: 'dist/clair.common.js'
+    }
+  ],
+  plugins: [
+    installVueComps({
+      entry: 'src/js/entry.js',
+      vues: 'src/components/**/!(_)*.vue'
+    }),
+    nodeResolve({ jsnext: true, main: true }),
+    commonjs(),
+    json(),
+    vue(),
+    postCSS({
+      plugins: [
+        cssImport(),
+        cssFor(),
+        cssEach(),
+        cssNext({ warnForDuplicates: false })
+      ],
+      extract: 'dist/clair.css'
+    }),
+    require('rollup-plugin-buble')()
+  ]
+}
+
+/**
+ * collect all components
+ */
 function installVueComps ({ entry, vues }) {
-  const path = require('path')
   const mainId = path.resolve(__dirname, entry)
+  const transform = function (source, id) {
+    if (id !== mainId) {
+      return
+    }
+
+    const imports = []
+    const components = []
+    const entryDirectory = path.dirname(entry)
+
+    for (let file of glob.sync(vues)) {
+      const relative = path.relative(entryDirectory, file)
+      const normalized = relative.replace(/\\/g, '/')
+      const { name, dir } = path.parse(relative)
+      const compName = pascalCase(name !== 'index' ? name : path.basename(dir))
+      imports.push(`import ${compName} from "${normalized}"`)
+      components.push(compName)
+    }
+
+    const code = (`${source}
+      ${imports.join('\n')}
+      const Clair = {
+        install (Vue) {
+          main.install(Vue);
+          const comps = [${components.join(', ')}];
+          comps.forEach(comp => comp.name && Vue.component(comp.name, comp));
+        }
+      };
+
+      export default Clair;
+
+      if (typeof window !== 'undefined' && window.Vue) {
+        Vue.use(Clair);
+      }`
+    )
+
+    return code
+  }
 
   return { transform }
-
-  function transform (source, id) {
-    if (id !== mainId) return
-
-    const components = require('glob')
-      .sync(vues)
-      .map(file => path.relative('src/js', file))
-      .map(file => {
-        const { name, dir } = path.parse(file)
-        const componentName = name === 'index' ? path.basename(dir) : name
-        return {
-          path: file.replace(/\\/g, '/'),
-          comp: pascalCase(componentName),
-          name: componentName
-        }
-      })
-
-    return `${source}
-${components.map(({ path, comp }) => `import ${comp} from '${path}'`).join('\n')}
-
-const component = {
-  install (Vue) {
-    main.install(Vue)
-    const comps = [${components.map(c => c.comp).join(', ')}]
-    comps.forEach(comp => comp.name && Vue.component(comp.name, comp))
-  }
-}
-export default component
-
-if (typeof window !== 'undefined' && window.Vue) {
-  Vue.use(component)
-}
-`
-  }
-
-  function pascalCase (name) {
-    return name
-      .replace(/-([0-9a-zA-Z])/g, (m, g1) => g1.toUpperCase())
-      .replace(/^[a-z]/, m => m.toUpperCase())
-  }
 }
 
-/* eslint-disable no-param-reassign */
-function readDirFiles (dir, encoding, recursive) {
-  const fs = require('fs')
-  const path = require('path')
+/**
+ * foo-bar  => FooBar
+ */
+function pascalCase (name) {
+  return name
+    .replace(/-([0-9a-zA-Z])/g, (m, g1) => g1.toUpperCase())
+    .replace(/^[a-z]/, m => m.toUpperCase())
+}
 
+/**
+ * component 模板文件
+ */
+function getBoilerplates (dir) {
   const result = {}
 
-  if (typeof encoding === 'boolean') {
-    recursive = encoding
-    encoding = null
-  }
-  typeof recursive === 'undefined' && (recursive = true)
-  typeof encoding === 'string' || (encoding = null)
+  fs.readdirSync(dir).forEach(filename => {
+    const file = path.join(dir, filename)
 
-  const entries = fs.readdirSync(dir)
+    if (fs.statSync(file).isFile()) {
+      const content = fs.readFileSync(file, 'utf-8')
 
-  entries.forEach(function (entry) {
-    const entryPath = path.join(dir, entry)
-    if (fs.statSync(entryPath).isDirectory()) {
-      return recursive && (result[entry] = readDirFiles(entryPath, encoding))
+      result[filename] = function (data) {
+        return content.replace(/\$\{(\w+)\}/g, (_, key) => data[key])
+      }
     }
-
-    result[entry] = fs.readFileSync(entryPath, encoding).toString()
   })
+
   return result
 }
