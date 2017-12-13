@@ -8,13 +8,15 @@
             .subnav__title
               c-icon(:name="item.icon" size="12")
               span  {{ item.title }}
-            nuxt-link.navbar__item(
+            router-link.navbar__item(
               v-for="sub in item.children",
               :to="sub.link",
               :key="sub.title"
             ) {{sub.title}}
       c-box-item(xs=12 sm=9 md=10)
-        nuxt.c-container.is-lg
+        .c-container.is-lg
+          transition(name='fade')
+            router-view
     c-footer.in-article
     c-button(
       primary
@@ -29,7 +31,40 @@
 </template>
 
 <script>
-import throttle from 'lodash/throttle'
+var throttle = function(fn, delay, immediate, debounce) {
+  var curr = +new Date(), //当前事件
+    last_call = 0,
+    last_exec = 0,
+    timer = null,
+    diff, //时间差
+    context, //上下文
+    args,
+    exec = function() {
+      last_exec = curr
+      fn.apply(context, args)
+    }
+  return function() {
+    curr = +new Date()
+    ;(context = this),
+      (args = arguments),
+      (diff = curr - (debounce ? last_call : last_exec) - delay)
+    clearTimeout(timer)
+    if (debounce) {
+      if (immediate) {
+        timer = setTimeout(exec, delay)
+      } else if (diff >= 0) {
+        exec()
+      }
+    } else {
+      if (diff >= 0) {
+        exec()
+      } else if (immediate) {
+        timer = setTimeout(exec, -diff)
+      }
+    }
+    last_call = curr
+  }
+}
 
 export default {
   data () {

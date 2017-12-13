@@ -10,11 +10,10 @@
   ],
   "scripts": {
     "precommit": "lint-staged",
-    "clean": "rimraf dist .site .nuxt ./docs/pages/*/  ./docs/pages/*.vue",
+    "clean": "rimraf dist .site",
     "dev": "clair dev",
     "new": "clair add",
-    "build": "npm run clean && clair build",
-    "start": "clair start"
+    "build": "npm run clean && clair build && dokiv"
   },
   "lint-staged": {
     "src/**/*.css": [
@@ -43,9 +42,9 @@
   },
   "homepage": "https://github.com/clair-design/clair#readme",
   "devDependencies": {
-    "@nuxtjs/workbox": "^1.2.2",
     "babel-eslint": "^7.2.3",
-    "clair-scripts": "^2.2.0",
+    "clair-scripts": "^3.0.0-alpha",
+    "dokiv": "^1.0.0",
     "eslint": "^4.3.0",
     "eslint-config-neat": "^1.0.0",
     "eslint-plugin-html": "^3.1.1",

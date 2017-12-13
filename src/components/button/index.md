@@ -1,3 +1,10 @@
+---
+title: Button 按钮
+layout: component
+scrollTop: true
+route: component/button
+---
+
 # Button 按钮
 
 Button 组件提供了不同的按钮风格以及状态、尺寸等选项。

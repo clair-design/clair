@@ -1,0 +1,19 @@
+# dest directory
+output: .site
+
+# layouts 文件目录
+layout: ./docs/layouts
+
+# layouts 文件目录
+plugins: ./docs/plugins/*.js
+
+# 静态文件如图片等
+static: ./docs/static
+
+# markdown 文件
+docs:
+  - ./docs/**/*.md
+  - ./src/components/**/index.md
+
+# router mode: `hash` or `history`
+mode: 'history'

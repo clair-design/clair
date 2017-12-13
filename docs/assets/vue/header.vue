@@ -1,8 +1,8 @@
 <template lang="pug">
 c-box.toolbar.c-container.no-gap(align="center")
   c-box-item(xs=12 sm=3 md=2)
-    nuxt-link.logo(to="/")
-      img(src="~assets/img/logo.svg" alt="clair")
+    router-link.logo(to="/")
+      img(src="/static/logo.svg" alt="clair")
 
   c-box-item(xs=12 sm=8 md=9)
     c-box.navbar.no-gap
@@ -12,7 +12,7 @@ c-box.toolbar.c-container.no-gap(align="center")
         xs="12"
         sm="auto"
       )
-        nuxt-link.navbar__item(
+        router-link.navbar__item(
           :to="nav.link",
           :class="{'is-active': nav.isActiveReg.test($route.path)}"
         ) {{nav.title}}

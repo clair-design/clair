@@ -1,6 +1,8 @@
 <template lang="pug">
   #app
     c-header
-    nuxt
+    div
+      transition(name='fade')
+        router-view
     c-footer
 </template>
