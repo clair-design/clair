@@ -1,0 +1,56 @@
+:root {
+  /*
+   * basic color
+   */
+  --red: hsl(5, 72%, 63%);
+  --orange: hsl(25, 75%, 58%);
+  --yellow: hsl(45, 88%, 57%);
+  --green: hsl(120, 45%, 54%);
+  --cyan: hsl(185, 50%, 60%);
+  --blue: hsl(210, 70%, 67%);
+  --indigo: hsl(235, 45%, 65%);
+  --purple: hsl(259, 45%, 60%);
+  --pink: hsl(309, 31%, 64%);
+  --gray: hsl(208, 6%, 53%);
+  --white: #fff;
+  --dark: #444;
+  --black: #000;
+
+  /**
+   * functional color names
+   */
+  --primary-color: var(--blue);
+  --success-color: var(--green);
+  --warning-color: var(--yellow);
+  --danger-color: var(--red);
+  --text-color: var(--dark);
+
+  /**
+   * layout
+   */
+  --grid-gap: 1em;
+
+  /**
+   * responsive breakpoints
+   */
+  --xs-viewport: 0;
+  --sm-viewport: 600px;
+  --md-viewport: 960px;
+  --lg-viewport: 1200px;
+  --xl-viewport: 1920px;
+
+  /**
+   * custom media for responsiveness
+   */
+  @custom-media --xs-up (width > 0);
+  @custom-media --sm-up (width > 600px);
+  @custom-media --md-up (width > 960px);
+  @custom-media --lg-up (width > 1200px);
+  @custom-media --xl-up (width > 1920px);
+  @custom-media --xs-only (width <= 600px);
+  @custom-media --sm-only (width > 600px) and (width <= 960px);
+  @custom-media --md-only (width > 960px) and (width <= 1200px);
+  @custom-media --lg-only (width > 1200px) and (width <= 1920px);
+  @custom-media --xl-only (width > 1920px);
+}
+
