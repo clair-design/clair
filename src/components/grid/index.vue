@@ -10,7 +10,8 @@ export default {
   props: {
     gap: String,
     justify: String,
-    align: String
+    align: String,
+    fillHeight: Boolean
   },
   name: 'c-box',
   computed: {
@@ -28,9 +29,10 @@ export default {
     },
     classNames () {
       const classNames = []
-      const { justify, align } = this
+      const { justify, align, fillHeight } = this
       if (justify) classNames.push(`is-justify-${justify}`)
       if (align) classNames.push(`is-align-${align}`)
+      if (fillHeight) classNames.push(`is-fill-height`)
       return classNames
     }
   }

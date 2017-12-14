@@ -62,7 +62,9 @@ Clair 基于 FlexBox 实现了一套 12 栏栅格系统。使用 `c-box` 组件�
 
 ### 设置宽度
 
-默认每一列的宽度都是相等的。如果想自己控制每一列宽度，可以设置 `span` 属性。
+默认每一列的宽度都是相等的。如果想自己控制每一列宽度，可以设置 `span` 属性。`span` 属性的值是一个 0 - 12 的数字，表示该列的宽度占 12 份中的比例。
+
+如果想自己要某一列的宽度不自动伸展，而是自适应其内容宽度，可以给这一列添加 `narrow` 属性。另外，你还可以通过 `width` 属性指定某一列的精确宽度值。
 
 ```html
 <c-box>
@@ -80,12 +82,32 @@ Clair 基于 FlexBox 实现了一套 12 栏栅格系统。使用 `c-box` 组件�
   </c-box-item>
 </c-box>
 
+<c-box class="is-text-center">
+  <c-box-item narrow>
+    <div class="is-bg-gray-2">宽度自适应内容</div>
+  </c-box-item>
+  <c-box-item width="150px">
+    <div class="is-bg-gray-2">指定 150px</div>
+  </c-box-item>
+</c-box>
+
 <style>
 .c-box {
 margin-bottom: 1em
 }
 </style>
 ```
+
+### 自动填充高度
+
+给 `c-box` 设置 `fill-height` 属性可以使其填充父容器的高度（父级高度不能是 `auto`）。
+
+```html
+<div style="height: 200px">
+  <c-box fill-height class="is-bg-red-1" />
+</div>
+```
+
 
 ### 设置栅格偏移
 

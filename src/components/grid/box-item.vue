@@ -10,7 +10,7 @@ import { breakpoints } from '../../js/config.js'
 const props = breakpoints
   .map(bp => `${bp}-only`)
   .concat(breakpoints)
-  .concat(['order', 'span', 'offset'])
+  .concat(['order', 'span', 'offset', 'width', 'narrow'])
 
 const getClassName = (values, media) => {
   if (!values) return []
@@ -35,6 +35,7 @@ export default {
         }, [])
       if (this.span) classNames.push(`is-${this.span}`)
       if (this.offset) classNames.push(`is-offset-${this.offset}`)
+      if (this.width || this.narrow !== void 0) classNames.push(`is-narrow`)
       return classNames
     },
 
@@ -56,6 +57,9 @@ export default {
       }
       if (this.order) {
         style.order = this.order
+      }
+      if (this.width) {
+        style.width = this.width
       }
       return style
     }
