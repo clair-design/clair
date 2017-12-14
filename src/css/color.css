@@ -38,3 +38,11 @@
   color: var(--dark);
 }
 
+.is-bg-white {
+  background-color: #fff;
+}
+
+.is-bg-black {
+  background-color: var(--black);
+}
+
