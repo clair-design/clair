@@ -36,6 +36,7 @@
     'danger',
     'round',
     'outline',
+    'flat',
     'loading'
   ]
   const props = Object.assign(
