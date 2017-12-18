@@ -127,6 +127,10 @@
   &:focus {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
   }
+
+  &.c-button--primary {
+    color: var(--primary-color);
+  }
 }
 
 /**
