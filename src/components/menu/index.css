@@ -76,14 +76,16 @@
     transform: scaleY(0);
   }
 
-  &:focus-within .c-submenu__popup,
-  &:hover .c-submenu__popup {
-    display: block;
-    opacity: 1;
-    transform: scaleY(1);
+  & .c-submenu {
+    &:focus-within .c-submenu__popup,
+    &:hover .c-submenu__popup {
+      display: block;
+      opacity: 1;
+      transform: scaleY(1);
+    }
   }
 
-  &:hover .c-submenu__title {
+  & .c-submenu:hover .c-submenu__title {
     background: color(var(--primary-color) l(80%) a(0.15));
   }
 
