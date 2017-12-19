@@ -138,16 +138,14 @@ route: /component/icon
       }
     },
 
-    created () {
-      if (process.BROWSER_BUILD) {
-        window.Promise.all([
-          fetchJSON('https://unpkg.com/feather-icons/dist/icons.json'),
-          loadScript('https://lib.baomitu.com/clipboard.js/1.7.1/clipboard.min.js')
-        ]).then(([obj]) => {
-          this.icons = window.Object.keys(obj)
-          new window.Clipboard('.icon-item')
-        })
-      }
+    mounted () {
+      Promise.all([
+        fetchJSON('https://unpkg.com/feather-icons/dist/icons.json'),
+        loadScript('https://lib.baomitu.com/clipboard.js/1.7.1/clipboard.min.js')
+      ]).then(([obj]) => {
+        this.icons = window.Object.keys(obj)
+        new window.Clipboard('.icon-item')
+      })
     },
 
     methods: {
@@ -224,18 +222,16 @@ route: /component/icon
       }
     },
 
-    created () {
-      if (process.BROWSER_BUILD) {
-        window.Promise.all([
-          fetchText('https://raw.githubusercontent.com/' +
-            'FortAwesome/Font-Awesome/master/src/icons.yml'),
-          loadScript('http://lib.baomitu.com/yamljs/0.3.0/yaml.min.js'),
-          loadScript('https://lib.baomitu.com/clipboard.js/1.7.1/clipboard.min.js')
-        ]).then(([text]) => {
-          this.icons = window.YAML.parse(text).icons.map(i => i.id)
-          new window.Clipboard('.icon-item')
-        })
-      }
+    mounted () {
+      Promise.all([
+        fetchText('https://raw.githubusercontent.com/' +
+          'FortAwesome/Font-Awesome/master/src/icons.yml'),
+        loadScript('http://lib.baomitu.com/yamljs/0.3.0/yaml.min.js'),
+        loadScript('https://lib.baomitu.com/clipboard.js/1.7.1/clipboard.min.js')
+      ]).then(([text]) => {
+        this.icons = window.YAML.parse(text).icons.map(i => i.id)
+        new window.Clipboard('.icon-item')
+      })
     },
 
     methods: {

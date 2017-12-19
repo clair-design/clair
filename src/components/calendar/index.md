@@ -1,8 +1,7 @@
 ---
 title: Calendar
 layout: component
-scrollTop: true
-route: component/calendar
+route: /component/calendar
 ---
 
 # Calendar 日历
