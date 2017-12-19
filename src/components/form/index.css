@@ -1,0 +1,62 @@
+/**
+* c-form
+*/
+@import url('../../css/variables.css');
+
+.c-form-item {
+  margin-bottom: 0.5em;
+
+  & .c-form-item__label {
+    display: inline-block;
+    width: 4em;
+    text-align: right;
+    margin-top: 0.25em;
+    margin-right: 0.5em;
+    vertical-align: top;
+  }
+
+  &.is-required .c-form-item__label::before {
+    content: '*';
+    color: var(--danger-color);
+    padding-right: 0.3em;
+  }
+
+  & .c-form-item__control {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  & .c-form-item__error {
+    min-height: 1.5em;
+    line-height: 1.2;
+    padding-top: 0.3em;
+    font-size: 0.866em;
+    color: var(--danger-color);
+  }
+
+  & .c-error-msg {
+    display: none;
+  }
+
+  &.is-flex {
+    display: flex;
+
+    & .c-form-item__control {
+      flex: 1;
+    }
+  }
+}
+
+.c-form--inline {
+  & .c-form-item {
+    display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: 1em;
+    }
+
+    & .c-form-item__label {
+      width: auto;
+    }
+  }
+}
