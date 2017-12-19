@@ -57,6 +57,15 @@
     width: 50em;
   }
 
+  &.is-flex {
+    display: block;
+
+    & .c-input {
+      display: block;
+      width: 100%;
+    }
+  }
+
   &.c-input--error {
     & .c-input {
       border-color: var(--danger-color);

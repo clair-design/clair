@@ -53,7 +53,6 @@
           return ''
         }
       },
-      rules: Object,
       placeholder: String,
       size: String,
       width: String,
