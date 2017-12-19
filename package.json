@@ -11,8 +11,10 @@
   "scripts": {
     "precommit": "lint-staged",
     "clean": "rimraf dist .site",
-    "dev": "clair dev",
     "new": "clair add",
+    "watch-build:lib": "clair watch-build",
+    "watch-build:doc": "dokiv --watch",
+    "dev": "run-p watch-build:lib watch-build:doc",
     "build": "npm run clean && clair build && dokiv"
   },
   "lint-staged": {
@@ -43,8 +45,8 @@
   "homepage": "https://github.com/clair-design/clair#readme",
   "devDependencies": {
     "babel-eslint": "^7.2.3",
-    "clair-scripts": "^3.0.0-alpha",
-    "dokiv": "^1.0.1",
+    "clair-scripts": "^3.0.0",
+    "dokiv": "^1.1.1",
     "eslint": "^4.3.0",
     "eslint-config-neat": "^1.0.0",
     "eslint-plugin-html": "^3.1.1",
@@ -58,8 +60,10 @@
     "highlight.js": "^9.12.0",
     "husky": "^0.14.3",
     "lint-staged": "^4.0.2",
+    "npm-run-all": "^4.1.2",
     "postcss-cssnext": "^3.0.2",
     "postcss-each": "^0.10.0",
+    "postcss-easy-import": "^3.0.0",
     "postcss-for": "^2.1.1",
     "postcss-import": "^10.0.0",
     "pug": "^2.0.0-rc.4",

@@ -1,19 +1,26 @@
+# router mode: `hash` or `history`
+routerMode: 'history'
+
+# root
+rootDir: './docs/'
+
 # dest directory
 output: .site
-
-# layouts 文件目录
-layout: ./docs/layouts
-
-# layouts 文件目录
-plugins: ./docs/plugins/*.js
-
-# 静态文件如图片等
-static: ./docs/static
-
-# markdown 文件
-docs:
-  - ./docs/**/*.md
+# markdown files
+documents:
+  - ./docs/content/**/*.md
   - ./src/components/**/index.md
 
-# router mode: `hash` or `history`
-mode: 'history'
+# styles
+postcss:
+  entry: ./docs/assets/css/main.css
+  minify: true
+  sourcemap: true
+  plugins:
+    - postcss-easy-import
+    - postcss-each
+    - postcss-for
+    - postcss-cssnext
+
+externals:
+  - https://lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css
