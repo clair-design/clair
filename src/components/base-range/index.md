@@ -1,8 +1,7 @@
 ---
 title: Ctrl
 layout: component
-scrollTop: true
-route: component/base-range
+route: /component/base-range
 ---
 
 # Base Range

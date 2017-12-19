@@ -1,8 +1,7 @@
 ---
 title: Slider
 layout: component
-scrollTop: true
-route: component/slider
+route: /component/slider
 ---
 
 # Slider

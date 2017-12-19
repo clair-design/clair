@@ -1,8 +1,7 @@
 ---
 title: Table
 layout: component
-scrollTop: true
-route: component/table
+route: /component/table
 ---
 
 # Table 表格

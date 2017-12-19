@@ -1,8 +1,7 @@
 ---
 title: Input 文本输入框
 layout: component
-scrollTop: true
-route: component/input
+route: /component/input
 ---
 
 # Input 文本输入框

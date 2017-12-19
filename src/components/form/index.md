@@ -1,8 +1,7 @@
 ---
 title: Form
 layout: component
-scrollTop: true
-route: component/form
+route: /component/form
 ---
 
 # Form 表单

@@ -1,8 +1,7 @@
 ---
 title: Button 按钮
 layout: component
-scrollTop: true
-route: component/button
+route: /component/button
 ---
 
 # Button 按钮

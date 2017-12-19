@@ -1,8 +1,7 @@
 ---
 title: Select 下拉选择框
 layout: component
-scrollTop: true
-route: component/select
+route: /component/select
 ---
 
 # Select 下拉选择框

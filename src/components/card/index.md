@@ -1,8 +1,7 @@
 ---
 title: Card
 layout: component
-scrollTop: true
-route: component/card
+route: /component/card
 ---
 
 # Card
