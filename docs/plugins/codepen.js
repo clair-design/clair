@@ -29,8 +29,6 @@ export default {
       }
     })
 
-    mountCodepenVm()
-
     Vue.prototype.$code = {
       copy (e) {
         const node = getPreDOM(e)
@@ -47,6 +45,12 @@ export default {
           codepenVm.$nextTick(() => codepenVm.$el.submit())
         }
       }
+    }
+
+    if (typeof document !== 'undefined') {
+      document.addEventListener('DOMContentLoaded', e => {
+        mountCodepenVm()
+      })
     }
 
     function extractVue (code) {
@@ -89,7 +93,7 @@ export default {
           node = node.querySelector('.lang-html')
           break
         }
-         node = node.parentNode
+        node = node.parentNode
       }
 
       return node

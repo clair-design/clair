@@ -1,5 +1,3 @@
-import '../assets/css/main.css'
-import '../../dist/clair.css'
 import Clair from '../../dist/clair.esm'
 
 import Header from '../assets/vue/header.vue'

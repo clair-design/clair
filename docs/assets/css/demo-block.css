@@ -1,4 +1,3 @@
-
 .vue-demo-block {
   display: inline-block;
   width: 100%;
@@ -16,55 +15,18 @@
 }
 
 .vue-demo-block > pre {
-  transition: max-height 0.3s ease;
   margin: 0;
   padding: 0;
-  max-height: 0;
+  height: 0;
+  transition: height 0.2s linear;
   border-radius: 0;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .vue-demo-block > pre > code {
   display: block;
-  padding: 1.5em 2.5em;
-}
-
-.vue-demo-block > input[type="checkbox"] {
-  position: absolute;
-  clip: rect(0, 0, 0, 0);
-  cursor: pointer;
-}
-
-.vue-demo-block > input:checked ~ pre {
-  display: block;
-  max-height: 50em;
-  overflow: auto;
-}
-
-.vue-demo-block > label {
-  display: block;
-  cursor: pointer;
-  font-size: 13px;
-  line-height: 3;
-  text-align: center;
-  background: #fafafa;
-}
-
-.vue-demo-block > label:hover {
-  color: #2196f3;
-  background: #eff3f6;
-}
-
-.vue-demo-block > label::after {
-  content: '⇓ 显示代码';
-}
-
-.vue-demo-block > input:checked ~ label {
-  border-bottom: 1px dashed #ddd;
-}
-
-.vue-demo-block > input:checked ~ label::after {
-  content: '⇑ 隐藏代码';
+  padding: 2em 2.5em;
 }
 
 .vue-demo-block > pre::-webkit-scrollbar {
@@ -94,18 +56,52 @@
 .vue-demo-tools {
   position: relative;
   z-index: 999;
-  opacity: 0;
-  transition: all 0.4s ease;
 }
 
-.vue-demo-tools > div {
+.vue-demo-tools > input[type="checkbox"] {
   position: absolute;
-  top: 0;
+  clip: rect(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+.vue-demo-tools > label {
+  display: block;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 3;
+  text-align: center;
+  background: #fafafa;
+}
+
+.vue-demo-tools > label:hover {
+  color: #2196f3;
+  background: #eff3f6;
+}
+
+.vue-demo-tools > label::after {
+  content: '⇓ 显示代码';
+}
+
+.vue-demo-tools > input:checked ~ label {
+  border-bottom: 1px dashed #ddd;
+}
+
+.vue-demo-tools > input:checked ~ label::after {
+  content: '⇑ 隐藏代码';
+}
+
+.vue-demo-tools > .vue-demo-tool-snippets {
+  position: absolute;
+  top: 100%;
   right: 0;
   margin: 4px;
 }
 
-.vue-demo-block > input:checked ~ .vue-demo-tools {
+.vue-demo-tool-snippets {
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+.vue-demo-tools > input:checked ~ .vue-demo-tool-snippets {
   opacity: 1;
 }
 
