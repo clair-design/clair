@@ -1,8 +1,7 @@
 ---
 title: 核心理念
 layout: principle
-scrollTop: true
-route: principle/introduction
+route: /principle/introduction
 ---
 
 ## 核心理念

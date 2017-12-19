@@ -1,8 +1,7 @@
 ---
 title: 安装和使用
 layout: component
-scrollTop: true
-route: component/install
+route: /component/install
 ---
 
 # 安装和使用
@@ -26,6 +25,6 @@ $ yarn add clair
 ```javascript
 import Vue from 'vue'
 import Clair from 'clair'
- 
+
 Vue.use(Clair)
 ```
