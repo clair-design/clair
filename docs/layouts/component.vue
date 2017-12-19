@@ -14,9 +14,8 @@
               :key="sub.title"
             ) {{sub.title}}
       c-box-item(xs=12 sm=9 md=10)
-        .c-container.is-lg
-          transition(name='fade')
-            router-view
+        transition(name='fade')
+          router-view.c-container.is-lg
     c-footer.in-article
     c-button(
       primary

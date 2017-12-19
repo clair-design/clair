@@ -10,9 +10,8 @@
             :key="item.title"
           ) {{item.title}}
       c-box-item.is-flex
-        .c-container.is-lg
-          transition(name='fade')
-            router-view
+        transition(name='fade')
+          router-view.c-container.is-lg
     c-footer.in-article
 </template>
 
