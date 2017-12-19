@@ -1,0 +1,50 @@
+/**
+* c-table
+*/
+@import url('../../css/variables.css');
+
+.c-table__noresult {
+  text-align: center;
+}
+
+.c-table > table {
+  width: 100%;
+  border: 1px solid #dadfe6;
+
+  & th,
+  & td {
+    font-size: 0.875em;
+  }
+
+  & thead {
+    & tr {
+      background: #f5f8fb;
+
+      & th {
+        color: #6b7e99;
+        font-weight: normal;
+
+        &[colspan]:not([colspan="1"]) {
+          text-align: center;
+          border: 1px solid #dfe2e5;
+        }
+      }
+    }
+  }
+
+  & tbody {
+    & tr {
+      border-bottom: 1px solid #dfe2e5;
+
+      & td {
+        &.c-table__bl {
+          border-left: 1px solid #dfe2e5;
+        }
+
+        &.c-table__br {
+          border-right: 1px solid #dfe2e5;
+        }
+      }
+    }
+  }
+}

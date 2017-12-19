@@ -1,0 +1,56 @@
+/**
+* c-card
+*/
+@import url('../../css/variables.css');
+
+.c-card {
+  background: #fff;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+
+  &:hover {
+    box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  & .c-card__title {
+    white-space: nowrap;
+    padding: 0.5em 1em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
+      margin: 0;
+      line-height: inherit;
+    }
+  }
+
+  & .c-card__body {
+    padding: 1em;
+  }
+
+  & .c-card__media {
+    & img {
+      display: block;
+    }
+  }
+
+  & .c-card__actions {
+    padding: 0.5em;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  &.is-horizontal {
+    display: flex;
+
+    & .c-card__body {
+      flex: 1;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      align-self: center;
+    }
+  }
+}

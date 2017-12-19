@@ -33,6 +33,7 @@ Button 组件提供了不同的按钮风格以及状态、尺寸等选项。
   <c-button primary icon="search">图标按钮</c-button>
   <c-button primary icon="sun"></c-button>
   <c-button danger outline round icon="trash"></c-button>
+  <c-button flat icon="menu"></c-button>
 </p>
 ```
 

@@ -70,6 +70,9 @@ route: component/input
   <c-input size="xl" />
   <c-button size="xl" outline icon="arrow-right" round></c-button>
 </div>
+<div class="input-items">
+  <c-input size="xl" width="flex" />
+</div>
 
 <style>
 .input-items {

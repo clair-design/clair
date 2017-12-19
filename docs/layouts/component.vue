@@ -97,7 +97,8 @@ export default {
             { title: '下拉框', link: '/component/select' },
             { title: '复选框', link: '/component/checkbox' },
             { title: '单选框', link: '/component/radio' },
-            { title: '滑块', link: '/component/slider' }
+            { title: '滑块', link: '/component/slider' },
+            { title: '表单', link: '/component/form' }
           ]
         },
         {
@@ -105,8 +106,9 @@ export default {
           icon: 'navigation',
           children: [
             { title: '标签页', link: '/component/tab' },
-            { title: '导航栏', link: '/component/navbar' },
+            { title: '导航菜单', link: '/component/menu' },
             { title: '面包屑', link: '/component/breadcrumb' },
+            { title: '工具栏', link: '/component/toolbar' },
             { title: '步骤条', link: '/component/step' }
           ]
         },
@@ -115,6 +117,7 @@ export default {
           icon: 'bar-chart-2',
           children: [
             { title: '表格', link: '/component/table' },
+            { title: '卡片', link: '/component/card' },
             { title: '分页', link: '/component/pagination' },
             { title: '标签', link: '/component/chip' }
           ]
