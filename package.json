@@ -14,8 +14,10 @@
     "new": "clair add",
     "watch-build:lib": "clair watch-build",
     "watch-build:doc": "dokiv --watch",
+    "build:lib": "cross-env NODE_ENV=production clair build",
+    "build:doc": "cross-env NODE_ENV=production dokiv",
     "dev": "run-p watch-build:lib watch-build:doc",
-    "build": "npm run clean && clair build && dokiv"
+    "build": "run-s clean build:lib build:doc"
   },
   "lint-staged": {
     "src/**/*.css": [
@@ -45,7 +47,8 @@
   "homepage": "https://github.com/clair-design/clair#readme",
   "devDependencies": {
     "babel-eslint": "^7.2.3",
-    "clair-scripts": "^3.0.0",
+    "clair-scripts": "^3.0.2",
+    "cross-env": "^5.1.1",
     "dokiv": "^1.1.1",
     "eslint": "^4.3.0",
     "eslint-config-neat": "^1.0.0",
