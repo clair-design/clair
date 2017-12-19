@@ -9,7 +9,7 @@
 
 .c-table > table {
   width: 100%;
-  border: 1px solid #dadfe6;
+  border: 1px solid color(var(--gray) l(85%));
 
   & th,
   & td {
@@ -18,15 +18,15 @@
 
   & thead {
     & tr {
-      background: #f5f8fb;
+      background: color(var(--blue) l(98%));
 
       & th {
-        color: #6b7e99;
+        color: color(var(--text-color) l(35%));
         font-weight: normal;
 
         &[colspan]:not([colspan="1"]) {
           text-align: center;
-          border: 1px solid #dfe2e5;
+          border: 1px solid color(var(--gray) l(85%));
         }
       }
     }
@@ -34,15 +34,15 @@
 
   & tbody {
     & tr {
-      border-bottom: 1px solid #dfe2e5;
+      border-bottom: 1px solid color(var(--gray) l(85%));
 
       & td {
         &.c-table__bl {
-          border-left: 1px solid #dfe2e5;
+          border-left: 1px solid color(var(--gray) l(85%));
         }
 
         &.c-table__br {
-          border-right: 1px solid #dfe2e5;
+          border-right: 1px solid color(var(--gray) l(85%));
         }
       }
     }
