@@ -4,17 +4,11 @@ const glob = require('glob')
 
 const vue = require('rollup-plugin-vue')
 const json = require('rollup-plugin-json')
+const buble = require('rollup-plugin-buble')
 const commonjs = require('rollup-plugin-commonjs')
 const nodeResolve = require('rollup-plugin-node-resolve')
 
-const cssFor = require('postcss-for')
-const cssEach = require('postcss-each')
-const cssNext = require('postcss-cssnext')
-const cssImport = require('postcss-import')
-const postCSS = require('rollup-plugin-postcss')
-
-// 单文件开发模式下自定义 HTML
-exports.devTemplate = null
+const isProd = process.env.NODE_ENV === 'production'
 
 // `npm run new [component-name]`
 exports.boilerplate = {
@@ -25,43 +19,24 @@ exports.boilerplate = {
   files: getBoilerplates('./boilerplate')
 }
 
-// rollup configuration for clair
 exports.rollup = {
   name: 'Clair',
   input: 'src/js/entry.js',
-  output: [
-    {
-      format: 'umd',
-      file: 'dist/clair.js'
-    },
-    {
-      format: 'es',
-      file: 'dist/clair.esm.js'
-    },
-    {
-      format: 'cjs',
-      file: 'dist/clair.common.js'
-    }
-  ],
+  output: getRollupOption(),
   plugins: [
     installVueComps({
       entry: 'src/js/entry.js',
       vues: 'src/components/**/!(_)*.vue'
     }),
-    nodeResolve({ jsnext: true, main: true }),
+    nodeResolve({
+      jsnext: true,
+      main: true
+    }),
     commonjs(),
     json(),
     vue(),
-    postCSS({
-      plugins: [
-        cssImport(),
-        cssFor(),
-        cssEach(),
-        cssNext({ warnForDuplicates: false })
-      ],
-      extract: 'dist/clair.css'
-    }),
-    require('rollup-plugin-buble')()
+    getCSSPlugin(),
+    buble()
   ]
 }
 
@@ -139,4 +114,58 @@ function getBoilerplates (dir) {
   })
 
   return result
+}
+
+function getRollupOption () {
+  const options = [
+    {
+      format: 'es',
+      file: 'docs/plugins/clair.js'
+    },
+    {
+      format: 'umd',
+      file: 'dist/clair.js'
+    }
+  ]
+
+  if (isProd) {
+    return [
+      {
+        format: 'cjs',
+        file: 'dist/clair.common.js'
+      },
+      {
+        format: 'es',
+        file: 'dist/clair.esm.js'
+      }
+    ].concat(options)
+  }
+
+  return options
+}
+
+function getCSSPlugin () {
+  const postCSS = require('rollup-plugin-postcss')
+  const cssPlugin = postCSS({
+    plugins: [
+      require('postcss-import')(),
+      require('postcss-for')(),
+      require('postcss-each')(),
+      require('postcss-cssnext')({
+        warnForDuplicates: false
+      })
+    ],
+    extract: 'dist/clair.css'
+  })
+
+  // ignore css when developing
+  const cssNoop = {
+    transform (code, id) {
+      if (/\.css$/.test(id)) {
+        return 'export default {}'
+      }
+    }
+  }
+
+  return isProd ? cssPlugin : cssNoop
 }

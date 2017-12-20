@@ -57,7 +57,8 @@ $ npm install
 日常组件开发建议使用 `yarn dev [name]`，速度相对较快。
 
 * `yarn new [name]` 或 `npm run new [name]`：根据 boilerplate 文件夹中的模板自动创建新组件
-* `yarn dev [name]` 或 `npm run dev [name]`：开启单一组件开发模式（如果组件不存在则根据模板新建）
+* <del>`yarn sfc [name]` 或 `npm run sfc [name]`：开启单一组件开发模式（如果组件不存在则根据模板新建）</del>
+* `yarn dev` 或 `npm run dev`：启动全部组件开发模式
 * `yarn build` 或 `npm run build`：rollup 以及 PostCSS 编译、打包，并生成静态HTML
 
 

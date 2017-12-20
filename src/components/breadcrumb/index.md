@@ -1,8 +1,7 @@
 ---
 title: Breadcrumb
 layout: component
-scrollTop: true
-route: component/breadcrumb
+route: /component/breadcrumb
 ---
 
 # Breadcrumb

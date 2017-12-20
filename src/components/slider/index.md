@@ -1,8 +1,7 @@
 ---
 title: Slider
 layout: component
-scrollTop: true
-route: component/slider
+route: /component/slider
 ---
 
 # Slider
@@ -70,7 +69,7 @@ TODO: 是否有必要区分`input` 与 `change`？
         value: 5
       }
     },
-    created () {
+    mounted () {
       setTimeout(() => {
         this.value = -5
       }, 300)
@@ -158,7 +157,7 @@ TODO: 是否有必要区分`input` 与 `change`？
         marks: [20, 80, 120, 160, 160, 180, 200]
       }
     },
-    created () {
+    mounted () {
       setTimeout(() => {
         this.value = 100
       }, 300)

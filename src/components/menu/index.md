@@ -1,8 +1,7 @@
 ---
 title: Menu 导航菜单
 layout: component
-scrollTop: true
-route: component/menu
+route: /component/menu
 ---
 
 # Menu

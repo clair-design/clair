@@ -1,8 +1,7 @@
 ---
 title: Layout
 layout: component
-scrollTop: true
-route: component/layout
+route: /component/layout
 ---
 
 # 布局

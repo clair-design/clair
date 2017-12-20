@@ -1,8 +1,7 @@
 ---
 title: Toolbar
 layout: component
-scrollTop: true
-route: component/toolbar
+route: /component/toolbar
 ---
 
 # Toolbar

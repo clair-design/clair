@@ -1,8 +1,7 @@
 ---
 title: Radio 单选框
 layout: component
-scrollTop: true
-route: component/radio
+route: /component/radio
 ---
 
 # Radio 单选框

@@ -1,8 +1,7 @@
 ---
 title: 资源
 layout: default
-scrollTop: true
-route: resource
+route: /resource
 ---
 
 <article class="container">

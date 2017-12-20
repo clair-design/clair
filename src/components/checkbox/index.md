@@ -1,8 +1,7 @@
 ---
 title: Checkbox 复选框
 layout: component
-scrollTop: true
-route: component/checkbox
+route: /component/checkbox
 ---
 
 # Checkbox 复选框

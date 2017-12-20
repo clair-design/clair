@@ -1,8 +1,7 @@
 ---
 title: 自定义样式
 layout: component
-scrollTop: true
-route: component/theme
+route: /component/theme
 ---
 
 # 自定义样式
@@ -16,7 +15,7 @@ route: component/theme
 
 ## 定制主题
 
-定制主题需要在项目中使用 [PostCSS](http://postcss.org/) 进行构建。 
+定制主题需要在项目中使用 [PostCSS](http://postcss.org/) 进行构建。
 
 ### 1. 修改 CSS 变量
 

@@ -1,8 +1,7 @@
 ---
 title: ButtonGroup
 layout: component
-scrollTop: true
-route: component/button-group
+route: /component/button-group
 ---
 
 # ButtonGroup
