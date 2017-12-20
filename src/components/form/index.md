@@ -137,3 +137,46 @@ export default {
   </c-form-item>
 </c-form>
 ```
+
+## 监听用户提交
+
+```html
+<c-form @submit="onSubmit" ref="form">
+  <c-form-item label="用户名" required>
+    <c-input v-model="userName" />
+  </c-form-item>
+  <c-form-item label="密码" required>
+    <c-input v-model="password" />
+  </c-form-item>
+  <c-form-item label=" ">
+    <c-button type="submit" primary>登录</c-button>
+  </c-form-item>
+</c-form>
+
+<script>
+export default {
+  data () {
+    return {
+      userName: '',
+      password: ''
+    }
+  },
+  methods: {
+    onSubmit (e) {
+      e.preventDefault()
+      const form = this.$refs.form
+      if (form.isValid()) {
+        alert('登录成功')
+        form.resetValidity()
+        this.userName = ''
+        this.password = ''
+      }
+    }
+  }
+}
+</script>
+```
+
+
+
+
