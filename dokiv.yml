@@ -1,6 +1,5 @@
 # router mode: `hash` or `history`
 routerMode: 'history'
-port: 1217
 
 # root
 rootDir: './docs/'

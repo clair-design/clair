@@ -117,36 +117,43 @@ function getBoilerplates (dir) {
 }
 
 function getRollupOption () {
-  const options = [
+  return [
     {
       format: 'es',
       file: 'docs/plugins/clair.js'
     },
     {
+      format: 'es',
+      file: 'dist/clair.esm.js'
+    },
+    {
       format: 'umd',
       file: 'dist/clair.js'
+    },
+    {
+      format: 'cjs',
+      file: 'dist/clair.common.js'
     }
   ]
-
-  if (isProd) {
-    return [
-      {
-        format: 'cjs',
-        file: 'dist/clair.common.js'
-      },
-      {
-        format: 'es',
-        file: 'dist/clair.esm.js'
-      }
-    ].concat(options)
-  }
-
-  return options
 }
 
 function getCSSPlugin () {
+  // ignore css when developing
+  const cssNoop = {
+    transform (code, id) {
+      if (/\.css$/.test(id)) {
+        return 'export default {}'
+      }
+    }
+  }
+
+  if (isProd) {
+    return cssNoop
+  }
+
   const postCSS = require('rollup-plugin-postcss')
-  const cssPlugin = postCSS({
+
+  return postCSS({
     plugins: [
       require('postcss-import')(),
       require('postcss-for')(),
@@ -157,15 +164,4 @@ function getCSSPlugin () {
     ],
     extract: 'dist/clair.css'
   })
-
-  // ignore css when developing
-  const cssNoop = {
-    transform (code, id) {
-      if (/\.css$/.test(id)) {
-        return 'export default {}'
-      }
-    }
-  }
-
-  return isProd ? cssPlugin : cssNoop
 }
