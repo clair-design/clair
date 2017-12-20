@@ -11,6 +11,7 @@
   "scripts": {
     "precommit": "lint-staged",
     "clean": "rimraf dist .site",
+    "new": "clair add",
     "watch-build:lib": "clair watch-build",
     "watch-build:doc": "dokiv --watch",
     "build:lib": "cross-env NODE_ENV=production clair build",

@@ -9,11 +9,17 @@
 
 .c-table > table {
   width: 100%;
+  overflow: auto;
   border: 1px solid color(var(--gray) l(85%));
+  border-spacing: 0;
+  border-collapse: collapse;
 
   & th,
   & td {
+    text-align: left;
     font-size: 0.875em;
+    padding: 0.7em 1em;
+    border-bottom: 1px solid #dfe2e5;
   }
 
   & thead {
@@ -35,8 +41,11 @@
   & tbody {
     & tr {
       border-bottom: 1px solid color(var(--gray) l(85%));
+      background-color: #fff;
 
       & td {
+        color: color(var(--text-color));
+
         &.c-table__bl {
           border-left: 1px solid color(var(--gray) l(85%));
         }

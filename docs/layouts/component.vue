@@ -98,7 +98,8 @@ export default {
             { title: '复选框', link: '/component/checkbox' },
             { title: '单选框', link: '/component/radio' },
             { title: '滑块', link: '/component/slider' },
-            { title: '表单', link: '/component/form' }
+            { title: '表单', link: '/component/form' },
+            { title: '日期选择', link: '/component/datepicker' }
           ]
         },
         {
@@ -119,7 +120,8 @@ export default {
             { title: '表格', link: '/component/table' },
             { title: '卡片', link: '/component/card' },
             { title: '分页', link: '/component/pagination' },
-            { title: '标签', link: '/component/chip' }
+            { title: '标签', link: '/component/chip' },
+            { title: '日历', link: '/component/calendar' }
           ]
         },
         {
