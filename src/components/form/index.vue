@@ -39,7 +39,7 @@ export default {
     const { validatables } = this
     this.$on('validatable-attached', v => validatables.push(v))
     this.$on('validatable-detached', v => {
-      const i = validatables.findIndex(v)
+      const i = validatables.indexOf(v)
       this.validatables.splice(i, 1)
     })
   },
