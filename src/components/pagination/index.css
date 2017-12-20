@@ -4,6 +4,7 @@
 @import url('../../css/variables.css');
 
 .c-pagination {
+  margin-bottom: 1em;
 }
 
 .c-pagination__total {
