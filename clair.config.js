@@ -4,6 +4,7 @@ const glob = require('glob')
 
 const vue = require('rollup-plugin-vue')
 const json = require('rollup-plugin-json')
+const buble = require('rollup-plugin-buble')
 const commonjs = require('rollup-plugin-commonjs')
 const nodeResolve = require('rollup-plugin-node-resolve')
 
@@ -35,7 +36,7 @@ exports.rollup = {
     json(),
     vue(),
     getCSSPlugin(),
-    require('rollup-plugin-buble')()
+    buble()
   ]
 }
 
@@ -116,24 +117,26 @@ function getBoilerplates (dir) {
 }
 
 function getRollupOption () {
-  const options = [{
-    format: 'es',
-    file: 'docs/plugins/clair.js'
-  }]
+  const options = [
+    {
+      format: 'es',
+      file: 'docs/plugins/clair.js'
+    },
+    {
+      format: 'umd',
+      file: 'dist/clair.js'
+    }
+  ]
 
   if (isProd) {
     return [
       {
-        format: 'umd',
-        file: 'dist/clair.js'
+        format: 'cjs',
+        file: 'dist/clair.common.js'
       },
       {
         format: 'es',
         file: 'dist/clair.esm.js'
-      },
-      {
-        format: 'cjs',
-        file: 'dist/clair.common.js'
       }
     ].concat(options)
   }
