@@ -64,8 +64,7 @@ export default {
   mixins: [validatable],
   data () {
     return {
-      isChecked: [],
-      rules: {}
+      isChecked: []
     }
   },
   computed: {
