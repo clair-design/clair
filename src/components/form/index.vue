@@ -1,5 +1,8 @@
 <template lang="pug">
-.c-form(:class="classNames")
+form.c-form(
+  :class="classNames"
+  @submit="onSubmit"
+)
   slot
 </template>
 
@@ -36,10 +39,28 @@ export default {
     const { validatables } = this
     this.$on('validatable-attached', v => validatables.push(v))
     this.$on('validatable-detached', v => {
-      const i = validatables.findIndex(v)
+      const i = validatables.indexOf(v)
       this.validatables.splice(i, 1)
     })
   },
-  methods: {}
+  methods: {
+    onSubmit (e) {
+      this.$emit('submit', e)
+    },
+    isValid () {
+      return this.validatables
+        .map(v => v.validate())
+        .every(result => result.valid)
+    },
+    resetValidity () {
+      this.validatables.forEach(v => {
+        Object.assign(v.validity, {
+          dirty: false,
+          valid: true,
+          msg: ''
+        })
+      })
+    }
+  }
 }
 </script>

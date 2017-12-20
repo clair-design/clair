@@ -1,6 +1,9 @@
 <template lang="pug">
 .c-form-item(:class="classNames")
-  label.c-form-item__label(:style="labelStyle")
+  label.c-form-item__label(
+    v-if="label || $slots.label"
+    :style="labelStyle"
+  )
     slot(name="label") {{ label }}
   .c-form-item__control
     slot
