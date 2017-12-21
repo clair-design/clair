@@ -11,11 +11,14 @@
   border-radius: 0.2em;
   padding: 2em;
   user-select: none;
+  box-shadow: 2px 2px 0.5em 0 color(var(--gray) l(95%));
+  background: color(var(--white));
 }
 
 .c-calendar__header {
   text-align: center;
   position: relative;
+  margin-bottom: 1em;
 }
 
 .c-calendar__spacer {
@@ -87,6 +90,7 @@
 .c-calendar__body .c-calendar__month-table,
 .c-calendar__body .c-calendar__day-table {
   margin: 0;
+  width: 100%;
 
   & .day-cell {
     width: 2em;
