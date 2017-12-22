@@ -37,7 +37,13 @@ exports.rollup = {
     vue(),
     getCSSPlugin(),
     buble()
-  ]
+  ],
+  watch: {
+    exclude: [
+      'node_modules/**',
+      'src/**/*.css'
+    ]
+  }
 }
 
 /**
