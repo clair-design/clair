@@ -55,7 +55,6 @@
 
 .vue-demo-tools {
   position: relative;
-  z-index: 999;
 }
 
 .vue-demo-tools > input[type="checkbox"] {
