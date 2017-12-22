@@ -251,7 +251,18 @@ export default {
   },
 
   beforeDestroy () {
-    this.menuEl.remove()
+    const { menuEl } = this
+
+    if (!menuEl) {
+      return
+    }
+
+    // DOM Level 4
+    if (typeof menuEl.remove === 'function') {
+      menuEl.remove()
+    } else {
+      menuEl.parentNode.removeChild(menuEl)
+    }
   },
 
   methods: {
