@@ -47,9 +47,9 @@
   "homepage": "https://github.com/clair-design/clair#readme",
   "devDependencies": {
     "babel-eslint": "^7.2.3",
-    "clair-scripts": "^3.0.2",
+    "clair-scripts": "^3.1.2",
     "cross-env": "^5.1.1",
-    "dokiv": "^1.1.3",
+    "dokiv": "^1.1.5",
     "eslint": "^4.3.0",
     "eslint-config-neat": "^1.0.0",
     "eslint-plugin-html": "^3.1.1",
