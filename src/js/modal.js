@@ -46,12 +46,12 @@ function extendVue (Vue) {
 
   prototype.$alert = function (data) {
     // data: { msg, title }
-    createModal(data, CModalAlert)
+    return createModal(data, CModalAlert)
   }
 
   prototype.$message = function (data) {
     // data: { msg, title, type }
-    createModal(data, CModalMessage)
+    return createModal(data, CModalMessage)
   }
 
   const messageTypes = ['success', 'error', 'info', 'warning']
