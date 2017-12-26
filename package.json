@@ -46,7 +46,7 @@
   "devDependencies": {
     "babel-eslint": "^7.2.3",
     "cross-env": "^5.1.1",
-    "dokiv": "^2.0.0",
+    "dokiv": "^2.0.2",
     "eslint": "^4.3.0",
     "eslint-config-neat": "^1.0.0",
     "eslint-plugin-html": "^3.1.1",

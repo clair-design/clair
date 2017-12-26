@@ -25,8 +25,9 @@ postcss:
 externals:
   - https://lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css
 
-# this is an extra function
-# run if `NODE_ENV` equals 'production'
+# extra feature
+# only run in production mode:
+#   process.env.NODE_ENV === 'production'
 libary:
   name: Clair
   input: ./src/js/main.js
