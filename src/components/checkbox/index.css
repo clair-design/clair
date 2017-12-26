@@ -17,7 +17,7 @@
     width: 1em;
     height: 1em;
     vertical-align: middle;
-    border: 0.07em solid var(--gray);
+    border: 1px solid var(--gray);
     margin-right: 0.3em;
     border-radius: 0.15em;
     transition: all 0.2s ease;
