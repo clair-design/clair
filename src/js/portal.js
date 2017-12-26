@@ -28,7 +28,10 @@ function install (Vue) {
     beforeDestroy () {
       this.vm.$destroy()
       document.body.removeChild(this.vmElem)
-    }
+    },
+
+    // eslint-disable-next-line
+    render () {}
   }
 
   Vue.component(Portal.name, Portal)
