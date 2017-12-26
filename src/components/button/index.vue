@@ -43,7 +43,8 @@
     {
       href: String,
       size: String,
-      icon: String
+      icon: String,
+      autofocus: Boolean
     },
     toVueProps(modifiers)
   )
@@ -65,6 +66,11 @@
     methods: {
       onClick (e) {
         this.$emit('click', e)
+      }
+    },
+    mounted () {
+      if (this.autofocus) {
+        this.$el.focus()
       }
     }
   }

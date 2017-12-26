@@ -128,7 +128,7 @@ export default {
           title: '视觉反馈',
           icon: 'alert-triangle',
           children: [
-            { title: '对话框', link: '/component/dialog' },
+            { title: '对话框', link: '/component/modal' },
             { title: '提示框', link: '/component/tip' },
             { title: '加载中', link: '/component/loading' }
           ]
