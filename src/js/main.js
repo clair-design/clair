@@ -1,4 +1,6 @@
 import '../css/main.css'
+// eslint-disable-next-line
+import Components from '../components/**/!(_)*.vue'
 import responsiveFun from './responsive.js'
 
 // polyfill `Object.assign`
@@ -6,11 +8,7 @@ import responsiveFun from './responsive.js'
 import objectAssign from 'object-assign'
 Object.assign = objectAssign
 
-/**
- * install function when Clair is used
- * NOTE: components are registered automatically, DON'T register them here
- */
-export default {
+const Clair = {
   install (Vue) {
     if (!('$clair' in Vue.prototype)) {
       const responsive = responsiveFun(Vue)
@@ -25,5 +23,15 @@ export default {
         get () { return $clair }
       })
     }
+
+    Components.forEach(comp => {
+      comp.name && Vue.component(comp.name, comp)
+    })
   }
+}
+
+export default Clair
+
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use(Clair)
 }
