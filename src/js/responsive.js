@@ -5,6 +5,10 @@ export default function (Vue) {
     data: { media: breakpoints[0] }
   })
 
+  const setMediaAttr = media => {
+    document.documentElement.setAttribute('media', media)
+  }
+
   // create an element to listen viewport change
   if (typeof window === 'object') {
     const element = document.createElement('div')
@@ -19,8 +23,10 @@ export default function (Vue) {
       if (oldMedia === media) return // no media change
       responsive.$emit('change', media, oldMedia)
       responsive.media = media
+      setMediaAttr(media)
     })
     responsive.media = getMediaType()
+    setMediaAttr(responsive.media)
   }
 
   return responsive
