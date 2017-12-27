@@ -4,6 +4,7 @@
   position: relative;
   border-radius: 0.25em;
   margin: 2em 0;
+  background-color: color(var(--gray) l(92%));
   cursor: pointer;
 
   & > input[type="range"] {
@@ -16,6 +17,9 @@
   }
 }
 
+.c-slider__progress {
+  background-color: color(var(--blue) l(68%));
+}
 .c-slider--disabled {
   cursor: not-allowed;
 
@@ -39,11 +43,11 @@
   border: 3px solid var(--blue);
   border-radius: 50%;
   background-color: #fff;
+  transition: box-shadow 0.3s ease;
 
   &:hover,
   &:active {
     box-shadow: 0 0 0 0.15em color(var(--primary-color) l(80%));
-    transition: box-shadow 0.3s ease;
   }
 
   &:hover > .c-slider__tip,
