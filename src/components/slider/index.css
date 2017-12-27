@@ -20,6 +20,7 @@
 .c-slider__progress {
   background-color: color(var(--blue) l(68%));
 }
+
 .c-slider--disabled {
   cursor: not-allowed;
 
