@@ -34,7 +34,7 @@
 <script>
   import throttle from 'lodash/throttle'
   import './index.css'
-  import validatable from '../validatable/'
+  import validatable from '../../js/mixins/validatable'
 
   // SEE https://github.com/jackmoore/autosize
   // import autoSize from 'autosize'

@@ -1,6 +1,6 @@
-import CModalAlert from '../components/modal/_alert.vue'
-import CModalMessage from '../components/modal/_message.vue'
-import { defer } from './util'
+import CModalAlert from '../../components/modal/_alert.vue'
+import CModalMessage from '../../components/modal/_message.vue'
+import { defer } from '../utils'
 
 export default {
   install (Vue) {

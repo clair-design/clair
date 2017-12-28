@@ -13,7 +13,7 @@
 
 <script>
 import './index.css'
-import { randomString } from '../../js/util'
+import { randomString } from '../../js/utils'
 
 export default {
   name: 'c-radio-group',

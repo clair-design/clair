@@ -31,7 +31,7 @@ c-portal
 
 <script>
 import './index.css'
-import { getScrollBarSize } from '../../js/util'
+import { getScrollBarSize } from '../../js/utils'
 
 const slice = Array.prototype.slice
 let zIndex = 1992

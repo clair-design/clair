@@ -5,7 +5,7 @@
 
 <script>
 import { multiply } from './util.js'
-import { breakpoints } from '../../js/config.js'
+import { breakpoints } from '../../js/config'
 
 const props = breakpoints
   .map(bp => `${bp}-only`)
