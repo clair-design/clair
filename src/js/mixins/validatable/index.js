@@ -2,7 +2,6 @@
  * A Vue.js mixin to add validate functionality
  */
 import Validator from './validator.js'
-import './index.css'
 
 export default {
 

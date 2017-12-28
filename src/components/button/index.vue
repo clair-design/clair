@@ -27,7 +27,7 @@
   import {
     toVueProps,
     toClassNames
-  } from '../../js/util'
+  } from '../../js/utils'
 
   const name = 'c-button'
   const block = `c-button`
