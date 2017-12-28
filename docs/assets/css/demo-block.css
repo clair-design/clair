@@ -11,6 +11,8 @@
 }
 
 .vue-demo-block > .vue-demo {
+  position: relative;
+  z-index: 1;
   margin: 2em;
 }
 
