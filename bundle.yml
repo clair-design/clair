@@ -16,7 +16,9 @@ options:
       file: ./dist/clair.esm.js
     external: !!js/function >
       function (id) {
-        return /^[a-z][\w]/.test(id)
+        // ignore depencencies unless
+        // importing with glob pattern
+        return /^[a-z][\w]/.test(id) && !/\*/.test(id)
       }
     uglify: false
 
