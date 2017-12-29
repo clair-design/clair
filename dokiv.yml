@@ -34,6 +34,7 @@ libary:
   output:
     - format: umd
       file: ./dist/clair.js
+      name: Clair
     - format: es
       file: ./dist/clair.esm.js
     - format: cjs
