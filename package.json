@@ -6,15 +6,17 @@
   "module": "dist/clair.esm.js",
   "unpkg": "dist/clair.js",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
     "precommit": "lint-staged",
     "clean": "rimraf dist .site",
     "new": "node ./boilerplate",
-    "prod": "cross-env NODE_ENV=production dokiv -r",
+    "bundle": "cross-env NODE_ENV=production clair-bundle",
+    "prod": "cross-env NODE_ENV=production dokiv",
     "dev": "cross-env NODE_ENV=development dokiv -w",
-    "build": "run-s clean prod",
+    "build": "run-s clean prod bundle",
     "start": "npm run dev"
   },
   "lint-staged": {
@@ -45,8 +47,9 @@
   "homepage": "https://github.com/clair-design/clair#readme",
   "devDependencies": {
     "babel-eslint": "^7.2.3",
+    "clair-bundle": "^1.0.6",
     "cross-env": "^5.1.1",
-    "dokiv": "^2.0.3",
+    "dokiv": "^2.0.10",
     "eslint": "^4.3.0",
     "eslint-config-neat": "^1.0.0",
     "eslint-plugin-html": "^3.1.1",
@@ -74,7 +77,6 @@
   "dependencies": {
     "feather-icons": "^4.0.1",
     "lodash": "^4.17.4",
-    "md2vue": "^3.0.0-beta",
     "object-assign": "^4.1.1"
   }
 }

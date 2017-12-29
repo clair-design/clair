@@ -24,28 +24,3 @@ postcss:
 
 externals:
   - https://lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css
-
-# extra feature
-# only run in production mode:
-#   process.env.NODE_ENV === 'production'
-libary:
-  name: Clair
-  input: ./src/js/main.js
-  output:
-    - format: umd
-      file: ./dist/clair.js
-      name: Clair
-    - format: es
-      file: ./dist/clair.esm.js
-    - format: cjs
-      file: ./dist/clair.common.js
-  postcss:
-    extract: ./dist/clair.css
-    minify: true
-    sourcemap: true
-    plugins:
-      - postcss-easy-import
-      - postcss-each
-      - postcss-for
-      - postcss-cssnext:
-          warnForDuplicates: false
