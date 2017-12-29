@@ -12,9 +12,10 @@
     "precommit": "lint-staged",
     "clean": "rimraf dist .site",
     "new": "node ./boilerplate",
-    "prod": "cross-env NODE_ENV=production dokiv -r",
+    "bundle": "cross-env NODE_ENV=production clair-bundle",
+    "prod": "cross-env NODE_ENV=production dokiv",
     "dev": "cross-env NODE_ENV=development dokiv -w",
-    "build": "run-s clean prod",
+    "build": "run-s clean prod bundle",
     "start": "npm run dev"
   },
   "lint-staged": {
@@ -45,8 +46,9 @@
   "homepage": "https://github.com/clair-design/clair#readme",
   "devDependencies": {
     "babel-eslint": "^7.2.3",
+    "clair-bundle": "^1.0.6",
     "cross-env": "^5.1.1",
-    "dokiv": "^2.0.8",
+    "dokiv": "^2.0.10",
     "eslint": "^4.3.0",
     "eslint-config-neat": "^1.0.0",
     "eslint-plugin-html": "^3.1.1",
