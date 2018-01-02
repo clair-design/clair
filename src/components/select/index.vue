@@ -78,8 +78,8 @@ import { getPosition, POSITION } from './position.js'
 // ensure each option has label and value
 const normalizeOptions = options => {
   return options.map(option => {
-    if ('label' in option && 'value' in option) return option
-    return { label: option, value: option }
+    if (typeof option === 'string') return { label: option, value: option }
+    return option
   })
 }
 
