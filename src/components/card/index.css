@@ -14,7 +14,7 @@
 
   & .c-card__title {
     white-space: nowrap;
-    padding: 0.5em 1em;
+    padding: 1em 1.5em;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
     & h1,
