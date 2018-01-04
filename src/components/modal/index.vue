@@ -9,7 +9,6 @@ c-portal
   )
     .c-modal(
       ref="dom"
-      :class="[center ? 'c-modal--center' : '']"
       :style="{ zIndex: zIndex }"
       v-show="visible",
       @click.self="maskClosable ? $emit('close') : noop()"
@@ -73,8 +72,9 @@ export default {
       }
 
       return {
-        top: 0,
-        width
+        width,
+        top: '50%',
+        transform: 'translateY(-50%)'
       }
     }
   },
