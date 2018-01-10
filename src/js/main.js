@@ -1,22 +1,21 @@
 import '../css/main.css'
-import responsiveFun from './responsive.js'
+// eslint-disable-next-line
+import Components from '../components/**/!(_)*.vue'
 
-// polyfill `Object.assign`
-// SEE https://www.npmjs.com/package/object-assign
-import objectAssign from 'object-assign'
-Object.assign = objectAssign
+// plugins
+import Responsive from './plugins/responsive.js'
+import PortalComponent from './plugins/portal.js'
+import Modal from './plugins/modal.js'
 
-/**
- * install function when Clair is used
- * NOTE: components are registered automatically, DON'T register them here
- */
-export default {
+import './polyfills'
+
+const Clair = {
   install (Vue) {
+    // inject $clair to Vue prototype
     if (!('$clair' in Vue.prototype)) {
-      const responsive = responsiveFun(Vue)
       const $clair = new Vue({
         data: {
-          responsive,
+          responsive: null,
           icon: 'feather'
         }
       })
@@ -25,5 +24,21 @@ export default {
         get () { return $clair }
       })
     }
+
+    // register components
+    Components.forEach(comp => {
+      comp.name && Vue.component(comp.name, comp)
+    })
+
+    // install plugins
+    Vue.use(PortalComponent)
+    Vue.use(Modal)
+    Vue.use(Responsive)
   }
+}
+
+export default Clair
+
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use(Clair)
 }

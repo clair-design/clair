@@ -38,6 +38,10 @@
   color: var(--dark) !important;
 }
 
+.is-text-primary {
+  color: var(--primary-color) !important;
+}
+
 .is-bg-white {
   background-color: #fff !important;
 }

@@ -60,3 +60,9 @@
     }
   }
 }
+
+.c-error-msg {
+  color: var(--danger-color);
+  margin-left: 0.2em;
+  vertical-align: middle;
+}

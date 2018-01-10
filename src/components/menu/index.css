@@ -77,7 +77,6 @@
   }
 
   & .c-submenu {
-    &:focus-within .c-submenu__popup,
     &:hover .c-submenu__popup {
       display: block;
       opacity: 1;
@@ -120,7 +119,6 @@
       transition: max-height 0.2s ease;
     }
 
-    &:focus-within .c-submenu__popup,
     &.is-open .c-submenu__popup {
       max-height: 20em;
     }

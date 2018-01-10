@@ -190,8 +190,6 @@ $RECYCLE.BIN/
 ## Ignore build files
 dist/
 
-docs/plugins/clair.js
-
 ## Ignore yarn.lock
 yarn.lock
 

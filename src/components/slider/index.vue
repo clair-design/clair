@@ -1,5 +1,5 @@
 <template lang="pug">
-  c-base-range.c-slider.is-bg-gray-2(
+  c-base-range.c-slider(
     :class="className",
     :direction="vertical ? 'v' : 'h'",
     @change="onRangeChange",
@@ -14,7 +14,7 @@
       :step="step",
       :disabled="disabled"
     )
-    .c-slider__progress.is-bg-blue-5(:style="progressPos")
+    .c-slider__progress(:style="progressPos")
     ul.c-slider__marks
       li(
         v-for="mark in normalizedMarks",

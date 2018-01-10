@@ -11,6 +11,8 @@
 }
 
 .vue-demo-block > .vue-demo {
+  position: relative;
+  z-index: 1;
   margin: 2em;
 }
 
@@ -55,7 +57,10 @@
 
 .vue-demo-tools {
   position: relative;
+<<<<<<< HEAD
   z-index: 1;
+=======
+>>>>>>> a271990d380eb60693b32c0313c0c91ed6a090d1
 }
 
 .vue-demo-tools > input[type="checkbox"] {

@@ -21,7 +21,7 @@
     width: 1em;
     height: 1em;
     vertical-align: middle;
-    border: 0.07em solid var(--gray);
+    border: 1px solid var(--gray);
     margin-right: 0.3em;
     border-radius: 1em;
     transition: all 0.2s ease;
@@ -29,8 +29,8 @@
     &::after {
       content: '';
       position: absolute;
-      top: -0.07em;
-      left: -0.07em;
+      top: -1px;
+      left: -1px;
       width: 1em;
       height: 1em;
       border-radius: 0.5em;

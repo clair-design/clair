@@ -139,7 +139,7 @@
 .c-button--outline {
   line-height: 2.4;
   background-color: #fff;
-  border: 0.07em solid currentColor;
+  border: 1px solid currentColor;
   color: color(var(--gray) l(60%));
 
   &.c-button--outline:not([disabled]):hover {
@@ -274,7 +274,7 @@
     }
 
     &:not(.c-button--outline) {
-      border-left: 0.07em solid color(var(--gray) l(68%));
+      border-left: 1px solid color(var(--gray) l(68%));
 
       &:first-child {
         border-left: none;

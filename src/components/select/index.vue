@@ -78,8 +78,8 @@ import { getPosition, POSITION } from './position.js'
 // ensure each option has label and value
 const normalizeOptions = options => {
   return options.map(option => {
-    if (option.label && option.value) return option
-    return { label: option, value: option }
+    if (typeof option === 'string') return { label: option, value: option }
+    return option
   })
 }
 
@@ -251,7 +251,18 @@ export default {
   },
 
   beforeDestroy () {
-    this.menuEl.remove()
+    const { menuEl } = this
+
+    if (!menuEl) {
+      return
+    }
+
+    // DOM Level 4
+    if (typeof menuEl.remove === 'function') {
+      menuEl.remove()
+    } else {
+      menuEl.parentNode.removeChild(menuEl)
+    }
   },
 
   methods: {
