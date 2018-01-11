@@ -1,4 +1,11 @@
 :root {
+  /**
+   * text
+   */
+  --text-color: #444;
+  --text-font: 14px/1.6 Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+  --mono-font: Lucida Console, Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
+
   /*
    * basic color
    */
@@ -23,21 +30,11 @@
   --success-color: var(--green);
   --warning-color: var(--yellow);
   --danger-color: var(--red);
-  --text-color: var(--dark);
 
   /**
    * layout
    */
   --grid-gap: 1em;
-
-  /**
-   * responsive breakpoints
-   */
-  --xs-viewport: 0;
-  --sm-viewport: 600px;
-  --md-viewport: 960px;
-  --lg-viewport: 1200px;
-  --xl-viewport: 1920px;
 
   /**
    * custom media for responsiveness
@@ -52,5 +49,8 @@
   @custom-media --md-only (width > 960px) and (width <= 1200px);
   @custom-media --lg-only (width > 1200px) and (width <= 1920px);
   @custom-media --xl-only (width > 1920px);
-}
 
+  /**
+   * button
+   */
+}

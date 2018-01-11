@@ -2,7 +2,7 @@
   #app
     c-header
     c-box.main.no-gap
-      c-box-item.sidebar(xs=12 sm=3 md=2)
+      c-box-item.sidebar(xs=12 sm=4 md=3 lg=2)
         .navbar.is-stacked
           .subnav(v-for="item in menu")
             .subnav__title
@@ -10,10 +10,12 @@
               span  {{ item.title }}
             router-link.navbar__item(
               v-for="sub in item.children",
-              :to="sub.link",
+              :to="sub.link || '/component/' + sub.name",
               :key="sub.title"
-            ) {{sub.title}}
-      c-box-item(xs=12 sm=9 md=10)
+            )
+              | {{sub.title}}
+              span.is-text-gray-5(v-if="sub.name") {{ sub.name }}
+      c-box-item(xs=12 sm=8 md=9 lg=10)
         transition(name='fade')
           router-view.c-container.is-lg
     c-footer.in-article
@@ -30,23 +32,22 @@
 </template>
 
 <script>
-var throttle = function(fn, delay, immediate, debounce) {
-  var curr = +new Date(), //当前事件
-    last_call = 0,
-    last_exec = 0,
-    timer = null,
-    diff, //时间差
-    context, //上下文
-    args,
-    exec = function() {
-      last_exec = curr
-      fn.apply(context, args)
-    }
-  return function() {
-    curr = +new Date()
-    ;(context = this),
-      (args = arguments),
-      (diff = curr - (debounce ? last_call : last_exec) - delay)
+const throttle = function (fn, delay, immediate, debounce) {
+  let curr = Date.now() // 当前事件
+  let lastCall = 0
+  let lastExec = 0
+  let timer = null
+  let diff // 时间差
+  let context // 上下文
+  let args
+  const exec = function () {
+    lastExec = curr
+    fn.apply(context, args)
+  }
+  return function () {
+    curr = Date.now()
+    context = this
+    diff = curr - (debounce ? lastCall : lastExec) - delay
     clearTimeout(timer)
     if (debounce) {
       if (immediate) {
@@ -61,7 +62,7 @@ var throttle = function(fn, delay, immediate, debounce) {
         timer = setTimeout(exec, -diff)
       }
     }
-    last_call = curr
+    lastCall = curr
   }
 }
 
@@ -82,55 +83,55 @@ export default {
           title: '基础样式',
           icon: 'layout',
           children: [
-            { title: '布局', link: '/component/layout' },
-            { title: '颜色', link: '/component/color' },
-            { title: '文本样式', link: '/component/typography' },
-            { title: '图标', link: '/component/icon' }
+            { title: '布局', name: 'layout' },
+            { title: '颜色', name: 'color' },
+            { title: '文本样式', name: 'typography' },
+            { title: '图标', name: 'icon' }
           ]
         },
         {
           title: '表单',
           icon: 'check-circle',
           children: [
-            { title: '按钮', link: '/component/button' },
-            { title: '文本框', link: '/component/input' },
-            { title: '下拉框', link: '/component/select' },
-            { title: '复选框', link: '/component/checkbox' },
-            { title: '单选框', link: '/component/radio' },
-            { title: '滑块', link: '/component/slider' },
-            { title: '表单', link: '/component/form' },
-            { title: '日期选择', link: '/component/datepicker' }
+            { title: '按钮', name: 'button' },
+            { title: '文本框', name: 'input' },
+            { title: '下拉框', name: 'select' },
+            { title: '复选框', name: 'checkbox' },
+            { title: '单选框', name: 'radio' },
+            { title: '滑块', name: 'slider' },
+            { title: '表单', name: 'form' },
+            { title: '日期选择', name: 'datepicker' }
           ]
         },
         {
           title: '导航',
           icon: 'navigation',
           children: [
-            { title: '标签页', link: '/component/tab' },
-            { title: '导航菜单', link: '/component/menu' },
-            { title: '面包屑', link: '/component/breadcrumb' },
-            { title: '工具栏', link: '/component/toolbar' },
-            { title: '步骤条', link: '/component/step' }
+            { title: '标签页', name: 'tab' },
+            { title: '导航菜单', name: 'menu' },
+            { title: '面包屑', name: 'breadcrumb' },
+            { title: '工具栏', name: 'toolbar' },
+            { title: '步骤条', name: 'step' }
           ]
         },
         {
           title: '数据展示',
           icon: 'bar-chart-2',
           children: [
-            { title: '表格', link: '/component/table' },
-            { title: '卡片', link: '/component/card' },
-            { title: '分页', link: '/component/pagination' },
-            { title: '标签', link: '/component/chip' },
-            { title: '日历', link: '/component/calendar' }
+            { title: '表格', name: 'table' },
+            { title: '卡片', name: 'card' },
+            { title: '分页', name: 'pagination' },
+            { title: '标签', name: 'chip' },
+            { title: '日历', name: 'calendar' }
           ]
         },
         {
           title: '视觉反馈',
           icon: 'alert-triangle',
           children: [
-            { title: '对话框', link: '/component/modal' },
-            { title: '提示框', link: '/component/tip' },
-            { title: '加载中', link: '/component/loading' }
+            { title: '对话框', name: 'modal' },
+            { title: '提示框', name: 'tip' },
+            { title: '加载中', name: 'loading' }
           ]
         }
       ]

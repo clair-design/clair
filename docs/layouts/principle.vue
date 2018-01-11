@@ -2,14 +2,14 @@
   #app
     c-header
     c-box.main.no-gap
-      c-box-item.sidebar(xs=12 sm=3 md=2)
+      c-box-item.sidebar(xs=12 sm=4 md=3 lg=2)
         .navbar.is-stacked
           router-link.navbar__item(
             v-for="item in menu",
             :to="item.link",
             :key="item.title"
           ) {{item.title}}
-      c-box-item.is-flex
+      c-box-item(xs=12 sm=8 md=9 lg=10)
         transition(name='fade')
           router-view.c-container.is-lg
     c-footer.in-article

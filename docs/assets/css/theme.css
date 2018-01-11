@@ -11,11 +11,6 @@
 /**
  * common
  */
-html {
-  font: 16px/1.6 Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
-  color: var(--text-color);
-}
-
 .content-wrap {
   max-width: var(--content-width);
 }
@@ -132,7 +127,6 @@ footer a {
  * sidebar
  */
 .sidebar {
-  font-size: 0.875em;
   position: relative;
   background: #fff;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
@@ -152,18 +146,25 @@ footer a {
   color: var(--text-color);
   padding: 2em 2em 7em;
   line-height: 1.8;
-}
 
-.markdown-body a {
-  color: var(--primary-color);
-}
+  & a {
+    color: var(--primary-color);
+  }
 
-.markdown-body:empty {
-  display: none;
-}
+  &:empty {
+    display: none;
+  }
 
-.markdown-body li {
-  list-style: disc;
+  & pre .hljs-tag {
+    color: #63a35c;
+  }
+
+  & h1,
+  & h2,
+  & h3,
+  & h4 {
+    font-weight: 500;
+  }
 }
 
 /**

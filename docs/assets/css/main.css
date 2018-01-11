@@ -1,8 +1,6 @@
-@import './markdown.css';
 @import 'highlight.js/styles/github-gist.css';
 @import './theme.css';
 @import './demo-block.css';
 @import './transition.css';
-/*@import '../../../dist/clair.css';*/
 @import '../../../src/css/main.css';
 @import '../../../src/components/**/*.css';

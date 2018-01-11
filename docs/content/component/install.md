@@ -25,8 +25,8 @@ route: /component/install
 使用方式：
 
 ```shell
-npm install vue-cli -g
-vue init clair-design/template my-project
+$ npm install vue-cli -g
+$ vue init clair-design/template my-project
 ```
 
 ## 直接使用我们的CDN地址
