@@ -65,7 +65,6 @@
   background: #f0f6fe;
   color: var(--primary-color);
   border-right: 2px solid;
-  margin-right: -1px;
 }
 
 .navbar.is-stacked .subnav__title {
@@ -99,15 +98,11 @@
   margin: 1em 0;
 }
 
-.markdown-body {
-  min-height: calc(100vh - 4.04em);
-}
-
 /**
  * footer
  */
 footer {
-  line-height: 5rem;
+  padding: 2em;
   font-size: 0.75em;
   text-align: center;
   color: #666;
@@ -143,8 +138,7 @@ footer a {
  * content
  */
 .markdown-body {
-  color: var(--text-color);
-  padding: 2em 2em 7em;
+  min-height: calc(100vh - 4.04em);
   line-height: 1.8;
 
   & a {
@@ -164,6 +158,10 @@ footer a {
   & h3,
   & h4 {
     font-weight: 500;
+  }
+
+  & table {
+    min-width: 61.8%;
   }
 }
 

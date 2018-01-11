@@ -40,7 +40,7 @@ $ vue init clair-design/template my-project
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Clair Project</title>
-  <link rel="stylesheet" href="https://s0.ssl.qhres.com/static/376df7fef5e73d29/0.2.0/clair.css">
+  <link rel="stylesheet" href="https://unpkg.com/clair@0.2.1/dist/clair.css">
 </head>
 <body>
   <div id="app">
@@ -49,7 +49,7 @@ $ vue init clair-design/template my-project
     </c-modal>
   </div>
   <script src="https://lib.baomitu.com/vue/2.5.13/vue.min.js"></script>
-  <script src="https://s0.ssl.qhres.com/static/3c877682712a75a8/0.2.0/clair.js"></script>
+  <script src="https://unpkg.com/clair@0.2.1/dist/clair.js"></script>
   <script>
     new Vue({ el: '#app' })
   </script>
@@ -74,6 +74,7 @@ $ yarn add clair
 ```javascript
 import Vue from 'vue'
 import Clair from 'clair'
+import 'clair/dist/clair.css'
 
 Vue.use(Clair)
 ```

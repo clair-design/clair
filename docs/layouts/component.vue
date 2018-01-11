@@ -14,17 +14,17 @@
               :key="sub.title"
             )
               | {{sub.title}}
-              span.is-text-gray-5(v-if="sub.name") {{ sub.name }}
+              span.is-text-gray-6.has-margin-left-sm(v-if="sub.name") {{ sub.name }}
       c-box-item(xs=12 sm=8 md=9 lg=10)
         transition(name='fade')
           router-view.c-container.is-lg
-    c-footer.in-article
+        c-footer
     c-button(
       primary
       outline
       round
       icon="navigation-2"
-      style="position: fixed; right: 50px; bottom: 100px;"
+      style="position: fixed; z-index: 9; right: 50px; bottom: 100px;"
       @click="scrollToTop"
       title="回到顶部"
       v-show="showToTop"
@@ -32,39 +32,7 @@
 </template>
 
 <script>
-const throttle = function (fn, delay, immediate, debounce) {
-  let curr = Date.now() // 当前事件
-  let lastCall = 0
-  let lastExec = 0
-  let timer = null
-  let diff // 时间差
-  let context // 上下文
-  let args
-  const exec = function () {
-    lastExec = curr
-    fn.apply(context, args)
-  }
-  return function () {
-    curr = Date.now()
-    context = this
-    diff = curr - (debounce ? lastCall : lastExec) - delay
-    clearTimeout(timer)
-    if (debounce) {
-      if (immediate) {
-        timer = setTimeout(exec, delay)
-      } else if (diff >= 0) {
-        exec()
-      }
-    } else {
-      if (diff >= 0) {
-        exec()
-      } else if (immediate) {
-        timer = setTimeout(exec, -diff)
-      }
-    }
-    lastCall = curr
-  }
-}
+import throttle from 'lodash/throttle'
 
 export default {
   data () {
@@ -86,6 +54,8 @@ export default {
             { title: '布局', name: 'layout' },
             { title: '颜色', name: 'color' },
             { title: '文本样式', name: 'typography' },
+            { title: 'CSS 工具类', name: 'helper' },
+            { title: '响应式设计', name: 'responsive' },
             { title: '图标', name: 'icon' }
           ]
         },

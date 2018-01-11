@@ -3,80 +3,84 @@
 /**
  * typography sizing
  */
-.is-text-xxl {
-  font-size: 2.25em;
+.is-size-xxl {
+  font-size: 28px;
 }
 
-.is-text-xl {
-  font-size: 1.5em;
+.is-size-xl {
+  font-size: 20px;
 }
 
-.is-text-lg {
-  font-size: 1.125em;
+.is-size-lg {
+  font-size: 16px;
 }
 
-.is-text-normal {
-  font-size: 1em;
+.is-size-md {
+  font-size: 14px;
 }
 
-.is-text-sm {
-  font-size: 0.875em;
+.is-size-sm {
+  font-size: 13px;
 }
 
-.is-text-xs {
-  font-size: 0.8125em;
+.is-size-xs {
+  font-size: 12px;
 }
 
-.is-text-xxs {
-  font-size: 0.75em;
+.is-size-xxs {
+  font-size: 10px;
 }
 
-.is-weight-bold {
+.has-weight-bold {
   font-weight: bold;
 }
 
-.is-weight-normal {
+.has-weight-normal {
   font-weight: normal;
 }
 
-.is-weight-light {
+.has-weight-light {
   font-weight: 100;
 }
 
 /**
  * text align
  */
-.is-text-left {
+.has-text-left {
   text-align: left;
 }
 
-.is-text-center {
+.has-text-centered {
   text-align: center;
 }
 
-.is-text-right {
+.has-text-right {
   text-align: right;
+}
+
+.has-text-justified {
+  text-align: justify;
 }
 
 /**
  * line height
  */
-.is-leading-none {
+.has-leading-xs {
   line-height: 1;
 }
 
-.is-leading-tight {
+.has-leading-sm {
   line-height: 1.25;
 }
 
-.is-leading-normal {
+.has-leading-md {
   line-height: 1.6;
 }
 
-.is-leading-loose {
+.has-leading-lg {
   line-height: 2;
 }
 
-.is-leading-huge {
+.has-leading-xl {
   line-height: 3;
 }

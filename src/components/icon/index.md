@@ -92,7 +92,7 @@ route: /component/icon
 </style>
 
 <template demo-only>
-  <c-box gap="5%" class="is-text-center">
+  <c-box gap="5%" class="has-text-centered">
     <c-box-item v-if="icons.length === 0" xs="12">
       数据加载中....
     </c-box-item>
@@ -176,7 +176,7 @@ route: /component/icon
 </style>
 
 <template demo-only>
-  <c-box gap="5%" class="is-text-center">
+  <c-box gap="5%" class="has-text-centered">
     <c-box-item v-if="icons.length === 0" xs="12">
       数据加载中....
     </c-box-item>

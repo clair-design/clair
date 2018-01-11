@@ -18,7 +18,7 @@
       tr(
         v-for="dataItem,index in dataList"
         v-else
-        )
+      )
         td(
           v-for="columnsItem in allColumns"
           :class="columnsItem.classname"

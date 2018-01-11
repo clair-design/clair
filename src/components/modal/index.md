@@ -76,8 +76,8 @@ layout: component
 >
   <div slot="header">
     <c-icon type="fa" name="bookmark" size="1em" color="#d8a50e" />
-    <span class="is-text-lg">屈原列传</span>
-    （<span class="is-text-normal">节选</span>）
+    <span class="is-size-lg">屈原列传</span>
+    （<span class="is-size-md">节选</span>）
   </div>
 
   <div>屈平之作《离骚》，盖自怨生也。上称帝喾，下道齐桓，中述汤、武，以刺世事。明道德之广崇，治乱之条贯，靡不毕见。其文约，其辞微，其志洁，其行廉。其称文小而其指极大，举类迩而见义远。其志洁，故其称物芳；其行廉，故死而不容。自疏濯淖污泥之中，蝉蜕于浊秽，以浮游尘埃之外，不获世之滋垢，皭然泥而不滓者也。推此志也，虽与日月争光可也。</div>

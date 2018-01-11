@@ -4,7 +4,7 @@ layout: principle
 route: /principle/guides
 ---
 
-## 组件设计规范
+# 组件设计规范
 
 - 单一职责，一个组件只做一件事。
 - 提供反馈。考虑组件在 focus、hover、active 等状态下的变化。

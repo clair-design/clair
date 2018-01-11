@@ -13,9 +13,10 @@ route: /component/color
 ## 色板
 
 ```html
+<template demo-only>
 <c-box class="no-gap">
-  <c-box-item v-for="color in colors" xs="4" sm="2" lg="flex">
-    <h3 class="is-text-align-center">{{ color }}</h3>
+  <c-box-item v-for="color in colors" xs="4" sm="2" lg="1">
+    <h3 class="has-text-centered">{{ color }}</h3>
     <div
       class="color-block"
       v-for="i in 12"
@@ -25,6 +26,7 @@ route: /component/color
     </div>
   </c-box-item>
 </c-box>
+</template>
 <script>
 export default {
   data () {

@@ -9,12 +9,12 @@ route: /component/toolbar
 ## 基本用法
 
 ```html
-<c-toolbar class="is-text-sm" height="4em">
+<c-toolbar class="is-size-sm" height="4em">
   <c-toolbar-item>
     <a href="#"><c-icon name="menu" valign="middle" /></a>
   </c-toolbar-item>
   <c-toolbar-item flex>
-    <div class="is-text-lg">App Name</div>
+    <div class="is-size-lg">App Name</div>
   </c-toolbar-item>
   <c-toolbar-item>
     <div>您好，用户！</div>
@@ -31,7 +31,7 @@ route: /component/toolbar
     <a href="#"><c-icon name="menu" valign="middle" /></a>
   </c-toolbar-item>
   <c-toolbar-item flex>
-    <div class="is-text-lg">App Name</div>
+    <div class="is-size-lg">App Name</div>
   </c-toolbar-item>
   <c-toolbar-item>
     <div>您好，用户！</div>

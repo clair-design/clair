@@ -32,9 +32,25 @@
   --danger-color: var(--red);
 
   /**
-   * layout
+   * grid layout
    */
-  --grid-gap: 1em;
+  --grid-gap: 0;
+  --container-padding: 24px;
+  --container-margin: 24px;
+  --container-size-sm: 600px;
+  --container-size-md: 800px;
+  --container-size-lg: 960px;
+
+  /**
+   * spacing
+   */
+  --spacing-none: 0;
+  --spacing-unit: 16px;
+  --spacing-xs: calc(var(--spacing-unit) / 4);
+  --spacing-sm: calc(var(--spacing-unit) / 2);
+  --spacing-md: var(--spacing-unit);
+  --spacing-lg: calc(var(--spacing-unit) * 2);
+  --spacing-xl: calc(var(--spacing-unit) * 4);
 
   /**
    * custom media for responsiveness
@@ -49,6 +65,12 @@
   @custom-media --md-only (width > 960px) and (width <= 1200px);
   @custom-media --lg-only (width > 1200px) and (width <= 1920px);
   @custom-media --xl-only (width > 1920px);
+
+  /**
+   * table
+   */
+  --table-border-color: #ddd;
+  --table-cell-padding: 0.5em 1em;
 
   /**
    * button

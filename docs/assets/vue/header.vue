@@ -1,11 +1,11 @@
 <template lang="pug">
-c-box.toolbar.c-container.no-gap(align="center")
-  c-box-item(xs=12 sm=3 md=2)
-    router-link.logo(to="/")
+c-box.toolbar(align="center")
+  c-box-item.has-padding-left-md(xs=12 sm=4 md=3 lg=2)
+    router-link.is-inline-block.has-padding-sm(to="/")
       img(src="/static/logo.svg" alt="clair")
 
-  c-box-item(xs=12 sm=8 md=9)
-    c-box.navbar.no-gap
+  c-box-item.is-none-xs-only(xs=12 sm=7 md=8 lg=9)
+    c-box.navbar
       c-box-item(
         v-for="nav in navs",
         :key="nav.title"
@@ -16,8 +16,8 @@ c-box.toolbar.c-container.no-gap(align="center")
           :to="nav.link",
           :class="{'is-active': nav.isActiveReg.test($route.path)}"
         ) {{nav.title}}
-  c-box-item.is-text-right(xs="12" sm="1")
-    a.xs-12.sm-a(
+  c-box-item.is-text-right.is-none-xs-only(xs=12 sm=1)
+    a.is-inline-block.has-margin-right-md(
       href="https://github.com/clair-design/clair"
       aria-label="github repository"
       target="_blank"

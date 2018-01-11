@@ -14,7 +14,7 @@ route: /component/input
 
 ```html
 <c-input v-model="userName" placeholder="请输入用户名" />
-<span v-if="userName" class="is-text-sm">Hello {{userName}} !</span>
+<span v-if="userName" class="is-size-sm">Hello {{userName}} !</span>
 
 <script>
   export default {

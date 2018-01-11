@@ -15,7 +15,10 @@ const props = breakpoints
 const getClassName = (values, media) => {
   if (!values) return []
   return values.split(/\s+/)
-    .map(val => `${media}-${val}`)
+    .map(val => {
+      const prefix = /^offset/.test(val) ? 'has' : 'is'
+      return `${prefix}-${val}-${media}`
+    })
 }
 
 export default {
@@ -40,20 +43,12 @@ export default {
     },
 
     /**
-     * set gap of parent
-     */
-    padding () {
-      return this.$parent.gap ? multiply(this.$parent.gap, 0.5) : ''
-    },
-
-    /**
      * set box item gap
      */
     style () {
       const style = {}
-      if (this.padding) {
-        style.paddingLeft = this.padding
-        style.paddingRight = this.padding
+      if (this.$parent.gap) {
+        style.padding = multiply(this.$parent.gap, 0.5)
       }
       if (this.order) {
         style.order = this.order

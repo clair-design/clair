@@ -1,38 +1,5 @@
 @import url('variables.css');
 
-.c-container {
-  padding-left: 2em;
-  padding-right: 2em;
-  margin-left: auto;
-  margin-right: auto;
-
-  &.is-sm {
-    max-width: 600px;
-  }
-
-  &.is-md {
-    max-width: 800px;
-  }
-
-  &.is-lg {
-    max-width: 960px;
-  }
-
-  &.is-left {
-    margin-left: 0;
-  }
-
-  &.is-right {
-    margin-right: 0;
-  }
-
-  &.is-no-padding {
-    /* offset the grid gap */
-    padding-left: calc(var(--grid-gap) / 2);
-    padding-right: calc(var(--grid-gap) / 2);
-  }
-}
-
 .c-box {
   display: flex;
   flex-flow: row wrap;
@@ -50,8 +17,7 @@
 }
 
 .c-box__item {
-  padding-left: calc(var(--grid-gap) * 0.5);
-  padding-right: calc(var(--grid-gap) * 0.5);
+  padding: calc(var(--grid-gap) * 0.5);
   flex: 1 1 0;
 
   &.is-narrow {
@@ -111,7 +77,7 @@
 
 /* stylelint-disable function-whitespace-after, at-rule-no-unknown */
 @each $i in 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 {
-  .is-offset-$i {
+  .has-offset-$i {
     margin-left: calc($i / 12 * 100)%;
   }
 
@@ -122,17 +88,17 @@
 }
 
 @each $i in flex, block, inline, inline-block, none {
-  .is-d-$i {
+  .is-$i {
     display: $i;
   }
 }
 
-.flex-row {
+.has-dir-row {
   flex-direction: row;
 }
 
-.flex-row {
-  flex-direction: row;
+.has-dir-column {
+  flex-direction: column;
 }
 
 /**
@@ -141,64 +107,64 @@
 @each $size in xs, sm, md, lg, xl {
   @media (--$(size)-up) {
     @each $i in 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 {
-      .$(size)-$(i) {
+      .is-$(i)-$(size) {
         flex: 0 1 auto;
         width: calc($i / 12 * 100)%;
       }
 
-      .$(size)-offset-$(i) {
+      .has-offset-$(i)-$(size) {
         margin-left: calc($i / 12 * 100)%;
       }
     }
 
-    .$(size)-auto {
+    .is-auto-$(size) {
       flex: 0 1 auto;
       width: auto;
     }
 
     @each $d in block, inline-block, flex, inline, none {
-      .$(size)-d-$(d) {
+      .is-$(d)-$(size) {
         display: $d;
       }
     }
 
-    .$(size)-dir-col {
+    .has-dir-column-$(size) {
       flex-direction: column;
     }
 
-    .$(size)-dir-row {
+    .has-dir-row-$(size) {
       flex-direction: row;
     }
   }
 
   @media (--$(size)-only) {
     @each $i in 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 {
-      .$(size)-only-$(i) {
+      .is-$(i)-$(size)-only {
         flex: 0 1 auto;
         width: calc($i / 12 * 100)%;
       }
 
-      .$(size)-only-offset-$(i) {
+      .has-offset-$(i)-$(size)-only {
         margin-left: calc($i / 12 * 100)%;
       }
     }
 
-    .$(size)-only-auto {
+    .is-auto-$(size)-only {
       flex: 0 1 auto;
       width: auto;
     }
 
     @each $d in block, inline-block, flex, inline, none {
-      .$(size)-only-d-$(d) {
+      .is-$(d)-$(size)-only {
         display: $d;
       }
     }
 
-    .$(size)-only-dir-col {
+    .has-dir-column-$(size)-only {
       flex-direction: column;
     }
 
-    .$(size)-only-dir-row {
+    .has-dir-row-$(size)-only {
       flex-direction: row;
     }
   }
@@ -247,3 +213,32 @@
     width: 4px !important;
   }
 }
+
+.c-container {
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--container-margin);
+
+  &.is-sm {
+    max-width: var(--container-size-sm);
+  }
+
+  &.is-md {
+    max-width: var(--container-size-md);
+  }
+
+  &.is-lg {
+    max-width: var(--container-size-lg);
+  }
+
+  &.is-left {
+    margin-left: 0;
+  }
+
+  &.is-right {
+    margin-right: 0;
+  }
+}
+
