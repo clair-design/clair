@@ -13,12 +13,6 @@
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-.c-modal--center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .c-modal__wrapper {
   position: relative;
   width: 50%;

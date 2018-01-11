@@ -226,7 +226,7 @@ route: /component/icon
       Promise.all([
         fetchText('https://raw.githubusercontent.com/' +
           'FortAwesome/Font-Awesome/master/src/icons.yml'),
-        loadScript('http://lib.baomitu.com/yamljs/0.3.0/yaml.min.js'),
+        loadScript('https://lib.baomitu.com/yamljs/0.3.0/yaml.min.js'),
         loadScript('https://lib.baomitu.com/clipboard.js/1.7.1/clipboard.min.js')
       ]).then(([text]) => {
         this.icons = window.YAML.parse(text).icons.map(i => i.id)

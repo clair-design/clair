@@ -24,7 +24,7 @@
       outline
       round
       icon="navigation-2"
-      style="position: fixed; z-index: 9; right: 50px; bottom: 100px;"
+      style="position: fixed; right: 50px; bottom: 100px; z-index: 999"
       @click="scrollToTop"
       title="回到顶部"
       v-show="showToTop"

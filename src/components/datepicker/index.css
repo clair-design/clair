@@ -1,0 +1,66 @@
+/**
+* c-datepicker
+*/
+@import url('../../css/variables.css');
+
+.c-datepicker {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  border-radius: 0.2em;
+  overflow: hidden;
+  width: 15em;
+  cursor: pointer;
+
+  & .c-input-wrap {
+    width: 100%;
+  }
+
+  & input {
+    margin: 0;
+    width: 100%;
+  }
+}
+
+.c-datepicker__icon {
+  position: absolute;
+  right: 1em;
+  top: 0.85em;
+  font-size: 0.85em;
+  color: color(var(--text-color) l(65%));
+}
+
+.c-datepicker__panel .c-datepicker__range {
+  background: color(var(--white));
+  border: 1px solid color(var(--gray) l(85%));
+  box-shadow: 2px 2px 0.5em 0 color(var(--gray) l(95%));
+  padding: 2em;
+  font-size: 0.85em;
+}
+
+.c-datepicker__content {
+  display: inline-block;
+}
+
+.c-datepicker__content + .c-datepicker__content {
+  margin-left: 1em;
+}
+
+.c-datepicker__body .c-calendar {
+  display: inline-block;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.c-datepicker__text {
+  text-align: center;
+  font-size: 0.85em;
+  margin-top: 0.85em;
+}
+
+.c-datepicker__btns {
+  position: absolute;
+  right: 1em;
+  bottom: 1.5em;
+}
