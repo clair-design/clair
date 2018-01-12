@@ -38,7 +38,10 @@ export default {
     monthsShow: Boolean,
     year: [String, Number],
     month: [String, Number],
-    day: [String, Number],
+    date: {
+      type: String,
+      default: '1970-01-01'
+    },
     minDate: {
       type: String,
       default: '1970-01-01'
@@ -86,28 +89,6 @@ export default {
     nextYear () {
       if (!this.isNextYearCanSelect) return false
       this.$emit('yearchange', this.year + 1)
-    },
-    prevMonth () {
-      if (!this.isPreMonthCanSelect) return false
-      let month = parseInt(this.month) - 1
-      const maxMonth = 11
-      const minMonth = 0
-      if (month < minMonth) {
-        this.$emit('yearchange', this.year - 1)
-      }
-      month = month < minMonth ? maxMonth : month
-      this.$emit('monthchange', month)
-    },
-    nextMonth () {
-      if (!this.isNextMonthCanSelect) return false
-      let month = this.month + 1
-      const maxMonth = 11
-      const minMonth = 0
-      if (month > maxMonth) {
-        this.$emit('yearchange', this.year + 1)
-      }
-      month = month > maxMonth ? minMonth : month
-      this.$emit('monthchange', month)
     },
     monthtableShow () {
       this.$emit('monthshow', true)

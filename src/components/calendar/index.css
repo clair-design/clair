@@ -92,34 +92,53 @@
   margin: 0;
   width: 100%;
 
+  & .lastmonth .day-cell,
+  & .nextmonth .day-cell {
+    color: color(var(--text-color) l(65%));
+  }
+
+  & .day-cell-range {
+    position: relative;
+
+    &::before {
+      content: '';
+      display: block;
+      background: #e6f7ff;
+      border-radius: 0;
+      border: 0;
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      left: 0;
+      right: 0;
+    }
+  }
+
   & .day-cell {
     width: 2em;
     line-height: 2em;
     display: inline-block;
     color: color(var(--text-color));
+    border-radius: 50%;
+    position: relative;
+    transition: background 0.3s ease;
+  }
 
-    &.lastmonth,
-    &.nextmonth {
-      color: color(var(--text-color) l(65%));
-    }
+  & .day-cell:hover {
+    background: color(var(--blue) l(85%));
+    color: #fff;
+  }
 
-    &.active,
-    &:hover {
-      background: color(var(--blue) l(85%));
-      color: #fff;
-      border-radius: 50%;
-    }
+  & .active .day-cell {
+    color: #fff;
+    background: color(var(--blue));
+  }
 
-    &.active {
-      background: color(var(--blue));
-    }
-
-    &.disabled,
-    &.disabled:hover {
-      color: color(var(--text-color) l(85%));
-      cursor: not-allowed;
-      background: color(var(--white));
-    }
+  & .disabled .day-cell,
+  & .disabled:hover .day-cell {
+    color: color(var(--text-color) l(85%));
+    cursor: not-allowed;
+    background: color(var(--white));
   }
 
   & .month-cell {

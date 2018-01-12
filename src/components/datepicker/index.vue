@@ -29,10 +29,10 @@
     )
     .c-datepicker__body(
       v-if="type == 'daterange'"
-      v-show="isOpen"
     )
       c-daterange(
         :value="date"
+        :show="isOpen"
         @change="setDateRange"
       )
 
@@ -66,9 +66,9 @@ export default {
 
   computed: {
     daterange () {
-      if (this.type === 'date') return ['', '']
+      if (this.type === 'date') return []
       const [start, end] = this.date
-      return `${start} 至 ${end}`
+      return !start && !end ? '' : `${start} 至 ${end}`
     }
   },
 
@@ -82,6 +82,7 @@ export default {
 
   beforeDestroy () {
     this.datepickerPanel.remove()
+    window.removeEventListener('resize', this.resize, false)
   },
 
   watch: {
@@ -109,6 +110,7 @@ export default {
       this.datepickerPanel = document.querySelector('.c-datepicker__panel')
       document.body.appendChild(this.datepickerPanel)
       this.resize()
+      window.addEventListener('resize', this.resize, false)
     }
   },
   methods: {
