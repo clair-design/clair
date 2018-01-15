@@ -1,5 +1,8 @@
 <template lang="pug">
-.c-calendar(v-show="show")
+.c-calendar(
+  v-show="show"
+  :class="className"
+  )
   c-dateheader(
     :minDate="minDate"
     :maxDate="maxDate"
@@ -40,6 +43,7 @@ export default {
   name: 'c-calendar',
   props: {
     value: String,
+    size: String,
     show: {
       type: Boolean,
       default: true
@@ -65,6 +69,11 @@ export default {
       month: 1,
       day: 1,
       monthsShow: false
+    }
+  },
+  computed: {
+    className () {
+      return this.size ? `is-${this.size}` : 'md'
     }
   },
   created () {

@@ -1,5 +1,8 @@
 <template lang="pug">
-  .c-datepicker__range(v-show="show")
+  .c-datepicker__range(
+    v-show="show"
+    :class="className"
+    )
     .c-datepicker__content.c-calendar
       c-dateheader(
         :minDate="minDate"
@@ -92,6 +95,7 @@ export default {
   name: 'c-daterange',
   props: {
     value: [Array, String],
+    size: String,
     show: Boolean,
     minDate: {
       type: String,
@@ -140,6 +144,9 @@ export default {
     }
   },
   computed: {
+    className () {
+      return this.size ? `is-${this.size}` : 'md'
+    },
     startMaxDate () {
       return new Date(this.endYear, this.endMonth, 0).format(this.pattern)
     },

@@ -4,15 +4,27 @@
 @import url('../../css/variables.css');
 
 .c-calendar {
-  width: 24em;
-  min-height: 22em;
-  font-size: 0.875em;
+  width: 20em;
+  min-height: 20em;
+  font-size: 14px;
   border: 1px solid color(var(--gray) l(85%));
   border-radius: 0.2em;
-  padding: 2em;
+  padding: 1em;
   user-select: none;
   box-shadow: 2px 2px 0.5em 0 color(var(--gray) l(95%));
   background: color(var(--white));
+
+  &.is-sm {
+    font-size: 12px;
+  }
+
+  &.is-md {
+    font-size: 14px;
+  }
+
+  &.is-lg {
+    font-size: 16px;
+  }
 }
 
 .c-calendar__header {
@@ -60,22 +72,6 @@
 
 .c-calendar .c-calendar__next-month {
   right: 29px;
-}
-
-.c-calendar__prev-month::before {
-  content: "〈";
-}
-
-.c-calendar__next-month::before {
-  content: '〉';
-}
-
-.c-calendar__prev-year::before {
-  content: '《';
-}
-
-.c-calendar__next-year::before {
-  content: '》';
 }
 
 .c-calendar__month {
@@ -169,7 +165,7 @@
 
 .c-calendar__body table thead th,
 .c-calendar__body table tbody td {
-  padding: 0.5em 0.3em;
+  padding: 0.3em 0.1em;
   font-weight: normal;
   border: 0;
   text-align: center;

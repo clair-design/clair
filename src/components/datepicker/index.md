@@ -48,6 +48,7 @@ layout: component
   <c-datepicker
     v-model="date"
     :placeholder="'请输入或者选择日期'"
+    size="lg"
     :minDate="minDate"
     :maxDate="maxDate"
     @change="dateChange"
@@ -81,6 +82,7 @@ layout: component
     v-model="daterane"
     :type="'daterange'"
     :placeholder="'请选择日期'"
+    size="sm"
     @change="dateChange"
   ></c-datepicker>
   <c-datepicker

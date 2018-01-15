@@ -4,11 +4,21 @@
     :class="{disabled: !isPreYearCanSelect}"
     @click="prevYear"
   )
+    c-icon(
+      type="feather"
+      valign="text-top"
+      name="chevrons-left"
+    )
   a.c-calendar__prev-month(
     :class="{disabled: !isPreMonthCanSelect}"
     v-show="!monthsShow"
     @click="prevMonth"
-  )
+    )
+    c-icon(
+      type="feather"
+      valign="text-top"
+      name="chevron-left"
+    )
   span.c-calendar__year {{this.year}}
   span.c-calendar__spacer(
     v-show="!monthsShow"
@@ -22,10 +32,20 @@
     v-show="!monthsShow"
     @click="nextMonth"
   )
+    c-icon(
+      type="feather"
+      valign="text-top"
+      name="chevron-right"
+    )
   a.c-calendar__next-year(
     :class="{disabled: !isNextYearCanSelect}"
     @click="nextYear"
   )
+    c-icon(
+      type="feather"
+      valign="text-top"
+      name="chevrons-right"
+    )
 </template>
 
 <script>

@@ -8,11 +8,13 @@
     v-model="daterange"
     :placeholder="placeholder"
     :disabled="disabled"
+    :size="size"
     @change="dateChange"
   )
   c-input(
     v-else-if="type == 'date'"
     v-model="date"
+    :size="size"
     :placeholder="placeholder"
     :disabled="disabled"
     @change="dateChange"
@@ -23,6 +25,7 @@
       v-if="type == 'date'"
       :value="date"
       :show="isOpen"
+      :size="size"
       :minDate="minDate"
       :maxDate="maxDate"
       @update="setDate"
@@ -32,6 +35,7 @@
     )
       c-daterange(
         :value="date"
+        :size="size"
         :show="isOpen"
         @change="setDateRange"
       )
@@ -53,6 +57,7 @@ export default {
         return ''
       }
     },
+    size: String,
     disabled: Boolean,
     type: {
       /* date, daterange */

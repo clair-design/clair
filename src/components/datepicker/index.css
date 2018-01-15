@@ -24,9 +24,10 @@
 
 .c-datepicker__icon {
   position: absolute;
-  right: 1em;
-  top: 0.85em;
+  right: 0.5em;
+  top: 50%;
   font-size: 0.85em;
+  transform: translateY(-50%);
   color: color(var(--text-color) l(65%));
 }
 
@@ -34,8 +35,32 @@
   background: color(var(--white));
   border: 1px solid color(var(--gray) l(85%));
   box-shadow: 2px 2px 0.5em 0 color(var(--gray) l(95%));
-  padding: 2em;
-  font-size: 0.85em;
+  padding: 1em;
+  font-size: 14px;
+
+  &.is-sm {
+    font-size: 12px;
+
+    & .c-calendar {
+      font-size: 12px;
+    }
+  }
+
+  &.is-md {
+    font-size: 14px;
+
+    & .c-calendar {
+      font-size: 14px;
+    }
+  }
+
+  &.is-lg {
+    font-size: 16px;
+
+    & .c-calendar {
+      font-size: 16px;
+    }
+  }
 }
 
 .c-datepicker__content {
@@ -55,8 +80,7 @@
 
 .c-datepicker__text {
   text-align: center;
-  font-size: 0.85em;
-  margin-top: 0.85em;
+  margin: 0.5em 0;
 }
 
 .c-datepicker__btns {
