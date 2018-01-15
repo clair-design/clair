@@ -1,12 +1,11 @@
 <template lang="pug">
-  .c-datepicker__range
+  .c-datepicker__range(v-show="show")
     .c-datepicker__content.c-calendar
       c-dateheader(
         :minDate="minDate"
-        :maxDate="maxDate"
+        :maxDate="startMaxDate"
         :year="startYear"
         :month="startMonth"
-        :day="startDay"
         :monthshow="startMonthsShow"
         @monthchange="startMonthChange"
         @yearchange="startYearChange"
@@ -16,26 +15,32 @@
         c-monthtable(
           v-if="startMonthsShow"
           :minDate="minDate"
-          :maxDate="maxDate"
+          :maxDate="startMaxDate"
           :year="startYear"
           @change="startSelectMonth"
           )
         c-datetable(
           v-if="!startMonthsShow"
+          type="range"
           :minDate="minDate"
           :maxDate="maxDate"
           :year="startYear"
           :month="startMonth"
           :day="startDay"
-          @change="startSelectDay"
+          :start="start"
+          :end="end"
+          :range-obj="rangeObj"
+          @monthchange="startMonthChange"
+          @yearchange="startYearChange"
+          @change="selectDay"
+          @rangeChange="onRangeChange"
         )
     .c-datepicker__content.c-calendar
       c-dateheader(
-        :minDate="minDate"
+        :minDate="endMinDate"
         :maxDate="maxDate"
         :year="endYear"
         :month="endMonth"
-        :day="endDay"
         :monthshow="endMonthsShow"
         @monthchange="endMonthChange"
         @yearchange="endYearChange"
@@ -44,19 +49,26 @@
       .c-calendar__body
         c-monthtable(
           v-if="endMonthsShow"
-          :minDate="minDate"
+          :minDate="endMinDate"
           :maxDate="maxDate"
           :year="endYear"
           @change="endSelectMonth"
           )
         c-datetable(
           v-if="!endMonthsShow"
+          type="range"
           :minDate="minDate"
           :maxDate="maxDate"
           :year="endYear"
           :month="endMonth"
           :day="endDay"
-          @change="endSelectDay"
+          :start="start"
+          :end="end"
+          :range-obj="rangeObj"
+          @monthchange="endMonthChange"
+          @yearchange="endYearChange"
+          @change="selectDay"
+          @rangeChange="onRangeChange"
         )
     p.c-datepicker__text {{start}} 至 {{end}}
     .c-datepicker__btns
@@ -75,10 +87,12 @@
 </template>
 
 <script>
+import Mixin from '../calendar/mixin.js'
 export default {
   name: 'c-daterange',
   props: {
-    value: Array,
+    value: [Array, String],
+    show: Boolean,
     minDate: {
       type: String,
       default: '1970-01-01'
@@ -92,6 +106,7 @@ export default {
       default: 'yyyy-MM-dd'
     }
   },
+  mixins: [Mixin],
   data () {
     return {
       start: '',
@@ -103,43 +118,72 @@ export default {
       startDay: 1,
       endDay: 1,
       startMonthsShow: false,
-      endMonthsShow: false
+      endMonthsShow: false,
+      rangeObj: {
+        endDate: '',
+        selecting: true
+      }
     }
   },
   created () {
     const [start, end] = this.value
-    this.start = start
-    this.end = end
-    const [startYear, startMonth, startDay] = this.syncDate(this.start)
-    this.startYear = startYear
-    this.startMonth = startMonth
-    this.startDay = startDay
-    const [endYear, endMonth, endDay] = this.syncDate(this.end)
-    this.endYear = endYear
-    this.endMonth = endMonth
-    this.endDay = endDay
+    this.start = start || ''
+    this.end = end || ''
+    this.updateDate()
   },
   watch: {
+    show (newVal) {
+      this.resetDate()
+    },
     value (newVal) {
-      const [start, end] = this.value
-      this.start = start
-      this.end = end
-      const [startYear, startMonth, startDay] = this.syncDate(this.start)
-      this.startYear = startYear
-      this.startMonth = startMonth
-      this.startDay = startDay
-      const [endYear, endMonth, endDay] = this.syncDate(this.end)
-      this.endYear = endYear
-      this.endMonth = endMonth
-      this.endDay = endDay
+      this.resetDate()
     }
   },
   computed: {
-
+    startMaxDate () {
+      return new Date(this.endYear, this.endMonth, 0).format(this.pattern)
+    },
+    endMinDate () {
+      return new Date(this.startYear, this.startMonth + 1, 1).format(this.pattern)
+    }
   },
   methods: {
-    fixZero (val, num = 2) {
-      return (Array(num).join(0) + val).slice(-num)
+    resetDate () {
+      const [start, end] = this.value
+      this.start = start
+      this.end = end
+      this.rangeObj = {
+        endDate: '',
+        selecting: true
+      }
+      this.updateDate()
+    },
+    updateDate () {
+      const [startYear, startMonth, startDay] = this.syncDate(this.start)
+      if (!this.start) {
+        this.startYear = new Date().getFullYear()
+        this.startMonth = new Date().getMonth()
+        this.startDay = ''
+      } else {
+        this.startYear = startYear
+        this.startMonth = startMonth
+        this.startDay = startDay
+      }
+      const [endYear, endMonth, endDay] = this.syncDate(this.end)
+      this.endYear = endYear || this.startYear
+
+      if (endMonth === this.startMonth) {
+        [this.endYear, this.endMonth] = this.updateMonth(this.endYear, endMonth, 1, 'plus')
+      } else if (!endMonth) {
+        [this.endYear, this.endMonth] = this.updateMonth(this.endYear, this.startMonth, 1, 'plus')
+      } else {
+        this.endMonth = endMonth
+      }
+
+      this.endDay = endYear === this.startYear && endMonth === this.startMonth ? '' : endDay
+    },
+    onRangeChange (obj) {
+      this.rangeObj = obj.rangeObj
     },
     syncDate (time) {
       const d = new Date(time)
@@ -151,30 +195,16 @@ export default {
         ]
       }
       return [
-        new Date().getFullYear(),
-        new Date().getMonth(),
-        new Date().getDate()
+        '',
+        '',
+        ''
       ]
-    },
-    updateStartDate () {
-      if (this.startDay) {
-        const date = `${this.startYear}-${this.fixZero(this.startMonth + 1)}-${this.fixZero(this.startDay)}`
-        this.start = new Date(date).format(this.pattern)
-      }
-    },
-    updateEndDate () {
-      if (this.endDay) {
-        const date = `${this.endYear}-${this.fixZero(this.endMonth + 1)}-${this.fixZero(this.endDay)}`
-        this.end = new Date(date).format(this.pattern)
-      }
     },
     startMonthChange (month) {
       this.startMonth = month
-      this.updateStartDate()
     },
     startYearChange (year) {
       this.startYear = year
-      this.updateStartDate()
     },
     startMonthTableShow (show) {
       this.startMonthsShow = show
@@ -184,17 +214,16 @@ export default {
       this.startMonth = month
       this.startDay = ''
     },
-    startSelectDay (day) {
-      this.startDay = day
-      this.updateStartDate()
+    selectDay (dateObj) {
+      this.start = dateObj.start
+      this.end = dateObj.end
+      this.updateDate()
     },
     endMonthChange (month) {
       this.endMonth = month
-      this.updateEndDate()
     },
     endYearChange (year) {
       this.endYear = year
-      this.updateEndDate()
     },
     endMonthTableShow (show) {
       this.endMonthsShow = show
@@ -204,15 +233,12 @@ export default {
       this.endMonth = month
       this.endDay = ''
     },
-    endSelectDay (day) {
-      this.endDay = day
-      this.updateEndDate()
-    },
     cancel () {
       [this.start, this.end] = this.value
       this.$emit('change', this.value)
     },
     confirmRange () {
+      this.end = this.end || this.rangeObj.endDate
       this.$emit('change', [this.start, this.end])
     }
   }

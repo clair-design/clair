@@ -5,7 +5,6 @@
     :maxDate="maxDate"
     :year="year"
     :month="month"
-    :day="day"
     :monthshow="monthsShow"
     @monthchange="monthchange"
     @yearchange="yearchange"
@@ -26,8 +25,11 @@
       :year="year"
       :month="month"
       :day="day"
+      @monthchange="monthchange"
+      @yearchange="yearchange"
       @change="selectDay"
     )
+
 </template>
 
 <script>
