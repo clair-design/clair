@@ -169,6 +169,7 @@ Clair 可以帮助你限制用户最少或最多选择多少项。
 | label | String | 无 | 复选框关联的标签 |
 | disabled | Boolean | false | 复选框是否被禁用 |
 | indeterminate | Boolean | false | indeterminate 状态 |
+| size | String | 'md' | 复选框尺寸 |
 
 ## c-checkbox-group 属性
 

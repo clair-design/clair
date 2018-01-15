@@ -17,7 +17,6 @@ route: /component/select
   v-model="dim"
   :options="options"
 />
-
 <span v-if="dim">您选择的是 {{ dim }}</span>
 
 <script>
@@ -141,23 +140,21 @@ export default {
 
 ## 不同尺寸的下拉框
 
-使用 `width` 属性控制输入框的长度，`size` 属性控制输入框的整体大小。
+`size` 属性控制输入框的整体大小。
 
 ```html
-<c-select v-model="dim" :options="options" width="shortest" size="sm" />
-<c-select v-model="dim" :options="options" width="shorter" size="sm" />
-<c-select v-model="dim" :options="options" width="short" size="sm" />
-<c-select v-model="dim" :options="options" width="medium" size="sm" />
-<c-select v-model="dim" :options="options" width="long" size="sm" />
-<c-select v-model="dim" :options="options" width="flex" size="sm" />
-<c-select v-model="dim" :options="options" width="flex" />
-<c-select v-model="dim" :options="options" width="flex" size="lg" />
+<div class="has-margin-bottom-md" v-for="size in ['xs', 'sm', 'md', 'lg', 'xl']">
+  <c-select v-model="dim" :options="options" :size="size" />
+  <c-select v-model="dim2" multiple :options="options" :size="size" />
+  <c-button primary :size="size">按钮</c-button>
+</div>
 
 <script>
 export default {
   data () {
     return {
       dim: 'ip',
+      dim2: ['ip'],
       options: [
         { label: '浏览量', value: 'pv' },
         { label: '访客数', value: 'uv' },
@@ -170,14 +167,67 @@ export default {
   }
 }
 </script>
-
-<style>
-.c-select {
-  margin-bottom: 1em;
-}
-</style>
 ```
 
+## 输入框宽度
+
+使用 `width` 属性控制输入框的长度。Clair 中的下拉选择狂默认宽度为 `15em`，你可以通过 `width` 属性设置不同宽度的输入框。在下面的例子中，你可以选择不同的 `size` 和 `width` 查看宽高的大小：
+
+```html
+<template demo-only>
+<c-form>
+  <c-form-item label="Size:">
+    <c-radio-group
+      :options="sizes"
+      v-model="size"
+      button
+    />
+  </c-form-item>
+  <c-form-item label="Width:">
+    <c-radio-group
+      :options="widths"
+      v-model="width"
+      button
+    />
+  </c-form-item>
+  <c-form-item label="下拉框:">
+    <c-select v-model="dim" :options="options" :size="size" :width="width" />
+  </c-form-item>
+</c-form>
+</template>
+
+<script>
+  const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
+    .map(w => ({
+      label: w,
+      value: w
+    }))
+  const widths = ['shortest', 'shorter', 'short', 'normal', 'long', 'longer', 'longest', 'flexible']
+    .map(w => ({
+      label: w,
+      value: w
+    }))
+  export default {
+    data() {
+      return {
+        width: 'normal',
+        size: 'md',
+        sizes,
+        widths,
+        dim: '',
+        options: [
+          { label: '浏览量', value: 'pv' },
+          { label: '访客数', value: 'uv' },
+          { label: '新访客数', value: 'nv' },
+          { label: '访问时长', value: 'du' },
+          { label: '转化次数', value: 'cv' },
+          { label: 'IP 数', value: 'ip' }
+        ]
+      }
+    }
+  }
+</script>
+```
 
 ## 自定义展示
 
@@ -362,6 +412,7 @@ export default {
   width="long"
   multiple
   autocomplete
+    size="xs"
 />
 
 <script>

@@ -5,9 +5,9 @@
     :style="labelStyle"
   )
     slot(name="label") {{ label }}
-  .c-form-item__control
+  .c-form-item__control(:class="{ 'has-error': hasError }")
     slot
-    .c-form-item__error(:style="errorStyle")
+    .c-form-item__error
       | {{ errorMsg }}
 </template>
 
@@ -37,10 +37,6 @@ export default {
     hasError () {
       const { validatable } = this
       return validatable && !validatable.validity.valid
-    },
-    errorStyle () {
-      const visibility = this.hasError ? 'visible' : 'hidden'
-      return { visibility }
     },
     errorMsg () {
       return this.hasError ? this.validatable.validity.msg : ''

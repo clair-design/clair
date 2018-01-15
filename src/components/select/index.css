@@ -3,16 +3,21 @@
 */
 @import url('../../css/variables.css');
 
+:root {
+  --select-padding-xs: 3px;
+  --select-padding-sm: 3px;
+  --select-padding-md: 4px;
+  --select-padding-lg: 5px;
+  --select-padding-xl: 6px;
+}
+
 .c-select {
   display: inline-block;
   position: relative;
   vertical-align: middle;
-  font-size: 0.875em;
   border: 1px solid color(var(--gray) l(85%));
-  border-radius: 0.2em;
+  border-radius: 3px;
   overflow: hidden;
-  width: 16em;
-  min-height: 2.5em;
   cursor: pointer;
 
   &::after {
@@ -22,81 +27,40 @@
     left: 0;
     right: 0;
     height: 1px;
-    box-shadow: 0 0 4px #ccc;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
     pointer-events: none;
   }
 
   &:focus,
   &:focus-within {
     outline: none;
-    box-shadow: 0 0 0 0.2em color(var(--primary-color) l(90%));
+    box-shadow: 0 0 0 0.2em color(var(--primary-color) a(var(--focus-ring-opacity)));
   }
 
   &.is-disabled {
     background: color(var(--gray) l(95%));
     cursor: not-allowed;
 
-    & .c-select__inner {
-      pointer-events: none;
+    & .c-select__selection {
       opacity: 0.3;
     }
-  }
-
-  /* sizing */
-  &.is-lg {
-    font-size: 1em;
-  }
-
-  &.is-sm {
-    font-size: 0.75em;
-  }
-
-  &.is-shortest {
-    width: 5em;
-  }
-
-  &.is-shorter {
-    width: 8em;
-  }
-
-  &.is-short {
-    width: 12em;
-  }
-
-  &.is-long {
-    width: 24em;
-  }
-
-  &.is-longer {
-    width: 32em;
-  }
-
-  &.is-longest {
-    width: 50em;
-  }
-
-  &.is-flex {
-    display: block;
-    width: 100%;
   }
 }
 
 .c-select__selection {
   position: relative;
   padding-right: 2em;
-  padding-bottom: 0.375em;
   background: #fff;
   overflow: hidden;
   min-height: inherit;
+  margin: -1px;
 
   & .c-chip {
     float: left;
-    margin-left: 0.4em;
-    margin-top: 0.4em;
 
     &.is-disabled {
       color: color(var(--gray) l(80%));
-      padding-right: 0.5em;
+      padding-right: 4px;
 
       & .c-chip__close {
         display: none;
@@ -105,10 +69,9 @@
   }
 }
 
-.c-select__value {
+.c-select__value,
+.c-select__placeholder {
   color: var(--text-color);
-  padding: 0.5em 0.4em 0;
-  line-height: 1.5;
   cursor: inherit;
   white-space: nowrap;
   overflow: hidden;
@@ -117,9 +80,6 @@
 
 .c-select__placeholder {
   color: color(var(--gray) l(50%));
-  padding: 0.5em 0.4em 0;
-  line-height: 1.5;
-  cursor: inherit;
 }
 
 .c-select__menu {
@@ -127,7 +87,7 @@
   z-index: 9;
   border-radius: 0.2em;
   background: #fff;
-  font-size: 0.875em;
+  font-size: var(--form-font-md);
   border: 1px solid color(var(--gray) l(85%));
   box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.2);
   line-height: 1.5;
@@ -136,12 +96,20 @@
   -ms-scroll-chaining: none;
   overscroll-behavior: none;
 
+  &.is-xs {
+    font-size: var(--form-font-xs);
+  }
+
   &.is-sm {
-    font-size: 12px;
+    font-size: var(--form-font-sm);
   }
 
   &.is-lg {
-    font-size: 16px;
+    font-size: var(--form-font-lg);
+  }
+
+  &.is-xl {
+    font-size: var(--form-font-xl);
   }
 }
 
@@ -248,9 +216,7 @@
   display: inline-block;
   position: relative;
   background: color(var(--gray) l(95%));
-  line-height: 1;
-  padding: 0.4em 1.3em 0.4em 0.5em;
-  border-radius: 0.2em;
+  border-radius: 3px;
   white-space: nowrap;
   max-width: 10em;
   overflow: hidden;
@@ -259,11 +225,13 @@
 
 .c-chip__close {
   position: absolute;
-  top: 0;
+  top: 50%;
   right: 0;
+  transform: translateY(-52%);
   cursor: pointer;
-  padding: 0 0.2em 0 0.3em;
-  line-height: 1.4;
+  padding: 0 0.3em;
+  line-height: 2;
+  overflow: hidden;
 
   &:hover {
     background: rgba(0, 0, 0, 0.1);
@@ -272,8 +240,147 @@
   &::after {
     content: '+';
     display: block;
-    font-size: 1.25em;
+    font-size: 1.4em;
     transform: rotate(45deg);
+  }
+}
+
+/**
+ * sizing
+ */
+.c-select {
+  font-size: var(--form-font-md);
+  width: var(--form-width-normal);
+  min-height: var(--form-height-md);
+}
+
+.c-select__selection {
+  line-height: calc(var(--form-height-md) - 2 * var(--select-padding-md));
+  padding-bottom: var(--select-padding-md);
+
+  & .c-chip {
+    line-height: inherit;
+    padding: 0 1.5em 0 0.4em;
+    margin-left: var(--select-padding-md);
+    margin-top: var(--select-padding-md);
+  }
+}
+
+.c-select__placeholder,
+.c-select__value {
+  padding: var(--select-padding-md) calc(var(--select-padding-md) + 1px) 0;
+}
+
+.c-select {
+  /* sizing */
+  &.is-xs {
+    font-size: var(--form-font-xs);
+    min-height: var(--form-height-xs);
+
+    & .c-select__selection {
+      line-height: calc(var(--form-height-xs) - 2 * var(--select-padding-xs));
+      padding-bottom: var(--select-padding-xs);
+
+      & .c-chip {
+        margin-left: var(--select-padding-xs);
+        margin-top: var(--select-padding-xs);
+      }
+    }
+
+    & .c-select__placeholder,
+    & .c-select__value {
+      padding: var(--select-padding-xs) calc(var(--select-padding-xs) + 1px) 0;
+    }
+  }
+
+  &.is-sm {
+    font-size: var(--form-font-sm);
+    min-height: var(--form-height-sm);
+
+    & .c-select__selection {
+      line-height: calc(var(--form-height-sm) - 2 * var(--select-padding-sm));
+      padding-bottom: var(--select-padding-sm);
+
+      & .c-chip {
+        margin-left: var(--select-padding-sm);
+        margin-top: var(--select-padding-sm);
+      }
+    }
+
+    & .c-select__placeholder,
+    & .c-select__value {
+      padding: var(--select-padding-sm) calc(var(--select-padding-sm) + 1px) 0;
+    }
+  }
+
+  &.is-lg {
+    font-size: var(--form-font-lg);
+    min-height: var(--form-height-lg);
+
+    & .c-select__selection {
+      line-height: calc(var(--form-height-lg) - 2 * var(--select-padding-lg));
+      padding-bottom: var(--select-padding-lg);
+
+      & .c-chip {
+        margin-left: var(--select-padding-lg);
+        margin-top: var(--select-padding-lg);
+      }
+    }
+
+    & .c-select__placeholder,
+    & .c-select__value {
+      padding: var(--select-padding-lg) calc(var(--select-padding-lg) + 1px) 0;
+    }
+  }
+
+  &.is-xl {
+    font-size: var(--form-font-xl);
+    min-height: var(--form-height-xl);
+
+    & .c-select__selection {
+      line-height: calc(var(--form-height-xl) - 2 * var(--select-padding-xl));
+      padding-bottom: var(--select-padding-xl);
+
+      & .c-chip {
+        margin-left: var(--select-padding-xl);
+        margin-top: var(--select-padding-xl);
+      }
+    }
+
+    & .c-select__placeholder,
+    & .c-select__value {
+      padding: var(--select-padding-xl) calc(var(--select-padding-xl) + 1px) 0;
+    }
+  }
+
+  &.is-shortest {
+    width: var(--form-width-shortest);
+  }
+
+  &.is-shorter {
+    width: var(--form-width-shorter);
+  }
+
+  &.is-short {
+    width: var(--form-width-short);
+  }
+
+  &.is-long {
+    width: var(--form-width-long);
+  }
+
+  &.is-longer {
+    width: var(--form-width-longer);
+  }
+
+  &.is-longest {
+    width: 50em;
+    width: var(--form-width-longest);
+  }
+
+  &.is-flexible {
+    display: block;
+    width: 100%;
   }
 }
 

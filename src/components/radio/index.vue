@@ -1,7 +1,7 @@
 <template lang="pug">
 label(
   @change="onChange"
-  :class="[button ? 'c-radio--button': 'c-radio']"
+  :class="classNames"
 )
   input(
     type="radio"
@@ -37,6 +37,13 @@ export default {
     checkedIndex: {
       type: Number,
       required: true
+    }
+  },
+  computed: {
+    classNames () {
+      const { button } = this
+      const classes = button ? 'c-radio--button' : 'c-radio'
+      return classes
     }
   },
   methods: {

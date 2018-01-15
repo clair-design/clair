@@ -79,6 +79,29 @@
 
 .c-radio-group {
   display: inline-block;
+  vertical-align: middle;
+  font-size: var(--form-font-md);
+  line-height: var(--form-height-md);
+
+  &.is-xs {
+    font-size: var(--form-font-xs);
+    line-height: var(--form-height-xs);
+  }
+
+  &.is-sm {
+    font-size: var(--form-font-sm);
+    line-height: var(--form-height-sm);
+  }
+
+  &.is-lg {
+    font-size: var(--form-font-lg);
+    line-height: var(--form-height-lg);
+  }
+
+  &.is-xl {
+    font-size: var(--form-font-xl);
+    line-height: var(--form-height-xl);
+  }
 }
 
 .c-radio + .c-radio {
@@ -88,6 +111,8 @@
 .c-radio--button {
   position: relative;
   float: left;
+  margin-top: -1px;
+  margin-bottom: -1px;
 
   & > input {
     position: absolute;
@@ -97,10 +122,9 @@
   & > .c-radio__label {
     position: relative;
     display: block;
-    line-height: 1;
     white-space: nowrap;
     border: 1px solid color(var(--gray) l(80%));
-    padding: 0.5em 1em;
+    padding: 0 1em;
     margin-left: -1px;
     cursor: pointer;
     transition: box-shadow 0.3s ease;

@@ -1,5 +1,8 @@
 <template lang="pug">
-  label.c-checkbox(@change="onChange")
+  label.c-checkbox(
+    @change="onChange"
+    :class="classNames"
+  )
     input(
       type="checkbox"
       :name="name"
@@ -21,6 +24,7 @@
     name: String,
     label: String,
     disabled: Boolean,
+    size: String,
     indeterminate: Boolean
   }
 
@@ -30,6 +34,16 @@
       event: 'change'
     },
     props,
+    inject: {
+      $form: { default: null }
+    },
+    computed: {
+      classNames () {
+        const { size, $form } = this
+        const actualSize = size || ($form && $form.size)
+        return actualSize ? `is-${actualSize}` : ''
+      }
+    },
     watch: {
       indeterminate (newVal) {
         if (this.$refs.input) {

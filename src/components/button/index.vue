@@ -33,6 +33,8 @@
   const block = `c-button`
   const modifiers = [
     'primary',
+    'success',
+    'warning',
     'danger',
     'round',
     'outline',
@@ -53,13 +55,24 @@
   export default {
     name,
     props,
+    inject: {
+      $buttonGroup: { default: null },
+      $form: { default: null }
+    },
     computed: {
       iconName () {
         return this.loading ? 'loader' : this.icon
       },
+      actualSize () {
+        const { size, $buttonGroup, $form } = this
+        return size ||
+          ($buttonGroup && $buttonGroup.size) ||
+          ($form && $form.size)
+      },
       classNames () {
         const classList = classNames.call(this)
-        if (this.size) classList.push(`c-button--${this.size}`)
+        const size = this.actualSize
+        if (size) classList.push(`c-button--${size}`)
         return classList
       }
     },

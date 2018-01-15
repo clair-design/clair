@@ -13,7 +13,7 @@
       @click.prevent="goPage(pageNumber - 1)"
     )
       slot(name="prev")
-        c-icon(name="angle-left" type="fa")
+        c-icon(name="chevron-left" valign="middle")
     a(
       href="#"
       class="c-pagination__page"
@@ -47,7 +47,7 @@
       class="c-pagination_prev"
       @click.prevent="goPage(pageNumber + 1)"
     )
-      c-icon(name="angle-right" type="fa")
+      c-icon(name="chevron-right" valign="middle")
   </span>
 </template>
 

@@ -48,6 +48,7 @@ a {
 
 table {
   border-collapse: collapse;
+  margin-bottom: 1em;
 
   & th {
     text-align: left;

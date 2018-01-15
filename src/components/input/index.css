@@ -10,54 +10,65 @@
 .c-input-wrap {
   display: inline-block;
   vertical-align: middle;
-  font-size: 0.875em;
+  font-size: var(--form-font-md);
 
   &.is-xs {
-    font-size: 0.75em;
+    font-size: var(--form-font-xs);
 
     & .c-input {
-      height: 2.14em;
-      padding: 0 0.2em;
+      height: var(--form-height-xs);
     }
   }
 
   &.is-sm {
-    font-size: 0.75em;
+    font-size: var(--form-font-sm);
+
+    & .c-input {
+      height: var(--form-height-sm);
+    }
   }
 
   &.is-lg {
-    font-size: 1em;
+    font-size: var(--form-font-lg);
+
+    & .c-input {
+      height: var(--form-height-lg);
+    }
   }
 
   &.is-xl {
-    font-size: 1.125em;
+    font-size: var(--form-font-xl);
+
+    & .c-input {
+      height: var(--form-height-xl);
+    }
   }
 
   &.is-shortest .c-input {
-    width: 3em;
+    width: var(--form-width-shortest);
   }
 
   &.is-shorter .c-input {
-    width: 5em;
+    width: var(--form-width-shorter);
   }
 
   &.is-short .c-input {
-    width: 10em;
+    width: var(--form-width-short);
   }
 
   &.is-long .c-input {
-    width: 24em;
+    width: var(--form-width-long);
   }
 
   &.is-longer .c-input {
-    width: 32em;
+    width: var(--form-width-longer);
   }
 
   &.is-longest .c-input {
-    width: 50em;
+    width: var(--form-width-longest);
   }
 
-  &.is-flex {
+  &.is-flexible {
     display: block;
 
     & .c-input {
@@ -72,23 +83,22 @@
       color: var(--danger-color);
 
       &:focus {
-        box-shadow: 0 0 0 0.2em color(var(--danger-color) l(90%));
+        box-shadow: 0 0 0 0.2em color(var(--danger-color) a(var(--focus-ring-opacity)));
       }
     }
   }
 }
 
 .c-input {
-  height: 2.5em;
-  padding: 0 0.4em;
   vertical-align: middle;
   border: 1px solid color(var(--gray) l(85%));
-  border-radius: 0.2em;
+  border-radius: 3px;
   background-color: #fff;
   color: var(--text-color);
   line-height: normal;
-  width: 15em;
-  margin-right: 5px;
+  width: var(--form-width-normal);
+  height: var(--form-height-md);
+  padding: 0 0.5em;
   box-shadow: inset 0 1px 3px #eee;
   transition: all 0.3s ease;
 
@@ -123,6 +133,6 @@
 
 textarea.c-input {
   height: auto;
-  padding: 0.4em;
+  padding: 0.5em;
 }
 

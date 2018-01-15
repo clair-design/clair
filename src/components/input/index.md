@@ -2,6 +2,11 @@
 title: Input 文本输入框
 layout: component
 route: /component/input
+meta:
+  style:
+  - cssText: >
+      .vue-demo .input-items { margin-bottom: 1em; }
+      .vue-demo .input-items inpu { margin-bottom: 1em; }
 ---
 
 # Input 文本输入框
@@ -27,57 +32,82 @@ route: /component/input
 </script>
 ```
 
-## 改变输入框大小
+## 改变输入框高度
 
-通过 `size` 属性，你可以对输入框大小进行整体缩放，文字大小、内变局都会随之改变。如果你只想改变输入框宽度，可以设置 `width` 属性。
+通过 `size` 属性，你可以对输入框大小进行整体缩放，文字大小、内边距都会随之改变。
 
 ```html
 <div class="input-items">
-  <c-input size="xs" width="shortest" />
-  <c-input size="xs" width="shorter" />
-  <c-input size="xs" width="short" />
   <c-input size="xs" />
-  <c-input size="xs" width="long" />
-  <c-button size="xs" primary>提交</c-button>
+  <c-button size="xs" primary>确定</c-button>
 </div>
 <div class="input-items">
-  <c-input size="sm" width="shortest" />
-  <c-input size="sm" width="shorter" />
-  <c-input size="sm" width="short" />
   <c-input size="sm" />
-  <c-input size="sm" width="long" />
-  <c-button size="sm" primary>提交</c-button>
+  <c-button size="sm" primary>确定</c-button>
 </div>
 <div class="input-items">
-  <c-input width="shortest" />
-  <c-input width="shorter" />
-  <c-input width="short" />
-  <c-input width="long" />
-  <c-button primary outline>提交</c-button>
+  <c-input />
+  <c-button primary>确定</c-button>
 </div>
 <div class="input-items">
-  <c-input size="lg" width="shortest" />
-  <c-input size="lg" width="shorter" />
-  <c-input size="lg" width="short" />
-  <c-input size="lg" width="long" />
-  <c-button size="lg" primary outline>提交</c-button>
+  <c-input size="lg" />
+  <c-button size="lg" primary>确定</c-button>
 </div>
 <div class="input-items">
-  <c-input size="xl" width="shortest" />
-  <c-input size="xl" width="shorter" />
-  <c-input size="xl" width="short" />
   <c-input size="xl" />
-  <c-button size="xl" outline icon="arrow-right" round></c-button>
+  <c-button size="xl" primary>确定</c-button>
 </div>
-<div class="input-items">
-  <c-input size="xl" width="flex" />
-</div>
+```
 
-<style>
-.input-items {
-  margin-bottom: 1em;
-}
-</style>
+## 宽度设置
+
+Clair 中的输入框默认宽度为 `15em`，你可以通过 `width` 属性设置不同宽度的输入框。在下面的例子中，你可以选择不同的 `size` 和 `width` 查看文本输入框的大小：
+
+```html
+<template demo-only>
+<c-form>
+  <c-form-item label="Size:">
+    <c-radio-group
+      :options="sizes"
+      v-model="size"
+      button
+    />
+  </c-form-item>
+  <c-form-item label="Width:">
+    <c-radio-group
+      :options="widths"
+      v-model="width"
+      button
+    />
+  </c-form-item>
+  <c-form-item label="输入框:">
+    <c-input :size="size" :width="width" />
+  </c-form-item>
+</c-form>
+</template>
+
+<script>
+  const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
+    .map(w => ({
+      label: w,
+      value: w
+    }))
+  const widths = ['shortest', 'shorter', 'short', 'normal', 'long', 'longer', 'longest', 'flexible']
+    .map(w => ({
+      label: w,
+      value: w
+    }))
+  export default {
+    data() {
+      return {
+        width: 'normal',
+        size: 'md',
+        sizes,
+        widths
+      }
+    }
+  }
+</script>
 ```
 
 ## 禁用和只读状态

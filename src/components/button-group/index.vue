@@ -7,7 +7,14 @@
 
 export default {
   name: 'c-button-group',
-  props: {},
+  props: {
+    size: String
+  },
+  provide () {
+    return {
+      '$buttonGroup': this
+    }
+  },
 
   data () {
     return {}

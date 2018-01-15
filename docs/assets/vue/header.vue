@@ -16,13 +16,13 @@ c-box.toolbar(align="center")
           :to="nav.link",
           :class="{'is-active': nav.isActiveReg.test($route.path)}"
         ) {{nav.title}}
-  c-box-item.is-text-right.is-none-xs-only(xs=12 sm=1)
+  c-box-item.has-text-right.is-none-xs-only(xs=12 sm=1)
     a.is-inline-block.has-margin-right-md(
       href="https://github.com/clair-design/clair"
       aria-label="github repository"
       target="_blank"
     )
-      c-icon.is-text-xl(name="github")
+      c-icon.is-size-xl(name="github" valign="middle")
 </template>
 
 <script>

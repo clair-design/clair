@@ -9,7 +9,7 @@ route: /component/menu
 ```html
 <template>
   <c-menu mode="horizontal">
-    <c-menu-item>
+    <c-menu-item @click.native="onMenuClick">
       <a href="#"><c-icon name="home" type="fa" />首页</a>
     </c-menu-item>
     <c-menu-item active>
@@ -31,6 +31,16 @@ route: /component/menu
     </c-submenu>
   </c-menu>
 </template>
+
+<script>
+export default {
+  methods: {
+    onMenuClick (e) {
+      console.log(e)
+    }
+  }
+}
+</script>
 ```
 
 ## 深色主题

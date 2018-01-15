@@ -1,5 +1,7 @@
 <template lang="pug">
-.c-radio-group
+.c-radio-group(
+  :class="classNames"
+)
   c-radio(
     v-for="(option, index) in options"
     :name="name"
@@ -25,12 +27,23 @@ export default {
     value: {
       type: [Number, String, Object]
     },
-    button: Boolean
+    button: Boolean,
+    size: String
+  },
+  inject: {
+    $form: { default: null }
   },
   data () {
     return {
       name: randomString(),
       checkedIndex: -1
+    }
+  },
+  computed: {
+    classNames () {
+      const { size, $form } = this
+      const actualSize = size || ($form && $form.size)
+      return `is-${actualSize}`
     }
   },
   created () {

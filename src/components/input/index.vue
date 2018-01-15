@@ -46,6 +46,9 @@
       event: 'change'
     },
     mixins: [validatable],
+    inject: {
+      $form: { default: null }
+    },
     props: {
       value: {
         type: [String, Number],
@@ -80,8 +83,11 @@
       className () {
         const classNames = []
         if (!this.validity.valid) classNames.push('c-input--error')
-        if (this.size) classNames.push(`is-${this.size}`)
-        if (this.width) classNames.push(`is-${this.width}`)
+        const { size, width, $form } = this
+        const actualSize = size || ($form && $form.size)
+        const actualWidth = width || ($form && $form.width)
+        if (actualSize) classNames.push(`is-${actualSize}`)
+        if (actualWidth) classNames.push(`is-${actualWidth}`)
         return classNames
       }
     },

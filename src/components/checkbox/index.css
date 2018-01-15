@@ -70,6 +70,32 @@
     color: var(--gray);
     cursor: not-allowed;
   }
+
+  /**
+   * sizing
+   */
+  font-size: var(--form-font-md);
+  line-height: calc(var(--form-height-md) - 2px);
+
+  &.is-xs {
+    font-size: var(--form-font-xs);
+    line-height: calc(var(--form-height-xs) - 2px);
+  }
+
+  &.is-sm {
+    font-size: var(--form-font-sm);
+    line-height: calc(var(--form-height-sm) - 2px);
+  }
+
+  &.is-lg {
+    font-size: var(--form-font-lg);
+    line-height: calc(var(--form-height-lg) - 2px);
+  }
+
+  &.is-xl {
+    font-size: var(--form-font-xl);
+    line-height: calc(var(--form-height-xl) - 2px);
+  }
 }
 
 .c-checkbox > input:indeterminate + .c-checkbox__box {

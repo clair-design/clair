@@ -14,6 +14,7 @@ route: /component/radio
 <c-radio-group
   :options="options"
   v-model="favorite"
+  size="xl"
 />
 <p>你选择的浏览器是：<c-icon type="fa" :name="favorite" /></p>
 

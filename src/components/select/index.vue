@@ -119,6 +119,10 @@ export default {
     return { $select: this }
   },
 
+  inject: {
+    $form: { default: null }
+  },
+
   data () {
     return {
       isOpen: false,
@@ -154,8 +158,11 @@ export default {
           'is-disabled': this.disabled
         }
       ]
-      if (this.size) classNames.push(`is-${this.size}`)
-      if (this.width) classNames.push(`is-${this.width}`)
+      const { size, width, $form } = this
+      const actualSize = size || ($form && $form.size)
+      const actualWidth = width || ($form && $form.width)
+      if (actualSize) classNames.push(`is-${actualSize}`)
+      if (actualWidth) classNames.push(`is-${actualWidth}`)
       return classNames
     },
     selectedValues () {
@@ -267,6 +274,7 @@ export default {
 
   methods: {
     toggleOpen () {
+      if (this.disabled) return
       if (this.isOpen) {
         this.close()
       } else {

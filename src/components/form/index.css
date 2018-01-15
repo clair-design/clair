@@ -3,14 +3,52 @@
 */
 @import url('../../css/variables.css');
 
+.c-form {
+  font-size: var(--form-font-md);
+
+  &.is-xs {
+    font-size: var(--form-font-xs);
+
+    & .c-form-item__label {
+      margin-top: calc((var(--form-height-xs) - var(--form-font-xs)) / 2);
+    }
+  }
+
+  &.is-sm {
+    font-size: var(--form-font-sm);
+
+    & .c-form-item__label {
+      margin-top: calc((var(--form-height-sm) - var(--form-font-sm)) / 2);
+    }
+  }
+
+  &.is-lg {
+    font-size: var(--form-font-lg);
+
+    & .c-form-item__label {
+      margin-top: calc((var(--form-height-lg) - var(--form-font-lg)) / 2);
+    }
+  }
+
+  &.is-xl {
+    font-size: var(--form-font-xl);
+
+    & .c-form-item__label {
+      margin-top: calc((var(--form-height-xl) - var(--form-font-xl)) / 2);
+    }
+  }
+}
+
 .c-form-item {
   margin-bottom: 0.5em;
+  display: flex;
 
   & .c-form-item__label {
-    display: inline-block;
+    flex-shrink: 0;
     width: 4em;
     text-align: right;
-    margin-top: 0.25em;
+    margin-top: calc((var(--form-height-md) - var(--form-font-md)) / 2);
+    line-height: 1;
     margin-right: 0.5em;
     vertical-align: top;
   }
@@ -22,8 +60,7 @@
   }
 
   & .c-form-item__control {
-    display: inline-block;
-    vertical-align: top;
+    flex: 1 0 0%;
   }
 
   & .c-form-item__error {
@@ -32,6 +69,14 @@
     padding-top: 0.3em;
     font-size: 0.866em;
     color: var(--danger-color);
+    opacity: 0;
+    transition: all 0.2s ease;
+    transform: translateY(-30%);
+  }
+
+  & .has-error .c-form-item__error {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   & .c-error-msg {
@@ -49,7 +94,7 @@
 
 .c-form--inline {
   & .c-form-item {
-    display: inline-block;
+    display: inline-flex;
 
     &:not(:last-child) {
       margin-right: 1em;
@@ -59,10 +104,19 @@
       width: auto;
     }
   }
+
+  & .c-form-item__error {
+    display: none;
+  }
+
+  & .has-error .c-form-item__error {
+    display: block;
+  }
 }
 
 .c-error-msg {
   color: var(--danger-color);
   margin-left: 0.2em;
   vertical-align: middle;
+  font-style: normal;
 }

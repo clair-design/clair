@@ -18,7 +18,9 @@ export default {
   name: block,
   props: {
     inline: Boolean,
-    labelWidth: String
+    labelWidth: String,
+    size: String,
+    width: String
   },
   provide () {
     return {
@@ -32,7 +34,9 @@ export default {
   },
   computed: {
     classNames () {
-      return getClassName.call(this)
+      const classes = getClassName.call(this)
+      if (this.size) classes.push(`is-${this.size}`)
+      return classes
     }
   },
   created () {

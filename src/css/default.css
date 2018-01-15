@@ -67,12 +67,40 @@
   @custom-media --xl-only (width > 1920px);
 
   /**
-   * table
+   * form element
    */
-  --table-border-color: #ddd;
-  --table-cell-padding: 0.5em 1em;
+  --focus-ring-opacity: 0.3;
+  --form-font-xs: 12px;
+  --form-font-sm: 12px;
+  --form-font-md: 14px;
+  --form-font-lg: 16px;
+  --form-font-xl: 20px;
+  --form-height-xs: 22px;
+  --form-height-sm: 26px;
+  --form-height-md: 32px;
+  --form-height-lg: 40px;
+  --form-height-xl: 48px;
+  --form-width-shortest: 4em;
+  --form-width-shorter: 6em;
+  --form-width-short: 8em;
+  --form-width-normal: 12em;
+  --form-width-long: 16em;
+  --form-width-longer: 24em;
+  --form-width-longest: 32em;
 
   /**
    * button
    */
+  --button-default-color: var(--gray);
+  --button-lightness-normal: 60%;
+  --button-lightness-hover: 50%;
+  --button-lightness-active: 40%;
+  --button-lightness-disabled: 80%;
+  --button-flat-hover-lightness: 95%;
+
+  /**
+   * table
+   */
+  --table-border-color: #ddd;
+  --table-cell-padding: 0.5em 1em;
 }
