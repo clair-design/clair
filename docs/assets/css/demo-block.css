@@ -53,6 +53,7 @@
 .vue-demo-block-demo-only > .vue-demo {
   display: block !important;
   margin: 0;
+  overflow: hidden
 }
 
 .vue-demo-tools {
