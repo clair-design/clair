@@ -108,6 +108,8 @@
    * tooltip
    * background & text color
    */
-  --tooltip-bg: rgba(0, 0, 0, 0.72);
-  --tooltip-color: #fff;
+  --tooltip-bg-dark: rgba(0, 0, 0, 0.72);
+  --tooltip-color-dark: #fff;
+  --tooltip-bg-light: #fff;
+  --tooltip-color-light: var(--text-color);
 }

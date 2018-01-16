@@ -40,7 +40,7 @@ layout: component
 ```html
 <template>
   <c-tip position="top" max-width="500px">
-    <a>《摸鱼儿·更能消几番风雨》</a>
+    <a href="javascript:;">《摸鱼儿·更能消几番风雨》</a>
     <template slot="content">
       <article>
         更能消 几番风雨 匆匆春又归去<br>
@@ -100,76 +100,80 @@ layout: component
 </c-tip>
 ```
 
-## 动态变化
+## 设置主题
+
+可以通过 `theme` 属性修改主题。可选值为 `dark` 和 `light`，默认为 `dark`。
 
 ```html
-<c-tip content="不恨古人吾不见，恨古人不见吾狂耳" :position="position">
-  <c-button primary @click="change">点击动态改变位置</c-button>
+<c-tip theme="light" position="top">
+  <div slot="content">怨春不语，算只有殷勤画檐蛛网，尽日惹飞絮</div>
+  <c-button primary>light</c-button>
 </c-tip>
 
-<script>
-  const arr = ['top', 'right', 'bottom', 'left']
-  export default {
-    data () {
-      return {
-        index: 0
-      }
-    },
-    computed: {
-      position () {
-        return arr[this.index]
-      }
-    },
-    methods: {
-      change () {
-        this.index = (this.index + 1) % arr.length
-      }
-    }
-  }
-</script>
+<c-tip theme="dark" position="right">
+  <div slot="content">
+    君莫舞<br>
+    君不见 玉环飞燕皆尘土<br>
+  </div>
+  <c-button primary>dark</c-button>
+</c-tip>
 ```
 
-```html
-<template>
-  <c-tip :position="position" ref="tooltip">
-    <template slot="content">
-      <span v-if="loading">加载中...</span>
-      <div v-if="!loading">{{text}}</div>
-    </template>
+## 触发形式
 
-    <c-button primary @mouseenter.native="hover">加载示例</c-button>
+通过 `trigger` 属性可以改变触发方式。可选值包括 `hover` `focus` `click`，默认值是 `hover`。
+
+
+```html
+<c-tip theme="light" position="top" trigger="hover">
+  <div slot="content">怨春不语，算只有殷勤画檐蛛网，尽日惹飞絮</div>
+  <c-button primary>hover (default)</c-button>
+</c-tip>
+
+<c-tip theme="light" position="top" trigger="focus">
+  <div slot="content">怨春不语，算只有殷勤画檐蛛网，尽日惹飞絮</div>
+  <c-button primary>focus</c-button>
+</c-tip>
+
+<c-tip theme="light" position="top" trigger="click">
+  <div slot="content">怨春不语，算只有殷勤画檐蛛网，尽日惹飞絮</div>
+  <c-button primary>click</c-button>
+</c-tip>
+```
+
+## PopConfirm
+
+下面是自己写的一个 PopConfirm 的例子。
+
+```html
+<style>
+  .pop-confirm {
+    font-size: 20px;
+    margin: 10px;
+  }
+  .footer {
+    text-align: right;
+    margin-top: 1em;
+  }
+</style>
+<template>
+  <c-tip
+  theme="light"
+  position="top"
+  trigger="click"
+  max-width="600px"
+  ref="tip"
+>
+    <div slot="content" class="pop-confirm">
+      <div class="body">
+        你真的确定要删除我吗？
+      </div>
+      <div class="footer">
+        <c-button outline size="md" @click="$refs.tip.hide()">取消</c-button>
+        <c-button primary size="md" @click="$refs.tip.hide()">确认</c-button>
+      </div>
+    </div>
+    <c-button primary>删除</c-button>
   </c-tip>
 </template>
-
-<script>
-  const arr = ['top', 'right', 'bottom', 'left']
-
-  export default {
-    data () {
-      return {
-        text: '',
-        loading: true,
-        index: 0
-      }
-    },
-    computed: {
-      position () {
-        return arr[this.index]
-      }
-    },
-    methods: {
-      hover () {
-        this.loading = true
-        this.timer = setTimeout(() => {
-          this.loading = false
-          this.index = (this.index + 1) % arr.length
-          this.text = '休去倚危栏 斜阳正在烟柳断肠处'
-        }, 1000)
-      }
-    },
-    beforeDestroy () {
-      clearTimeout(this.timer)
-    }
-  }
-</script>
 ```

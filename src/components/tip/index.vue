@@ -1,7 +1,10 @@
 <template lang="pug">
 .c-tip(
-  @mouseenter="handleIn",
-  @mouseleave="handleOut"
+  @mouseenter="show",
+  @mouseleave="hide",
+  @focus.capture="show",
+  @blur.capture="hide",
+  @click="show"
 )
   slot
   c-portal(role="tooltip", :aria-hidden="'' + visible")
@@ -14,10 +17,11 @@
       @after-leave="afterLeave"
     )
       .c-tip__container(
+        :class="theme === 'light' && 'c-tip__container--light'"
         ref="tip",
         v-show="visible",
-        @mouseenter="handleIn",
-        @mouseleave="handleOut"
+        @mouseenter="show",
+        @mouseleave="hide"
       )
         i.c-tip__arrow(:class="arrowClass")
         div(v-if="content") {{ content }}
@@ -38,12 +42,28 @@ const OPPOSITE_DIRECTION = {
   right: 'left'
 }
 
+const SHOW_MATCH_MAP = {
+  hover: 'mouseenter',
+  focus: 'focus',
+  click: 'click'
+}
+
+const HIDE_MATCH_MAP = {
+  hover: 'mouseleave',
+  focus: 'blur',
+  click: 'click'
+}
+
 const defaultDelayTime = 100
 const defaultThrottleTime = 150
+
+const contains = (elem, target) => !!elem && elem.contains(target)
 
 export default {
   name: 'c-tip',
   props: {
+    theme: VueTypes.oneOf(['dark', 'light']).def('dark'),
+    trigger: VueTypes.oneOf(['hover', 'click', 'focus']).def('hover'),
     disabled: VueTypes.bool.def(false),
     content: VueTypes.string.def(''),
     maxWidth: VueTypes.string.def('300px'),
@@ -69,16 +89,20 @@ export default {
   },
 
   methods: {
-    handleIn () {
-      this.clean()
-      this.visible = true
+    show ({ type }) {
+      if (SHOW_MATCH_MAP[this.trigger] === type) {
+        this.clearTimeout()
+        this.visible = true
+      }
     },
 
-    handleOut () {
-      this.clean()
-      this.tidOut = setTimeout(() => {
-        this.visible = false
-      }, this.hideDelay)
+    hide ({ type = 'click' } = {}) {
+      if (HIDE_MATCH_MAP[this.trigger] === type) {
+        this.clearTimeout()
+        this.tidOut = setTimeout(() => {
+          this.visible = false
+        }, this.hideDelay)
+      }
     },
 
     resize () {
@@ -109,7 +133,7 @@ export default {
     leave ({ style }) {
       style.opacity = 0
       style.visibility = 'hidden'
-      this.clean()
+      this.clearTimeout()
     },
 
     afterLeave ({ style }) {
@@ -117,7 +141,7 @@ export default {
       style.display = 'none'
     },
 
-    clean () {
+    clearTimeout () {
       clearTimeout(this.tidOut)
       clearTimeout(this.tidIn)
     },
@@ -160,6 +184,15 @@ export default {
           style.marginLeft = '10px'
           style.marginTop = ''
       }
+    },
+
+    clickOutside ({ target }) {
+      const el = this.$el
+      const tip = this.$refs.tip
+      const isOutside = !contains(el, target) && !contains(tip, target)
+      if (isOutside && this.visible) {
+        this.hide()
+      }
     }
   },
 
@@ -171,13 +204,16 @@ export default {
 
   mounted () {
     this.resize = this.resize.bind(this)
+    this.clickOutside = this.clickOutside.bind(this)
     this.winResize = throttle(this.resize, defaultThrottleTime)
     window.addEventListener('resize', this.winResize)
+    document.body.addEventListener('click', this.clickOutside)
   },
 
   beforeDestroy () {
-    this.clean()
+    this.clearTimeout()
     window.removeEventListener('resize', this.winResize)
+    document.body.removeEventListener('click', this.clickOutside)
   }
 }
 </script>
