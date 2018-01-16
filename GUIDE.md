@@ -62,13 +62,13 @@ $ npm install
 * `yarn build` 或 `npm run build`：rollup 以及 PostCSS 编译、打包，并生成静态HTML
 
 
+## 文档/构建工具
 
-## 构建工具
-
-- [clair-design/clair-scripts](https://github.com/clair-design/clair-scripts)
-
-
-## 文档相关工具
-
+- [clair-bundle](https://github.com/clair-design/clair-bundle)
 - [dockiv](https://github.com/AngusFu/dokiv)
 - [md2vue](https://github.com/AngusFu/md2vue)
+
+
+## Vue Prop types
+
+- [vue-types](https://github.com/dwightjack/vue-types)

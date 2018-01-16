@@ -4,6 +4,8 @@
 </template>
 
 <script>
+import VueTypes from 'vue-types'
+
 import './index.css'
 
 export default {
