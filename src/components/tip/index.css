@@ -20,7 +20,7 @@
   background-color: var(--bg);
   border-radius: 4px;
   visibility: hidden;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
 .c-tip__arrow {
@@ -50,7 +50,6 @@
   left: 0;
   right: 0;
   border-top: 6px solid var(--bg);
-
 }
 
 .c-tip__arrow--left {

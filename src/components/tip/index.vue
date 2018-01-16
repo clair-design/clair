@@ -108,6 +108,7 @@ export default {
       const elRect = this.$el.getBoundingClientRect()
       const tipRect = this.$refs.tip.getBoundingClientRect()
 
+      // eslint-disable-next-line
       switch (this.position) {
         case 'top':
           style.top = `${scrollTop + elRect.top - tipRect.height}px`
@@ -135,7 +136,6 @@ export default {
           style.left = `${scrollLeft + elRect.left + elRect.width}px`
           style.marginLeft = '10px'
           style.marginTop = ''
-          return
       }
     },
 
