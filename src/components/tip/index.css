@@ -1,0 +1,61 @@
+/**
+* c-tip
+*/
+
+@import url('../../css/variables.css');
+
+:root {
+  --bg: rgba(0, 0, 0, 0.8);
+}
+
+.c-tip {
+  position: relative;
+  display: inline-block;
+}
+
+.c-tip__container {
+  position: absolute;
+  padding: 10px 16px;
+  color: #fff;
+  background-color: var(--bg);
+  border-radius: 4px;
+  visibility: hidden;
+  transition: all .3s ease;
+}
+
+.c-tip__arrow {
+  position: absolute;
+  margin: auto;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+}
+
+.c-tip__arrow--top {
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  border-bottom: 6px solid var(--bg);
+}
+
+.c-tip__arrow--right {
+  top: 0;
+  left: 100%;
+  bottom: 0;
+  border-left: 6px solid var(--bg);
+}
+
+.c-tip__arrow--bottom {
+  top: 100%;
+  left: 0;
+  right: 0;
+  border-top: 6px solid var(--bg);
+
+}
+
+.c-tip__arrow--left {
+  top: 0;
+  right: 100%;
+  bottom: 0;
+  border-right: 6px solid var(--bg);
+}
