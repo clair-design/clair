@@ -4,10 +4,6 @@
 
 @import url('../../css/variables.css');
 
-:root {
-  --bg: rgba(0, 0, 0, 0.8);
-}
-
 .c-tip {
   position: relative;
   display: inline-block;
@@ -16,11 +12,11 @@
 .c-tip__container {
   position: absolute;
   padding: 10px 16px;
-  color: #fff;
-  background-color: var(--bg);
+  color: var(--tooltip-color);
+  background-color: var(--tooltip-bg);
   border-radius: 4px;
   visibility: hidden;
-  transition: all 0.3s ease;
+  transition: visibility 0.5s ease, opacity 0.5s ease;
 }
 
 .c-tip__arrow {
@@ -35,26 +31,26 @@
   bottom: 100%;
   left: 0;
   right: 0;
-  border-bottom: 6px solid var(--bg);
+  border-bottom: 6px solid var(--tooltip-bg);
 }
 
 .c-tip__arrow--right {
   top: 0;
   left: 100%;
   bottom: 0;
-  border-left: 6px solid var(--bg);
+  border-left: 6px solid var(--tooltip-bg);
 }
 
 .c-tip__arrow--bottom {
   top: 100%;
   left: 0;
   right: 0;
-  border-top: 6px solid var(--bg);
+  border-top: 6px solid var(--tooltip-bg);
 }
 
 .c-tip__arrow--left {
   top: 0;
   right: 100%;
   bottom: 0;
-  border-right: 6px solid var(--bg);
+  border-right: 6px solid var(--tooltip-bg);
 }

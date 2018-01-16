@@ -103,4 +103,11 @@
    */
   --table-border-color: #ddd;
   --table-cell-padding: 0.5em 1em;
+
+  /**
+   * tooltip
+   * background & text color
+   */
+  --tooltip-bg: rgba(0, 0, 0, 0.72);
+  --tooltip-color: #fff;
 }

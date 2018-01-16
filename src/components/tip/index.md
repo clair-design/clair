@@ -100,7 +100,7 @@ layout: component
 </c-tip>
 ```
 
-## 动态改变位置
+## 动态变化
 
 ```html
 <c-tip content="不恨古人吾不见，恨古人不见吾狂耳" :position="position">
@@ -124,6 +124,51 @@ layout: component
       change () {
         this.index = (this.index + 1) % arr.length
       }
+    }
+  }
+</script>
+```
+
+```html
+<template>
+  <c-tip :position="position" ref="tooltip">
+    <template slot="content">
+      <span v-if="loading">加载中...</span>
+      <div v-if="!loading">{{text}}</div>
+    </template>
+
+    <c-button primary @mouseenter.native="hover">加载示例</c-button>
+  </c-tip>
+</template>
+
+<script>
+  const arr = ['top', 'right', 'bottom', 'left']
+
+  export default {
+    data () {
+      return {
+        text: '',
+        loading: true,
+        index: 0
+      }
+    },
+    computed: {
+      position () {
+        return arr[this.index]
+      }
+    },
+    methods: {
+      hover () {
+        this.loading = true
+        this.timer = setTimeout(() => {
+          this.loading = false
+          this.index = (this.index + 1) % arr.length
+          this.text = '休去倚危栏 斜阳正在烟柳断肠处'
+        }, 1000)
+      }
+    },
+    beforeDestroy () {
+      clearTimeout(this.timer)
     }
   }
 </script>

@@ -26,6 +26,7 @@
 
 <script>
 import VueTypes from 'vue-types'
+import throttle from 'lodash/throttle'
 
 import './index.css'
 import zIndex from '../../js/utils/zIndexManager'
@@ -36,7 +37,9 @@ const OPPOSITE_DIRECTION = {
   left: 'right',
   right: 'left'
 }
+
 const defaultDelayTime = 100
+const defaultThrottleTime = 150
 
 export default {
   name: 'c-tip',
@@ -65,14 +68,6 @@ export default {
     }
   },
 
-  watch: {
-    position () {
-      if (this.visible) {
-        this.$nextTick(() => this.afterEnter(this.$refs.tip))
-      }
-    }
-  },
-
   methods: {
     handleIn () {
       this.clean()
@@ -84,6 +79,10 @@ export default {
       this.tidOut = setTimeout(() => {
         this.visible = false
       }, this.hideDelay)
+    },
+
+    resize () {
+      this.handleResize(this.$refs.tip)
     },
 
     beforeEnter ({ style }) {
@@ -103,7 +102,31 @@ export default {
       }, this.showDelay)
     },
 
-    afterEnter ({ style }) {
+    afterEnter (el) {
+      this.handleResize(el)
+    },
+
+    leave ({ style }) {
+      style.opacity = 0
+      style.visibility = 'hidden'
+      this.clean()
+    },
+
+    afterLeave ({ style }) {
+      style.cssText = ''
+      style.display = 'none'
+    },
+
+    clean () {
+      clearTimeout(this.tidOut)
+      clearTimeout(this.tidIn)
+    },
+
+    handleResize (el) {
+      if (!el || !el.style) {
+        return
+      }
+      const { style } = el
       const { scrollLeft, scrollTop } = document.documentElement
       const elRect = this.$el.getBoundingClientRect()
       const tipRect = this.$refs.tip.getBoundingClientRect()
@@ -137,27 +160,24 @@ export default {
           style.marginLeft = '10px'
           style.marginTop = ''
       }
-    },
-
-    leave ({ style }) {
-      style.opacity = 0
-      style.visibility = 'hidden'
-      this.clean()
-    },
-
-    afterLeave ({ style }) {
-      style.cssText = ''
-      style.display = 'none'
-    },
-
-    clean () {
-      clearTimeout(this.tidOut)
-      clearTimeout(this.tidIn)
     }
+  },
+
+  updated () {
+    if (this.visible) {
+      this.$nextTick(this.resize)
+    }
+  },
+
+  mounted () {
+    this.resize = this.resize.bind(this)
+    this.winResize = throttle(this.resize, defaultThrottleTime)
+    window.addEventListener('resize', this.winResize)
   },
 
   beforeDestroy () {
     this.clean()
+    window.removeEventListener('resize', this.winResize)
   }
 }
 </script>
