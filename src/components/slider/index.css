@@ -45,16 +45,16 @@
   border-radius: 50%;
   background-color: #fff;
   transition: box-shadow 0.3s ease;
+}
 
-  &:hover,
-  &:active {
-    box-shadow: 0 0 0 0.15em color(var(--primary-color) l(80%));
-  }
+.c-slider__thumb--hover,
+.c-slider__thumb--dragging {
+  box-shadow: 0 0 0 0.15em color(var(--primary-color) l(80%));
+}
 
-  &:hover > .c-slider__tip,
-  &:active > .c-slider__tip {
-    display: block;
-  }
+.c-slider__thumb--hover > .c-slider__tip,
+.c-slider__thumb--dragging > .c-slider__tip {
+  display: block;
 }
 
 .c-slider__tip {
