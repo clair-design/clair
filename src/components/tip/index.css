@@ -70,25 +70,25 @@
   }
 
   & > .c-tip__arrow--top {
-    margin-bottom: -4px;
+    margin-bottom: -5px;
     border-right: 0;
     border-bottom: 0;
   }
 
   & > .c-tip__arrow--right {
-    margin-left: -4px;
+    margin-left: -5px;
     border-bottom: 0;
     border-left: 0;
   }
 
   & > .c-tip__arrow--bottom {
-    margin-top: -4px;
+    margin-top: -5px;
     border-left: 0;
     border-top: 0;
   }
 
   & > .c-tip__arrow--left {
-    margin-right: -4px;
+    margin-right: -5px;
     border-top: 0;
     border-right: 0;
   }

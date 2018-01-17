@@ -148,8 +148,8 @@ layout: component
 ```html
 <style>
   .pop-confirm {
-    font-size: 20px;
-    margin: 10px;
+    font-size: 16px;
+    margin: 5px;
   }
   .footer {
     text-align: right;
