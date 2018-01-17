@@ -65,7 +65,7 @@ Clair 中的输入框默认宽度为 `15em`，你可以通过 `width` 属性设�
 
 ```html
 <template demo-only>
-<c-form>
+<c-form :size="size">
   <c-form-item label="Size:">
     <c-radio-group
       :options="sizes"

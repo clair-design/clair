@@ -26,6 +26,7 @@
       slot(name="selection" :option="option")
         span {{ option.label }}
       .c-chip__close(@click.stop="unselectOption(option)")
+        c-icon(name="x" valign="middle")
     .c-select__input(
       v-show="showInput"
       :class="multiple ? 'is-multiple' : 'is-single'"

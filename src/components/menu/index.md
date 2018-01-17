@@ -9,38 +9,44 @@ route: /component/menu
 ```html
 <template>
   <c-menu mode="horizontal">
-    <c-menu-item @click.native="onMenuClick">
-      <a href="#"><c-icon name="home" type="fa" />首页</a>
+    <c-menu-item>
+      <a href="#">
+        <c-icon name="home" type="fa" />
+        <span>首页</span>
+      </a>
     </c-menu-item>
     <c-menu-item active>
-      <a href="#"><c-icon name="cogs" type="fa" />设置</a>
+      <a href="#">
+        <c-icon name="cogs" type="fa" />
+        <span>设置</span>
+      </a>
     </c-menu-item>
     <c-submenu>
       <template slot="title">
-        <c-icon name="share-alt" type="fa" /> 分享
+        <c-icon name="share-alt" type="fa" />
+        <span>分享</span>
       </template>
       <c-menu-item>
-        <a href="#"><c-icon name="weibo" type="fa" />分享到微博</a>
+        <a href="#">
+          <c-icon name="weibo" type="fa" />
+          <span>分享到微博</span>
+        </a>
       </c-menu-item>
       <c-menu-item>
-        <a href="#"><c-icon name="wechat" type="fa" />分享到微信</a>
+        <a href="#">
+          <c-icon name="wechat" type="fa" />
+          <span>分享到微信</span>
+        </a>
       </c-menu-item>
       <c-menu-item>
-        <a href="#"><c-icon name="twitter" type="fa" />分享到 Twitter</a>
+        <a href="#">
+          <c-icon name="twitter" type="fa" />
+          <span>分享到 Twitter</span>
+        </a>
       </c-menu-item>
     </c-submenu>
   </c-menu>
 </template>
-
-<script>
-export default {
-  methods: {
-    onMenuClick (e) {
-      console.log(e)
-    }
-  }
-}
-</script>
 ```
 
 ## 深色主题
@@ -49,23 +55,39 @@ export default {
 <template>
   <c-menu mode="horizontal" theme="dark">
     <c-menu-item>
-      <a href="#"><c-icon name="home" type="fa" />首页</a>
+      <a href="#">
+        <c-icon name="home" type="fa" />
+        <span>首页</span>
+      </a>
     </c-menu-item>
     <c-menu-item active>
-      <a href="#"><c-icon name="cogs" type="fa" />设置</a>
+      <a href="#">
+        <c-icon name="cogs" type="fa" />
+        <span>设置</span>
+      </a>
     </c-menu-item>
     <c-submenu>
       <template slot="title">
-        <c-icon name="share-alt" type="fa" />分享
+        <c-icon name="share-alt" type="fa" />
+        <span>分享</span>
       </template>
       <c-menu-item>
-        <a href="#"><c-icon name="weibo" type="fa" />分享到微博</a>
+        <a href="#">
+          <c-icon name="weibo" type="fa" />
+          <span>分享到微博</span>
+        </a>
       </c-menu-item>
       <c-menu-item>
-        <a href="#"><c-icon name="wechat" type="fa" />分享到微信</a>
+        <a href="#">
+          <c-icon name="wechat" type="fa" />
+          <span>分享到微信</span>
+        </a>
       </c-menu-item>
       <c-menu-item>
-        <a href="#"><c-icon name="twitter" type="fa" />分享到 Twitter</a>
+        <a href="#">
+          <c-icon name="twitter" type="fa" />
+          <span>分享到 Twitter</span>
+        </a>
       </c-menu-item>
     </c-submenu>
   </c-menu>
@@ -76,68 +98,74 @@ export default {
 
 ```html
 <template>
-  <c-menu mode="vertical">
+  <div class="has-margin-bottom-lg">
+    <c-button icon="menu" flat primary @click="toggleCollapsed">切换展开收起</c-button>
+    <c-radio-group
+      :options="themes"
+      v-model="theme"
+      button
+    />
+  </div>
+  <c-menu mode="vertical" :theme="theme" :collapsed="collapsed">
     <c-menu-item>
-      <a href="#"><c-icon name="home" type="fa" />首页</a>
+      <a href="#">
+        <c-icon name="home" type="fa" />
+        <span>首页</span>
+      </a>
     </c-menu-item>
     <c-menu-item active>
-      <a href="#"><c-icon name="cogs" type="fa" />设置</a>
+      <a href="#">
+        <c-icon name="cogs" type="fa" />
+        <span>设置</span>
+      </a>
     </c-menu-item>
     <c-submenu>
       <template slot="title">
-        <c-icon name="share-alt" type="fa" />分享
+        <c-icon name="share-alt" type="fa" />
+        <span>分享</span>
       </template>
       <c-menu-item>
-        <a href="#"><c-icon name="weibo" type="fa" />分享到微博</a>
+        <a href="#">
+          <span>分享到微博</span>
+        </a>
       </c-menu-item>
       <c-menu-item>
-        <a href="#"><c-icon name="wechat" type="fa" />分享到微信</a>
+        <a href="#">
+          <span>分享到微信</span>
+        </a>
       </c-menu-item>
       <c-menu-item>
-        <a href="#"><c-icon name="twitter" type="fa" />分享到 Twitter</a>
+        <a href="#">
+          <span>分享到 Twitter</span>
+        </a>
       </c-menu-item>
     </c-submenu>
   </c-menu>
 </template>
 
-<style>
-.c-menu {
-  width: 240px;
+<script>
+export default {
+  data () {
+    return {
+      theme: 'light',
+      collapsed: false,
+      themes: [
+        {
+          label: '浅色主题',
+          value: 'light'
+        },
+        {
+          label: '深色主题',
+          value: 'dark'
+        }
+      ]
+    }
+  },
+  methods: {
+    toggleCollapsed () {
+      this.collapsed = !this.collapsed
+    }
+  }
 }
-</style>
-```
-
-## 深色纵向菜单
-
-```html
-<template>
-  <c-menu mode="vertical" theme="dark">
-    <c-menu-item>
-      <a href="#"><c-icon name="home" type="fa" />首页</a>
-    </c-menu-item>
-    <c-menu-item active>
-      <a href="#"><c-icon name="cogs" type="fa" />设置</a>
-    </c-menu-item>
-    <c-submenu open>
-      <template slot="title">
-        <c-icon name="share-alt" type="fa" />分享
-      </template>
-      <c-menu-item>
-        <a href="#"><c-icon name="weibo" type="fa" />分享到微博</a>
-      </c-menu-item>
-      <c-menu-item>
-        <a href="#"><c-icon name="wechat" type="fa" />分享到微信</a>
-      </c-menu-item>
-      <c-menu-item>
-        <a href="#"><c-icon name="twitter" type="fa" />分享到 Twitter</a>
-      </c-menu-item>
-    </c-submenu>
-  </c-menu>
-</template>
-
-<style>
-.c-menu {
-  width: 240px;
-}
-</style>
+</script>
 ```
