@@ -225,23 +225,21 @@
 
 .c-chip__close {
   position: absolute;
-  top: 50%;
+  top: 0;
   right: 0;
-  transform: translateY(-52%);
+  height: 100%;
+  width: 1.4em;
   cursor: pointer;
-  padding: 0 0.3em;
-  line-height: 2;
-  overflow: hidden;
 
   &:hover {
     background: rgba(0, 0, 0, 0.1);
   }
 
-  &::after {
-    content: '+';
-    display: block;
-    font-size: 1.4em;
-    transform: rotate(45deg);
+  & .c-icon {
+    position: absolute;
+    top: 50%;
+    margin-top: -0.5em;
+    right: 0.3em;
   }
 }
 
