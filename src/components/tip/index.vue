@@ -75,7 +75,6 @@ export default {
   data () {
     return {
       visible: false,
-      zIndex: zIndex.next(),
       tidIn: null,
       tidOut: null
     }
@@ -112,7 +111,7 @@ export default {
     beforeEnter ({ style }) {
       style.display = 'block'
       style.visibility = 'hidden'
-      style.zIndex = this.zIndex
+      style.zIndex = zIndex.next()
     },
 
     enter ({ style }, done) {
