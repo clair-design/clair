@@ -87,12 +87,13 @@ route: /component/icon
     padding: 10px 0;
   }
   p {
-    margin: 0
+    margin: 0;
+    color: #333;
   }
 </style>
 
 <template demo-only>
-  <c-box gap="5%" class="has-text-centered">
+  <c-box class="has-text-centered">
     <c-box-item v-if="icons.length === 0" xs="12">
       数据加载中....
     </c-box-item>
@@ -171,12 +172,13 @@ route: /component/icon
     padding: 10px 0;
   }
   p {
-    margin: 0
+    margin: 0;
+    color: #333;
   }
 </style>
 
 <template demo-only>
-  <c-box gap="5%" class="has-text-centered">
+  <c-box class="has-text-centered">
     <c-box-item v-if="icons.length === 0" xs="12">
       数据加载中....
     </c-box-item>

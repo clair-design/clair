@@ -10,7 +10,7 @@ route: /component/slider
 
 使用 `<c-slider />` 标签即可。拖拽移动时即会触发 `change` 事件。
 
-TODO: 是否有必要区分`input` 与 `change`？
+<!-- TODO: 是否有必要区分`input` 与 `change`？ -->
 
 <style>
 .c-slider {

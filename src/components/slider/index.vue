@@ -2,9 +2,11 @@
   c-base-range.c-slider(
     :class="className",
     :direction="vertical ? 'v' : 'h'",
-    @change="onRangeChange",
     :disabled="disabled",
-    :style="height ? { height: height } : null"
+    :style="height ? { height: height } : null",
+    @change="onRangeChange",
+    @dragstart="isDrag = true",
+    @dragend="isDrag = false"
   )
     input(
       type="range",
@@ -25,15 +27,24 @@
         v-for="mark in normalizedMarks",
         :style="`${vertical ? 'bottom' : 'left'}: ${mark.p}`"
       )
-    .c-slider__thumb(:style="thumbPos")
-      .c-slider__tip {{formmater(this.nominal, 'tip')}}
+    .c-slider__thumb(
+      :class="{ 'c-slider__thumb--hover': !isDrag && isHover, 'c-slider__thumb--dragging': isDrag }"
+      :style="thumbPos",
+      @mouseenter="onThumbHover",
+      @mouseleave="onThumbHoverout"
+    )
+      .c-slider__tip(role="tooltip", aria-hidden="true")
+        | {{formmater(this.nominal, 'tip')}}
 </template>
 
 <script>
   import clamp from 'lodash/clamp'
+  import VueTypes from 'vue-types'
 
   import './index.css'
   import baseRange from '../base-range/index.vue'
+
+  const defaultHoverTimeout = 200
 
   export default {
     name: 'c-slider',
@@ -42,45 +53,22 @@
     },
     model: { event: 'change' },
     props: {
-      min: {
-        type: Number,
-        default: 0
-      },
-      max: {
-        type: Number,
-        default: 100
-      },
-      step: {
-        type: Number,
-        default: 1
-      },
-      value: {
-        type: [Number, String],
-        default: 0
-      },
-      marks: {
-        type: Array
-      },
-      formmater: {
-        type: Function,
-        default: id => id
-      },
-      vertical: {
-        type: Boolean,
-        default: false
-      },
-      disabled: {
-        type: Boolean,
-        default: false
-      },
-      height: {
-        type: String
-      }
+      min: VueTypes.number.def(0),
+      max: VueTypes.number.def(100),
+      step: VueTypes.number.def(1),
+      value: VueTypes.oneOfType([Number, String]).def(0),
+      marks: VueTypes.array,
+      formmater: VueTypes.func.def(id => id),
+      vertical: VueTypes.bool.def(false),
+      disabled: VueTypes.bool.def(false),
+      height: VueTypes.string
     },
 
     data () {
       return {
-        normorlizedValue: 0
+        normorlizedValue: 0,
+        isHover: false,
+        isDrag: false
       }
     },
 
@@ -157,6 +145,20 @@
       },
       onRangeChange (e) {
         this.normorlizedValue = this.vertical ? 1 - e : e
+      },
+
+      onThumbHover () {
+        if (this.isDrag) {
+          return
+        }
+        this._hTid = setTimeout(() => {
+          this.isHover = true
+        }, defaultHoverTimeout)
+      },
+
+      onThumbHoverout () {
+        clearTimeout(this._hTid)
+        this.isHover = false
       }
     },
 
