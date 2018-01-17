@@ -4,12 +4,35 @@ mixin thead(columnsRows)
     tr(v-for="column in columnsRows")
       th(
         v-for="item in column.columns"
-        :style="{width: item.width ? item.width + 'px' : 'auto'}"
+        :style="getCellStyle(item)"
         :colspan="item.colspan"
         :rowspan="item.rowspan"
       )
-        slot(:name="item.key + '-th'")
+        slot(:name="item.key + '-base-th'")
           span {{item.title}}
+          span.c-table__check(v-if="item.type === 'selection'")
+            c-checkbox(
+              v-model="allChecked"
+              :indeterminate="indeterminate"
+              @change="onSelectAllChange"
+            )
+          span.c-table__sort(v-else-if="item.sorter")
+            .c-sort-asc(
+              :class="{'sorted': checkSorted(item.key, 'asc')}"
+              @click="onSorted(item.key, 'asc')"
+            )
+              c-icon(
+                type="fa"
+                valign="text-bottom"
+                name="sort-asc")
+            .c-sort-desc(
+              :class="{'sorted': checkSorted(item.key, 'desc')}"
+              @click="onSorted(item.key, 'desc')"
+            )
+              c-icon(
+                type="fa"
+                valign="top"
+                name="sort-desc")
 mixin tbody(dataList, columns, allColumns)
   tbody
     tr.c-table__noresult(
@@ -18,17 +41,24 @@ mixin tbody(dataList, columns, allColumns)
       td(:colspan="columns.length") 暂无数据
     tr(
       v-for="dataItem,index in dataList"
+      @mouseenter="setCurrentItem(dataItem)"
+      @mouseleave="resetCurrentItem"
       v-else
     )
       td(
         v-for="columnsItem in allColumns"
-        :style="{width: columnsItem.width ? columnsItem.width + 'px' : 'auto'}"
+        :style="getCellStyle(columnsItem)"
         :class="columnsItem.classname"
       )
         slot(
-          :name="columnsItem.key + '-td'"
+          :name="columnsItem.key + '-base-td'"
           :item="dataItem"
         )
+          span.c-table__check(v-if="columnsItem.type === 'selection'")
+            c-checkbox(
+              v-model="dataItem._checked"
+              @change="onSelectChange"
+            )
           div(
             v-if="columnsItem.render"
             v-html="columnsItem.render(index, dataItem[columnsItem.key], dataItem)"
@@ -57,16 +87,25 @@ export default {
   props: {
     columns: Array,
     datasource: Array,
-    height: [String, Number]
+    height: [String, Number],
+    sortkey: String,
+    sortorder: String
+  },
+
+  data () {
+    return {
+      dataList: [],
+      allChecked: false,
+      indeterminate: false,
+      selection: [],
+      currentItem: {}
+    }
   },
 
   computed: {
     tbodyHeight () {
       const theadHeight = this.$el ? this.$el.querySelector('table').getClientRects()[0].height : 0
       return this.height - theadHeight
-    },
-    dataList () {
-      return this.datasource
     },
     columnsRows () {
       const columns = this.getLeafColumns(this.columns)
@@ -79,7 +118,67 @@ export default {
     }
   },
 
+  created () {
+    this.composeData()
+  },
+
+  watch: {
+    datasource (newVal, oldVal) {
+      if (newVal === oldVal) return
+      this.composeData()
+    }
+  },
+
   methods: {
+    setCurrentItem (item) {
+      this.currentItem = item
+    },
+    resetCurrentItem () {
+      this.currentItem = {}
+    },
+    onSelectAllChange (status) {
+      this.dataList = this.dataList.map(item => {
+        this.$set(item, '_checked', status)
+        return item
+      })
+      if (status) {
+        this.selection = this.dataList
+      } else {
+        this.selection = []
+      }
+      this.$emit('selectChange', this.selection)
+    },
+    onSelectChange (status) {
+      if (status) {
+        this.selection.push(this.currentItem)
+      } else {
+        this.selection = this.selection.filter(item => item._checked)
+      }
+      this.allChecked = this.selection.length === this.dataList.length
+      this.indeterminate = this.selection.length > 0 && this.selection.length < this.dataList.length
+      this.$emit('selectChange', this.selection)
+    },
+    composeData () {
+      const list = []
+      this.datasource.map((item, index) => {
+        item._checked = item.hasOwnProperty('_checked') || item._checked
+        item._disabled = item.hasOwnProperty('disabled') || item._disabled
+        list.push(item)
+      })
+      this.dataList = list
+    },
+    checkSorted (key, order) {
+      return key === this.sortkey && order === this.sortorder
+    },
+    onSorted (key, order) {
+      this.$emit('sort', {key, order})
+    },
+    getCellStyle (item) {
+      return {
+        width: item.width ? `${item.width}px` : 'auto',
+        textAlign: item.align ? item.align : 'left'
+      }
+    },
     getAllColumnsRows (list) {
       const columns = []
       list.forEach(item => {

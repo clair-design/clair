@@ -32,7 +32,7 @@
         font-weight: normal;
 
         &[colspan]:not([colspan="1"]) {
-          text-align: center;
+          text-align: center !important;
           border: 1px solid color(var(--gray) l(85%));
         }
       }
@@ -130,5 +130,53 @@
     & table {
       table-layout: fixed;
     }
+  }
+}
+
+.c-table__sort {
+  margin-left: 8px;
+  display: inline-block;
+  vertical-align: text-top;
+
+  & .c-sort-asc,
+  & .c-sort-desc {
+    line-height: 6px;
+    display: block;
+    width: 7px;
+    height: 6px;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+
+    &.sorted,
+    &:hover {
+      color: color(var(--gray) l(85%));
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      height: 30px;
+      width: 14px;
+      left: 0;
+      top: 3px;
+    }
+  }
+
+  & .c-sort-asc::after {
+    top: -23px;
+  }
+
+  & .fa-sort-asc,
+  & .fa-sort-desc {
+    line-height: 4px;
+    height: 4px;
+  }
+
+  & .fa-sort-down::before,
+  & .fa-sort-desc::before,
+  & .fa-sort-up::before,
+  & .fa-sort-asc::before {
+    display: block;
   }
 }

@@ -44,13 +44,13 @@ export default {
         }
       ],
       columns: [
-        { title: '来源类型', key: 'type' },
+        { title: '来源类型', key: 'type', align: 'center' },
         { title: '浏览量', key: 'pv' },
         { title: '访客数', key: 'uv' },
         { title: '新访客数', key: 'nv' },
         { title: '访问时长', key: 'du' },
         { title: '转化次数', key: 'cv' },
-        { title: 'IP 数', key: 'ip' }
+        { title: 'IP 数', key: 'ip', align: 'right ' }
       ]
     }
   }
@@ -58,87 +58,15 @@ export default {
 </script>
 ```
 
-## 自定义单元格内容
+## 可选择的表格
 
-通过 `render` 进行函数定义返回单元格的内容，也可以通过 [Scoped Slots](https://vuejs.org/v2/guide/components.html#Scoped-Slots) 特性来获取数据进行其他的交互
-
-
-```html
-<template>
-  <c-table
-    :columns="columns"
-    :datasource="datasource"
-  >
-    <template slot="opt-td" scope="props">
-      <div class="c-table__opt">
-        <a @click="showIp(props.item.ip)" href="#">  查看ip
-        </a>
-      </div>
-    </template>
-  </c-table>
-</template>
-
-
-<script>
-export default {
-  methods: {
-    showIp (ip) {
-      alert('ip 为 ' + ip)
-    }
-  },
-  data () {
-    return {
-      datasource: [
-        {
-          type: '直接访问',
-          pv: 1,
-          uv: 2,
-          nv: 3,
-          du: 4,
-          cv: 5,
-          ip: 8
-        }, {
-          type: '搜索引擎',
-          pv: 11,
-          uv: 21,
-          nv: 31,
-          du: 141,
-          cv: 51,
-          ip: 81
-        }
-      ],
-      columns: [
-        {
-          title: '来源类型',
-          width: 300,
-          key: 'type',
-          render(index, value, item) {
-            return `<a href="#">${value}</a>`
-          }
-        },
-        { title: '浏览量', key: 'pv' },
-        { title: '访客数', key: 'uv' },
-        { title: '新访客数', key: 'nv' },
-        { title: '访问时长', key: 'du' },
-        { title: '转化次数', key: 'cv' },
-        { title: 'IP 数', key: 'ip' },
-        { title: '操作', key: 'opt' }
-      ]
-    }
-  }
-}
-</script>
-```
-
-## 多级表头
-
-对于结构复杂的数据可以使用多级表头来展现，更好的体现数据的层级关系
-
+在 `columns`设置第一列的`type`为`selection`， 即可支持第一列展现可选框
 
 ```html
 <c-table
   :columns="columns"
   :datasource="datasource"
+  @selectChange="onSelectChange"
 />
 
 <script>
@@ -165,19 +93,164 @@ export default {
         }
       ],
       columns: [
+        { type: 'selection', align: 'center', width: 60 },
+        { title: '来源类型', key: 'type' },
+        { title: '浏览量', key: 'pv' },
+        { title: '访客数', key: 'uv' },
+        { title: '转化次数', key: 'cv' },
+        { title: 'IP 数', key: 'ip' }
+      ]
+    }
+  },
+  methods: {
+    onSelectChange (selection) {
+      console.log(selection)
+    }
+  }
+}
+</script>
+```
+
+## 自定义单元格内容
+
+通过 `render` 进行函数定义返回单元格的内容，也可以通过 [Scoped Slots](https://vuejs.org/v2/guide/components.html#Scoped-Slots) 特性来获取数据进行其他的交互
+
+
+```html
+<template>
+  <c-table
+    :columns="columns"
+    :datasource="datasource"
+    :sortkey="sortKey"
+    :sortorder="sortOrder"
+    @sort="sorter"
+  >
+    <template slot="opt-td" slot-scope="props">
+      <div class="c-table__opt">
+        <a href="javascript:;" @click="showIp(props.item.ip)">  查看ip
+        </a>
+      </div>
+    </template>
+  </c-table>
+</template>
+
+
+<script>
+export default {
+  data () {
+    return {
+      sortKey: 'pv',
+      sortOrder: 'asc',
+      datasource: [
+        {
+          type: '直接访问',
+          pv: 1,
+          uv: 2,
+          nv: 3,
+          du: 4,
+          cv: 5,
+          ip: 8
+        }, {
+          type: '搜索引擎',
+          pv: 11,
+          uv: 21,
+          nv: 31,
+          du: 141,
+          cv: 51,
+          ip: 81
+        }
+      ],
+      columns: [
+        {
+          title: '来源类型',
+          width: 200,
+          key: 'type',
+          render(index, value, item) {
+            return `<a href="#">${value}</a>`
+          }
+        },
+        { title: '浏览量', key: 'pv', sorter: true },
+        { title: '访客数', key: 'uv', sorter: true },
+        { title: '新访客数', key: 'nv', sorter: true },
+        { title: '访问时长', key: 'du' },
+        { title: '转化次数', key: 'cv' },
+        { title: 'IP 数', key: 'ip' },
+        { title: '操作', key: 'opt' }
+      ]
+    }
+  },
+  methods: {
+    showIp (ip) {
+      alert('ip 为 ' + ip)
+    },
+    sorter (sortObj) {
+      this.sortKey = sortObj.key
+      this.sortOrder = sortObj.order
+    }
+  }
+}
+</script>
+```
+
+## 多级表头
+
+对于结构复杂的数据可以使用多级表头来展现，更好的体现数据的层级关系
+
+
+```html
+<c-table
+  :sortkey="sortKey"
+  :sortorder="sortOrder"
+  :columns="columns"
+  :datasource="datasource"
+  @sort="sorter"
+/>
+
+<script>
+export default {
+  data () {
+    return {
+      sortKey: 'pv',
+      sortOrder: 'asc',
+      datasource: [
+        {
+          type: '直接访问',
+          pv: 1,
+          uv: 2,
+          nv: 3,
+          du: 4,
+          cv: 5,
+          ip: 8
+        }, {
+          type: '搜索引擎',
+          pv: 11,
+          uv: 21,
+          nv: 31,
+          du: 141,
+          cv: 51,
+          ip: 81
+        }
+      ],
+      columns: [
         { title: '来源类型', key: 'type' },
         { title: '基础流量',
           key: '',
           children: [
-            { title: '浏览量', key: 'pv' },
+            { title: '浏览量', key: 'pv', sorter: true },
             { title: '访客数', key: 'uv' },
           ]
         },
-        { title: '新访客数', key: 'nv' },
+        { title: '新访客数', key: 'nv', sorter: true },
         { title: '访问时长', key: 'du' },
         { title: '转化次数', key: 'cv' },
         { title: 'IP 数', key: 'ip' }
       ]
+    }
+  },
+  methods: {
+    sorter (sortObj) {
+      this.sortKey = sortObj.key
+      this.sortOrder = sortObj.order
     }
   }
 }
@@ -186,7 +259,7 @@ export default {
 
 ## 列固定
 
-对于结构复杂的数据可以使用列固定来展现重要信息，需要在`clumns`中指定每列的宽度，其他数据可以滑动查看
+对于结构复杂的数据可以使用列固定来展现重要信息，需要在`columns`中指定每列的宽度，其他数据可以滑动查看
 
 
 ```html
