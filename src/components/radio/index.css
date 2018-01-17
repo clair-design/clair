@@ -81,26 +81,29 @@
   display: inline-block;
   vertical-align: middle;
   font-size: var(--form-font-md);
-  line-height: var(--form-height-md);
+  line-height: calc(var(--form-height-md) - 2px);
 
   &.is-xs {
     font-size: var(--form-font-xs);
     line-height: var(--form-height-xs);
+    line-height: calc(var(--form-height-xs) - 2px);
   }
 
   &.is-sm {
     font-size: var(--form-font-sm);
     line-height: var(--form-height-sm);
+    line-height: calc(var(--form-height-sm) - 2px);
   }
 
   &.is-lg {
     font-size: var(--form-font-lg);
     line-height: var(--form-height-lg);
+    line-height: calc(var(--form-height-lg) - 2px);
   }
 
   &.is-xl {
     font-size: var(--form-font-xl);
-    line-height: var(--form-height-xl);
+    line-height: calc(var(--form-height-xl) - 2px);
   }
 }
 
@@ -111,8 +114,6 @@
 .c-radio--button {
   position: relative;
   float: left;
-  margin-top: -1px;
-  margin-bottom: -1px;
 
   & > input {
     position: absolute;
