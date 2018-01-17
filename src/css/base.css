@@ -62,3 +62,11 @@ table {
     padding: var(--table-cell-padding);
   }
 }
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+}
