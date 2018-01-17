@@ -3,11 +3,11 @@
   width: 100%;
   margin-bottom: 1em;
   transition: box-shadow 0.2s;
-  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .vue-demo-block:hover {
-  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);
 }
 
 .vue-demo-block > .vue-demo {
@@ -53,6 +53,7 @@
 .vue-demo-block-demo-only > .vue-demo {
   display: block !important;
   margin: 0;
+  overflow: hidden
 }
 
 .vue-demo-tools {

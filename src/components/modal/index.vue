@@ -1,5 +1,5 @@
 <template lang="pug">
-c-portal
+c-portal(:aria-hidden="'' + visible")
   transition(
     appear,
     name="modal",
@@ -31,9 +31,9 @@ c-portal
 <script>
 import './index.css'
 import { getScrollBarSize } from '../../js/utils'
+import zIndex from '../../js/utils/zIndexManager'
 
 const slice = Array.prototype.slice
-let zIndex = 1992
 
 export default {
   name: 'c-modal',
@@ -57,7 +57,7 @@ export default {
     return {
       bdOvf: '',
       bdPdr: '',
-      zIndex: zIndex++
+      zIndex: zIndex.next()
     }
   },
 

@@ -1,3 +1,10 @@
+const defaultStyle = {
+  left: 0,
+  position: 'absolute',
+  top: 0,
+  width: '100%'
+}
+
 function install (Vue) {
   const Portal = {
     name: 'c-portal',
@@ -12,9 +19,20 @@ function install (Vue) {
         abstract: true,
         parent: this,
         render (h) {
-          const { staticClass, class: className, attrs } = self.$vnode.data
+          const {
+            attrs,
+            staticClass,
+            staticStyle,
+            class: className
+          } = self.$vnode.data
+
           const children = self.$slots.default
-          return h('div', { staticClass, class: className, attrs }, children)
+          return h('div', {
+            attrs,
+            staticClass,
+            class: className,
+            staticStyle: Object.assign({}, staticStyle, defaultStyle)
+          }, children)
         }
       })
 
@@ -22,12 +40,14 @@ function install (Vue) {
       document.body.appendChild(div)
       vm.$mount(div)
       this.vm = vm
-      this.vmElem = vm.$el
     },
 
     beforeDestroy () {
-      this.vm.$destroy()
-      document.body.removeChild(this.vmElem)
+      const { vm } = this
+      vm.$destroy()
+      if (vm.$el) {
+        document.body.removeChild(vm.$el)
+      }
     },
 
     // eslint-disable-next-line
