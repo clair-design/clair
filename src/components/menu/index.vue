@@ -1,5 +1,5 @@
 <template lang="pug">
-.c-menu(:class="classNames")
+.c-menu(:class="classNames" :style="styles")
   slot
 </template>
 
@@ -13,16 +13,33 @@ export default {
       type: String,
       default: 'horizontal'
     },
+    width: {
+      type: String,
+      default: '20em'
+    },
+    collapsed: Boolean,
     theme: String
   },
   provide () {
     return { $menu: this }
   },
   computed: {
+    styles () {
+      if (this.isVertical && !this.collapsed) {
+        return {
+          width: this.width
+        }
+      }
+    },
+    isVertical () {
+      return this.mode === 'vertical'
+    },
     classNames () {
       const classNames = []
-      if (this.mode) classNames.push(`c-menu--${this.mode}`)
-      if (this.theme) classNames.push(`c-menu--${this.theme}`)
+      const { mode, theme, isVertical, collapsed } = this
+      if (mode) classNames.push(`c-menu--${mode}`)
+      if (theme) classNames.push(`c-menu--${theme}`)
+      if (isVertical && collapsed) classNames.push('c-menu--collapsed')
       return classNames
     }
   },

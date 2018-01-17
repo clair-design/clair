@@ -77,7 +77,7 @@
   }
 
   & .c-submenu {
-    &:hover .c-submenu__popup {
+    &.is-open .c-submenu__popup {
       display: block;
       opacity: 1;
       transform: scaleY(1);
@@ -167,3 +167,76 @@
   }
 }
 
+/**
+ * 收起的菜单
+ */
+.c-menu {
+  transition: width 0.2s ease;
+
+  &.c-menu--collapsed {
+    width: 4em;
+
+    & > .c-menu__item {
+      padding: 0;
+
+      & .c-tip {
+        display: block;
+      }
+    }
+
+    & .c-icon {
+      margin-left: 1.5em;
+      transform: scale(1.2);
+    }
+
+    & > .c-menu__item a span {
+      display: none;
+    }
+
+    & > .c-submenu > .c-submenu__title > span {
+      display: none;
+    }
+
+    & > .c-submenu > .c-submenu__title {
+      padding: 0;
+
+      & > span {
+        display: none;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+
+    & .c-submenu__popup {
+      position: absolute;
+      visibility: visible;
+      transform: scale(0);
+      transform-origin: 0 0;
+      top: 0;
+      left: 100%;
+      max-height: 20em;
+      opacity: 0;
+      transition: all 0.2s ease;
+
+      & .c-menu__item:not(.c-submenu__title) {
+        padding-left: 1em;
+      }
+    }
+
+    & .is-open {
+      & .c-submenu__title {
+        color: var(--primary-color);
+        background: color(var(--primary-color) l(80%) a(0.15));
+      }
+
+      & .c-submenu__popup {
+        display: block;
+        opacity: 1;
+        transform: scale(1);
+        box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}
