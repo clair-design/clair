@@ -108,13 +108,13 @@ route: /component/menu
   </div>
   <c-menu mode="vertical" :theme="theme" :collapsed="collapsed">
     <c-menu-item>
-      <a href="#">
+      <a>
         <c-icon name="home" type="fa" />
         <span>首页</span>
       </a>
     </c-menu-item>
     <c-menu-item active>
-      <a href="#">
+      <a>
         <c-icon name="cogs" type="fa" />
         <span>设置</span>
       </a>
@@ -125,17 +125,17 @@ route: /component/menu
         <span>分享</span>
       </template>
       <c-menu-item>
-        <a href="#">
+        <a>
           <span>分享到微博</span>
         </a>
       </c-menu-item>
       <c-menu-item>
-        <a href="#">
+        <a>
           <span>分享到微信</span>
         </a>
       </c-menu-item>
       <c-menu-item>
-        <a href="#">
+        <a>
           <span>分享到 Twitter</span>
         </a>
       </c-menu-item>

@@ -650,3 +650,5 @@ route: /component/base-range
 | 事件名 | 说明 | 参数 |
 |-------|------|-------|
 |change | mouse: down -> move -> up | 单一方向时候为数字，否则为 { x, y } |
+|dragstart| mousedown with delay | 鼠标按下，会做 200ms 的延时 |
+|dragend| mouseup | 鼠标按下、拖动，然后松开|

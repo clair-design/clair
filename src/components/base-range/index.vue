@@ -14,6 +14,7 @@ import clamp from 'lodash/clamp'
 import throttle from 'lodash/throttle'
 
 const MOUSE_MOVE_DEFALT_TRHOTTLE_TIME = 80
+const DELAY_TIME = 200
 
 export default {
   name: 'c-base-range',
@@ -41,12 +42,18 @@ export default {
 
       e.preventDefault()
 
+      const timer = setTimeout(() => {
+        this.$emit('dragstart')
+      }, DELAY_TIME)
+
       const onmousemove = throttle(e => {
         e.preventDefault()
         this.updateValue(e)
       }, this.throttle)
 
       const onmouseup = e => {
+        clearTimeout(timer)
+        this.$emit('dragend')
         this.updateValue(e)
         document.removeEventListener('mousemove', onmousemove)
         document.removeEventListener('mouseup', onmouseup)
@@ -54,6 +61,7 @@ export default {
 
       document.addEventListener('mousemove', onmousemove)
       document.addEventListener('mouseup', onmouseup)
+
       this.updateValue(e)
     },
 
