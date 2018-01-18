@@ -34,7 +34,7 @@
 
     & > .c-button {
       background: none;
-      line-height: 1;
+      height: 100%;
       font-size: inherit;
       border: none;
       border-radius: 0;
