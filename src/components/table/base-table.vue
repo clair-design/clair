@@ -4,12 +4,30 @@ mixin thead(columnsRows)
     tr(v-for="column in columnsRows")
       th(
         v-for="item in column.columns"
-        :style="{width: item.width ? item.width + 'px' : 'auto'}"
+        :style="getCellStyle(item)"
         :colspan="item.colspan"
         :rowspan="item.rowspan"
+        :class="getColumnClassName(item)"
       )
-        slot(:name="item.key + '-th'")
+        slot(:name="item.key + '-base-th'")
           span {{item.title}}
+          span.c-table__check(v-if="item.type === 'selection'")
+            c-checkbox(
+              v-model="allChecked"
+              :indeterminate="indeterminate"
+              @change="onSelectAllChange"
+            )
+          span.c-table__sort(v-else-if="item.sorter")
+            .c-sort-asc(
+              :class="{'sorted': checkSorted(item.key, 'asc')}"
+              @click="onSorted(item.key, 'asc')"
+            )
+              i.sort-asc
+            .c-sort-desc(
+              :class="{'sorted': checkSorted(item.key, 'desc')}"
+              @click="onSorted(item.key, 'desc')"
+            )
+              i.sort-desc
 mixin tbody(dataList, columns, allColumns)
   tbody
     tr.c-table__noresult(
@@ -18,32 +36,40 @@ mixin tbody(dataList, columns, allColumns)
       td(:colspan="columns.length") 暂无数据
     tr(
       v-for="dataItem,index in dataList"
+      @mouseenter="setCurrentItem(dataItem)"
+      @mouseleave="resetCurrentItem"
+      :class="getRowClassName(item, index)"
       v-else
     )
       td(
         v-for="columnsItem in allColumns"
-        :style="{width: columnsItem.width ? columnsItem.width + 'px' : 'auto'}"
-        :class="columnsItem.classname"
+        :style="getCellStyle(columnsItem)"
+        :class="getColumnClassName(columnsItem)"
       )
         slot(
-          :name="columnsItem.key + '-td'"
+          :name="columnsItem.key + '-base-td'"
           :item="dataItem"
         )
+          span.c-table__check(v-if="columnsItem.type === 'selection'")
+            c-checkbox(
+              v-model="dataItem._checked"
+              @change="onSelectChange"
+            )
           div(
             v-if="columnsItem.render"
             v-html="columnsItem.render(index, dataItem[columnsItem.key], dataItem)"
           )
           span(v-else) {{dataItem[columnsItem.key]}}
 div
-  .c-table(v-if="height")
+  template(v-if="height")
     table
       +thead
     .c-table__body(
-      :style="{maxHeight: tbodyHeight +'px'}"
+      :style="getTbodyStyle"
     )
       table
         +tbody
-  .c-table(v-else)
+  template(v-else)
     table
       +thead
       +tbody
@@ -57,16 +83,37 @@ export default {
   props: {
     columns: Array,
     datasource: Array,
-    height: [String, Number]
+    height: [String, Number],
+    sortkey: String,
+    sortorder: String,
+    rowClassName: [String, Function]
+  },
+
+  data () {
+    return {
+      dataList: [],
+      allChecked: false,
+      indeterminate: false,
+      selection: [],
+      currentItem: {}
+    }
   },
 
   computed: {
-    tbodyHeight () {
-      const theadHeight = this.$el ? this.$el.querySelector('table').getClientRects()[0].height : 0
-      return this.height - theadHeight
-    },
-    dataList () {
-      return this.datasource
+    getTbodyStyle () {
+      if (this.$el) {
+        const tableStyle = this.$el.querySelector('table').getClientRects()[0]
+        const theadWidth = tableStyle.width
+        const tbodyHeight = tableStyle.height
+        return {
+          maxHeight: `${this.height - tbodyHeight}px`,
+          width: `${theadWidth}px`
+        }
+      }
+      return {
+        maxHeight: 0,
+        width: 0
+      }
     },
     columnsRows () {
       const columns = this.getLeafColumns(this.columns)
@@ -79,7 +126,84 @@ export default {
     }
   },
 
+  created () {
+    this.composeData()
+  },
+
+  watch: {
+    datasource (newVal, oldVal) {
+      if (newVal === oldVal) return
+      this.composeData()
+    }
+  },
+
   methods: {
+    getRowClassName (row, rowIndex) {
+      const classes = []
+      const { rowClassName } = this
+      if (typeof rowClassName === 'string') {
+        classes.push(rowClassName)
+      } else if (typeof rowClassName === 'function') {
+        classes.push(rowClassName({
+          row,
+          rowIndex
+        }))
+      }
+      return classes.join(' ')
+    },
+    getColumnClassName (item) {
+      return item.hasOwnProperty('className') ? item.className : ''
+    },
+    setCurrentItem (item) {
+      this.currentItem = item
+    },
+    resetCurrentItem () {
+      this.currentItem = {}
+    },
+    onSelectAllChange (status) {
+      this.dataList = this.dataList.map(item => {
+        this.$set(item, '_checked', status)
+        return item
+      })
+      if (status) {
+        this.selection = this.dataList
+      } else {
+        this.selection = []
+      }
+      this.$emit('selectChange', this.selection)
+    },
+    onSelectChange (status) {
+      if (status) {
+        this.selection.push(this.currentItem)
+      } else {
+        this.selection = this.selection.filter(item => item._checked)
+      }
+      this.allChecked = this.selection.length === this.dataList.length
+      this.indeterminate = this.selection.length > 0 && this.selection.length < this.dataList.length
+      this.$emit('selectChange', this.selection)
+    },
+    composeData () {
+      const list = []
+      this.datasource.map((item, index) => {
+        item._checked = item.hasOwnProperty('_checked') || item._checked
+        item._disabled = item.hasOwnProperty('disabled') || item._disabled
+        list.push(item)
+      })
+      this.dataList = list
+    },
+    checkSorted (key, order) {
+      return key === this.sortkey && order === this.sortorder
+    },
+    onSorted (key, order) {
+      this.$emit('sort', {key, order})
+    },
+    getCellStyle (item) {
+      const width = typeof item.width === 'number' ? `${item.width}px` : item.width
+      return {
+        width: item.width ? width : 'auto',
+        textAlign: item.align ? item.align : 'left'
+      }
+    },
     getAllColumnsRows (list) {
       const columns = []
       list.forEach(item => {
@@ -155,10 +279,11 @@ export default {
     getAllColumns (list) {
       const columns = []
       list.forEach((item, index) => {
-        /* eslint-disable no-nested-ternary */
-        item.classname = index === 0
-          ? 'c-table__bl'
-          : index === list.length - 1 ? 'c-table__br' : ''
+        let classname = []
+        index === 0 && classname.push('c-table__bl')
+        index === list.length - 1 && classname.push('c-table__br')
+        classname = classname.join(' ')
+        item.className = item.hasOwnProperty('className') ? `${item.className} ${classname}` : classname
         if (item.children && item.children.length > 0) {
           columns.push(...this.getAllColumns(item.children))
         } else {

@@ -1,26 +1,49 @@
 <template lang="pug">
-div
+mixin templateCell(columns)
+  template(
+    v-for='item in ' + columns
+    :slot="item.key + '-base-th'"
+    slot-scope="props"
+    v-if="$scopedSlots[item.key+'-th']"
+    )
+    slot(:name="item.key + '-th'" :item="props")
+  template(
+    v-for='item in ' + columns
+    :slot="item.key + '-base-td'"
+    slot-scope="props"
+    v-if="$scopedSlots[item.key+'-td']"
+  )
+    slot(:name="item.key + '-td'" :item="props.item")
+
+mixin Table(columns)
+  c-basetable(
+    :columns=columns
+    :datasource="datasource"
+    :height="height"
+    :sortkey="sortkey"
+    :sortorder="sortorder"
+    :rowClassName="rowClassName"
+    @sort="sorter"
+    @selectChange="selectChange"
+  )
+    +templateCell(columns)
+
+div(:class="className")
   .c-table(v-if="hasFixed")
-    c-basetable.c-fixtable__left(
+    .c-fixtable__left(
       v-if="fixedLeftColumns.length > 0"
-      :columns="fixedLeftColumns"
-      :datasource="datasource"
-    )
-    c-basetable.c-scrolltable(
-      :columns="columns"
-      :datasource="datasource"
-    )
-    c-basetable.c-fixtable__right(
+      :style="getFixedTableStyle(fixedLeftColumns)"
+      )
+      +Table("fixedLeftColumns")
+    .c-scrolltable
+      +Table("columns")
+    .c-fixtable__right(
       v-if="fixedRightColumns.length > 0"
-      :columns="fixedRightColumns"
-      :datasource="datasource"
+      :style="getFixedTableStyle(fixedRightColumns)"
     )
+      +Table("fixedRightColumns")
   .c-table(v-else)
-    c-basetable(
-      :columns="columns"
-      :datasource="datasource"
-      :height="height"
-    )
+    +Table("columns")
 </template>
 
 <script>
@@ -31,7 +54,11 @@ export default {
   props: {
     columns: Array,
     datasource: Array,
-    height: [String, Number]
+    height: [String, Number],
+    sortkey: String,
+    sortorder: String,
+    size: String,
+    rowClassName: [String, Function]
   },
 
   data () {
@@ -42,6 +69,9 @@ export default {
   },
 
   computed: {
+    className () {
+      return this.size ? `c-table__${this.size}` : ''
+    },
     hasFixed () {
       return Boolean(this.columns.find(item => Boolean(item.fixed)))
     }
@@ -58,6 +88,15 @@ export default {
   },
 
   methods: {
+    getFixedTableStyle (colunms) {
+      return {}
+    },
+    selectChange (selection) {
+      this.$emit('selectChange', selection)
+    },
+    sorter ({key, order}) {
+      this.$emit('sort', {key, order})
+    },
     getColumnsDetail () {
       if (!this.hasFixed) return
       const leftColumns = []
