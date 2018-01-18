@@ -7,6 +7,7 @@ mixin thead(columnsRows)
         :style="getCellStyle(item)"
         :colspan="item.colspan"
         :rowspan="item.rowspan"
+        :class="getColumnClassName(item)"
       )
         slot(:name="item.key + '-base-th'")
           span {{item.title}}
@@ -21,18 +22,12 @@ mixin thead(columnsRows)
               :class="{'sorted': checkSorted(item.key, 'asc')}"
               @click="onSorted(item.key, 'asc')"
             )
-              c-icon(
-                type="fa"
-                valign="text-bottom"
-                name="sort-asc")
+              i.sort-asc
             .c-sort-desc(
               :class="{'sorted': checkSorted(item.key, 'desc')}"
               @click="onSorted(item.key, 'desc')"
             )
-              c-icon(
-                type="fa"
-                valign="top"
-                name="sort-desc")
+              i.sort-desc
 mixin tbody(dataList, columns, allColumns)
   tbody
     tr.c-table__noresult(
@@ -43,12 +38,13 @@ mixin tbody(dataList, columns, allColumns)
       v-for="dataItem,index in dataList"
       @mouseenter="setCurrentItem(dataItem)"
       @mouseleave="resetCurrentItem"
+      :class="getRowClassName(item, index)"
       v-else
     )
       td(
         v-for="columnsItem in allColumns"
         :style="getCellStyle(columnsItem)"
-        :class="columnsItem.classname"
+        :class="getColumnClassName(columnsItem)"
       )
         slot(
           :name="columnsItem.key + '-base-td'"
@@ -65,15 +61,15 @@ mixin tbody(dataList, columns, allColumns)
           )
           span(v-else) {{dataItem[columnsItem.key]}}
 div
-  .c-table(v-if="height")
+  template(v-if="height")
     table
       +thead
     .c-table__body(
-      :style="{maxHeight: tbodyHeight +'px'}"
+      :style="getTbodyStyle"
     )
       table
         +tbody
-  .c-table(v-else)
+  template(v-else)
     table
       +thead
       +tbody
@@ -89,7 +85,8 @@ export default {
     datasource: Array,
     height: [String, Number],
     sortkey: String,
-    sortorder: String
+    sortorder: String,
+    rowClassName: [String, Function]
   },
 
   data () {
@@ -103,9 +100,20 @@ export default {
   },
 
   computed: {
-    tbodyHeight () {
-      const theadHeight = this.$el ? this.$el.querySelector('table').getClientRects()[0].height : 0
-      return this.height - theadHeight
+    getTbodyStyle () {
+      if (this.$el) {
+        const tableStyle = this.$el.querySelector('table').getClientRects()[0]
+        const theadWidth = tableStyle.width
+        const tbodyHeight = tableStyle.height
+        return {
+          maxHeight: `${this.height - tbodyHeight}px`,
+          width: `${theadWidth}px`
+        }
+      }
+      return {
+        maxHeight: 0,
+        width: 0
+      }
     },
     columnsRows () {
       const columns = this.getLeafColumns(this.columns)
@@ -130,6 +138,22 @@ export default {
   },
 
   methods: {
+    getRowClassName (row, rowIndex) {
+      const classes = []
+      const { rowClassName } = this
+      if (typeof rowClassName === 'string') {
+        classes.push(rowClassName)
+      } else if (typeof rowClassName === 'function') {
+        classes.push(rowClassName({
+          row,
+          rowIndex
+        }))
+      }
+      return classes.join(' ')
+    },
+    getColumnClassName (item) {
+      return item.hasOwnProperty('className') ? item.className : ''
+    },
     setCurrentItem (item) {
       this.currentItem = item
     },
@@ -174,8 +198,9 @@ export default {
       this.$emit('sort', {key, order})
     },
     getCellStyle (item) {
+      const width = typeof item.width === 'number' ? `${item.width}px` : item.width
       return {
-        width: item.width ? `${item.width}px` : 'auto',
+        width: item.width ? width : 'auto',
         textAlign: item.align ? item.align : 'left'
       }
     },
@@ -254,10 +279,11 @@ export default {
     getAllColumns (list) {
       const columns = []
       list.forEach((item, index) => {
-        /* eslint-disable no-nested-ternary */
-        item.classname = index === 0
-          ? 'c-table__bl'
-          : index === list.length - 1 ? 'c-table__br' : ''
+        let classname = []
+        index === 0 && classname.push('c-table__bl')
+        index === list.length - 1 && classname.push('c-table__br')
+        classname = classname.join(' ')
+        item.className = item.hasOwnProperty('className') ? `${item.className} ${classname}` : classname
         if (item.children && item.children.length > 0) {
           columns.push(...this.getAllColumns(item.children))
         } else {

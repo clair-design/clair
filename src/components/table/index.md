@@ -15,15 +15,19 @@ route: /component/table
 
 
 ```html
+
 <c-table
+  :size="size"
   :columns="columns"
   :datasource="datasource"
+  :rowClassName="getRowClassName"
 />
 
 <script>
 export default {
   data () {
     return {
+      size: 'sm',
       datasource: [
         {
           type: '直接访问',
@@ -44,8 +48,8 @@ export default {
         }
       ],
       columns: [
-        { title: '来源类型', key: 'type', align: 'center' },
-        { title: '浏览量', key: 'pv' },
+        { title: '来源类型', key: 'type', align: 'center', width: '20%' },
+        { title: '浏览量', key: 'pv', className: 'test' },
         { title: '访客数', key: 'uv' },
         { title: '新访客数', key: 'nv' },
         { title: '访问时长', key: 'du' },
@@ -53,9 +57,15 @@ export default {
         { title: 'IP 数', key: 'ip', align: 'right ' }
       ]
     }
+  },
+  methods: {
+    getRowClassName (rowItem, rowIndex) {
+      return 'test--row'
+    }
   }
 }
 </script>
+
 ```
 
 ## 可选择的表格
@@ -380,6 +390,89 @@ export default {
         { title: '访客数', key: 'uv', width: 200 },
         { title: '新访客数', key: 'nv', width: 200 },
         { title: 'IP 数', key: 'ip', width: 100 }
+      ]
+    }
+  }
+}
+</script>
+```
+
+## 表头和列都固定
+
+对于数目较多的数据可以使用表头固定，重要的列固定来展现数据信息
+
+
+```html
+<c-table
+  :columns="columns"
+  height="200"
+  :datasource="datasource"
+/>
+
+<script>
+export default {
+  data () {
+    return {
+      datasource: [
+        {
+          type: '直接访问',
+          pv: 1,
+          uv: 2,
+          nv: 3,
+          du: 4,
+          cv: 5,
+          ip: 8
+        }, {
+          type: '搜索引擎',
+          pv: 11,
+          uv: 21,
+          nv: 31,
+          du: 141,
+          cv: 51,
+          ip: 81
+        },
+        {
+          type: '直接访问',
+          pv: 1,
+          uv: 2,
+          nv: 3,
+          du: 4,
+          cv: 5,
+          ip: 8
+        }, {
+          type: '搜索引擎',
+          pv: 11,
+          uv: 21,
+          nv: 31,
+          du: 141,
+          cv: 51,
+          ip: 81
+        },{
+          type: '直接访问',
+          pv: 1,
+          uv: 2,
+          nv: 3,
+          du: 4,
+          cv: 5,
+          ip: 8
+        }, {
+          type: '搜索引擎',
+          pv: 11,
+          uv: 21,
+          nv: 31,
+          du: 141,
+          cv: 51,
+          ip: 81
+        }
+      ],
+      columns: [
+        { title: '来源类型', key: 'type', width: 150, fixed: 'left'},
+        { title: '浏览量', key: 'pv', width: 150 },
+        { title: '访客数', key: 'uv', width: 200 },
+        { title: '新访客数', key: 'nv', width: 200 },
+        { title: '访问时长', key: 'du', width: 200 },
+        { title: '转化次数', key: 'cv', width: 200 },
+        { title: 'IP 数', key: 'ip', fixed: 'right', width: 100 }
       ]
     }
   }

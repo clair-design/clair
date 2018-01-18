@@ -1,6 +1,6 @@
 <template lang="pug">
 .c-calendar__header
-  a.c-calendar__prev-year(
+  .c-calendar__prev-year(
     :class="{disabled: !isPreYearCanSelect}"
     @click="prevYear"
   )

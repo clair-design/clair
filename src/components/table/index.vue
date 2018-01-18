@@ -22,21 +22,24 @@ mixin Table(columns)
     :height="height"
     :sortkey="sortkey"
     :sortorder="sortorder"
+    :rowClassName="rowClassName"
     @sort="sorter"
     @selectChange="selectChange"
   )
     +templateCell(columns)
 
-div
+div(:class="className")
   .c-table(v-if="hasFixed")
     .c-fixtable__left(
       v-if="fixedLeftColumns.length > 0"
+      :style="getFixedTableStyle(fixedLeftColumns)"
       )
       +Table("fixedLeftColumns")
     .c-scrolltable
       +Table("columns")
     .c-fixtable__right(
       v-if="fixedRightColumns.length > 0"
+      :style="getFixedTableStyle(fixedRightColumns)"
     )
       +Table("fixedRightColumns")
   .c-table(v-else)
@@ -53,7 +56,9 @@ export default {
     datasource: Array,
     height: [String, Number],
     sortkey: String,
-    sortorder: String
+    sortorder: String,
+    size: String,
+    rowClassName: [String, Function]
   },
 
   data () {
@@ -64,6 +69,9 @@ export default {
   },
 
   computed: {
+    className () {
+      return this.size ? `c-table__${this.size}` : ''
+    },
     hasFixed () {
       return Boolean(this.columns.find(item => Boolean(item.fixed)))
     }
@@ -80,6 +88,9 @@ export default {
   },
 
   methods: {
+    getFixedTableStyle (colunms) {
+      return {}
+    },
     selectChange (selection) {
       this.$emit('selectChange', selection)
     },
