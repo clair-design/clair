@@ -10,6 +10,8 @@
     :disabled="disabled"
     :size="size"
     @change="dateChange"
+    @focusin.native="open"
+    @focusout.native="onBlur"
   )
   c-input(
     v-else-if="type == 'date'"
@@ -18,10 +20,13 @@
     :placeholder="placeholder"
     :disabled="disabled"
     @change="dateChange"
+    @focusin.native="open"
+    @focusout.native="onBlur"
   )
 
   .c-datepicker__panel
     c-calendar(
+      ref="calendar"
       v-if="type == 'date'"
       :value="date"
       :show="isOpen"
@@ -56,6 +61,10 @@ export default {
       default () {
         return ''
       }
+    },
+    pattern: {
+      type: String,
+      default: 'yyyy-MM-dd'
     },
     size: String,
     disabled: Boolean,
@@ -95,8 +104,10 @@ export default {
       if (this.isOpen) {
         this.resize()
         window.addEventListener('click', this.onBodyClick, true)
+        window.addEventListener('keydown', this.onKeyDown, false)
       } else {
         window.removeEventListener('click', this.onBodyClick, true)
+        window.removeEventListener('keydown', this.onKeyDown, true)
       }
     },
     value (newVal) {
@@ -126,6 +137,39 @@ export default {
     close () {
       this.isOpen = false
     },
+    onBlur (e) {
+      const focused = e.relatedTarget
+      if (focused) this.close()
+    },
+    onKeyDown (e) {
+      e.preventDefault()
+
+      const keys = {
+        ENTER: 13,
+        ESC: 27,
+        SPACE: 32,
+        LEFT: 37,
+        UP: 38,
+        RIGHT: 39,
+        DOWN: 40
+      }
+      const { keyCode } = e
+      if (keyCode === keys.ESC) this.close()
+      if (keyCode === keys.ENTER && this.type === 'date') {
+        const { calendar } = this.$refs
+        const date = new Date(calendar.year, calendar.month, calendar.day).format(this.pattern)
+        this.setDate(date)
+      }
+      if (keyCode === keys.UP) {
+        this.$refs.calendar.updateDay(7, 'sub')
+      } else if (keyCode === keys.DOWN) {
+        this.$refs.calendar.updateDay(7, 'plus')
+      } else if (keyCode === keys.LEFT) {
+        this.$refs.calendar.updateDay(1, 'sub')
+      } else if (keyCode === keys.RIGHT) {
+        this.$refs.calendar.updateDay(1, 'plus')
+      }
+    },
     dateChange (value) {
       this.$emit('change', value)
     },
@@ -142,10 +186,10 @@ export default {
       this.$emit('change', this.date)
       this.close()
     },
-    setDate (date) {
+    setDate (date, notClose) {
       this.date = date
       this.$emit('change', date)
-      this.close()
+      !notClose && this.close()
     },
     getStyle () {
       const clientRect = this.$el.getBoundingClientRect()

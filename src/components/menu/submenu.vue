@@ -9,15 +9,14 @@
   .c-submenu__popup(
     @mouseenter="enterSubMenu"
     @mouseleave="leaveSubMenu"
-    @focus.capture="focusSubMenu"
-    @blur.capture="blurSubMenu"
+    @focusin="openSubMenu"
+    @focusout="closeSubMenu"
+    @click.capture="closeSubMenu"
   )
     slot
 </template>
 
 <script>
-// 隐藏子菜单时延时
-let hideSubMenuTimer = null
 
 export default {
   name: 'c-submenu',
@@ -43,7 +42,9 @@ export default {
   },
   data () {
     return {
-      isOpen: false
+      isOpen: false,
+      hideSubMenuTimer: null, // 隐藏子菜单时延时
+      showSubMenuTimer: null // hover显示子菜单延时
     }
   },
   methods: {
@@ -51,22 +52,25 @@ export default {
       this.isOpen = !this.isOpen
     },
     enterSubMenu () {
-      if (hideSubMenuTimer) clearTimeout(hideSubMenuTimer)
+      if (this.hideSubMenuTimer) clearTimeout(this.hideSubMenuTimer)
       const { isVertical, collapsed } = this.$menu
       if (isVertical && !collapsed) return
-      this.isOpen = true
-    },
-    leaveSubMenu () {
-      const { isVertical, collapsed } = this.$menu
-      if (isVertical && !collapsed) return
-      hideSubMenuTimer = setTimeout(_ => {
-        this.isOpen = false
+      this.showSubMenuTimer = setTimeout(_ => {
+        this.openSubMenu()
       }, this.delay)
     },
-    focusSubMenu () {
+    leaveSubMenu () {
+      if (this.showSubMenuTimer) clearTimeout(this.showSubMenuTimer)
+      const { isVertical, collapsed } = this.$menu
+      if (isVertical && !collapsed) return
+      this.hideSubMenuTimer = setTimeout(_ => {
+        this.closeSubMenu()
+      }, this.delay)
+    },
+    openSubMenu () {
       this.isOpen = true
     },
-    blurSubMenu () {
+    closeSubMenu () {
       this.isOpen = false
     }
   }

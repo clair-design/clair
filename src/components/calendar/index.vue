@@ -119,6 +119,15 @@ export default {
     },
     monthTableShow (show) {
       this.monthsShow = show
+    },
+    updateDay (num, type) {
+      this.monthsShow = false
+      let date = new Date(this.year, this.month, this.day)
+      type === 'plus' && date.setDate(date.getDate() + num)
+      type === 'sub' && date.setDate(date.getDate() - num)
+      if (new Date(date) > new Date(this.maxDate)) date = this.maxDate
+      if (new Date(date) < new Date(this.minDate)) date = this.minDate
+      this.$emit('update', new Date(date).format(this.pattern), true)
     }
   }
 }
