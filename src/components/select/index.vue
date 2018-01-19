@@ -75,6 +75,8 @@
 </template>
 
 <script>
+import throttle from 'lodash/throttle'
+
 import './index.css'
 import zIndex from '../../js/utils/zIndexManager'
 import { getPosition, POSITION } from './position.js'
@@ -88,7 +90,6 @@ const normalizeOptions = options => {
 }
 
 export default {
-
   name: 'c-select',
 
   props: {
@@ -227,6 +228,17 @@ export default {
       this.activeOption = option
     })
 
+    // reset position on window.resize
+    this.__onresize = throttle(
+      () => {
+        if (this.isOpen) {
+          this.positionMenu()
+        }
+      },
+      this.$clair.defaultThrottleTime
+    )
+    window.addEventListener('resize', this.__onresize)
+
     // select the option
     this.$on('option-clicked', option => this.selectOption(option))
 
@@ -254,6 +266,10 @@ export default {
         }
       }
     )
+  },
+
+  beforeDestroy () {
+    window.removeEventListener('resize', this.__onresize)
   },
 
   methods: {
@@ -350,9 +366,10 @@ export default {
     positionMenu () {
       const pos = this.canInput ? POSITION.BOTTOM : POSITION.TOP
       const { top, left } = getPosition(this.menuEl, this.$el, pos)
-      this.menuEl.style.top = `${top}px`
-      this.menuEl.style.left = `${left}px`
-      this.menuEl.style.zIndex = zIndex.next()
+      const { style } = this.menuEl
+      style.top = `${top}px`
+      style.left = `${left}px`
+      style.zIndex = zIndex.next()
     },
 
     onBodyClick (e) {

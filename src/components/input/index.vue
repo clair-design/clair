@@ -134,8 +134,9 @@
       if (multiLine && autosize) {
         this.resizeTextArea()
       }
-
-      this.resizeTextArea = throttle(this.resizeTextArea.bind(this), 200)
+      const defaultThrottleTime = this.$clair.defaultThrottleTime
+      this.resizeTextArea = throttle(
+        this.resizeTextArea.bind(this), defaultThrottleTime)
     }
   }
 </script>
