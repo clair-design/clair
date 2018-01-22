@@ -11,8 +11,8 @@
   },
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
-   // required to lint *.vue files
   "plugins": ["html", "pug"]
 }
