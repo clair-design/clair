@@ -1,6 +1,6 @@
 {
   "name": "clair",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "A design system including principles, Vue components and resources",
   "main": "dist/clair.common.js",
   "module": "dist/clair.esm.js",
@@ -17,7 +17,8 @@
     "prod": "cross-env NODE_ENV=production dokiv",
     "dev": "cross-env NODE_ENV=development dokiv -w",
     "build": "run-s clean prod bundle",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "test": "jest"
   },
   "lint-staged": {
     "src/**/*.css": [
@@ -62,6 +63,7 @@
     "github-markdown-css": "^2.8.0",
     "highlight.js": "^9.12.0",
     "husky": "^0.14.3",
+    "jest": "^22.1.2",
     "lint-staged": "^4.0.2",
     "npm-run-all": "^4.1.2",
     "postcss-cssnext": "^3.0.2",
@@ -72,7 +74,9 @@
     "pug": "^2.0.0-rc.4",
     "rimraf": "^2.6.2",
     "stylelint": "^8.3.1",
-    "stylelint-config-standard": "^17.0.0"
+    "stylelint-config-standard": "^17.0.0",
+    "vue-jest": "^1.4.0",
+    "vue-test-utils": "^1.0.0-beta.11"
   },
   "dependencies": {
     "feather-icons": "^4.0.1",
