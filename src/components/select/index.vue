@@ -39,41 +39,46 @@
         @keydown.delete="onDeleteKey"
         @input="onSearchInput"
       )
-  transition(name="fade-in-down")
-    .c-select__menu(
-      role="menu"
-      aria-activedescendant
-      v-show="isOpen"
-      :style="menuStyle"
-      :class="size ? 'is-'+size : ''"
-    )
-      slot(
-        name="no-match"
-        v-if="autocomplete && !filteredOptions.length"
-      )
-        .c-select__empty 无匹配选项
-      c-option(
-        ref="$options"
-        v-for="(option, index) in filteredOptions"
-        :label="option.label"
-        :isActive="activeOption == option"
-        :isSelected="selectedOptions.indexOf(option) > -1"
-        :disabled="option.disabled"
-        :option="option"
+  c-portal(:aria-hidden="'' + isOpen")
+    transition(name="fade-in-down")
+      .c-select__menu(
+        role="menu"
+        aria-activedescendant
+        v-show="isOpen"
+        :style="menuStyle"
+        :class="size ? 'is-'+size : ''"
+        ref="menu"
       )
         slot(
-          name="menu-item"
+          name="no-match"
+          v-if="autocomplete && !filteredOptions.length"
+        )
+          .c-select__empty 无匹配选项
+        c-option(
+          ref="$options"
+          v-for="(option, index) in filteredOptions"
           :label="option.label"
           :isActive="activeOption == option"
           :isSelected="selectedOptions.indexOf(option) > -1"
           :disabled="option.disabled"
-          :index="index"
           :option="option"
         )
+          slot(
+            name="menu-item"
+            :label="option.label"
+            :isActive="activeOption == option"
+            :isSelected="selectedOptions.indexOf(option) > -1"
+            :disabled="option.disabled"
+            :index="index"
+            :option="option"
+          )
 </template>
 
 <script>
+import throttle from 'lodash/throttle'
+
 import './index.css'
+import zIndex from '../../js/utils/zIndexManager'
 import { getPosition, POSITION } from './position.js'
 
 // ensure each option has label and value
@@ -85,7 +90,6 @@ const normalizeOptions = options => {
 }
 
 export default {
-
   name: 'c-select',
 
   props: {
@@ -217,17 +221,23 @@ export default {
   },
 
   mounted () {
-    // render menu in body
-    if (typeof document === 'object') {
-      this.menuEl = this.$el.querySelector('.c-select__menu')
-      this.selectionEl = this.$el.querySelector('.c-select__selection')
-      document.body.appendChild(this.menuEl)
-    }
+    this.menuEl = this.$refs.menu
 
     // hover the option
     this.$on('option-activated', option => {
       this.activeOption = option
     })
+
+    // reset position on window.resize
+    this.__onresize = throttle(
+      () => {
+        if (this.isOpen) {
+          this.positionMenu()
+        }
+      },
+      this.$clair.defaultThrottleTime
+    )
+    window.addEventListener('resize', this.__onresize)
 
     // select the option
     this.$on('option-clicked', option => this.selectOption(option))
@@ -259,18 +269,7 @@ export default {
   },
 
   beforeDestroy () {
-    const { menuEl } = this
-
-    if (!menuEl) {
-      return
-    }
-
-    // DOM Level 4
-    if (typeof menuEl.remove === 'function') {
-      menuEl.remove()
-    } else {
-      menuEl.parentNode.removeChild(menuEl)
-    }
+    window.removeEventListener('resize', this.__onresize)
   },
 
   methods: {
@@ -367,8 +366,10 @@ export default {
     positionMenu () {
       const pos = this.canInput ? POSITION.BOTTOM : POSITION.TOP
       const { top, left } = getPosition(this.menuEl, this.$el, pos)
-      this.menuEl.style.top = `${top}px`
-      this.menuEl.style.left = `${left}px`
+      const { style } = this.menuEl
+      style.top = `${top}px`
+      style.left = `${left}px`
+      style.zIndex = zIndex.next()
     },
 
     onBodyClick (e) {

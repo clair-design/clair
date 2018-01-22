@@ -521,6 +521,47 @@ export default {
 
 > 注意：用户在输入时，Select 组件会自动调用 `filter` 属性传入的函数。这个函数的调用没有经过任何的防抖和节流操作，开发者需要根据具体的场景自行处理。
 
+
+## 与模态框结合
+
+
+```html
+<c-button primary @click="visible = true">点我！</c-button>
+
+<c-modal
+  width="420px"
+  :visible="visible"
+  @close="visible = false"
+>
+  <div slot="header">选择指标</div>
+  <c-select
+    v-model="dim"
+    :options="options"
+  />
+</c-modal>
+
+<script>
+  export default {
+    data () {
+      return {
+        visible: false,
+        dim: '',
+        options: [
+          { label: '浏览量', value: 'pv' },
+          { label: '访客数', value: 'uv' },
+          { label: '新访客数', value: 'nv' },
+          { label: '访问时长', value: 'du' },
+          { label: '转化次数', value: 'cv' },
+          { label: 'IP 数', value: 'ip' }
+        ]
+      }
+    },
+    methods: {}
+  }
+</script>
+```
+
+
 ## API
 
 ### 属性

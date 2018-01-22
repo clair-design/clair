@@ -16,7 +16,8 @@ const Clair = {
       const $clair = new Vue({
         data: {
           responsive: null,
-          icon: 'feather'
+          icon: 'feather',
+          defaultThrottleTime: 150
         }
       })
 

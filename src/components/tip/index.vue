@@ -55,7 +55,6 @@ const HIDE_MATCH_MAP = {
 }
 
 const defaultDelayTime = 100
-const defaultThrottleTime = 150
 
 const contains = (elem, target) => !!elem && elem.contains(target)
 
@@ -204,7 +203,7 @@ export default {
   mounted () {
     this.resize = this.resize.bind(this)
     this.clickOutside = this.clickOutside.bind(this)
-    this.winResize = throttle(this.resize, defaultThrottleTime)
+    this.winResize = throttle(this.resize, this.$clair.defaultThrottleTime)
     window.addEventListener('resize', this.winResize)
     document.body.addEventListener('click', this.clickOutside)
   },
