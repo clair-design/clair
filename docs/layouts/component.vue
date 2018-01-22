@@ -92,7 +92,8 @@ export default {
             { title: '卡片', name: 'card' },
             { title: '分页', name: 'pagination' },
             { title: '标签', name: 'chip' },
-            { title: '日历', name: 'calendar' }
+            { title: '日历', name: 'calendar' },
+            { title: '树形组件', name: 'tree' }
           ]
         },
         {
