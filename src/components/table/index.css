@@ -14,6 +14,7 @@
   border-spacing: 0;
   border-collapse: collapse;
   margin: 0;
+  user-select: none;
 
   & th,
   & td {
@@ -43,6 +44,10 @@
       border-bottom: 1px solid color(var(--gray) l(85%));
       background-color: #fff;
 
+      &.row-hover {
+        background: color(var(--primary-color) l(95%));
+      }
+
       & td {
         color: color(var(--text-color));
 
@@ -64,14 +69,14 @@
   -ms-scroll-chaining: none;
   overscroll-behavior: none;
 
-  & tbody tr:first-child td {
-    border-top: 0;
-  }
-
   & > table {
     width: 100%;
     margin: 0;
     border: 0;
+
+    & tr:first-child td {
+      border-top: 0;
+    }
   }
 
   &::-webkit-scrollbar {
@@ -101,10 +106,33 @@
     position: absolute;
     top: 0;
     z-index: 1;
+  }
 
-    & .c-table__body::-webkit-scrollbar {
-      width: 0;
-      height: 0;
+  & .c-table__wrapper {
+    & .c-table__headwrapper + .c-table__bodywrapper {
+      & table {
+        border-top: 0;
+      }
+    }
+
+    & .c-fixtable__left,
+    & .c-fixtable__right {
+      & table {
+        width: auto;
+        table-layout: fixed;
+      }
+
+      & .c-table__body {
+        border-bottom: 0;
+      }
+    }
+
+    & .c-fixtable__left .c-table__body {
+      -ms-overflow-style: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
   }
 
@@ -114,17 +142,15 @@
 
   & .c-fixtable__right {
     right: 0;
+    background: rgb(246, 250, 253);
   }
 
+  & .c-scroll__thead,
+  & .c-scroll__tbody,
   & .c-scrolltable {
     overflow-x: auto;
     -ms-scroll-chaining: none;
     overscroll-behavior: none;
-
-    & .c-table__body::-webkit-scrollbar {
-      width: 0;
-      height: 0;
-    }
 
     &::-webkit-scrollbar {
       width: 5px;
@@ -144,12 +170,24 @@
       table-layout: fixed;
     }
   }
+
+  & .c-scroll__tbody table tr:first-child td {
+    border-top: 0;
+  }
+
+  & .c-scroll__thead {
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }
 
 .c-table__sort {
   margin-left: 8px;
   display: inline-block;
-  vertical-align: text-top;
+  vertical-align: middle;
 
   & .c-sort-asc,
   & .c-sort-desc {

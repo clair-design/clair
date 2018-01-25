@@ -1,6 +1,6 @@
 <template lang="pug">
-mixin thead(columnsRows)
-  thead
+table
+  thead(v-if="!onlybody")
     tr(v-for="column in columnsRows")
       th(
         v-for="item in column.columns"
@@ -28,15 +28,14 @@ mixin thead(columnsRows)
               @click="onSorted(item.key, 'desc')"
             )
               i.sort-desc
-mixin tbody(dataList, columns, allColumns)
-  tbody
+  tbody(v-if="!onlyhead")
     tr.c-table__noresult(
       v-if="dataList.length == 0"
     )
       td(:colspan="columns.length") 暂无数据
     tr(
       v-for="dataItem,index in dataList"
-      @mouseenter="setCurrentItem(dataItem)"
+      @mouseenter="setCurrentItem(dataItem, index)"
       @mouseleave="resetCurrentItem"
       :class="getRowClassName(item, index)"
       v-else
@@ -60,19 +59,6 @@ mixin tbody(dataList, columns, allColumns)
             v-html="columnsItem.render(index, dataItem[columnsItem.key], dataItem)"
           )
           span(v-else) {{dataItem[columnsItem.key]}}
-div
-  template(v-if="height")
-    table
-      +thead
-    .c-table__body(
-      :style="getTbodyStyle"
-    )
-      table
-        +tbody
-  template(v-else)
-    table
-      +thead
-      +tbody
 </template>
 
 <script>
@@ -86,7 +72,10 @@ export default {
     height: [String, Number],
     sortkey: String,
     sortorder: String,
-    rowClassName: [String, Function]
+    rowClassName: [String, Function],
+    hoverRowIndex: [Number, String],
+    onlybody: [String, Boolean],
+    onlyhead: [String, Boolean]
   },
 
   data () {
@@ -100,21 +89,6 @@ export default {
   },
 
   computed: {
-    getTbodyStyle () {
-      if (this.$el) {
-        const tableStyle = this.$el.querySelector('table').getClientRects()[0]
-        const theadWidth = tableStyle.width
-        const tbodyHeight = tableStyle.height
-        return {
-          maxHeight: `${this.height - tbodyHeight}px`,
-          width: `${theadWidth}px`
-        }
-      }
-      return {
-        maxHeight: 0,
-        width: 0
-      }
-    },
     columnsRows () {
       const columns = this.getLeafColumns(this.columns)
       const maxlevel = this.findMaxLevel(columns)
@@ -134,6 +108,9 @@ export default {
     datasource (newVal, oldVal) {
       if (newVal === oldVal) return
       this.composeData()
+    },
+    hoverRowIndex () {
+      this.$forceUpdate()
     }
   },
 
@@ -149,16 +126,22 @@ export default {
           rowIndex
         }))
       }
+
+      if (rowIndex === this.hoverRowIndex) {
+        classes.push('row-hover')
+      }
       return classes.join(' ')
     },
     getColumnClassName (item) {
       return item.hasOwnProperty('className') ? item.className : ''
     },
-    setCurrentItem (item) {
+    setCurrentItem (item, index) {
       this.currentItem = item
+      this.$emit('rowEnter', index)
     },
     resetCurrentItem () {
       this.currentItem = {}
+      this.$emit('rowLeave')
     },
     onSelectAllChange (status) {
       this.dataList = this.dataList.map(item => {
@@ -179,7 +162,8 @@ export default {
         this.selection = this.selection.filter(item => item._checked)
       }
       this.allChecked = this.selection.length === this.dataList.length
-      this.indeterminate = this.selection.length > 0 && this.selection.length < this.dataList.length
+      this.indeterminate = this.selection.length > 0 &&
+        this.selection.length < this.dataList.length
       this.$emit('selectChange', this.selection)
     },
     composeData () {
