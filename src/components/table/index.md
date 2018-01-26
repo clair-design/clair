@@ -13,7 +13,6 @@ route: /component/table
 基础表格用于展示信息列表，随屏幕宽度进行自适应调节
 使用 `columns` 属性指定所有列，`datasource` 绑定表格展现信息
 
-
 ```html
 
 <c-table
@@ -75,6 +74,7 @@ export default {
 ```html
 <c-table
   :columns="columns"
+  border="vertical"
   :datasource="datasource"
   @selectChange="onSelectChange"
 />
@@ -132,6 +132,7 @@ export default {
     :columns="columns"
     :datasource="datasource"
     :sortkey="sortKey"
+    border="all"
     :sortorder="sortOrder"
     @sort="sorter"
   >
@@ -213,6 +214,7 @@ export default {
   :sortorder="sortOrder"
   :columns="columns"
   :datasource="datasource"
+  border="group"
   @sort="sorter"
 />
 
@@ -275,6 +277,7 @@ export default {
 ```html
 <c-table
   :columns="columns"
+  border="horizon"
   :datasource="datasource"
 />
 
@@ -325,6 +328,7 @@ export default {
 <c-table
   :columns="columns"
   height="200"
+  border="horizon"
   :datasource="datasource"
 />
 
@@ -406,6 +410,7 @@ export default {
 <c-table
   :columns="columns"
   height="200"
+  border="horizon"
   :datasource="datasource"
 />
 
@@ -480,6 +485,7 @@ export default {
 </script>
 ```
 
+
 ## API
 
 > 注意： 在 `columns`设置第一列的`type`为`selection`， 即可支持第一列展现可选框
@@ -502,6 +508,7 @@ export default {
 |-----|------|-------|-----|
 | columns | Object | {} | 详情见上表 |
 | datasource | Array | [] | 数据源 |
+| border | String | 'none' | all:全边框，horizon:水平边框，vertical:垂直边框，box: 仅有外边框，group：针对多级表头分组边框 |
 | height | Number | - | 设置为具体的值，tbody出滚动条 |
 | sortKey | String | - | 默认排序的key |
 | sortOrder | String | - | 默认排序的升降顺序：asc 和 desc |

@@ -10,7 +10,6 @@
 .c-table table {
   width: 100%;
   overflow: auto;
-  border: 1px solid color(var(--gray) l(85%));
   border-spacing: 0;
   border-collapse: collapse;
   margin: 0;
@@ -20,7 +19,7 @@
   & td {
     text-align: left;
     padding: 0.7em 1em;
-    border-bottom: 1px solid #dfe2e5;
+    border: 0;
   }
 
   & thead {
@@ -33,7 +32,6 @@
 
         &[colspan]:not([colspan="1"]) {
           text-align: center !important;
-          border: 1px solid color(var(--gray) l(85%));
         }
       }
     }
@@ -41,7 +39,6 @@
 
   & tbody {
     & tr {
-      border-bottom: 1px solid color(var(--gray) l(85%));
       background-color: #fff;
 
       &.row-hover {
@@ -50,33 +47,23 @@
 
       & td {
         color: color(var(--text-color));
-
-        &.c-table__bl {
-          border-left: 1px solid color(var(--gray) l(85%));
-        }
-
-        &.c-table__br {
-          border-right: 1px solid color(var(--gray) l(85%));
-        }
       }
     }
+  }
+
+  & .c-checkbox {
+    line-height: inherit;
   }
 }
 
 .c-table__body {
   overflow-y: auto;
-  border-bottom: 1px solid rgb(214, 217, 219);
   -ms-scroll-chaining: none;
   overscroll-behavior: none;
 
   & > table {
     width: 100%;
     margin: 0;
-    border: 0;
-
-    & tr:first-child td {
-      border-top: 0;
-    }
   }
 
   &::-webkit-scrollbar {
@@ -106,6 +93,16 @@
     position: absolute;
     top: 0;
     z-index: 1;
+    box-shadow: none;
+    transition: box-shadow 0.3s ease;
+  }
+
+  & .c-fixed__leftscroll {
+    box-shadow: 6px 0 6px -4px rgba(0, 0, 0, 0.2);
+  }
+
+  & .c-fixed__rightscroll {
+    box-shadow: -6px 0 6px -4px rgba(0, 0, 0, 0.2);
   }
 
   & .c-table__wrapper {
@@ -169,10 +166,6 @@
     & table {
       table-layout: fixed;
     }
-  }
-
-  & .c-scroll__tbody table tr:first-child td {
-    border-top: 0;
   }
 
   & .c-scroll__thead {
@@ -261,5 +254,111 @@
   & table th,
   & table td {
     font-size: 16px;
+  }
+}
+
+/* border */
+.c-table__box {
+  &.c-table {
+    border: 1px solid color(var(--gray) l(85%));
+  }
+}
+
+.c-table__horizon {
+  &.c-table {
+    border-bottom: 1px solid color(var(--gray) l(85%));
+
+    & table {
+      & th,
+      & td {
+        border-top: 1px solid color(var(--gray) l(85%));
+      }
+    }
+  }
+}
+
+.c-table__vertical {
+  &.c-table__horizon.c-table {
+    border-top: 0;
+  }
+
+  &.c-table {
+    border-top: 1px solid color(var(--gray) l(85%));
+    border-bottom: 1px solid color(var(--gray) l(85%));
+
+    & table {
+      & th,
+      & td {
+        border-left: 1px solid color(var(--gray) l(85%));
+
+        &:first-child {
+          border-left: 0;
+        }
+      }
+    }
+
+    & .c-fixtable__right {
+      & table {
+        & th,
+        & td {
+          border-left: 1px solid color(var(--gray) l(85%));
+        }
+      }
+    }
+  }
+}
+
+.c-table__all {
+  &.c-table {
+    & table {
+      & th,
+      & td {
+        border: 1px solid color(var(--gray) l(85%));
+      }
+    }
+
+    & .c-table__wrapper {
+      & table {
+        & tbody tr:first-child td {
+          border-top: 0;
+        }
+      }
+    }
+  }
+}
+
+.c-table__group {
+  &.c-table {
+    border-color: color(var(--gray) l(85%));
+    border-bottom: 1px solid color(var(--gray) l(85%));
+
+    & table th {
+      border-bottom: 1px solid color(var(--gray) l(85%));
+      border-top: 1px solid color(var(--gray) l(85%));
+
+      &[colspan]:not([colspan="1"]) {
+        border-left: 1px solid color(var(--gray) l(85%));
+        border-right: 1px solid color(var(--gray) l(85%));
+      }
+
+      &:first-child {
+        border-left: 1px solid color(var(--gray) l(85%));
+      }
+
+      &:last-child {
+        border-right: 1px solid color(var(--gray) l(85%));
+      }
+    }
+
+    & table th,
+    & table td {
+      &.c-table__bl {
+        border-left: 1px solid color(var(--gray) l(85%));
+      }
+
+      &.c-table__br {
+        border-right: 1px solid color(var(--gray) l(85%));
+      }
+    }
   }
 }

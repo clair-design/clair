@@ -9,25 +9,25 @@ table
         :rowspan="item.rowspan"
         :class="getColumnClassName(item)"
       )
+        span.c-table__check(v-if="item.type === 'selection'")
+          c-checkbox(
+            v-model="allSelect"
+            :indeterminate="checkIndeterminate"
+            @change="onSelectAllChange"
+          )
         slot(:name="item.key + '-base-th'")
           span {{item.title}}
-          span.c-table__check(v-if="item.type === 'selection'")
-            c-checkbox(
-              v-model="allChecked"
-              :indeterminate="indeterminate"
-              @change="onSelectAllChange"
-            )
-          span.c-table__sort(v-else-if="item.sorter")
-            .c-sort-asc(
-              :class="{'sorted': checkSorted(item.key, 'asc')}"
-              @click="onSorted(item.key, 'asc')"
-            )
-              i.sort-asc
-            .c-sort-desc(
-              :class="{'sorted': checkSorted(item.key, 'desc')}"
-              @click="onSorted(item.key, 'desc')"
-            )
-              i.sort-desc
+        span.c-table__sort(v-if="item.sorter")
+          .c-sort-asc(
+            :class="{'sorted': checkSorted(item.key, 'asc')}"
+            @click="onSorted(item.key, 'asc')"
+          )
+            i.sort-asc
+          .c-sort-desc(
+            :class="{'sorted': checkSorted(item.key, 'desc')}"
+            @click="onSorted(item.key, 'desc')"
+          )
+            i.sort-desc
   tbody(v-if="!onlyhead")
     tr.c-table__noresult(
       v-if="dataList.length == 0"
@@ -69,6 +69,8 @@ export default {
   props: {
     columns: Array,
     datasource: Array,
+    allChecked: Boolean,
+    indeterminate: Boolean,
     height: [String, Number],
     sortkey: String,
     sortorder: String,
@@ -80,15 +82,16 @@ export default {
 
   data () {
     return {
-      dataList: [],
-      allChecked: false,
-      indeterminate: false,
-      selection: [],
-      currentItem: {}
+      currentItem: {},
+      allSelect: false,
+      checkIndeterminate: false
     }
   },
 
   computed: {
+    dataList () {
+      return this.datasource
+    },
     columnsRows () {
       const columns = this.getLeafColumns(this.columns)
       const maxlevel = this.findMaxLevel(columns)
@@ -101,13 +104,17 @@ export default {
   },
 
   created () {
-    this.composeData()
+    this.allSelect = this.allChecked
+    this.checkIndeterminate = this.indeterminate
   },
 
   watch: {
-    datasource (newVal, oldVal) {
-      if (newVal === oldVal) return
-      this.composeData()
+    allChecked (newVal) {
+      if (this.allSelect === newVal) return
+      this.allSelect = newVal
+    },
+    indeterminate (newVal) {
+      this.checkIndeterminate = newVal
     },
     hoverRowIndex () {
       this.$forceUpdate()
@@ -144,36 +151,10 @@ export default {
       this.$emit('rowLeave')
     },
     onSelectAllChange (status) {
-      this.dataList = this.dataList.map(item => {
-        this.$set(item, '_checked', status)
-        return item
-      })
-      if (status) {
-        this.selection = this.dataList
-      } else {
-        this.selection = []
-      }
-      this.$emit('selectChange', this.selection)
+      this.$emit('selectAllChange', status)
     },
     onSelectChange (status) {
-      if (status) {
-        this.selection.push(this.currentItem)
-      } else {
-        this.selection = this.selection.filter(item => item._checked)
-      }
-      this.allChecked = this.selection.length === this.dataList.length
-      this.indeterminate = this.selection.length > 0 &&
-        this.selection.length < this.dataList.length
-      this.$emit('selectChange', this.selection)
-    },
-    composeData () {
-      const list = []
-      this.datasource.map((item, index) => {
-        item._checked = item.hasOwnProperty('_checked') || item._checked
-        item._disabled = item.hasOwnProperty('disabled') || item._disabled
-        list.push(item)
-      })
-      this.dataList = list
+      this.$emit('selectChange', this.currentItem, status)
     },
     checkSorted (key, order) {
       return key === this.sortkey && order === this.sortorder
@@ -198,7 +179,6 @@ export default {
       })
       return columns
     },
-
     getLevelColumns (list, maxlevel) {
       const allColumns = this.getAllColumnsRows(list)
       const columns = []

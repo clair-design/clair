@@ -18,7 +18,7 @@ mixin templateCell(columns)
 mixin Table(columns, onlyhead, onlybody)
   c-basetable(
     :columns=columns
-    :datasource="datasource"
+    :datasource="dataList"
     :height="height"
     :sortkey="sortkey"
     :sortorder="sortorder"
@@ -26,8 +26,11 @@ mixin Table(columns, onlyhead, onlybody)
     :hoverRowIndex="hoverRowIndex"
     :onlybody=onlybody
     :onlyhead=onlyhead
+    :allChecked="allChecked"
+    :indeterminate="indeterminate"
     @sort="sorter"
-    @selectChange="selectChange"
+    @selectChange="onSelectChange"
+    @selectAllChange="onSelectAllChange"
     @rowEnter="rowEnter"
     @rowLeave="rowLeave"
   )
@@ -40,7 +43,9 @@ mixin TableWithHeight(columns, tbody, onScroll)
   )
     +Table(columns, "false", "true")
 div(:class="className")
-  .c-table(v-if="hasFixed")
+  .c-table(v-if="hasFixed"
+    :class="withBorderClass"
+  )
     template(v-if="height")
       .c-table__wrapper
         .c-table__headwrapper
@@ -55,11 +60,13 @@ div(:class="className")
             )
             +Table("columns", "false", "true")
         .c-fixtable__left(
+          :class="{'c-fixed__leftscroll': isScrollMove}"
           @mouseenter="setCurrentScrollBox"
           @mouseleave="removeCurrentScrollBox"
           )
           +TableWithHeight("fixedLeftColumns", "fixedleft", "onYscroll")
         .c-fixtable__right(
+          :class="{'c-fixed__rightscroll': isScrollMove}"
           @mouseenter="setCurrentScrollBox"
           @mouseleave="removeCurrentScrollBox"
           )
@@ -75,7 +82,9 @@ div(:class="className")
         v-if="fixedRightColumns.length > 0"
       )
         +Table("fixedRightColumns")
-  .c-table.c-test(v-else)
+  .c-table(v-else
+    :class="withBorderClass"
+  )
     template(v-if="height")
       +TableWithHeight("columns", "scrollBody")
     template(v-else)
@@ -96,16 +105,22 @@ export default {
     sortkey: String,
     sortorder: String,
     size: String,
+    border: String,
     rowClassName: [String, Function]
   },
 
   data () {
     return {
+      dataList: [],
+      selection: [],
       fixedLeftColumns: [],
       fixedRightColumns: [],
       hoverRowIndex: '',
       scrollBarSize: 5,
-      scrollBox: ''
+      scrollBox: '',
+      allChecked: false,
+      indeterminate: false,
+      isScrollMove: false
     }
   },
 
@@ -120,6 +135,14 @@ export default {
       return {}
     },
 
+    withBorderClass () {
+      if (!this.border || this.border === 'none') {
+        return ''
+      }
+      let classes = this.border.split(' ')
+      classes = classes.map(item => `c-table__${item}`)
+      return classes.join(' ')
+    },
     className () {
       return this.size ? `c-table__${this.size}` : ''
     },
@@ -129,6 +152,7 @@ export default {
   },
 
   created () {
+    this.composeData()
     this.getColumnsDetail()
   },
 
@@ -149,6 +173,43 @@ export default {
   },
 
   methods: {
+    onSelectAllChange (status) {
+      this.allChecked = status
+      this.dataList = this.dataList.map(item => {
+        this.$set(item, '_checked', status)
+        return item
+      })
+      if (status) {
+        this.selection = this.dataList
+      } else {
+        this.selection = []
+      }
+      this.$nextTick(() => {
+        this.$emit('selectChange', this.selection)
+      })
+    },
+    onSelectChange (currentItem, status) {
+      if (status) {
+        this.selection.push(currentItem)
+      } else {
+        this.selection = this.selection.filter(item => item._checked)
+      }
+      this.$nextTick(() => {
+        this.allChecked = this.selection.length === this.dataList.length
+        this.indeterminate = this.selection.length > 0 &&
+          this.selection.length < this.dataList.length
+        this.$emit('selectChange', this.selection)
+      })
+    },
+    composeData () {
+      const list = []
+      this.datasource.map((item, index) => {
+        item._checked = item.hasOwnProperty('_checked') || item._checked
+        item._disabled = item.hasOwnProperty('disabled') || item._disabled
+        list.push(item)
+      })
+      this.dataList = list
+    },
     setCurrentScrollBox (e) {
       this.scrollBox = e.target.className
     },
@@ -186,24 +247,30 @@ export default {
     },
     onYscroll (e) {
       if (!this.hasFixed) return
-      if (e.target.parentElement.className !== this.scrollBox) return
+      const scrollEl = this.$el.querySelector('.c-scroll__tbody')
+      if (!(e.target.parentElement.className).includes(this.scrollBox)) {
+        e.target.scrollTop = scrollEl.scrollTop
+        return
+      }
       this.$refs.fixedleft.scrollTop = e.target.scrollTop
       this.$refs.fixedright.scrollTop = e.target.scrollTop
-      const scrollEl = this.$el.querySelector('.c-scroll__tbody')
       scrollEl.scrollTop = e.target.scrollTop
     },
     onScroll (e) {
-      if (e.target.className !== this.scrollBox) return
+      if (!e.target.className.includes(this.scrollBox)) {
+        // fix mouseleave but scroll is keeping
+        e.target.scrollTop = this.$refs.fixedleft.scrollTop
+        return
+      }
+
       const { scrollLeft, scrollTop } = e.target
       const scrollEl = this.$el.querySelector('.c-scroll__thead')
 
+      this.isScrollMove = scrollLeft > 0
       this.$refs.fixedleft.scrollTop = scrollTop
       this.$refs.fixedright.scrollTop = scrollTop
 
       scrollEl.scrollLeft = scrollLeft
-    },
-    selectChange (selection) {
-      this.$emit('selectChange', selection)
     },
     sorter ({key, order}) {
       this.$emit('sort', {key, order})
