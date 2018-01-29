@@ -73,14 +73,16 @@ div(:class="className")
           +TableWithHeight("fixedRightColumns", "fixedright", "onYscroll")
     template(v-else)
       .c-fixtable__left(
+        :class="{'c-fixed__leftscroll': isScrollMove}"
         v-if="fixedLeftColumns.length > 0"
         )
         +Table("fixedLeftColumns")
-      .c-scrolltable
+      .c-scrolltable(@scroll="onScroll")
         +Table("columns")
       .c-fixtable__right(
+        :class="{'c-fixed__rightscroll': isScrollMove}"
         v-if="fixedRightColumns.length > 0"
-      )
+        )
         +Table("fixedRightColumns")
   .c-table(v-else
     :class="withBorderClass"
@@ -224,10 +226,10 @@ export default {
       const height = `${this.height - theadHeight - scrollBarHeight}px`
 
       if (this.hasFixed) {
-        this.$refs.fixedright.style.height = height
-        this.$refs.fixedleft.style.height = height
+        this.$refs.fixedright.style.maxHeight = height
+        this.$refs.fixedleft.style.maxHeight = height
       } else {
-        tbodyEl.style.height = height
+        tbodyEl.style.maxHeight = height
       }
     },
     getCurrentScrollBarSize () {
@@ -267,10 +269,15 @@ export default {
       const scrollEl = this.$el.querySelector('.c-scroll__thead')
 
       this.isScrollMove = scrollLeft > 0
-      this.$refs.fixedleft.scrollTop = scrollTop
-      this.$refs.fixedright.scrollTop = scrollTop
-
-      scrollEl.scrollLeft = scrollLeft
+      if (this.$refs.fixedleft) {
+        this.$refs.fixedleft.scrollTop = scrollTop
+      }
+      if (this.$refs.fixedright) {
+        this.$refs.fixedright.scrollTop = scrollTop
+      }
+      if (scrollEl) {
+        scrollEl.scrollLeft = scrollLeft
+      }
     },
     sorter ({key, order}) {
       this.$emit('sort', {key, order})

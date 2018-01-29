@@ -13,8 +13,8 @@ route: /component/table
 基础表格用于展示信息列表，随屏幕宽度进行自适应调节
 使用 `columns` 属性指定所有列，`datasource` 绑定表格展现信息
 
-```html
 
+```html
 <c-table
   :size="size"
   :columns="columns"
@@ -488,7 +488,7 @@ export default {
 
 ## API
 
-> 注意： 在 `columns`设置第一列的`type`为`selection`， 即可支持第一列展现可选框
+> 注意： 在 `columns`设置第一列的`type`为`selection`， 即可支持第一列展现可选框；横向或者纵向出现滚动条时需要设置单元格的宽度，否则无法保证表头和内容的对齐性
 
 ### columns
 
