@@ -15,7 +15,6 @@ route: /component/table
 
 
 ```html
-
 <c-table
   :size="size"
   :columns="columns"
@@ -75,6 +74,7 @@ export default {
 ```html
 <c-table
   :columns="columns"
+  border="vertical"
   :datasource="datasource"
   @selectChange="onSelectChange"
 />
@@ -132,6 +132,7 @@ export default {
     :columns="columns"
     :datasource="datasource"
     :sortkey="sortKey"
+    border="all"
     :sortorder="sortOrder"
     @sort="sorter"
   >
@@ -213,6 +214,7 @@ export default {
   :sortorder="sortOrder"
   :columns="columns"
   :datasource="datasource"
+  border="group"
   @sort="sorter"
 />
 
@@ -275,6 +277,7 @@ export default {
 ```html
 <c-table
   :columns="columns"
+  border="horizon"
   :datasource="datasource"
 />
 
@@ -325,6 +328,7 @@ export default {
 <c-table
   :columns="columns"
   height="200"
+  border="horizon"
   :datasource="datasource"
 />
 
@@ -406,6 +410,7 @@ export default {
 <c-table
   :columns="columns"
   height="200"
+  border="horizon"
   :datasource="datasource"
 />
 
@@ -479,3 +484,41 @@ export default {
 }
 </script>
 ```
+
+
+## API
+
+> 注意： 在 `columns`设置第一列的`type`为`selection`， 即可支持第一列展现可选框；横向或者纵向出现滚动条时需要设置单元格的宽度，否则无法保证表头和内容的对齐性
+
+### columns
+
+| 属性 | 类型 | 默认值 | 说明 |
+|-----|------|-------|-----|
+| key | String | - | - |
+| title | String | - | 表头展现 |
+| width | Number, String | - | number会自动转化为像素，string会直接用来展现 |
+| className | String | - | 列的类名 |
+| fixed | String | - | 可以设置left，right进行定位 |
+| sorter | Boolean | false | 是否支持排序 |
+
+
+### 属性
+
+| 属性 | 类型 | 默认值 | 说明 |
+|-----|------|-------|-----|
+| columns | Object | {} | 详情见上表 |
+| datasource | Array | [] | 数据源 |
+| border | String | 'none' | all:全边框，horizon:水平边框，vertical:垂直边框，box: 仅有外边框，group：针对多级表头分组边框 |
+| height | Number | - | 设置为具体的值，tbody出滚动条 |
+| sortKey | String | - | 默认排序的key |
+| sortOrder | String | - | 默认排序的升降顺序：asc 和 desc |
+| rowClassName | Function | function(rowItem: Object, rowIndex: Number) | 设置行的类名 |
+
+### 方法
+
+| 参数 | 类型 | 默认值| 说明 |
+|-----|------|-------|-----|
+| selectChange | Function | function(selection: Array) | checkbox勾选后触发，返回已勾选的数组 |
+| sort | Function | function(sortObj: Object) | 排序按钮点击触发，返回{key, order} |
+| rowEnter | Function | function(index： Number) | 行进入事件 |
+| rowLeave | Function | - | 行离开事件 |

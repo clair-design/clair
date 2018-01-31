@@ -1,6 +1,6 @@
 <template lang="pug">
-mixin thead(columnsRows)
-  thead
+table
+  thead(v-if="!onlybody")
     tr(v-for="column in columnsRows")
       th(
         v-for="item in column.columns"
@@ -9,34 +9,33 @@ mixin thead(columnsRows)
         :rowspan="item.rowspan"
         :class="getColumnClassName(item)"
       )
+        span.c-table__check(v-if="item.type === 'selection'")
+          c-checkbox(
+            v-model="allSelect"
+            :indeterminate="checkIndeterminate"
+            @change="onSelectAllChange"
+          )
         slot(:name="item.key + '-base-th'")
           span {{item.title}}
-          span.c-table__check(v-if="item.type === 'selection'")
-            c-checkbox(
-              v-model="allChecked"
-              :indeterminate="indeterminate"
-              @change="onSelectAllChange"
-            )
-          span.c-table__sort(v-else-if="item.sorter")
-            .c-sort-asc(
-              :class="{'sorted': checkSorted(item.key, 'asc')}"
-              @click="onSorted(item.key, 'asc')"
-            )
-              i.sort-asc
-            .c-sort-desc(
-              :class="{'sorted': checkSorted(item.key, 'desc')}"
-              @click="onSorted(item.key, 'desc')"
-            )
-              i.sort-desc
-mixin tbody(dataList, columns, allColumns)
-  tbody
+        span.c-table__sort(v-if="item.sorter")
+          .c-sort-asc(
+            :class="{'sorted': checkSorted(item.key, 'asc')}"
+            @click="onSorted(item.key, 'asc')"
+          )
+            i.sort-asc
+          .c-sort-desc(
+            :class="{'sorted': checkSorted(item.key, 'desc')}"
+            @click="onSorted(item.key, 'desc')"
+          )
+            i.sort-desc
+  tbody(v-if="!onlyhead")
     tr.c-table__noresult(
       v-if="dataList.length == 0"
     )
       td(:colspan="columns.length") 暂无数据
     tr(
       v-for="dataItem,index in dataList"
-      @mouseenter="setCurrentItem(dataItem)"
+      @mouseenter="setCurrentItem(dataItem, index)"
       @mouseleave="resetCurrentItem"
       :class="getRowClassName(item, index)"
       v-else
@@ -60,19 +59,6 @@ mixin tbody(dataList, columns, allColumns)
             v-html="columnsItem.render(index, dataItem[columnsItem.key], dataItem)"
           )
           span(v-else) {{dataItem[columnsItem.key]}}
-div
-  template(v-if="height")
-    table
-      +thead
-    .c-table__body(
-      :style="getTbodyStyle"
-    )
-      table
-        +tbody
-  template(v-else)
-    table
-      +thead
-      +tbody
 </template>
 
 <script>
@@ -83,37 +69,28 @@ export default {
   props: {
     columns: Array,
     datasource: Array,
+    allChecked: Boolean,
+    indeterminate: Boolean,
     height: [String, Number],
     sortkey: String,
     sortorder: String,
-    rowClassName: [String, Function]
+    rowClassName: [String, Function],
+    hoverRowIndex: [Number, String],
+    onlybody: [String, Boolean],
+    onlyhead: [String, Boolean]
   },
 
   data () {
     return {
-      dataList: [],
-      allChecked: false,
-      indeterminate: false,
-      selection: [],
-      currentItem: {}
+      currentItem: {},
+      allSelect: false,
+      checkIndeterminate: false
     }
   },
 
   computed: {
-    getTbodyStyle () {
-      if (this.$el) {
-        const tableStyle = this.$el.querySelector('table').getClientRects()[0]
-        const theadWidth = tableStyle.width
-        const tbodyHeight = tableStyle.height
-        return {
-          maxHeight: `${this.height - tbodyHeight}px`,
-          width: `${theadWidth}px`
-        }
-      }
-      return {
-        maxHeight: 0,
-        width: 0
-      }
+    dataList () {
+      return this.datasource
     },
     columnsRows () {
       const columns = this.getLeafColumns(this.columns)
@@ -127,13 +104,20 @@ export default {
   },
 
   created () {
-    this.composeData()
+    this.allSelect = this.allChecked
+    this.checkIndeterminate = this.indeterminate
   },
 
   watch: {
-    datasource (newVal, oldVal) {
-      if (newVal === oldVal) return
-      this.composeData()
+    allChecked (newVal) {
+      if (this.allSelect === newVal) return
+      this.allSelect = newVal
+    },
+    indeterminate (newVal) {
+      this.checkIndeterminate = newVal
+    },
+    hoverRowIndex () {
+      this.$forceUpdate()
     }
   },
 
@@ -149,47 +133,28 @@ export default {
           rowIndex
         }))
       }
+
+      if (rowIndex === this.hoverRowIndex) {
+        classes.push('row-hover')
+      }
       return classes.join(' ')
     },
     getColumnClassName (item) {
       return item.hasOwnProperty('className') ? item.className : ''
     },
-    setCurrentItem (item) {
+    setCurrentItem (item, index) {
       this.currentItem = item
+      this.$emit('rowEnter', index)
     },
     resetCurrentItem () {
       this.currentItem = {}
+      this.$emit('rowLeave')
     },
     onSelectAllChange (status) {
-      this.dataList = this.dataList.map(item => {
-        this.$set(item, '_checked', status)
-        return item
-      })
-      if (status) {
-        this.selection = this.dataList
-      } else {
-        this.selection = []
-      }
-      this.$emit('selectChange', this.selection)
+      this.$emit('selectAllChange', status)
     },
     onSelectChange (status) {
-      if (status) {
-        this.selection.push(this.currentItem)
-      } else {
-        this.selection = this.selection.filter(item => item._checked)
-      }
-      this.allChecked = this.selection.length === this.dataList.length
-      this.indeterminate = this.selection.length > 0 && this.selection.length < this.dataList.length
-      this.$emit('selectChange', this.selection)
-    },
-    composeData () {
-      const list = []
-      this.datasource.map((item, index) => {
-        item._checked = item.hasOwnProperty('_checked') || item._checked
-        item._disabled = item.hasOwnProperty('disabled') || item._disabled
-        list.push(item)
-      })
-      this.dataList = list
+      this.$emit('selectChange', this.currentItem, status)
     },
     checkSorted (key, order) {
       return key === this.sortkey && order === this.sortorder
@@ -214,7 +179,6 @@ export default {
       })
       return columns
     },
-
     getLevelColumns (list, maxlevel) {
       const allColumns = this.getAllColumnsRows(list)
       const columns = []
