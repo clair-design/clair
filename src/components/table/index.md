@@ -18,15 +18,20 @@ route: /component/table
 <c-table
   :size="size"
   :columns="columns"
-  :datasource="datasource"
+  :datasource="datasource1"
   :rowClassName="getRowClassName"
 />
+<c-button
+  @click.native="changeData()"
+>默认按钮</c-button>
+
 
 <script>
 export default {
   data () {
     return {
       size: 'sm',
+      datasource1: [],
       datasource: [
         {
           type: '直接访问',
@@ -60,6 +65,10 @@ export default {
   methods: {
     getRowClassName (rowItem, rowIndex) {
       return 'test--row'
+    },
+    changeData () {
+      console.log('ddd')
+      this.datasource1 = this.datasource
     }
   }
 }

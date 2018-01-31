@@ -3,10 +3,6 @@
 */
 @import url('../../css/variables.css');
 
-.c-table__noresult {
-  text-align: center;
-}
-
 .c-table table {
   width: 100%;
   overflow: auto;
@@ -47,6 +43,10 @@
 
       & td {
         color: color(var(--text-color));
+      }
+
+      & .c-table__noresult {
+        text-align: center;
       }
     }
   }

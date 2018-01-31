@@ -159,6 +159,13 @@ export default {
   },
 
   watch: {
+    /*
+    datasource (newVal, oldVal) {
+      if (newVal === oldVal) return
+      this.composeData()
+      this.getColumnsDetail()
+    },
+    */
     columns () {
       this.getColumnsDetail()
       this.height && this.getTbodyStyle()
@@ -205,7 +212,7 @@ export default {
     },
     composeData () {
       const list = []
-      this.datasource.map((item, index) => {
+      this.datasource && this.datasource.map((item, index) => {
         item._checked = item.hasOwnProperty('_checked') || item._checked
         item._disabled = item.hasOwnProperty('disabled') || item._disabled
         list.push(item)

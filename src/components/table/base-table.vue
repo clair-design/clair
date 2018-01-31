@@ -29,10 +29,10 @@ table
           )
             i.sort-desc
   tbody(v-if="!onlyhead")
-    tr.c-table__noresult(
+    tr(
       v-if="dataList.length == 0"
     )
-      td(:colspan="columns.length") 暂无数据
+      td.c-table__noresult(:colspan="columns.length") 暂无数据
     tr(
       v-for="dataItem,index in dataList"
       @mouseenter="setCurrentItem(dataItem, index)"
