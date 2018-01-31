@@ -412,7 +412,7 @@ export default {
   width="long"
   multiple
   autocomplete
-    size="xs"
+  width="longer"
 />
 
 <script>

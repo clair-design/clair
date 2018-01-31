@@ -194,7 +194,10 @@ export default {
       immediate: true,
       handler: function (value) {
         const isEmpty = value === void 0 || value === null || value === ''
-        if (isEmpty) return
+        if (isEmpty) {
+          this.selectedOptions = []
+          return
+        }
         if (this.multiple) {
           const isArray = Array.isArray(value)
           const isEmptyArray = isArray && value.length === 0

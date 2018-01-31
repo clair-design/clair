@@ -12,6 +12,10 @@
     & .c-form-item__label {
       margin-top: calc((var(--form-height-xs) - var(--form-font-xs)) / 2);
     }
+
+    & .c-form-item__control {
+      line-height: var(--form-height-xs);
+    }
   }
 
   &.is-sm {
@@ -19,6 +23,10 @@
 
     & .c-form-item__label {
       margin-top: calc((var(--form-height-sm) - var(--form-font-sm)) / 2);
+    }
+
+    & .c-form-item__control {
+      line-height: var(--form-height-sm);
     }
   }
 
@@ -28,6 +36,10 @@
     & .c-form-item__label {
       margin-top: calc((var(--form-height-lg) - var(--form-font-lg)) / 2);
     }
+
+    & .c-form-item__control {
+      line-height: var(--form-height-lg);
+    }
   }
 
   &.is-xl {
@@ -35,6 +47,10 @@
 
     & .c-form-item__label {
       margin-top: calc((var(--form-height-xl) - var(--form-font-xl)) / 2);
+    }
+
+    & .c-form-item__control {
+      line-height: var(--form-height-xl);
     }
   }
 }
@@ -62,6 +78,11 @@
 
   & .c-form-item__control {
     flex: 1 0 0%;
+    line-height: var(--form-height-md);
+
+    & > * {
+      vertical-align: top;
+    }
   }
 
   & .c-form-item__error {

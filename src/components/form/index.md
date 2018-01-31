@@ -189,11 +189,11 @@ export default {
 <c-form label-width="1em">
   <c-form-item>
     <c-icon name="globe" slot="label" />
-    <c-input size="sm" placeholder="公司地址" />
+    <c-input placeholder="公司地址" />
   </c-form-item>
   <c-form-item>
     <c-icon name="smartphone" slot="label" />
-    <c-input size="sm" placeholder="手机号码" />
+    <c-input placeholder="手机号码" />
   </c-form-item>
 </c-form>
 ```

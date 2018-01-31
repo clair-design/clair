@@ -131,8 +131,8 @@ export default {
         children.push(newNode)
       } else {
         this.$set(node, 'children', [newNode])
-        console.log(node)
       }
+      node.expanded = true
     },
     remove ($node) {
       const $parent = $node.$parent

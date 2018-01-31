@@ -15,8 +15,12 @@ c-portal(:aria-hidden="'' + visible")
     )
       .c-modal__wrapper(:style="styleObj")
         .c-modal__header
-          button.c-modal__close(v-if="closable" @click="$emit('close')")
-            c-icon(type="feather" name="x")
+          c-button.c-modal__close(
+            v-if="closable"
+            @click="$emit('close')"
+            icon="x"
+            flat
+          )
           slot(name="header")
             div {{title}}
         .c-modal__body
