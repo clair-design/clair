@@ -16,9 +16,10 @@
     "bundle": "cross-env NODE_ENV=production clair-bundle",
     "prod": "cross-env NODE_ENV=production dokiv",
     "dev": "cross-env NODE_ENV=development dokiv -w",
-    "build": "run-s clean prod bundle",
+    "build": "run-s clean prod bundle rawcss",
     "start": "npm run dev",
-    "test": "jest"
+    "test": "jest",
+    "rawcss": "postcss -u postcss-easy-import -u postcss-each -u postcss-for -o dist/clair.raw.css src/css/main.css"
   },
   "lint-staged": {
     "src/**/*.css": [
