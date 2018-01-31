@@ -1,6 +1,6 @@
 {
   "name": "clair",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "A design system including principles, Vue components and resources",
   "main": "dist/clair.common.js",
   "module": "dist/clair.esm.js",
@@ -19,7 +19,7 @@
     "build": "run-s clean prod bundle rawcss",
     "start": "npm run dev",
     "test": "jest",
-    "rawcss": "postcss -u postcss-easy-import -u postcss-each -u postcss-for -o dist/clair.raw.css src/css/main.css"
+    "rawcss": "postcss --no-map -u postcss-easy-import -u postcss-each -u postcss-for -o dist/clair.raw.css src/css/main.css"
   },
   "lint-staged": {
     "src/**/*.css": [
