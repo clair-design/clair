@@ -159,13 +159,11 @@ export default {
   },
 
   watch: {
-    /*
     datasource (newVal, oldVal) {
       if (newVal === oldVal) return
       this.composeData()
       this.getColumnsDetail()
     },
-    */
     columns () {
       this.getColumnsDetail()
       this.height && this.getTbodyStyle()

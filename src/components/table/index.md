@@ -23,7 +23,7 @@ route: /component/table
 />
 <c-button
   @click.native="changeData()"
->默认按钮</c-button>
+>获取数据</c-button>
 
 
 <script>
