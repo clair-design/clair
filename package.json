@@ -52,7 +52,7 @@
     "babel-eslint": "^7.2.3",
     "clair-bundle": "^1.0.6",
     "cross-env": "^5.1.1",
-    "dokiv": "^2.2.4",
+    "dokiv": "^2.2.5",
     "eslint": "^4.3.0",
     "eslint-config-neat": "^1.0.0",
     "eslint-plugin-html": "^3.1.1",
