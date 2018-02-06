@@ -1,5 +1,5 @@
 <template lang="pug">
-c-portal(:aria-hidden="'' + visible")
+c-portal(:aria-hidden="'' + !visible")
   transition(
     appear,
     name="modal",
@@ -140,11 +140,15 @@ export default {
     },
 
     beforeEnter () {
+      const hasScrollbar = document.documentElement.clientWidth < window.innerWidth
       const style = document.body.style
       this.bdOvf = style.overflow
       this.bdPdr = style.paddingRight
-      style.overflow = 'hidden'
-      style.paddingRight = `${getScrollBarSize()}px`
+
+      if (hasScrollbar) {
+        style.overflow = 'hidden'
+        style.paddingRight = `${getScrollBarSize()}px`
+      }
     },
 
     afterLeave () {

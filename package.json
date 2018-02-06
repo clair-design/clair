@@ -48,10 +48,11 @@
   },
   "homepage": "https://github.com/clair-design/clair#readme",
   "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.11",
     "babel-eslint": "^7.2.3",
     "clair-bundle": "^1.0.6",
     "cross-env": "^5.1.1",
-    "dokiv": "^2.2.2",
+    "dokiv": "^2.2.5",
     "eslint": "^4.3.0",
     "eslint-config-neat": "^1.0.0",
     "eslint-plugin-html": "^3.1.1",
@@ -76,8 +77,7 @@
     "rimraf": "^2.6.2",
     "stylelint": "^8.3.1",
     "stylelint-config-standard": "^17.0.0",
-    "vue-jest": "^1.4.0",
-    "vue-test-utils": "^1.0.0-beta.11"
+    "vue-jest": "^1.4.0"
   },
   "dependencies": {
     "feather-icons": "^4.0.1",

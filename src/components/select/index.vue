@@ -39,7 +39,7 @@
         @keydown.delete="onDeleteKey"
         @input="onSearchInput"
       )
-  c-portal(:aria-hidden="'' + isOpen")
+  c-portal(:aria-hidden="'' + !isOpen")
     transition(name="fade-in-down")
       .c-select__menu(
         role="menu"
