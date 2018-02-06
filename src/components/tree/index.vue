@@ -4,6 +4,7 @@
     v-for="node in nodes"
     :node="node"
     :level="1"
+    :default-expanded-keys="defaultExpandedKeys"
   )
 
 </template>
@@ -18,11 +19,10 @@ export default {
   name: 'c-tree',
   props: {
     nodes: VueTypes.arrayOf(Object).isRequired,
-    renderLabel: {
-      type: Function,
-      default: null
-    },
-    checkable: VueTypes.bool.def(false)
+    checkable: VueTypes.bool.def(false),
+    defaultExpandedKeys: VueTypes.array,
+    defaultExpandAll: VueTypes.bool.def(false),
+    nodeKey: VueTypes.string.def('id')
   },
   provide () {
     return {
@@ -39,16 +39,28 @@ export default {
   },
   methods: {
     getCheckedNodes (leafOnly) {
-      const isLeaf = n => !n.children
+      const filter = node => {
+        const isChecked = node.checked
+        if (leafOnly) return !node.children && isChecked
+        return isChecked
+      }
+      return this.filterNodes(filter)
+    },
+    filterNodes (filter) {
       const getNode = c => c.node
-      const isChecked = n => n.checked
       const allNodes = this.$children.reduce(
         (arr, branch) => arr.concat(branch.getChildren()),
         []
       )
-      const checkedNodes = allNodes.map(getNode).filter(isChecked)
-      if (leafOnly) return checkedNodes.filter(isLeaf)
-      return checkedNodes
+      const filtered = allNodes.map(getNode).filter(filter)
+      return filtered
+    },
+    getExpandedNodes () {
+      const filter = node => node.expanded
+      return this.filterNodes(filter)
+    },
+    getExpandedKeys () {
+      return this.getExpandedNodes().map(node => node[this.nodeKey])
     }
   }
 }

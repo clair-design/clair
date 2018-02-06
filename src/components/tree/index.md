@@ -65,6 +65,184 @@ export default {
 </script>
 ```
 
+## 默认展开
+
+给某个节点的 `expanded` 设置为 `true` 即可将其展开。
+
+```html
+<c-tree :nodes="nodes">
+</c-tree>
+
+<script>
+export default {
+  data () {
+    return {
+      nodes: [
+        {
+          label: '藻类',
+          expanded: true,
+          children: [
+            { label: '绿藻' },
+            { label: '轮藻' }
+          ]
+        },
+        {
+          label: '苔藓',
+          children: [
+            { label: '地钱' },
+            { label: '角苔' },
+            { label: '苔藓植物门' }
+          ]
+        },
+        {
+          label: '蕨类',
+          children: [
+            { label: '石松' },
+            { label: '蕨类植物门' }
+          ]
+        },
+        {
+          label: '种子植物',
+          children: [
+            {
+              label: '被子',
+              children: [
+                { label: '睡莲目' },
+                { label: '木兰藤目' }
+              ]
+            },
+            { label: '苏铁' },
+            { label: '银杏' },
+            { label: '松柏' }
+          ]
+        }
+      ]
+    }
+  }
+}
+</script>
+```
+
+另外一种设置默认展开的方式是给 `c-tree` 传入 `default-expanded-keys` 属性。使用这种方式时，需要每个节点有一个唯一的标识，比如 `id`。
+
+```html
+<c-tree
+  :nodes="nodes"
+  :default-expanded-keys="[4, 5]"
+  node-key="id"
+>
+</c-tree>
+
+<script>
+export default {
+  data () {
+    return {
+      nodes: [
+        {
+          id: 1,
+          label: '藻类',
+          expanded: true,
+          children: [
+            { label: '绿藻' },
+            { label: '轮藻' }
+          ]
+        },
+        {
+          id: 2,
+          label: '苔藓',
+          children: [
+            { label: '地钱' },
+            { label: '角苔' },
+            { label: '苔藓植物门' }
+          ]
+        },
+        {
+          id: 3,
+          label: '蕨类',
+          children: [
+            { label: '石松' },
+            { label: '蕨类植物门' }
+          ]
+        },
+        {
+          id: 4,
+          label: '种子植物',
+          children: [
+            {
+              id: 5,
+              label: '被子',
+              children: [
+                { label: '睡莲目' },
+                { label: '木兰藤目' }
+              ]
+            },
+            { label: '苏铁' },
+            { label: '银杏' },
+            { label: '松柏' }
+          ]
+        }
+      ]
+    }
+  }
+}
+</script>
+```
+
+如果想默认展开所有节点，将 `default-expand-all` 属性设置为 `true` 即可。
+
+```html
+<c-tree :nodes="nodes" default-expand-all>
+</c-tree>
+
+<script>
+export default {
+  data () {
+    return {
+      nodes: [
+        {
+          label: '藻类',
+          children: [
+            { label: '绿藻' },
+            { label: '轮藻' }
+          ]
+        },
+        {
+          label: '苔藓',
+          children: [
+            { label: '地钱' },
+            { label: '角苔' },
+            { label: '苔藓植物门' }
+          ]
+        },
+        {
+          label: '蕨类',
+          children: [
+            { label: '石松' },
+            { label: '蕨类植物门' }
+          ]
+        },
+        {
+          label: '种子植物',
+          children: [
+            {
+              label: '被子',
+              children: [
+                { label: '睡莲目' },
+                { label: '木兰藤目' }
+              ]
+            },
+            { label: '苏铁' },
+            { label: '银杏' },
+            { label: '松柏' }
+          ]
+        }
+      ]
+    }
+  }
+}
+</script>
+```
+
 ## 自定义节点显示
 
 ```html
@@ -229,8 +407,10 @@ export default {
 <c-tree :nodes="nodes" checkable ref="tree">
 </c-tree>
 
-<c-button primary @click="getCheckedNodes(false)">所有选中节点</c-button>
-<c-button primary @click="getCheckedNodes(true)">选中的叶节点</c-button>
+<c-button primary @click="getCheckedNodes(false)">获取选中的节点</c-button>
+<c-button primary @click="getCheckedNodes(true)">获取选中的叶节点</c-button>
+<c-button primary @click="getExpandedNodes">获取展开的节点</c-button>
+<c-button primary @click="getExpandedKeys">获取展开的节点Key</c-button>
 
 <script>
 export default {
@@ -238,6 +418,7 @@ export default {
     return {
       nodes: [
         {
+          id: 1,
           label: '藻类',
           children: [
             { label: '绿藻' },
@@ -245,6 +426,7 @@ export default {
           ]
         },
         {
+          id: 2,
           label: '苔藓',
           children: [
             { label: '地钱' },
@@ -253,6 +435,7 @@ export default {
           ]
         },
         {
+          id: 3,
           label: '蕨类',
           children: [
             { label: '石松' },
@@ -260,10 +443,12 @@ export default {
           ]
         },
         {
+          id: 4,
           label: '种子植物',
           expanded: true,
           children: [
             {
+              id: 5,
               label: '被子',
               checked: true,
               children: [
@@ -285,7 +470,20 @@ export default {
         .getCheckedNodes(leafOnly)
         .map(node => node.label)
         .join(', ')
-      this.$alert({ msg: checked})
+      this.$alert({ msg: checked })
+    },
+    getExpandedNodes () {
+      const expanded = this.$refs.tree
+        .getExpandedNodes()
+        .map(node => node.label)
+        .join(', ')
+      this.$alert({ msg: expanded })
+    },
+    getExpandedKeys () {
+      const keys = this.$refs.tree
+        .getExpandedKeys()
+        .join(', ')
+      this.$alert({ msg: keys })
     }
   }
 }

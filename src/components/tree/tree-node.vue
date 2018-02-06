@@ -22,6 +22,7 @@
       ref="children"
       v-for="child in node.children"
       :node="child"
+      :default-expanded-keys="defaultExpandedKeys"
       :level="level + 1"
     )
 </template>
@@ -34,7 +35,8 @@ export default {
   name: 'c-tree-node',
   props: {
     node: VueTypes.object.isRequired,
-    level: VueTypes.integer.isRequired
+    level: VueTypes.integer.isRequired,
+    defaultExpandedKeys: VueTypes.array
   },
   inject: ['$tree'],
   components: {
@@ -57,12 +59,27 @@ export default {
       indeterminate: false
     }
   },
+  watch: {
+    defaultExpandedKeys: {
+      immediate: true,
+      handler (expandedKeys) {
+        if (!expandedKeys || expandedKeys.length === 0) return
+        const id = this.node[this.$tree.nodeKey]
+        const isExpanded = expandedKeys.indexOf(id) > -1
+        this.$set(this.node, 'expanded', isExpanded)
+      }
+    }
+  },
   created () {
     const { node } = this
     const parentNode = this.$parent.node
-    if (typeof node.checked === 'undefined') this.$set(node, 'checked', false)
-    node.checked = (parentNode && parentNode.checked) || node.checked
+
+    // make `expanded` and `checked` reactive
     if (typeof node.expanded === 'undefined') this.$set(node, 'expanded', false)
+    if (typeof node.checked === 'undefined') this.$set(node, 'checked', false)
+
+    node.checked = (parentNode && parentNode.checked) || node.checked
+    node.expanded = this.$tree.defaultExpandAll || node.expanded
 
     this.$on('parent-check-change', checked => {
       node.checked = checked
