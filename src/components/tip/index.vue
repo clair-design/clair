@@ -7,7 +7,7 @@
   @click="show"
 )
   slot
-  c-portal(role="tooltip", :aria-hidden="'' + visible")
+  c-portal(role="tooltip", :aria-hidden="'' + !visible")
     transition(
       v-if="!disabled",
       @before-enter="beforeEnter",
