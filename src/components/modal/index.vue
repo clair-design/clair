@@ -1,5 +1,5 @@
 <template lang="pug">
-c-portal(:aria-hidden="'' + visible")
+c-portal(:aria-hidden="'' + !visible")
   transition(
     appear,
     name="modal",
