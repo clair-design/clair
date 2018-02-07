@@ -8,6 +8,7 @@
     v-model="daterange"
     :placeholder="placeholder"
     :disabled="disabled"
+    width="normal"
     :size="size"
     @change="dateChange"
     @focusin.native="open"
@@ -17,6 +18,7 @@
     v-else-if="type == 'date'"
     v-model="date"
     :size="size"
+    width="normal"
     :placeholder="placeholder"
     :disabled="disabled"
     @change="dateChange"
@@ -110,7 +112,7 @@ export default {
         window.addEventListener('keydown', this.onKeyDown, false)
       } else {
         window.removeEventListener('click', this.onBodyClick, true)
-        window.removeEventListener('keydown', this.onKeyDown, true)
+        window.removeEventListener('keydown', this.onKeyDown, false)
       }
     },
     value (newVal) {

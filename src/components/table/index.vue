@@ -35,9 +35,10 @@ mixin Table(columns, onlyhead, onlybody)
     @rowLeave="rowLeave"
   )
     +templateCell(columns)
-mixin TableWithHeight(columns, tbody, onScroll)
+mixin TableWithHeight(columns, tbody, onScroll, nobody)
   +Table(columns, "true", "false")
   .c-table__body(
+    v-if="!" + nobody
     ref=tbody
     @scroll=onScroll
   )
@@ -64,26 +65,38 @@ div(:class="className")
           @mouseenter="setCurrentScrollBox"
           @mouseleave="removeCurrentScrollBox"
           )
-          +TableWithHeight("fixedLeftColumns", "fixedleft", "onYscroll")
+          template(v-if="datasource.length > 0")
+            +TableWithHeight("fixedLeftColumns", "fixedleft", "onYscroll")
+          template(v-else)
+            +TableWithHeight("fixedLeftColumns", "fixedleft", "onYscroll", "true")
         .c-fixtable__right(
           :class="{'c-fixed__rightscroll': isScrollMove}"
           @mouseenter="setCurrentScrollBox"
           @mouseleave="removeCurrentScrollBox"
           )
-          +TableWithHeight("fixedRightColumns", "fixedright", "onYscroll")
+          template(v-if="datasource.length > 0")
+            +TableWithHeight("fixedRightColumns", "fixedright", "onYscroll")
+          template(v-else)
+            +TableWithHeight("fixedRightColumns", "fixedright", "onYscroll", "true")
     template(v-else)
       .c-fixtable__left(
         :class="{'c-fixed__leftscroll': isScrollMove}"
         v-if="fixedLeftColumns.length > 0"
         )
-        +Table("fixedLeftColumns")
+        template(v-if="datasource.length > 0")
+          +Table("fixedLeftColumns")
+        template(v-else)
+          +Table("fixedLeftColumns", "true")
       .c-scrolltable(@scroll="onScroll")
         +Table("columns")
       .c-fixtable__right(
         :class="{'c-fixed__rightscroll': isScrollMove}"
         v-if="fixedRightColumns.length > 0"
         )
-        +Table("fixedRightColumns")
+        template(v-if="datasource.length > 0")
+          +Table("fixedRightColumns")
+        template(v-else)
+          +Table("fixedRightColumns", "true")
   .c-table(v-else
     :class="withBorderClass"
   )
@@ -231,8 +244,12 @@ export default {
       const height = `${this.height - theadHeight - scrollBarHeight}px`
 
       if (this.hasFixed) {
-        this.$refs.fixedright.style.maxHeight = height
-        this.$refs.fixedleft.style.maxHeight = height
+        if (this.$refs.fixedright) {
+          this.$refs.fixedright.style.maxHeight = height
+        }
+        if (this.$refs.fixedleft) {
+          this.$refs.fixedleft.style.maxHeight = height
+        }
       } else {
         tbodyEl.style.maxHeight = height
       }
