@@ -80,6 +80,8 @@ import throttle from 'lodash/throttle'
 import './index.css'
 import zIndex from '../../js/utils/zIndexManager'
 import { getPosition, POSITION } from './position.js'
+import resettable from '../../js/mixins/resettable'
+import validatable from '../../js/mixins/validatable'
 
 // ensure each option has label and value
 const normalizeOptions = options => {
@@ -91,6 +93,8 @@ const normalizeOptions = options => {
 
 export default {
   name: 'c-select',
+
+  mixins: [resettable, validatable],
 
   props: {
     value: [Number, String, Object, Array],

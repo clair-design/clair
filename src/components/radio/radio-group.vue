@@ -16,9 +16,15 @@
 <script>
 import './index.css'
 import { randomString } from '../../js/utils'
+import validatable from '../../js/mixins/validatable'
+import resettable from '../../js/mixins/resettable'
 
 export default {
   name: 'c-radio-group',
+  inject: {
+    $form: { default: null }
+  },
+  mixins: [resettable, validatable],
   props: {
     options: {
       type: Array,
@@ -29,9 +35,6 @@ export default {
     },
     button: Boolean,
     size: String
-  },
-  inject: {
-    $form: { default: null }
   },
   data () {
     return {

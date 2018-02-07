@@ -35,6 +35,7 @@
   import throttle from 'lodash/throttle'
   import './index.css'
   import validatable from '../../js/mixins/validatable'
+  import resettable from '../../js/mixins/resettable'
 
   // SEE https://github.com/jackmoore/autosize
   // import autoSize from 'autosize'
@@ -45,7 +46,7 @@
     model: {
       event: 'change'
     },
-    mixins: [validatable],
+    mixins: [validatable, resettable],
     inject: {
       $form: { default: null }
     },
@@ -134,7 +135,7 @@
       if (multiLine && autosize) {
         this.resizeTextArea()
       }
-      const defaultThrottleTime = this.$clair.defaultThrottleTime
+      const { defaultThrottleTime } = this.$clair
       this.resizeTextArea = throttle(
         this.resizeTextArea.bind(this), defaultThrottleTime)
     }

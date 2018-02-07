@@ -57,21 +57,15 @@ export default {
       }
     }
   },
-  watch: {
-    validatable () {
-      if (this.validatable && this.required) {
-        this.validatable.rules.required = true
-      }
-    }
-  },
   created () {
     this.$on('validatable-attached', v => {
+      // skip child validatable if parent is validatable
+      if (v.$parent.isValidatable) return
       this.validatable = v
     })
     this.$on('validatable-detached', v => {
       this.validatable = null
     })
-  },
-  methods: {}
+  }
 }
 </script>

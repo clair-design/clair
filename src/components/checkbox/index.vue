@@ -17,6 +17,8 @@
 <script>
   // import css
   import './index.css'
+  import resettable from '../../js/mixins/resettable'
+  import validatable from '../../js/mixins/validatable'
 
   const name = 'c-checkbox'
   const props = {
@@ -37,6 +39,7 @@
     inject: {
       $form: { default: null }
     },
+    mixins: [resettable, validatable],
     computed: {
       classNames () {
         const { size, $form } = this

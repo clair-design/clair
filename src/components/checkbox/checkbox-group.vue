@@ -16,14 +16,6 @@ import validatable from '../../js/mixins/validatable'
 const name = 'c-checkbox-group'
 const pass = { valid: true, msg: '' }
 
-// 必填检查
-const required = function (value) {
-  if (!this.required) return pass
-  const valid = Array.isArray(value) && value.length > 0
-  const msg = valid ? '' : '请至少选择一项'
-  return { valid, msg }
-}
-
 // 最少选择X项
 const minItems = function (value) {
   if (!this.minItems) return pass
@@ -45,7 +37,6 @@ const props = {
     type: Array,
     default () { return [] }
   },
-  required: Boolean,
   minItems: Number,
   maxItems: Number,
   options: {
@@ -62,6 +53,9 @@ export default {
   },
   props,
   mixins: [validatable],
+  inject: {
+    $form: { default: null }
+  },
   data () {
     return {
       isChecked: []
@@ -89,7 +83,6 @@ export default {
   },
   created () {
     Object.assign(this.rules, {
-      required: required.bind(this),
       minItems: minItems.bind(this),
       maxItems: maxItems.bind(this)
     })

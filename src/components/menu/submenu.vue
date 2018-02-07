@@ -11,7 +11,7 @@
     @mouseleave="leaveSubMenu"
     @focusin="openSubMenu"
     @focusout="closeSubMenu"
-    @click.capture="closeSubMenu"
+    @click.capture="clickSubMenu"
   )
     slot
 </template>
@@ -66,6 +66,10 @@ export default {
       this.hideSubMenuTimer = setTimeout(_ => {
         this.closeSubMenu()
       }, this.delay)
+    },
+    clickSubMenu () {
+      if (this.$menu.isVertical && !this.$menu.collapsed) return
+      this.closeSubMenu()
     },
     openSubMenu () {
       this.isOpen = true

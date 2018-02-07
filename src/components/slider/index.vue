@@ -40,6 +40,7 @@
 <script>
   import clamp from 'lodash/clamp'
   import VueTypes from 'vue-types'
+  import resettable from '../../js/mixins/resettable'
 
   import './index.css'
   import baseRange from '../base-range/index.vue'
@@ -52,6 +53,7 @@
       'c-base-range': baseRange
     },
     model: { event: 'change' },
+    mixins: [resettable],
     props: {
       min: VueTypes.number.def(0),
       max: VueTypes.number.def(100),

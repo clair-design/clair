@@ -57,13 +57,11 @@ export default {
         .every(result => result.valid)
     },
     resetValidity () {
-      this.validatables.forEach(v => {
-        Object.assign(v.validity, {
-          dirty: false,
-          valid: true,
-          msg: ''
-        })
-      })
+      this.validatables.forEach(v => v.resetValidity())
+    },
+    reset () {
+      this.$emit('reset')
+      this.resetValidity()
     }
   }
 }

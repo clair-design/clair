@@ -1,4 +1,4 @@
-import {toString} from './util'
+import { isEmpty } from './util'
 
 const ruleset = {
 
@@ -6,9 +6,10 @@ const ruleset = {
    * 必填(选)验证
    */
   required: function (value) {
-    // value需要转换成字符串再计算length，不然数字或者0都会是invalid
-    const valid = Boolean(toString(value).length)
-    const msg = valid ? '' : '请填写此项'
+    const valid = !isEmpty(value)
+    const isCheckable = (Array.isArray(value) || typeof value === 'boolean')
+    const errMsg = isCheckable ? '请选择' : '请填写此项'
+    const msg = valid ? '' : errMsg
     return { valid, msg }
   },
 

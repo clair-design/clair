@@ -19,7 +19,8 @@ export default {
         valid: true,
         msg: '',
         dirty: false
-      }
+      },
+      isValidatable: true
     }
   },
 
@@ -39,7 +40,9 @@ export default {
     }
     this.$on('input', setDirty)
     this.$on('change', setDirty)
+  },
 
+  mounted () {
     const { $form, $formItem } = this
     if ($form) $form.$emit('validatable-attached', this)
     if ($formItem) $formItem.$emit('validatable-attached', this)
@@ -62,11 +65,26 @@ export default {
   methods: {
     validate () {
       this.validity.dirty = true
+      const { $formItem } = this
+      const required = $formItem && $formItem.required
+      const rules = Object.assign({ required }, this.rules)
+      if (!rules.msg) rules.msg = {}
+      if (!rules.msg.required) {
+        const label = this.$formItem ? this.$formItem.label : ''
+        const action = this.$options.name === 'c-input' ? '填写' : '选择'
+        rules.msg.required = `请${action}${label.replace(/[:：]/, '')}`
+      }
       return Object.assign(
         this.validity,
-        Validator.validate(this.value, this.rules)
+        Validator.validate(this.value, rules)
       )
+    },
+    resetValidity () {
+      Object.assign(this.validity, {
+        dirty: false,
+        valid: true,
+        msg: ''
+      })
     }
   }
-
 }

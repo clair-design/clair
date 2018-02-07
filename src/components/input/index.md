@@ -25,7 +25,7 @@ meta:
   export default {
     data() {
       return {
-        userName: ''
+        userName: 'Clair'
       }
     }
   }

@@ -49,12 +49,15 @@
 
 <script>
 import './index.css'
+import validatable from '../../js/mixins/validatable'
+import resettable from '../../js/mixins/resettable'
 
 export default {
   name: 'c-datepicker',
   model: {
     event: 'change'
   },
+  mixins: [resettable, validatable],
   props: {
     value: {
       type: String | Array,

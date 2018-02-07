@@ -91,6 +91,7 @@
 
 <script>
 import Mixin from '../calendar/mixin.js'
+
 export default {
   name: 'c-daterange',
   props: {

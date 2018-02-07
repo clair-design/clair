@@ -237,6 +237,100 @@ export default {
 </script>
 ```
 
+## 表单验证和重置
+
+```html
+<c-form @submit="onSubmit" ref="form" label-width="6em" width="long">
+  <c-form-item label="任务名称：" required>
+    <c-input v-model="name" />
+  </c-form-item>
+  <c-form-item label="统计时段：" required>
+    <c-checkbox-group
+      v-model="timespan"
+      :options="[
+        { label: '最近7天', value: 1 },
+        { label: '最近14天', value: 2 },
+        { label: '最近30天', value: 3 },
+        { label: '自然月', value: 4 },
+        { label: '自然季', value: 5 }
+      ]"
+    />
+  </c-form-item>
+  <c-form-item label=" " required>
+    <c-checkbox label="包含移动端数据" v-model="hasMobile" />
+  </c-form-item>
+  <c-form-item label="开始日期：" required>
+    <c-datepicker v-model="startDate" />
+  </c-form-item>
+  <c-form-item label="运行范围：" required>
+    <c-datepicker type="daterange" v-model="range" />
+  </c-form-item>
+  <c-form-item label="发送周期：" required>
+    <c-radio-group
+      button
+      :options="[
+        { label: '每天', value: 1 },
+        { label: '每周', value: 2 },
+        { label: '每月', value: 3 },
+      ]"
+      v-model="frequency"
+    />
+  </c-form-item>
+  <c-form-item label="地域：" required>
+    <c-select
+      :options="[
+        { label: '东北', value: 1 },
+        { label: '华北', value: 2 },
+        { label: '西北', value: 3 },
+        { label: '华中', value: 4 },
+        { label: '华南', value: 5 },
+        { label: '华东', value: 6 },
+        { label: '西南', value: 7 }
+      ]"
+      v-model="zone"
+    />
+  </c-form-item>
+  <c-form-item label="每页条数：" required>
+    <c-slider v-model="num" />
+  </c-form-item>
+  <c-form-item label=" ">
+    <c-button type="submit" primary>生成报告</c-button>
+    <c-button type="button" @click="onReset">重置表单</c-button>
+  </c-form-item>
+</c-form>
+
+<script>
+export default {
+  data () {
+    return {
+      name: '',
+      timespan: [2],
+      hasMobile: false,
+      startDate: '',
+      range: [],
+      frequency: 1,
+      zone: '',
+      num: 10
+    }
+  },
+  methods: {
+    onSubmit (e) {
+      e.preventDefault()
+      const form = this.$refs.form
+      if (form.isValid()) {
+        alert('登录成功')
+        form.reset()
+      }
+    },
+    onReset (e) {
+      e.preventDefault()
+      this.$refs.form.reset()
+    }
+  }
+}
+</script>
+```
+
 ## 属性说明
 
 ### `c-form` 属性
