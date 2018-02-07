@@ -91,7 +91,7 @@
   border: 1px solid color(var(--gray) l(85%));
   box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.2);
   line-height: 1.5;
-  max-height: 25em;
+  max-height: calc(25em + 2px);
   overflow-y: auto;
   -ms-scroll-chaining: none;
   overscroll-behavior: none;

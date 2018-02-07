@@ -197,7 +197,7 @@ export default {
     value: {
       immediate: true,
       handler: function (value) {
-        const isEmpty = value === void 0 || value === null || value === ''
+        const isEmpty = value === void 0 || value === null
         if (isEmpty) {
           this.selectedOptions = []
           return
