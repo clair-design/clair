@@ -115,6 +115,7 @@ export default {
   name: 'c-table',
   props: {
     columns: Array,
+    allSelected: Boolean,
     datasource: Array,
     height: [String, Number],
     sortkey: String,
@@ -180,6 +181,9 @@ export default {
     columns () {
       this.getColumnsDetail()
       this.height && this.getTbodyStyle()
+    },
+    allSelected (status) {
+      this.updateSelectAll(status)
     }
   },
 
@@ -193,7 +197,7 @@ export default {
   },
 
   methods: {
-    onSelectAllChange (status) {
+    updateSelectAll (status) {
       this.allChecked = status
       this.dataList = this.dataList.map(item => {
         this.$set(item, '_checked', status)
@@ -204,6 +208,9 @@ export default {
       } else {
         this.selection = []
       }
+    },
+    onSelectAllChange (status) {
+      this.updateSelectAll(status)
       this.$nextTick(() => {
         this.$emit('selectChange', this.selection)
       })
@@ -222,13 +229,20 @@ export default {
       })
     },
     composeData () {
+      this.allChecked = this.allSelected
       const list = []
+      const selectedList = []
       this.datasource && this.datasource.map((item, index) => {
-        item._checked = item.hasOwnProperty('_checked') || item._checked
-        item._disabled = item.hasOwnProperty('disabled') || item._disabled
+        item._checked = (item.hasOwnProperty('_checked') && item._checked) || this.allChecked
+        item._disabled = (item.hasOwnProperty('disabled') && item._disabled) || this.allChecked
+        item._checked && selectedList.push(item)
         list.push(item)
       })
       this.dataList = list
+      this.selection = selectedList
+      this.allChecked = this.selection.length === this.dataList.length
+      this.indeterminate = this.selection.length > 0 &&
+        this.selection.length < this.dataList.length
     },
     setCurrentScrollBox (e) {
       this.scrollBox = e.target.className

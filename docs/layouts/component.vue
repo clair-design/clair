@@ -70,7 +70,8 @@ export default {
             { title: '单选框', name: 'radio' },
             { title: '滑块', name: 'slider' },
             { title: '表单', name: 'form' },
-            { title: '日期选择', name: 'datepicker' }
+            { title: '日期选择', name: 'datepicker' },
+            { title: '级联选择', name: 'cascader' }
           ]
         },
         {

@@ -85,14 +85,30 @@ export default {
   :columns="columns"
   border="vertical"
   :datasource="datasource"
+  :allSelected="allSelected"
   @selectChange="onSelectChange"
 />
+<p/>
+<c-button
+  @click.native="updateData()"
+>更新数据
+</c-button>
+<c-button
+  @click.native="allSelected = !allSelected"
+>修改全选状态
+</c-button>
+<c-button
+  @click="resetData()"
+>重置数据
+</c-button>
 
 <script>
 export default {
   data () {
     return {
-      datasource: [
+      allSelected: true,
+      datasource: [],
+      data: [
         {
           type: '直接访问',
           pv: 1,
@@ -111,6 +127,25 @@ export default {
           ip: 81
         }
       ],
+      datasource1: [
+        {
+          type: '直接访问1',
+          pv: 1,
+          uv: 2,
+          nv: 3,
+          du: 4,
+          cv: 5,
+          ip: 8
+        }, {
+          type: '搜索引擎1',
+          pv: 11,
+          uv: 21,
+          nv: 31,
+          du: 141,
+          cv: 51,
+          ip: 81
+        }
+      ],
       columns: [
         { type: 'selection', align: 'center', width: 60 },
         { title: '来源类型', key: 'type' },
@@ -121,9 +156,20 @@ export default {
       ]
     }
   },
+  created () {
+    this.datasource = this.data
+  },
   methods: {
     onSelectChange (selection) {
       console.log(selection)
+    },
+    updateData () {
+      this.allSelected = true
+      this.datasource = this.datasource1
+    },
+    resetData () {
+      this.allSelected = false
+      this.datasource = this.data
     }
   }
 }
