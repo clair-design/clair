@@ -25,6 +25,9 @@ export default {
     $form: { default: null }
   },
   mixins: [resettable, validatable],
+  model: {
+    event: 'change'
+  },
   props: {
     options: {
       type: Array,
@@ -52,8 +55,12 @@ export default {
   created () {
     this.updateChecked()
     this.$watch('options', this.updateChecked)
-    this.$watch('checkedIndex', _ => {
-      this.$emit('input', this.options[this.checkedIndex].value)
+    this.$watch('value', this.updateChecked)
+    this.$watch('checkedIndex', index => {
+      const value = index > -1
+        ? this.options[this.checkedIndex].value
+        : this.value
+      this.$emit('change', value)
     })
   },
   methods: {

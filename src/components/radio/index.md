@@ -10,9 +10,18 @@ route: /component/radio
 
 ## 基本用法
 
+使用 `options` 属性给 `c-radio-group` 传递所有选项。 当用户改变了选中的选项时，会触发 `change` 事件。
+
 ```html
 <c-radio-group
-  :options="options"
+  :options="[
+    { value: 'chrome', label: 'Chrome'},
+    { value: 'edge', label: 'Edge'},
+    { value: 'firefox', label: 'Firefox' },
+    { value: 'internet-explorer', label: 'IE', disabled: true },
+    { value: 'opera', label: 'Opera'}
+  ]"
+  @change="onChange"
   v-model="favorite"
 />
 <p>你选择的浏览器是：<c-icon type="fa" :name="favorite" /></p>
@@ -20,15 +29,11 @@ route: /component/radio
 <script>
 export default {
   data () {
-    return {
-      options: [
-        { value: 'chrome', label: 'Chrome'},
-        { value: 'edge', label: 'Edge'},
-        { value: 'firefox', label: 'Firefox' },
-        { value: 'internet-explorer', label: 'IE', disabled: true },
-        { value: 'opera', label: 'Opera'}
-      ],
-      favorite: ''
+    return { favorite: '' }
+  },
+  methods: {
+    onChange (value) {
+      console.log(`Value is changed to ${value}`)
     }
   }
 }
