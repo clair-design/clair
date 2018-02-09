@@ -242,7 +242,7 @@ export default {
 ```html
 <c-form @submit="onSubmit" ref="form" label-width="6em" width="long">
   <c-form-item label="任务名称：" required>
-    <c-input v-model="name" />
+    <c-input v-model="name" :rules="rules.name" />
   </c-form-item>
   <c-form-item label="统计时段：" required>
     <c-checkbox-group
@@ -258,6 +258,9 @@ export default {
   </c-form-item>
   <c-form-item label=" " required>
     <c-checkbox label="包含移动端数据" v-model="hasMobile" />
+  </c-form-item>
+  <c-form-item label="移动版本：" required v-if="hasMobile">
+    <c-input v-model="version" :rules="rules.version" />
   </c-form-item>
   <c-form-item label="开始日期：" required>
     <c-datepicker v-model="startDate" />
@@ -310,7 +313,14 @@ export default {
       range: [],
       frequency: 1,
       zone: '',
-      num: 10
+      num: 10,
+      version: '',
+      rules: {
+        version: {
+          pattern: /^\d{2,6}$/,
+          required: true
+        }
+      }
     }
   },
   methods: {
