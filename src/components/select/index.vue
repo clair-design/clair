@@ -196,26 +196,15 @@ export default {
 
     value: {
       immediate: true,
-      handler: function (value) {
-        const isEmpty = value === void 0 || value === null
-        if (isEmpty) {
-          this.selectedOptions = []
-          return
-        }
-        if (this.multiple) {
-          const isArray = Array.isArray(value)
-          const isEmptyArray = isArray && value.length === 0
-          if (isEmptyArray) return
-          const valueArr = isArray ? value : [value]
-          this.selectedOptions = valueArr
-            .map(v => this.getOption(v))
-            .filter(option => option)
-        } else {
-          const option = this.getOption(value)
-          if (option) {
-            this.selectedOptions = [option]
-          }
-        }
+      handler: function () {
+        this.updateSelectedOptions()
+      }
+    },
+
+    options: {
+      immediate: true,
+      handler: function () {
+        this.updateSelectedOptions()
       }
     },
 
@@ -294,6 +283,27 @@ export default {
       return this.filteredOptions.find(fn) ||
         this.normalizedOptions.find(fn) ||
         this.selectedOptions.find(fn)
+    },
+
+    updateSelectedOptions () {
+      const { value, multiple } = this
+      const isEmpty = value === void 0 || value === null
+      if (isEmpty) {
+        this.selectedOptions = []
+        return
+      }
+      if (multiple) {
+        const isArray = Array.isArray(value)
+        const isEmptyArray = isArray && value.length === 0
+        if (isEmptyArray) return
+        const valueArr = isArray ? value : [value]
+        this.selectedOptions = valueArr
+          .map(v => this.getOption(v))
+          .filter(option => option)
+      } else {
+        const option = this.getOption(value)
+        this.selectedOptions = option ? [option] : []
+      }
     },
 
     open () {
