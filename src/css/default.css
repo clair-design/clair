@@ -112,4 +112,9 @@
   --tooltip-color-dark: #fff;
   --tooltip-bg-light: #fff;
   --tooltip-color-light: var(--text-color);
+
+  /**
+  * menu
+  */
+  --submenu-max-height: 20em;
 }

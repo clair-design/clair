@@ -121,7 +121,7 @@
     }
 
     &.is-open .c-submenu__popup {
-      max-height: 20em;
+      max-height: var(--submenu-max-height);
     }
 
     &.is-open .c-submenu__title::after {
