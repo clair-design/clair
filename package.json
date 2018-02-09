@@ -16,7 +16,7 @@
     "bundle": "cross-env NODE_ENV=production clair-bundle",
     "prod": "cross-env NODE_ENV=production dokiv",
     "dev": "cross-env NODE_ENV=development dokiv -w",
-    "build": "run-s clean prod bundle rawcss",
+    "build": "run-s clean prod bundle",
     "start": "npm run dev",
     "test": "jest",
     "rawcss": "cd src/css; cat main.css | cat && echo '@import url(../components/**/*.css);' | postcss --no-map -u postcss-easy-import -u postcss-each -u postcss-for > ../../dist/clair.raw.css"
