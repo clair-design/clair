@@ -1,0 +1,97 @@
+/**
+* c-cascader
+*/
+@import url("../../css/variables.css");
+
+.c-cascader {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  border-radius: 0.2em;
+  overflow: hidden;
+  width: 15em;
+  cursor: pointer;
+
+  & .c-input-wrap {
+    width: 100%;
+  }
+
+  & input {
+    margin: 0;
+    width: 100%;
+  }
+}
+
+.c-cascader__icon {
+  position: absolute;
+  right: 0.5em;
+  top: 50%;
+  font-size: 0.85em;
+  transform: translateY(-50%);
+  color: color(var(--text-color) l(65%));
+}
+
+.c-cascader__childmenu {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.cascader-menu {
+  width: 10em;
+  box-shadow: 0 0 5px #dadfe6;
+  list-style: none;
+  max-height: 274px;
+  overflow-y: auto;
+  border: 1px solid #dadfe6;
+  border-top: 0;
+  background-color: #fff;
+  box-sizing: border-box;
+  z-index: 99;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  user-select: none;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #ced3d9;
+    border-radius: 10px;
+    border-radius: 30px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #eaeced;
+  }
+}
+
+.casecader-menu-item {
+  position: relative;
+  border-top: 1px solid #dadfe6;
+  line-height: 28px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+  overflow: hidden;
+  text-align: left;
+  cursor: pointer;
+  padding: 0 5px 0 8px;
+  color: #596980;
+  font-size: 12px;
+  font-weight: normal;
+
+  &.active,
+  &:hover {
+    background-color: #f5f8fb;
+    font-weight: bold;
+  }
+}
+
+.cascader-icon {
+  position: absolute;
+  right: 5px;
+  font-size: 16px;
+}
