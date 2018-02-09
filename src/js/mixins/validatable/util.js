@@ -10,3 +10,12 @@ export function isEmpty (value) {
   if (typeof value === 'number') return value === 0
   if (typeof value === 'object') return Object.keys(value).length === 0
 }
+
+/**
+ * 获取变量的字符串值
+ */
+export function toString (value) {
+  return value === void 0 || value === null
+    ? ''
+    : value.toString().trim()
+}

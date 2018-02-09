@@ -1,4 +1,4 @@
-import { isEmpty } from './util'
+import { isEmpty, toString } from './util'
 
 const ruleset = {
 

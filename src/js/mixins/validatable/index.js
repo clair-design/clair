@@ -69,8 +69,8 @@ export default {
       const required = $formItem && $formItem.required
       const rules = Object.assign({ required }, this.rules)
       if (!rules.msg) rules.msg = {}
-      if (!rules.msg.required) {
-        const label = this.$formItem ? this.$formItem.label : ''
+      if (typeof rules.msg === 'object' && !rules.msg.required) {
+        const label = $formItem && $formItem.label ? $formItem.label : ''
         const action = this.$options.name === 'c-input' ? '填写' : '选择'
         rules.msg.required = `请${action}${label.replace(/[:：]/, '')}`
       }
