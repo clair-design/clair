@@ -322,6 +322,10 @@ export default {
     sorter (sortObj) {
       this.sortKey = sortObj.key
       this.sortOrder = sortObj.order
+      this.datasource = this.datasource.sort((a,b) => {
+        return this.sortOrder === 'asc' ? a[this.sortKey] - b[this.sortKey] > 0
+          : a[this.sortKey] - b[this.sortKey] < 0
+      })
     }
   }
 }
