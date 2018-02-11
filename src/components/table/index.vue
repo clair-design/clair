@@ -173,10 +173,19 @@ export default {
   },
 
   watch: {
-    datasource (newVal, oldVal) {
-      if (newVal === oldVal) return
+    datasource: {
+      handler (newVal, oldVal) {
+        if (newVal === oldVal) return
+        this.composeData()
+        this.getColumnsDetail()
+      },
+      deep: true
+    },
+    sortkey () {
       this.composeData()
-      this.getColumnsDetail()
+    },
+    sortorder () {
+      this.composeData()
     },
     columns () {
       this.getColumnsDetail()
