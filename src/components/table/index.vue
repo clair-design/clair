@@ -240,7 +240,7 @@ export default {
       })
       this.dataList = list
       this.selection = selectedList
-      this.allChecked = this.selection.length === this.dataList.length
+      this.allChecked = this.dataList.length !== 0 && this.selection.length === this.dataList.length
       this.indeterminate = this.selection.length > 0 &&
         this.selection.length < this.dataList.length
     },

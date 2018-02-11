@@ -106,7 +106,7 @@ export default {
 export default {
   data () {
     return {
-      allSelected: true,
+      allSelected: false,
       datasource: [],
       data: [
         {
@@ -164,12 +164,12 @@ export default {
       console.log(selection)
     },
     updateData () {
-      this.allSelected = true
+      // this.allSelected = true
       this.datasource = this.datasource1
     },
     resetData () {
-      this.allSelected = false
-      this.datasource = this.data
+      // this.allSelected = false
+      this.datasource = []
     }
   }
 }
