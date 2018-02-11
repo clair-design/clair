@@ -7,16 +7,23 @@
       :placeholder="placeholder"
       v-model="showValue"
       width="normal"
+      :size="size"
       :disabled="disabled"
       )
     c-icon.c-cascader__icon(name="chevron-down")
-  .cascader-dropmenu
+  .cascader-dropmenu(
+    :class="className"
+    )
     template(v-if="isOpen")
       Menu(
         :parentMenu="parentMenu"
         :options="optionList"
         :labelKey="labelKey"
         :valueKey="valueKey"
+        :childrenKey="childrenKey"
+        :showAllLevel="showAllLevel"
+        :changeOnSelect="changeOnSelect"
+        :loadChildren="loadChildren"
       )
 </template>
 
@@ -38,6 +45,19 @@ export default {
     value: Array,
     placeholder: String,
     disabled: Boolean,
+    separator: {
+      type: String,
+      default: '/'
+    },
+    changeOnSelect: {
+      type: Boolean,
+      default: false
+    },
+    showAllLevel: {
+      type: Boolean,
+      default: true
+    },
+    size: String,
     options: {
       type: Array,
       default () {
@@ -51,6 +71,19 @@ export default {
     valueKey: {
       type: String,
       default: 'value'
+    },
+    childrenKey: {
+      type: String,
+      default: 'children'
+    },
+    loadChildren: {
+      type: Function,
+      default: null
+    }
+  },
+  computed: {
+    className () {
+      return this.size ? `is-${this.size}` : 'md'
     }
   },
   data () {
@@ -66,7 +99,7 @@ export default {
     }
   },
   created () {
-    this.optionList = this.options
+    this.optionList = [...this.options]
   },
   mounted () {
     if (typeof document === 'object') {
@@ -74,21 +107,28 @@ export default {
       document.body.appendChild(this.cascaderMenu)
       this.resize()
     }
-    if (this.vaule) {
-      this.showValue = this.getLabelWithValue(this.value).join('/')
-    }
+    window.addEventListener('resize', this.resize, false)
+  },
+  beforeDestroy () {
+    this.cascaderMenu.remove()
+    window.removeEventListener('resize', this.resize, false)
   },
   watch: {
+    options: {
+      handler () {
+        this.optionList = [...this.options]
+      },
+      deep: true
+    },
     value (newVal) {
-      this.showValue = this.getLabelWithValue(this.value).join('/')
+      const labels = this.getLabelWithValue(this.value)
+      this.showValue = this.showAllLevel
+        ? labels.join(this.separator)
+        : labels[labels.length - 1]
     },
     isOpen () {
       if (this.isOpen) {
         this.resize()
-        this.parentMenu = {
-          label: [],
-          value: []
-        }
         window.addEventListener('click', this.onBodyClick, true)
       } else {
         window.removeEventListener('click', this.onBodyClick, true)
@@ -106,11 +146,14 @@ export default {
     getLabelWithValue (value) {
       const labels = []
       value.reduce((result, item) => {
-        const { children, label } = result.find(data => data[this.valueKey] === item)
+        const resultTarget = result.find(data => data[this.valueKey] === item)
+        const { label } = resultTarget
+        const children = resultTarget[this.childrenKey]
         labels.push(label)
         if (children && children.length) {
           return children
         }
+        return result
       }, this.optionList)
       return labels
     },
@@ -126,8 +169,9 @@ export default {
       const clientRect = this.$el.getBoundingClientRect()
       const windowH = window.innerHeight
       const marginTop = 2
+      const scrollBarWidth = 20
       const scrollHeight =
-        document.body.scrollWidth > window.innerWidth ? 20 : 0
+        document.body.scrollWidth > window.innerWidth ? scrollBarWidth : 0
       const droplistHeight = this.cascaderMenu.clientHeight
       const defaultTop =
         clientRect.top + clientRect.height + marginTop + window.pageYOffset
