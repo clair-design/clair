@@ -11,7 +11,7 @@
     )
     c-checkbox(
       v-if="$tree.checkable"
-      v-model="node.checked"
+      v-model="checked"
       @change="checkChange"
       :indeterminate="indeterminate"
     )
@@ -22,7 +22,6 @@
       ref="children"
       v-for="child in node.children"
       :node="child"
-      :default-expanded-keys="defaultExpandedKeys"
       :level="level + 1"
     )
 </template>
@@ -35,8 +34,7 @@ export default {
   name: 'c-tree-node',
   props: {
     node: VueTypes.object.isRequired,
-    level: VueTypes.integer.isRequired,
-    defaultExpandedKeys: VueTypes.array
+    level: VueTypes.integer.isRequired
   },
   inject: ['$tree'],
   components: {
@@ -48,45 +46,52 @@ export default {
       return children && children.length
     },
     showChildren () {
-      return this.hasChildren && this.node.expanded
+      return this.hasChildren && this.expanded
     },
     iconName () {
-      return this.node.expanded ? 'chevron-down' : 'chevron-right'
+      return this.expanded ? 'chevron-down' : 'chevron-right'
+    },
+    id () {
+      return this.node[this.$tree.nodeKey]
     }
   },
   data () {
     return {
-      indeterminate: false
+      indeterminate: false,
+      expanded: false,
+      checked: false
     }
   },
-  watch: {
-    defaultExpandedKeys: {
-      immediate: true,
-      handler (expandedKeys) {
-        if (!expandedKeys || expandedKeys.length === 0) return
-        const id = this.node[this.$tree.nodeKey]
-        const isExpanded = expandedKeys.indexOf(id) > -1
-        this.$set(this.node, 'expanded', isExpanded)
-      }
-    }
-  },
+
   created () {
-    const { node } = this
-    const parentNode = this.$parent.node
+    const { $tree, $parent, id } = this
 
-    // make `expanded` and `checked` reactive
-    if (typeof node.expanded === 'undefined') this.$set(node, 'expanded', false)
-    if (typeof node.checked === 'undefined') this.$set(node, 'checked', false)
+    // expanded keys
+    this.expanded = this.$tree.defaultExpandAll || $tree.expandedKeys[id]
 
-    node.checked = (parentNode && parentNode.checked) || node.checked
-    node.expanded = this.$tree.defaultExpandAll || node.expanded
+    // checked status
+    this.checked = $parent.checked || $tree.checkedKeys[id]
 
+    // reactive to expandedKeys or checkedKeys change
+    if (id !== void 0) {
+      if ($parent.checked) $tree.$emit('checked-change', id, true)
+      this.$watch('$tree.expandedKeys', keys => {
+        this.expanded = keys[id]
+      })
+      this.$watch('$tree.checkedKeys', keys => {
+        this.checked = keys[id]
+      })
+    }
+
+    // parent node check changed, notify children
     this.$on('parent-check-change', checked => {
-      node.checked = checked
+      this.checked = checked
       this.indeterminate = false
       this.updateChildren(checked)
+      this.$tree.$emit('checked-change', this.id, checked)
     })
 
+    // child check changed, update self
     this.$on('child-check-change', this.childCheckChange)
   },
   methods: {
@@ -97,21 +102,28 @@ export default {
       }, [this])
     },
     onNodeClick () {
-      this.node.expanded = !this.node.expanded
+      this.setExpanded(!this.expanded)
       this.$emit('node-click', this.node)
+    },
+    setExpanded (expanded) {
+      this.expanded = expanded
+      if (this.id !== void 0) {
+        this.$tree.$emit('expanded-change', this.id, this.expanded)
+      }
     },
     checkChange (checked) {
       this.$parent.$emit('child-check-change', checked)
       this.updateChildren(checked)
-      this.$tree.$emit('check-change', this.node, this.node.checked)
+      this.$tree.$emit('check-change', this.node, this.checked)
     },
     childCheckChange (checked) {
       const $children = this.$refs.children
-      const checkedCount = $children.filter(c => c.node.checked).length
+      const checkedCount = $children.filter(c => c.checked).length
       const total = $children.length
-      this.node.checked = checkedCount === total
+      this.checked = checkedCount === total
       this.indeterminate = checkedCount > 0 && checkedCount < total
-      this.$parent.$emit('child-check-change', this.node.checked)
+      this.$parent.$emit('child-check-change', this.checked)
+      this.$tree.$emit('checked-change', this.id, checked)
     },
     updateChildren (checked) {
       if (!this.hasChildren) return

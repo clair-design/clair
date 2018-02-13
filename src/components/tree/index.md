@@ -67,63 +67,7 @@ export default {
 
 ## 默认展开
 
-给某个节点的 `expanded` 设置为 `true` 即可将其展开。
-
-```html
-<c-tree :nodes="nodes">
-</c-tree>
-
-<script>
-export default {
-  data () {
-    return {
-      nodes: [
-        {
-          label: '藻类',
-          expanded: true,
-          children: [
-            { label: '绿藻' },
-            { label: '轮藻' }
-          ]
-        },
-        {
-          label: '苔藓',
-          children: [
-            { label: '地钱' },
-            { label: '角苔' },
-            { label: '苔藓植物门' }
-          ]
-        },
-        {
-          label: '蕨类',
-          children: [
-            { label: '石松' },
-            { label: '蕨类植物门' }
-          ]
-        },
-        {
-          label: '种子植物',
-          children: [
-            {
-              label: '被子',
-              children: [
-                { label: '睡莲目' },
-                { label: '木兰藤目' }
-              ]
-            },
-            { label: '苏铁' },
-            { label: '银杏' },
-            { label: '松柏' }
-          ]
-        }
-      ]
-    }
-  }
-}
-</script>
-```
-
-另外一种设置默认展开的方式是给 `c-tree` 传入 `default-expanded-keys` 属性。使用这种方式时，需要每个节点有一个唯一的标识，比如 `id`。
+设置默认展开的方式是给 `c-tree` 传入 `default-expanded-keys` 属性。使用这种方式时，需要每个节点有一个唯一的标识，比如 `id`。
 
 ```html
 <c-tree
@@ -200,28 +144,6 @@ export default {
     return {
       nodes: [
         {
-          label: '藻类',
-          children: [
-            { label: '绿藻' },
-            { label: '轮藻' }
-          ]
-        },
-        {
-          label: '苔藓',
-          children: [
-            { label: '地钱' },
-            { label: '角苔' },
-            { label: '苔藓植物门' }
-          ]
-        },
-        {
-          label: '蕨类',
-          children: [
-            { label: '石松' },
-            { label: '蕨类植物门' }
-          ]
-        },
-        {
           label: '种子植物',
           children: [
             {
@@ -245,8 +167,10 @@ export default {
 
 ## 自定义节点显示
 
+使用 Vue 的 [Scoped Slots](https://cn.vuejs.org/v2/guide/components.html#%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%8F%92%E6%A7%BD)，你可以使用模版自定义每个节点的显示。
+
 ```html
-<c-tree :nodes="nodes">
+<c-tree :nodes="nodes" default-expand-all>
   <div slot="label" slot-scope="{node, $node}">
     <span>{{ node.label }}</span>
     <c-icon name="x" valign="middle" @click.native.stop="remove($node)" />
@@ -267,36 +191,6 @@ export default {
             { label: '绿藻' },
             { label: '轮藻' }
           ]
-        },
-        {
-          label: '苔藓',
-          children: [
-            { label: '地钱' },
-            { label: '角苔' },
-            { label: '苔藓植物门' }
-          ]
-        },
-        {
-          label: '蕨类',
-          children: [
-            { label: '石松' },
-            { label: '蕨类植物门' }
-          ]
-        },
-        {
-          label: '种子植物',
-          children: [
-            {
-              label: '被子',
-              children: [
-                { label: '睡莲目' },
-                { label: '木兰藤目' }
-              ]
-            },
-            { label: '苏铁' },
-            { label: '银杏' },
-            { label: '松柏' }
-          ]
         }
       ]
     }
@@ -310,7 +204,7 @@ export default {
       } else {
         this.$set(node, 'children', [newNode])
       }
-      node.expanded = true
+      $node.setExpanded(true)
     },
     remove ($node) {
       const $parent = $node.$parent
@@ -337,10 +231,13 @@ export default {
 
 ## 可选择
 
+设置 `checkable` 属性可以让组件的节点变成可勾选的。默认选中的节点可以通过 `default-checked-keys` 属性设置。
+
 ```html
 <c-tree
   :nodes="nodes"
   checkable
+  :default-checked-keys="defaultChecked"
   @check-change="onCheckChange"
 >
 </c-tree>
@@ -349,44 +246,50 @@ export default {
 export default {
   data () {
     return {
+      defaultChecked: [0, 8],
       nodes: [
         {
+          id: 0,
           label: '藻类',
           children: [
-            { label: '绿藻' },
-            { label: '轮藻' }
+            { id: 1, label: '绿藻' },
+            { id: 2, label: '轮藻' }
           ]
         },
         {
+          id: 3,
           label: '苔藓',
           children: [
-            { label: '地钱' },
-            { label: '角苔' },
-            { label: '苔藓植物门' }
+            { id: 4, label: '地钱' },
+            { id: 5, label: '角苔' },
+            { id: 6, label: '苔藓植物门' }
           ]
         },
         {
+          id: 7,
           label: '蕨类',
           children: [
-            { label: '石松' },
-            { label: '蕨类植物门' }
+            { id: 8, label: '石松' },
+            { id: 9, label: '蕨类植物门' }
           ]
         },
         {
+          id: 10,
           label: '种子植物',
           expanded: true,
           children: [
             {
+              id: 11,
               label: '被子',
               checked: true,
               children: [
-                { label: '睡莲目' },
-                { label: '木兰藤目' }
+                { id: 12, label: '睡莲目' },
+                { id: 13, label: '木兰藤目' }
               ]
             },
-            { label: '苏铁' },
-            { label: '银杏' },
-            { label: '松柏' }
+            { id: 14, label: '苏铁' },
+            { id: 15, label: '银杏' },
+            { id: 16, label: '松柏' }
           ]
         }
       ]
@@ -445,7 +348,6 @@ export default {
         {
           id: 4,
           label: '种子植物',
-          expanded: true,
           children: [
             {
               id: 5,
