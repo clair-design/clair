@@ -56,7 +56,8 @@ export default {
             { title: '文本样式', name: 'typography' },
             { title: 'CSS 工具类', name: 'helper' },
             { title: '响应式设计', name: 'responsive' },
-            { title: '图标', name: 'icon' }
+            { title: '图标', name: 'icon' },
+            { title: '过渡动画', name: 'transition' }
           ]
         },
         {

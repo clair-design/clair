@@ -1,0 +1,16 @@
+/*
+ * transition and animation
+ */
+.fade-in-down-enter-active,
+.fade-in-down-leave-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: opacity 0.2s ease, transform 0.3s ease;
+}
+
+.fade-in-down-enter,
+.fade-in-down-leave-to,
+.fade-in-down-leave-active {
+  opacity: 0;
+  transform: translateY(-10px);
+}

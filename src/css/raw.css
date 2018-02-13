@@ -6,4 +6,5 @@
 @import url('./typography.css');
 @import url('./spacing.css');
 @import url('./util.css');
+@import url('./animation.css');
 @import url('../components/**/*.css');
