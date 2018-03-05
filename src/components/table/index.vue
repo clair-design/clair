@@ -213,7 +213,7 @@ export default {
         return item
       })
       if (status) {
-        this.selection = this.dataList
+        this.selection = this.dataList.filter(item => item._checked && !item._disabled)
       } else {
         this.selection = []
       }
@@ -227,9 +227,8 @@ export default {
     onSelectChange (currentItem, status) {
       if (status) {
         this.selection.push(currentItem)
-      } else {
-        this.selection = this.selection.filter(item => item._checked)
       }
+      this.selection = this.selection.filter(item => item._checked && !item._disabled)
       this.$nextTick(() => {
         this.allChecked = this.selection.length === this.dataList.length
         this.indeterminate = this.selection.length > 0 &&
@@ -243,7 +242,7 @@ export default {
       const selectedList = []
       this.datasource && this.datasource.map((item, index) => {
         item._checked = (item.hasOwnProperty('_checked') && item._checked) || this.allChecked
-        item._disabled = (item.hasOwnProperty('disabled') && item._disabled) || this.allChecked
+        item._disabled = (item.hasOwnProperty('_disabled') && item._disabled) || this.allChecked
         item._checked && selectedList.push(item)
         list.push(item)
       })

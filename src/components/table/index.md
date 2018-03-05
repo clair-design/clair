@@ -78,7 +78,7 @@ export default {
 
 ## 可选择的表格
 
-在 `columns`设置第一列的`type`为`selection`， 即可支持第一列展现可选框
+在 `columns`设置第一列的`type`为`selection`， 即可支持第一列展现可选框, 数据中通过`disabled`字段可以控制数据
 
 ```html
 <c-table
@@ -111,6 +111,7 @@ export default {
       data: [
         {
           type: '直接访问',
+          _disabled: true,
           pv: 1,
           uv: 2,
           nv: 3,
@@ -138,6 +139,7 @@ export default {
           ip: 8
         }, {
           type: '搜索引擎1',
+          _disabled: true,
           pv: 11,
           uv: 21,
           nv: 31,
@@ -164,11 +166,9 @@ export default {
       console.log(selection)
     },
     updateData () {
-      // this.allSelected = true
       this.datasource = this.datasource1
     },
     resetData () {
-      // this.allSelected = false
       this.datasource = []
     }
   }

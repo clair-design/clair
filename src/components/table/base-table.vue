@@ -51,7 +51,8 @@ table
         )
           span.c-table__check(v-if="columnsItem.type === 'selection'")
             c-checkbox(
-              v-model="dataItem._checked"
+              v-model="!dataItem._disabled && dataItem._checked"
+              :disabled="dataItem._disabled"
               @change="onSelectChange"
             )
           div(
