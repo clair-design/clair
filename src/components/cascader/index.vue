@@ -15,7 +15,7 @@
     :class="className"
     )
     template(v-if="isOpen")
-      Menu(
+      c-cascader-menu(
         :parentMenu="parentMenu"
         :options="optionList"
         :labelKey="labelKey"
@@ -34,7 +34,7 @@ import Menu from './menu.vue'
 export default {
   name: 'c-cascader',
   components: {
-    Menu
+    'c-cascader-menu': Menu
   },
   provide () {
     return {
