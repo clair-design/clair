@@ -54,7 +54,6 @@ div(:class="className")
             +Table("columns", "true", "false")
         .c-table__bodywrapper
           .c-scroll__tbody(
-            :style="getScrollTbodyStyle"
             @mouseenter="setCurrentScrollBox"
             @mouseleave="removeCurrentScrollBox"
             :ref="scrollbody"
@@ -141,16 +140,6 @@ export default {
   },
 
   computed: {
-    getScrollTbodyStyle () {
-      if (this.$el) {
-        const theadHeight = this.$el.querySelector('.c-scroll__thead').getClientRects()[0].height
-        return {
-          maxHeight: `${this.height - theadHeight}px`
-        }
-      }
-      return {}
-    },
-
     withBorderClass () {
       if (!this.border || this.border === 'none') {
         return ''
@@ -178,6 +167,9 @@ export default {
         if (newVal === oldVal) return
         this.composeData()
         this.getColumnsDetail()
+        this.$nextTick(_ => {
+          this.height && this.getTbodyStyle()
+        })
       },
       deep: true
     },
@@ -272,9 +264,8 @@ export default {
         if (this.$refs.fixedleft) {
           this.$refs.fixedleft.style.maxHeight = height
         }
-      } else {
-        tbodyEl.style.maxHeight = height
       }
+      tbodyEl.style.maxHeight = `${this.height - theadHeight}px`
     },
     getCurrentScrollBarSize () {
       const ua = window.navigator.userAgent
