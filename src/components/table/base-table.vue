@@ -101,7 +101,8 @@ export default {
       return this.getLevelColumns(columnsrows, maxlevel)
     },
     allColumns () {
-      return this.getAllColumns(this.columns)
+      const columns = JSON.parse(JSON.stringify(this.columns))
+      return this.getAllColumns(columns)
     }
   },
 
