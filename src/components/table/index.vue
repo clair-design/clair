@@ -28,6 +28,7 @@ mixin Table(columns, onlyhead, onlybody)
     :onlyhead=onlyhead
     :allChecked="allChecked"
     :indeterminate="indeterminate"
+    :noresultMsg="noresultMsg"
     @sort="sorter"
     @selectChange="onSelectChange"
     @selectAllChange="onSelectAllChange"
@@ -121,7 +122,11 @@ export default {
     sortorder: String,
     size: String,
     border: String,
-    rowClassName: [String, Function]
+    rowClassName: [String, Function],
+    noresultMsg: {
+      type: String,
+      default: '暂无数据'
+    }
   },
 
   data () {

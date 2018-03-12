@@ -20,6 +20,7 @@ route: /component/table
   :columns="columns"
   :datasource="datasource1"
   :rowClassName="getRowClassName"
+  noresultMsg="暂无相关数据"
 />
 <c-button
   @click.native="changeData()"
@@ -576,6 +577,7 @@ export default {
 | sortKey | String | - | 默认排序的key |
 | sortOrder | String | - | 默认排序的升降顺序：asc 和 desc |
 | rowClassName | Function | function(rowItem: Object, rowIndex: Number) | 设置行的类名 |
+| noresultMsg | String | 暂无数据 | 可以自定义无数据时显示文案 |
 
 ### 方法
 

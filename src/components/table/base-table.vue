@@ -32,7 +32,7 @@ table
     tr(
       v-if="dataList.length == 0"
     )
-      td.c-table__noresult(:colspan="columns.length") 暂无数据
+      td.c-table__noresult(:colspan="columns.length") {{noresultMsg}}
     tr(
       v-for="dataItem,index in dataList"
       @mouseenter="setCurrentItem(dataItem, index)"
@@ -78,7 +78,8 @@ export default {
     rowClassName: [String, Function],
     hoverRowIndex: [Number, String],
     onlybody: [String, Boolean],
-    onlyhead: [String, Boolean]
+    onlyhead: [String, Boolean],
+    noresultMsg: String
   },
 
   data () {
