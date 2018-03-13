@@ -217,6 +217,8 @@ export default {
     },
     onSelectAllChange (status) {
       this.updateSelectAll(status)
+      this.indeterminate = this.selection.length > 0 &&
+          this.selection.length < this.dataList.length
       this.$nextTick(() => {
         this.$emit('selectChange', this.selection)
       })

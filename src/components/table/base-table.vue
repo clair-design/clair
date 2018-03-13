@@ -64,6 +64,7 @@ table
 
 <script>
 import './index.css'
+import _ from 'lodash'
 
 export default {
   name: 'c-basetable',
@@ -101,7 +102,7 @@ export default {
       return this.getLevelColumns(columnsrows, maxlevel)
     },
     allColumns () {
-      const columns = JSON.parse(JSON.stringify(this.columns))
+      const columns = _.cloneDeep(this.columns)
       return this.getAllColumns(columns)
     }
   },
