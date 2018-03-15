@@ -37,7 +37,8 @@ mixin Table(columns, onlyhead, onlybody)
   )
     +templateCell(columns)
 mixin TableWithHeight(columns, tbody, onScroll, nobody)
-  +Table(columns, "true", "false")
+  .c-scroll__thead
+    +Table(columns, "true", "false")
   .c-table__body(
     v-if="!" + nobody
     ref=tbody
@@ -101,7 +102,7 @@ div(:class="className")
     :class="withBorderClass"
   )
     template(v-if="height")
-      +TableWithHeight("columns", "scrollBody")
+      +TableWithHeight("columns", "scrollBody", "onScroll")
     template(v-else)
       +Table("columns")
 </template>
@@ -186,7 +187,13 @@ export default {
     },
     columns () {
       this.getColumnsDetail()
-      this.height && this.getTbodyStyle()
+      this.$nextTick(_ => {
+        this.height && this.getTbodyStyle()
+        if (this.hasFixed) {
+          const scrollEl = this.$el.querySelector('.c-scroll__tbody')
+          scrollEl && scrollEl.addEventListener('scroll', this.onScroll, false)
+        }
+      })
     },
     allSelected (status) {
       this.updateSelectAll(status)
@@ -260,9 +267,14 @@ export default {
     getTbodyStyle () {
       const [ tableStyle ] = this.$el.querySelector('table').getClientRects()
       const tbodyEl = this.$el.querySelector('.c-scroll__tbody') || this.$el.querySelector('.c-table__body')
+      const tbodyWrapper = this.$el.querySelector('.c-table__wrapper')
       const theadHeight = tableStyle.height
       const scrollBarHeight = tbodyEl.offsetHeight !== tbodyEl.clientHeight ? this.scrollBarSize : 0
       const height = `${this.height - theadHeight - scrollBarHeight}px`
+
+      if (tbodyWrapper) {
+        tbodyWrapper.style.maxHeight = ''
+      }
 
       if (this.hasFixed) {
         if (this.$refs.fixedright) {

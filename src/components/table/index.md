@@ -477,11 +477,41 @@ export default {
   border="horizon"
   :datasource="datasource"
 />
+<p />
+<button @click="changeColumns()"> changeColumns
+</button>
 
 <script>
 export default {
+  methods: {
+    changeColumns () {
+      this.change = !this.change
+    }
+  },
+  computed: {
+    columns () {
+      return this.change ? [
+        { title: '来源类型', key: 'type', width: 150},
+        { title: '浏览量', key: 'pv', width: 150 },
+        { title: '访客数', key: 'uv', width: 100 },
+        { title: '新访客数', key: 'nv', width: 100 },
+        { title: '访问时长', key: 'du', width: 200 },
+        { title: '转化次数', key: 'cv', width: 200 },
+        { title: 'IP 数', key: 'ip', width: 100 }
+      ] : [
+        { title: '来源类型', key: 'type', width: 150, fixed: 'left'},
+        { title: '浏览量', key: 'pv', width: 150 },
+        { title: '访客数', key: 'uv', width: 200 },
+        { title: '新访客数', key: 'nv', width: 200 },
+        { title: '访问时长', key: 'du', width: 200 },
+        { title: '转化次数', key: 'cv', width: 200 },
+        { title: 'IP 数', key: 'ip', fixed: 'right', width: 100 }
+      ]
+    }
+  },
   data () {
     return {
+      change: false,
       datasource: [
         {
           type: '直接访问',
@@ -533,7 +563,7 @@ export default {
           cv: 51,
           ip: 81
         }
-      ],
+      ]/*,
       columns: [
         { title: '来源类型', key: 'type', width: 150, fixed: 'left'},
         { title: '浏览量', key: 'pv', width: 150 },
@@ -542,7 +572,7 @@ export default {
         { title: '访问时长', key: 'du', width: 200 },
         { title: '转化次数', key: 'cv', width: 200 },
         { title: 'IP 数', key: 'ip', fixed: 'right', width: 100 }
-      ]
+      ]*/
     }
   }
 }
