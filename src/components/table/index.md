@@ -254,8 +254,8 @@ export default {
       this.sortKey = sortObj.key
       this.sortOrder = sortObj.order
       this.datasource = this.datasource.sort((a,b) => {
-          return this.sortOrder === 'asc' ? a[this.sortKey] - b[this.sortKey] > 0
-            : a[this.sortKey] - b[this.sortKey] < 0
+          return this.sortOrder === 'asc' ? a[this.sortKey] - b[this.sortKey]
+            : b[this.sortKey] - a[this.sortKey]
         })
     }
   }
@@ -324,8 +324,8 @@ export default {
       this.sortKey = sortObj.key
       this.sortOrder = sortObj.order
       this.datasource = this.datasource.sort((a,b) => {
-        return this.sortOrder === 'asc' ? a[this.sortKey] - b[this.sortKey] > 0
-          : a[this.sortKey] - b[this.sortKey] < 0
+        return this.sortOrder === 'asc' ? a[this.sortKey] - b[this.sortKey]
+          : b[this.sortKey] - a[this.sortKey]
       })
     }
   }
@@ -563,16 +563,7 @@ export default {
           cv: 51,
           ip: 81
         }
-      ]/*,
-      columns: [
-        { title: '来源类型', key: 'type', width: 150, fixed: 'left'},
-        { title: '浏览量', key: 'pv', width: 150 },
-        { title: '访客数', key: 'uv', width: 200 },
-        { title: '新访客数', key: 'nv', width: 200 },
-        { title: '访问时长', key: 'du', width: 200 },
-        { title: '转化次数', key: 'cv', width: 200 },
-        { title: 'IP 数', key: 'ip', fixed: 'right', width: 100 }
-      ]*/
+      ]
     }
   }
 }
