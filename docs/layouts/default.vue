@@ -1,8 +1,8 @@
 <template lang="pug">
   #app
     c-header
-    div
+    div.main
       transition(name='fade')
         router-view
-    c-footer
+      c-footer
 </template>

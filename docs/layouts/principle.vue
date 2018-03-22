@@ -1,7 +1,7 @@
 <template lang="pug">
   #app
     c-header
-    c-box(gap=0)
+    c-box.main
       c-box-item.sidebar(xs=12 sm=4 md=3 lg=2)
         .navbar.is-stacked
           router-link.navbar__item(
@@ -9,7 +9,7 @@
             :to="item.link",
             :key="item.title"
           ) {{item.title}}
-      c-box-item(xs=12 sm=8 md=9 lg=10)
+      c-box-item.content(xs=12 sm=8 md=9 lg=10)
         transition(name='fade')
           router-view.c-container.is-lg
         c-footer

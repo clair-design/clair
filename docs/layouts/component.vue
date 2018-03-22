@@ -15,7 +15,7 @@
             )
               | {{sub.title}}
               span.is-text-gray-6.has-margin-left-sm(v-if="sub.name") {{ sub.name }}
-      c-box-item(xs=12 sm=8 md=9 lg=10)
+      c-box-item.content(xs=12 sm=8 md=9 lg=10)
         transition(name='fade')
           router-view.c-container.is-lg
         c-footer
@@ -38,6 +38,7 @@ export default {
   data () {
     return {
       showToTop: false,
+      scrollBox: null,
       menu: [
         {
           title: '使用说明',
@@ -114,33 +115,33 @@ export default {
     scrollToTop () {
       if (typeof window === 'object') {
         const obj = { top: 0 }
-        const docElem = document.documentElement
-        const maxSmoothHeight = docElem.clientHeight * 2
+        const maxSmoothHeight = this.scrollBox.clientHeight * 2
 
-        if (docElem.scrollTop < maxSmoothHeight) {
+        if (this.scrollBox.scrollTop < maxSmoothHeight) {
           obj.behavior = 'smooth'
         }
 
-        window.scroll(obj)
+        this.scrollBox.scroll(obj)
       }
     },
     onScroll () {
       if (typeof window === 'object') {
         const threshold = 80
-        this.showToTop = document.documentElement.scrollTop > threshold
+        this.showToTop = this.scrollBox.scrollTop > threshold
       }
     }
   },
-  created () {
+  mounted () {
     if (typeof window === 'object') {
+      this.scrollBox = document.querySelector('.content')
       const throttleTime = 200
       this.onScroll = throttle(this.onScroll.bind(this), throttleTime)
-      window.addEventListener('scroll', this.onScroll)
+      this.scrollBox.addEventListener('scroll', this.onScroll)
     }
   },
   destroyed () {
     if (typeof window === 'object') {
-      window.removeEventListener('scroll', this.onScroll)
+      this.scrollBox.removeEventListener('scroll', this.onScroll)
     }
   }
 }
