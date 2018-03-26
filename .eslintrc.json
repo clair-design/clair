@@ -9,6 +9,9 @@
       "jsx": false
     }
   },
+  "rules": {
+    "no-magic-numbers": "off"
+  },
   "env": {
     "browser": true,
     "node": true,

@@ -1,41 +1,43 @@
 
-# 暂时无法使用 alias
-# 因为 dokiv 中暂时没有一个好的办法加以利用
-# alias:
-#   "@components": ./src/components/
-#   "@utils": ./src/js/utils/
-
 options:
+  - input: ./src/js/main.js
+    output:
+      - format: cjs
+        file: ./dist/clair.common.js
+      - format: umd
+        name: Clair
+        file: ./dist/clair.js
+    uglify: false
+    postcss:
+      extract: ./dist/clair.css
+      minify: true
+      sourcemap: true
+      plugins:
+        - postcss-easy-import
+        - postcss-each
+        - postcss-for
+        - postcss-cssnext:
+            warnForDuplicates: false
+
   - input: ./src/js/main.js
     output:
       - format: umd
         name: Clair
-        file: ./dist/clair.js
-      - format: cjs
-        file: ./dist/clair.common.js
-    uglify: false
+        file: ./dist/clair.min.js
+    uglify: true
+    postcss: null
+
   - input: ./src/js/main.js
     output:
       format: es
       file: ./dist/clair.esm.js
+    ## ignore depencencies unless importing with glob pattern
     external: !!js/function >
       function (id) {
-        // ignore depencencies unless
-        // importing with glob pattern
         return /^[a-z][\w]/.test(id) && !/\*/.test(id)
       }
     uglify: false
-
-postcss:
-  extract: ./dist/clair.css
-  minify: true
-  sourcemap: true
-  plugins:
-    - postcss-easy-import
-    - postcss-each
-    - postcss-for
-    - postcss-cssnext:
-        warnForDuplicates: false
+    postcss: null
 
 commands:
   before:

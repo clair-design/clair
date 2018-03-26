@@ -21,8 +21,10 @@
 .toolbar {
   background: #fff;
   color: var(--link-color);
-  position: relative;
-  z-index: 1;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -83,7 +85,22 @@
   padding-left: 2.2em;
 }
 
+.main {
+  height: calc(100vh - 4em);
+  margin-top: 4em;
+
+  & .sidebar, & .content {
+    overflow: auto;
+  }
+  & .sidebar {
+    position: relative;
+    background: #fff;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+    padding-bottom: 5em;
+  }
+}
 .hero {
+  width: 100%;
   min-height: calc(100vh - 9.04em);
   padding: 10em 2em 2em;
   padding-top: calc(50vh - 12em);
@@ -102,6 +119,7 @@
  * footer
  */
 footer {
+  width: 100%;
   padding: 2em;
   font-size: 0.75em;
   text-align: center;
@@ -119,15 +137,6 @@ footer a {
 }
 
 /**
- * sidebar
- */
-.sidebar {
-  position: relative;
-  background: #fff;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
-}
-
-/**
  * utils
  */
 .transparent {
@@ -138,7 +147,7 @@ footer a {
  * content
  */
 .markdown-body {
-  min-height: calc(100vh - 4.04em);
+  min-height: calc(100vh - 9.04em);
   line-height: 1.8;
 
   & a {
@@ -202,4 +211,18 @@ footer a {
   color: var(--danger-color);
   line-height: 3;
   text-align: center;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  background-color: #e4e9ed;
+  width: 6px;
+  height: 6px
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #8e9aa9;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border-radius: 3px
 }
