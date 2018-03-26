@@ -34,7 +34,7 @@ export default {
       required: true
     },
     value: {
-      type: [Number, String, Object]
+      type: [Number, String, Object, Boolean]
     },
     button: Boolean,
     size: String
