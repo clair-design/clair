@@ -309,13 +309,21 @@ export default {
           key: '',
           children: [
             { title: '浏览量', key: 'pv', sorter: true },
-            { title: '访客数', key: 'uv' },
+            { title: '访客数', key: 'uv',
+              children: [
+                { title: '转化次数', key: 'cv' },
+                { title: 'IP 数', key: 'ip' }]
+             },
+            { title: '新访客数', key: 'nv', sorter: true },
+            { title: '访问时长', key: 'du',
+              children: [
+                { title: '转化次数', key: 'cv' },
+                { title: 'IP 数', key: 'ip' }]
+            },
+            { title: '转化次数', key: 'cv' },
+            { title: 'IP 数', key: 'ip' }
           ]
-        },
-        { title: '新访客数', key: 'nv', sorter: true },
-        { title: '访问时长', key: 'du' },
-        { title: '转化次数', key: 'cv' },
-        { title: 'IP 数', key: 'ip' }
+        }
       ]
     }
   },
