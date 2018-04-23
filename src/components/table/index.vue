@@ -52,7 +52,7 @@ div(:class="className")
     template(v-if="height")
       .c-table__wrapper
         .c-table__headwrapper
-          .c-scroll__thead
+          .c-scroll__thead(@scroll="theadScroll")
             +Table("columns", "true", "false")
         .c-table__bodywrapper
           .c-scroll__tbody(
@@ -329,6 +329,14 @@ export default {
       if (this.$refs.fixedright) {
         this.$refs.fixedright.scrollTop = scrollTop
       }
+      if (scrollEl) {
+        scrollEl.scrollLeft = scrollLeft
+      }
+    },
+    theadScroll (e) {
+      if (!this.hasFixed) return
+      const scrollEl = this.$el.querySelector('.c-scroll__tbody')
+      const { scrollLeft } = e.target
       if (scrollEl) {
         scrollEl.scrollLeft = scrollLeft
       }
