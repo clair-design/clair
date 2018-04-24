@@ -222,7 +222,7 @@ export default {
       list.forEach(item => {
         item.level = 1
         if (item.children) {
-          item.colspan = item.children.length
+          item.colspan = this.getAllColumns(item.children).length
           item.children = this.getLeafColumns(item.children)
           item.children = this.getLevels(item)
         } else {
