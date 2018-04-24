@@ -81,13 +81,6 @@ export default {
     }
   },
 
-  watch: {
-    pn (val) {
-      const pn = Number.parseInt(val) || 1
-      this.pageNumber = pn > this.pageCount ? this.pageCount : pn
-    }
-  },
-
   computed: {
     pageCount () {
       return Math.ceil(this.total / this.ps) || 0
@@ -110,6 +103,18 @@ export default {
       return lastPageInRange < (this.pageCount - 1)
     }
   },
+
+  created () {
+    this.$watch(vm => [vm.pn, vm.total].join(), _ => {
+      const pn = Number.parseInt(this.pn) || 1
+      const exceedMax = pn > this.pageNumber
+      if (exceedMax) {
+        this.pageNumber = this.pageCount
+        this.$emit('change', this.pageNumber)
+      }
+    })
+  },
+
   methods: {
     /**
      * 切换页码
