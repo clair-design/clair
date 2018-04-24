@@ -12,6 +12,7 @@
   button(
     v-else
     class="c-button"
+    :type="type"
     :class="classNames"
     @click="onClick"
   )
@@ -46,6 +47,10 @@
       href: String,
       size: String,
       icon: String,
+      type: {
+        type: String,
+        default: 'button'
+      },
       autofocus: Boolean
     },
     toVueProps(modifiers)
