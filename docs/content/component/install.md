@@ -40,7 +40,7 @@ $ vue init clair-design/template my-project
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Clair Project</title>
-  <link rel="stylesheet" href="https://unpkg.com/clair@0.2.10/dist/clair.css">
+  <link rel="stylesheet" href="https://unpkg.com/clair@0.2.13/dist/clair.css">
 </head>
 <body>
   <div id="app">
@@ -49,7 +49,7 @@ $ vue init clair-design/template my-project
     </c-modal>
   </div>
   <script src="https://lib.baomitu.com/vue/2.5.13/vue.min.js"></script>
-  <script src="https://unpkg.com/clair@0.2.10/dist/clair.js"></script>
+  <script src="https://unpkg.com/clair@0.2.13/dist/clair.js"></script>
   <script>
     new Vue({ el: '#app' })
   </script>
