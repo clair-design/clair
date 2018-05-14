@@ -37,7 +37,55 @@ import './index.css'
 import { getScrollBarSize } from '../../js/utils'
 import zIndex from '../../js/utils/zIndexManager'
 
-const slice = Array.prototype.slice
+let uid = 0
+const overflowController = {
+  map: {},
+  modalCount: 0,
+  oldOverflow: '',
+  oldPaddingRight: '',
+
+  start (uid) {
+    this.map[uid] = 1
+
+    this.modalCount += 1
+
+    if (this.modalCount !== 1) {
+      return
+    }
+
+    const hasScrollbar = document.documentElement.clientWidth < window.innerWidth
+    const style = document.body.style
+
+    this.oldOverflow = style.overflow
+    this.oldPaddingRight = style.paddingRight
+
+    if (hasScrollbar) {
+      style.paddingRight = `${getScrollBarSize()}px`
+    }
+
+    // always make `body` hidden
+    // when modal shown
+    style.overflow = 'hidden'
+  },
+
+  reset (uid) {
+    if (this.map[uid] !== 1) {
+      return
+    }
+
+    this.map[uid] = 0
+    this.modalCount -= 1
+
+    if (this.modalCount !== 0) {
+      return
+    }
+
+    const style = document.body.style
+    style.overflow = this.oldOverflow
+    style.paddingRight = this.oldPaddingRight
+    this.isHidden = false
+  }
+}
 
 export default {
   name: 'c-modal',
@@ -59,8 +107,7 @@ export default {
 
   data () {
     return {
-      bdOvf: '',
-      bdPdr: '',
+      uid: uid++,
       zIndex: zIndex.next()
     }
   },
@@ -88,7 +135,7 @@ export default {
 
     qsa (selectors) {
       const list = this.$refs.dom.querySelectorAll(selectors)
-      return slice.call(list)
+      return Array.prototype.slice.call(list)
     },
 
     handleTab (shiftKey) {
@@ -128,11 +175,13 @@ export default {
 
       const { keyCode, shiftKey } = e
 
+      // Tab or Shift+Tab
       if (keyCode === 9) {
         e.preventDefault()
         return this.handleTab(shiftKey)
       }
 
+      // ESC
       if (closable && keyCode === 27) {
         // close modal
         return this.$emit('close')
@@ -140,37 +189,24 @@ export default {
     },
 
     beforeEnter () {
-      const hasScrollbar = document.documentElement.clientWidth < window.innerWidth
-      const style = document.body.style
-      this.bdOvf = style.overflow
-      this.bdPdr = style.paddingRight
-
-      if (hasScrollbar) {
-        style.overflow = 'hidden'
-        style.paddingRight = `${getScrollBarSize()}px`
-      }
+      overflowController.start(this.uid)
     },
 
     afterLeave () {
-      this.reset()
-      this.$emit('after-leave')
-    },
+      overflowController.reset(this.uid)
 
-    reset () {
-      const style = document.body.style
-      style.overflow = this.bdOvf
-      style.paddingRight = this.bdPdr
+      // why?
+      this.$emit('after-leave')
     }
   },
 
   mounted () {
-    const handleKeydown = this.handleKeydown.bind(this)
-    this.handleKeydown = handleKeydown
-    document.addEventListener('keydown', handleKeydown)
+    this.handleKeydown = this.handleKeydown.bind(this)
+    document.addEventListener('keydown', this.handleKeydown)
   },
 
   beforeDestroy () {
-    this.reset()
+    overflowController.reset(this.uid)
     document.removeEventListener('keydown', this.handleKeydown)
   }
 }
