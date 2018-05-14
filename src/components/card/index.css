@@ -35,6 +35,7 @@
   & .c-card__media {
     & img {
       display: block;
+      max-width: 100%;
     }
   }
 
