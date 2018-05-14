@@ -1,5 +1,6 @@
 <template lang="pug">
   .c-input-wrap(:class="className")
+    slot(name="prepend")
     input.c-input(
       v-if="!multiLine"
       :type="type"
@@ -28,6 +29,7 @@
       @change="onChange"
       ref="textArea"
     )
+    slot(name="append")
     em.c-error-msg(v-if="!validity.valid") {{validity.msg}}
 </template>
 

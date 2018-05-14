@@ -144,6 +144,18 @@ Clair 中的输入框默认宽度为 `15em`，你可以通过 `width` 属性设�
 />
 ```
 
+## 前置/后置内容
+
+使用 `slot` 可以在输入框前面或后面附加一些内容。
+
+```html
+<c-input placeholder="domain">
+  <span slot="prepend">http:// </span>
+  <span slot="append"> .com</span>
+</c-input>
+```
+
+
 ## 输入验证
 
 
