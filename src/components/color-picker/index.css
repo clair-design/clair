@@ -1,0 +1,113 @@
+/**
+* c-color-picker
+*/
+@import url('../../css/variables.css');
+
+.flex-row {
+  display: flex;
+  align-items: center;
+}
+
+.flex-item__autofill {
+  flex: 1 0 0;
+}
+
+.flex-item__w32 {
+  width: 32px;
+}
+
+.color-picker {
+  width: 250px;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.3);
+  font-family: Menlo, 'Microsoft Yahei', sans-serif;
+  user-select: none;
+  margin-bottom: 20px;
+}
+
+.color-picker__thumb {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: 0;
+  border-radius: 50%;
+  margin-top: -1px;
+  transform: translateX(-50%);
+  background-color: #f8f8f8;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.368627);
+  cursor: default;
+}
+
+.color-picker__saturation {
+  position: relative;
+  width: 100%;
+  padding-bottom: 55%;
+  border-radius: 2px 2px 0 0;
+  overflow: hidden;
+}
+
+.saturation-mask__hue,
+.saturation-mask__white,
+.saturation-mask__black {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+}
+
+.saturation-mask__white {
+  background: linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0));
+}
+
+.saturation-mask__black {
+  background: linear-gradient(0deg, #000, transparent);
+}
+
+.color-picker__saturation > .color-picker__thumb {
+  background-color: transparent;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 1.5px #fff, inset 0 0 1px 1px rgba(0, 0, 0, 0.3), 0 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.color-picker__ctrl-bar {
+  height: 10px;
+}
+
+.color-picker__ctrl-bar + .color-picker__ctrl-bar {
+  margin-top: 8px;
+}
+
+.controller-bar__hue {
+  background: linear-gradient(90deg, red, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, red);
+}
+
+.controller-bar__alpha {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==) left center;
+}
+
+.color-picker__ctrl-pane {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 16px 12px;
+}
+
+.color-picker__previewer {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==) 0 0;
+}
+
+.color-picker__previewer__inner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
