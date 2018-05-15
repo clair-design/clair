@@ -158,12 +158,12 @@ layout: component
 </style>
 <template>
   <c-tip
-  theme="light"
-  position="top"
-  trigger="click"
-  max-width="600px"
-  ref="tip"
->
+    theme="light"
+    position="top"
+    trigger="click"
+    max-width="600px"
+    ref="tip"
+  >
     <div slot="content" class="pop-confirm">
       <div class="body">
         你真的确定要删除我吗？
