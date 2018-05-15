@@ -31,10 +31,23 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    precision: {
+      type: Number
+    }
+  },
+
+  data () {
+    return {
+      memo: null
     }
   },
 
   methods: {
+    adjust (num) {
+      const p = this.precision | 0
+      return p > 0 ? parseFloat(num.toFixed(p)) : num
+    },
     onMousedown (e) {
       if (this.disabled) {
         return
@@ -66,19 +79,38 @@ export default {
     },
 
     updateValue ({ clientX = 0, clientY = 0 } = {}) {
-      const rect = this.$refs.container.getBoundingClientRect()
+      const { $refs: { container }, memo } = this
+      const rect = container.getBoundingClientRect()
       const { left, top, width, height } = rect
 
       const deltaX = clientX - left
       const deltaY = clientY - top
 
-      const x = clamp(deltaX / width, 0, 1)
-      const y = clamp(deltaY / height, 0, 1)
+      const x = this.adjust(clamp(deltaX / width, 0, 1))
+      const y = this.adjust(clamp(deltaY / height, 0, 1))
 
       const dir = this.direction
       // eslint-disable-next-line
-      const data = dir === 'vh' ? { x, y } : (dir === 'v' ? y : x)
+      let data = null
+      if (dir === 'vh') {
+        if (memo && (memo.x === x && memo.y === y)) {
+          return
+        }
 
+        data = { x, y }
+      } else if (dir === 'v') {
+        if (memo === y) {
+          return
+        }
+        data = y
+      } else {
+        if (memo === x) {
+          return
+        }
+        data = x
+      }
+
+      this.memo = data
       this.$emit('change', data)
     }
   },

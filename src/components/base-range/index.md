@@ -644,6 +644,7 @@ route: /component/base-range
 |-----|------|-------|-----|
 | direction | String | h | h/v/vh 三个之一|
 | throttle | Number | 80 | mousemove 事件节流的默认时间 |
+| precision | Integer | 无 | 精度，精度越高事件触发越频繁 |
 
 ### Events
 
