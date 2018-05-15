@@ -80,7 +80,7 @@ const overflowController = {
       return
     }
 
-    const style = document.body.style
+    const { style } = document.body
     style.overflow = this.oldOverflow
     style.paddingRight = this.oldPaddingRight
     this.isHidden = false
