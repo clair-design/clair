@@ -116,6 +116,11 @@ Clair 中的某些表单控件提供了 `size` 和 `width` 属性来指定大小
         :options="sizes"
       />
     </c-form-item>
+
+    <c-form-item label="颜色：">
+      <c-color-picker />
+    </c-form-item>
+
     <c-form-item label=" ">
       <c-button primary>提交按钮</c-button>
     </c-form-item>

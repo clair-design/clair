@@ -1,224 +1,214 @@
-<template>
-  <div class="color-picker" slot="content">
-    <c-base-range
-      direction="vh"
-      :precision="2"
-      :throttle="80"
-      @change="onSaturationChange"
-      class="color-picker__saturation"
-    >
-      <p class="saturation-mask__hue" :style="styles.saturation"></p>
-      <p class="saturation-mask__white"></p>
-      <p class="saturation-mask__black"></p>
-      <p slot="thumb" class="color-picker__thumb" :style="styles.saturationThumb"></p>
-    </c-base-range>
-
-    <div class="color-picker__ctrl-pane">
-      <div class="flex-row">
-        <div class="flex-item__w32">
-          <div class="color-picker__previewer">
-            <div class="color-picker__previewer__inner" :style="styles.preview"></div>
-          </div>
-        </div>
-
-        <div class="flex-item__autofill">
-          <c-base-range
-            direction="h"
-            :precision="2"
-            :throttle="80"
-            :value="hue"
-            @change="onHueChange"
-            class="color-picker__ctrl-bar controller-bar__hue"
-            >
-            <div slot="thumb" class="color-picker__thumb" :style="styles.hueThumb"></div>
-          </c-base-range>
-
-          <c-base-range
-            v-if="showAlphaTrack"
-            direction="h"
-            :precision="2"
-            :throttle="80"
-            :value="alpha"
-            @change="onAlphaChange"
-            class="color-picker__ctrl-bar controller-bar__alpha"
-          >
-            <div slot="thumb" class="color-picker__thumb" :style="styles.alphaThumb"></div>
-            <div class="color-picker__ctrl-bar" :style="styles.alphaTrack"></div>
-          </c-base-range>
-        </div>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+  color-picker-pane(
+    :color="value"
+    :mode="mode"
+    @change="onChange"
+    v-if="inline"
+  )
+  .color-picker__wrapper(v-else)
+    c-portal
+      transition(
+        @before-enter="beforeEnter",
+        @enter="enter",
+        @after-enter="afterEnter",
+        @leave="leave",
+        @after-leave="afterLeave"
+      )
+        color-picker-pane(
+          ref="panel",
+          v-show="panelVisible",
+          :color="value"
+          :mode="mode"
+          @change="onChange"
+          class="color-picker__pane--portal"
+        )
+    .color-picker__trigger(
+      ref="trigger"
+      :style="triggerStyle"
+      @click="showColorPane"
+    )
 </template>
 
 <script>
 import VueTypes from 'vue-types'
-import invariant from 'invariant'
-
-import parse2rgb from 'pure-color/parse'
-import rgb2hsv from 'pure-color/convert/rgb2hsv'
-import rgb2hex from 'pure-color/convert/rgb2hex'
-import hsv2hsl from 'pure-color/convert/hsv2hsl'
-import hsv2rgb from 'pure-color/convert/hsv2rgb'
-import hsl2rgb from 'pure-color/convert/hsl2rgb'
+import throttle from 'lodash/throttle'
+import ColorPicker from './_color-picker.vue'
+import { contains } from '../../js/utils/index'
+import zIndex from '../../js/utils/zIndexManager'
 
 import './index.css'
+
+const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
+const sizeMap = {
+  'xs': 12,
+  'sm': 18,
+  'md': 24,
+  'lg': 28,
+  'xl': 36
+}
 
 export default {
   name: 'c-color-picker',
   props: {
-    initial: VueTypes.string.def('#ff0000'),
+    value: VueTypes.string.def('#ff0000'),
     mode: VueTypes.oneOf([
       'rgb',
       'rgba',
       'hsl',
       'hsla',
       'hex'
-    ]).def('rgba')
+    ]).def('rgba'),
+    inline: VueTypes.bool.def(false),
+    size: VueTypes.oneOf(sizes)
+  },
+  inject: {
+    $form: { default: null }
+  },
+  model: {
+    event: 'change'
+  },
+
+  components: {
+    'color-picker-pane': ColorPicker
   },
 
   data () {
-    return this.digestProp(this.initial)
-  },
-
-  watch: {
-    rgba: {
-      immediate: true,
-      handler (newVal, oldVal) {
-        if (`${newVal}` !== `${oldVal}`) {
-          const { mode, alpha } = this
-
-          if (mode === 'hex') {
-            const { hex } = this
-            const value = alpha === 1 ? hex.slice(0, 7) : hex
-            this.$emit('change', value)
-            return
-          }
-
-          const val = mode.indexOf('hsl') === 0 ? this.hsla : this.rgba
-          const str = val.slice(0, 3).concat(alpha).join(', ')
-
-          this.$emit('change', `${mode}(${str})`)
-        }
-      }
+    return {
+      color: this.value,
+      rgba: [],
+      panelVisible: false,
+      tidIn: null,
+      tidOut: null
     }
   },
 
   computed: {
-    showAlphaTrack () {
-      return this.mode.indexOf('a') === 3
-    },
-
-    hsva () {
-      const { hue, alpha, saturation: { x, y } } = this
-      return [
-        hue * 360,
-        x * 100,
-        (1 - y) * 100,
-        alpha
-      ]
-    },
-
-    rgba () {
-      const { alpha, hsva } = this
-      const [r, g, b] = hsv2rgb(hsva)
-      return [
-        Math.round(r),
-        Math.round(g),
-        Math.round(b),
-        alpha
-      ]
-    },
-
-    hsla () {
-      const { alpha, hsva } = this
-      const [h, s, l] = hsv2hsl(hsva)
-      return [
-        Math.round(h),
-        `${Math.round(s)}%`,
-        `${Math.round(l)}%`,
-        alpha
-      ]
-    },
-
-    hex () {
-      return rgb2hex(this.rgba)
-    },
-
-    styles () {
-      const { rgba, alpha, hue, saturation } = this
-      const strRGB = rgba.slice(0, 3).join(', ')
-      const strHueRGB = hsl2rgb([this.hue * 360, 100, 50]).join(', ')
+    triggerStyle () {
+      const { size, $form, literal, borderColor } = this
+      const sz = size || ($form && $form.size) || 'md'
+      const s = `${sizeMap[sz]}px`
 
       return {
-        preview: {
-          backgroundColor: `rgba(${rgba.join(', ')})`
-        },
-        saturation: {
-          backgroundColor: `rgb(${strHueRGB})`
-        },
-        saturationThumb: {
-          left: toPercent(saturation.x),
-          top: toPercent(saturation.y)
-        },
-        alphaTrack: {
-          backgroundImage: `linear-gradient(to right, ` +
-            `rgba(${strRGB}, 0) 0%, rgb(${strRGB}) 100%)`
-        },
-        alphaThumb: {
-          left: toPercent(alpha)
-        },
-        hueThumb: {
-          left: toPercent(hue)
-        }
+        width: s,
+        height: s,
+        backgroundColor: literal,
+        borderColor
       }
+    },
+    borderColor () {
+      const [r, g, b] = this.rgba
+      if ((r + g + b) / 3 > 235) {
+        return `rgba(160,160,160,0.8)`
+      }
+      return 'transparent'
     }
   },
 
   methods: {
-    digestProp (val) {
-      const rgba = parse2rgb(val)
-      const alpha = rgba[3] == null ? 1 : rgba[3]
-      const [hue, saturation, value] = rgb2hsv(rgba)
+    onChange (e) {
+      this.rgba = e.rgba
+      this.literal = e.literal
+      this.$emit('change', e.literal)
+    },
 
-      // format of alpha: `.2f`
-      // according to Chrome DevTool
-      const _alpha = parseFloat(alpha.toFixed(2))
+    showColorPane () {
+      this.clearTimeout()
+      this.panelVisible = true
+    },
 
-      invariant(
-        !(_alpha < 1 && this.mode.indexOf('a') === -1),
-        `[ColorPicker] The given color \`${val}\` has an alpha ` +
-          `value of ${alpha}, while given mode is \`${this.mode}\` which ` +
-          `does not contain an \`a\``
-      )
+    hideColorPane () {
+      this.clearTimeout()
+      this.tidOut = setTimeout(() => {
+        this.panelVisible = false
+      }, 100)
+    },
 
-      return {
-        alpha: _alpha,
-
-        hue: hue / 360,
-        saturation: {
-          x: saturation / 100,
-          y: 1 - value / 100
-        }
+    resize () {
+      if (this.inline === false) {
+        this.handleResize(this.$refs.panel.$el)
       }
     },
-    onSaturationChange (e) {
-      this.saturation = e
-    },
-    onHueChange (e) {
-      this.hue = e
-    },
-    onAlphaChange (e) {
-      // format of alpha: `.2f`
-      // according to Chrome DevTool
-      this.alpha = parseFloat(e.toFixed(2))
-    }
-  }
-}
 
-function toPercent (n, precision = 3) {
-  // eslint-disable-next-line
-  const num = (n * 100).toPrecision(precision | 0)
-  return `${num}%`
+    beforeEnter ({ style }) {
+      style.display = 'block'
+      style.visibility = 'hidden'
+      style.zIndex = zIndex.next()
+    },
+
+    enter ({ style }, done) {
+      style.opacity = 0
+
+      this.tidIn = setTimeout(() => {
+        style.visibility = 'visible'
+        style.opacity = 1
+        this.$nextTick(done)
+      }, 100)
+    },
+
+    afterEnter (el) {
+      this.handleResize(el)
+    },
+
+    leave ({ style }) {
+      style.opacity = 0
+      style.visibility = 'hidden'
+      this.clearTimeout()
+    },
+
+    afterLeave ({ style }) {
+      style.cssText = ''
+      style.display = 'none'
+    },
+
+    clearTimeout () {
+      clearTimeout(this.tidOut)
+      clearTimeout(this.tidIn)
+    },
+
+    handleResize (el) {
+      const { style } = el
+      const { scrollLeft, scrollTop } = document.documentElement
+
+      const { trigger } = this.$refs
+      const triggerRect = trigger.getBoundingClientRect()
+
+      const left = scrollLeft + triggerRect.left -
+        triggerRect.width / 2
+      const top = scrollTop + triggerRect.top + triggerRect.height
+
+      style.position = 'absolute'
+      style.marginTop = '6px'
+      style.top = `${top}px`
+      style.left = `${left}px`
+    },
+
+    clickOutside ({ target }) {
+      if (this.inline || !this.panelVisible) {
+        return
+      }
+
+      const { trigger, panel } = this.$refs
+      const isOutside = !contains(trigger, target) &&
+        !contains(panel.$el, target)
+
+      if (isOutside) {
+        this.hideColorPane()
+      }
+    }
+  },
+
+  mounted () {
+    this.resize = this.resize.bind(this)
+    this.clickOutside = this.clickOutside.bind(this)
+    this.winResize = throttle(this.resize, this.$clair.defaultThrottleTime)
+    window.addEventListener('resize', this.winResize)
+    document.body.addEventListener('click', this.clickOutside)
+  },
+
+  beforeDestroy () {
+    this.clearTimeout()
+    window.removeEventListener('resize', this.winResize)
+    document.body.removeEventListener('click', this.clickOutside)
+  }
 }
 </script>

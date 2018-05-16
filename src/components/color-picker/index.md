@@ -11,34 +11,73 @@ layout: component
 ## 示例
 
 ```html
-<c-portal>
-  <c-color-picker
-    initial="rgba(225, 21, 22, 0.41)"
-    mode="rgba"
-    @change="onChange"
-  />
-</c-portal>
-<div :style="barStyle"></div>
+Mode: <c-radio-group :options="modes" v-model="mode"/>
+
+<p>Color is: <b>{{color}}</b></p>
+
+<c-color-picker :mode="mode" v-model="color" :inline="false" />
 
 <script>
   export default {
     data () {
       return {
-        color: 'rgba(225, 21, 22, 0.41)'
+        color: '#2f85da',
+        mode: 'rgba',
+        modes: [
+          { value: 'rgba', label: 'rgba'},
+          { value: 'rgb', label: 'rgb'},
+          { value: 'hsla', label: 'hsla'},
+          { value: 'hsl', label: 'hsl'},
+          { value: 'hex', label: 'hex'}
+        ]
       }
     },
     computed: {
       barStyle () {
         return {
-          width: '80px',
+          width: '30px',
           height: '30px',
           backgroundColor: this.color
         }
       }
+    }
+  }
+</script>
+```
+
+## 示例 2
+
+也可以使用行内形式。
+
+```html
+Mode: <c-radio-group :options="modes" v-model="mode"/>
+
+<p>Color is: <b>{{color}}</b></p>
+
+<c-color-picker :mode="mode" v-model="color" :inline="true" />
+
+<script>
+  export default {
+    data () {
+      return {
+        color: '#2f85da',
+        mode: 'rgba',
+        modes: [
+          { value: 'rgba', label: 'rgba'},
+          { value: 'rgb', label: 'rgb'},
+          { value: 'hsla', label: 'hsla'},
+          { value: 'hsl', label: 'hsl'},
+          { value: 'hex', label: 'hex'}
+        ]
+      }
     },
-    methods: {
-      onChange(color) {
-        this.color = color
+    computed: {
+      barStyle () {
+        return {
+          width: '30px',
+          height: '30px',
+          backgroundColor: this.color
+        }
       }
     }
   }
@@ -51,8 +90,9 @@ layout: component
 
 | 属性 | 类型 | 默认值 | 说明 |
 |-----|------|-------|-----|
-| initial | String | #ff0000 | 初始颜色值 |
 | mode | String | rgba | 颜色模式：rgb, rgba, hsl, hsla, hex |
+| inline | Boolean | false | 是否行内展示 |
+| size | String | md | 'xs', 'sm', 'md', 'lg', 'xl' |
 
 **重要说明：`mode` 一定要区分清楚是否带有 `a` 成分。如 `rgb` 和 `rgba` 是不同的。如果传入的初始颜色值经过转换之后得到的 alpha 值小于 1 而 `mode` 为 `rgb`，则会报错（反之不会）。**
 

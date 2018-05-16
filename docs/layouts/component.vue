@@ -71,6 +71,7 @@ export default {
             { title: '复选框', name: 'checkbox' },
             { title: '单选框', name: 'radio' },
             { title: '滑块', name: 'slider' },
+            { title: '取色器', name: 'color-picker' },
             { title: '表单', name: 'form' },
             { title: '日期选择', name: 'datepicker' },
             { title: '级联选择', name: 'cascader' }
