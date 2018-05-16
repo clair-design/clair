@@ -94,3 +94,10 @@ export function defer () {
   })
   return deferred
 }
+
+/**
+ * DOM `contains`
+ */
+export function contains (elem, target) {
+  return elem && elem.contains ? elem.contains(target) : false
+}

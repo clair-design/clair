@@ -31,9 +31,10 @@
 <script>
 import VueTypes from 'vue-types'
 import throttle from 'lodash/throttle'
+import { contains } from '../../js/utils/index'
+import zIndex from '../../js/utils/zIndexManager'
 
 import './index.css'
-import zIndex from '../../js/utils/zIndexManager'
 
 const OPPOSITE_DIRECTION = {
   top: 'bottom',
@@ -55,8 +56,6 @@ const HIDE_MATCH_MAP = {
 }
 
 const defaultDelayTime = 100
-
-const contains = (elem, target) => !!elem && elem.contains(target)
 
 export default {
   name: 'c-tip',
@@ -145,7 +144,7 @@ export default {
     },
 
     handleResize (el) {
-      if (!el || !el.style) {
+      if (!el || !el.style || !this.visible) {
         return
       }
       const { style } = el
@@ -185,6 +184,10 @@ export default {
     },
 
     clickOutside ({ target }) {
+      if (!this.visible) {
+        return
+      }
+
       const el = this.$el
       const tip = this.$refs.tip
       const isOutside = !contains(el, target) && !contains(tip, target)
