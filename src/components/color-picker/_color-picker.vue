@@ -26,7 +26,6 @@
             direction="h"
             :precision="2"
             :throttle="80"
-            :value="hue"
             @change="onHueChange"
             class="color-picker__ctrl-bar controller-bar__hue"
           >
@@ -38,7 +37,6 @@
             direction="h"
             :precision="2"
             :throttle="80"
-            :value="alpha"
             @change="onAlphaChange"
             class="color-picker__ctrl-bar controller-bar__alpha"
           >
