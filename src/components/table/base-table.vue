@@ -4,7 +4,7 @@ table
     tr(v-for="column in columnsRows")
       th(
         v-for="item in column.columns"
-        :style="getCellStyle(item)"
+        :style="getTHCellStyle(item)"
         :colspan="item.colspan"
         :rowspan="item.rowspan"
         :class="getColumnClassName(item)"
@@ -86,6 +86,7 @@ export default {
   data () {
     return {
       currentItem: {},
+      columnsRows: [],
       allSelect: false,
       checkIndeterminate: false
     }
@@ -94,12 +95,6 @@ export default {
   computed: {
     dataList () {
       return this.datasource
-    },
-    columnsRows () {
-      const columns = this.getLeafColumns(this.columns)
-      const maxlevel = this.findMaxLevel(columns)
-      const columnsrows = this.getColumnsRows(columns, maxlevel)
-      return this.getLevelColumns(columnsrows, maxlevel)
     },
     allColumns () {
       const columns = _.cloneDeep(this.columns)
@@ -112,6 +107,11 @@ export default {
     this.checkIndeterminate = this.indeterminate
   },
 
+  mounted () {
+    this.getTHWidth(this.columns)
+    const maxlevel = this.findMaxLevel(this.columns)
+    this.columnsRows = this.getLevelColumns(this.columns, maxlevel)
+  },
   watch: {
     allChecked (newVal) {
       if (this.allSelect === newVal) return
@@ -122,6 +122,11 @@ export default {
     },
     hoverRowIndex () {
       this.$forceUpdate()
+    },
+    columns () {
+      this.getTHWidth(this.columns)
+      const maxlevel = this.findMaxLevel(this.columns)
+      this.columnsRows = this.getLevelColumns(this.columns, maxlevel)
     }
   },
 
@@ -173,6 +178,12 @@ export default {
         textAlign: item.align ? item.align : 'left'
       }
     },
+    getTHCellStyle (item) {
+      const cellStyle = this.getCellStyle(item)
+      const thHeight = 40
+      cellStyle.height = item.rowspan ? `${item.rowspan * thHeight}px` : `${thHeight}px`
+      return cellStyle
+    },
     getAllColumnsRows (list) {
       const columns = []
       list.forEach(item => {
@@ -207,43 +218,16 @@ export default {
       return maxlevel
     },
 
-    getLevels (item) {
-      item.children.forEach(child => {
-        child.level = item.level + 1
-        if (child.children) {
-          child.children = this.getLevels(child)
-        }
-      })
-      return item.children
-    },
-
-    getLeafColumns (list) {
-      const columns = []
+    getTHWidth (list) {
+      let width = 0
       list.forEach(item => {
-        item.level = 1
         if (item.children) {
-          item.colspan = this.getAllColumns(item.children).length
-          item.children = this.getLeafColumns(item.children)
-          item.children = this.getLevels(item)
-        } else {
-          item.colspan = 1
+          item.width = this.getTHWidth(item.children)
         }
-        columns.push(item)
+        width += item.width ? item.width : 0
       })
-      return columns
+      return width || ''
     },
-
-    getColumnsRows (list, maxLevel) {
-      list.forEach(item => {
-        item.rowspan = maxLevel - item.level + 1
-        if (item.children) {
-          item.rowspan = 1
-          item.children = this.getColumnsRows(item.children, maxLevel)
-        }
-      })
-      return list
-    },
-
     getAllColumns (list) {
       const columns = []
       list.forEach((item, index) => {
