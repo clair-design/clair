@@ -147,10 +147,13 @@ export default {
       if (!el || !el.style || !this.visible) {
         return
       }
-      const { style } = el
-      const { scrollLeft, scrollTop } = document.documentElement
+
+      // SEE https://imququ.com/post/document-scrollingelement-in-chrome.html
+      const { scrollLeft, scrollTop } = document.scrollingElement || document.body
+
       const elRect = this.$el.getBoundingClientRect()
       const tipRect = this.$refs.tip.getBoundingClientRect()
+      const { style } = el
 
       // eslint-disable-next-line
       switch (this.position) {
@@ -189,7 +192,7 @@ export default {
       }
 
       const el = this.$el
-      const tip = this.$refs.tip
+      const { tip } = this.$refs
       const isOutside = !contains(el, target) && !contains(tip, target)
       if (isOutside && this.visible) {
         this.hide()
