@@ -22,7 +22,7 @@ Mode: <c-radio-group :options="modes" v-model="mode"/>
     data () {
       return {
         color: '#2f85da',
-        mode: 'rgba',
+        mode: 'rgb',
         modes: [
           { value: 'rgb', label: 'rgb'},
           { value: 'hsl', label: 'hsl'},
@@ -59,7 +59,7 @@ Mode: <c-radio-group :options="modes" v-model="mode"/>
     data () {
       return {
         color: '#2f85da',
-        mode: 'rgba',
+        mode: 'rgb',
         modes: [
           { value: 'rgb', label: 'rgb'},
           { value: 'hsl', label: 'hsl'},
