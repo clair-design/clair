@@ -1,5 +1,5 @@
 <template lang="pug">
-  color-picker-pane(
+  color-picker(
     :color="value"
     :mode="mode"
     @change="onChange"
@@ -14,7 +14,7 @@
         @leave="leave",
         @after-leave="afterLeave"
       )
-        color-picker-pane(
+        color-picker(
           ref="panel",
           v-show="panelVisible",
           :color="value"
@@ -32,7 +32,8 @@
 <script>
 import VueTypes from 'vue-types'
 import throttle from 'lodash/throttle'
-import ColorPicker from './_color-picker.vue'
+import ColorPicker from 'v-color'
+
 import { contains } from '../../js/utils/index'
 import zIndex from '../../js/utils/zIndexManager'
 
@@ -69,7 +70,7 @@ export default {
   },
 
   components: {
-    'color-picker-pane': ColorPicker
+    'color-picker': ColorPicker
   },
 
   data () {
@@ -167,7 +168,7 @@ export default {
 
     handleResize (el) {
       const { style } = el
-      const { scrollLeft, scrollTop } = document.documentElement
+      const { scrollLeft, scrollTop } = document.scrollingElement || document.body
 
       const { trigger } = this.$refs
       const triggerRect = trigger.getBoundingClientRect()

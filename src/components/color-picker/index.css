@@ -1,6 +1,9 @@
 /**
 * c-color-picker
 */
+
+@import url('v-color/dist/index.css');
+
 .color-picker__wrapper {
   display: inline-block;
 }
