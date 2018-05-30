@@ -1,8 +1,7 @@
 <template lang="pug">
   color-picker(
     :color="value"
-    :mode="mode"
-    @change="onChange"
+    @change="handleChange"
     v-if="inline"
   )
   .color-picker__wrapper(v-else)
@@ -18,8 +17,7 @@
           ref="panel",
           v-show="panelVisible",
           :color="value"
-          :mode="mode"
-          @change="onChange"
+          @change="handleChange"
           class="color-picker__pane--portal"
         )
     .color-picker__trigger(
@@ -36,6 +34,7 @@ import ColorPicker from 'v-color'
 
 import { contains } from '../../js/utils/index'
 import zIndex from '../../js/utils/zIndexManager'
+import resettable from '../../js/mixins/resettable'
 
 import './index.css'
 
@@ -54,17 +53,16 @@ export default {
     value: VueTypes.string.def('#ff0000'),
     mode: VueTypes.oneOf([
       'rgb',
-      'rgba',
       'hsl',
-      'hsla',
       'hex'
-    ]).def('rgba'),
+    ]).def('hex'),
     inline: VueTypes.bool.def(false),
     size: VueTypes.oneOf(sizes)
   },
   inject: {
     $form: { default: null }
   },
+  mixins: [resettable],
   model: {
     event: 'change'
   },
@@ -105,11 +103,32 @@ export default {
     }
   },
 
+  watch: {
+    mode (newVal) {
+      if (this.__val) {
+        this.handleChange(this.__val)
+      }
+    }
+  },
+
   methods: {
-    onChange (e) {
-      this.rgba = e.rgba
-      this.literal = e.literal
-      this.$emit('change', e.literal)
+    handleChange (e) {
+      const { rgba, hex, hsla } = e
+      const { mode } = this
+      let val = ''
+
+      if (mode === 'hex') {
+        val = hex
+      } else if (mode === 'hsl') {
+        val = `hsla(${hsla.join(', ')})`
+      } else {
+        val = `rgba(${rgba.join(', ')})`
+      }
+
+      this.__val = e
+      this.rgba = rgba
+      this.literal = val
+      this.$emit('change', val)
     },
 
     showColorPane () {

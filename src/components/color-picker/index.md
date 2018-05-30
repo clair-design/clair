@@ -15,7 +15,7 @@ Mode: <c-radio-group :options="modes" v-model="mode"/>
 
 <p>Color is: <b>{{color}}</b></p>
 
-<c-color-picker :mode="mode" v-model="color" :inline="false" />
+<c-color-picker :mode="mode" v-model="color" :inline="false"/>
 
 <script>
   export default {
@@ -24,9 +24,7 @@ Mode: <c-radio-group :options="modes" v-model="mode"/>
         color: '#2f85da',
         mode: 'rgba',
         modes: [
-          { value: 'rgba', label: 'rgba'},
           { value: 'rgb', label: 'rgb'},
-          { value: 'hsla', label: 'hsla'},
           { value: 'hsl', label: 'hsl'},
           { value: 'hex', label: 'hex'}
         ]
@@ -63,9 +61,7 @@ Mode: <c-radio-group :options="modes" v-model="mode"/>
         color: '#2f85da',
         mode: 'rgba',
         modes: [
-          { value: 'rgba', label: 'rgba'},
           { value: 'rgb', label: 'rgb'},
-          { value: 'hsla', label: 'hsla'},
           { value: 'hsl', label: 'hsl'},
           { value: 'hex', label: 'hex'}
         ]
@@ -90,11 +86,9 @@ Mode: <c-radio-group :options="modes" v-model="mode"/>
 
 | 属性 | 类型 | 默认值 | 说明 |
 |-----|------|-------|-----|
-| mode | String | rgba | 颜色模式：rgb, rgba, hsl, hsla, hex |
+| mode | String | hex | 颜色模式：rgb, hsl, hex |
 | inline | Boolean | false | 是否行内展示 |
 | size | String | md | 'xs', 'sm', 'md', 'lg', 'xl' |
-
-**重要说明：`mode` 一定要区分清楚是否带有 `a` 成分。如 `rgb` 和 `rgba` 是不同的。如果传入的初始颜色值经过转换之后得到的 alpha 值小于 1 而 `mode` 为 `rgb`，则会报错（反之不会）。**
 
 ### Events
 

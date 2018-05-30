@@ -1,12 +1,12 @@
 <template lang="pug">
-  c-base-range.c-slider(
+v-ctrl.c-slider(
+  :direction="vertical ? 'v' : 'h'",
+  @change="onRangeChange"
+)
+  .c-slider(
     :class="className",
-    :direction="vertical ? 'v' : 'h'",
-    :disabled="disabled",
-    :style="height ? { height: height } : null",
-    @change="onRangeChange",
-    @dragstart="isDrag = true",
-    @dragend="isDrag = false"
+    :style="height ? { height: height } : null"
+    @mousedown="onMousedown"
   )
     input(
       type="range",
@@ -16,17 +16,21 @@
       :step="step",
       :disabled="disabled"
     )
+
     .c-slider__progress(:style="progressPos")
+
     ul.c-slider__marks
       li(
         v-for="mark in normalizedMarks",
         :style="`${vertical ? 'bottom' : 'left'}: ${mark.p}`"
       ) {{mark.n}}
+
     .c-slider__stops
       span(
         v-for="mark in normalizedMarks",
         :style="`${vertical ? 'bottom' : 'left'}: ${mark.p}`"
       )
+
     .c-slider__thumb(
       :class="{ 'c-slider__thumb--hover': !isDrag && isHover, 'c-slider__thumb--dragging': isDrag }"
       :style="thumbPos",
@@ -35,22 +39,22 @@
     )
       .c-slider__tip(role="tooltip", aria-hidden="true")
         | {{formmater(this.nominal, 'tip')}}
+
 </template>
 
 <script>
-  import clamp from 'lodash/clamp'
   import VueTypes from 'vue-types'
+  import VCtrl from 'v-ctrl'
+  import clamp from 'lodash/clamp'
   import resettable from '../../js/mixins/resettable'
-
   import './index.css'
-  import baseRange from '../base-range/index.vue'
 
   const defaultHoverTimeout = 200
 
   export default {
     name: 'c-slider',
     components: {
-      'c-base-range': baseRange
+      'v-ctrl': VCtrl.VueCtrlComponent
     },
     model: { event: 'change' },
     mixins: [resettable],
@@ -146,7 +150,9 @@
         return parseFloat(nominal.toFixed(precision))
       },
       onRangeChange (e) {
-        this.normorlizedValue = this.vertical ? 1 - e : e
+        if (!this.disabled) {
+          this.normorlizedValue = this.vertical ? 1 - e : e
+        }
       },
 
       onThumbHover () {
@@ -161,12 +167,23 @@
       onThumbHoverout () {
         clearTimeout(this._hTid)
         this.isHover = false
+      },
+
+      onMousedown () {
+        this.isDrag = true
+        document.addEventListener('mouseup', this.onMouseup)
+      },
+      onMouseup () {
+        this.isDrag = false
+        document.removeEventListener('mouseup', this.onMouseup)
       }
     },
 
     created () {
       this.normorlizedValue = this.normalize(this.value)
       this.$emit('change', this.nominal)
+
+      this.onMouseup = this.onMouseup.bind(this)
     },
 
     watch: {
