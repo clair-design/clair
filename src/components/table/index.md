@@ -577,7 +577,96 @@ export default {
 }
 </script>
 ```
+## 多级表头固定, 列固定
 
+对于结构复杂的数据可以使用多级表头来展现，更好的体现数据的层级关系
+
+
+```html
+<c-table
+  :columns="columns"
+  height="200"
+  :datasource="datasource"
+  border="group"
+/>
+
+<script>
+export default {
+  data () {
+    return {
+      datasource: [
+        {
+          type: '直接访问',
+          pv: 1,
+          uv: 2,
+          nv: 3,
+          du: 4,
+          cv: 5,
+          ip: 8
+        }, {
+          type: '搜索引擎',
+          pv: 11,
+          uv: 21,
+          nv: 31,
+          du: 141,
+          cv: 51,
+          ip: 81
+        }, {
+          type: '直接访问2',
+          pv: 1,
+          uv: 22,
+          nv: 3,
+          du: 4,
+          cv: 5,
+          ip: 8
+        }, {
+          type: '4搜索引擎',
+          pv: 11,
+          uv: 215,
+          nv: 317,
+          du: 141,
+          cv: 51,
+          ip: 81
+        }
+      ],
+      columns: [
+        { title: '来源类型', key: 'type', width: 200, fixed: 'left' },
+        { title: '基础流量1',
+          key: '',
+          children: [
+            { title: '浏览量', key: 'pv', width: 200 },
+            { title: '新访客数', key: 'nv', width: 200 },
+            { title: '访问时长', key: 'du',
+              children: [
+                { title: '转化次数', key: 'cv', width: 200 },
+                { title: 'IP 数', key: 'ip', width: 200 }]
+            },
+          ]
+        }, { title: '基础流量',
+          key: '',
+          children: [
+            { title: '浏览量', key: 'pv', width: 200 },
+            { title: '访客数', key: 'uv',
+              children: [
+                { title: '转化次数', key: 'cv', width: 200 },
+                { title: 'IP 数', key: 'ip', width: 200 }]
+             },
+            { title: '新访客数', key: 'nv', width: 200 },
+            { title: '访问时长', key: 'du',
+              children: [
+                { title: '转化次数', key: 'cv', width: 200 },
+                { title: 'IP 数', key: 'ip', width: 200 }]
+            },
+            { title: '转化次数', key: 'cv', width: 200 },
+            { title: 'IP 数', key: 'ip', width: 200 }
+          ]
+        }
+      ]
+    }
+  }
+}
+</script>
+```
 
 ## API
 

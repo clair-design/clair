@@ -137,11 +137,13 @@ export default {
       fixedLeftColumns: [],
       fixedRightColumns: [],
       hoverRowIndex: '',
+      maxLevel: 1,
       scrollBarSize: 5,
       scrollBox: '',
       allChecked: false,
       indeterminate: false,
-      isScrollMove: false
+      isScrollMove: false,
+      composeColumns: []
     }
   },
 
@@ -268,7 +270,7 @@ export default {
       const [ tableStyle ] = this.$el.querySelector('table').getClientRects()
       const tbodyEl = this.$el.querySelector('.c-scroll__tbody') || this.$el.querySelector('.c-table__body')
       const tbodyWrapper = this.$el.querySelector('.c-table__wrapper')
-      const theadHeight = tableStyle.height
+      const theadHeight = tableStyle.height || this.maxLevel * 40
       const scrollBarHeight = tbodyEl.offsetHeight !== tbodyEl.clientHeight ? this.scrollBarSize : 0
       const height = `${this.height - theadHeight - scrollBarHeight}px`
 
@@ -313,6 +315,7 @@ export default {
       scrollEl.scrollTop = e.target.scrollTop
     },
     onScroll (e) {
+      const maxWidth = e.target.scrollWidth - e.target.offsetWidth
       if (!e.target.className.includes(this.scrollBox)) {
         // fix mouseleave but scroll is keeping
         e.target.scrollTop = this.$refs.fixedleft.scrollTop
@@ -329,6 +332,10 @@ export default {
       if (this.$refs.fixedright) {
         this.$refs.fixedright.scrollTop = scrollTop
       }
+      if (scrollLeft > maxWidth) {
+        e.target.scrollLeft = maxWidth
+        return
+      }
       if (scrollEl) {
         scrollEl.scrollLeft = scrollLeft
       }
@@ -344,7 +351,97 @@ export default {
     sorter ({key, order}) {
       this.$emit('sort', {key, order})
     },
+    getLevels (item) {
+      item.children.forEach(child => {
+        child.level = item.level + 1
+        if (child.children) {
+          child.children = this.getLevels(child)
+        }
+      })
+      return item.children
+    },
+    getAllColumns (list) {
+      const columns = []
+      list.forEach((item, index) => {
+        let classname = []
+        index === 0 && classname.push('c-table__bl')
+        index === list.length - 1 && classname.push('c-table__br')
+        classname = classname.join(' ')
+        item.className = item.hasOwnProperty('className') ? `${item.className} ${classname}` : classname
+        if (item.children && item.children.length > 0) {
+          columns.push(...this.getAllColumns(item.children))
+        } else {
+          columns.push(item)
+        }
+      })
+      return columns
+    },
+    // set colspan
+    getLeafColumns (list) {
+      const columns = []
+      list.forEach(item => {
+        item.level = 1
+        if (item.children) {
+          item.colspan = this.getAllColumns(item.children).length
+          item.children = this.getLeafColumns(item.children)
+          item.children = this.getLevels(item)
+        } else {
+          item.colspan = 1
+        }
+        columns.push(item)
+      })
+      return columns
+    },
+    // set rolspan
+    getColumnsRows (list, maxLevel) {
+      list.forEach(item => {
+        item.rowspan = maxLevel - item.level + 1
+        if (item.children) {
+          item.rowspan = 1
+          item.children = this.getColumnsRows(item.children, maxLevel)
+        }
+      })
+      return list
+    },
+
+    findMaxLevel (list) {
+      let maxlevel = 0
+      list.forEach(item => {
+        if (item.children) {
+          maxlevel = Math.max(this.findMaxLevel(item.children), maxlevel)
+        } else {
+          maxlevel = Math.max(item.level, maxlevel)
+        }
+      })
+      return maxlevel
+    },
+    getAllColumnsRows (list) {
+      const columns = []
+      list.forEach(item => {
+        columns.push(item)
+        if (item.children && item.children.length > 0) {
+          columns.push(...this.getAllColumnsRows(item.children))
+        }
+      })
+      return columns
+    },
+    getLevelColumns (list, maxlevel) {
+      const allColumns = this.getAllColumnsRows(list)
+      const columns = []
+      for (let i = 1; i <= maxlevel; i++) {
+        columns.push({
+          level: i,
+          columns: allColumns.filter(item => item.level === i)
+        })
+      }
+      return columns
+    },
     getColumnsDetail () {
+      const columns = this.getLeafColumns(this.columns)
+      const maxlevel = this.findMaxLevel(this.columns)
+      const columnsrows = this.getColumnsRows(columns, maxlevel)
+      this.composeColumns = this.getLevelColumns(columnsrows, maxlevel)
+      this.maxLevel = maxlevel
       if (!this.hasFixed) return
       const leftColumns = []
       const rightColumns = []
