@@ -54,7 +54,7 @@ const overflowController = {
     }
 
     const hasScrollbar = document.documentElement.clientWidth < window.innerWidth
-    const style = document.body.style
+    const { style } = document.body
 
     this.oldOverflow = style.overflow
     this.oldPaddingRight = style.paddingRight
