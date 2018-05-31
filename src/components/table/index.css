@@ -26,6 +26,7 @@
         font-weight: normal;
         padding-top: 0;
         padding-bottom: 0;
+        vertical-align: middle;
 
         &[colspan]:not([colspan="1"]) {
           text-align: center !important;

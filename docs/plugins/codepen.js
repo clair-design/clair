@@ -1,5 +1,5 @@
 import CodePen from '../assets/vue/codepen.vue'
-import tinyCopy from '../assets/js/tinyCopy'
+import tinyCopy from '../assets/js/tiny-copy'
 
 const reStyle = /<style>([\s\S]+)<\/style>/
 const reScript = /<script>([\s\S]+)<\/script>/
