@@ -6,6 +6,7 @@ import Components from '../components/**/!(_)*.vue'
 import Responsive from './plugins/responsive.js'
 import PortalComponent from './plugins/portal.js'
 import Modal from './plugins/modal.js'
+import Notification from './plugins/notification.js'
 
 import './polyfills'
 
@@ -35,6 +36,7 @@ const Clair = {
     Vue.use(PortalComponent)
     Vue.use(Modal)
     Vue.use(Responsive)
+    Vue.use(Notification)
   }
 }
 
