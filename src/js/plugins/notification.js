@@ -1,65 +1,31 @@
 import CNotification from '../../components/notification/_notify.vue'
-import { defer } from '../utils'
 
 export default {
   install (Vue) {
     extendVue(Vue)
   }
 }
+const containers = {
+  topRight: null,
+  bottomRight: null,
+  bottomLeft: null,
+  topLeft: null
+}
 
 function extendVue (Vue) {
   const { prototype } = Vue
-  let containerTopRight = null
-  let containerTopLeft = null
-  let containerBottomRight = null
-  let containerBottomLeft = null
 
-  const createModal = (data, component) => {
-    const deferred = defer()
-    const psn = data.position ? data.position : 'topRight'
+  const createNotification = (data, component) => {
     const mountNode = document.createElement('div')
+    const pos = data.position ? data.position : 'topRight'
 
-    // 找到对应的container
-    switch (psn) {
-      case 'topRight': {
-        if (containerTopRight === null) {
-          containerTopRight = document.createElement('div')
-          containerTopRight.setAttribute('class', `c-notification c-notification-${psn}`)
-          document.body.appendChild(containerTopRight)
-        }
-        containerTopRight.appendChild(mountNode)
-        break
-      }
-      case 'topLeft': {
-        if (containerTopLeft === null) {
-          containerTopLeft = document.createElement('div')
-          containerTopLeft.setAttribute('class', `c-notification c-notification-${psn}`)
-          document.body.appendChild(containerTopLeft)
-        }
-        containerTopLeft.appendChild(mountNode)
-        break
-      }
-      case 'bottomRight': {
-        if (containerBottomRight === null) {
-          containerBottomRight = document.createElement('div')
-          containerBottomRight.setAttribute('class', `c-notification c-notification-${psn}`)
-          document.body.appendChild(containerBottomRight)
-        }
-        containerBottomRight.appendChild(mountNode)
-        break
-      }
-      case 'bottomLeft': {
-        if (containerBottomLeft === null) {
-          containerBottomLeft = document.createElement('div')
-          containerBottomLeft.setAttribute('class', `c-notification c-notification-${psn}`)
-          document.body.appendChild(containerBottomLeft)
-        }
-        containerBottomLeft.appendChild(mountNode)
-        break
-      }
-      default:
-        break
+    if (containers[pos] === null) {
+      const el = document.createElement('div')
+      el.className = `c-notification c-notification-${pos}`
+      containers[pos] = el
+      document.body.appendChild(containers[pos])
     }
+    containers[pos].appendChild(mountNode)
 
     const vm = new Vue({
       components: {
@@ -78,17 +44,15 @@ function extendVue (Vue) {
             },
             close () {
               // TODO
+              console.log('Close the notification...')
             }
           }
         })
       }
     }).$mount(mountNode)
-
-    return deferred.promise
   }
 
   prototype.$notify = function (data) {
-    // data: { msg, title }
-    return createModal(data, CNotification)
+    return createNotification(data, CNotification)
   }
 }

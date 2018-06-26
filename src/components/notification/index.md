@@ -13,7 +13,7 @@ layout: component
 ### 自定义标题和内容
 通过`title`设置通知标题，通过`message`设置通知内容。
 
-默认右上角弹出，4.5秒后自动关闭。
+默认右上角弹出，4秒后自动关闭。
 
 ```html
 <c-button primary @click="createNtf">通知</c-button>
@@ -174,7 +174,7 @@ layout: component
 ```
 
 ### 自定义HTML片段
-将`isDangerousHtml`设置为`true`，即可将`message`作为HTML片段。
+将`dangerouslySetInnerHTML`设置为`true`，即可将`message`作为HTML片段。
 
 默认右上角弹出，4.5秒后自动关闭。
 
@@ -188,7 +188,7 @@ layout: component
         this.$notify({
           title: '《玉楼春》',
           message: '<span style="color:chocolate">渐行渐远渐无书，水阔鱼沉何处问。</span>',
-          isDangerousHtml: true
+          dangerouslySetInnerHTML: true
         })
       }
     }
@@ -206,4 +206,4 @@ layout: component
 | position | String | topRight | 弹出位置 | topRight / topLeft / bottomRight / bottomLeft |
 | type | String | - | 提示类型 | success / warning / info / error |
 | offset | Number | 0 | 偏移位置 | - |
-| isDangerousHtml | Boolean | false | 是否将message作为HTML片段 | true / false |
+| dangerouslySetInnerHTML | Boolean | false | 是否将message作为HTML片段 | true / false |

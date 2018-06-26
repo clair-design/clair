@@ -1,15 +1,15 @@
 <template lang="pug">
 transition(
   appear,
-  name="notification",
-  mode="out-in",
-  type="transition",
+  name="notification"
+  mode="out-in"
+  type="transition"
   @before-enter="beforeEnter"
   @after-leave="afterLeave"
 )
   div.c-notice__wrapper(
-    v-show="visible",
-    :style="{zIndex: zIndex, transform: `translateX(${this.position === 'topRight' || this.position === 'bottomRight' ? -this.offset : this.offset}px)`}"
+    v-show="visible"
+    :style="classObj"
     @mouseenter="clearTimer"
     @mouseleave="startTimer"
   )
@@ -25,13 +25,14 @@ transition(
         span {{title}}
       .c-notice__body
         div(
-          v-if='isDangerousHtml'
+          v-if='dangerouslySetInnerHTML'
           v-html='message'
         )
         div(v-else) {{ message }}
 </template>
 
 <script>
+import VueTypes from 'vue-types'
 import zIndex from '../../js/utils/zIndexManager'
 
 import './index.css'
@@ -39,35 +40,27 @@ import './index.css'
 export default {
   name: 'c-notification',
   props: {
-    visible: Boolean,
-    title: String,
-    message: String,
-    duration: {
-      type: Number,
-      default: 4000
-    },
-    closable: {
-      type: Boolean,
-      default: true
-    },
-    position: {
-      type: String,
-      default: 'topRight'
-    },
-    type: String,
-    offset: {
-      type: Number,
-      default: 0
-    },
-    isDangerousHtml: {
-      type: Boolean,
-      default: false
-    }
+    visible: VueTypes.bool,
+    title: VueTypes.string,
+    message: VueTypes.string,
+    duration: VueTypes.number.def(4000),
+    closable: VueTypes.bool.def(true),
+    position: VueTypes.oneOf(['topRight', 'bottomRight', 'bottomLeft', 'topLeft']).def('topRight'),
+    type: VueTypes.string,
+    offset: VueTypes.number.def(0),
+    dangerouslySetInnerHTML: VueTypes.bool.def(false)
   },
   data () {
     return {
       zIndex: zIndex.next(),
       timer: null
+    }
+  },
+  computed: {
+    classObj () {
+      return {
+        zIndex: zIndex,
+        transform: `translateX(${this.position === 'topRight' || this.position === 'bottomRight' ? -this.offset : this.offset}px)`}
     }
   },
   methods: {

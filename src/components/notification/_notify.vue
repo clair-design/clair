@@ -6,7 +6,7 @@ c-notification(
   :position="position"
   :duration="duration"
   :offset="offset"
-  :isDangerousHtml="isDangerousHtml"
+  :dangerouslySetInnerHTML="dangerouslySetInnerHTML"
   @close="onClose"
   @after-leave="afterLeave"
 )
@@ -31,7 +31,7 @@ export default {
     duration: Number,
     type: String,
     offset: Number,
-    isDangerousHtml: Boolean
+    dangerouslySetInnerHTML: Boolean
   },
   data () {
     return {
