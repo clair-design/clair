@@ -67,18 +67,17 @@ function extendVue (Vue) {
       },
       destroyed () {
         const elem = this.$el
-        elem.classList.add('notification-leave-to')
-        elem.classList.add('notification-leave-active')
-        setTimeout(_ => {
-          elem.parentNode.removeChild(elem)
-        }, 1000)
+        elem.parentNode.removeChild(elem)
       },
       render (h) {
         return h('c-notice-app', {
           attrs: data,
           on: {
-            cancel () {
+            destroy () {
               vm.$destroy()
+            },
+            close () {
+              // TODO
             }
           }
         })

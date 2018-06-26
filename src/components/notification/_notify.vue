@@ -1,17 +1,22 @@
 <template lang="pug">
 c-notification(
+  :visible="visible",
   :title="title"
   :message="message"
   :position="position"
   :duration="duration"
   :offset="offset"
   :isDangerousHtml="isDangerousHtml"
-  @close="onCancel"
+  @close="onClose"
+  @after-leave="afterLeave"
 )
   .c-notification__icon
     c-icon(
-      v-if='type'
-      type="feather", :name="icon", :class="type")
+      v-if="type"
+      type="feather"
+      :name="icon"
+      :class="type"
+    )
 </template>
 
 <script>
@@ -30,6 +35,7 @@ export default {
   },
   data () {
     return {
+      visible: true
     }
   },
   computed: {
@@ -48,8 +54,12 @@ export default {
     }
   },
   methods: {
-    onCancel () {
-      this.$emit('cancel')
+    onClose () {
+      this.visible = false
+      this.$emit('close')
+    },
+    afterLeave () {
+      this.$emit('destroy')
     }
   }
 }

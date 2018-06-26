@@ -5,12 +5,14 @@ transition(
   mode="out-in",
   type="transition",
   @before-enter="beforeEnter"
+  @after-leave="afterLeave"
 )
   div.c-notice__wrapper(
+    v-show="visible",
     :style="{zIndex: zIndex, transform: `translateX(${this.position === 'topRight' || this.position === 'bottomRight' ? -this.offset : this.offset}px)`}"
     @mouseenter="clearTimer"
     @mouseleave="startTimer"
-    )
+  )
     slot
     div
       .c-notice__header
@@ -37,6 +39,7 @@ import './index.css'
 export default {
   name: 'c-notification',
   props: {
+    visible: Boolean,
     title: String,
     message: String,
     duration: {
@@ -76,6 +79,9 @@ export default {
         }, this.duration)
       }
     },
+    afterLeave () {
+      this.$emit('after-leave')
+    },
     clearTimer () {
       clearTimeout(this.timer)
     },
@@ -86,6 +92,9 @@ export default {
         }, this.duration)
       }
     }
+  },
+  destroyed () {
+    this.clearTimer()
   }
 }
 </script>
