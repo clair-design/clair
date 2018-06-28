@@ -1,0 +1,284 @@
+/**
+* c-chip
+*/
+@import url('../../css/variables.css');
+
+.c-chip__wrapper {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  padding: 0 10px;
+  height: 28px;
+  font-size: 12px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #fff;
+  background-color: var(--gray);
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  margin: 0 8px 0 0;
+
+  &:not([disabled]):hover {
+    background-color: color(var(--button-default-color) l(var(--button-lightness-hover)));
+    color: #fff;
+  }
+
+  & .c-icon {
+    margin-left: 5px;
+  }
+
+  & .c-icon:hover {
+    color: #ccc;
+  }
+}
+
+.c-chip__label {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/**
+ * type color
+ */
+.c-chip--red {
+  border-color: var(--red);
+  background: var(--red);
+  color: #fff;
+
+  &:not([disabled]):hover {
+    background-color: color(var(--red) l(var(--button-lightness-hover)));
+    color: #fff;
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: 0 0 0 0.2em color(var(--red) a(0.4));
+  }
+}
+
+.c-chip--orange {
+  border-color: var(--orange);
+  background: var(--orange);
+  color: #fff;
+
+  &:not([disabled]):hover {
+    background-color: color(var(--orange) l(var(--button-lightness-hover)));
+    color: #fff;
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: 0 0 0 0.2em color(var(--orange) a(0.4));
+  }
+}
+
+.c-chip--yellow {
+  border-color: var(--yellow);
+  background: var(--yellow);
+  color: #fff;
+
+  &:not([disabled]):hover {
+    background-color: color(var(--yellow) l(var(--button-lightness-hover)));
+    color: #fff;
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: 0 0 0 0.2em color(var(--yellow) a(0.4));
+  }
+}
+
+.c-chip--green {
+  border-color: var(--green);
+  background: var(--green);
+  color: #fff;
+
+  &:not([disabled]):hover {
+    background-color: color(var(--green) l(var(--button-lightness-hover)));
+    color: #fff;
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: 0 0 0 0.2em color(var(--green) a(0.4));
+  }
+}
+
+.c-chip--cyan {
+  border-color: var(--cyan);
+  background: var(--cyan);
+  color: #fff;
+
+  &:not([disabled]):hover {
+    background-color: color(var(--cyan) l(var(--button-lightness-hover)));
+    color: #fff;
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: 0 0 0 0.2em color(var(--cyan) a(0.4));
+  }
+}
+
+.c-chip--blue {
+  border-color: var(--blue);
+  background: var(--blue);
+  color: #fff;
+
+  &:not([disabled]):hover {
+    background-color: color(var(--blue) l(var(--button-lightness-hover)));
+    color: #fff;
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: 0 0 0 0.2em color(var(--blue) a(0.4));
+  }
+}
+
+.c-chip--indigo {
+  border-color: var(--indigo);
+  background: var(--indigo);
+  color: #fff;
+
+  &:not([disabled]):hover {
+    background-color: color(var(--indigo) l(var(--button-lightness-hover)));
+    color: #fff;
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: 0 0 0 0.2em color(var(--indigo) a(0.4));
+  }
+}
+
+.c-chip--purple {
+  border-color: var(--purple);
+  background: var(--purple);
+  color: #fff;
+
+  &:not([disabled]):hover {
+    background-color: color(var(--purple) l(var(--button-lightness-hover)));
+    color: #fff;
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: 0 0 0 0.2em color(var(--purple) a(0.4));
+  }
+}
+
+.c-chip--pink {
+  border-color: var(--pink);
+  background: var(--pink);
+  color: #fff;
+
+  &:not([disabled]):hover {
+    background-color: color(var(--pink) l(var(--button-lightness-hover)));
+    color: #fff;
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: 0 0 0 0.2em color(var(--pink) a(0.4));
+  }
+}
+
+.c-chip--dark {
+  border-color: var(--dark);
+  background: var(--dark);
+  color: #fff;
+
+  &:not([disabled]):hover {
+    background-color: color(var(--dark) l(var(--button-lightness-hover)));
+    color: #fff;
+    border: 1px solid color(var(--dark) l(var(--button-lightness-hover)));
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: 0 0 0 0.2em color(var(--dark) a(0.4));
+  }
+}
+
+.c-chip--black {
+  border-color: var(--black);
+  background: var(--black);
+  color: #fff;
+
+  &:not([disabled]):hover {
+    background-color: color(var(--black) l(var(--button-lightness-hover)));
+    color: #fff;
+    border: 1px solid color(var(--dark) l(var(--button-lightness-hover)));
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: 0 0 0 0.2em color(var(--pink) a(0.4));
+  }
+}
+
+/**
+ * chip size
+ */
+
+.c-chip--xs {
+  height: 20px;
+  padding: 0 6px;
+
+  & .c-chip__label {
+    transform: scale(0.9);
+  }
+}
+
+.c-chip--sm {
+  height: 24px;
+  padding: 0 8px;
+}
+
+.c-chip--lg {
+  height: 32px;
+  padding: 0 12px;
+
+  & .c-chip__label {
+    font-size: 14px;
+  }
+}
+
+.c-chip--xl {
+  height: 36px;
+  padding: 0 14px;
+
+  & .c-chip__label {
+    font-size: 16px;
+  }
+}
+
+/**
+ * chip transition
+ */
+.animated {
+  -webkit-animation-duration: 0.25s;
+  animation-duration: 0.25s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@keyframes zoomOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    width: 0;
+  }
+}
+
+.zoomOut {
+  -webkit-animation-name: zoomOut;
+  animation-name: zoomOut;
+}

@@ -12,6 +12,8 @@
       :maxlength="maxlength"
       @input="onChange"
       @change="onChange"
+      @blur="onBlur"
+      ref="nativeInput"
     )
     textarea.c-input(
       v-if="multiLine"
@@ -66,6 +68,7 @@
       disabled: Boolean,
       multiLine: Boolean,
       autosize: Array,
+      autofocus: Boolean,
       wrap: String,
       type: {
         type: String,
@@ -117,6 +120,10 @@
         this.resizeTextArea()
       },
 
+      onBlur () {
+        this.$emit('blur')
+      },
+
       resizeTextArea () {
         const { multiLine, autosize } = this
         if (multiLine && autosize) {
@@ -132,11 +139,15 @@
     },
 
     mounted () {
-      const { multiLine, autosize } = this
+      const { multiLine, autosize, autofocus } = this
 
       if (multiLine && autosize) {
         this.resizeTextArea()
       }
+      if (autofocus) {
+        this.$refs.nativeInput.focus()
+      }
+
       const { defaultThrottleTime } = this.$clair
       this.resizeTextArea = throttle(
         this.resizeTextArea.bind(this), defaultThrottleTime)
