@@ -7,37 +7,43 @@
   )
     slot(name="title") {{ title }}
   .c-submenu__popup(
-    @mouseenter="enterSubMenu"
-    @mouseleave="leaveSubMenu"
-    @focusin="openSubMenu"
-    @focusout="closeSubMenu"
+    @mouseenter="enterPopup"
+    @mouseleave="leavePopup"
+    @focusin="focusIn"
+    @focusout="focusOut"
     @click.capture="clickSubMenu"
   )
     slot
 </template>
 
 <script>
+import VueTypes from 'vue-types'
 
 export default {
   name: 'c-submenu',
   props: {
     title: String,
     open: Boolean,
+    trigger: VueTypes.oneOf(['hover', 'click']),
     delay: {
       type: Number,
-      default: 200
+      default: 60
     }
   },
   inject: ['$menu'],
   watch: {
     open: {
       immediate: true,
-      handler: function () {
-        if (this.open) this.isOpen = true
+      handler () {
+        if (this.open) {
+          this.isOpen = true
+        }
       }
     },
-    '$menu.collapsed': function (collapsed) {
-      if (collapsed) this.isOpen = false
+    '$menu.collapsed' (collapsed) {
+      if (collapsed) {
+        this.isOpen = false
+      }
     }
   },
   data () {
@@ -47,35 +53,96 @@ export default {
       showSubMenuTimer: null // hover显示子菜单延时
     }
   },
+  computed: {
+    isVerticalExpanding () {
+      const { isVertical, collapsed } = this.$menu
+      return isVertical && !collapsed
+    },
+    innerTrigger () {
+      if (this.isVerticalExpanding) {
+        return 'click'
+      }
+
+      // if not specified in props,
+      // use 'hover' for vertical cases
+      // and 'click' for horizontal cases
+      if (this.trigger == null) {
+        const { isVertical } = this.$menu
+        return isVertical ? 'hover' : 'click'
+      }
+
+      return this.trigger
+    }
+  },
   methods: {
     toggleSubmenu () {
-      this.isOpen = !this.isOpen
+      if (this.innerTrigger === 'click') {
+        this.isOpen = !this.isOpen
+      }
     },
+
     enterSubMenu () {
-      if (this.hideSubMenuTimer) clearTimeout(this.hideSubMenuTimer)
-      const { isVertical, collapsed } = this.$menu
-      if (isVertical && !collapsed) return
-      this.showSubMenuTimer = setTimeout(_ => {
+      if (this.innerTrigger === 'hover') {
+        this.enterPopup()
+      }
+    },
+
+    leaveSubMenu () {
+      if (this.innerTrigger === 'hover') {
+        this.leavePopup()
+      }
+    },
+
+    enterPopup () {
+      if (this.isVerticalExpanding) {
+        return
+      }
+
+      clearTimeout(this.showSubMenuTimer)
+      clearTimeout(this.hideSubMenuTimer)
+      this.showSubMenuTimer = setTimeout(() => {
         this.openSubMenu()
       }, this.delay)
     },
-    leaveSubMenu () {
-      if (this.showSubMenuTimer) clearTimeout(this.showSubMenuTimer)
-      const { isVertical, collapsed } = this.$menu
-      if (isVertical && !collapsed) return
-      this.hideSubMenuTimer = setTimeout(_ => {
+
+    leavePopup () {
+      if (this.isVerticalExpanding) {
+        return
+      }
+
+      clearTimeout(this.showSubMenuTimer)
+      clearTimeout(this.hideSubMenuTimer)
+      this.hideSubMenuTimer = setTimeout(() => {
         this.closeSubMenu()
       }, this.delay)
     },
+
     clickSubMenu () {
-      if (this.$menu.isVertical && !this.$menu.collapsed) return
+      if (this.isVerticalExpanding) {
+        return
+      }
       this.closeSubMenu()
     },
+
     openSubMenu () {
       this.isOpen = true
     },
+
     closeSubMenu () {
       this.isOpen = false
+    },
+
+    focusIn () {
+      this.openSubMenu()
+    },
+
+    focusOut () {
+      // do not close submenu if menu is vertical and not collapsed
+      if (this.isVerticalExpanding) {
+        return
+      }
+
+      this.closeSubMenu()
     }
   }
 }
