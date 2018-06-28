@@ -9,7 +9,7 @@ layout: component
 用来进行分类和标记的标签
 
 ## 基础用法
-通过设置label属性，定义标签内容。
+通过设置`label`属性，定义标签内容。
 ```html
 <c-chip label="chip1"></c-chip>
 <c-chip label="chip2"></c-chip>
@@ -17,7 +17,7 @@ layout: component
 ```
 
 ## 标签的类型
-通过设置type属性，可为标签添加类型。
+通过设置`type`属性，可为标签添加类型。
 ```html
 <c-chip label="red" type="red"></c-chip>
 <c-chip label="orange" type="orange"></c-chip>
@@ -34,7 +34,7 @@ layout: component
 ```
 
 ## 自定义标签颜色
-通过设置color属性，自定义标签颜色。
+通过设置`color`属性，自定义标签颜色。
 ```html
 <c-chip label="#336774" color="#336774"></c-chip>
 <c-chip label="#724832" color="#724832"></c-chip>
@@ -43,7 +43,8 @@ layout: component
 
 ## 标签的动态添加和删除
 
-通过对数组的操作，实现对标签的添加和删除。
+通过添加`closable`属性，设置标签可关闭。
+结合数组，实现对标签的添加和删除。
 
 ```html
 <c-chip
@@ -112,7 +113,7 @@ layout: component
 ```
 
 ## 设置标签大小
-通过设置size属性，调整标签大小。
+通过设置`size`属性，调整标签大小。
 ```html
 <c-chip size="xs" label="超小号"></c-chip>
 <c-chip size="sm" label="小号"></c-chip>
@@ -150,3 +151,13 @@ layout: component
   }
 </script>
 ```
+
+## 属性说明
+
+| 属性 | 类型 | 默认值 | 说明 | 可选值 |
+|-----|------|-------|-----|-------|
+| label | String | - | 标签内容 | - |
+| type | String | - | 标签类型 | red / orange / yellow / green / cyan / blue / indigo / purple / pink / dark / black |
+| color | String | - | 自定义标签背景色 | - |
+| size | String | - | 标签大小 | xs / sm / lg / xl |
+| closable | Boolean | false | 是否有关闭按钮 | - |
