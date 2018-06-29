@@ -215,14 +215,14 @@ footer a {
 
 /* scrollbar */
 ::-webkit-scrollbar {
-  background-color: #e4e9ed;
+  background-color: transparent;
   width: 6px;
-  height: 6px
+  height: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #8e9aa9;
+  background-color: rgba(50, 50, 50, 0.65);
   background-repeat: no-repeat;
   background-position: center center;
-  border-radius: 3px
+  border-radius: 3px;
 }
