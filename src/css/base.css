@@ -16,6 +16,7 @@ html {
   background: #fff;
   color: var(--text-color);
   font: var(--text-font);
+  -webkit-font-smoothing: antialiased;
 }
 
 pre,
