@@ -8,34 +8,32 @@ layout: component
 用来进行分类和标记的标签
 
 ## 基础用法
-设置`label`属性，定义标签内容。
+设置`label`属性，或直接在标签内填写标签内容。
 ```html
 <c-chip label="chip1"></c-chip>
-<c-chip label="chip2"></c-chip>
-<c-chip label="chip3"></c-chip>
-```
-
-## 标签的类型
-设置`type`属性，可表示不同类型的标签。
-```html
-<c-chip label="red" type="red"></c-chip>
-<c-chip label="orange" type="orange"></c-chip>
-<c-chip label="yellow" type="yellow"></c-chip>
-<c-chip label="green" type="green"></c-chip>
-<c-chip label="cyan" type="cyan"></c-chip>
-<c-chip label="blue" type="blue"></c-chip>
-<c-chip label="indigo" type="indigo"></c-chip>
-<c-chip label="purple" type="purple"></c-chip>
-<c-chip label="pink" type="pink"></c-chip>
-<c-chip label="default"></c-chip>
-<c-chip label="dark" type="dark"></c-chip>
-<c-chip label="black" type="black"></c-chip>
+<c-chip>chip2</c-chip>
 ```
 
 ## 自定义标签颜色
 设置`color`属性，自定义标签颜色。
+可从以下颜色当中选取。
 ```html
-<c-chip label="#336774" color="#336774"></c-chip>
+<c-chip label="red" color="red"></c-chip>
+<c-chip label="orange" color="orange"></c-chip>
+<c-chip label="yellow" color="yellow"></c-chip>
+<c-chip label="green" color="green"></c-chip>
+<c-chip label="cyan" color="cyan"></c-chip>
+<c-chip label="blue" color="blue"></c-chip>
+<c-chip label="indigo" color="indigo"></c-chip>
+<c-chip label="purple" color="purple"></c-chip>
+<c-chip label="pink" color="pink"></c-chip>
+<c-chip label="default"></c-chip>
+<c-chip label="dark" color="dark"></c-chip>
+<c-chip label="black" color="black"></c-chip>
+```
+也可自定义背景色。
+```html
+<c-chip color="#336774">#336774</c-chip>
 <c-chip label="#724832" color="#724832"></c-chip>
 <c-chip label="#516E41" color="#516E41"></c-chip>
 ```
@@ -47,10 +45,10 @@ layout: component
 
 ```html
 <c-chip
-  v-for="chip in chips"
-  :key="chip.label"
+  v-for="(chip, index) in chips"
+  :key="index"
   closable
-  :type="chip.type"
+  :color="chip.color"
   :label="chip.label"
   @close="closeChip(chip)"
   style="margin-bottom:10px;"
@@ -72,18 +70,18 @@ layout: component
     data() {
       return {
         chips: [
-          { label: 'red', type: 'red' },
-          { label: 'orange', type: 'orange' },
-          { label: 'yellow', type: 'yellow' },
-          { label: 'green', type: 'green' },
-          { label: 'cyan', type: 'cyan' },
-          { label: 'blue', type: 'blue' },
-          { label: 'indigo', type: 'indigo' },
-          { label: 'purple', type: 'purple' },
-          { label: 'pink', type: 'pink' },
-          { label: 'default', type: ''},
-          { label: 'dark', type: 'dark' },
-          { label: 'black', type: 'black' },
+          { label: 'red', color: 'red' },
+          { label: 'orange', color: 'orange' },
+          { label: 'yellow', color: 'yellow' },
+          { label: 'green', color: 'green' },
+          { label: 'cyan', color: 'cyan' },
+          { label: 'blue', color: 'blue' },
+          { label: 'indigo', color: 'indigo' },
+          { label: 'purple', color: 'purple' },
+          { label: 'pink', color: 'pink' },
+          { label: 'default', color: ''},
+          { label: 'dark', color: 'dark' },
+          { label: 'black', color: 'black' },
         ],
         inputVisible: false,
         inputValue: ''
@@ -156,7 +154,6 @@ layout: component
 | 属性 | 类型 | 默认值 | 说明 | 可选值 |
 |-----|------|-------|-----|-------|
 | label | String | - | 标签内容 | - |
-| type | String | - | 标签类型 | red / orange / yellow / green / cyan / blue / indigo / purple / pink / dark / black |
-| color | String | - | 自定义标签背景色 | - |
+| color | String | - | 自定义标签颜色 | red / orange / yellow / green / cyan / blue / indigo / purple / pink / dark / black... |
 | size | String | - | 标签大小 | xs / sm / lg / xl |
 | closable | Boolean | false | 是否有关闭按钮 | - |

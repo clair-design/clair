@@ -256,29 +256,3 @@
     font-size: 16px;
   }
 }
-
-/**
- * chip transition
- */
-.animated {
-  -webkit-animation-duration: 0.25s;
-  animation-duration: 0.25s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-@keyframes zoomOut {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-    width: 0;
-  }
-}
-
-.zoomOut {
-  -webkit-animation-name: zoomOut;
-  animation-name: zoomOut;
-}

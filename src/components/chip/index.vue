@@ -1,25 +1,18 @@
 <template lang="pug">
-transition(
-  appear,
-  name="chip",
-  mode="out-in",
-  type="transition",
-  @before-leave="beforeLeave"
+.c-chip__wrapper(
+  :class="classNames"
+  :style="styleObj"
 )
-  .c-chip__wrapper(
-    :class="classNames"
-    :style="styleObj"
+  span.c-chip__label(v-if="label") {{label}}
+  slot(v-else)
+  span(
+      v-if="closable"
+      @click.stop="$emit('close')"
   )
-    slot(name="chip")
-      span.c-chip__label {{label}}
-      span(
-          v-if="closable"
-          @click.stop="$emit('close')"
-      )
-        c-icon(
-          name="x"
-          valign="middle"
-        )
+    c-icon(
+      name="x"
+      valign="middle"
+    )
 </template>
 
 <script>
@@ -31,19 +24,19 @@ export default {
   props: {
     label: VueTypes.string,
     size: VueTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']).def('md'),
-    type: VueTypes.string,
     color: VueTypes.string,
     closable: VueTypes.bool.def(false)
   },
   data () {
     return {
+      presetColors: ['red', 'orange', 'yellow', 'green', 'eyan', 'blue', 'indigo', 'purple', 'pink', 'dark', 'black']
     }
   },
   computed: {
     classNames () {
       let classList = ``
-      if (this.type) {
-        classList += ` c-chip--${this.type}`
+      if (this.color && this.presetColors.indexOf(this.color) >= 0) {
+        classList += ` c-chip--${this.color}`
       }
       if (this.closable) {
         classList += ' c-chip--closable'
@@ -55,18 +48,12 @@ export default {
     },
     styleObj () {
       let style = {}
-      if (this.color) {
+      if (this.color && this.presetColors.indexOf(this.color) < 0) {
         style = {
           'backgroundColor': this.color
         }
       }
       return style
-    }
-  },
-  methods: {
-    beforeLeave () {
-      this.$el.classList.add('animated')
-      this.$el.classList.add('zoomOut')
     }
   }
 }
