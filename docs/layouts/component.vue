@@ -106,6 +106,7 @@ export default {
           children: [
             { title: '对话框', name: 'modal' },
             { title: '提示框', name: 'tip' },
+            { title: '通知', name: 'notification' },
             { title: '加载中', name: 'loading' }
           ]
         }
