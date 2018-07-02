@@ -10,16 +10,17 @@
     "src"
   ],
   "scripts": {
+    "test": "jest",
     "precommit": "lint-staged",
     "clean": "rimraf dist .site",
     "new": "node ./boilerplate",
     "bundle": "cross-env NODE_ENV=production clair-bundle",
-    "prod": "cross-env NODE_ENV=production dokiv",
-    "dev": "cross-env NODE_ENV=development dokiv -w",
-    "build": "run-s clean prod bundle rawcss",
-    "start": "npm run dev",
-    "test": "jest",
-    "rawcss": "postcss --no-map -u postcss-easy-import -u postcss-each -u postcss-for -o dist/clair.raw.css src/css/raw.css"
+    "doc:dev": "cross-env NODE_ENV=development dokiv -w",
+    "doc:build": "cross-env NODE_ENV=production dokiv",
+    "build": "run-s clean doc:build bundle rawcss",
+    "start": "npm run doc:dev",
+    "rawcss": "postcss --no-map -u postcss-easy-import -u postcss-each -u postcss-for -o dist/clair.raw.css src/css/raw.css",
+    "surge": "surge -d https://clair.surge.sh -p .site/"
   },
   "lint-staged": {
     "src/**/*.css": [
