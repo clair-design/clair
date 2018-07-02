@@ -227,7 +227,7 @@ route: /component/icon
     mounted () {
       Promise.all([
         fetchText('https://raw.githubusercontent.com/' +
-          'FortAwesome/Font-Awesome/master/src/icons.yml'),
+          'FortAwesome/Font-Awesome/37a838af4ddf679b566b0043ba9ebb45af36571e/src/icons.yml'),
         loadScript('https://lib.baomitu.com/yamljs/0.3.0/yaml.min.js'),
         loadScript('https://lib.baomitu.com/clipboard.js/1.7.1/clipboard.min.js')
       ]).then(([text]) => {
