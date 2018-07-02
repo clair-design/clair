@@ -64,7 +64,7 @@ table
 
 <script>
 import './index.css'
-import _ from 'lodash'
+import cloneDeep from 'lodash/cloneDeep'
 
 export default {
   name: 'c-basetable',
@@ -97,7 +97,7 @@ export default {
       return this.datasource
     },
     allColumns () {
-      const columns = _.cloneDeep(this.columns)
+      const columns = cloneDeep(this.columns)
       return this.getAllColumns(columns)
     }
   },
