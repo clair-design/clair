@@ -101,53 +101,39 @@
 
 .c-notification-bottomLeft .notification-enter-to.notification-enter-active,
 .c-notification-topLeft .notification-enter-to.notification-enter-active {
-  -webkit-animation-name: NotificationLeftFadeIn;
   animation-name: NotificationLeftFadeIn;
 }
 
 .c-notification .notification-enter-to {
-  -webkit-animation-duration: 0.24s;
   animation-duration: 0.24s;
-  -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  -webkit-animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
   animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .notification-enter-to {
   opacity: 0;
-  -webkit-animation-play-state: paused;
   animation-play-state: paused;
 }
 
 .notification-enter-to,
 .notification-leave-to {
-  -webkit-animation-duration: 0.24s;
   animation-duration: 0.24s;
-  -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  -webkit-animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
   animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .notification-leave-to {
-  -webkit-animation-duration: 0.2s;
   animation-duration: 0.2s;
-  -webkit-animation-play-state: paused;
   animation-play-state: paused;
 }
 
 .notification-enter-to.notification-enter-active {
-  -webkit-animation-name: NotificationFadeIn;
   animation-name: NotificationFadeIn;
-  -webkit-animation-play-state: running;
   animation-play-state: running;
 }
 
 .notification-leave-to.notification-leave-active {
-  -webkit-animation-name: NotificationFadeOut;
   animation-name: NotificationFadeOut;
-  -webkit-animation-play-state: running;
   animation-play-state: running;
 }
 
