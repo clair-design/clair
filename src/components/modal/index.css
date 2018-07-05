@@ -106,15 +106,15 @@
 
 .modal-enter > .c-modal__wrapper,
 .modal-leave-to > .c-modal__wrapper {
-  animation: zoomIn 0.5s;
+  animation: modalZoomIn 0.5s;
 }
 
 .modal-enter > .c-modal__wrapper,
 .modal-leave-to > .c-modal__wrapper {
-  animation: zoomOut 0.5s;
+  animation: modalZoomOut 0.5s;
 }
 
-@keyframes zoomIn {
+@keyframes modalZoomIn {
   from {
     opacity: 0.5;
     transform: scale3d(0.3, 0.3, 0.3);
@@ -125,7 +125,7 @@
   }
 }
 
-@keyframes zoomOut {
+@keyframes modalZoomOut {
   from {
     opacity: 1;
   }
