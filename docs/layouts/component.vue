@@ -85,7 +85,7 @@ export default {
             { title: '导航菜单', name: 'menu' },
             { title: '面包屑', name: 'breadcrumb' },
             { title: '工具栏', name: 'toolbar' },
-            { title: '步骤条', name: 'step' }
+            { title: '步骤条', name: 'steps' }
           ]
         },
         {

@@ -29,7 +29,7 @@ export default {
   },
   data () {
     return {
-      presetColors: ['red', 'orange', 'yellow', 'green', 'eyan', 'blue', 'indigo', 'purple', 'pink', 'dark', 'black']
+      presetColors: ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'indigo', 'purple', 'pink', 'dark', 'black']
     }
   },
   computed: {
