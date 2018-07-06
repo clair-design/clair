@@ -1,4 +1,5 @@
 @import url('../../css/variables.css');
+@import url('../../css/animation.css');
 
 /**
  * default button
@@ -313,17 +314,7 @@
  */
 .c-button--loading {
   & .c-icon {
-    animation: fa-spin 2s infinite linear;
-  }
-}
-
-@keyframes c-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(359deg);
+    animation: spin 2s infinite linear;
   }
 }
 

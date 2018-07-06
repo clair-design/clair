@@ -1,16 +1,39 @@
 /*
- * transition and animation
+ * common animations
  */
-.fade-in-down-enter-active,
-.fade-in-down-leave-active {
-  transform: translateY(0);
-  opacity: 1;
-  transition: opacity 0.2s ease, transform 0.3s ease;
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(359deg);
+  }
 }
 
-.fade-in-down-enter,
-.fade-in-down-leave-to,
-.fade-in-down-leave-active {
-  opacity: 0;
-  transform: translateY(-10px);
+@keyframes zoomIn {
+  from {
+    opacity: 0.5;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  to {
+    opacity: 0;
+  }
 }

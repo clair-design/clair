@@ -137,18 +137,6 @@
   animation-play-state: running;
 }
 
-@-webkit-keyframes NotificationFadeIn {
-  0% {
-    opacity: 0;
-    left: 400px;
-  }
-
-  to {
-    left: 0;
-    opacity: 1;
-  }
-}
-
 @keyframes NotificationFadeIn {
   0% {
     opacity: 0;
@@ -157,18 +145,6 @@
 
   to {
     left: 0;
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes NotificationLeftFadeIn {
-  0% {
-    opacity: 0;
-    right: 400px;
-  }
-
-  to {
-    right: 0;
     opacity: 1;
   }
 }
@@ -182,24 +158,6 @@
   to {
     right: 0;
     opacity: 1;
-  }
-}
-
-@-webkit-keyframes NotificationFadeOut {
-  0% {
-    opacity: 1;
-    margin-bottom: 16px;
-    padding-top: 16px 24px;
-    padding-bottom: 16px 24px;
-    max-height: 100px;
-  }
-
-  to {
-    opacity: 0;
-    margin-bottom: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    max-height: 0;
   }
 }
 

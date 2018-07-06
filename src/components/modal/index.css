@@ -2,6 +2,7 @@
 * c-modal
 */
 @import url('../../css/variables.css');
+@import url('../../css/animation.css');
 
 .c-modal {
   position: fixed;
@@ -106,37 +107,10 @@
 
 .modal-enter > .c-modal__wrapper,
 .modal-leave-to > .c-modal__wrapper {
-  animation: modalZoomIn 0.5s;
+  animation: zoomIn 0.5s;
 }
 
 .modal-enter > .c-modal__wrapper,
 .modal-leave-to > .c-modal__wrapper {
-  animation: modalZoomOut 0.5s;
-}
-
-@keyframes modalZoomIn {
-  from {
-    opacity: 0.5;
-    transform: scale3d(0.3, 0.3, 0.3);
-  }
-
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes modalZoomOut {
-  from {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0;
-    -webkit-transform: scale3d(0.3, 0.3, 0.3);
-    transform: scale3d(0.3, 0.3, 0.3);
-  }
-
-  to {
-    opacity: 0;
-  }
+  animation: zoomOut 0.5s;
 }
