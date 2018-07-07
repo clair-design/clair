@@ -1,5 +1,5 @@
 <template lang="pug">
-  #app
+  #main
     c-header
     c-box.main
       c-box-item.sidebar(xs=12 sm=4 md=3 lg=2)

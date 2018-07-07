@@ -1,5 +1,5 @@
 <template>
-  <div class="error-container" id="app">
+  <div class="error-container" id="main">
     <h1>无法找到请求的内容</h1>
     <div>
       <c-button primary @click="$router.back()">
