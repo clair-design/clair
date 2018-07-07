@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+const bundle = require('clair-bundle')
+const config = require('./bundle.config')
+
+const isDevelopment = process.env.NODE_ENV !== 'production'
+const options = isDevelopment ? config.slice(0, 1) : config
+
+bundle({ options }, isDevelopment)
