@@ -408,7 +408,7 @@ export default {
 ```html
 <c-select
   v-model="state"
-  :options="options"
+  :options="options
   width="long"
   multiple
   autocomplete

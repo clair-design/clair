@@ -2,6 +2,12 @@
 title: Slider
 layout: component
 route: /component/slider
+meta:
+  style:
+    - cssText: >
+        .c-slider {
+          margin: 2em 1em 3em;
+        }
 ---
 
 # Slider
@@ -9,14 +15,6 @@ route: /component/slider
 ## 基本用法
 
 使用 `<c-slider />` 标签即可。拖拽移动时即会触发 `change` 事件。
-
-<!-- TODO: 是否有必要区分`input` 与 `change`？ -->
-
-<style>
-.c-slider {
-  margin: 2em 1em 3em;
-}
-</style>
 
 ```html
 <c-slider @change="onChange" :value="33"/>

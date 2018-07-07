@@ -4,17 +4,11 @@ layout: component
 route: /component/button
 meta:
   style:
-  - cssText: >
-      @media (max-width: 800px) {
-        .vue-demo .c-button { margin-bottom: 1em; }
-      }
+    - cssText: >
+        @media (max-width: 800px) {
+          .vue-demo .c-button { margin-bottom: 1em; }
+        }
 ---
-
-<style>
-@media (max-width: 800px) {
-  .c-button { margin-bottom: 1em; }
-}
-</style>
 
 # Button 按钮
 

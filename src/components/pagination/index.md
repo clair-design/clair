@@ -12,7 +12,7 @@ layout: component
 
 通过 `total` 属性指定总条数，默认每页 20 条。
 
-```vue
+```html
 <c-pagination :total="1160" />
 ```
 ### 高级用法
@@ -20,7 +20,7 @@ layout: component
 * **span**：当页码太多时，我们希望省略显示一部分页码，只显示当前页码前后的几个页码及起始和结束页码即可。`span`提供此功能，默认为`3`，即除了起始页码和结束页码，当前页码前后最多显示3个页码。
 
 下面这个例子，是设置`total=200`、`pn=13`、`ps=10`、`span=2`时的显示
-```vue
+```html
 <c-pagination :total="200" :pn="13" :ps="10" :span="2"></c-pagination>
 ```
 
@@ -28,7 +28,7 @@ layout: component
 
 * **change**：切换页面时，触发该事件。一般用来异步获取当前页数据。
 
-```vue
+```html
 <c-pagination :total="200" :pn="pn" :ps="10" @change="getPageData"></c-pagination>
 
 <script>
