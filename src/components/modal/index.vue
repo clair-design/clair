@@ -131,8 +131,6 @@ export default {
   },
 
   methods: {
-    noop () {},
-
     qsa (selectors) {
       const list = this.$refs.dom.querySelectorAll(selectors)
       return Array.prototype.slice.call(list)

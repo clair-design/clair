@@ -25,6 +25,8 @@ const Clair = {
       Object.defineProperty(Vue.prototype, '$clair', {
         get () { return $clair }
       })
+
+      Vue.prototype.noop = () => {}
     }
 
     // register components

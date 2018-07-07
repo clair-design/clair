@@ -5,7 +5,7 @@
   :class="classNames"
   @mouseenter="activate"
   @mouseleave="deactivate"
-  @mousedown.prevent
+  @mousedown.prevent="noop"
   @click="onClick"
 )
   slot {{ label }}

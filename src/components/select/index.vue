@@ -34,7 +34,7 @@
       input(
         v-model="query"
         autocomplete="off"
-        @click.stop
+        @click.stop="noop"
         @blur="$el.focus()"
         @keydown.delete="onDeleteKey"
         @input="onSearchInput"
