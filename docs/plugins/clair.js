@@ -1,1 +1,1 @@
-export { default } from '../../src/js/main'
+export { default } from '../../dist/clair'
