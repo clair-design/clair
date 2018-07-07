@@ -8,8 +8,7 @@ const {
   ensureFile
 } = require('fs-extra')
 
-const argvs = process.argv.slice(2)
-const component = argvs[0]
+const [component] = process.argv.slice(2)
 
 // `node thisfile [component-name]`
 generateComponent({
@@ -28,11 +27,12 @@ function generateComponent ({ name, dir, prefix, files }) {
   // eg: button-group => ButtonGroup
   const component = pascalCase(name)
   // c-button-group
-  const tagName = (prefix ? prefix + '-' : '') + route
+  const tagName = (prefix ? `${prefix}-` : '') + route
 
   const dest = join(dir, route)
 
   if (existsSync(dest)) {
+    // eslint-disable-next-line
     console.warn(
       `Skipping component ${component}` +
       `, it already exisits at ${dest}.`
@@ -54,6 +54,7 @@ function generateComponent ({ name, dir, prefix, files }) {
 
   Promise.all(promises)
     .then(() => {
+      // eslint-disable-next-line
       console.info(`Component ${component} is created at ${dest}.`)
       process.exit()
     })
