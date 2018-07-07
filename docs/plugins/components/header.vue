@@ -2,7 +2,7 @@
 c-box.toolbar(align="center")
   c-box-item.has-padding-left-md(xs=12 sm=4 md=3 lg=2)
     router-link.is-inline-block.has-padding-sm(to="/")
-      img(src="/static/logo.svg" alt="clair")
+      img(src="https://s1.ssl.qhres.com/static/9df9c3c715a8b6cb.svg" alt="clair")
 
   c-box-item.is-none-xs-only(xs=12 sm=7 md=8 lg=9)
     c-box.navbar
