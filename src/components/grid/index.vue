@@ -6,6 +6,7 @@
 <script>
 import { multiply } from './util.js'
 import { breakpoints } from '../../js/config'
+import './index.css'
 
 const breakpointProps = breakpoints
   .map(bp => `${bp}Only`)

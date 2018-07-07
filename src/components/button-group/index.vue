@@ -4,7 +4,7 @@
 </template>
 
 <script>
-
+import './index.css'
 export default {
   name: 'c-button-group',
   props: {
