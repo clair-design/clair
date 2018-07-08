@@ -1,0 +1,46 @@
+
+options:
+  - input: ./src/js/main.js
+    output:
+      - format: cjs
+        file: ./dist/clair.common.js
+      - format: umd
+        name: Clair
+        file: ./dist/clair.js
+    uglify: false
+    postcss:
+      extract: ./dist/clair.css
+      minify: true
+      sourcemap: true
+      plugins:
+        - postcss-easy-import
+        - postcss-each
+        - postcss-for
+        - postcss-cssnext:
+            warnForDuplicates: false
+
+  - input: ./src/js/main.js
+    output:
+      - format: umd
+        name: Clair
+        file: ./dist/clair.min.js
+    uglify: true
+    postcss: null
+
+  - input: ./src/js/main.js
+    output:
+      format: es
+      file: ./dist/clair.esm.js
+    ## ignore depencencies unless importing with glob pattern
+    external: !!js/function >
+      function (id) {
+        return /^[a-z][\w]/.test(id) && !/\*/.test(id)
+      }
+    uglify: false
+    postcss: null
+
+commands:
+  before:
+    - echo Start bundling.
+  after:
+    - echo Bundling tasks done.

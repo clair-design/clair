@@ -1,6 +1,0 @@
-#!/usr/bin/env node
-
-const fiche = require('fiche')
-const config = require('./fiche.config')
-
-fiche(config)
