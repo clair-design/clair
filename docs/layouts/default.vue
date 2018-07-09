@@ -1,5 +1,5 @@
 <template lang="pug">
-  #main
+  #app
     c-header
     div.main
       transition(name='fade')

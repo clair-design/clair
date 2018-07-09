@@ -19,7 +19,7 @@
     "doc:build": "cross-env NODE_ENV=production dokiv",
     "build": "run-s clean doc:build bundle rawcss",
     "start": "npm run doc:dev",
-    "rawcss": "postcss --no-map -u postcss-easy-import -u postcss-each -u postcss-for -o dist/clair.raw.css src/css/raw.css"
+    "rawcss": "postcss --no-map -u postcss-easy-import -u postcss-each -u postcss-for -o dist/clair.raw.css src/styles/raw.css"
   },
   "lint-staged": {
     "*.css": [

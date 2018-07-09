@@ -2,3 +2,5 @@
 @import './theme.css';
 @import './demo-block.css';
 @import './transition.css';
+@import '../../src/styles/main.css';
+@import '../../src/components/**/*.css';

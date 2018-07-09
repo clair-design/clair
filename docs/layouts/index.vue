@@ -1,5 +1,5 @@
 <template lang="pug">
-  #main
+  #app
     c-header
     c-box.main
       .hero.no-gap

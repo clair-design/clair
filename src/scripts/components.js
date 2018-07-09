@@ -15,6 +15,12 @@ export default {
   }
 }
 
+// function importAll (r) {
+//   return reqs.keys().map(key => {
+//     return getModule(reqs(key))
+//   })
+// }
+
 function getModule (module) {
   return (module.__esModule && module.default) || module
 }
