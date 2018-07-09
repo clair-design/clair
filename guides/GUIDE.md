@@ -43,7 +43,7 @@ $ npm install
 
 ## 文件目录结构
 
-- `clair.config.js` 用于设置项目开发、构建工作的各种配置项
+- `emballer.config.js` 使用 Rollup 构建 library 的配置
 - `dokiv.yml` 用于构建文档静态站点各项配置
 
 - `src/` 为项目源码的目录，所有的组件代码都在其下的 `components` 目录中
@@ -51,20 +51,18 @@ $ npm install
 - `dist/` 中存放构建后要发布的文件（无需同步到 Git）
 
 
-
 ## 构建脚本
 
 日常组件开发建议使用 `yarn dev [name]`，速度相对较快。
 
+* `yarn dev` 或 `npm run dev`：启动开发模式
 * `yarn new [name]` 或 `npm run new [name]`：根据 boilerplate 文件夹中的模板自动创建新组件
-* <del>`yarn sfc [name]` 或 `npm run sfc [name]`：开启单一组件开发模式（如果组件不存在则根据模板新建）</del>
-* `yarn dev` 或 `npm run dev`：启动全部组件开发模式
 * `yarn build` 或 `npm run build`：rollup 以及 PostCSS 编译、打包，并生成静态HTML
 
 
 ## 文档/构建工具
 
-- [clair-bundle](https://github.com/clair-design/clair-bundle)
+- [emballer](https://github.com/clair-design/emballer)
 - [dockiv](https://github.com/AngusFu/dokiv)
 - [md2vue](https://github.com/AngusFu/md2vue)
 
