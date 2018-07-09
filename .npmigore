@@ -1,9 +1,0 @@
-.nuxt/
-.site/
-clair.config.js
-.vscode/
-docs/
-src/
-src/**/*
-TODO.md
-GUIDE.md
