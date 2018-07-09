@@ -5,16 +5,24 @@
 const { resolve } = require('path')
 
 const moduleName = 'Clair'
-const input = resolve(__dirname, './src/entry.js')
-const destFile = path => resolve(__dirname, './dist', path)
+const toAbs = path => resolve(__dirname, path)
+const destFile = filename => resolve(__dirname, './dist', filename)
 
 // TODO
 // use postcss.config.js by default
 const postCSSPlugins = [require('./postcss.config.js').plugins]
 
+const defaults = {
+  input: toAbs('src/entry.js'),
+  alias: {
+    '@js': toAbs('src/scripts'),
+    '@css': toAbs('src/styles'),
+    '@component': toAbs('src/components')
+  }
+}
+
 const options = [
   {
-    input,
     postcss: {
       extract: destFile('clair.css'),
       minify: false,
@@ -35,7 +43,6 @@ const options = [
     ]
   },
   {
-    input,
     postcss: {
       extract: destFile('clair.min.css'),
       minify: true,
@@ -52,7 +59,6 @@ const options = [
     ]
   },
   {
-    input,
     uglify: false,
     output: {
       format: 'es',
@@ -64,4 +70,6 @@ const options = [
   }
 ]
 
-module.exports = { options }
+module.exports = {
+  options: options.map(opt => Object.assign(opt, defaults))
+}
