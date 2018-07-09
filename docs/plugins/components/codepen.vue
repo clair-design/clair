@@ -6,13 +6,13 @@
 </template>
 
 <script>
-  export default {
-    name: 'codepen',
-    props: {
-      config: {
-        type: String,
-        required: true
-      }
+export default {
+  name: 'codepen',
+  props: {
+    config: {
+      type: String,
+      required: true
     }
   }
+}
 </script>>
