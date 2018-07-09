@@ -286,3 +286,13 @@ export default {
 }
 </script>
 ```
+
+## 属性说明
+
+| 属性 | 类型 | 默认值 | 说明 | 可选值 |
+|-----|------|-------|-----|-------|
+| title | String | - | 步骤标题 | - |
+| description | String | - | 步骤详情 | - |
+| icon | String | - | 可添加的icon | - |
+| iconPos | String | top | icon相对于title的位置 | left / top |
+| status | String | default | 步骤状态 | loading / success / warning / error / default |

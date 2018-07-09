@@ -30,8 +30,7 @@ export default {
     description: VueTypes.string,
     icon: VueTypes.string,
     iconPos: VueTypes.oneOf(['left', 'top']).def('top'),
-    status: VueTypes.oneOf(['loading', 'success', 'warning', 'error', 'default']).def('default'),
-    loading: VueTypes.bool.def(false)
+    status: VueTypes.oneOf(['loading', 'success', 'warning', 'error', 'default']).def('default')
   },
   data () {
     return {
@@ -39,7 +38,6 @@ export default {
     }
   },
   created () {
-    console.log(this.iconPos)
     this.index = this.$parent.steps.indexOf(this)
   },
 

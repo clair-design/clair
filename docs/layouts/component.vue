@@ -70,6 +70,7 @@ export default {
             { title: '下拉框', name: 'select' },
             { title: '复选框', name: 'checkbox' },
             { title: '单选框', name: 'radio' },
+            { title: '开关', name: 'switch' },
             { title: '滑块', name: 'slider' },
             { title: '取色器', name: 'color-picker' },
             { title: '表单', name: 'form' },
