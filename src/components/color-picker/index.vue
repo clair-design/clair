@@ -32,9 +32,9 @@ import VueTypes from 'vue-types'
 import throttle from 'lodash/throttle'
 import ColorPicker from 'v-color'
 
-import { contains } from '../../js/utils/index'
-import zIndex from '../../js/utils/zIndexManager'
-import resettable from '../../js/mixins/resettable'
+import { contains } from '../../scripts/utils/index'
+import zIndex from '../../scripts/utils/zIndexManager'
+import resettable from '../../scripts/mixins/resettable'
 
 import './index.css'
 

@@ -1,7 +1,7 @@
 /**
 * c-select
 */
-@import url('../../css/variables.css');
+@import url('../../styles/variables.css');
 
 :root {
   --select-padding-xs: 3px;

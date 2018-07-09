@@ -8,7 +8,7 @@ form.c-form(
 
 <script>
 import './index.css'
-import { toClassNames } from '../../js/utils'
+import { toClassNames } from '../../scripts/utils'
 
 const block = 'c-form'
 const modifiers = ['inline']

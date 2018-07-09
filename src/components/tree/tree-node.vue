@@ -20,7 +20,8 @@
   .c-tree_children(v-show="showChildren")
     c-tree-node(
       ref="children"
-      v-for="child in node.children"
+      v-for="(child, index) in node.children"
+      :key="index"
       :node="child"
       :level="level + 1"
     )

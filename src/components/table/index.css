@@ -1,7 +1,7 @@
 /**
 * c-table
 */
-@import url('../../css/variables.css');
+@import url('../../styles/variables.css');
 
 .c-table table {
   width: 100%;

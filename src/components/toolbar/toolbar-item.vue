@@ -4,11 +4,10 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      flex: Boolean
-    },
-    name: 'c-toolbar-item'
-  }
+export default {
+  props: {
+    flex: Boolean
+  },
+  name: 'c-toolbar-item'
+}
 </script>
-

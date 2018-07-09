@@ -34,8 +34,8 @@ c-portal(:aria-hidden="'' + !visible")
 
 <script>
 import './index.css'
-import { getScrollBarSize } from '../../js/utils'
-import zIndex from '../../js/utils/zIndexManager'
+import { getScrollBarSize } from '../../scripts/utils'
+import zIndex from '../../scripts/utils/zIndexManager'
 
 let uid = 0
 const overflowController = {

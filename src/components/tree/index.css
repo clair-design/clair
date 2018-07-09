@@ -1,7 +1,7 @@
 /**
 * c-tree
 */
-@import url('../../css/variables.css');
+@import url('../../styles/variables.css');
 
 .c-tree__title {
   display: flex;

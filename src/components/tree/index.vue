@@ -1,7 +1,8 @@
 <template lang="pug">
 .c-tree
   c-tree-node(
-    v-for="node in nodes"
+    v-for="(node, index) in nodes"
+    :key="index"
     :node="node"
     :level="1"
   )

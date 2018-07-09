@@ -3,6 +3,7 @@
     c-checkbox(
       v-for="(option, index) in optionList"
       v-model="isChecked[index]"
+      :key="index"
       :label="option.label"
       :disabled="option.disabled"
       @change="onItemChange($event, index)"
@@ -11,7 +12,7 @@
 </template>
 
 <script>
-import validatable from '../../js/mixins/validatable'
+import validatable from '../../scripts/mixins/validatable'
 
 const name = 'c-checkbox-group'
 const pass = { valid: true, msg: '' }

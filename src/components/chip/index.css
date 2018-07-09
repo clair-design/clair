@@ -1,7 +1,7 @@
 /**
 * c-chip
 */
-@import url('../../css/variables.css');
+@import url('../../styles/variables.css');
 
 .c-chip__wrapper {
   display: inline-flex;

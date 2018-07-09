@@ -31,8 +31,8 @@
 <script>
 import VueTypes from 'vue-types'
 import throttle from 'lodash/throttle'
-import { contains } from '../../js/utils/index'
-import zIndex from '../../js/utils/zIndexManager'
+import { contains } from '../../scripts/utils/index'
+import zIndex from '../../scripts/utils/zIndexManager'
 
 import './index.css'
 

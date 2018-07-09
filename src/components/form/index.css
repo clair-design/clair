@@ -1,7 +1,7 @@
 /**
 * c-form
 */
-@import url('../../css/variables.css');
+@import url('../../styles/variables.css');
 
 .c-form {
   font-size: var(--form-font-md);

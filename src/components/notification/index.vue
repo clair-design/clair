@@ -33,7 +33,7 @@ transition(
 
 <script>
 import VueTypes from 'vue-types'
-import zIndex from '../../js/utils/zIndexManager'
+import zIndex from '../../scripts/utils/zIndexManager'
 
 import './index.css'
 

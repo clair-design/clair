@@ -1,7 +1,7 @@
 /**
 * c-breadcrumb
 */
-@import url('../../css/variables.css');
+@import url('../../styles/variables.css');
 
 .c-breadcrumb {
   color: color(var(--gray) l(70%));

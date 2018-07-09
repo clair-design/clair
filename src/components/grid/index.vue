@@ -4,8 +4,8 @@
 </template>
 
 <script>
-import { multiply } from './util.js'
-import { breakpoints } from '../../js/config'
+import { multiply } from './util'
+import { breakpoints } from '../../scripts/config'
 import './index.css'
 
 const breakpointProps = breakpoints

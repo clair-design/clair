@@ -22,74 +22,74 @@
 </template>
 
 <script>
-  // import css
-  import './index.css'
+// import css
+import './index.css'
 
-  import {
-    toVueProps,
-    toClassNames
-  } from '../../js/utils'
+import {
+  toVueProps,
+  toClassNames
+} from '../../scripts/utils'
 
-  const name = 'c-button'
-  const block = `c-button`
-  const modifiers = [
-    'primary',
-    'success',
-    'warning',
-    'danger',
-    'round',
-    'outline',
-    'flat',
-    'loading'
-  ]
-  const props = Object.assign(
-    {
-      href: String,
-      size: String,
-      icon: String,
-      type: {
-        type: String,
-        default: 'button'
-      },
-      autofocus: Boolean
+const name = 'c-button'
+const block = `c-button`
+const modifiers = [
+  'primary',
+  'success',
+  'warning',
+  'danger',
+  'round',
+  'outline',
+  'flat',
+  'loading'
+]
+const props = Object.assign(
+  {
+    href: String,
+    size: String,
+    icon: String,
+    type: {
+      type: String,
+      default: 'button'
     },
-    toVueProps(modifiers)
-  )
-  const classNames = toClassNames(block, modifiers)
+    autofocus: Boolean
+  },
+  toVueProps(modifiers)
+)
+const classNames = toClassNames(block, modifiers)
 
-  export default {
-    name,
-    props,
-    inject: {
-      $buttonGroup: { default: null },
-      $form: { default: null }
+export default {
+  name,
+  props,
+  inject: {
+    $buttonGroup: { default: null },
+    $form: { default: null }
+  },
+  computed: {
+    iconName () {
+      return this.loading ? 'loader' : this.icon
     },
-    computed: {
-      iconName () {
-        return this.loading ? 'loader' : this.icon
-      },
-      actualSize () {
-        const { size, $buttonGroup, $form } = this
-        return size ||
-          ($buttonGroup && $buttonGroup.size) ||
-          ($form && $form.size)
-      },
-      classNames () {
-        const classList = classNames.call(this)
-        const size = this.actualSize
-        if (size) classList.push(`c-button--${size}`)
-        return classList
-      }
+    actualSize () {
+      const { size, $buttonGroup, $form } = this
+      return size ||
+        ($buttonGroup && $buttonGroup.size) ||
+        ($form && $form.size)
     },
-    methods: {
-      onClick (e) {
-        this.$emit('click', e)
-      }
-    },
-    mounted () {
-      if (this.autofocus) {
-        this.$el.focus()
-      }
+    classNames () {
+      const classList = classNames.call(this)
+      const size = this.actualSize
+      if (size) classList.push(`c-button--${size}`)
+      return classList
+    }
+  },
+  methods: {
+    onClick (e) {
+      this.$emit('click', e)
+    }
+  },
+  mounted () {
+    if (this.autofocus) {
+      this.$el.focus()
     }
   }
+}
 </script>

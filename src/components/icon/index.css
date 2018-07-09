@@ -1,7 +1,7 @@
 /**
  * c-icon
  */
-@import url('../../css/variables.css');
+@import url('../../styles/variables.css');
 
 i.c-icon {
   display: inline-block;

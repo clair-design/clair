@@ -1,7 +1,7 @@
 /**
  * c-button-group
  */
-@import url('../../css/variables.css');
+@import url('../../styles/variables.css');
 
 .c-button-group {
   display: inline-block;

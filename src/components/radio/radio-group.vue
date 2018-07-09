@@ -4,6 +4,7 @@
 )
   c-radio(
     v-for="(option, index) in options"
+    :key="index"
     :name="name"
     :value="index"
     :button="button"
@@ -15,9 +16,9 @@
 
 <script>
 import './index.css'
-import { randomString } from '../../js/utils'
-import validatable from '../../js/mixins/validatable'
-import resettable from '../../js/mixins/resettable'
+import { randomString } from '../../scripts/utils'
+import validatable from '../../scripts/mixins/validatable'
+import resettable from '../../scripts/mixins/resettable'
 
 export default {
   name: 'c-radio-group',

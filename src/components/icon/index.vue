@@ -21,16 +21,8 @@
 </template>
 
 <script>
+import featherIcons from 'feather-vue'
 import './index.css'
-// eslint-disable-next-line
-import featherIcons from 'feather-icons/dist/icons/*.svg'
-
-const featherComponents = featherIcons.reduce((acc, item) => {
-  const { name } = item
-  acc[`feather-${name}`] = item
-  item.name = `feather-${name}`
-  return acc
-}, {})
 
 export default {
   name: 'c-icon',
@@ -59,7 +51,7 @@ export default {
     }
   },
 
-  components: featherComponents,
+  components: featherIcons,
 
   data () {
     return {}

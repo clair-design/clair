@@ -20,7 +20,8 @@
     ) {{ selectedOptions[0].label }}
     .c-chip(
       v-if="multiple"
-      v-for="option in selectedOptions"
+      v-for="(option, index) in selectedOptions"
+      :key="index"
       :class="{ 'is-disabled': option.disabled }"
     )
       slot(name="selection" :option="option")
@@ -57,6 +58,7 @@
         c-option(
           ref="$options"
           v-for="(option, index) in filteredOptions"
+          :key="index"
           :label="option.label"
           :isActive="activeOption == option"
           :isSelected="selectedOptions.indexOf(option) > -1"
@@ -78,10 +80,10 @@
 import throttle from 'lodash/throttle'
 
 import './index.css'
-import zIndex from '../../js/utils/zIndexManager'
-import { getPosition, POSITION } from './position.js'
-import resettable from '../../js/mixins/resettable'
-import validatable from '../../js/mixins/validatable'
+import zIndex from '../../scripts/utils/zIndexManager'
+import { getPosition, POSITION } from './position'
+import resettable from '../../scripts/mixins/resettable'
+import validatable from '../../scripts/mixins/validatable'
 
 // ensure each option has label and value
 const normalizeOptions = options => {

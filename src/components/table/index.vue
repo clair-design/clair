@@ -110,7 +110,7 @@ div(:class="className")
 <script>
 /* global window */
 import './index.css'
-import { getScrollBarSize } from '../../js/utils'
+import { getScrollBarSize } from '../../scripts/utils'
 
 export default {
   name: 'c-table',
