@@ -1,16 +1,13 @@
-import '../css/main.css'
-// eslint-disable-next-line
-import Components from '../components/**/!(_)*.vue'
+import './polyfills'
 
 // plugins
+import Components from './components'
 import Responsive from './plugins/responsive.js'
-import PortalComponent from './plugins/portal.js'
+import Portal from './plugins/portal.js'
 import Modal from './plugins/modal.js'
 import Notification from './plugins/notification.js'
 
-import './polyfills'
-
-const Clair = {
+export const Clair = {
   install (Vue) {
     // inject $clair to Vue prototype
     if (!('$clair' in Vue.prototype)) {
@@ -29,21 +26,11 @@ const Clair = {
       Vue.prototype.noop = () => {}
     }
 
-    // register components
-    Components.forEach(comp => {
-      comp.name && Vue.component(comp.name, comp)
-    })
-
+    Vue.use(Components)
     // install plugins
-    Vue.use(PortalComponent)
+    Vue.use(Portal)
     Vue.use(Modal)
     Vue.use(Responsive)
     Vue.use(Notification)
   }
-}
-
-export default Clair
-
-if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(Clair)
 }

@@ -33,7 +33,7 @@ function checkSingleRule (ruleName, param, value, msg) {
   const validFunction = typeof param === 'function' ? param : ruleset[ruleName]
   const result = validFunction(value, param)
   if (!result.valid && msg) { // 验证不通过且有自定义消息
-    if (typeof msg == 'string') { // 自定义消息为字符串时直接使用
+    if (typeof msg === 'string') { // 自定义消息为字符串时直接使用
       result.msg = msg
     } else if (msg[ruleName]) { // 自定义消息为对象时，取出该类错误的消息
       result.msg = msg[ruleName]
