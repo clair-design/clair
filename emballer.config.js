@@ -8,10 +8,6 @@ const moduleName = 'Clair'
 const toAbs = path => resolve(__dirname, path)
 const destFile = filename => resolve(__dirname, './dist', filename)
 
-// TODO
-// use postcss.config.js by default
-const postCSSPlugins = [require('./postcss.config.js').plugins]
-
 const defaults = {
   input: toAbs('src/entry.js'),
   alias: {
@@ -24,10 +20,11 @@ const defaults = {
 const options = [
   {
     postcss: {
+      // postcss.config.js will be used by default
+      // since emballer@2.0.0
       extract: destFile('clair.css'),
       minify: false,
-      sourceMap: true,
-      plugins: postCSSPlugins
+      sourceMap: true
     },
     uglify: false,
     output: [
@@ -46,8 +43,7 @@ const options = [
     postcss: {
       extract: destFile('clair.min.css'),
       minify: true,
-      sourceMap: true,
-      plugins: postCSSPlugins
+      sourceMap: true
     },
     uglify: true,
     output: [
@@ -60,6 +56,9 @@ const options = [
   },
   {
     uglify: false,
+    // explicitly set `postcss` to false
+    // to disable using postcss
+    postcss: false,
     output: {
       format: 'es',
       file: destFile('clair.esm.js')
