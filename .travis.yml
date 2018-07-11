@@ -1,0 +1,29 @@
+language: node_js
+node_js:
+  - "8"
+
+# S: Build Lifecycle
+install:
+  - npm install
+
+before_script:
+  - echo "start"
+
+script:
+  - npm run lint
+  - npm run build
+
+after_script:
+  - echo "done"
+# E: Build LifeCycle
+
+branches:
+  only:
+    - master
+
+env:
+ global:
+
+cache:
+  directories:
+    - node_modules
