@@ -11,13 +11,11 @@
     "*.vue": "vue"
   },
   "files.exclude": {
-    "**/.git": false,
+    "**/.git": true,
     "**/.svn": true,
     "**/.hg": true,
     "**/CVS": true,
-    "**/.DS_Store": true,
-    ".nuxt": true,
-    "node_modules": true
+    "**/.DS_Store": true
   },
   "eslint.validate": [
     "javascript",
