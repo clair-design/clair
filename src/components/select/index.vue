@@ -86,7 +86,7 @@ import resettable from '../../scripts/mixins/resettable'
 import validatable from '../../scripts/mixins/validatable'
 
 // ensure each option has label and value
-const normalizeOptions = options => {
+const normalizeOptions = (options = []) => {
   return options.map(option => {
     if (typeof option === 'string') return { label: option, value: option }
     return option
