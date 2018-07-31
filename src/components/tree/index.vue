@@ -53,7 +53,6 @@ export default {
     defaultCheckedKeys: {
       immediate: true,
       handler (keys) {
-        console.log('checked keys', keys)
         this.checkedKeys = keys.reduce((obj, key) => {
           obj[key] = true
           return obj
