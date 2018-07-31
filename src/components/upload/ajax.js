@@ -1,4 +1,4 @@
-function getError (action, option, xhr) {
+function getError (action, xhr) {
   let msg
   if (xhr.response) {
     msg = `${xhr.response.error || xhr.response}`
@@ -9,9 +9,9 @@ function getError (action, option, xhr) {
   }
 
   const err = new Error(msg)
-  err.status = xhr.status
-  err.method = 'post'
-  err.url = action
+  // err.status = xhr.status
+  // err.method = 'post'
+  // err.url = action
   return err
 }
 
@@ -61,7 +61,7 @@ export default function upload (option) {
 
   xhr.onload = function onload () {
     if (xhr.status < 200 || xhr.status >= 300) {
-      return option.onError(getError(action, option, xhr))
+      return option.onError(getError(action, xhr))
     }
 
     option.onSuccess(getBody(xhr))

@@ -125,6 +125,7 @@ export default {
           this.loading = false
         }
       }
+      console.log(options)
       const req = ajax(options)
       this.reqs[fid] = req
     },
