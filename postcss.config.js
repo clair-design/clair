@@ -2,7 +2,7 @@
 
 module.exports = {
   plugins: {
-    'postcss-import': {},
+    'postcss-easy-import': {},
     'postcss-for': {},
     'postcss-each': {},
     'postcss-cssnext': {

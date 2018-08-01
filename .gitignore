@@ -199,3 +199,4 @@ yarn.lock
 ## Ignore .idea document in webstorm IDE
 .idea
 publish.sh
+.cache

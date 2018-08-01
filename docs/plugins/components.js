@@ -1,6 +1,7 @@
 import Header from './components/header.vue'
 import Footer from './components/footer.vue'
 import VueDemoTool from './components/vue-demo-tool.vue'
+import '../styles/main.css'
 
 export default {
   install (Vue) {
