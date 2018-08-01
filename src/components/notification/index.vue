@@ -32,7 +32,7 @@ transition(
 </template>
 
 <script>
-import VueTypes from '../../scripts/utils'
+import { VueTypes } from '../../scripts/utils'
 import zIndex from '../../scripts/utils/zIndexManager'
 
 import './index.css'

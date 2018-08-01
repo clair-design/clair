@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import VueTypes from '../../scripts/utils'
+import { VueTypes } from '../../scripts/utils'
 
 import './index.css'
 
