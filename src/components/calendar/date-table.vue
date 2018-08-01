@@ -233,6 +233,9 @@ export default {
       })
     },
     selectDay (item) {
+      if (this.isDateDisabled(item)) {
+        return;
+      }
       const canSelPrevMonthDay = item.class === 'lastmonth' &&
         !(this.prevMonth() === false)
       const canSelNextMonthDay = item.class === 'nextmonth' &&
