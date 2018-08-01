@@ -28,11 +28,10 @@
 </template>
 
 <script>
-import VueTypes from 'vue-types'
 import throttle from 'lodash/throttle'
 import ColorPicker from 'v-color'
 
-import { contains } from '../../scripts/utils/index'
+import { contains, VueTypes } from '../../scripts/utils'
 import zIndex from '../../scripts/utils/zIndexManager'
 import resettable from '../../scripts/mixins/resettable'
 

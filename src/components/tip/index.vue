@@ -29,9 +29,8 @@
 </template>
 
 <script>
-import VueTypes from 'vue-types'
 import throttle from 'lodash/throttle'
-import { contains } from '../../scripts/utils/index'
+import { contains, VueTypes } from '../../scripts/utils'
 import zIndex from '../../scripts/utils/zIndexManager'
 
 import './index.css'

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import VueTypes from 'vue-types'
+import VueTypes from '../../scripts/utils'
 import TreeNode from './tree-node.vue'
 
 import './index.css'
