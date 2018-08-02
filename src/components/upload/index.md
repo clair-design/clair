@@ -11,19 +11,18 @@ ajax文件上传
 ## 单文件上传
 默认只需填写action便可以上传文件
 
-如若需要处理成功或者失败那么请定义on-success和on-error
+如若需要处理成功或者失败那么请绑定@success和@error事件
 
 ```html
 <c-upload
   action="https://jsonplaceholder.typicode.com/posts/"
-  :on-success="onSuccess"
-  :on-error="onError"
+  @success="onSuccess"
+  @error="onError"
 />
 <script>
   export default {
     methods: {
       onSuccess (res, rawFile) {
-        console.log('')
         this.$notify({
           title: '上传成功！',
           message: '上传成功后的回调函数',
@@ -48,8 +47,8 @@ ajax文件上传
 ```html
 <c-upload
   action="https://jsonplaceholder.typicode.com/posts/"
-  :on-success="onSuccess"
-  :on-error="onError"
+  @success="onSuccess"
+  @error="onError"
   multiple
 >
 </c-upload>
@@ -82,11 +81,11 @@ ajax文件上传
 ```html
 <c-upload
   action="https://jsonplaceholder.typicode.com/posts/"
-  :on-success="onSuccess"
-  :on-error="onError"
+  @success="onSuccess"
+  @error="onError"
   multiple
   :limit="3"
-  :on-exceed="onExceed"
+  @exceed="onExceed"
 >
 </c-upload>
 <script>
@@ -126,11 +125,11 @@ ajax文件上传
 ```html
 <c-upload
   action="https://jsonplaceholder.typicode.com/posts/"
-  :on-success="onSuccess"
-  :on-error="onError"
+  @success="onSuccess"
+  @error="onError"
   multiple
   :limit="3"
-  :on-exceed="onExceed"
+  @exceed="onExceed"
 >
   <c-button slot="btn" primary outline>自定义的上传按钮</c-button>
 </c-upload>
@@ -165,15 +164,15 @@ ajax文件上传
 </script>
 ```
 
-## 上传文件大小的限制 与 钩子函数
-在上传文件之前会出发before-upload钩子函数，参数会拿到文件属性，可以在这里进行上传文件大小的限制，返回false则中止上传
+## 上传文件大小的限制
+上传文件之前会执行validator函数进行一些校验，参数会拿到对应的文件对象，可以在这里进行上传文件大小的限制，若函数返回 false，则代表校验失败，组件会停止该次上传操作
 
 ```html
 <c-upload
   action="https://jsonplaceholder.typicode.com/posts/"
-  :on-success="onSuccess"
-  :on-error="onError"
-  :before-upload="beforeUpload"
+  @success="onSuccess"
+  @error="onError"
+  :validator="validator"
 >
 </c-upload>
 <script>
@@ -194,7 +193,7 @@ ajax文件上传
           type: 'error'
         })
       },
-      beforeUpload (file) {
+      validator (file) {
         const MB = file.size/1000/1000
         if (MB > 40) {
           this.$notify({
@@ -218,8 +217,8 @@ ajax文件上传
 <c-upload
   ref="upload"
   action="https://jsonplaceholder.typicode.com/posts/"
-  :on-success="onSuccess"
-  :on-error="onError"
+  @success="onSuccess"
+  @error="onError"
   :auto-upload="false"
 >
 </c-upload>
@@ -257,8 +256,8 @@ ajax文件上传
 ```html
 <c-upload
   action="https://jsonplaceholder.typicode.com/posts/"
-  :on-success="onSuccess"
-  :on-error="onError"
+  @success="onSuccess"
+  @error="onError"
   :data="{token:'d6q8wy82'}"
 >
 </c-upload>
@@ -296,13 +295,13 @@ ajax文件上传
 | name | String | 'file' | 文件字段名称 |
 | headers | Object | { } | 自定义请求头 |
 | data | Object | { } | 上传时附带的额外参数 |
+| validator | Function | - | 上传文件之前会执行validator函数进行一些校验，参数会拿到对应的文件对象，若函数返回 false，则代表校验失败，组件会停止该次上传操作 参数为(file: Object) |
 
-### 方法
+### 事件
 
 | 参数 | 类型 | 默认值| 说明 |
 |-----|------|-------|-----|
-| on-exceed | Function | function (files: Array, fileList: Array) | 超过最大限制时的回调函数 |
-| on-progress | Function | function (e: Object, file: Object) | 上传过程回调函数 |
-| on-success | Function | function (res: Object, file: Object) | 上传成功后回调函数 |
-| on-error | Function | function (err: Object, file: Object) | 上传失败后的回调函数 |
-| before-upload | Function | function (file: Object) | 上传文件之前的钩子，参数为上传的文件，若返回 false，则停止上传 |
+| exceed | Function | - | 超过最大上传文件限制事件 参数为(files: Array, fileList: Array) |
+| progress | Function | - | 上传过程事件 参数为(e: Object, file: Object)|
+| success | Function | - | 上传成功事件 参数为(res: Object, file: Object)|
+| error | Function | - | 上传失败后事件 参数为(err: Object, file: Object)|

@@ -3,10 +3,10 @@
 */
 @import url('../../styles/variables.css');
 
-.hidden {
+.c-upload-input--hidden {
   display: none;
 }
 
-.inline-block {
+.c-upload-span--inline {
   display: inline-block;
 }

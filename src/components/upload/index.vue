@@ -1,6 +1,6 @@
 <template lang="pug">
 .c-upload
-  span.inline-block(
+  span.c-upload-span--inline(
     @click="startUpload"
   )
     slot(
@@ -12,7 +12,7 @@
         icon="upload"
         :loading="loading"
       ) 上传文件
-  input.hidden(
+  input.c-upload-input--hidden(
     ref="input"
     name="file"
     type="file"
@@ -24,26 +24,49 @@
 <script>
 import './index.css'
 import ajax from './ajax'
-import VueTypes from 'vue-types'
-
-function noop () {}
 
 export default {
   name: 'c-upload',
   props: {
     limit: Number,
-    fileList: VueTypes.array.def([]),
-    multiple: VueTypes.bool.def(false),
-    autoUpload: VueTypes.bool.def(true),
-    onExceed: VueTypes.func.def(noop),
-    beforeUpload: Function,
+    fileList: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
+    multiple: {
+      type: Boolean,
+      default () {
+        return false
+      }
+    },
+    autoUpload: {
+      type: Boolean,
+      default () {
+        return true
+      }
+    },
+    validator: Function,
     action: String,
-    name: VueTypes.string.def('file'),
-    headers: VueTypes.object.def({}),
-    onProgress: VueTypes.func.def(noop),
-    onSuccess: VueTypes.func.def(noop),
-    onError: VueTypes.func.def(noop),
-    data: VueTypes.object.def({})
+    name: {
+      type: String,
+      default () {
+        return 'file'
+      }
+    },
+    headers: {
+      type: Object,
+      default () {
+        return {}
+      }
+    },
+    data: {
+      type: Object,
+      default () {
+        return {}
+      }
+    }
   },
 
   data () {
@@ -71,7 +94,7 @@ export default {
 
     uploadFiles (files) {
       if (this.limit && this.fileList.length + files.length > this.limit) {
-        this.onExceed(files, this.fileList)
+        this.$emit('exceed', files, this.fileList)
         return
       }
 
@@ -95,9 +118,9 @@ export default {
     },
 
     upload (rawFile) {
-      if (!this.beforeUpload) return this.post(rawFile)
-      const before = this.beforeUpload(rawFile)
-      if (before === false) return
+      if (!this.validator) return this.post(rawFile)
+      const validator = this.validator(rawFile)
+      if (validator === false) return
       this.post(rawFile)
     },
 
@@ -112,15 +135,15 @@ export default {
         action: this.action,
         onProgress: (e) => {
           if (!this.loading) this.loading = true
-          this.onProgress(e, rawFile)
+          this.$emit('progress', e, rawFile)
         },
         onSuccess: (res) => {
-          this.onSuccess(res, rawFile)
+          this.$emit('success', res, rawFile)
           delete this.reqs[fid]
           this.loading = false
         },
         onError: (err) => {
-          this.onError(err, rawFile)
+          this.$emit('error', err, rawFile)
           delete this.reqs[fid]
           this.loading = false
         }
