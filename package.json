@@ -73,6 +73,7 @@
     "postcss-each": "^0.10.0",
     "postcss-easy-import": "^3.0.0",
     "postcss-for": "^2.1.1",
+    "postcss-reduce-idents": "^4.0.0",
     "pug": "^2.0.0-rc.4",
     "rimraf": "^2.6.2",
     "rollup-plugin-require-context": "^0.0.2",
