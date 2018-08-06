@@ -1,6 +1,7 @@
 language: node_js
 node_js:
-  - "10"
+  - 9
+  - 10
 
 # S: Build Lifecycle
 install:
@@ -26,4 +27,4 @@ env:
 
 cache:
   directories:
-    - node_modules
+    # - node_modules
