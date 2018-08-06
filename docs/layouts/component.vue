@@ -75,7 +75,8 @@ export default {
             { title: '取色器', name: 'color-picker' },
             { title: '表单', name: 'form' },
             { title: '日期选择', name: 'datepicker' },
-            { title: '级联选择', name: 'cascader' }
+            { title: '级联选择', name: 'cascader' },
+            { title: '文件上传', name: 'upload' }
           ]
         },
         {
