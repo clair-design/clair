@@ -2,11 +2,3 @@
 * c-upload
 */
 @import url('../../styles/variables.css');
-
-.c-upload-input--hidden {
-  display: none;
-}
-
-.c-upload-span--inline {
-  display: inline-block;
-}

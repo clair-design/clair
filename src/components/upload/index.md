@@ -76,7 +76,7 @@ ajax文件上传
 ```
 
 ## 限制最大上传文件数量
-需要指定limit
+当指定了multiple属性后可以指定每次可同时上传的最大文件数量limit
 
 ```html
 <c-upload
@@ -284,11 +284,80 @@ ajax文件上传
 </script>
 ```
 
+## 展示上传文件列表 slot="file-list"
+
+```html
+<c-upload
+  action="https://jsonplaceholder.typicode.com/posts/"
+  @success="onSuccess"
+  @error="onError"
+>
+  <span slot="file-list" slot-scope="props">
+    <span> {{props.filenames[0]}}</span>
+  </span>
+</c-upload>
+<script>
+  export default {
+    methods: {
+      onSuccess (res, rawFile) {
+        console.log('')
+        this.$notify({
+          title: '上传成功！',
+          message: '上传成功后的回调函数',
+          type: 'success'
+        })
+      },
+      onError (err, rawFile) {
+        this.$notify({
+          title: '上传失败！',
+          message: '上传失败后的回调函数',
+          type: 'error'
+        })
+      }
+    }
+  }
+</script>
+```
+
+## 限制上传文件的格式需要指定accept属性
+
+```html
+<c-upload
+  action="https://jsonplaceholder.typicode.com/posts/"
+  @success="onSuccess"
+  @error="onError"
+  accept="text/javascript, application/javascript"
+>
+</c-upload>
+<script>
+  export default {
+    methods: {
+      onSuccess (res, rawFile) {
+        console.log('')
+        this.$notify({
+          title: '上传成功！',
+          message: '上传成功后的回调函数',
+          type: 'success'
+        })
+      },
+      onError (err, rawFile) {
+        this.$notify({
+          title: '上传失败！',
+          message: '上传失败后的回调函数',
+          type: 'error'
+        })
+      }
+    }
+  }
+</script>
+```
+
 ### 属性
 
-| 属性 | 类型 | 默认值 | 说明 |
+| 名称 | 类型 | 默认值 | 说明 |
 |-----|------|-------|-----|
 | action | String | - | 必选参数，上传的地址 |
+| accept | String | - | 限制上传的文件类型 |
 | limit | Number | - | 最大上传文件数量 |
 | multiple | Boolean | false | 是否可以选中多个文件 |
 | auto-upload | Boolean | true | 是否在选取文件后立即进行上传 |
@@ -299,9 +368,17 @@ ajax文件上传
 
 ### 事件
 
-| 参数 | 类型 | 默认值| 说明 |
+| 名称 | 类型 | 默认值| 说明 |
 |-----|------|-------|-----|
 | exceed | Function | - | 超过最大上传文件限制事件 参数为(files: Array, fileList: Array) |
 | progress | Function | - | 上传过程事件 参数为(e: Object, file: Object)|
 | success | Function | - | 上传成功事件 参数为(res: Object, file: Object)|
 | error | Function | - | 上传失败后事件 参数为(err: Object, file: Object)|
+
+### slots
+
+| 名称 | 是否 Scoped | 说明 |
+|-----|------|-------|-----|
+| file-list | 是 | 自定义上传文件列表的展示，props.filenames为上传列表的文件名数组 |
+| btn | 否 | 自定义上传按钮 |
+

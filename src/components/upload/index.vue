@@ -1,21 +1,22 @@
 <template lang="pug">
 .c-upload
-  span.c-upload-span--inline(
-    @click="startUpload"
+  label.is-inline-block(
+    @click="chooseFile"
   )
-    slot(
-      name="btn"
-    )
+    slot(name="btn")
       c-button(
         primary
         type="button"
         icon="upload"
         :loading="loading"
       ) 上传文件
-  input.c-upload-input--hidden(
+    slot(name="file-list" :filenames="filenames")
+
+  input.is-none(
     ref="input"
     name="file"
     type="file"
+    :accept="accept"
     @change="handleChange"
     :multiple="multiple"
   )
@@ -29,7 +30,7 @@ export default {
   name: 'c-upload',
   props: {
     limit: Number,
-    fileList: {
+    defaultFileList: {
       type: Array,
       default () {
         return []
@@ -49,6 +50,7 @@ export default {
     },
     validator: Function,
     action: String,
+    accept: String,
     name: {
       type: String,
       default () {
@@ -74,40 +76,43 @@ export default {
       loading: false,
       tmpIndex: 1,
       reqs: {},
-      files: []
+      files: [],
+      filenames: [],
+      remoteFilenames: []
     }
   },
 
   methods: {
-    startUpload () {
+    chooseFile () {
       if (this.loading) return
       this.$refs.input.value = null
       this.$refs.input.click()
     },
 
     handleChange (ev) {
-      const {files} = ev.target
+      const { files } = ev.target
 
       if (!files) return
       this.uploadFiles(files)
     },
 
     uploadFiles (files) {
-      if (this.limit && this.fileList.length + files.length > this.limit) {
-        this.$emit('exceed', files, this.fileList)
+      if (this.limit && this.defaultFileList.length + files.length > this.limit) {
+        this.$emit('exceed', files, this.defaultFileList)
         return
       }
 
-      let postFiles = Array.prototype.slice.call(files)
+      let postFiles = Array.from(files)
       if (postFiles.length === 0) return
       if (!this.multiple) { postFiles = postFiles.slice(0, 1) }
       this.files = postFiles
+      this.filenames = postFiles.map((file) => {
+        return file.name
+      })
+      console.log(postFiles)
 
       if (this.autoUpload === false) return
-      postFiles.forEach((rawFile) => {
-        this.addFid(rawFile)
-        this.upload(rawFile)
-      })
+      this.submit()
     },
 
     submit () {
@@ -119,9 +124,8 @@ export default {
 
     upload (rawFile) {
       if (!this.validator) return this.post(rawFile)
-      const validator = this.validator(rawFile)
-      if (validator === false) return
-      this.post(rawFile)
+      const isValid = this.validator(rawFile)
+      if (isValid) this.post(rawFile)
     },
 
     post (rawFile) {
