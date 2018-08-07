@@ -109,7 +109,6 @@ export default {
       this.filenames = postFiles.map((file) => {
         return file.name
       })
-      console.log(postFiles)
 
       if (this.autoUpload === false) return
       this.submit()
