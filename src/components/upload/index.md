@@ -50,8 +50,7 @@ ajax文件上传
   @success="onSuccess"
   @error="onError"
   multiple
->
-</c-upload>
+/>
 <script>
   export default {
     methods: {
@@ -86,8 +85,85 @@ ajax文件上传
   multiple
   :limit="3"
   @exceed="onExceed"
->
-</c-upload>
+/>
+<script>
+  export default {
+    methods: {
+      onSuccess (res, rawFile) {
+        console.log('')
+        this.$notify({
+          title: '上传成功！',
+          message: '上传成功后的回调函数',
+          type: 'success'
+        })
+      },
+      onError (err, rawFile) {
+        this.$notify({
+          title: '上传失败！',
+          message: '上传失败后的回调函数',
+          type: 'error'
+        })
+      },
+      onExceed (files, fileList) {
+        console.log('onExceed')
+        this.$notify({
+          title: '上传失败！',
+          message: `超过限制`,
+          type: 'error'
+        })
+      },
+    }
+  }
+</script>
+```
+
+## 修改上传按钮主题
+可以自行修改按钮主题，修改按钮主题请参考button组件
+
+```html
+<div class="has-margin-sm">
+  <c-upload
+    action="https://jsonplaceholder.typicode.com/posts/"
+    @success="onSuccess"
+    @error="onError"
+  />
+</div>
+<div class="has-margin-sm">
+  <c-upload
+    primary
+    round
+    action="https://jsonplaceholder.typicode.com/posts/"
+    @success="onSuccess"
+    @error="onError"
+  />
+</div>
+<div class="has-margin-sm">
+  <c-upload
+    success
+    outline
+    action="https://jsonplaceholder.typicode.com/posts/"
+    @success="onSuccess"
+    @error="onError"
+  />
+</div>
+<div class="has-margin-sm">
+  <c-upload
+    warning
+    outline round
+    action="https://jsonplaceholder.typicode.com/posts/"
+    @success="onSuccess"
+    @error="onError"
+  />
+</div>
+<div class="has-margin-sm">
+  <c-upload
+    danger
+    flat
+    action="https://jsonplaceholder.typicode.com/posts/"
+    @success="onSuccess"
+    @error="onError"
+  />
+</div>
 <script>
   export default {
     methods: {
@@ -120,7 +196,7 @@ ajax文件上传
 ```
 
 ## 自定义上传按钮
-可以使用slot来自定义上传按钮
+可以使用slot="btn"来自定义上传按钮
 
 ```html
 <c-upload
@@ -173,8 +249,7 @@ ajax文件上传
   @success="onSuccess"
   @error="onError"
   :validator="validator"
->
-</c-upload>
+/>
 <script>
   export default {
     methods: {
@@ -220,9 +295,7 @@ ajax文件上传
   @success="onSuccess"
   @error="onError"
   :auto-upload="false"
->
-</c-upload>
-<br>
+/>
 <c-button primary @click="submitUpload">点击上传</c-button>
 <script>
   export default {
@@ -259,8 +332,7 @@ ajax文件上传
   @success="onSuccess"
   @error="onError"
   :data="{token:'d6q8wy82'}"
->
-</c-upload>
+/>
 <script>
   export default {
     methods: {
@@ -327,8 +399,7 @@ ajax文件上传
   @success="onSuccess"
   @error="onError"
   accept="text/javascript, application/javascript"
->
-</c-upload>
+/>
 <script>
   export default {
     methods: {
