@@ -56,7 +56,7 @@ function extendVue (Vue) {
 
   const messageTypes = ['success', 'error', 'info', 'warning']
   messageTypes.forEach(type => {
-    prototype[`$${type}`] = ({ msg, title }) => {
+    prototype[`$${type}`] = function ({ msg, title }) {
       return this.$message({ msg, title, type })
     }
   })
