@@ -1,25 +1,9 @@
-<template lang="pug">
-c-modal(
-  width="400px",
-  :title="title",
-  :visible="visible",
-  @close="onCancel",
-  @after-leave="$emit('destroy')"
-)
-  .c-modal-message
-    c-icon(type="feather", :name="icon", :class="type")
-    div {{msg}}
-  div(slot="footer")
-    c-button(outline, @click="onCancel") 取消
-    c-button(primary, @click="onConfirm" autofocus) 确认
-</template>
-
 <script>
 export default {
   props: {
     title: String,
     msg: {
-      type: String,
+      type: [String, Function],
       require: true
     },
     type: {
@@ -53,7 +37,50 @@ export default {
     onConfirm () {
       this.visible = false
       this.$emit('confirm')
+    },
+    destroyVM () {
+      this.$emit('destroy')
     }
+  },
+  render (h) {
+    const { onCancel, onConfirm, destroyVM } = this
+    const icon = h('c-icon', {
+      attrs: {
+        name: this.icon,
+        type: 'feather'
+      },
+      class: this.type
+    })
+    const cancelBtn = h('c-button', {
+      on: { click: onCancel },
+      attrs: { outline: true }
+    }, '取消')
+    const confirmBtn = h('c-button', {
+      on: { click: onConfirm },
+      attrs: { primary: true, autofocus: true }
+    }, '确定')
+
+    const { title, msg, visible } = this
+    const attrs = { title, visible, width: '400px' }
+    const message = typeof msg === 'function' ? msg(h) : msg
+    const handlers = {
+      close: onCancel,
+      'after-leave': destroyVM
+    }
+
+    return h('c-modal',
+      {
+        attrs,
+        on: handlers
+      },
+      [
+        h('div', { slot: 'footer' }, [cancelBtn, confirmBtn]),
+        h('div', { staticClass: 'c-modal-message' }, [
+          icon,
+          h('div', null, [message])
+        ])
+      ]
+    )
   }
 }
 </script>

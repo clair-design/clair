@@ -46,6 +46,9 @@ function extendVue (Vue) {
 
   prototype.$alert = function (data) {
     // data: { msg, title }
+    if (typeof data === 'string') {
+      data = { title: '提示', msg: data }
+    }
     return createModal(data, CModalAlert)
   }
 
@@ -56,8 +59,12 @@ function extendVue (Vue) {
 
   const messageTypes = ['success', 'error', 'info', 'warning']
   messageTypes.forEach(type => {
-    prototype[`$${type}`] = function ({ msg, title }) {
-      return this.$message({ msg, title, type })
+    prototype[`$${type}`] = function (data) {
+      if (typeof data === 'string') {
+        data = { title: '提示', msg: data }
+      }
+      data.type = type
+      return this.$message(data)
     }
   })
 }
