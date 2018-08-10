@@ -66,7 +66,7 @@ export default {
     validate () {
       this.validity.dirty = true
       const { $formItem } = this
-      const required = $formItem && $formItem.required
+      const required = $formItem && !this.$parent.isValidatable && $formItem.required
       const rules = Object.assign({ required }, this.rules)
       if (!rules.msg) rules.msg = {}
       if (typeof rules.msg === 'object' && !rules.msg.required) {
