@@ -20,6 +20,16 @@
     margin: 0;
     width: 100%;
   }
+
+  &:hover .c-datepicker__hovericon + .c-datepicker__icon {
+    z-index: -1;
+    opacity: 0;
+  }
+
+  &:hover .c-datepicker__hovericon {
+    z-index: 2;
+    opacity: 1;
+  }
 }
 
 .c-datepicker__icon {
@@ -29,6 +39,11 @@
   font-size: 0.85em;
   transform: translateY(-50%);
   color: color(var(--text-color) l(65%));
+}
+
+.c-datepicker__hovericon {
+  z-index: -1;
+  opacity: 0;
 }
 
 .c-datepicker__panel .c-datepicker__range {

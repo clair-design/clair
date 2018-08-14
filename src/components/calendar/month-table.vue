@@ -1,13 +1,13 @@
 <template lang="pug">
   table.c-calendar__month-table
     tbody
-      tr(v-for="month in monthRows")
+      tr(v-for="monthRow in monthRows")
         td(
-          v-for="item in month"
+          v-for="item in monthRow"
           @click="selectMonth(item)"
         )
           a.month-cell(
-            :class="{'disabled': !isSelectedMonth(item)}"
+            :class="{'disabled': !isSelectedMonth(item), 'active':isSelectedMonth(item) && item === month}"
           ) {{mapMonth(item)}}
 </template>
 
@@ -18,6 +18,7 @@ import Mixin from './mixin.js'
 export default {
   name: 'c-monthtable',
   props: {
+    month: [Number, String],
     year: [Number, String],
     minDate: {
       type: String,
