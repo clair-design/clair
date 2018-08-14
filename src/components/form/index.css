@@ -9,10 +9,7 @@
   &.is-xs {
     font-size: var(--form-font-xs);
 
-    & .c-form-item__label {
-      margin-top: calc((var(--form-height-xs) - var(--form-font-xs)) / 2);
-    }
-
+    & .c-form-item__label,
     & .c-form-item__control {
       line-height: var(--form-height-xs);
     }
@@ -21,10 +18,7 @@
   &.is-sm {
     font-size: var(--form-font-sm);
 
-    & .c-form-item__label {
-      margin-top: calc((var(--form-height-sm) - var(--form-font-sm)) / 2);
-    }
-
+    & .c-form-item__label,
     & .c-form-item__control {
       line-height: var(--form-height-sm);
     }
@@ -33,10 +27,7 @@
   &.is-lg {
     font-size: var(--form-font-lg);
 
-    & .c-form-item__label {
-      margin-top: calc((var(--form-height-lg) - var(--form-font-lg)) / 2);
-    }
-
+    & .c-form-item__label,
     & .c-form-item__control {
       line-height: var(--form-height-lg);
     }
@@ -45,10 +36,7 @@
   &.is-xl {
     font-size: var(--form-font-xl);
 
-    & .c-form-item__label {
-      margin-top: calc((var(--form-height-xl) - var(--form-font-xl)) / 2);
-    }
-
+    & .c-form-item__label,
     & .c-form-item__control {
       line-height: var(--form-height-xl);
     }
@@ -58,16 +46,15 @@
 .c-form-item {
   margin-bottom: 0.5em;
   display: flex;
+  align-items: top;
 
   & .c-form-item__label {
     display: block;
     flex-shrink: 0;
     width: 4em;
     text-align: right;
-    margin-top: calc((var(--form-height-md) - var(--form-font-md)) / 2);
-    line-height: 1;
     margin-right: 0.5em;
-    vertical-align: top;
+    line-height: var(--form-height-md);
   }
 
   &.is-required .c-form-item__label::before {
@@ -79,10 +66,6 @@
   & .c-form-item__control {
     flex: 1 0 0%;
     line-height: var(--form-height-md);
-
-    & > * {
-      vertical-align: top;
-    }
   }
 
   & .c-form-item__error {
@@ -139,6 +122,5 @@
 .c-error-msg {
   color: var(--danger-color);
   margin-left: 0.2em;
-  vertical-align: middle;
   font-style: normal;
 }

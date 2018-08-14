@@ -191,14 +191,14 @@ export default {
 ## 自定义 label
 
 ```html
-<c-form label-width="1em">
+<c-form label-width="10em">
   <c-form-item>
     <c-icon name="globe" slot="label" />
     <c-input placeholder="公司地址" />
   </c-form-item>
   <c-form-item>
-    <c-icon name="smartphone" slot="label" />
-    <c-input placeholder="手机号码" />
+    <c-select :options="['手机', '座机']" width="shorter" slot="label" />
+    <c-input placeholder="号码" />
   </c-form-item>
 </c-form>
 ```
@@ -261,8 +261,8 @@ export default {
       ]"
     />
   </c-form-item>
-  <c-form-item label=" " required>
-    <c-checkbox label="包含移动端数据" v-model="hasMobile" />
+  <c-form-item label="移动端：" required>
+    <c-switch v-model="hasMobile" />
   </c-form-item>
   <c-form-item label="移动版本：" required v-if="hasMobile">
     <c-input v-model="version" :rules="rules.version" />
@@ -301,6 +301,9 @@ export default {
   <c-form-item label="每页条数：" required>
     <c-slider v-model="num" />
   </c-form-item>
+  <c-form-item label="种类：" required>
+    <c-cascader :options="options" />
+  </c-form-item>
   <c-form-item label=" ">
     <c-button type="submit" primary>生成报告</c-button>
     <c-button type="button" @click="onReset">重置表单</c-button>
@@ -320,6 +323,16 @@ export default {
       zone: '',
       num: 10,
       version: '',
+      options: [
+        {
+          label: '藻类',
+          children: [ { label: '绿藻' }, { label: '轮藻' } ]
+        },
+        {
+          label: '蕨类',
+          children: [ { label: '石松' }, { label: '蕨类植物门' } ]
+        }
+      ],
       rules: {
         version: {
           pattern: /^\d{2,6}$/,

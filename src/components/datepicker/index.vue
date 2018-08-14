@@ -2,7 +2,7 @@
 .c-datepicker(
   @click="open"
 )
-  c-icon(name="calendar").c-datepicker__icon
+  c-icon(name="calendar" :class="className").c-datepicker__icon
   c-input(
     v-if="type == 'daterange'"
     v-model="daterange"
@@ -84,6 +84,9 @@ export default {
   },
 
   computed: {
+    className () {
+      return this.size ? `is-size-${this.size}` : ''
+    },
     daterange () {
       if (this.type === 'date') return []
       const [start, end] = this.date

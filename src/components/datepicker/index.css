@@ -6,9 +6,7 @@
 .c-datepicker {
   display: inline-block;
   position: relative;
-  vertical-align: middle;
   border-radius: 0.2em;
-  overflow: hidden;
   width: 15em;
   cursor: pointer;
 
@@ -26,7 +24,6 @@
   position: absolute;
   right: 0.5em;
   top: 50%;
-  font-size: 0.85em;
   transform: translateY(-50%);
   color: color(var(--text-color) l(65%));
 }

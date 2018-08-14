@@ -11,7 +11,6 @@
   height: var(--form-height-md);
   padding: 0 11px;
   border: 1px solid transparent;
-  vertical-align: middle;
   line-height: 1.2;
   background: color(var(--button-default-color) l(var(--button-lightness-normal)));
   color: #fff;
@@ -52,10 +51,6 @@
   & .c-icon:only-child {
     margin-left: -3px;
     margin-right: -3px;
-  }
-
-  & > span {
-    vertical-align: middle;
   }
 
   & span:empty {

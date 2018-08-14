@@ -122,7 +122,6 @@
 
   & .day-cell:hover {
     background: color(var(--blue) l(85%));
-    color: #fff;
   }
 
   & .active .day-cell {
