@@ -113,6 +113,37 @@ layout: component
 </script>
 ```
 
+## 月份选择
+
+```html
+<template>
+  <c-datepicker
+    v-model="date"
+    :type="'month'"
+    :placeholder="'请输入或者选择月份'"
+    @change="dateChange"
+  ></c-datepicker>
+</template>
+
+<script>
+  export default {
+    data () {
+      return {
+        date: '2017-01',
+        disabled: true
+      }
+    },
+    methods: {
+      dateChange (date) {
+        this.date = date
+        console.log('month change', date)
+      }
+    }
+  }
+</script>
+
+```
+
 ## API
 
 > 注意：当type为daterange时，v-model需要传递起始时间和终止时间的数组

@@ -1,5 +1,5 @@
 <template lang="pug">
-c-portal(:aria-hidden="'' + !visible")
+c-portal(:aria-hidden="'' + !visible" v-if="!shouldDestroy")
   transition(
     appear,
     name="modal",
@@ -102,13 +102,18 @@ export default {
     title: String,
     top: [String, Number],
     width: [String, Number],
-    center: Boolean
+    center: Boolean,
+    destroyAfterClose: {
+      type: Boolean,
+      default: false
+    }
   },
 
   data () {
     return {
       uid: uid++,
-      zIndex: zIndex.next()
+      zIndex: zIndex.next(),
+      disappeared: false
     }
   },
 
@@ -127,6 +132,10 @@ export default {
         top: '50%',
         transform: 'translateY(-50%)'
       }
+    },
+    shouldDestroy () {
+      const { visible, disappeared, destroyAfterClose } = this
+      return destroyAfterClose && !visible && disappeared
     }
   },
 
@@ -188,12 +197,12 @@ export default {
 
     beforeEnter () {
       overflowController.start(this.uid)
+      this.disappeared = false
     },
 
     afterLeave () {
       overflowController.reset(this.uid)
-
-      // why?
+      this.disappeared = true
       this.$emit('after-leave')
     }
   },

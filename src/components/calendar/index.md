@@ -40,3 +40,29 @@ export default {
 }
 </script>
 ```
+
+## 月份
+
+通过`type`可以设置显示月份选择
+
+```html
+<c-calendar
+  :type="'month'"
+  :value="'2017-9'"
+  :maxDate="'2018-8-15'"
+  :minDate="'2017-8-15'"
+  @update="dateChange"
+  :pattern="'yyyy/MM'"
+>
+</c-calendar>
+
+<script>
+export default {
+  methods: {
+    dateChange (date) {
+      alert('您选择的日期是：' + date)
+    }
+  }
+}
+</script>
+```

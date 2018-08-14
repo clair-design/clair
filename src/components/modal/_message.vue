@@ -8,7 +8,8 @@ c-modal(
 )
   .c-modal-message
     c-icon(type="feather", :name="icon", :class="type")
-    div {{msg}}
+    div
+      slot(name="message")
   div(slot="footer")
     c-button(outline, @click="onCancel") 取消
     c-button(primary, @click="onConfirm" autofocus) 确认
@@ -19,7 +20,7 @@ export default {
   props: {
     title: String,
     msg: {
-      type: String,
+      type: [String, Function],
       require: true
     },
     type: {
@@ -53,6 +54,17 @@ export default {
     onConfirm () {
       this.visible = false
       this.$emit('confirm')
+    }
+  },
+  watch: {
+    msg: {
+      immediate: true,
+      handler () {
+        const { msg } = this
+        const h = this.$createElement.bind(this)
+        const message = typeof msg === 'function' ? msg(h) : h('span', null, msg)
+        this.$slots.message = message
+      }
     }
   }
 }

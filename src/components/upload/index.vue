@@ -1,17 +1,19 @@
 <template lang="pug">
-.c-upload
+.c-upload.is-inline-block
   label.is-inline-block(
-    @click="chooseFile"
+    @click.prevent="chooseFile"
   )
     slot(name="btn")
       c-button(
-        primary
+        v-bind='$attrs'
         type="button"
         icon="upload"
         :loading="loading"
       ) 上传文件
     slot(name="file-list" :filenames="filenames")
-
+      span.has-padding-left-sm(
+        v-for="(item, index) in filenames"
+      ) {{item}}
   input.is-none(
     ref="input"
     name="file"
@@ -109,7 +111,6 @@ export default {
       this.filenames = postFiles.map((file) => {
         return file.name
       })
-      console.log(postFiles)
 
       if (this.autoUpload === false) return
       this.submit()
