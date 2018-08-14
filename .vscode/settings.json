@@ -8,7 +8,8 @@
   "editor.wordWrapColumn": 150,
   "editor.renderWhitespace": "boundary",
   "files.associations": {
-    "*.vue": "vue"
+    "*.vue": "vue",
+    "*.css": "postcss"
   },
   "files.exclude": {
     "**/.git": true,
