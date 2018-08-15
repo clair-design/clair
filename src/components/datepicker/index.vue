@@ -141,7 +141,7 @@ export default {
 
   mounted () {
     if (typeof document === 'object') {
-      this.datepickerPanel = document.querySelector('.c-datepicker__panel')
+      this.datepickerPanel = this.$el.querySelector('.c-datepicker__panel')
       document.body.appendChild(this.datepickerPanel)
       this.resize()
       window.addEventListener('resize', this.resize, false)
@@ -149,7 +149,8 @@ export default {
   },
   methods: {
     open (e) {
-      const isHoverIcon = document.querySelector('.c-datepicker__hovericon').contains(e.target)
+      const hoverIcon = this.$el.querySelector('.c-datepicker__hovericon')
+      const isHoverIcon = hoverIcon && hoverIcon.contains(e.target)
       if (this.disabled || isHoverIcon) return
       this.isOpen = true
     },
