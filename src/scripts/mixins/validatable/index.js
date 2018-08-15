@@ -2,6 +2,7 @@
  * A Vue.js mixin to add validate functionality
  */
 import Validator from './validator.js'
+import { isPromise } from './util.js'
 
 export default {
 
@@ -20,7 +21,8 @@ export default {
         msg: '',
         dirty: false
       },
-      isValidatable: true
+      isValidatable: true,
+      asyncValidationId: 0
     }
   },
 
@@ -57,7 +59,7 @@ export default {
   watch: {
     value () {
       if (this.validity.dirty) {
-        Object.assign(this.validity, this.validate())
+        this.validate()
       }
     }
   },
@@ -66,7 +68,7 @@ export default {
     validate () {
       this.validity.dirty = true
       const { $formItem } = this
-      const required = $formItem && $formItem.required
+      const required = $formItem && !this.$parent.isValidatable && $formItem.required
       const rules = Object.assign({ required }, this.rules)
       if (!rules.msg) rules.msg = {}
       if (typeof rules.msg === 'object' && !rules.msg.required) {
@@ -74,10 +76,20 @@ export default {
         const action = this.$options.name === 'c-input' ? '填写' : '选择'
         rules.msg.required = `请${action}${label.replace(/[:：]/, '')}`
       }
-      return Object.assign(
-        this.validity,
-        Validator.validate(this.value, rules)
-      )
+      const result = Validator.validate(this.value, rules)
+      const setValidity = v => Object.assign(this.validity, v)
+      if (isPromise(result)) {
+        this.asyncValidationId++
+        (() => {
+          const id = this.asyncValidationId
+          result.then(v => {
+            if (this.asyncValidationId === id) setValidity(v)
+          })
+        })()
+      } else {
+        setValidity(result)
+      }
+      return result
     },
     resetValidity () {
       Object.assign(this.validity, {

@@ -242,7 +242,264 @@ export default {
 </script>
 ```
 
-## 表单验证和重置
+## 输入验证
+
+Clair 内置了输入验证的功能，可以对用户的输入实时进行校验，并给出错误提示。验证规则通过 `rules` 属性指定，它的值是一个对象。
+
+### required 必填验证
+
+```html
+<c-input v-model="userName" :rules="rules" />
+
+<script>
+  export default {
+    data() {
+      return {
+        userName: '删了我试试~',
+        rules: {
+          required: true
+        }
+      }
+    }
+  }
+</script>
+```
+
+### 使用 minlength 和 maxlength 验证输入长度
+
+```html
+<c-input v-model="userName" :rules="rules" placeholder="输入2到8位字符" />
+
+<script>
+  export default {
+    data() {
+      return {
+        userName: '',
+        rules: {
+          required: true,
+          minlength: 2,
+          maxlength: 8
+        }
+      }
+    }
+  }
+</script>
+```
+
+### 常用数据格式验证
+
+一些常用的数据格式，比如邮箱、URL、手机号码等，可以通过指定 `type` 来验证。
+
+```html
+<div class="form-item">
+  <c-input v-model="mail" :rules="{type: 'email'}" placeholder="邮箱" />
+</div>
+
+<div class="form-item">
+  <c-input v-model="mobile" :rules="{type: 'mobile'}" placeholder="手机号" />
+</div>
+
+<script>
+  export default {
+    data() {
+      return {
+        mail: '',
+        mobile: ''
+      }
+    }
+  }
+</script>
+
+<style>
+.form-item {
+  margin-bottom: 1em;
+}
+</style>
+```
+
+Clair 目前支持验证的 `type` 有：
+
+- email：邮箱
+- mobile：手机号码
+- tel：固定电话号码
+- number：数字
+- integer：整数
+
+### 正则表达式验证
+
+用来验证用户输入是否符合通过 `pattern` 属性指定的正则表达式。例如：
+
+```html
+<c-input v-model="id" :rules="rules" placeholder="请输入六位数字" />
+
+<script>
+  export default {
+    data() {
+      return {
+        id: '',
+        rules: {
+          pattern: /^\d{6}$/
+        }
+      }
+    }
+  }
+</script>
+```
+
+### 自定义错误提示
+
+在指定规则时，可以通过给规则对象添加 msg 属性来实现自定义消息。
+
+```html
+<c-input v-model="id" :rules="rules" placeholder="2-6个字" />
+
+<script>
+  export default {
+    data() {
+      return {
+        id: '',
+        rules: {
+          required: true,
+          minlength: 2,
+          maxlength: 6,
+          msg: '请输入2-6个字符哦～'
+        }
+      }
+    }
+  }
+</script>
+```
+
+在上面的例子中，不管发生了哪种类型的格式错误，都会显示固定的错误消息。你也可以针对不同类型的错误，显示不同的消息：
+
+```html
+<c-input v-model="id" :rules="rules" placeholder="2-6个字" />
+
+<script>
+  export default {
+    data() {
+      return {
+        id: '',
+        rules: {
+          required: true,
+          minlength: 2,
+          maxlength: 6,
+          msg: {
+            required: '不填可不行哦～',
+            minlength: '一个字太少了吧～',
+            maxlength: '不能超过6个字～'
+          }
+        }
+      }
+    }
+  }
+</script>
+```
+
+### 手动调用验证
+
+如果你想通过 JavaScript 获取到某个输入框的输入有效性，可以获取到 `c-input` 组件的引用，然后调用该组件的 `validate` 方法。
+
+该方法返回结果是一个对象，包括 `valid` 和 `msg` 两个字段，分别表示是否合法以及错误提示。
+
+```html
+<c-input v-model="id" :rules="rules" placeholder="请输入六位数字" ref="input" />
+<c-button @click="onClick" primary>检查输入有效性</c-button>
+
+<script>
+  export default {
+    data() {
+      return {
+        id: '',
+        rules: {
+          required: true,
+          pattern: /^\d{6}$/
+        }
+      }
+    },
+    methods: {
+      onClick: function(e) {
+        var validity = this.$refs.input.validate();
+        if (validity.valid) {
+          alert('输入正确');
+        } else {
+          alert('输入错误：' + validity.msg)
+        }
+      }
+    }
+  }
+</script>
+```
+
+### 自定义验证规则
+
+除了 Clair 内置的验证规则之外，你也可以自定义验证规则。只需要提供一个规则名和一个验证函数即可。验证函数的参数为用户输入的值，如果验证失败，返回 `{ valid: false, msg: '错误提示内容' }`；验证通过则返回 `{ valid: true }` 即可。
+
+```html
+设置密码：<c-input v-model="password" :rules="rules" />
+
+<script>
+  export default {
+    data () {
+      return {
+        password: '',
+        rules: {
+          required: true,
+          minlength: 6,
+          strength: function (val) {
+            const hasNumber = /\d/.test(val)
+            const hasLetter = /[a-z]/i.test(val)
+            const hasSpecialChar = /\W/.test(val)
+            if (hasNumber && hasLetter && hasSpecialChar) {
+              return { valid: true }
+            } else {
+              return { valid: false, msg: '密码中必须包含数字、字母和特殊符号' }
+            }
+          }
+        }
+      }
+    }
+  }
+</script>
+```
+
+### 异步验证
+
+某些情况下，输入的验证过程是异步的（比如需要调用服务器端接口去验证）。你可以自定义一个异步的验证函数，让这个函数返回一个 `Promise` 即可。
+
+```html
+<c-input v-model="user" :rules="rules" placeholder="请输入用户名" />
+
+<script>
+  const rules = {
+    required: true,
+    available: function (val) {
+      return new Promise((resolve, reject) => {
+        // 这里模拟一个异步验证
+        setTimeout(() => {
+          const valid = val.length > 3
+          const msg = valid ? '' : `用户名 ${val} 被占用`
+          resolve({ valid, msg })
+        }, 1000 * Math.random())
+      })
+    }
+  }
+
+  export default {
+    data () {
+      return { user: '', rules }
+    }
+  }
+</script>
+```
+
+### 验证整个表单
+
+每个表单项在用户操作过程中会实时验证并给出错误提示。如果要验证整个表单是否全部填写正确，可以调用表单组件的 `validate()` 方法。该方法会返回 `true` 或 `false`。
+
+**注意：如果表单项中含有异步验证，那么 `validate()` 方法会返回一个 `Promise`。这个 `Promise` 被 `resolve` 之后才能知道验证结果是 `true` 还是 `false`。**
+
+如果要重置表单的验证结果，也就是清除错误提示，可以调用表单的 `resetValidity()` 方法。另外，表单还有一个 `reset()` 方法，可以将表单重置为用户修改之前的状态，同时清除错误提示。**`reset()` 是重置表单项为初始值，而不是清空其内容。**
 
 ```html
 <c-form @submit="onSubmit" ref="form" label-width="6em" width="long">
@@ -301,9 +558,6 @@ export default {
   <c-form-item label="每页条数：" required>
     <c-slider v-model="num" />
   </c-form-item>
-  <c-form-item label="种类：" required>
-    <c-cascader :options="options" />
-  </c-form-item>
   <c-form-item label=" ">
     <c-button type="submit" primary>生成报告</c-button>
     <c-button type="button" @click="onReset">重置表单</c-button>
@@ -323,17 +577,19 @@ export default {
       zone: '',
       num: 10,
       version: '',
-      options: [
-        {
-          label: '藻类',
-          children: [ { label: '绿藻' }, { label: '轮藻' } ]
-        },
-        {
-          label: '蕨类',
-          children: [ { label: '石松' }, { label: '蕨类植物门' } ]
-        }
-      ],
       rules: {
+        name: {
+          checkavailable (name) {
+            return new Promise((resolve, reject) => {
+              setTimeout(() => {
+                resolve({
+                  valid: name.length > 3,
+                  msg: '任务名称已经存在'
+                })
+              }, Math.random() * 1000)
+            })
+          }
+        },
         version: {
           pattern: /^\d{2,6}$/,
           required: true
@@ -345,10 +601,11 @@ export default {
     onSubmit (e) {
       e.preventDefault()
       const form = this.$refs.form
-      if (form.isValid()) {
-        alert('登录成功')
+      form.isValid().then(valid => {
+        if (!valid) return
+        alert('提交成功')
         form.reset()
-      }
+      })
     },
     onReset (e) {
       e.preventDefault()

@@ -9,6 +9,7 @@ form.c-form(
 <script>
 import './index.css'
 import { toClassNames } from '../../scripts/utils'
+import { isPromise } from '../../scripts/mixins/validatable/util'
 
 const block = 'c-form'
 const modifiers = ['inline']
@@ -52,9 +53,14 @@ export default {
       this.$emit('submit', e)
     },
     isValid () {
-      return this.validatables
-        .map(v => v.validate())
-        .every(result => result.valid)
+      const results = this.validatables.map(v => v.validate())
+      const hasAsync = results.some(isPromise)
+      const isAllValid = results => results.every(result => result.valid)
+      if (hasAsync) {
+        return Promise.all(results).then(isAllValid)
+      } else {
+        return isAllValid(results)
+      }
     },
     resetValidity () {
       this.validatables.forEach(v => v.resetValidity())

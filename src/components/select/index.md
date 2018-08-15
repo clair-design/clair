@@ -408,11 +408,10 @@ export default {
 ```html
 <c-select
   v-model="state"
-  :options="options
+  :options="options"
   width="long"
   multiple
   autocomplete
-  width="longer"
 />
 
 <script>
@@ -482,13 +481,14 @@ export default {
 
 ## 异步搜索
 
-某些场景下，你会需要根据用户的输入从服务器端获取相关选项。你可以指定 `filter` 函数返回一个 `Promise` 即可。
+某些场景下，你会需要根据用户的输入从服务器端获取相关选项。你可以指定 `filter` 函数返回一个 `Promise` 即可。使用 `filter` 函数时，可以通过 `filterThrottle` 指定最小触发间隔，其默认值为 `0`。
 
 ```html
 <c-select
   v-model="choice"
   :options="options"
   :filter="search"
+  :filterThrottle="1000"
   autocomplete
   multiple
 >
@@ -507,20 +507,18 @@ export default {
   },
   methods: {
     search (options, query) {
+      console.log('filter called with query: ', query)
       if (!query) return defaultOptions
       return new window.Promise((resolve, reject) => {
         setTimeout(_ => {
           resolve([1, 2, 3].map(i => `${query}-${rdn()}`))
-        }, 500)
+        }, Math.random() * 1000)
       })
     }
   }
 }
 </script>
 ```
-
-> 注意：用户在输入时，Select 组件会自动调用 `filter` 属性传入的函数。这个函数的调用没有经过任何的防抖和节流操作，开发者需要根据具体的场景自行处理。
-
 
 ## 与模态框结合
 
@@ -574,6 +572,7 @@ export default {
 | multiple | Boolean | false | 是否允许多选 |
 | autocomplete | Boolean | false | 是否允许用户对选项进行搜索 |
 | filter | Function | 按label过滤 | 自定义对选项过滤函数，异步时可返回 `Promise` |
+| filterThrottle | Number | 0 | 调用 `filter` 函数的最短间隔 |
 
 ### slots
 

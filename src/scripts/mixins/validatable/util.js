@@ -19,3 +19,10 @@ export function toString (value) {
     ? ''
     : value.toString().trim()
 }
+
+/**
+ * 是否 Promise
+ */
+export function isPromise (p) {
+  return typeof p === 'object' && typeof p.then === 'function'
+}

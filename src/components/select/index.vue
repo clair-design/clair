@@ -119,7 +119,8 @@ export default {
         return options
           .filter(option => option.label.toLowerCase().indexOf(q) > -1)
       }
-    }
+    },
+    filterThrottle: 0
   },
 
   model: {
@@ -218,6 +219,26 @@ export default {
     }
   },
 
+  created () {
+    // filter function throttled
+    this.filterFunction = throttle((options, query) => {
+      const filtered = this.filter(options, query)
+      if (typeof filtered.then === 'function') {
+        const promiseId = Date.now()
+        this.promiseId = promiseId
+        filtered.then(options => {
+          if (this.promiseId > promiseId) return
+          this.filteredOptions = normalizeOptions(options)
+        })
+      } else {
+        this.filteredOptions = normalizeOptions(filtered)
+      }
+    }, this.filterThrottle, {
+      leading: true,
+      trailing: true
+    })
+  },
+
   mounted () {
     this.menuEl = this.$refs.menu
 
@@ -251,17 +272,7 @@ export default {
           this.filteredOptions = this.normalizedOptions
           return
         }
-        const filtered = this.filter(this.normalizedOptions, query)
-        if (typeof filtered.then === 'function') {
-          const promiseId = Date.now()
-          this.promiseId = promiseId
-          filtered.then(options => {
-            if (this.promiseId > promiseId) return
-            this.filteredOptions = normalizeOptions(options)
-          })
-        } else {
-          this.filteredOptions = normalizeOptions(filtered)
-        }
+        this.filterFunction(this.normalizedOptions, query)
       }
     )
   },
