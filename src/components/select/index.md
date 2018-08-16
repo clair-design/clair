@@ -46,7 +46,9 @@ export default {
 <c-select
   v-model="dim"
   :options="options"
-  width="long"
+  width="longer"
+  :maxChipCount="2"
+  :maxChipPlaceholder="getChipPlaceholder"
   multiple
 />
 
@@ -65,6 +67,11 @@ export default {
         { label: '转化次数', value: 'cv' },
         { label: 'IP 数', value: 'ip' }
       ]
+    }
+  },
+  methods: {
+     getChipPlaceholder (omittedCount) {
+       return `和另外${omittedCount}个选项`
     }
   }
 }
@@ -573,6 +580,8 @@ export default {
 | autocomplete | Boolean | false | 是否允许用户对选项进行搜索 |
 | filter | Function | 按label过滤 | 自定义对选项过滤函数，异步时可返回 `Promise` |
 | filterThrottle | Number | 0 | 调用 `filter` 函数的最短间隔 |
+| maxChipCount | Number | Infinity | 多选时最多展示多少个选中的选项 |
+| maxChipPlaceholder | String|Function |  | 自定义超过最大展示个数时的文案 |
 
 ### slots
 
