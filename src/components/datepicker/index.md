@@ -79,7 +79,7 @@ layout: component
 ```html
 <template>
   <c-datepicker
-    v-model="daterane"
+    v-model="daterange"
     :type="'daterange'"
     :placeholder="'请选择日期'"
     size="sm"
