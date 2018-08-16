@@ -70,7 +70,7 @@ export default {
   mixins: [resettable, validatable],
   props: {
     value: {
-      type: String | Array,
+      type: [String, Array],
       default () {
         return ''
       }
@@ -108,7 +108,8 @@ export default {
     return {
       date: '',
       datepickerPanel: '',
-      isOpen: false
+      isOpen: false,
+      mousedownInPanel: false
     }
   },
 
@@ -121,10 +122,12 @@ export default {
     isOpen () {
       if (this.isOpen) {
         this.resize()
-        window.addEventListener('click', this.onBodyClick, true)
+        window.addEventListener('mousedown', this.onMouseDown, true)
+        window.addEventListener('mouseup', this.onMouseUp, true)
         window.addEventListener('keydown', this.onKeyDown, false)
       } else {
-        window.removeEventListener('click', this.onBodyClick, true)
+        window.removeEventListener('mousedown', this.onMouseDown, true)
+        window.removeEventListener('mouseup', this.onMouseUp, true)
         window.removeEventListener('keydown', this.onKeyDown, false)
       }
     },
@@ -159,11 +162,20 @@ export default {
     },
     onBlur (e) {
       const focused = e.relatedTarget
+      if (this.mousedownInPanel) return
       if (focused) this.close()
     },
+    onMouseDown (e) {
+      const isInPicker = this.$el.contains(e.target)
+      const isInPanel = this.datepickerPanel.contains(e.target)
+      this.mousedownInPanel = isInPanel || isInPicker
+    },
+    onMouseUp (e) {
+      this.mousedownInPanel = false
+      this.onBodyClick(e)
+    },
     onKeyDown (e) {
-      e.preventDefault()
-
+      if (this.type === 'daterange') return
       const keys = {
         ENTER: 13,
         ESC: 27,
