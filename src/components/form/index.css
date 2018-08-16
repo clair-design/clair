@@ -46,7 +46,7 @@
 .c-form-item {
   margin-bottom: 0.5em;
   display: flex;
-  align-items: top;
+  align-items: start;
 
   & .c-form-item__label {
     display: block;
