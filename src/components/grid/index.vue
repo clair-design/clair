@@ -8,6 +8,12 @@ import { multiply } from './util'
 import { breakpoints } from '../../scripts/config'
 import './index.css'
 
+const props = {
+  gap: String,
+  justify: String,
+  align: String,
+  fillHeight: Boolean
+}
 const breakpointProps = breakpoints
   .map(bp => `${bp}Only`)
   .concat(breakpoints)
@@ -16,14 +22,10 @@ const breakpointProps = breakpoints
     return props
   }, {})
 
+Object.assign(props, breakpointProps)
+
 export default {
-  props: {
-    gap: String,
-    justify: String,
-    align: String,
-    fillHeight: Boolean,
-    ...breakpointProps
-  },
+  props,
   name: 'c-box',
   computed: {
     style () {
