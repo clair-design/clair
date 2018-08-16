@@ -19,14 +19,21 @@
       v-if="!multiple && selectedOptions.length"
     ) {{ selectedOptions[0].label }}
     .c-chip(
-      v-if="multiple"
+      v-if="multiple && index <= maxChipCount"
       v-for="(option, index) in selectedOptions"
       :key="index"
-      :class="{ 'is-disabled': option.disabled }"
+      :class=`{
+        'is-disabled': option.disabled,
+        'is-closeable': index < maxChipCount
+      }`
     )
       slot(name="selection" :option="option")
-        span {{ option.label }}
-      .c-chip__close(@click.stop="unselectOption(option)")
+        span(v-if="index < maxChipCount") {{ option.label }}
+        span(v-else) {{ maxChipText }}
+      .c-chip__close(
+        @click.stop="unselectOption(option)"
+        v-if="index < maxChipCount"
+      )
         c-icon(name="x" valign="middle")
     .c-select__input(
       v-show="showInput"
@@ -120,7 +127,18 @@ export default {
           .filter(option => option.label.toLowerCase().indexOf(q) > -1)
       }
     },
-    filterThrottle: 0
+    filterThrottle: {
+      type: Number,
+      default: 0
+    },
+    maxChipCount: {
+      type: Number,
+      default: Infinity
+    },
+    maxChipPlaceholder: {
+      type: [String, Function],
+      default: ommittedCount => `和其它${ommittedCount}个选项`
+    }
   },
 
   model: {
@@ -183,6 +201,18 @@ export default {
     showPlaceholder () {
       const empty = !this.selectedOptions.length
       return empty && !this.isOpen
+    },
+    exceedMaxChipCount () {
+      return this.selectedOptions.length > this.maxChipCount
+    },
+    maxChipText () {
+      if (!this.exceedMaxChipCount) return
+      const ommittedCount = this.selectedOptions.length - this.maxChipCount
+      const { maxChipPlaceholder } = this
+      if (typeof maxChipPlaceholder === 'function') {
+        return maxChipPlaceholder(ommittedCount)
+      }
+      return maxChipPlaceholder
     }
   },
 

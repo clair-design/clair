@@ -259,9 +259,13 @@
 
   & .c-chip {
     line-height: inherit;
-    padding: 0 1.5em 0 0.4em;
+    padding: 0 0.4em;
     margin-left: var(--select-padding-md);
     margin-top: var(--select-padding-md);
+
+    &.is-closeable {
+      padding-right: 1.5em;
+    }
   }
 }
 
