@@ -1,5 +1,5 @@
 import ruleset from './ruleset'
-import { isEmpty } from './util'
+import { isEmpty, isPromise } from './util'
 
 export default { validate }
 
@@ -22,8 +22,14 @@ function validate (value, rules = {}) {
     .filter(ruleName => canValidate(ruleName, rules[ruleName]))
     .map(ruleName => checkSingleRule(ruleName, rules[ruleName], value, msg))
 
-  const failedResult = results.find(result => !result.valid)
-  return failedResult || pass
+  const hasAsync = results.some(isPromise)
+  const getResult = results => {
+    const failedResult = results.find(result => !result.valid)
+    return failedResult || pass
+  }
+
+  if (hasAsync) return Promise.all(results).then(getResult)
+  return getResult(results)
 }
 
 /**

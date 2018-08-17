@@ -13,7 +13,12 @@ i.c-icon {
   line-height: 1;
 }
 
+/**
+ * SEE  https://www.w3cplus.com/css/icon-align-to-text.html
+ * and  https://codepen.io/airen/full/pZVvyL/
+ */
 span.c-icon {
-  display: inline-block;
-  line-height: 0;
+  display: inline-flex;
+  align-items: center;
 }
+

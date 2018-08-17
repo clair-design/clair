@@ -2,7 +2,14 @@
 .c-datepicker(
   @click="open"
 )
-  c-icon(name="calendar").c-datepicker__icon
+  .c-datepicker__icon.c-datepicker__hovericon(
+    v-if="date != '' || daterange != ''"
+    @click="resetDate"
+    :class="className"
+  )
+    c-icon(name="x-circle")
+  .c-datepicker__icon(:clas="className")
+    c-icon(name="calendar")
   c-input(
     v-if="type == 'daterange'"
     v-model="daterange"
@@ -15,7 +22,7 @@
     @focusout.native="onBlur"
   )
   c-input(
-    v-else-if="type == 'date'"
+    v-else-if="type == 'date' || type == 'month'"
     v-model="date"
     :size="size"
     width="normal"
@@ -29,7 +36,9 @@
   .c-datepicker__panel
     c-calendar(
       ref="calendar"
-      v-if="type == 'date'"
+      v-if="type !== 'daterange'"
+      :type="type"
+      :pattern="datePattern"
       :value="date"
       :show="isOpen"
       :size="size"
@@ -46,7 +55,6 @@
         :show="isOpen"
         @change="setDateRange"
       )
-
 </template>
 
 <script>
@@ -62,19 +70,18 @@ export default {
   mixins: [resettable, validatable],
   props: {
     value: {
-      type: String | Array,
+      type: [String, Array],
       default () {
         return ''
       }
     },
     pattern: {
-      type: String,
-      default: 'yyyy-MM-dd'
+      type: String
     },
     size: String,
     disabled: Boolean,
     type: {
-      /* date, daterange */
+      /* date, daterange, month */
       type: String,
       default: 'date'
     },
@@ -84,10 +91,16 @@ export default {
   },
 
   computed: {
+    className () {
+      return this.size ? `is-size-${this.size}` : ''
+    },
     daterange () {
       if (this.type === 'date') return []
       const [start, end] = this.date
       return !start && !end ? '' : `${start} 至 ${end}`
+    },
+    datePattern () {
+      return this.pattern ? this.pattern : this.type === 'month' ? 'yyyy-MM' : 'yyyy-MM-dd'
     }
   },
 
@@ -95,7 +108,8 @@ export default {
     return {
       date: '',
       datepickerPanel: '',
-      isOpen: false
+      isOpen: false,
+      mousedownInPanel: false
     }
   },
 
@@ -108,10 +122,12 @@ export default {
     isOpen () {
       if (this.isOpen) {
         this.resize()
-        window.addEventListener('click', this.onBodyClick, true)
+        window.addEventListener('mousedown', this.onMouseDown, true)
+        window.addEventListener('mouseup', this.onMouseUp, true)
         window.addEventListener('keydown', this.onKeyDown, false)
       } else {
-        window.removeEventListener('click', this.onBodyClick, true)
+        window.removeEventListener('mousedown', this.onMouseDown, true)
+        window.removeEventListener('mouseup', this.onMouseUp, true)
         window.removeEventListener('keydown', this.onKeyDown, false)
       }
     },
@@ -128,15 +144,17 @@ export default {
 
   mounted () {
     if (typeof document === 'object') {
-      this.datepickerPanel = document.querySelector('.c-datepicker__panel')
+      this.datepickerPanel = this.$el.querySelector('.c-datepicker__panel')
       document.body.appendChild(this.datepickerPanel)
       this.resize()
       window.addEventListener('resize', this.resize, false)
     }
   },
   methods: {
-    open () {
-      if (this.disabled) return
+    open (e) {
+      const hoverIcon = this.$el.querySelector('.c-datepicker__hovericon')
+      const isHoverIcon = hoverIcon && hoverIcon.contains(e.target)
+      if (this.disabled || isHoverIcon) return
       this.isOpen = true
     },
     close () {
@@ -144,11 +162,20 @@ export default {
     },
     onBlur (e) {
       const focused = e.relatedTarget
+      if (this.mousedownInPanel) return
       if (focused) this.close()
     },
+    onMouseDown (e) {
+      const isInPicker = this.$el.contains(e.target)
+      const isInPanel = this.datepickerPanel.contains(e.target)
+      this.mousedownInPanel = isInPanel || isInPicker
+    },
+    onMouseUp (e) {
+      this.mousedownInPanel = false
+      this.onBodyClick(e)
+    },
     onKeyDown (e) {
-      e.preventDefault()
-
+      if (this.type === 'daterange') return
       const keys = {
         ENTER: 13,
         ESC: 27,
@@ -162,7 +189,7 @@ export default {
       if (keyCode === keys.ESC) this.close()
       if (keyCode === keys.ENTER && this.type === 'date') {
         const { calendar } = this.$refs
-        const date = new Date(calendar.year, calendar.month, calendar.day).format(this.pattern)
+        const date = new Date(calendar.year, calendar.month, calendar.day).format(this.datePattern)
         this.setDate(date)
       }
       if (keyCode === keys.UP) {
@@ -174,6 +201,11 @@ export default {
       } else if (keyCode === keys.RIGHT) {
         this.$refs.calendar.updateDay(1, 'plus')
       }
+    },
+    resetDate (e) {
+      e.preventDefault()
+      this.date = ''
+      this.$emit('change', '')
     },
     dateChange (value) {
       this.$emit('change', value)

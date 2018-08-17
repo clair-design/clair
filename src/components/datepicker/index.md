@@ -79,7 +79,7 @@ layout: component
 ```html
 <template>
   <c-datepicker
-    v-model="daterane"
+    v-model="daterange"
     :type="'daterange'"
     :placeholder="'请选择日期'"
     size="sm"
@@ -111,6 +111,37 @@ layout: component
     }
   }
 </script>
+```
+
+## 月份选择
+
+```html
+<template>
+  <c-datepicker
+    v-model="date"
+    :type="'month'"
+    :placeholder="'请输入或者选择月份'"
+    @change="dateChange"
+  ></c-datepicker>
+</template>
+
+<script>
+  export default {
+    data () {
+      return {
+        date: '2017-01',
+        disabled: true
+      }
+    },
+    methods: {
+      dateChange (date) {
+        this.date = date
+        console.log('month change', date)
+      }
+    }
+  }
+</script>
+
 ```
 
 ## API

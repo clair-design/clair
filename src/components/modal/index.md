@@ -14,24 +14,13 @@ layout: component
 
 ## 基础使用方法
 
-* 通过 `title` 属性（`String`）可以指定模态框的顶部标题。
-* 通过 `visible` 属性（`Boolean`）控制模态框的显示、隐藏
-* 通过 `top` 属性（合法的 CSS 长度值）控制模态框纵向位置
-* 通过 `width` 属性（合法的 CSS 长度值）控制模态框宽度
-* 通过 `center` 属性（合法的 CSS 长度值）控制模态框是否居中
-* 通过 `closable` 属性（`Boolean`）控制模态框是否可通过 `x` 图标发送 `close` 事件
-* 通过 `mask-closable` 属性（`Boolean`） 控制是否可通过点击半透明蒙版发送 `close` 事件
-* 监听 `close` 事件，处理模态框关闭的行为
-* 监听 `confirm` 事件，处理“确定”按钮的点击行为
-* 监听 `cancel` 事件，处理“取消”按钮的点击行为
-
 ```html
-<c-button primary @click="visible = true">点我！</c-button>
+<c-button primary @click="visible = true">打开模态框</c-button>
 <c-modal
   title="屈原列传"
   :visible="visible"
-  width="50%"
-  center
+  width="40%"
+  :center="false"
   @close="visible = false"
   @cancel="handleCancel"
   @confirm="handleConfirm"
@@ -61,13 +50,32 @@ layout: component
 </script>
 ```
 
+### 属性
 
-### 提供 slot
+| 属性 | 类型  |  说明 | 默认值 |
+|-----|-------|------|-------|
+| title | String | 顶部标题 | |
+| visible | Boolean| 控制模态框的显示、隐藏 | |
+| top | String | 合法的 CSS 长度值，控制模态框纵向位置 | 15%|
+| width | String | 合法的 CSS 长度值，控制模态框宽度 |
+| center | String | 合法的 CSS 长度值，控制模态框是否居中显示 | false |
+| closable | Boolean | 模态框是否可通过 `x` 图标发送 `close` 事件 | true |
+| mask-closable | Boolean | 是否可通过点击半透明蒙版发送 `close` 事件 | true |
+| destroy-after-close | Boolean | 关闭模态框后是否销毁 | fasle  |
+
+### 事件
+| 事件 |  说明 |
+|-----|-------|
+| close | 模态框关闭 |
+| confirm | 点击“确定”按钮 |
+| cancel | 点击“取消”按钮 |
+
+### slot
 
 可以通过 `header` 和 `footer` 两个 slot 即可自定义页头（替代默认的标题部分）、页脚（替代默认的按钮部分）。
 
 ```html
-<c-button primary @click="visible = true">点我！</c-button>
+<c-button primary @click="visible = true">点击确认</c-button>
 
 <c-modal
   width="420px"
@@ -93,20 +101,75 @@ layout: component
       return {
         visible: false
       }
-    },
-    methods: {}
+    }
   }
 </script>
 ```
 
-## 拓展 `Vue.prototype`
+### destroy-after-close: 关闭时销毁
 
-### Alert
+有时，在关闭模态框之后，希望将原有的 DOM 销毁掉。这时可以设置 `destroy-after-close` 属性。
 
-`Vue.prototype.$alert({ msg, title })`
+常用的场景：模态框中使用表单，关闭后再次打开时希望重置掉所有内容。
 
 ```html
-<c-button primary @click="alert">Alert</c-button>
+<div style="margin-bottom: 1em">
+  <span>关闭时是否销毁</span>
+  <c-radio-group :options="options" v-model="destroyAfterClose" />
+</div>
+<c-button primary @click="visible = true">打开模态框</c-button>
+<c-modal
+  title="输入编号"
+  width="420px"
+  :visible="visible"
+  :destroy-after-close="destroyAfterClose"
+  @close="visible = false"
+  @confirm="visible = false"
+  @cancel="visible = false"
+>
+  <c-form label-width="1em">
+    <c-form-item>
+      <c-icon name="globe" slot="label" />
+      <c-input placeholder="公司地址" width="long" />
+    </c-form-item>
+    <c-form-item>
+      <c-icon name="smartphone" slot="label" />
+      <c-input placeholder="手机号码" width="long" />
+    </c-form-item>
+  </c-form>
+</c-modal>
+
+<script>
+  export default {
+    data () {
+      return {
+        visible: false,
+        destroyAfterClose: false,
+        options: [{ label: '是', value: true }, { label: '否', value: false }]
+      }
+    }
+  }
+</script>
+```
+
+
+## 便捷方法
+
+为了方便比较短的消息提示，我们在 Vue 的原型上进行了拓展。
+
+
+### 适用于普通消息提示的 alert
+
+使用方法：`this.$alert(data)`
+
+| 字段          |  类型  |说明 | 备注 |
+|--------------|------|-------|-----|
+| data.title   | String | 消息标题 | 默认值为“提示” |
+| data.msg     | String 或 Function | 消息正文 | 函数签名 `msg(h): VNode` |
+
+```html
+<c-button primary @click="alert">点我</c-button>
+<c-button primary @click="alert2">戳一下</c-button>
 <script>
   export default {
     methods: {
@@ -117,6 +180,19 @@ layout: component
         })
         .then(_ => console.log('confirm'))
         .catch(_ => console.log('cancel'))
+      },
+      alert2 () {
+        this.$alert({
+          title: '屈原曰',
+          msg (h) {
+            return h('div',
+              { style: { color: '#1c5ea0' } },
+              '举世皆浊我独清，众人皆醉我独醒，是以见放。'
+            )
+          }
+        })
+        .then(_ => console.log('confirm'))
+        .catch(_ => console.log('cancel'))
       }
     }
   }
@@ -124,19 +200,29 @@ layout: component
 ```
 
 
-### 弹窗提示
+### 类型消息弹窗
 
-`Vue.prototype.$message({ msg, title, type })`
+使用方法：`this.$message(data)`，参数 `data` 支持字符串，或结构为 `{ msg, title, type }` 的对象
 
-* `type`: `success | error | info | warning`
-* 也可以直接调用 `this.$success({ msg, title })`，余者依此类推
+| 字段          |  类型  |说明 | 备注 |
+|--------------|------|-------|-----|
+| data.title   | String | 消息标题 | |
+| data.msg     | String 或 Function | 消息正文 | `msg(h):VNode` |
+| data.type    | `success` `error` `info` `warning` | 消息类型 | 主要区别表现在使用了不同的 icon |
+
+此外，还可以省略 `data.type` 而直接使用下面的便捷方法 ——
+
+* `this.$info(data)`
+* `this.$error(data)`
+* `this.$success(data)`
+* `this.$warning(data)`
 
 ```html
 <c-button
   primary
   v-for="type in types"
   :key="type"
-  @click="message(type)"
+  @click="invoke(type)"
 >
   {{type}}
 </c-button>
@@ -149,9 +235,8 @@ layout: component
       }
     },
     methods: {
-      message (type) {
-        this.$message({
-          type,
+      invoke (type) {
+        this[`$${type}`]({
           title: '渔父曰',
           msg: '世人皆浊，何不淈其泥而扬其波？众人皆醉，何不餔其糟而歠其酾？'
         })

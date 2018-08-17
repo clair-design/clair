@@ -19,14 +19,21 @@
       v-if="!multiple && selectedOptions.length"
     ) {{ selectedOptions[0].label }}
     .c-chip(
-      v-if="multiple"
+      v-if="multiple && index <= maxChipCount"
       v-for="(option, index) in selectedOptions"
       :key="index"
-      :class="{ 'is-disabled': option.disabled }"
+      :class=`{
+        'is-disabled': option.disabled,
+        'is-closeable': index < maxChipCount
+      }`
     )
       slot(name="selection" :option="option")
-        span {{ option.label }}
-      .c-chip__close(@click.stop="unselectOption(option)")
+        span(v-if="index < maxChipCount") {{ option.label }}
+        span(v-else) {{ maxChipText }}
+      .c-chip__close(
+        @click.stop="unselectOption(option)"
+        v-if="index < maxChipCount"
+      )
         c-icon(name="x" valign="middle")
     .c-select__input(
       v-show="showInput"
@@ -119,6 +126,18 @@ export default {
         return options
           .filter(option => option.label.toLowerCase().indexOf(q) > -1)
       }
+    },
+    filterThrottle: {
+      type: Number,
+      default: 0
+    },
+    maxChipCount: {
+      type: Number,
+      default: Infinity
+    },
+    maxChipPlaceholder: {
+      type: [String, Function],
+      default: ommittedCount => `和其它${ommittedCount}个选项`
     }
   },
 
@@ -182,6 +201,18 @@ export default {
     showPlaceholder () {
       const empty = !this.selectedOptions.length
       return empty && !this.isOpen
+    },
+    exceedMaxChipCount () {
+      return this.selectedOptions.length > this.maxChipCount
+    },
+    maxChipText () {
+      if (!this.exceedMaxChipCount) return
+      const ommittedCount = this.selectedOptions.length - this.maxChipCount
+      const { maxChipPlaceholder } = this
+      if (typeof maxChipPlaceholder === 'function') {
+        return maxChipPlaceholder(ommittedCount)
+      }
+      return maxChipPlaceholder
     }
   },
 
@@ -218,6 +249,26 @@ export default {
     }
   },
 
+  created () {
+    // filter function throttled
+    this.filterFunction = throttle((options, query) => {
+      const filtered = this.filter(options, query)
+      if (typeof filtered.then === 'function') {
+        const promiseId = Date.now()
+        this.promiseId = promiseId
+        filtered.then(options => {
+          if (this.promiseId > promiseId) return
+          this.filteredOptions = normalizeOptions(options)
+        })
+      } else {
+        this.filteredOptions = normalizeOptions(filtered)
+      }
+    }, this.filterThrottle, {
+      leading: true,
+      trailing: true
+    })
+  },
+
   mounted () {
     this.menuEl = this.$refs.menu
 
@@ -251,17 +302,7 @@ export default {
           this.filteredOptions = this.normalizedOptions
           return
         }
-        const filtered = this.filter(this.normalizedOptions, query)
-        if (typeof filtered.then === 'function') {
-          const promiseId = Date.now()
-          this.promiseId = promiseId
-          filtered.then(options => {
-            if (this.promiseId > promiseId) return
-            this.filteredOptions = normalizeOptions(options)
-          })
-        } else {
-          this.filteredOptions = normalizeOptions(filtered)
-        }
+        this.filterFunction(this.normalizedOptions, query)
       }
     )
   },

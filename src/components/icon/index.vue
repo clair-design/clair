@@ -5,6 +5,7 @@
     :style="{ color: iconColor, fontSize: size, verticalAlign: valign }"
   ) {{ name }}
   span(v-else-if="isSvg", class="c-icon")
+    | &#8203;
     component(
       :is="svgName",
       :style="{verticalAlign: valign}"

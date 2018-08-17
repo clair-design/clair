@@ -7,6 +7,10 @@ import Portal from './plugins/portal.js'
 import Modal from './plugins/modal.js'
 import Notification from './plugins/notification.js'
 
+// mixins
+import validatable from './mixins/validatable'
+import resettable from './mixins/resettable'
+
 export const Clair = {
   install (Vue) {
     // inject $clair to Vue prototype
@@ -22,6 +26,8 @@ export const Clair = {
       Object.defineProperty(Vue.prototype, '$clair', {
         get () { return $clair }
       })
+
+      $clair.mixins = { validatable, resettable }
 
       Vue.prototype.noop = () => {}
     }

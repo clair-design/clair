@@ -8,7 +8,7 @@
     :maxDate="maxDate"
     :year="year"
     :month="month"
-    :monthshow="monthsShow"
+    :monthsShow="monthsShow"
     @monthchange="monthchange"
     @yearchange="yearchange"
     @monthshow="monthTableShow"
@@ -19,6 +19,7 @@
       :minDate="minDate"
       :maxDate="maxDate"
       :year="year"
+      :month="month"
       @change="selectMonth"
       )
     c-datetable(
@@ -44,6 +45,7 @@ export default {
   props: {
     value: String,
     size: String,
+    type: String,
     show: {
       type: Boolean,
       default: true
@@ -57,8 +59,7 @@ export default {
       default: '2099-12-31'
     },
     pattern: {
-      type: String,
-      default: 'yyyy-MM-dd'
+      type: String
     }
   },
   mixins: [Mixin],
@@ -74,6 +75,9 @@ export default {
   computed: {
     className () {
       return this.size ? `is-${this.size}` : 'md'
+    },
+    format () {
+      return this.pattern ? this.pattern : this.type === 'month' ? 'yyyy-MM' : 'yyyy-MM-dd'
     }
   },
   created () {
@@ -85,31 +89,43 @@ export default {
     },
     show (newVal) {
       newVal && this.syncDate()
+    },
+    type (newVal) {
+      this.monthsShow = newVal === 'month'
     }
   },
   methods: {
     syncDate () {
-      this.date = this.value || this.date || new Date().format(this.pattern)
+      if (this.type === 'month') {
+        this.monthsShow = true
+      }
+      this.date = this.value || new Date().format(this.format)
+      // this.date = this.value || this.date || new Date().format(this.format)
       if (new Date(this.date) > new Date(this.maxDate)) this.date = this.maxDate
       if (new Date(this.date) < new Date(this.minDate)) this.date = this.minDate
-      this.date = new Date(this.date).format(this.pattern)
+      this.date = new Date(this.date).format(this.format)
       const d = new Date(this.date)
       if (!isNaN(d.getTime())) {
         this.year = d.getFullYear()
         this.month = d.getMonth()
-        this.day = d.getDate()
+        this.day = this.type === 'month' ? '' : d.getDate()
       }
     },
     selectDay (day) {
       this.day = day
       const date = `${this.year}-${this.fixZero(this.month + 1)}-${this.fixZero(this.day)}`
-      this.date = new Date(date).format(this.pattern)
+      this.date = new Date(date).format(this.format)
       this.$emit('update', this.date)
     },
     selectMonth (month) {
-      this.monthsShow = false
+      this.monthsShow = this.type === 'month'
       this.month = month
       this.day = ''
+      if (this.type === 'month') {
+        const date = `${this.year}-${this.fixZero(this.month + 1)}`
+        this.date = new Date(date).format(this.format)
+        this.$emit('update', this.date)
+      }
     },
     monthchange (month) {
       this.month = month
@@ -127,7 +143,7 @@ export default {
       type === 'sub' && date.setDate(date.getDate() - num)
       if (new Date(date) > new Date(this.maxDate)) date = this.maxDate
       if (new Date(date) < new Date(this.minDate)) date = this.minDate
-      this.$emit('update', new Date(date).format(this.pattern), true)
+      this.$emit('update', new Date(date).format(this.format), true)
     }
   }
 }

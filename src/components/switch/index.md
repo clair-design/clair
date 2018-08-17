@@ -11,7 +11,7 @@ layout: component
 ## 基本用法
 
 ```html
-<c-switch></c-switch>
+<c-switch :value="true"></c-switch>
 ```
 
 ## 设置自定义颜色
@@ -20,7 +20,20 @@ layout: component
 <c-switch
   checkedColor="#C7543A"
   uncheckedColor="#E9CD4C"
+  v-model="checked"
 ></c-switch>
+<span v-if="checked">开</span>
+<span v-else>关</span>
+
+<script>
+  export default {
+    data () {
+      return {
+        checked: true
+      }
+    }
+  }
+</script>
 ```
 
 ## 设置大小

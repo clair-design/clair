@@ -1,6 +1,7 @@
 @import url('../../styles/variables.css');
 
 .c-checkbox {
+  display: inline-block;
   position: relative;
   margin-right: 1em;
   cursor: pointer;
@@ -16,7 +17,7 @@
     display: inline-block;
     width: 1em;
     height: 1em;
-    vertical-align: middle;
+    vertical-align: -0.15em;
     border: 1px solid var(--gray);
     margin-right: 0.3em;
     border-radius: 0.15em;
@@ -60,10 +61,6 @@
     background-color: color(var(--gray) l(90%));
     color: color(var(--gray) l(70%));
     cursor: not-allowed;
-  }
-
-  & > .c-checkbox__label {
-    vertical-align: middle;
   }
 
   & > input[disabled] ~ .c-checkbox__label {

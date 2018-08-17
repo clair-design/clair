@@ -6,6 +6,8 @@
 
 .color-picker__wrapper {
   display: inline-block;
+  vertical-align: middle;
+  margin-top: -0.15em;
 }
 
 .color-picker__pane--portal {

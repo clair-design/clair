@@ -43,7 +43,7 @@ v-ctrl.c-slider(
 </template>
 
 <script>
-import VueTypes from 'vue-types'
+import { VueTypes } from '../../scripts/utils'
 import VCtrl from 'v-ctrl'
 import clamp from 'lodash/clamp'
 import resettable from '../../scripts/mixins/resettable'

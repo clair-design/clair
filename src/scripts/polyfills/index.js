@@ -1,5 +1,10 @@
 import objectAssign from 'object-assign'
 
-if (typeof Object.assign !== 'function') {
-  Object.assign = objectAssign
+if ('assign' in Object === false) {
+  Object.defineProperty(Object, 'assign', {
+    value: objectAssign,
+    configurable: true,
+    enumerable: false,
+    writable: true
+  })
 }

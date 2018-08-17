@@ -9,7 +9,6 @@
 
 .c-input-wrap {
   display: inline-block;
-  vertical-align: middle;
   font-size: var(--form-font-md);
 
   &.is-xs {
@@ -90,7 +89,6 @@
 }
 
 .c-input {
-  vertical-align: middle;
   border: 1px solid color(var(--gray) l(85%));
   border-radius: 3px;
   background-color: #fff;

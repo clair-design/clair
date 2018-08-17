@@ -1,3 +1,6 @@
+import VueTypes from './vue-types'
+export { VueTypes }
+
 /**
  * @desc get Vue props definitions from modifier list
  * @param modifiers {Array}
@@ -21,9 +24,7 @@ export function toVueProps (modifiers) {
  */
 export function toClassNames (block, modifiers) {
   return function () {
-    return modifiers
-      .filter(m => this[m])
-      .map(m => `${block}--${m}`)
+    return modifiers.filter(m => this[m]).map(m => `${block}--${m}`)
   }
 }
 

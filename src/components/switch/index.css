@@ -4,7 +4,9 @@
 @import url('../../styles/variables.css');
 
 .c-switch {
+  display: inline-block;
   position: relative;
+  vertical-align: middle;
 }
 
 .c-switch__checkbox {

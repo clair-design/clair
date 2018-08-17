@@ -51,7 +51,9 @@ const copyFromText = string => {
   setTimeout(() => document.body.removeChild(textArea))
 }
 
-const tinyCopy = (elem) => {
+const tinyCopy = elem => {
+  if (typeof window === 'undefined') return
+
   // eslint-disable-next-line
   if (elem instanceof HTMLTextAreaElement) {
     elem.focus()
