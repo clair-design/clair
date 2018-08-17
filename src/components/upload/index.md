@@ -423,6 +423,44 @@ ajax文件上传
 </script>
 ```
 
+## 自定义上传方法
+如果组件自身的上传不符合业务场景需求，那么也可以自定义http-request方法，返回一个Promise，用来覆盖默认的上传行为
+
+```html
+<c-upload
+  @success="onSuccess"
+  @error="onError"
+  :http-request="httpRequest"
+/>
+<script>
+  export default {
+    methods: {
+      onSuccess (res, rawFile) {
+        this.$notify({
+          title: '上传成功！',
+          message: '上传成功后的回调函数',
+          type: 'success'
+        })
+      },
+      onError (err, rawFile) {
+        this.$notify({
+          title: '上传失败！',
+          message: '上传失败后的回调函数',
+          type: 'error'
+        })
+      },
+      httpRequest (opt) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve('完成')
+          },1000)
+        })
+      }
+    }
+  }
+</script>
+```
+
 ### 属性
 
 | 名称 | 类型 | 默认值 | 说明 |
@@ -436,6 +474,7 @@ ajax文件上传
 | headers | Object | { } | 自定义请求头 |
 | data | Object | { } | 上传时附带的额外参数 |
 | validator | Function | - | 上传文件之前会执行validator函数进行一些校验，参数会拿到对应的文件对象，若函数返回 false，则代表校验失败，组件会停止该次上传操作 参数为(file: Object) |
+| httpRequest | Function | - | 覆盖默认的上传行为，可以自定义上传的实现 |
 
 ### 事件
 
