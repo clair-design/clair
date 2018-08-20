@@ -19,4 +19,6 @@ A design system including principles, Vue components and design resources.
 git fetch --all && git reset --hard origin/master && git pull
 ```
 
-建议 fork 代码后，通过 Pull Request 提交代码。Fork 仓库与源仓库同步代码，请参考 https://www.zhihu.com/question/28676261。
+建议 fork 代码后，通过 Pull Request 提交代码。
+
+Fork 仓库与源仓库同步代码，请参考[此文](https://www.zhihu.com/question/28676261)，或直接执行 scripts/sync-upstream.sh。
