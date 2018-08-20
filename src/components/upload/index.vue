@@ -27,6 +27,7 @@
 <script>
 import './index.css'
 import ajax from './ajax'
+let uploadFileCount = 0
 
 export default {
   name: 'c-upload',
@@ -70,7 +71,8 @@ export default {
       default () {
         return {}
       }
-    }
+    },
+    httpRequest: Function
   },
 
   data () {
@@ -129,29 +131,41 @@ export default {
       if (isValid) this.post(rawFile)
     },
 
-    post (rawFile) {
+    async post (rawFile) {
+      this.loading = true
+      uploadFileCount++
       const { fid } = rawFile
       const options = {
         headers: this.headers,
-        // withCredentials: this.withCredentials,
+        withCredentials: this.withCredentials,
         file: rawFile,
         data: this.data,
         filename: this.name,
         action: this.action,
         onProgress: (e) => {
-          if (!this.loading) this.loading = true
           this.$emit('progress', e, rawFile)
         },
         onSuccess: (res) => {
           this.$emit('success', res, rawFile)
           delete this.reqs[fid]
-          this.loading = false
+          uploadFileCount--
+          if (uploadFileCount === 0) this.loading = false
         },
         onError: (err) => {
           this.$emit('error', err, rawFile)
           delete this.reqs[fid]
-          this.loading = false
+          uploadFileCount--
+          if (uploadFileCount === 0) this.loading = false
         }
+      }
+      if (this.httpRequest instanceof Function) {
+        const {headers, file, data, filename, action} = options
+        this.reqs[fid] = this.httpRequest({
+          headers, file, data, filename, action
+        })
+          .then(options.onSuccess)
+          .catch(options.onError)
+        return
       }
       const req = ajax(options)
       this.reqs[fid] = req
