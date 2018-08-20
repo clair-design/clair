@@ -21,8 +21,10 @@ after_script:
 # E: Build LifeCycle
 
 after_success:
-  - npm run travis-deploy-once "npm run semantic-release"
-  - npx gh-pages -r https://"$GH_TOKEN"@github.com/clair-design/clair-design.github.io.git -b master -d .site
+  - test $TRAVIS_PULL_REQUEST = "false" &&
+    npm run travis-deploy-once "npm run semantic-release"
+  - test $TRAVIS_PULL_REQUEST = "false" &&
+    npx gh-pages -r https://"$GH_TOKEN"@github.com/clair-design/clair-design.github.io.git -b master -d .site
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
