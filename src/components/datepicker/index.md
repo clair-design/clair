@@ -144,6 +144,35 @@ layout: component
 
 ```
 
+## 设置月份的范围
+
+```html
+<template>
+  <c-datepicker
+    v-model="monthrange"
+    :type="'monthrange'"
+    :placeholder="'请选择日期'"
+    size="sm"
+    @change="monthChange"
+  ></c-datepicker>
+</template>
+
+<script>
+  export default {
+    data () {
+      return {
+        monthrange: ['2018-01', '2018-02']
+      }
+    },
+    methods: {
+      monthChange (date) {
+        this.daterange = date
+      }
+    }
+  }
+</script>
+```
+
 ## API
 
 > 注意：当type为daterange时，v-model需要传递起始时间和终止时间的数组

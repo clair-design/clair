@@ -11,7 +11,7 @@
   .c-datepicker__icon(:clas="className")
     c-icon(name="calendar")
   c-input(
-    v-if="type == 'daterange'"
+    v-if="type == 'daterange' || type == 'monthrange'"
     v-model="daterange"
     :placeholder="placeholder"
     :disabled="disabled"
@@ -31,12 +31,13 @@
     @change="dateChange"
     @focusin.native="open"
     @focusout.native="onBlur"
+    @keydown.native="onKeyDown"
   )
 
   .c-datepicker__panel
     c-calendar(
       ref="calendar"
-      v-if="type !== 'daterange'"
+      v-if="type == 'date' || type == 'month'"
       :type="type"
       :pattern="datePattern"
       :value="date"
@@ -53,6 +54,16 @@
         :value="date"
         :size="size"
         :show="isOpen"
+        @change="setDateRange"
+      )
+    .c-datepicker__body(
+      v-if="type == 'monthrange'"
+    )
+      c-daterange(
+        :value="date"
+        :size="size"
+        :show="isOpen"
+        type="month"
         @change="setDateRange"
       )
 </template>
@@ -95,7 +106,7 @@ export default {
       return this.size ? `is-size-${this.size}` : ''
     },
     daterange () {
-      if (this.type === 'date') return []
+      if (this.type.indexOf('range') === -1) return []
       const [start, end] = this.date
       return !start && !end ? '' : `${start} 至 ${end}`
     },
@@ -124,11 +135,9 @@ export default {
         this.resize()
         window.addEventListener('mousedown', this.onMouseDown, true)
         window.addEventListener('mouseup', this.onMouseUp, true)
-        window.addEventListener('keydown', this.onKeyDown, false)
       } else {
         window.removeEventListener('mousedown', this.onMouseDown, true)
         window.removeEventListener('mouseup', this.onMouseUp, true)
-        window.removeEventListener('keydown', this.onKeyDown, false)
       }
     },
     value (newVal) {
@@ -187,19 +196,23 @@ export default {
       }
       const { keyCode } = e
       if (keyCode === keys.ESC) this.close()
+      const { calendar } = this.$refs
+      const date = new Date(calendar.year, calendar.month, calendar.day).format(this.datePattern)
       if (keyCode === keys.ENTER && this.type === 'date') {
-        const { calendar } = this.$refs
-        const date = new Date(calendar.year, calendar.month, calendar.day).format(this.datePattern)
         this.setDate(date)
       }
       if (keyCode === keys.UP) {
-        this.$refs.calendar.updateDay(7, 'sub')
+        this.type === 'date' && this.$refs.calendar.updateDay(7, 'sub')
+        this.type === 'month' && this.$refs.calendar.updateMonthBykeydown(3, 'sub')
       } else if (keyCode === keys.DOWN) {
-        this.$refs.calendar.updateDay(7, 'plus')
+        this.type === 'date' && this.$refs.calendar.updateDay(7, 'plus')
+        this.type === 'month' && this.$refs.calendar.updateMonthBykeydown(3, 'plus')
       } else if (keyCode === keys.LEFT) {
-        this.$refs.calendar.updateDay(1, 'sub')
+        this.type === 'date' && this.$refs.calendar.updateDay(1, 'sub')
+        this.type === 'month' && this.$refs.calendar.updateMonthBykeydown(1, 'sub')
       } else if (keyCode === keys.RIGHT) {
-        this.$refs.calendar.updateDay(1, 'plus')
+        this.type === 'date' && this.$refs.calendar.updateDay(1, 'plus')
+        this.type === 'month' && this.$refs.calendar.updateMonthBykeydown(1, 'plus')
       }
     },
     resetDate (e) {
