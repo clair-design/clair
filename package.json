@@ -1,6 +1,6 @@
 {
   "name": "clair",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A design system including principles, Vue components and resources",
   "main": "dist/clair.cjs.js",
   "module": "dist/clair.es.js",
@@ -20,7 +20,10 @@
     "build": "run-s clean doc:build bundle rawcss",
     "start": "npm run doc:dev",
     "lint": "eslint -f node_modules/eslint-friendly-formatter --ext .js,.vue src docs",
-    "rawcss": "postcss --no-map -u postcss-easy-import -u postcss-each -u postcss-for -o dist/clair.raw.css src/styles/raw.css"
+    "rawcss": "postcss --no-map -u postcss-easy-import -u postcss-each -u postcss-for -o dist/clair.raw.css src/styles/raw.css",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release",
+    "cz": "git-cz"
   },
   "lint-staged": {
     "*.css": [
@@ -35,7 +38,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/clair-design/clair.git"
+    "url": "https://github.com/clair-design/clair.git"
   },
   "keywords": [
     "Design",
@@ -49,12 +52,19 @@
   },
   "homepage": "https://github.com/clair-design/clair#readme",
   "devDependencies": {
+    "@semantic-release/changelog": "^3.0.0",
+    "@semantic-release/git": "^7.0.1",
+    "@semantic-release/github": "^5.0.2",
+    "@semantic-release/npm": "^5.0.2",
     "@vue/test-utils": "^1.0.0-beta.11",
     "cili": "^3.1.2",
+    "commitizen": "^2.10.1",
     "cross-env": "^5.1.1",
+    "cz-conventional-changelog": "^2.1.0",
     "eslint": "^5.3.0",
     "eslint-config-clair": "^1.0.0",
     "eslint-friendly-formatter": "^3.0.0",
+    "gh-pages": "^1.2.0",
     "husky": "^0.14.3",
     "jest": "^22.1.2",
     "lint-staged": "^4.0.2",
@@ -70,8 +80,10 @@
     "rimraf": "^2.6.2",
     "rollup-plugin-require-context": "^0.0.2",
     "rollup-plugin-vue": "3.0.0",
+    "semantic-release": "^15.9.9",
     "stylelint": "^8.3.1",
     "stylelint-config-standard": "^17.0.0",
+    "travis-deploy-once": "^5.0.2",
     "vue-jest": "^1.4.0"
   },
   "dependencies": {
@@ -83,5 +95,29 @@
   },
   "peerDependencies": {
     "vue": "^2.5.16"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "release": {
+    "noCi": true,
+    "prepare": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      {
+        "path": "@semantic-release/git",
+        "assets": [
+          "package.json",
+          "CHANGELOG.md"
+        ],
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+      }
+    ],
+    "publish": [
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ]
   }
 }
