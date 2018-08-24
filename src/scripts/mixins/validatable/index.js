@@ -3,6 +3,7 @@
  */
 import Validator from './validator.js'
 import { isPromise } from './util.js'
+import throttle from 'lodash/throttle'
 
 export default {
 
@@ -10,6 +11,10 @@ export default {
     rules: {
       type: Object,
       default: _ => ({})
+    },
+    validateThrottle: {
+      type: Number,
+      default: 0
     }
   },
 
@@ -22,7 +27,8 @@ export default {
         dirty: false
       },
       isValidatable: true,
-      asyncValidationId: 0
+      // id of the latest validation
+      validationId: 0
     }
   },
 
@@ -59,7 +65,16 @@ export default {
   watch: {
     value () {
       if (this.validity.dirty) {
-        this.validate()
+        this.throttledValidate()
+      }
+    },
+    validateThrottle: {
+      immediate: true,
+      handler (duration) {
+        if (!duration) this.throttledValidate = this.validate
+        this.throttledValidate = throttle(this.validate, duration, {
+          trailing: true
+        })
       }
     }
   },
@@ -78,16 +93,17 @@ export default {
       }
       const result = Validator.validate(this.value, rules)
       const setValidity = v => Object.assign(this.validity, v)
-      if (isPromise(result)) {
-        this.asyncValidationId++
-        (() => {
-          const id = this.asyncValidationId
+      const isLatest = id => this.validationId === id
+      {
+        this.validationId++
+        let { validationId } = this
+        if (isPromise(result)) {
           result.then(v => {
-            if (this.asyncValidationId === id) setValidity(v)
+            if (isLatest(validationId)) setValidity(v)
           })
-        })()
-      } else {
-        setValidity(result)
+        } else {
+          setValidity(result)
+        }
       }
       return result
     },

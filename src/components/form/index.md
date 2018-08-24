@@ -467,13 +467,15 @@ Clair 目前支持验证的 `type` 有：
 
 某些情况下，输入的验证过程是异步的（比如需要调用服务器端接口去验证）。你可以自定义一个异步的验证函数，让这个函数返回一个 `Promise` 即可。
 
+对于需要访问 HTTP 接口进行异步校验的场景，我们通常需要对验证函数进行节流处理。通过 `validate-throttle` 属性可以指定进行验证的最小时间间隔。
+
 ```html
-<c-input v-model="user" :rules="rules" placeholder="请输入用户名" />
+<c-input v-model="user" :rules="rules" placeholder="请输入用户名" :validate-throttle="500" />
 
 <script>
   const rules = {
-    required: true,
     available: function (val) {
+      console.log(`validating value ${val}`)
       return new Promise((resolve, reject) => {
         // 这里模拟一个异步验证
         setTimeout(() => {
