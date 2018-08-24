@@ -18,7 +18,7 @@
   "success": [
     {
       "path": "@semantic-release/exec",
-      "cmd": "./publish-doc.sh"
+      "cmd": "./scripts/publish-doc.sh"
     }
   ]
 }
