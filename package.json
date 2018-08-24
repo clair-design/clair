@@ -1,6 +1,6 @@
 {
   "name": "clair",
-  "version": "0.3.1",
+  "version": "0.4.1",
   "description": "A design system including principles, Vue components and resources",
   "main": "dist/clair.cjs.js",
   "module": "dist/clair.es.js",
@@ -10,8 +10,8 @@
     "src"
   ],
   "scripts": {
+    "commit": "git-cz",
     "test": "jest",
-    "precommit": "lint-staged",
     "clean": "rimraf dist .site",
     "new": "node ./boilerplate",
     "bundle": "cross-env NODE_ENV=production cili",
@@ -21,6 +21,10 @@
     "start": "npm run doc:dev",
     "lint": "eslint -f node_modules/eslint-friendly-formatter --ext .js,.vue src docs",
     "rawcss": "postcss --no-map -u postcss-easy-import -u postcss-each -u postcss-for -o dist/clair.raw.css src/styles/raw.css"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "commit-msg": "node scripts/commit-msg.js"
   },
   "lint-staged": {
     "*.css": [
@@ -35,7 +39,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/clair-design/clair.git"
+    "url": "https://github.com/clair-design/clair.git"
   },
   "keywords": [
     "Design",
@@ -51,11 +55,13 @@
   "devDependencies": {
     "@vue/test-utils": "^1.0.0-beta.11",
     "cili": "^3.1.2",
+    "commitizen": "^2.10.1",
     "cross-env": "^5.1.1",
+    "cz-conventional-changelog": "^2.1.0",
     "eslint": "^5.3.0",
     "eslint-config-clair": "^1.0.0",
     "eslint-friendly-formatter": "^3.0.0",
-    "husky": "^0.14.3",
+    "gh-pages": "^1.2.0",
     "jest": "^22.1.2",
     "lint-staged": "^4.0.2",
     "npm-run-all": "^4.1.2",
@@ -72,7 +78,8 @@
     "rollup-plugin-vue": "3.0.0",
     "stylelint": "^8.3.1",
     "stylelint-config-standard": "^17.0.0",
-    "vue-jest": "^1.4.0"
+    "vue-jest": "^1.4.0",
+    "yorkie": "^2.0.0"
   },
   "dependencies": {
     "feather-vue": "^1.0.1",
@@ -83,5 +90,10 @@
   },
   "peerDependencies": {
     "vue": "^2.5.16"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

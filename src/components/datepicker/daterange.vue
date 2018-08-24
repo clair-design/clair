@@ -9,7 +9,7 @@
         :maxDate="startMaxDate"
         :year="startYear"
         :month="startMonth"
-        :monthshow="startMonthsShow"
+        :monthsShow="startMonthsShow"
         @monthchange="startMonthChange"
         @yearchange="startYearChange"
         @monthshow="startMonthTableShow"
@@ -20,6 +20,7 @@
           :minDate="minDate"
           :maxDate="startMaxDate"
           :year="startYear"
+          :month="startMonth"
           @change="startSelectMonth"
           )
         c-datetable(
@@ -44,7 +45,7 @@
         :maxDate="maxDate"
         :year="endYear"
         :month="endMonth"
-        :monthshow="endMonthsShow"
+        :monthsShow="endMonthsShow"
         @monthchange="endMonthChange"
         @yearchange="endYearChange"
         @monthshow="endMonthTableShow"
@@ -55,6 +56,7 @@
           :minDate="endMinDate"
           :maxDate="maxDate"
           :year="endYear"
+          :month="endMonth"
           @change="endSelectMonth"
           )
         c-datetable(
@@ -98,6 +100,10 @@ export default {
     value: [Array, String],
     size: String,
     show: Boolean,
+    type: {
+      type: String,
+      default: 'date'
+    },
     minDate: {
       type: String,
       default: '1970-01-01'
@@ -107,8 +113,7 @@ export default {
       default: '2099-12-31'
     },
     pattern: {
-      type: String,
-      default: 'yyyy-MM-dd'
+      type: String
     }
   },
   mixins: [Mixin],
@@ -127,14 +132,18 @@ export default {
       rangeObj: {
         endDate: '',
         selecting: true
-      }
+      },
+      format: ''
     }
   },
   created () {
     const [start, end] = this.value
     this.start = start || ''
     this.end = end || ''
+    this.startMonthsShow = this.isMonthRange
+    this.endMonthsShow = this.isMonthRange
     this.updateDate()
+    this.format = this.pattern ? this.pattern : this.isMonthRange ? 'yyyy-MM' : 'yyyy-MM-dd'
   },
   watch: {
     show (newVal) {
@@ -145,14 +154,17 @@ export default {
     }
   },
   computed: {
+    isMonthRange () {
+      return this.type === 'month'
+    },
     className () {
       return this.size ? `is-${this.size}` : 'md'
     },
     startMaxDate () {
-      return new Date(this.endYear, this.endMonth, 0).format(this.pattern)
+      return new Date(this.endYear, this.endMonth, 0).format(this.format)
     },
     endMinDate () {
-      return new Date(this.startYear, this.startMonth + 1, 1).format(this.pattern)
+      return new Date(this.startYear, this.startMonth + 1, 1).format(this.format)
     }
   },
   methods: {
@@ -218,9 +230,13 @@ export default {
       this.startMonthsShow = show
     },
     startSelectMonth (month) {
-      this.startMonthsShow = false
+      this.startMonthsShow = this.isMonthRange
       this.startMonth = month
       this.startDay = ''
+      if (this.isMonthRange) {
+        this.start = new Date(this.startYear, this.startMonth).format(this.format)
+        this.updateDate()
+      }
     },
     selectDay (dateObj) {
       this.start = dateObj.start
@@ -237,9 +253,13 @@ export default {
       this.endMonthsShow = show
     },
     endSelectMonth (month) {
-      this.endMonthsShow = false
+      this.endMonthsShow = this.isMonthRange
       this.endMonth = month
       this.endDay = ''
+      if (this.isMonthRange) {
+        this.end = new Date(this.endYear, this.endMonth).format(this.format)
+        this.updateDate()
+      }
     },
     cancel () {
       [this.start, this.end] = this.value

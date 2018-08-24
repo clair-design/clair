@@ -144,6 +144,10 @@ export default {
       if (new Date(date) > new Date(this.maxDate)) date = this.maxDate
       if (new Date(date) < new Date(this.minDate)) date = this.minDate
       this.$emit('update', new Date(date).format(this.format), true)
+    },
+    updateMonthBykeydown (num, type) {
+      const [year, month] = this.updateMonth(this.year, this.month, num, type)
+      this.$emit('update', new Date(year, month).format(this.format), true)
     }
   }
 }
