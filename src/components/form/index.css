@@ -64,7 +64,8 @@
   }
 
   & .c-form-item__control {
-    flex: 1 0 0%;
+    flex: 1 0 auto;
+    flex-basis: content;
     line-height: var(--form-height-md);
   }
 
@@ -92,15 +93,14 @@
     display: flex;
 
     & .c-form-item__control {
-      flex: 1;
+      flex-grow: 1;
     }
   }
 }
 
 .c-form--inline {
+  display: flex;
   & .c-form-item {
-    display: inline-flex;
-
     &:not(:last-child) {
       margin-right: 1em;
     }
