@@ -14,5 +14,11 @@
   "publish": [
     "@semantic-release/npm",
     "@semantic-release/github"
+  ],
+  "success": [
+    {
+      "path": "@semantic-release/exec",
+      "cmd": "./publish-doc.sh"
+    }
   ]
 }

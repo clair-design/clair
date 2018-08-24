@@ -23,8 +23,6 @@ after_script:
 after_success:
   - test $TRAVIS_PULL_REQUEST = "false" &&
     npx travis-deploy-once "npx semantic-release"
-  - test $TRAVIS_PULL_REQUEST = "false" &&
-    npx gh-pages -r https://"$GH_TOKEN"@github.com/clair-design/clair-design.github.io.git -b master -d .site
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
