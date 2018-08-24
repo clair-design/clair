@@ -10,9 +10,8 @@
     "src"
   ],
   "scripts": {
+    "commit": "git-cz",
     "test": "jest",
-    "precommit": "lint-staged",
-    "commitmsg": "node scripts/commit-msg.js",
     "clean": "rimraf dist .site",
     "new": "node ./boilerplate",
     "bundle": "cross-env NODE_ENV=production cili",
@@ -21,8 +20,11 @@
     "build": "run-s clean doc:build bundle rawcss",
     "start": "npm run doc:dev",
     "lint": "eslint -f node_modules/eslint-friendly-formatter --ext .js,.vue src docs",
-    "rawcss": "postcss --no-map -u postcss-easy-import -u postcss-each -u postcss-for -o dist/clair.raw.css src/styles/raw.css",
-    "cz": "git-cz"
+    "rawcss": "postcss --no-map -u postcss-easy-import -u postcss-each -u postcss-for -o dist/clair.raw.css src/styles/raw.css"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "commit-msg": "node scripts/commit-msg.js"
   },
   "lint-staged": {
     "*.css": [
@@ -60,7 +62,6 @@
     "eslint-config-clair": "^1.0.0",
     "eslint-friendly-formatter": "^3.0.0",
     "gh-pages": "^1.2.0",
-    "husky": "^0.14.3",
     "jest": "^22.1.2",
     "lint-staged": "^4.0.2",
     "npm-run-all": "^4.1.2",
@@ -84,7 +85,8 @@
     "lodash": "^4.17.4",
     "object-assign": "^4.1.1",
     "v-color": "^1.1.0",
-    "v-ctrl": "^1.1.0"
+    "v-ctrl": "^1.1.0",
+    "yorkie": "^2.0.0"
   },
   "peerDependencies": {
     "vue": "^2.5.16"
