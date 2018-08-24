@@ -100,6 +100,7 @@
 
 .c-form--inline {
   display: flex;
+
   & .c-form-item {
     &:not(:last-child) {
       margin-right: 1em;
