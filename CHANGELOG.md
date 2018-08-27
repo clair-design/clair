@@ -1,3 +1,10 @@
+# [0.5.0](https://github.com/clair-design/clair/compare/v0.4.1...v0.5.0) (2018-08-24)
+
+
+### Features
+
+* **Form Validation:** Add throttle to form validation ([ba50bc7](https://github.com/clair-design/clair/commit/ba50bc7))
+
 ## [0.4.1](https://github.com/clair-design/clair/compare/v0.4.0...v0.4.1) (2018-08-20)
 
 
