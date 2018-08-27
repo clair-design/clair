@@ -11,7 +11,10 @@ import Notification from './plugins/notification.js'
 import validatable from './mixins/validatable'
 import resettable from './mixins/resettable'
 
+const mixins = { validatable, resettable }
+
 export const Clair = {
+  mixins,
   install (Vue) {
     // inject $clair to Vue prototype
     if (!('$clair' in Vue.prototype)) {
@@ -27,7 +30,7 @@ export const Clair = {
         get () { return $clair }
       })
 
-      $clair.mixins = { validatable, resettable }
+      $clair.mixins = mixins
 
       Vue.prototype.noop = () => {}
     }
