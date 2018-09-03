@@ -1,3 +1,10 @@
+## [0.5.2](https://github.com/clair-design/clair/compare/v0.5.1...v0.5.2) (2018-09-03)
+
+
+### Bug Fixes
+
+* **Form Validation:** Fix validation bug when validatables nested ([0cae606](https://github.com/clair-design/clair/commit/0cae606))
+
 ## [0.5.1](https://github.com/clair-design/clair/compare/v0.5.0...v0.5.1) (2018-08-27)
 
 
