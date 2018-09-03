@@ -131,7 +131,7 @@ export default {
       if (isValid) this.post(rawFile)
     },
 
-    async post (rawFile) {
+    post (rawFile) {
       this.loading = true
       uploadFileCount++
       const { fid } = rawFile
@@ -159,7 +159,7 @@ export default {
         }
       }
       if (this.httpRequest instanceof Function) {
-        const {headers, file, data, filename, action} = options
+        const { headers, file, data, filename, action } = options
         this.reqs[fid] = this.httpRequest({
           headers, file, data, filename, action
         })

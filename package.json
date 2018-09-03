@@ -1,6 +1,6 @@
 {
   "name": "clair",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "A design system including principles, Vue components and resources",
   "main": "dist/clair.cjs.js",
   "module": "dist/clair.es.js",
@@ -19,7 +19,7 @@
     "doc:build": "pholio build",
     "build": "run-s clean doc:build bundle rawcss",
     "start": "npm run doc:dev",
-    "lint": "eslint -f node_modules/eslint-friendly-formatter --ext .js,.vue src docs",
+    "lint": "eslint --format friendly --ext .js,.vue src docs",
     "rawcss": "postcss --no-map -u postcss-easy-import -u postcss-each -u postcss-for -o dist/clair.raw.css src/styles/raw.css"
   },
   "gitHooks": {
@@ -31,10 +31,10 @@
       "stylelint"
     ],
     "*.js": [
-      "eslint --format node_modules/eslint-friendly-formatter"
+      "eslint --format friendly"
     ],
     "*.vue": [
-      "eslint --format node_modules/eslint-friendly-formatter"
+      "eslint --format friendly"
     ]
   },
   "repository": {
@@ -60,8 +60,7 @@
     "cz-conventional-changelog": "^2.1.0",
     "eslint": "^5.3.0",
     "eslint-config-clair": "^1.0.0",
-    "eslint-friendly-formatter": "^3.0.0",
-    "gh-pages": "^1.2.0",
+    "eslint-formatter-friendly": "^6.0.0",
     "jest": "^22.1.2",
     "lint-staged": "^4.0.2",
     "npm-run-all": "^4.1.2",

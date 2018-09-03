@@ -6,7 +6,6 @@ notifications:
   email: false
 node_js:
   - '10'
-  - '9'
 
 # S: Build Lifecycle
 install:

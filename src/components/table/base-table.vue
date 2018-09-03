@@ -169,7 +169,7 @@ export default {
       return key === this.sortkey && order === this.sortorder
     },
     onSorted (key, order) {
-      this.$emit('sort', {key, order})
+      this.$emit('sort', { key, order })
     },
     getCellStyle (item) {
       const width = typeof item.width === 'number' ? `${item.width}px` : item.width
