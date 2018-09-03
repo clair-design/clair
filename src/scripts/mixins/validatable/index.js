@@ -82,16 +82,16 @@ export default {
   methods: {
     validate () {
       this.validity.dirty = true
-      const { $formItem } = this
+      const { $formItem, builtinRules } = this
       const required = $formItem && !this.$parent.isValidatable && $formItem.required
-      const rules = Object.assign({ required }, this.rules)
+      const rules = Object.assign({ required }, builtinRules, this.rules)
       if (!rules.msg) rules.msg = {}
       if (typeof rules.msg === 'object' && !rules.msg.required) {
         const label = $formItem && $formItem.label ? $formItem.label : ''
         const action = this.$options.name === 'c-input' ? '填写' : '选择'
         rules.msg.required = `请${action}${label.replace(/[:：]/, '')}`
       }
-      const result = Validator.validate(this.value, rules)
+      const result = Validator.validate(this.value, rules, this)
       const setValidity = v => Object.assign(this.validity, v)
       const isLatest = id => this.validationId === id
       {

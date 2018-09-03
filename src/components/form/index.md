@@ -435,6 +435,8 @@ Clair 目前支持验证的 `type` 有：
 
 除了 Clair 内置的验证规则之外，你也可以自定义验证规则。只需要提供一个规则名和一个验证函数即可。验证函数的参数为用户输入的值，如果验证失败，返回 `{ valid: false, msg: '错误提示内容' }`；验证通过则返回 `{ valid: true }` 即可。
 
+在自定义验证函数中，可以使用 `this` 访问触发验证的 Vue 组件实例。
+
 ```html
 设置密码：<c-input v-model="password" :rules="rules" />
 
@@ -447,6 +449,7 @@ Clair 目前支持验证的 `type` 有：
           required: true,
           minlength: 6,
           strength: function (val) {
+            console.log(this) // this 是 c-input 实例
             const hasNumber = /\d/.test(val)
             const hasLetter = /[a-z]/i.test(val)
             const hasSpecialChar = /\W/.test(val)
@@ -616,6 +619,52 @@ export default {
   }
 }
 </script>
+```
+
+### 扩展表单组件
+
+在复杂的业务场景下，我们需要自定义表单组件，这些组件可以使用 [`v-model` 进行双向绑定](https://cn.vuejs.org/v2/guide/components.html#%E5%9C%A8%E7%BB%84%E4%BB%B6%E4%B8%8A%E4%BD%BF%E7%94%A8-v-model)。
+
+Clair 也提供了一些方法，让你开发的自定义组件也可以使用 Clair 的表单验证机制。
+
+```javascript
+import Clair from clair
+
+/**
+ * 自定义表单组件使用Clair的表单验证系统
+ */
+Vue.component('fancy-input', {
+  mixins: [Clair.mixins.validatable],
+  props: ['value'],
+  data () {
+    return {
+      // 这里可以内置一些验证规则
+      builtinRules: {
+        ruleA (val) {
+          // ...
+        }
+      }
+    }
+  }
+  // ...
+})
+
+/**
+ * 使用 `rules` 属性传入验证规则
+ */
+new Vue({
+  el: '#app',
+  template: '<fancy-input v-model="val" :rules="rules">',
+  data () {
+    return {
+      val: '',
+      rules: {
+        required: true,
+        maxLength: 12
+      }
+    }
+  }
+})
 ```
 
 ## 属性说明

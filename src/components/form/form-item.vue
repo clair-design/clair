@@ -58,9 +58,17 @@ export default {
     }
   },
   created () {
+    const isParentValidatable = v => {
+      let parent = v.$parent
+      while (true) {
+        if (!parent || parent === this) return false
+        if (parent.isValidatable) return true
+        parent = parent.$parent
+      }
+    }
     this.$on('validatable-attached', v => {
       // skip child validatable if parent is validatable
-      if (v.$parent.isValidatable) return
+      if (isParentValidatable(v)) return
       this.validatable = v
     })
     this.$on('validatable-detached', v => {

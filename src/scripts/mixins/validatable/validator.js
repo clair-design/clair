@@ -7,9 +7,10 @@ export default { validate }
  * 验证 value 是否符合规则
  * @param value {String} 要验证的值
  * @param rules {Object} 规则
+ * @param context {Object} 触发验证的Vue组件
  * @return {Object} 结果对象，有valid和msg两个字段
  */
-function validate (value, rules = {}) {
+function validate (value, rules = {}, context) {
   // msg 为自定义错误信息
   const { msg } = rules
   const pass = { valid: true }
@@ -20,7 +21,7 @@ function validate (value, rules = {}) {
 
   const results = Object.keys(rules)
     .filter(ruleName => canValidate(ruleName, rules[ruleName]))
-    .map(ruleName => checkSingleRule(ruleName, rules[ruleName], value, msg))
+    .map(ruleName => checkSingleRule(ruleName, rules[ruleName], value, msg, context))
 
   const hasAsync = results.some(isPromise)
   const getResult = results => {
@@ -35,9 +36,9 @@ function validate (value, rules = {}) {
 /**
  * 验证单条规则
  */
-function checkSingleRule (ruleName, param, value, msg) {
+function checkSingleRule (ruleName, param, value, msg, context) {
   const validFunction = typeof param === 'function' ? param : ruleset[ruleName]
-  const result = validFunction(value, param)
+  const result = validFunction.call(context, value, param)
   if (!result.valid && msg) { // 验证不通过且有自定义消息
     if (typeof msg === 'string') { // 自定义消息为字符串时直接使用
       result.msg = msg
