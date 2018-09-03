@@ -60,7 +60,7 @@ export default {
     classObj () {
       return {
         zIndex: zIndex,
-        transform: `translateX(${this.position === 'topRight' || this.position === 'bottomRight' ? -this.offset : this.offset}px)`}
+        transform: `translateX(${this.position === 'topRight' || this.position === 'bottomRight' ? -this.offset : this.offset}px)` }
     }
   },
   methods: {

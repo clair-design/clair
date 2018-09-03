@@ -348,8 +348,8 @@ export default {
         scrollEl.scrollLeft = scrollLeft
       }
     },
-    sorter ({key, order}) {
-      this.$emit('sort', {key, order})
+    sorter ({ key, order }) {
+      this.$emit('sort', { key, order })
     },
     getLevels (item) {
       item.children.forEach(child => {

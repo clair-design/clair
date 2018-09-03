@@ -144,7 +144,7 @@ export default {
         this.$set(item, 'selected', false)
         return item
       })
-      const {label, value} = this.parentMenu
+      const { label, value } = this.parentMenu
       label[this.level] = item[this.labelKey]
       value[this.level] = item[this.valueKey]
       this.currentParentMenu = {
