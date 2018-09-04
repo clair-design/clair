@@ -14,7 +14,7 @@ const [component] = process.argv.slice(2)
 generateComponent({
   prefix: 'c',
   name: component,
-  dir: resolve(__dirname, '../src/components'),
+  dir: resolve(__dirname, '../../src/components'),
   files: getTemplates(resolve(__dirname, './template'))
 })
 
@@ -34,8 +34,7 @@ function generateComponent ({ name, dir, prefix, files }) {
   if (existsSync(dest)) {
     // eslint-disable-next-line
     console.warn(
-      `Skipping component ${component}` +
-      `, it already exisits at ${dest}.`
+      `Skipping component ${component}` + `, it already exisits at ${dest}.`
     )
     return
   }
@@ -52,12 +51,11 @@ function generateComponent ({ name, dir, prefix, files }) {
     return ensureFile(file).then(() => writeFile(file, content))
   })
 
-  Promise.all(promises)
-    .then(() => {
-      // eslint-disable-next-line
-      console.info(`Component ${component} is created at ${dest}.`)
-      process.exit()
-    })
+  Promise.all(promises).then(() => {
+    // eslint-disable-next-line
+    console.info(`Component ${component} is created at ${dest}.`)
+    process.exit()
+  })
 }
 
 function getTemplates (dir) {
@@ -72,8 +70,7 @@ function getTemplates (dir) {
       result.push({
         filename,
         render (data) {
-          return content
-            .replace(/\$\{(\w+)\}/g, (_, key) => data[key])
+          return content.replace(/\$\{(\w+)\}/g, (_, key) => data[key])
         }
       })
     }
