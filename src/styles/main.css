@@ -8,3 +8,4 @@
 @import url('./util.css');
 @import url('./transition.css');
 @import url('./animation.css');
+@import url('../components/**/*.css');

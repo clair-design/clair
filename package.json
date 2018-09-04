@@ -12,30 +12,13 @@
   "scripts": {
     "commit": "git-cz",
     "test": "jest",
-    "clean": "rimraf dist .site",
-    "new": "node ./boilerplate",
-    "bundle": "cross-env NODE_ENV=production cili",
-    "doc:dev": "pholio start",
-    "doc:build": "pholio build",
-    "build": "run-s clean doc:build bundle rawcss",
-    "start": "npm run doc:dev",
-    "lint": "eslint --format friendly --ext .js,.vue src docs",
-    "rawcss": "postcss --no-map -u postcss-easy-import -u postcss-each -u postcss-for -o dist/clair.raw.css src/styles/raw.css"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged",
-    "commit-msg": "node scripts/commit-msg.js"
-  },
-  "lint-staged": {
-    "*.css": [
-      "stylelint"
-    ],
-    "*.js": [
-      "eslint --format friendly"
-    ],
-    "*.vue": [
-      "eslint --format friendly"
-    ]
+    "new": "node ./scripts/boilerplate",
+    "bundle": "sh ./scripts/bundle.sh",
+    "doc:build": "",
+    "build": "pholio build && npm run bundle",
+    "prestart": "sh ./scripts/prestart.sh",
+    "start": "pholio start",
+    "lint": "eslint --format friendly --ext .js,.vue src docs"
   },
   "repository": {
     "type": "git",
@@ -54,16 +37,14 @@
   "homepage": "https://github.com/clair-design/clair#readme",
   "devDependencies": {
     "@vue/test-utils": "^1.0.0-beta.11",
-    "cili": "^3.1.2",
     "commitizen": "^2.10.1",
-    "cross-env": "^5.1.1",
+    "cssnano": "^4.1.0",
     "cz-conventional-changelog": "^2.1.0",
     "eslint": "^5.3.0",
     "eslint-config-clair": "^1.0.0",
     "eslint-formatter-friendly": "^6.0.0",
     "jest": "^22.1.2",
     "lint-staged": "^4.0.2",
-    "npm-run-all": "^4.1.2",
     "pholio": "^0.1.9",
     "postcss-cli": "^6.0.0",
     "postcss-cssnext": "^3.0.2",
@@ -72,7 +53,13 @@
     "postcss-for": "^2.1.1",
     "postcss-reduce-idents": "^4.0.0",
     "pug": "^2.0.0-rc.4",
-    "rimraf": "^2.6.2",
+    "rollup": "^0.65.0",
+    "rollup-plugin-alias": "^1.4.0",
+    "rollup-plugin-buble": "^0.19.2",
+    "rollup-plugin-commonjs": "^9.1.6",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-progress": "^0.4.0",
+    "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-require-context": "^0.0.2",
     "rollup-plugin-vue": "3.0.0",
     "stylelint": "^8.3.1",
@@ -89,6 +76,21 @@
   },
   "peerDependencies": {
     "vue": "^2.5.16"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "commit-msg": "node scripts/commit-msg.js"
+  },
+  "lint-staged": {
+    "*.css": [
+      "stylelint"
+    ],
+    "*.js": [
+      "eslint --format friendly"
+    ],
+    "*.vue": [
+      "eslint --format friendly"
+    ]
   },
   "config": {
     "commitizen": {
