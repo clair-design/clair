@@ -33,7 +33,7 @@ function checkMsgCase (msg) {
   const startWithUpperCase = s => /^\s*[A-Z]/.test(s)
 
   const match = msg.match(commitRE)
-  const scope = match[3].replace(/^\(|\)$/g, '') || 'scope'
+  const scope = (match[3] || 'scope').replace(/^\(|\)$/g, '')
   const subject = match[4]
   const messages = []
 
