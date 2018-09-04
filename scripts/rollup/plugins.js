@@ -18,7 +18,9 @@ function cssNoop () {
 }
 
 export default [
-  progress(),
+  progress({
+    clearLine: !process.env.IS_CI
+  }),
   alias({}),
   cssNoop(),
   vue({ css: false }),

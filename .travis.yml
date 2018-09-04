@@ -6,6 +6,8 @@ notifications:
   email: false
 node_js:
   - '10'
+env:
+  - IS_CI: true
 
 # S: Build Lifecycle
 install:
