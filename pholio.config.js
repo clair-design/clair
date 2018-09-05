@@ -10,8 +10,7 @@ module.exports = {
 
   // md2vue configuration
   md2vue: {
-    highlight: 'highlight.js',
-    inject: '<vue-demo-tools />'
+    gistInjection: '<vue-demo-tools></vue-demo-tools>'
   },
 
   // external links

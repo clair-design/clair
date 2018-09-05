@@ -14,8 +14,7 @@
     "test": "jest",
     "new": "node ./scripts/boilerplate",
     "bundle": "sh ./scripts/bundle.sh",
-    "doc:build": "",
-    "build": "pholio build && npm run bundle",
+    "build": "rm -rf .site && npm run bundle && pholio build",
     "prestart": "sh ./scripts/prestart.sh",
     "start": "pholio start",
     "lint": "eslint --format friendly --ext .js,.vue src docs"
@@ -45,7 +44,7 @@
     "eslint-formatter-friendly": "^6.0.0",
     "jest": "^22.1.2",
     "lint-staged": "^4.0.2",
-    "pholio": "^0.1.9",
+    "pholio": "^0.2.2",
     "postcss-cli": "^6.0.0",
     "postcss-cssnext": "^3.0.2",
     "postcss-each": "^0.10.0",
