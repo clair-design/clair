@@ -1,3 +1,10 @@
+## [0.5.3](https://github.com/clair-design/clair/compare/v0.5.2...v0.5.3) (2018-09-06)
+
+
+### Bug Fixes
+
+* **datepicker, table:** fix disabled detepicker delete value, add table expand ([243fa71](https://github.com/clair-design/clair/commit/243fa71))
+
 ## [0.5.2](https://github.com/clair-design/clair/compare/v0.5.1...v0.5.2) (2018-09-03)
 
 
