@@ -14,7 +14,8 @@ mixin templateCell(columns)
     v-if="$scopedSlots[item.key+'-td']"
   )
     slot(:name="item.key + '-td'" :item="props.item")
-
+  template(slot="expandRow" slot-scope="props")
+    slot(name="expand" :row="props.row")
 mixin Table(columns, onlyhead, onlybody)
   c-basetable(
     :columns=columns
@@ -34,6 +35,7 @@ mixin Table(columns, onlyhead, onlybody)
     @selectAllChange="onSelectAllChange"
     @rowEnter="rowEnter"
     @rowLeave="rowLeave"
+    :expand="expand"
   )
     +templateCell(columns)
 mixin TableWithHeight(columns, tbody, onScroll, nobody)
@@ -127,7 +129,8 @@ export default {
     noresultMsg: {
       type: String,
       default: '暂无数据'
-    }
+    },
+    expand: Boolean
   },
 
   data () {
@@ -251,6 +254,7 @@ export default {
       this.datasource && this.datasource.map((item, index) => {
         item._checked = (item.hasOwnProperty('_checked') && item._checked) || this.allChecked
         item._disabled = (item.hasOwnProperty('_disabled') && item._disabled) || this.allChecked
+        item._showExpand = (item.hasOwnProperty('_showExpand') && item._showExpand)
         item._checked && selectedList.push(item)
         list.push(item)
       })

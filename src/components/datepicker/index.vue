@@ -3,7 +3,7 @@
   @click="open"
 )
   .c-datepicker__icon.c-datepicker__hovericon(
-    v-if="date != '' || daterange != ''"
+    v-if="!disabled && date != '' || daterange != ''"
     @click="resetDate"
     :class="className"
   )

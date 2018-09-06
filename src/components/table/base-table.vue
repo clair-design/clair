@@ -33,33 +33,39 @@ table
       v-if="dataList.length == 0"
     )
       td.c-table__noresult(:colspan="columns.length") {{noresultMsg}}
-    tr(
-      v-for="dataItem,index in dataList"
-      @mouseenter="setCurrentItem(dataItem, index)"
-      @mouseleave="resetCurrentItem"
-      :class="getRowClassName(item, index)"
-      v-else
-    )
-      td(
-        v-for="columnsItem in allColumns"
-        :style="getCellStyle(columnsItem)"
-        :class="getColumnClassName(columnsItem)"
+    template(v-for="dataItem,index in dataList" v-else)
+      tr(
+        @mouseenter="setCurrentItem(dataItem, index)"
+        @mouseleave="resetCurrentItem"
+        :class="getRowClassName(item, index)"
       )
-        slot(
-          :name="columnsItem.key + '-base-td'"
-          :item="dataItem"
+        td(
+          v-for="columnsItem in allColumns"
+          :style="getCellStyle(columnsItem)"
+          :class="getColumnClassName(columnsItem)"
+          @click="openExpand(dataItem, columnsItem)"
         )
-          span.c-table__check(v-if="columnsItem.type === 'selection'")
-            c-checkbox(
-              v-model="!dataItem._disabled && dataItem._checked"
-              :disabled="dataItem._disabled"
-              @change="onSelectChange"
-            )
-          div(
-            v-if="columnsItem.render"
-            v-html="columnsItem.render(index, dataItem[columnsItem.key], dataItem)"
+          slot(
+            :name="columnsItem.key + '-base-td'"
+            :item="dataItem"
           )
-          span(v-else) {{dataItem[columnsItem.key]}}
+            span.c-table__expand(v-if="columnsItem.type === 'expand'")
+              c-icon(name="chevron-down" v-if="dataItem._showExpand")
+              c-icon(name="chevron-right" v-else)
+            span.c-table__check(v-if="columnsItem.type === 'selection'")
+              c-checkbox(
+                v-model="dataItem._checked"
+                :disabled="dataItem._disabled"
+                @change="onSelectChange"
+              )
+            div(
+              v-if="columnsItem.render"
+              v-html="columnsItem.render(index, dataItem[columnsItem.key], dataItem)"
+            )
+            span(v-else) {{dataItem[columnsItem.key]}}
+      tr(v-show="hasExpand && dataItem._showExpand")
+        td(:colspan="allColumns.length")
+          slot(name="expandRow" :row="dataItem")
 </template>
 
 <script>
@@ -80,11 +86,13 @@ export default {
     hoverRowIndex: [Number, String],
     onlybody: [String, Boolean],
     onlyhead: [String, Boolean],
-    noresultMsg: String
+    noresultMsg: String,
+    expand: Boolean
   },
 
   data () {
     return {
+      dataList: {},
       currentItem: {},
       columnsRows: [],
       allSelect: false,
@@ -93,18 +101,19 @@ export default {
   },
 
   computed: {
-    dataList () {
-      return this.datasource
-    },
     allColumns () {
       const columns = cloneDeep(this.columns)
       return this.getAllColumns(columns)
+    },
+    hasExpand () {
+      return this.expand
     }
   },
 
   created () {
     this.allSelect = this.allChecked
     this.checkIndeterminate = this.indeterminate
+    this.dataList = cloneDeep(this.datasource)
   },
 
   mounted () {
@@ -113,6 +122,9 @@ export default {
     this.columnsRows = this.getLevelColumns(this.columns, maxlevel)
   },
   watch: {
+    datasource (newVal) {
+      this.dataList = cloneDeep(newVal)
+    },
     allChecked (newVal) {
       if (this.allSelect === newVal) return
       this.allSelect = newVal
@@ -131,6 +143,10 @@ export default {
   },
 
   methods: {
+    openExpand (dataItem, columnsItem) {
+      if (columnsItem.type !== 'expand') return
+      dataItem._showExpand = !dataItem._showExpand
+    },
     getRowClassName (row, rowIndex) {
       const classes = []
       const { rowClassName } = this

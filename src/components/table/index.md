@@ -8,6 +8,72 @@ route: /component/table
 
 用于展示多条结构类似的数据，可对数据进行排序或其他自定义操作
 
+## 可展开表格
+有的时候数据较多，不能在一行中完全展现，可以展开查看其他信息,
+在 `columns`设置第一列的`type`为`expand`， 即可支持第一列展现折叠展现按钮,
+在数据中设置`_showExpand`为`true`时，默认展开
+
+##### 注：这种方式不支持列固定`fixed`
+
+
+```html
+<style scoped>
+p {
+  text-align: center;
+}
+</style>
+<c-table
+  border="all"
+  :columns="columns"
+  :datasource="datasource"
+  :expand="hasExpand"
+>
+  <p slot="expand" slot-scope="props">
+    32324--{{props.row.type}}
+  </p>
+</c-table>
+<script>
+export default {
+  data () {
+    return {
+      hasExpand: true,
+      datasource: [
+        {
+          type: '直接访问',
+          pv: 1,
+          uv: 2,
+          nv: 3,
+          du: 4,
+          cv: 5,
+          ip: 8,
+          _showExpand: true
+        }, {
+          type: '搜索引擎',
+          pv: 11,
+          uv: 21,
+          nv: 31,
+          du: 141,
+          cv: 51,
+          ip: 81
+        }
+      ],
+      columns: [
+        { type: 'expand', align: 'center', width: 60},
+        { title: '来源类型', key: 'type', align: 'center', width: '20%' },
+        { title: '浏览量', key: 'pv', className: 'test' },
+        { title: '访客数', key: 'uv' },
+        { title: '新访客数', key: 'nv' },
+        { title: '访问时长', key: 'du' },
+        { title: '转化次数', key: 'cv' },
+        { title: 'IP 数', key: 'ip', align: 'right ' }
+      ]
+    }
+  }
+}
+</script>
+```
+
+
 ## 基础表格
 
 基础表格用于展示信息列表，随屏幕宽度进行自适应调节
@@ -113,6 +179,7 @@ export default {
         {
           type: '直接访问',
           _disabled: true,
+          _checked: true,
           pv: 1,
           uv: 2,
           nv: 3,
