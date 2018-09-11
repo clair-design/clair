@@ -198,6 +198,9 @@ export default {
     selectedValues () {
       return this.selectedOptions.map(option => option.value)
     },
+    selectedLabel () {
+      return this.selectedOptions.map(option => option.label)
+    },
     showPlaceholder () {
       const empty = !this.selectedOptions.length
       return empty && !this.isOpen
@@ -502,7 +505,9 @@ export default {
 
     emitChange () {
       const value = this.multiple ? this.selectedValues : this.selectedValues[0]
-      this.$emit('change', value)
+      const label = this.multiple ? this.selectedLabel : this.selectedLabel[0]
+      console.log(value, label)
+      this.$emit('change', value, label)
     }
   }
 }
