@@ -15,7 +15,8 @@ export default {
     validateThrottle: {
       type: Number,
       default: 0
-    }
+    },
+    skipValidate: Boolean
   },
 
   data () {
@@ -26,7 +27,7 @@ export default {
         msg: '',
         dirty: false
       },
-      isValidatable: true,
+      isValidatable: !this.skipValidate,
       // id of the latest validation
       validationId: 0
     }
@@ -83,7 +84,7 @@ export default {
     validate () {
       this.validity.dirty = true
       const { $formItem, builtinRules } = this
-      const required = $formItem && !this.$parent.isValidatable && $formItem.required
+      const required = $formItem && !this.$parent.isValidatable && $formItem.required && this.isValidatable
       const rules = Object.assign({ required }, builtinRules, this.rules)
       if (!rules.msg) rules.msg = {}
       if (typeof rules.msg === 'object' && !rules.msg.required) {

@@ -666,6 +666,45 @@ new Vue({
   }
 })
 ```
+## 跳过组件验证
+
+在复杂的业务场景下，我们自定义了一些表单组件以便于组件的复用，我们在自定义组件中做了验证规则，然后我们在各处调用该组件，但在某些场景下调用该组件并不需要执行验证操作，这时我们可以添加skipValidate属性来跳过本次组件的验证功能
+
+```html
+<c-form @submit.prevent="onSubmit" ref="form">
+  <c-form-item label="用户名:" required>
+    <c-input v-model="username" :rules="rules" />
+  </c-form-item>
+  <c-form-item label="密码:" required>
+    <c-input v-model="password" skipValidate :rules="rules" />
+  </c-form-item>
+  <c-button type="submit" primary>提交</c-button>
+</c-form>
+
+<script>
+export default {
+  data () {
+    return {
+      password: '',
+      username: '',
+      rules: {
+        customFunction: () => {
+          return {
+            valid: false,
+            msg: '未通过验证'
+          }
+        }
+      }
+    }
+  },
+  methods: {
+    onSubmit () {
+      return this.$refs.form.isValid()
+    }
+  }
+}
+</script>
+```
 
 ## 属性说明
 
