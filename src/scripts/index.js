@@ -1,5 +1,3 @@
-import './polyfills'
-
 // plugins
 import Components from './components'
 import Responsive from './plugins/responsive.js'
