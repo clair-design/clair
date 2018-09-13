@@ -36,6 +36,7 @@ c-portal(:aria-hidden="'' + !visible" v-if="!shouldDestroy")
 import './index.css'
 import { getScrollBarSize } from '../../scripts/utils'
 import zIndex from '../../scripts/utils/zIndexManager'
+import PortalComponent from '../portal/index.vue'
 
 let uid = 0
 const overflowController = {
@@ -89,6 +90,10 @@ const overflowController = {
 
 export default {
   name: 'c-modal',
+  components: {
+    'c-portal': PortalComponent
+  },
+
   props: {
     visible: Boolean,
     maskClosable: {

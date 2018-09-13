@@ -32,6 +32,7 @@
 import throttle from 'lodash/throttle'
 import { contains, VueTypes } from '../../scripts/utils'
 import zIndex from '../../scripts/utils/zIndexManager'
+import PortalComponent from '../portal/index.vue'
 
 import './index.css'
 
@@ -58,6 +59,11 @@ const defaultDelayTime = 100
 
 export default {
   name: 'c-tip',
+
+  components: {
+    'c-portal': PortalComponent
+  },
+
   props: {
     theme: VueTypes.oneOf(['dark', 'light']).def('dark'),
     trigger: VueTypes.oneOf(['hover', 'click', 'focus']).def('hover'),

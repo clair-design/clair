@@ -2,6 +2,15 @@ import VueTypes from './vue-types'
 export { VueTypes }
 
 /**
+ * @desc get Vue Constructor inside Vue instances
+ * @param vm {VueComponent} Vue instance
+ */
+export function getVueCtor (vm) {
+  // SEE https://github.com/vuejs/vue/blob/dev/src/core/global-api/extend.js#L43
+  return vm.constructor.super
+}
+
+/**
  * @desc get Vue props definitions from modifier list
  * @param modifiers {Array}
  * @return {Object}

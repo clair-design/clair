@@ -86,11 +86,12 @@
 <script>
 import throttle from 'lodash/throttle'
 
-import './index.css'
 import zIndex from '../../scripts/utils/zIndexManager'
 import { getPosition, POSITION } from './position'
 import resettable from '../../scripts/mixins/resettable'
 import validatable from '../../scripts/mixins/validatable'
+import PortalComponent from '../portal/index.vue'
+import './index.css'
 
 // ensure each option has label and value
 const normalizeOptions = (options = []) => {
@@ -102,6 +103,10 @@ const normalizeOptions = (options = []) => {
 
 export default {
   name: 'c-select',
+
+  components: {
+    'c-portal': PortalComponent
+  },
 
   mixins: [resettable, validatable],
 

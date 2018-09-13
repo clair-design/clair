@@ -34,6 +34,7 @@ import ColorPicker from 'v-color'
 import { contains, VueTypes } from '../../scripts/utils'
 import zIndex from '../../scripts/utils/zIndexManager'
 import resettable from '../../scripts/mixins/resettable'
+import PortalComponent from '../portal/index.vue'
 
 import './index.css'
 
@@ -67,7 +68,8 @@ export default {
   },
 
   components: {
-    'color-picker': ColorPicker
+    'color-picker': ColorPicker,
+    'c-portal': PortalComponent
   },
 
   data () {

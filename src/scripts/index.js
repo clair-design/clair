@@ -3,7 +3,6 @@ import './polyfills'
 // plugins
 import Components from './components'
 import Responsive from './plugins/responsive.js'
-import Portal from './plugins/portal.js'
 import Modal from './plugins/modal.js'
 import Notification from './plugins/notification.js'
 
@@ -37,7 +36,6 @@ export const Clair = {
 
     Vue.use(Components)
     // install plugins
-    Vue.use(Portal)
     Vue.use(Modal)
     Vue.use(Responsive)
     Vue.use(Notification)
