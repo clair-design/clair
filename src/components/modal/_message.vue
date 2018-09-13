@@ -16,7 +16,12 @@ c-modal(
 </template>
 
 <script>
+import ModalComponent from './index.vue'
+
 export default {
+  components: {
+    'c-modal': ModalComponent
+  },
   props: {
     title: String,
     msg: {

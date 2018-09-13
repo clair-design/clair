@@ -20,7 +20,12 @@ c-notification(
 </template>
 
 <script>
+import Notification from './index.vue'
+
 export default {
+  components: {
+    'c-notification': Notification
+  },
   props: {
     title: String,
     message: String,

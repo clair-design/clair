@@ -2,9 +2,16 @@ import CNotification from '../../components/notification/_notify.vue'
 
 export default {
   install (Vue) {
-    extendVue(Vue)
+    Vue.prototype.$notify = function (data) {
+      return createNotification(Vue, data)
+    }
   }
 }
+
+/**
+ * `containers` keeps references to container
+ * elements in all directions
+ */
 const containers = {
   topRight: null,
   bottomRight: null,
@@ -12,47 +19,40 @@ const containers = {
   topLeft: null
 }
 
-function extendVue (Vue) {
-  const { prototype } = Vue
+const createNotification = function (Vue, data) {
+  const pos = data.position || (data.position = 'topRight')
 
-  const createNotification = (data, component) => {
-    const mountNode = document.createElement('div')
-    const pos = data.position ? data.position : 'topRight'
+  if (containers[pos] === null) {
+    const div = document.createElement('div')
+    div.className = `c-notification c-notification-${pos}`
+    containers[pos] = div
+    // TODO: check `document.body`
+    document.body.appendChild(div)
+  }
+  const mountingNode = document.createElement('div')
+  containers[pos].appendChild(mountingNode)
 
-    if (containers[pos] === null) {
-      const el = document.createElement('div')
-      el.className = `c-notification c-notification-${pos}`
-      containers[pos] = el
-      document.body.appendChild(containers[pos])
+  const options = {
+    components: {
+      'notice-app': CNotification
+    },
+    destroyed () {
+      const elem = this.$el
+      elem.parentNode.removeChild(elem)
+    },
+    render (h) {
+      return h('notice-app', {
+        attrs: data,
+        on: {
+          destroy () {
+            vm.$destroy()
+          },
+          close () {}
+        }
+      })
     }
-    containers[pos].appendChild(mountNode)
-
-    const vm = new Vue({
-      components: {
-        'c-notice-app': component
-      },
-      destroyed () {
-        const elem = this.$el
-        elem.parentNode.removeChild(elem)
-      },
-      render (h) {
-        return h('c-notice-app', {
-          attrs: data,
-          on: {
-            destroy () {
-              vm.$destroy()
-            },
-            close () {
-              // TODO
-              console.log('Close the notification...')
-            }
-          }
-        })
-      }
-    }).$mount(mountNode)
   }
 
-  prototype.$notify = function (data) {
-    return createNotification(data, CNotification)
-  }
+  const vm = new Vue(options)
+  vm.$mount(mountingNode)
 }
