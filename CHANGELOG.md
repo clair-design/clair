@@ -1,3 +1,11 @@
+## [0.5.4](https://github.com/clair-design/clair/compare/v0.5.3...v0.5.4) (2018-09-14)
+
+
+### Bug Fixes
+
+* **datepicker, table, checkbox:** update datepicker, table, checkbox for more using ([25064ed](https://github.com/clair-design/clair/commit/25064ed))
+* merge to master ([cec35f7](https://github.com/clair-design/clair/commit/cec35f7))
+
 ## [0.5.3](https://github.com/clair-design/clair/compare/v0.5.2...v0.5.3) (2018-09-06)
 
 
