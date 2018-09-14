@@ -1,3 +1,10 @@
+const { resolveAlias = {} } = require('./package.json')
+const aliases = {}
+Object.keys(resolveAlias).forEach(key => {
+  const val = resolveAlias[key]
+  aliases[`^${key}/(.*)$`] = `<rootDir>/${val}/$1`
+})
+
 module.exports = {
   'moduleFileExtensions': [
     'js',
@@ -13,7 +20,7 @@ module.exports = {
   },
   'moduleNameMapper': {
     '\\.(css|less|scss)$': '<rootDir>/__mocks__/styleMock.js',
-    '^@/(.*)$': '<rootDir>/src/$1'
+    ...aliases
   },
   'snapshotSerializers': [
     '<rootDir>/node_modules/jest-serializer-vue'
