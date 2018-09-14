@@ -8,7 +8,8 @@ Object.keys(resolveAlias).forEach(key => {
 module.exports = {
   'moduleFileExtensions': [
     'js',
-    'vue'
+    'vue',
+    'json'
   ],
   'modulePaths': [
     '<rootDir>/src',
