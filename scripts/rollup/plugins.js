@@ -1,3 +1,4 @@
+import { resolve } from 'path'
 import vue from 'rollup-plugin-vue'
 import alias from 'rollup-plugin-alias'
 import commonjs from 'rollup-plugin-commonjs'
@@ -6,6 +7,7 @@ import requireContext from 'rollup-plugin-require-context'
 import buble from 'rollup-plugin-buble'
 import progress from 'rollup-plugin-progress'
 import replace from 'rollup-plugin-replace'
+import pkg from '../../package.json'
 
 function cssNoop () {
   return {
@@ -17,18 +19,31 @@ function cssNoop () {
   }
 }
 
+const rootDir = resolve(__dirname, '../..')
+
+const resolveAlias = pkg.resolveAlias || {}
+Object.keys(resolveAlias).forEach(key => {
+  resolveAlias[key] = resolve(rootDir, resolveAlias[key])
+})
+
 export default [
-  progress({
-    clearLine: !process.env.IS_CI
+  process.env.IS_CI ? {} : progress(),
+  alias({
+    resolve: ['.js', '.vue', '.json'],
+    ...resolveAlias
   }),
-  alias({}),
   cssNoop(),
   vue({ css: false }),
   buble({
     objectAssign: 'Object.assign'
   }),
   commonjs(),
-  nodeResolve(),
+  nodeResolve({
+    module: true,
+    jsnext: true,
+    main: true,
+    extensions: ['.js', '.vue', '.json']
+  }),
   requireContext(),
   replace({
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
