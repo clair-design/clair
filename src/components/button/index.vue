@@ -28,7 +28,7 @@ import './index.css'
 import {
   toVueProps,
   toClassNames
-} from '../../scripts/utils'
+} from '@util'
 
 const name = 'c-button'
 const block = `c-button`

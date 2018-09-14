@@ -1,4 +1,4 @@
-import CNotification from '../../components/notification/_notify.vue'
+import CNotification from '@components/notification/_notify.vue'
 
 export default {
   install (Vue) {

@@ -32,8 +32,8 @@ transition(
 </template>
 
 <script>
-import { VueTypes } from '../../scripts/utils'
-import zIndex from '../../scripts/utils/zIndexManager'
+import { VueTypes } from '@util'
+import zIndex from '@util/zIndexManager'
 
 import './index.css'
 

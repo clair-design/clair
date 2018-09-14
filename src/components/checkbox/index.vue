@@ -18,8 +18,8 @@
 <script>
 // import css
 import './index.css'
-import resettable from '../../scripts/mixins/resettable'
-import validatable from '../../scripts/mixins/validatable'
+import resettable from '@scripts/mixins/resettable'
+import validatable from '@scripts/mixins/validatable'
 
 const name = 'c-checkbox'
 const props = {

@@ -5,7 +5,7 @@
 
 <script>
 import { multiply } from './util'
-import { breakpoints } from '../../scripts/config'
+import { breakpoints } from '@scripts/config'
 import './index.css'
 
 const props = {

@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import { VueTypes } from '../../scripts/utils'
-import validatable from '../../scripts/mixins/validatable'
-import resettable from '../../scripts/mixins/resettable'
+import { VueTypes } from '@util'
+import validatable from '@scripts/mixins/validatable'
+import resettable from '@scripts/mixins/resettable'
 
 import './index.css'
 

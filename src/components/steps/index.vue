@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { VueTypes } from '../../scripts/utils'
+import { VueTypes } from '@util'
 
 import './index.css'
 

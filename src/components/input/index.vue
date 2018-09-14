@@ -38,8 +38,8 @@
 <script>
 import throttle from 'lodash/throttle'
 import './index.css'
-import validatable from '../../scripts/mixins/validatable'
-import resettable from '../../scripts/mixins/resettable'
+import validatable from '@scripts/mixins/validatable'
+import resettable from '@scripts/mixins/resettable'
 
 // SEE https://github.com/jackmoore/autosize
 // import autoSize from 'autosize'

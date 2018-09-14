@@ -16,9 +16,9 @@
 
 <script>
 import './index.css'
-import { randomString } from '../../scripts/utils'
-import validatable from '../../scripts/mixins/validatable'
-import resettable from '../../scripts/mixins/resettable'
+import { randomString } from '@util'
+import validatable from '@scripts/mixins/validatable'
+import resettable from '@scripts/mixins/resettable'
 
 export default {
   name: 'c-radio-group',

@@ -31,5 +31,6 @@
   "vetur.format.scriptInitialIndent": false,
   "vetur.validation.script": true,
   "vetur.validation.style": true,
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+  "standard.enable": false
 }

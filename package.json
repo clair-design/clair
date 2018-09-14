@@ -35,16 +35,18 @@
   },
   "homepage": "https://github.com/clair-design/clair#readme",
   "devDependencies": {
-    "@vue/test-utils": "^1.0.0-beta.11",
+    "@vue/test-utils": "^1.0.0-beta.25",
+    "babel-jest": "^23.6.0",
     "commitizen": "^2.10.1",
     "cssnano": "^4.1.0",
     "cz-conventional-changelog": "^2.1.0",
     "eslint": "^5.3.0",
     "eslint-config-clair": "^1.0.0",
     "eslint-formatter-friendly": "^6.0.0",
-    "jest": "^22.1.2",
+    "jest": "^23.6.0",
+    "jest-serializer-vue": "^2.0.2",
     "lint-staged": "^4.0.2",
-    "pholio": "^0.2.2",
+    "pholio": "^0.3.1",
     "postcss-cli": "^6.0.0",
     "postcss-cssnext": "^3.0.2",
     "postcss-each": "^0.10.0",
@@ -76,7 +78,7 @@
     "vue": "^2.5.16"
   },
   "gitHooks": {
-    "pre-commit": "lint-staged",
+    "pre-commit": "lint-staged && npm test",
     "commit-msg": "node scripts/commit-msg.js"
   },
   "lint-staged": {
@@ -94,5 +96,11 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "resolveAlias": {
+    "@": "src/",
+    "@components": "src/components/",
+    "@scripts": "src/scripts/",
+    "@util": "src/scripts/utils/"
   }
 }
