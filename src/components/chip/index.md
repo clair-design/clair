@@ -169,5 +169,5 @@ layout: component
 |-----|------|-------|-----|-------|
 | label | String | - | 标签内容 | - |
 | color | String | - | 自定义标签颜色 | red / orange / yellow / green / cyan / blue / indigo / purple / pink / dark / black... |
-| size | String | - | 标签大小 | xs / sm / lg / xl |
+| size | String | - | 标签大小 | xs / sm / md / lg / xl |
 | closable | Boolean | false | 是否有关闭按钮 | - |
