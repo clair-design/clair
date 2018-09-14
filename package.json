@@ -78,7 +78,7 @@
     "vue": "^2.5.16"
   },
   "gitHooks": {
-    "pre-commit": "lint-staged",
+    "pre-commit": "lint-staged && npm test",
     "commit-msg": "node scripts/commit-msg.js"
   },
   "lint-staged": {
