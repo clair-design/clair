@@ -8,77 +8,11 @@ route: /component/table
 
 用于展示多条结构类似的数据，可对数据进行排序或其他自定义操作
 
-## 可展开表格
-有的时候数据较多，不能在一行中完全展现，可以展开查看其他信息,
-在 `columns`设置第一列的`type`为`expand`， 即可支持第一列展现折叠展现按钮,
-在数据中设置`_showExpand`为`true`时，默认展开
-
-##### 注：这种方式不支持列固定`fixed`
-
-
-```html
-<style scoped>
-p {
-  text-align: center;
-}
-</style>
-<c-table
-  border="all"
-  :columns="columns"
-  :datasource="datasource"
-  :expand="hasExpand"
->
-  <p slot="expand" slot-scope="props">
-    32324--{{props.row.type}}
-  </p>
-</c-table>
-<script>
-export default {
-  data () {
-    return {
-      hasExpand: true,
-      datasource: [
-        {
-          type: '直接访问',
-          pv: 1,
-          uv: 2,
-          nv: 3,
-          du: 4,
-          cv: 5,
-          ip: 8,
-          _showExpand: true
-        }, {
-          type: '搜索引擎',
-          pv: 11,
-          uv: 21,
-          nv: 31,
-          du: 141,
-          cv: 51,
-          ip: 81
-        }
-      ],
-      columns: [
-        { type: 'expand', align: 'center', width: 60},
-        { title: '来源类型', key: 'type', align: 'center', width: '20%' },
-        { title: '浏览量', key: 'pv', className: 'test' },
-        { title: '访客数', key: 'uv' },
-        { title: '新访客数', key: 'nv' },
-        { title: '访问时长', key: 'du' },
-        { title: '转化次数', key: 'cv' },
-        { title: 'IP 数', key: 'ip', align: 'right ' }
-      ]
-    }
-  }
-}
-</script>
-```
-
 
 ## 基础表格
 
 基础表格用于展示信息列表，随屏幕宽度进行自适应调节
 使用 `columns` 属性指定所有列，`datasource` 绑定表格展现信息
-
 
 ```html
 <c-table
@@ -140,7 +74,6 @@ export default {
   }
 }
 </script>
-
 ```
 
 ## 可选择的表格
@@ -248,7 +181,6 @@ export default {
 
 通过 `render` 进行函数定义返回单元格的内容，也可以通过 [Scoped Slots](https://vuejs.org/v2/guide/components.html#Scoped-Slots) 特性来获取数据进行其他的交互
 
-
 ```html
 <template>
   <c-table
@@ -334,7 +266,6 @@ export default {
 
 对于结构复杂的数据可以使用多级表头来展现，更好的体现数据的层级关系
 
-
 ```html
 <c-table
   :sortkey="sortKey"
@@ -412,7 +343,6 @@ export default {
 
 对于结构复杂的数据可以使用列固定来展现重要信息，需要在`columns`中指定每列的宽度，其他数据可以滑动查看
 
-
 ```html
 <c-table
   :columns="columns"
@@ -461,7 +391,6 @@ export default {
 ## 表头固定
 
 对于数目较多的数据可以使用表头固定来展现数据信息，需要在组件中传递表格的高度
-
 
 ```html
 <c-table
@@ -543,7 +472,6 @@ export default {
 ## 表头和列都固定
 
 对于数目较多的数据可以使用表头固定，重要的列固定来展现数据信息
-
 
 ```html
 <c-table
@@ -644,10 +572,10 @@ export default {
 }
 </script>
 ```
+
 ## 多级表头固定, 列固定
 
 对于结构复杂的数据可以使用多级表头来展现，更好的体现数据的层级关系
-
 
 ```html
 <c-table
@@ -734,6 +662,160 @@ export default {
 }
 </script>
 ```
+## 合并单元格
+
+```html
+<c-table
+  border="all"
+  :size="size"
+  :columns="columns"
+  :datasource="datasource"
+  :rowClassName="getRowClassName"
+  noresultMsg="暂无相关数据"
+  :spanMethod="rowspanMethod"
+/>
+<hr>
+<c-table
+  border="all"
+  :size="size"
+  :columns="columns"
+  :datasource="datasource"
+  :rowClassName="getRowClassName"
+  noresultMsg="暂无相关数据"
+  :spanMethod="spanMethod"
+/>
+<script>
+export default {
+  data () {
+    return {
+      size: 'sm',
+      datasource: [
+        {
+          type: '直接访问',
+          pv: 1,
+          uv: 2,
+          nv: 3,
+          du: 4,
+          cv: 5,
+          ip: 8
+        }, {
+          type: '搜索引擎',
+          pv: 11,
+          uv: 21,
+          nv: 31,
+          du: 141,
+          cv: 51,
+          ip: 81
+        }
+      ],
+      columns: [
+        { title: '来源类型', key: 'type', align: 'center', width: '20%' },
+        { title: '浏览量', key: 'pv', className: 'test' },
+        { title: '访客数', key: 'uv' },
+        { title: '新访客数', key: 'nv' },
+        { title: '访问时长', key: 'du' },
+        { title: '转化次数', key: 'cv' },
+        { title: 'IP 数', key: 'ip', align: 'right ' }
+      ]
+    }
+  },
+  methods: {
+    getRowClassName (rowItem, rowIndex) {
+      return 'test--row'
+    },
+    rowspanMethod (row, column, rowIndex, columnIndex) {
+      if (rowIndex % 2 === 0) {
+          if (columnIndex === 1) {
+            return [1, 2];
+          } else if (columnIndex === 2) {
+            return [0, 0];
+          }
+        }
+    },
+    spanMethod (row, column, rowIndex, columnIndex) {
+      if (columnIndex === 0) {
+          if (rowIndex % 2 === 0) {
+            return {
+              rowspan: 2,
+              colspan: 1
+            }
+          } else {
+            return {
+              rowspan: 0,
+              colspan: 0
+            }
+          }
+        }
+    }
+  }
+}
+</script>
+```
+
+## 可展开表格
+
+有的时候数据较多，不能在一行中完全展现，可以展开查看其他信息,
+在 `columns`设置第一列的`type`为`expand`， 即可支持第一列展现折叠展现按钮,
+在数据中设置`_showExpand`为`true`时，默认展开
+
+##### 注：这种方式不支持列固定`fixed`
+
+```html
+<style scoped>
+p {
+  text-align: center;
+}
+</style>
+<c-table
+  border="all"
+  :columns="columns"
+  :datasource="datasource"
+  :expand="hasExpand"
+>
+  <p slot="expand" slot-scope="props">
+    32324--{{props.row.type}}
+  </p>
+</c-table>
+<script>
+export default {
+  data () {
+    return {
+      hasExpand: true,
+      datasource: [
+        {
+          type: '直接访问',
+          pv: 1,
+          uv: 2,
+          nv: 3,
+          du: 4,
+          cv: 5,
+          ip: 8,
+          _showExpand: true
+        }, {
+          type: '搜索引擎',
+          pv: 11,
+          uv: 21,
+          nv: 31,
+          du: 141,
+          cv: 51,
+          ip: 81
+        }
+      ],
+      columns: [
+        { type: 'expand', align: 'center', width: 60},
+        { title: '来源类型', key: 'type', align: 'center', width: '20%' },
+        { title: '浏览量', key: 'pv', className: 'test' },
+        { title: '访客数', key: 'uv' },
+        { title: '新访客数', key: 'nv' },
+        { title: '访问时长', key: 'du' },
+        { title: '转化次数', key: 'cv' },
+        { title: 'IP 数', key: 'ip', align: 'right ' }
+      ]
+    }
+  }
+}
+</script>
+```
 
 ## API
 
@@ -741,34 +823,33 @@ export default {
 
 ### columns
 
-| 属性 | 类型 | 默认值 | 说明 |
-|-----|------|-------|-----|
-| key | String | - | - |
-| title | String | - | 表头展现 |
-| width | Number, String | - | number会自动转化为像素，string会直接用来展现 |
-| className | String | - | 列的类名 |
-| fixed | String | - | 可以设置left，right进行定位 |
-| sorter | Boolean | false | 是否支持排序 |
-
+| 属性      | 类型           | 默认值 | 说明                                           |
+| --------- | -------------- | ------ | ---------------------------------------------- |
+| key       | String         | -      | -                                              |
+| title     | String         | -      | 表头展现                                       |
+| width     | Number, String | -      | number 会自动转化为像素，string 会直接用来展现 |
+| className | String         | -      | 列的类名                                       |
+| fixed     | String         | -      | 可以设置 left，right 进行定位                  |
+| sorter    | Boolean        | false  | 是否支持排序                                   |
 
 ### 属性
 
-| 属性 | 类型 | 默认值 | 说明 |
-|-----|------|-------|-----|
-| columns | Object | {} | 详情见上表 |
-| datasource | Array | [] | 数据源 |
-| border | String | 'none' | all:全边框，horizon:水平边框，vertical:垂直边框，box: 仅有外边框，group：针对多级表头分组边框 |
-| height | Number | - | 设置为具体的值，tbody出滚动条 |
-| sortKey | String | - | 默认排序的key |
-| sortOrder | String | - | 默认排序的升降顺序：asc 和 desc |
-| rowClassName | Function | function(rowItem: Object, rowIndex: Number) | 设置行的类名 |
-| noresultMsg | String | 暂无数据 | 可以自定义无数据时显示文案 |
+| 属性         | 类型     | 默认值                                      | 说明                                                                                          |
+| ------------ | -------- | ------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| columns      | Object   | {}                                          | 详情见上表                                                                                    |
+| datasource   | Array    | []                                          | 数据源                                                                                        |
+| border       | String   | 'none'                                      | all:全边框，horizon:水平边框，vertical:垂直边框，box: 仅有外边框，group：针对多级表头分组边框 |
+| height       | Number   | -                                           | 设置为具体的值，tbody 出滚动条                                                                |
+| sortKey      | String   | -                                           | 默认排序的 key                                                                                |
+| sortOrder    | String   | -                                           | 默认排序的升降顺序：asc 和 desc                                                               |
+| rowClassName | Function | function(rowItem: Object, rowIndex: Number) | 设置行的类名                                                                                  |
+| noresultMsg  | String   | 暂无数据                                    | 可以自定义无数据时显示文案                                                                    |
 
 ### 方法
 
-| 参数 | 类型 | 默认值| 说明 |
-|-----|------|-------|-----|
-| selectChange | Function | function(selection: Array) | checkbox勾选后触发，返回已勾选的数组 |
-| sort | Function | function(sortObj: Object) | 排序按钮点击触发，返回{key, order} |
-| rowEnter | Function | function(index： Number) | 行进入事件 |
-| rowLeave | Function | - | 行离开事件 |
+| 参数         | 类型     | 默认值                     | 说明                                  |
+| ------------ | -------- | -------------------------- | ------------------------------------- |
+| selectChange | Function | function(selection: Array) | checkbox 勾选后触发，返回已勾选的数组 |
+| sort         | Function | function(sortObj: Object)  | 排序按钮点击触发，返回{key, order}    |
+| rowEnter     | Function | function(index： Number)   | 行进入事件                            |
+| rowLeave     | Function | -                          | 行离开事件                            |

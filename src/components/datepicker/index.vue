@@ -34,7 +34,14 @@
     @keydown.native="onKeyDown"
   )
 
-  .c-datepicker__panel
+  .c-datepicker__panel(:class="{'withSidebar': optionList.length > 0 || hasSidebar}")
+    .c-datepicker__sidebar(v-if="(optionList.length || hasSidebar )&& isOpen")
+      slot(name="dateSidebar"
+        :datepicker="datepicker")
+        ul
+          template(v-for="option in optionList")
+            li.optionbtn(@click="optionClick(option)")
+              a {{option.text}}
     c-calendar(
       ref="calendar"
       v-if="type == 'date' || type == 'month'"
@@ -98,10 +105,15 @@ export default {
     },
     placeholder: String,
     minDate: String,
-    maxDate: String
+    maxDate: String,
+    extraOption: Object,
+    hasSidebar: Boolean
   },
 
   computed: {
+    datepicker () {
+      return this
+    },
     className () {
       return this.size ? `is-size-${this.size}` : ''
     },
@@ -112,6 +124,9 @@ export default {
     },
     datePattern () {
       return this.pattern ? this.pattern : this.type === 'month' ? 'yyyy-MM' : 'yyyy-MM-dd'
+    },
+    optionList () {
+      return this.extraOption ? this.extraOption.optionList : []
     }
   },
 
@@ -160,6 +175,9 @@ export default {
     }
   },
   methods: {
+    optionClick (option) {
+      option.onClick(this)
+    },
     open (e) {
       const hoverIcon = this.$el.querySelector('.c-datepicker__hovericon')
       const isHoverIcon = hoverIcon && hoverIcon.contains(e.target)

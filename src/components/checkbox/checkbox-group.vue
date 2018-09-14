@@ -1,13 +1,12 @@
 <template lang="pug">
   div.c-checkbox-group
-    c-checkbox(
-      v-for="(option, index) in optionList"
-      v-model="isChecked[index]"
-      :key="index"
-      :label="option.label"
-      :disabled="option.disabled"
-      @change="onItemChange($event, index)"
-    )
+    slot
+      c-checkbox(
+        v-for="option in optionList"
+        :key="option.label"
+        :label="option.value"
+        :disabled="option.disabled"
+      ) {{ option.label }}
     em.c-error-msg(v-if="!validity.valid") {{validity.msg}}
 </template>
 
@@ -42,7 +41,7 @@ const props = {
   maxItems: Number,
   options: {
     type: Array,
-    required: true,
+    required: false,
     default () { return [] }
   }
 }
@@ -54,12 +53,17 @@ export default {
   },
   props,
   mixins: [validatable],
+  provide () {
+    return {
+      '$checkboxGroup': this
+    }
+  },
   inject: {
     $form: { default: null }
   },
   data () {
     return {
-      isChecked: []
+      checkedValues: []
     }
   },
   computed: {
@@ -87,28 +91,26 @@ export default {
       minItems: minItems.bind(this),
       maxItems: maxItems.bind(this)
     })
-    this.updateChecked()
-    this.$watch('options', this.updateChecked)
-    this.$watch('value', this.updateChecked)
+    this.onPropChange()
+    this.$watch('options', this.onPropChange)
+    this.$watch('value', this.onPropChange)
   },
   methods: {
-    updateChecked () {
-      const isChecked = this.optionList.map(option => {
-        return this.value.indexOf(option.value) > -1
-      })
-      this.isChecked = isChecked
+    onPropChange () {
+      // todo check options
+      this.checkedValues = [...this.value]
     },
 
-    onItemChange (checked, index) {
-      const isChecked = [...this.isChecked]
-      isChecked[index] = checked
-
-      const checkedValues = this.optionList
-        .filter((_, i) => isChecked[i])
-        .map(option => option.value)
-
-      this.$emit('change', checkedValues)
+    updateCheckedValues (isChecked, value) {
+      if (isChecked) {
+        this.checkedValues.push(value)
+      } else {
+        const index = this.checkedValues.indexOf(value)
+        this.checkedValues.splice(index, 1)
+      }
+      this.$emit('change', this.checkedValues)
     }
+
   }
 }
 </script>

@@ -40,10 +40,13 @@ table
         :class="getRowClassName(item, index)"
       )
         td(
-          v-for="columnsItem in allColumns"
+          v-for="columnsItem,colIndex in allColumns"
           :style="getCellStyle(columnsItem)"
           :class="getColumnClassName(columnsItem)"
           @click="openExpand(dataItem, columnsItem)"
+          :colspan="tdSpanMethod(dataItem, columnItem, index, colIndex).colspan"
+          :rowspan="tdSpanMethod(dataItem, columnItem, index, colIndex).rowspan"
+          v-if="tdSpanMethod(dataItem, columnItem, index, colIndex).rowspan && tdSpanMethod(dataItem, columnItem, index, colIndex).colspan"
         )
           slot(
             :name="columnsItem.key + '-base-td'"
@@ -87,7 +90,8 @@ export default {
     onlybody: [String, Boolean],
     onlyhead: [String, Boolean],
     noresultMsg: String,
-    expand: Boolean
+    expand: Boolean,
+    spanMethod: Function
   },
 
   data () {
@@ -143,6 +147,24 @@ export default {
   },
 
   methods: {
+    tdSpanMethod (row, column, rowIndex, colIndex) {
+      let rowspan = 1
+      let colspan = 1
+      if (this.spanMethod) {
+        const spans = this.spanMethod(row, column, rowIndex, colIndex)
+        const isArray = spans instanceof Array
+        if (isArray) {
+          [rowspan, colspan] = spans
+        } else if (spans) {
+          rowspan = spans.rowspan
+          colspan = spans.colspan
+        }
+      }
+      return {
+        rowspan,
+        colspan
+      }
+    },
     openExpand (dataItem, columnsItem) {
       if (columnsItem.type !== 'expand') return
       dataItem._showExpand = !dataItem._showExpand

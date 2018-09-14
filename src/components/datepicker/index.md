@@ -40,7 +40,85 @@ layout: component
 </script>
 
 ```
+## 带快捷方式
+支持两种方式：一种设置`hasSidebar`为`true`，在名为`dateSidebar`的`slot`中进行设置，通过`slot-scope`获取`datepicker`对象，调用`close`方法进行弹窗关闭， `$emit('change', date)`修改日期；
+另一种方式通过`extra-option`中设置`optionList`，具体查看示例
 
+##### 注：`date`是字符串
+
+```html
+<style scoped>
+li {
+  padding-left: 12px;
+}
+</style>
+<template>
+  <p>通过extra-option的方式:</p>
+  <c-datepicker
+    v-model="date"
+    :placeholder="'请输入或者选择日期'"
+    @change="dateChange"
+    :format="format"
+    :extra-option="extraOption"
+  ></c-datepicker>
+  <p>通过slot的方式:</p>
+  <c-datepicker
+    v-model="date"
+    :placeholder="'请输入或者选择日期'"
+    @change="dateChange"
+    :format="format"
+    :hasSidebar="hasSidebar"
+  >
+  <ul slot="dateSidebar" slot-scope="{datepicker}">
+    <li
+    @click="testClick(datepicker)"
+    >close</li>
+  </ul>
+  </c-datepicker>
+</template>
+
+<script>
+  export default {
+    data () {
+      return {
+        date: '2017-01-25',
+        hasSidebar: true,
+        extraOption: {
+          optionList: [
+            {
+              text: '今天',
+              onClick(picker) {
+                const date = new Date().format('yyyy-MM-dd')
+                console.log(date)
+                picker.$emit('change', date)
+                picker.close()
+              }
+            }, {
+              text: '昨天',
+              onClick(picker) {
+                let date = new Date();
+                date.setTime(date.getTime() - 3600 * 1000 * 24);
+                date = date.format('yyyy-MM-dd');
+                console.log(date)
+                picker.$emit('change', date);
+              }
+            }
+          ]
+        }
+      }
+    },
+    methods: {
+      testClick (props) {
+        props.datepicker.close()
+      },
+      dateChange (date) {
+        this.date = date
+      }
+    }
+  }
+</script>
+
+```
 ## 设置日期的最大值，最小值
 
 ```html
@@ -75,21 +153,45 @@ layout: component
 ```
 
 ## 设置日期的范围
+快捷方式支持两种方式：一种设置`hasSidebar`为`true`，在名为`dateSidebar`的`slot`中进行设置，通过`slot-scope`获取`datepicker`对象，调用`setDateRange`方法进行日期修改并关闭弹窗；
+另一种方式通过`extra-option`中设置`optionList`，具体查看示例
+
+##### 注：`daterange`是字符串数组
 
 ```html
+<style scoped>
+li {
+  padding-left: 12px;
+}
+</style>
 <template>
+  <c-datepicker
+    v-model="dateRange"
+    :type="'daterange'"
+    :placeholder="'请选择日期'"
+    @change="dateRangeChange"
+  ></c-datepicker>
+  <p>通过slot的方式:</p>
   <c-datepicker
     v-model="daterange"
     :type="'daterange'"
     :placeholder="'请选择日期'"
     size="sm"
     @change="dateChange"
-  ></c-datepicker>
+    :hasSidebar="hasSidebar"
+  >
+  <ul slot="dateSidebar" slot-scope="{datepicker}">
+    <li @click="nearMonth(datepicker)"
+    >近一个月</li>
+  </ul>
+  </c-datepicker>
+  <p>通过extra-option的方式:</p>
   <c-datepicker
     v-model="dateRange"
     :type="'daterange'"
     :placeholder="'请选择日期'"
     @change="dateRangeChange"
+    :extra-option="extraOption"
   ></c-datepicker>
 </template>
 
@@ -97,11 +199,42 @@ layout: component
   export default {
     data () {
       return {
+        hasSidebar: true,
         daterange: [],
-        dateRange: ['2018-01-02', '2018-02-15']
+        dateRange: ['2018-01-02', '2018-02-15'],
+        extraOption: {
+          optionList: [
+            {
+              text: '本周',
+              onClick(datepicker) {
+                let date = new Date();
+                const end = date.format('yyyy-MM-dd')
+                date.setTime(date.getTime() - 3600 * 1000 * 24 * 7)
+                const dateRange = [date.format('yyyy-MM-dd'), end]
+                datepicker.setDateRange(dateRange)
+              }
+            }, {
+              text: '近一个月',
+              onClick(datepicker) {
+                let date = new Date();
+                const end = date.format('yyyy-MM-dd')
+                date.setTime(date.getTime() - 3600 * 1000 * 24 * 30)
+                const dateRange = [date.format('yyyy-MM-dd'), end]
+                datepicker.setDateRange(dateRange)
+              }
+            }
+          ]
+        }
       }
     },
     methods: {
+      nearMonth (datepicker) {
+        let date = new Date();
+        const end = date.format('yyyy-MM-dd')
+        date.setTime(date.getTime() - 3600 * 1000 * 24 * 30)
+        const dateRange = [date.format('yyyy-MM-dd'), end]
+        datepicker.setDateRange(dateRange)
+      },
       dateChange (date) {
         this.daterange = date
       },

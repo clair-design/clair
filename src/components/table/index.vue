@@ -36,6 +36,7 @@ mixin Table(columns, onlyhead, onlybody)
     @rowEnter="rowEnter"
     @rowLeave="rowLeave"
     :expand="expand"
+    :spanMethod="spanMethod"
   )
     +templateCell(columns)
 mixin TableWithHeight(columns, tbody, onScroll, nobody)
@@ -130,7 +131,8 @@ export default {
       type: String,
       default: '暂无数据'
     },
-    expand: Boolean
+    expand: Boolean,
+    spanMethod: Function
   },
 
   data () {

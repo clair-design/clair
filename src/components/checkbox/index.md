@@ -80,6 +80,37 @@ route: /component/checkbox
 </script>
 ```
 
+## 多选框组自定义内容
+
+```html
+<c-checkbox-group
+  v-model="selected"
+>
+  <c-checkbox label="a" >选项1</c-checkbox>
+  <c-checkbox label="选项2" ></c-checkbox>
+  <c-checkbox label="选项3" ></c-checkbox>
+</c-checkbox-group>
+
+<p>你选择了 {{ selected }}</p>
+
+<c-button primary @click="resetSelected">重置</c-button>
+
+<script>
+  export default {
+    data () {
+      return {
+        selected: ["选项2"]
+      }
+    },
+    methods: {
+      resetSelected () {
+        this.selected = []
+      }
+    }
+  }
+</script>
+```
+
 ### indeterminate 状态
 
 `indeterminate` 通常用于展示一组**未全部被选中**（部分选中）的多选框组状态。

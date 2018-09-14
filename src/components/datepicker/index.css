@@ -100,3 +100,49 @@
   right: 1em;
   bottom: 1.5em;
 }
+
+.c-datepicker__sidebar {
+    width: 110px;
+    border-right: 1px solid #e4e4e4;
+    box-sizing: border-box;
+    padding-top: 6px;
+    background-color: #fff;
+    overflow: auto;
+    float: left;
+    margin-bottom:-10000px;
+    padding-bottom:10000px;
+}
+
+.c-datepicker__sidebar ul {
+  padding: 0;
+}
+
+.c-datepicker__sidebar .optionbtn {
+  display: block;
+    width: 100%;
+    border: 0;
+    background-color: transparent;
+    line-height: 28px;
+    font-size: 14px;
+    color: #606266;
+    padding-left: 12px;
+    text-align: left;
+    outline: none;
+    cursor: pointer;
+}
+
+.c-datepicker__sidebar + .c-datepicker__body {
+  float: left;
+}
+
+.c-datepicker__sidebar + .c-calendar {
+  border: 0;
+  float: left;
+}
+
+.withSidebar {
+  background: #fff;
+  border: 1px solid rgb(214, 217, 219);
+  border-radius: 0.2em;
+  overflow: hidden;
+}
