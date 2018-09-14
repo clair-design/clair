@@ -1,5 +1,5 @@
 <script>
-import { getVueCtor } from '../../scripts/utils'
+import { getVueCtor } from '@util'
 
 const defaultStyle = {
   position: 'absolute',

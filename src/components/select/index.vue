@@ -86,11 +86,11 @@
 <script>
 import throttle from 'lodash/throttle'
 
-import zIndex from '../../scripts/utils/zIndexManager'
+import zIndex from '@util/zIndexManager'
 import { getPosition, POSITION } from './position'
-import resettable from '../../scripts/mixins/resettable'
-import validatable from '../../scripts/mixins/validatable'
-import PortalComponent from '../portal/index.vue'
+import resettable from '@scripts/mixins/resettable'
+import validatable from '@scripts/mixins/validatable'
+import PortalComponent from '../portal'
 import './index.css'
 
 // ensure each option has label and value

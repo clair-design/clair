@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { VueTypes } from '../../scripts/utils'
+import { VueTypes } from '@util'
 import NodeLabel from './_node-label.vue'
 
 export default {

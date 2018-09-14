@@ -30,9 +30,9 @@
 
 <script>
 import throttle from 'lodash/throttle'
-import { contains, VueTypes } from '../../scripts/utils'
-import zIndex from '../../scripts/utils/zIndexManager'
-import PortalComponent from '../portal/index.vue'
+import { contains, VueTypes } from '@util'
+import zIndex from '@util/zIndexManager'
+import PortalComponent from '../portal'
 
 import './index.css'
 

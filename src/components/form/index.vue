@@ -8,8 +8,8 @@ form.c-form(
 
 <script>
 import './index.css'
-import { toClassNames } from '../../scripts/utils'
-import { isPromise } from '../../scripts/mixins/validatable/util'
+import { toClassNames } from '@util'
+import { isPromise } from '@scripts/mixins/validatable/util'
 
 const block = 'c-form'
 const modifiers = ['inline']

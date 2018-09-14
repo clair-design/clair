@@ -43,10 +43,10 @@ v-ctrl.c-slider(
 </template>
 
 <script>
-import { VueTypes } from '../../scripts/utils'
+import { VueTypes } from '@util'
 import VCtrl from 'v-ctrl'
 import clamp from 'lodash/clamp'
-import resettable from '../../scripts/mixins/resettable'
+import resettable from '@scripts/mixins/resettable'
 import './index.css'
 
 const defaultHoverTimeout = 200

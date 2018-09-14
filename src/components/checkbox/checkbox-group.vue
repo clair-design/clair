@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import validatable from '../../scripts/mixins/validatable'
+import validatable from '@scripts/mixins/validatable'
 
 const name = 'c-checkbox-group'
 const pass = { valid: true, msg: '' }

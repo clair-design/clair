@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { VueTypes } from '../../scripts/utils'
+import { VueTypes } from '@util'
 
 export default {
   name: 'c-submenu',

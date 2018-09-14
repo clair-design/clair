@@ -1,4 +1,4 @@
 dist/**/*.js
 .site/**/*.js
 node_modules/
-boilerplate/template
+scripts/boilerplate/template

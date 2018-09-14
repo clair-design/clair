@@ -1,4 +1,4 @@
-import { resolve } from 'path'
+import { resolve, join } from 'path'
 import vue from 'rollup-plugin-vue'
 import alias from 'rollup-plugin-alias'
 import commonjs from 'rollup-plugin-commonjs'
@@ -23,13 +23,13 @@ const rootDir = resolve(__dirname, '../..')
 
 const resolveAlias = pkg.resolveAlias || {}
 Object.keys(resolveAlias).forEach(key => {
-  resolveAlias[key] = resolve(rootDir, resolveAlias[key])
+  resolveAlias[key] = join(rootDir, resolveAlias[key])
 })
 
 export default [
   process.env.IS_CI ? {} : progress(),
   alias({
-    resolve: ['.js', '.vue', '.json'],
+    resolve: ['.js', '.json', '.vue', '/index.js', '/index.vue'],
     ...resolveAlias
   }),
   cssNoop(),

@@ -70,8 +70,8 @@
 
 <script>
 import './index.css'
-import validatable from '../../scripts/mixins/validatable'
-import resettable from '../../scripts/mixins/resettable'
+import validatable from '@scripts/mixins/validatable'
+import resettable from '@scripts/mixins/resettable'
 
 export default {
   name: 'c-datepicker',

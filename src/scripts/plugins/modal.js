@@ -1,5 +1,5 @@
-import CModalAlert from '../../components/modal/_alert.vue'
-import CModalMessage from '../../components/modal/_message.vue'
+import CModalAlert from '@components/modal/_alert.vue'
+import CModalMessage from '@components/modal/_message.vue'
 
 export default function install (Vue) {
   /**
