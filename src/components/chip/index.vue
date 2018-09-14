@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import Icon from '../icon'
 import './index.css'
 
 const validSizes = ['xs', 'sm', 'md', 'lg', 'xl']
@@ -29,6 +30,10 @@ const colorPresets = [
 
 export default {
   name: 'c-chip',
+
+  components: {
+    'c-icon': Icon
+  },
 
   props: {
     size: {
