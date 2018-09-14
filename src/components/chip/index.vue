@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Icon from '../icon'
+import Icon from '../icon/index.vue'
 import './index.css'
 
 const validSizes = ['xs', 'sm', 'md', 'lg', 'xl']
