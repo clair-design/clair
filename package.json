@@ -11,7 +11,9 @@
   ],
   "scripts": {
     "commit": "git-cz",
-    "test": "jest",
+    "test:unit": "jest --config jest.config.js",
+    "test:e2e": "jest --config jest.config.e2e.js",
+    "test": "npm run test:unit && npm run test:e2e",
     "new": "node ./scripts/boilerplate",
     "bundle": "sh ./scripts/bundle.sh",
     "build": "rm -rf .site && npm run bundle && pholio build",
@@ -35,7 +37,10 @@
   },
   "homepage": "https://github.com/clair-design/clair#readme",
   "devDependencies": {
+    "@babel/core": "^7.0.1",
+    "@babel/preset-env": "^7.0.0",
     "@vue/test-utils": "^1.0.0-beta.25",
+    "babel-core": "^7.0.0-0",
     "babel-jest": "^23.6.0",
     "commitizen": "^2.10.1",
     "cssnano": "^4.1.0",
@@ -45,6 +50,7 @@
     "eslint-formatter-friendly": "^6.0.0",
     "eslint-plugin-jest": "^21.22.0",
     "jest": "^23.6.0",
+    "jest-puppeteer": "^3.3.1",
     "jest-serializer-vue": "^2.0.2",
     "lint-staged": "^4.0.2",
     "pholio": "^0.3.1",
@@ -67,7 +73,7 @@
     "rollup-plugin-vue": "3.0.0",
     "stylelint": "^8.3.1",
     "stylelint-config-standard": "^17.0.0",
-    "vue-jest": "^1.4.0",
+    "vue-jest": "^2.6.0",
     "yorkie": "^2.0.0"
   },
   "dependencies": {
