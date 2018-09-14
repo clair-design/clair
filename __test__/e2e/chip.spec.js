@@ -1,26 +1,17 @@
-// SEE https://jestjs.io/docs/en/puppeteer
-import puppeteer from 'puppeteer'
-
-let page
-let browser
-const width = 1920
-const height = 1080
-
-beforeAll(async () => {
-  browser = await puppeteer.launch({
-    headless: false,
-    slowMo: 80,
-    args: [`--window-size=${width},${height}`]
+/**
+ * https://jestjs.io/docs/en/puppeteer
+ * https://github.com/smooth-code/jest-puppeteer
+ */
+/**
+ * TODO
+ * a series of processes to set up devServer and run E2E tests
+ */
+describe('E2E testing', () => {
+  beforeAll(async () => {
+    await page.goto('http://localhost:3000/')
   })
-  page = await browser.newPage()
-  await page.setViewport({ width, height })
-})
 
-afterAll(() => {
-  browser.close()
-})
-
-it('chip', () => {
-  // TODO
-  expect('Clair').toBe('Clair')
+  it('should display description on page', async () => {
+    await expect(page).toMatch('一套包含设计规范、Vue 组件和配套资源的设计系统。')
+  })
 })
