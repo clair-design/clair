@@ -5,18 +5,22 @@ layout: component
 ---
 
 # 标签 - Chip
+
 用来进行分类和标记的标签
 
 ## 基础用法
+
 设置`label`属性，或直接在标签内填写标签内容。
+
 ```html
 <c-chip label="chip1"></c-chip>
 <c-chip>chip2</c-chip>
 ```
 
 ## 自定义标签颜色
-设置`color`属性，自定义标签颜色。
-可从以下颜色当中选取。
+
+设置`color`属性，自定义标签颜色。可从以下颜色当中选取。
+
 ```html
 <c-chip label="red" color="red"></c-chip>
 <c-chip label="orange" color="orange"></c-chip>
@@ -30,8 +34,16 @@ layout: component
 <c-chip label="default"></c-chip>
 <c-chip label="dark" color="dark"></c-chip>
 <c-chip label="black" color="black"></c-chip>
+
+<style>
+.c-chip__wrapper {
+  margin-bottom: 10px;
+}
+</style>
 ```
+
 也可自定义背景色。
+
 ```html
 <c-chip color="#336774">#336774</c-chip>
 <c-chip label="#724832" color="#724832"></c-chip>
@@ -40,8 +52,7 @@ layout: component
 
 ## 标签的动态添加和删除
 
-添加`closable`属性，设置为可关闭标签。
-通过对数组的操作，实现对标签的添加和删除。
+添加`closable`属性，设置为可关闭标签。通过对数组的操作，实现对标签的添加和删除。
 
 ```html
 <c-chip
@@ -110,7 +121,9 @@ layout: component
 ```
 
 ## 设置标签大小
+
 设置`size`属性，定义标签大小。
+
 ```html
 <c-chip size="xs" label="超小号"></c-chip>
 <c-chip size="sm" label="小号"></c-chip>
@@ -120,8 +133,9 @@ layout: component
 ```
 
 ## 标签长度的限制
-结合`<c-tip>`，通过设置标签的最大宽度，或者通过内容的长度的限制，来控制标签的宽度。
-可在hover时显示完整内容。
+
+结合`<c-tip>`，通过设置标签的最大宽度，或者通过内容的长度的限制，来控制标签的宽度。可在hover时显示完整内容。
+
 ```html
 <c-tip :content="value" position="top">
   <c-chip :label="value" :style="styleObj"></c-chip>

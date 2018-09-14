@@ -3,57 +3,65 @@
   :class="classNames"
   :style="styleObj"
 )
-  span.c-chip__label(v-if="label") {{label}}
-  slot(v-else)
-  span(
-      v-if="closable"
-      @click.stop="$emit('close')"
-  )
-    c-icon(
-      name="x"
-      valign="middle"
-    )
+  slot
+    span.c-chip__label {{label}}
+  span(v-if="closable" @click.stop="$emit('close')")
+    c-icon(name="x" valign="middle")
 </template>
 
 <script>
-import { VueTypes } from '../../scripts/utils'
 import './index.css'
+
+const validSizes = ['xs', 'sm', 'md', 'lg', 'xl']
+const colorPresets = [
+  'red',
+  'orange',
+  'yellow',
+  'green',
+  'cyan',
+  'blue',
+  'indigo',
+  'purple',
+  'pink',
+  'dark',
+  'black'
+]
 
 export default {
   name: 'c-chip',
+
   props: {
-    label: VueTypes.string,
-    size: VueTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']).def('md'),
-    color: VueTypes.string,
-    closable: VueTypes.bool.def(false)
+    size: {
+      type: String,
+      default: 'md',
+      validator: value => validSizes.indexOf(value) > -1
+    },
+    label: String,
+    color: String,
+    closable: Boolean
   },
-  data () {
-    return {
-      presetColors: ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'indigo', 'purple', 'pink', 'dark', 'black']
-    }
-  },
+
   computed: {
     classNames () {
-      let classList = ``
-      if (this.color && this.presetColors.indexOf(this.color) >= 0) {
-        classList += ` c-chip--${this.color}`
-      }
-      if (this.closable) {
-        classList += ' c-chip--closable'
-      }
-      if (this.size) {
-        classList += ` c-chip--${this.size}`
-      }
-      return classList
+      const { color, size, closable } = this
+      const isPresetColor = color && colorPresets.indexOf(color) > -1
+
+      return [
+        size ? `c-chip--${size}` : '',
+        closable ? 'c-chip--closable' : '',
+        isPresetColor ? `c-chip--${color}` : ''
+      ]
     },
+
     styleObj () {
-      let style = {}
-      if (this.color && this.presetColors.indexOf(this.color) < 0) {
-        style = {
-          'backgroundColor': this.color
+      const { color } = this
+
+      if (color && colorPresets.indexOf(color) === -1) {
+        return {
+          backgroundColor: color
         }
       }
-      return style
+      return null
     }
   }
 }
