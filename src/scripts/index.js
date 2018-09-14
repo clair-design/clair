@@ -1,8 +1,9 @@
 // plugins
 import Components from './components'
-import Responsive from './plugins/responsive.js'
-import Modal from './plugins/modal.js'
-import Notification from './plugins/notification.js'
+
+import Modal from './plugins/modal'
+import Responsive from './plugins/responsive'
+import Notification from './plugins/notification'
 
 // mixins
 import validatable from './mixins/validatable'
@@ -22,16 +23,18 @@ export const Clair = {
           defaultThrottleTime: 150
         }
       })
-
-      Object.defineProperty(Vue.prototype, '$clair', {
-        get () { return $clair }
-      })
-
       $clair.mixins = mixins
 
-      Vue.prototype.noop = () => {}
+      Object.defineProperty(Vue.prototype, '$clair', {
+        get () {
+          return $clair
+        }
+      })
     }
 
+    Vue.prototype.noop = () => {}
+
+    // register components
     Vue.use(Components)
     // install plugins
     Vue.use(Modal)
