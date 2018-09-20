@@ -1,3 +1,10 @@
+## [0.5.5](https://github.com/clair-design/clair/compare/v0.5.4...v0.5.5) (2018-09-20)
+
+
+### Bug Fixes
+
+* **switch:** emit `change` event instead of `input` ([2b5ba26](https://github.com/clair-design/clair/commit/2b5ba26))
+
 ## [0.5.4](https://github.com/clair-design/clair/compare/v0.5.3...v0.5.4) (2018-09-14)
 
 
