@@ -7,5 +7,5 @@
 
 A design system including principles, Vue components and design resources.
 
-- ** [clair-design.github.io](https://clair-design.github.io) (recommended) **
+- [clair-design.github.io](https://clair-design.github.io) (recommended)
 - [clair.75team.com](https://clair.75team.com/) (sync from clair-design.github.io every 30 minutes)
