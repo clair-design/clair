@@ -55,7 +55,7 @@ layout: component
 
 ```html
 <c-switch
-  @change="change"
+  v-model="value"
   checkedColor="#00AA90"
   uncheckedColor="#E98B2A"
   checkedValue="倚栏杆处"
@@ -69,11 +69,6 @@ export default {
   data () {
     return {
       value: "倚栏杆处"
-    }
-  },
-  methods : {
-    change (msg) {
-      this.value = msg
     }
   }
 }

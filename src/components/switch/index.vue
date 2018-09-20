@@ -18,29 +18,35 @@
 </template>
 
 <script>
-import { VueTypes } from '@util'
 import validatable from '@scripts/mixins/validatable'
 import resettable from '@scripts/mixins/resettable'
-
 import './index.css'
 
 const name = 'c-switch'
-
 export default {
   name,
+  model: {
+    event: 'change'
+  },
   props: {
-    disabled: VueTypes.bool.def(false),
-    checkedColor: VueTypes.string,
-    uncheckedColor: VueTypes.string,
-    checkedValue: VueTypes.any.def(true),
-    uncheckedValue: VueTypes.any.def(false),
-    value: VueTypes.any.def(false),
-    size: VueTypes.string
+    disabled: Boolean,
+    checkedColor: String,
+    uncheckedColor: String,
+    checkedValue: {
+      default: true
+    },
+    uncheckedValue: {
+      default: false
+    },
+    value: {
+      default: false
+    },
+    size: String
   },
   mixins: [resettable, validatable],
   data () {
     return {
-      name: 'c-switch',
+      name,
       currentValue: false
     }
   },
@@ -50,7 +56,8 @@ export default {
     }
   },
   created () {
-    this.currentValue = this.value
+    const { value, checkedValue, uncheckedValue } = this
+    this.currentValue = value ? checkedValue : uncheckedValue
   },
   computed: {
     checked () {
@@ -79,7 +86,7 @@ export default {
       if (this.disabled) return
       const value = this.checked ? this.uncheckedValue : this.checkedValue
       this.currentValue = value
-      this.$emit('input', value)
+      this.$emit('change', value)
     }
   }
 }
