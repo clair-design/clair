@@ -34,9 +34,11 @@
     @keydown.native="onKeyDown"
   )
 
-  .c-datepicker__panel(:class="{'withSidebar': optionList.length > 0 || hasSidebar}")
-    .c-datepicker__sidebar(v-if="(optionList.length || hasSidebar )&& isOpen")
-      slot(name="dateSidebar"
+  .c-datepicker__panel(
+    ref="datepickerPanel"
+    :class="{'withSidebar': (optionList.length > 0 || hasSidebarSlot) }")
+    .c-datepicker__sidebar(v-if="(hasSidebarSlot || optionList.length > 0 )&& isOpen")
+      slot(name="dateSideBar"
         :datepicker="datepicker")
         ul
           template(v-for="option in optionList")
@@ -79,6 +81,7 @@
 import './index.css'
 import validatable from '@scripts/mixins/validatable'
 import resettable from '@scripts/mixins/resettable'
+import ZIndexManager from '../../scripts/utils/zIndexManager.js'
 
 export default {
   name: 'c-datepicker',
@@ -106,11 +109,13 @@ export default {
     placeholder: String,
     minDate: String,
     maxDate: String,
-    extraOption: Object,
-    hasSidebar: Boolean
+    extraOption: Object
   },
 
   computed: {
+    hasSidebarSlot () {
+      return this.$slots.dateSideBar || this.$scopedSlots.dateSideBar
+    },
     datepicker () {
       return this
     },
@@ -262,21 +267,25 @@ export default {
     getStyle () {
       const clientRect = this.$el.getBoundingClientRect()
       const windowH = window.innerHeight
+      const windowW = window.innerWidth
       const marginTop = 2
       const scrollHeight = document.body.scrollWidth > window.innerWidth ? 20 : 0
       const droplistHeight = this.datepickerPanel.clientHeight
+      const droplistWidth = this.datepickerPanel.clientWidth
       const defaultTop = clientRect.top + clientRect.height + marginTop + window.pageYOffset
       const clientHeight = clientRect.height + marginTop
 
       const clientY = clientRect.y
       const compTop = windowH - droplistHeight - scrollHeight
-      const left = clientRect.left + window.pageXOffset
+      const marginRight = 15 // scrollbar width
+      const left = droplistWidth + clientRect.left + window.pageXOffset > windowW ? windowW - droplistWidth - marginRight : clientRect.left + window.pageXOffset
       const top = droplistHeight + clientHeight + clientY + scrollHeight > windowH ? compTop : defaultTop
+      const zIndex = ZIndexManager.next()
       return `
         position: absolute;
         top: ${top}px;
         left: ${left}px;
-        z-index: 9;
+        z-index: ${zIndex};
       `
     },
     resize () {

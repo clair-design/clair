@@ -30,6 +30,7 @@
 <script>
 import './index.css'
 import Menu from './menu.vue'
+import ZIndexManager from '../../scripts/utils/zIndexManager.js'
 
 export default {
   name: 'c-cascader',
@@ -184,11 +185,12 @@ export default {
         droplistHeight + clientHeight + clientY + scrollHeight > windowH
           ? compTop
           : defaultTop
+      const zIndex = ZIndexManager.next()
       return `
         position: absolute;
         top: ${top}px;
         left: ${left}px;
-        z-index: 9;
+        z-index: ${zIndex};
       `
     },
     resize () {

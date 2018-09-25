@@ -43,10 +43,19 @@
   opacity: 0;
 }
 
+.c-datepicker__panel {
+  border: 1px solid rgb(214, 217, 219);
+  box-shadow: 2px 2px 0.5em 0 color(var(--gray) l(95%));
+  overflow: hidden;
+
+  & .c-calendar {
+    border: 0;
+    box-shadow: none;
+  }
+}
+
 .c-datepicker__panel .c-datepicker__range {
   background: color(var(--white));
-  border: 1px solid color(var(--gray) l(85%));
-  box-shadow: 2px 2px 0.5em 0 color(var(--gray) l(95%));
   padding: 1em;
   font-size: 14px;
 
@@ -99,18 +108,15 @@
   position: absolute;
   right: 1em;
   bottom: 1.5em;
+  cursor: pointer;
 }
 
 .c-datepicker__sidebar {
-  width: 110px;
   border-right: 1px solid #e4e4e4;
   box-sizing: border-box;
   padding-top: 6px;
   background-color: #fff;
   overflow: auto;
-  float: left;
-  margin-bottom: -10000px;
-  padding-bottom: 10000px;
 }
 
 .c-datepicker__sidebar ul {
@@ -125,19 +131,14 @@
   line-height: 28px;
   font-size: 14px;
   color: #606266;
-  padding-left: 12px;
+  padding: 0 12px;
   text-align: left;
   outline: none;
   cursor: pointer;
 }
 
-.c-datepicker__sidebar + .c-datepicker__body {
-  float: left;
-}
-
 .c-datepicker__sidebar + .c-calendar {
   border: 0;
-  float: left;
 }
 
 .withSidebar {
@@ -145,4 +146,6 @@
   border: 1px solid rgb(214, 217, 219);
   border-radius: 0.2em;
   overflow: hidden;
+  display: flex;
+  flex-direction: row;
 }

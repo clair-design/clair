@@ -13,6 +13,7 @@ layout: component
 ```html
 <template>
   <c-datepicker
+    ref="mydatepicker"
     v-model="date"
     :placeholder="'请输入或者选择日期'"
     @change="dateChange"
@@ -41,10 +42,10 @@ layout: component
 
 ```
 ## 带快捷方式
-支持两种方式：一种设置`hasSidebar`为`true`，在名为`dateSidebar`的`slot`中进行设置，通过`slot-scope`获取`datepicker`对象，调用`close`方法进行弹窗关闭， `$emit('change', date)`修改日期；
+支持两种方式：一种设置在名为`dateSidebar`的`slot`中进行设置，通过`slot-scope`获取`datepicker`对象，调用`close`方法进行弹窗关闭， `$emit('change', date)`修改日期；
 另一种方式通过`extra-option`中设置`optionList`，具体查看示例
 
-##### 注：`date`是字符串
+##### 注：`date`是字符串，默认快捷键在左侧展现，可以通过复写css(flex-direction)来进行控制
 
 ```html
 <style scoped>
@@ -67,9 +68,8 @@ li {
     :placeholder="'请输入或者选择日期'"
     @change="dateChange"
     :format="format"
-    :hasSidebar="hasSidebar"
   >
-  <ul slot="dateSidebar" slot-scope="{datepicker}">
+  <ul slot="dateSideBar" slot-scope="{datepicker}">
     <li
     @click="testClick(datepicker)"
     >close</li>
@@ -82,7 +82,6 @@ li {
     data () {
       return {
         date: '2017-01-25',
-        hasSidebar: true,
         extraOption: {
           optionList: [
             {
@@ -153,7 +152,7 @@ li {
 ```
 
 ## 设置日期的范围
-快捷方式支持两种方式：一种设置`hasSidebar`为`true`，在名为`dateSidebar`的`slot`中进行设置，通过`slot-scope`获取`datepicker`对象，调用`setDateRange`方法进行日期修改并关闭弹窗；
+快捷方式支持两种方式：一种设置在名为`dateSidebar`的`slot`中进行设置，通过`slot-scope`获取`datepicker`对象，调用`setDateRange`方法进行日期修改并关闭弹窗；
 另一种方式通过`extra-option`中设置`optionList`，具体查看示例
 
 ##### 注：`daterange`是字符串数组
@@ -161,7 +160,7 @@ li {
 ```html
 <style scoped>
 li {
-  padding-left: 12px;
+  padding: 0 12px;
 }
 </style>
 <template>
@@ -178,9 +177,8 @@ li {
     :placeholder="'请选择日期'"
     size="sm"
     @change="dateChange"
-    :hasSidebar="hasSidebar"
   >
-  <ul slot="dateSidebar" slot-scope="{datepicker}">
+  <ul slot="dateSideBar" slot-scope="{datepicker}">
     <li @click="nearMonth(datepicker)"
     >近一个月</li>
   </ul>
@@ -199,7 +197,6 @@ li {
   export default {
     data () {
       return {
-        hasSidebar: true,
         daterange: [],
         dateRange: ['2018-01-02', '2018-02-15'],
         extraOption: {
@@ -306,6 +303,13 @@ li {
 </script>
 ```
 
+### 注：
+
+父级可以通过$ref来获取当前组件，调用响应的方法。
+resize 方法可以重新计算更新日历弹窗的位置；
+close 方法可以直接关闭日历弹窗
+
+
 ## API
 
 > 注意：当type为daterange时，v-model需要传递起始时间和终止时间的数组
@@ -319,6 +323,7 @@ li {
 | disabled | Boolean | false | 日期框是否被禁用 |
 | mixDate | String | 1970-01-01 | 可选日期的最小值 |
 | mixDate | String | 2099-12-31 | 可选日期的最大值 |
+| extraOption | Array | [] | 快捷键设置显示文案及操作方法 |
 
 ### 方法
 
