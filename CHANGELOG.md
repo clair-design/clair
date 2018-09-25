@@ -1,3 +1,10 @@
+## [0.5.6](https://github.com/clair-design/clair/compare/v0.5.5...v0.5.6) (2018-09-25)
+
+
+### Bug Fixes
+
+* **datepicker, cascader:** update datepicker,cascader index ([ec51111](https://github.com/clair-design/clair/commit/ec51111))
+
 ## [0.5.5](https://github.com/clair-design/clair/compare/v0.5.4...v0.5.5) (2018-09-20)
 
 
