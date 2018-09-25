@@ -20,11 +20,11 @@ export default {
       data: {
         // see https://blog.codepen.io/documentation/api/prefill/
         config: {
-          'title': 'Clair Demo',
-          'html': '<div>Hello, World!</div>',
-          'js_pre_processor': 'babel',
-          'css_external': 'https://unpkg.com/font-awesome@4.7.0/css/font-awesome.css;https://unpkg.com/clair/dist/clair.css',
-          'js_external': 'https://unpkg.com/vue/dist/vue.js;https://unpkg.com/clair/dist/clair.js'
+          title: 'Clair Demo',
+          html: '<div>Hello, World!</div>',
+          js_pre_processor: 'babel',
+          css_external: 'https://unpkg.com/font-awesome@4.7.0/css/font-awesome.css;https://unpkg.com/clair/dist/clair.css',
+          js_external: 'https://unpkg.com/vue/dist/vue.js;https://unpkg.com/clair/dist/clair.js'
         }
       }
     })
@@ -90,7 +90,7 @@ export default {
 
       while (node) {
         if (node.classList.contains('vue-demo-block')) {
-          node = node.querySelector('.lang-html')
+          node = node.querySelector('.vue-demo-source-code')
           break
         }
         node = node.parentNode
