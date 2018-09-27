@@ -35,6 +35,7 @@ mixin Table(columns, onlyhead, onlybody)
     @selectAllChange="onSelectAllChange"
     @rowEnter="rowEnter"
     @rowLeave="rowLeave"
+    @openExpand="onOpenExpand"
     :expand="expand"
     :spanMethod="spanMethod"
   )
@@ -217,6 +218,9 @@ export default {
   },
 
   methods: {
+    onOpenExpand (item, index) {
+      this.$emit('openExpand', item, index)
+    },
     updateSelectAll (status) {
       this.allChecked = status
       this.dataList = this.dataList.map(item => {

@@ -266,8 +266,11 @@ export default {
       this.$emit('change', this.value)
     },
     confirmRange () {
-      this.end = this.end || this.rangeObj.endDate
-      this.$emit('change', [this.start, this.end])
+      if (this.start && this.end) {
+        this.$emit('change', [this.start, this.end])
+      } else {
+        this.cancel()
+      }
     }
   }
 }

@@ -43,7 +43,7 @@ table
           v-for="columnsItem,colIndex in allColumns"
           :style="getCellStyle(columnsItem)"
           :class="getColumnClassName(columnsItem)"
-          @click="openExpand(dataItem, columnsItem)"
+          @click="openExpand(dataItem, columnsItem, index, colIndex)"
           :colspan="tdSpanMethod(dataItem, columnItem, index, colIndex).colspan"
           :rowspan="tdSpanMethod(dataItem, columnItem, index, colIndex).rowspan"
           v-if="tdSpanMethod(dataItem, columnItem, index, colIndex).rowspan && tdSpanMethod(dataItem, columnItem, index, colIndex).colspan"
@@ -165,9 +165,10 @@ export default {
         colspan
       }
     },
-    openExpand (dataItem, columnsItem) {
+    openExpand (dataItem, columnsItem, index, colIndex) {
       if (columnsItem.type !== 'expand') return
       dataItem._showExpand = !dataItem._showExpand
+      this.$emit('openExpand', dataItem, index)
     },
     getRowClassName (row, rowIndex) {
       const classes = []

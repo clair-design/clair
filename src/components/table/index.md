@@ -771,6 +771,7 @@ p {
   :columns="columns"
   :datasource="datasource"
   :expand="hasExpand"
+  @openExpand="openExpand"
 >
   <p slot="expand" slot-scope="props">
     32324--{{props.row.type}}
@@ -778,6 +779,12 @@ p {
 </c-table>
 <script>
 export default {
+  methods: {
+    openExpand (item, index) {
+      alert(index)
+      console.log(item)
+    }
+  },
   data () {
     return {
       hasExpand: true,

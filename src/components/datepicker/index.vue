@@ -36,7 +36,7 @@
 
   .c-datepicker__panel(
     ref="datepickerPanel"
-    :class="{'withSidebar': (optionList.length > 0 || hasSidebarSlot) }")
+    :class="{'withSidebar': (optionList.length > 0 || hasSidebarSlot) && isOpen == true, 'withBorder': isOpen == true }")
     .c-datepicker__sidebar(v-if="(hasSidebarSlot || optionList.length > 0 )&& isOpen")
       slot(name="dateSideBar"
         :datepicker="datepicker")

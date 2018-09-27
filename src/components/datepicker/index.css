@@ -44,9 +44,13 @@
 }
 
 .c-datepicker__panel {
-  border: 1px solid rgb(214, 217, 219);
   box-shadow: 2px 2px 0.5em 0 color(var(--gray) l(95%));
   overflow: hidden;
+
+  &.withBorder {
+    border: 1px solid rgb(214, 217, 219);
+    border-radius: 0.2em;
+  }
 
   & .c-calendar {
     border: 0;

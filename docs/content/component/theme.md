@@ -32,8 +32,7 @@ Clair 使用的完整 CSS 变量列表，请 [查看 github 代码](https://gith
 在你的项目 CSS 入口文件（比如 `main.css`）中，引入 Clair 及其组件样式。
 
 ```css
-@import url('clair/src/css/main.css');
-@import url('clair/src/components/**/*.css');
+@import url('clair/src/styles/main.css');
 ```
 
 ### 3. 配置 PostCSS 插件
@@ -57,7 +56,7 @@ module.exports = {
         const cwd = process.cwd()
         // 将 theme.css 指向你的项目中的 CSS 变量配置文件
         if (id === './theme.css') return resolve(cwd, 'src/css/theme.css')
-        if (/^clair/.test(id)) return glob.sync(join(cwd, 'node_modules', id))
+        if (/\*\*/.test(id)) return glob.sync(join(cwd, 'node_modules/clair/src/styles/', id))
         return id
       }
     },
