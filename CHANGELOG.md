@@ -1,3 +1,10 @@
+## [0.5.7](https://github.com/clair-design/clair/compare/v0.5.6...v0.5.7) (2018-09-27)
+
+
+### Bug Fixes
+
+* **datepicker, table, theme:** fix datepicker style bug, update theme and table ([4588185](https://github.com/clair-design/clair/commit/4588185))
+
 ## [0.5.6](https://github.com/clair-design/clair/compare/v0.5.5...v0.5.6) (2018-09-25)
 
 
