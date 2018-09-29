@@ -19,7 +19,7 @@ module.exports = {
     ...aliases
   },
   snapshotSerializers: ['<rootDir>/node_modules/jest-serializer-vue'],
-  testMatch: ['**/__test__/unit/**/*.spec.js?(x)'],
+  testMatch: ['**/__tests__/unit/**/*.spec.js?(x)'],
   collectCoverageFrom: ['src/**/*.{js,vue}', '!**/node_modules/**'],
   // TODO
   // https://docs.codeclimate.com/docs/configuring-test-coverage
