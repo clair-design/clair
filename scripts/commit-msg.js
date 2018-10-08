@@ -64,5 +64,18 @@ function checkMsgCase (msg) {
     return false
   }
 
+  if (/,|\uff0c/.test(scope)) {
+    console.error(
+      `  ${chalk.bgRed.white(' ERROR ')} ${chalk.red(`invalid scope:`)} ${scope}\n` +
+      chalk.red(
+        `\n  Do NOT commit all files of different scopes at one time.\n` +
+        `\n  Remenber the principle "Keep Your Commits Small".` +
+        `\n  Let's do some reading: https://www.worklytics.co/blog/commit-early-push-often/`
+      )
+
+    )
+    return false
+  }
+
   return true
 }
