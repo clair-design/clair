@@ -1,3 +1,10 @@
+## [0.5.8](https://github.com/clair-design/clair/compare/v0.5.7...v0.5.8) (2018-10-08)
+
+
+### Bug Fixes
+
+* possible duplicated key in checkbox-group ([e1150ea](https://github.com/clair-design/clair/commit/e1150ea))
+
 ## [0.5.7](https://github.com/clair-design/clair/compare/v0.5.6...v0.5.7) (2018-09-27)
 
 
