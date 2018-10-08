@@ -2,8 +2,8 @@
   div.c-checkbox-group
     slot
       c-checkbox(
-        v-for="option in optionList"
-        :key="option.label"
+        v-for="(option, index) in optionList"
+        :key="index"
         :label="option.value"
         :disabled="option.disabled"
       ) {{ option.label }}
