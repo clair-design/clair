@@ -12,12 +12,11 @@
     c-icon(name="calendar")
   c-input(
     v-if="type == 'daterange' || type == 'monthrange'"
-    v-model="daterange"
+    :value="daterange"
     :placeholder="placeholder"
     :disabled="disabled"
     width="normal"
     :size="size"
-    @change="dateChange"
     @focusin.native="open"
     @focusout.native="onBlur"
   )

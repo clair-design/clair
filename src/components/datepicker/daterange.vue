@@ -58,7 +58,7 @@
           :year="endYear"
           :month="endMonth"
           @change="endSelectMonth"
-          )
+        )
         c-datetable(
           v-if="!endMonthsShow"
           type="range"
