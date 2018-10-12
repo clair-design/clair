@@ -106,7 +106,7 @@ export default {
 
   created () {
     this.$watch(vm => [vm.pn, vm.total].join(), _ => {
-      const pn = Number.parseInt(this.pn) || 1
+      const pn = parseInt(this.pn) || 1
       const exceedMax = pn > this.pageCount
       if (exceedMax) {
         this.pageNumber = this.pageCount
