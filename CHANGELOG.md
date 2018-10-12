@@ -1,3 +1,11 @@
+## [0.5.9](https://github.com/clair-design/clair/compare/v0.5.8...v0.5.9) (2018-10-12)
+
+
+### Bug Fixes
+
+* **datepicker:** fix IE10 compatibility ([77b211e](https://github.com/clair-design/clair/commit/77b211e))
+* **pagination:** fix IE error in pagination ([506792e](https://github.com/clair-design/clair/commit/506792e))
+
 ## [0.5.8](https://github.com/clair-design/clair/compare/v0.5.7...v0.5.8) (2018-10-08)
 
 
