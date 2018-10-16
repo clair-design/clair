@@ -77,7 +77,7 @@ export default {
     classNames () {
       const classList = classNames.call(this)
       const size = this.actualSize
-      if (size) classList.push(`c-button--${size}`)
+      if (size) classList.push(`is-${size}`)
       return classList
     }
   },

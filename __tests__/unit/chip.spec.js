@@ -66,7 +66,7 @@ describe('chip', function () {
         }
       })
       expect(wrapper).toMatchSnapshot()
-      expect(wrapper.classes()).toContain(`c-chip--${size}`)
+      expect(wrapper.classes()).toContain(`is-${size}`)
     })
   })
 

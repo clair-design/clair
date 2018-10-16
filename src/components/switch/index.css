@@ -71,7 +71,7 @@
   cursor: not-allowed;
 }
 
-.c-switch--small {
+.c-switch.is-sm {
   & .c-switch__layoutbox {
     width: 30px;
     height: 14px;

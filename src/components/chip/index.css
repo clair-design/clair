@@ -74,7 +74,7 @@
  * chip size
  */
 
-.c-chip--xs {
+.c-chip__wrapper.is-xs {
   height: 20px;
   padding: 0 6px;
 
@@ -83,12 +83,12 @@
   }
 }
 
-.c-chip--sm {
+.c-chip__wrapper.is-sm {
   height: 24px;
   padding: 0 8px;
 }
 
-.c-chip--lg {
+.c-chip__wrapper.is-lg {
   height: 32px;
   padding: 0 12px;
 
@@ -97,7 +97,7 @@
   }
 }
 
-.c-chip--xl {
+.c-chip__wrapper.is-xl {
   height: 36px;
   padding: 0 14px;
 

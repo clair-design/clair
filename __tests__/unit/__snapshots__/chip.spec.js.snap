@@ -1,57 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`chip should contain a built-in class when using preset color 1`] = `
-<div class="c-chip__wrapper c-chip--md c-chip--red"><span class="c-chip__label">lorem ipsum...</span>
+<div class="c-chip__wrapper is-md c-chip--red"><span class="c-chip__label">lorem ipsum...</span>
   <!---->
 </div>
 `;
 
 exports[`chip should render <chip /> in different sizes 1`] = `
-<div class="c-chip__wrapper c-chip--xs"><span class="c-chip__label">lorem ipsum...</span>
+<div class="c-chip__wrapper is-xs"><span class="c-chip__label">lorem ipsum...</span>
   <!---->
 </div>
 `;
 
 exports[`chip should render <chip /> in different sizes 2`] = `
-<div class="c-chip__wrapper c-chip--sm"><span class="c-chip__label">lorem ipsum...</span>
+<div class="c-chip__wrapper is-sm"><span class="c-chip__label">lorem ipsum...</span>
   <!---->
 </div>
 `;
 
 exports[`chip should render <chip /> in different sizes 3`] = `
-<div class="c-chip__wrapper c-chip--md"><span class="c-chip__label">lorem ipsum...</span>
+<div class="c-chip__wrapper is-md"><span class="c-chip__label">lorem ipsum...</span>
   <!---->
 </div>
 `;
 
 exports[`chip should render <chip /> in different sizes 4`] = `
-<div class="c-chip__wrapper c-chip--lg"><span class="c-chip__label">lorem ipsum...</span>
+<div class="c-chip__wrapper is-lg"><span class="c-chip__label">lorem ipsum...</span>
   <!---->
 </div>
 `;
 
 exports[`chip should render <chip /> in different sizes 5`] = `
-<div class="c-chip__wrapper c-chip--xl"><span class="c-chip__label">lorem ipsum...</span>
+<div class="c-chip__wrapper is-xl"><span class="c-chip__label">lorem ipsum...</span>
   <!---->
 </div>
 `;
 
-exports[`chip should render <chip closable /> with a close icon 1`] = `<div class="c-chip__wrapper c-chip--md c-chip--closable"><span class="c-chip__label">lorem ipsum...</span><span><c-icon-stub name="x" size="1em" valign="middle"></c-icon-stub></span></div>`;
+exports[`chip should render <chip closable /> with a close icon 1`] = `<div class="c-chip__wrapper is-md c-chip--closable"><span class="c-chip__label">lorem ipsum...</span><span><c-icon-stub name="x" size="1em" valign="middle"></c-icon-stub></span></div>`;
 
 exports[`chip should set backgroundColor when using custom color 1`] = `
-<div class="c-chip__wrapper c-chip--md" style="background-color: rgba(200, 0, 0, 0.5);"><span class="c-chip__label">lorem ipsum...</span>
+<div class="c-chip__wrapper is-md" style="background-color: rgba(200, 0, 0, 0.5);"><span class="c-chip__label">lorem ipsum...</span>
   <!---->
 </div>
 `;
 
 exports[`chip should use props.label as content 1`] = `
-<div class="c-chip__wrapper c-chip--md"><span class="c-chip__label">label text</span>
+<div class="c-chip__wrapper is-md"><span class="c-chip__label">label text</span>
   <!---->
 </div>
 `;
 
 exports[`chip should use slots.default as label value 1`] = `
-<div class="c-chip__wrapper c-chip--md">test
+<div class="c-chip__wrapper is-md">test
   <!---->
 </div>
 `;

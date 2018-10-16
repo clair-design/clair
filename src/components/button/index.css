@@ -262,7 +262,7 @@
 /**
  * sizing
  */
-.c-button--xs {
+.c-button.is-xs {
   font-size: var(--form-font-xs);
   height: var(--form-height-xs);
   padding: 0 4px;
@@ -273,7 +273,7 @@
   }
 }
 
-.c-button--sm {
+.c-button.is-sm {
   font-size: var(--form-font-sm);
   height: var(--form-height-sm);
 
@@ -283,7 +283,7 @@
   }
 }
 
-.c-button--lg {
+.c-button.is-lg {
   font-size: var(--form-font-lg);
   height: var(--form-height-lg);
 
@@ -293,7 +293,7 @@
   }
 }
 
-.c-button--xl {
+.c-button.is-xl {
   font-size: var(--form-font-xl);
   height: var(--form-height-xl);
   padding: 0 16px;

@@ -52,7 +52,7 @@ export default {
       const isPresetColor = color && colorPresets.indexOf(color) > -1
 
       return [
-        size ? `c-chip--${size}` : '',
+        size ? `is-${size}` : '',
         closable ? 'c-chip--closable' : '',
         isPresetColor ? `c-chip--${color}` : ''
       ]

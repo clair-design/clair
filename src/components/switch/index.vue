@@ -41,7 +41,17 @@ export default {
     value: {
       default: false
     },
-    size: String
+    size: {
+      type: String,
+      validate (val) {
+        if (!val || val === 'small') {
+          return true
+        }
+        // TODO
+        // extend different sizes
+        throw new Error('Switch: only supports `size=small` for now')
+      }
+    }
   },
   mixins: [resettable, validatable],
   data () {
@@ -76,8 +86,10 @@ export default {
       return obj
     },
     className () {
-      if (this.size) {
-        return ` c-switch--${this.size}`
+      // TODO
+      // use standard `xs` `sm` `md` `lg` `xl`
+      if (this.size === 'small') {
+        return 'is-sm'
       }
     }
   },
