@@ -43,7 +43,7 @@ export default {
     },
     size: {
       type: String,
-      validate (val) {
+      validator (val) {
         if (!val || val === 'small') {
           return true
         }
