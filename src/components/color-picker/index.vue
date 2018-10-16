@@ -34,11 +34,12 @@ import ColorPicker from 'v-color'
 import { contains, VueTypes } from '@util'
 import zIndex from '@util/zIndexManager'
 import resettable from '@scripts/mixins/resettable'
+import { sizePreset } from '@scripts/common'
+
 import PortalComponent from '../portal'
 
 import './index.css'
 
-const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
 const sizeMap = {
   'xs': 12,
   'sm': 18,
@@ -57,7 +58,7 @@ export default {
       'hex'
     ]).def('hex'),
     inline: VueTypes.bool.def(false),
-    size: VueTypes.oneOf(sizes)
+    size: VueTypes.oneOf(sizePreset)
   },
   inject: {
     $form: { default: null }

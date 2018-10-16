@@ -1,3 +1,4 @@
-export const breakpoints = [ 'xs', 'sm', 'md', 'lg', 'xl' ]
+import { sizePreset } from '../common'
+export const breakpoints = sizePreset
 
 export default { breakpoints }

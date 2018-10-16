@@ -50,7 +50,7 @@ export default {
     classNames () {
       const { size, $form } = this
       const actualSize = size || ($form && $form.size)
-      return `is-${actualSize}`
+      return actualSize ? `is-${actualSize}` : ''
     }
   },
   created () {

@@ -10,10 +10,10 @@
 </template>
 
 <script>
+import { isSizeValid } from '@scripts/common'
 import Icon from '../icon'
 import './index.css'
 
-const validSizes = ['xs', 'sm', 'md', 'lg', 'xl']
 const colorPresets = [
   'red',
   'orange',
@@ -39,7 +39,7 @@ export default {
     size: {
       type: String,
       default: 'md',
-      validator: value => validSizes.indexOf(value) > -1
+      validator: isSizeValid
     },
     label: String,
     color: String,
