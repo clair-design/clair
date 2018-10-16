@@ -61,7 +61,6 @@ export default {
   name,
   props,
   inject: {
-    $buttonGroup: { default: null },
     $form: { default: null }
   },
   computed: {
@@ -69,10 +68,8 @@ export default {
       return this.loading ? 'loader' : this.icon
     },
     actualSize () {
-      const { size, $buttonGroup, $form } = this
-      return size ||
-        ($buttonGroup && $buttonGroup.size) ||
-        ($form && $form.size)
+      const { size, $form } = this
+      return size || ($form && $form.size)
     },
     classNames () {
       const classList = classNames.call(this)

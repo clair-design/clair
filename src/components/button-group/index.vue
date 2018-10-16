@@ -1,5 +1,5 @@
 <template lang="pug">
-  .c-button-group
+  .c-button-group(:class="className")
     slot
 </template>
 
@@ -10,16 +10,16 @@ export default {
   props: {
     size: String
   },
-  provide () {
-    return {
-      '$buttonGroup': this
-    }
-  },
 
   data () {
     return {}
   },
 
-  methods: {}
+  computed: {
+    className () {
+      const { size } = this
+      return size ? `is-${size}` : ''
+    }
+  }
 }
 </script>
