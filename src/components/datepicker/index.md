@@ -321,8 +321,8 @@ close 方法可以直接关闭日历弹窗
 | type | String | date | 日历类别：单日历（date），日期范围（daterange） |
 | placeholder | String | '请选择日期' | 未进行选择时的提示 |
 | disabled | Boolean | false | 日期框是否被禁用 |
-| mixDate | String | 1970-01-01 | 可选日期的最小值 |
-| mixDate | String | 2099-12-31 | 可选日期的最大值 |
+| minDate | String | 1970-01-01 | 可选日期的最小值 |
+| maxDate | String | 2099-12-31 | 可选日期的最大值 |
 | extraOption | Array | [] | 快捷键设置显示文案及操作方法 |
 
 ### 方法
