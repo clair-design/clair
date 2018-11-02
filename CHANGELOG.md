@@ -1,3 +1,10 @@
+## [0.5.10](https://github.com/clair-design/clair/compare/v0.5.9...v0.5.10) (2018-11-02)
+
+
+### Bug Fixes
+
+* **layout:** fix layout offset class name ([fd9ab18](https://github.com/clair-design/clair/commit/fd9ab18))
+
 ## [0.5.9](https://github.com/clair-design/clair/compare/v0.5.8...v0.5.9) (2018-10-12)
 
 
