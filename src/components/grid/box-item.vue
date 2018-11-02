@@ -37,7 +37,7 @@ export default {
           return classNames
         }, [])
       if (this.span) classNames.push(`is-${this.span}`)
-      if (this.offset) classNames.push(`is-offset-${this.offset}`)
+      if (this.offset) classNames.push(`has-offset-${this.offset}`)
       if (this.width || this.narrow !== void 0) classNames.push(`is-narrow`)
       return classNames
     },
