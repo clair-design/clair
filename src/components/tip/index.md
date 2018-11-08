@@ -4,7 +4,7 @@ route: /component/tip
 layout: component
 ---
 
-# Tip
+# 文字提示 Tip
 
 文字提示气泡。通常用于鼠标 hover 在目标元素上，以展示某些提示信息。
 
@@ -141,39 +141,22 @@ layout: component
 </c-tip>
 ```
 
-## PopConfirm
+## API
 
-下面是自己写的一个 PopConfirm 的例子。
+| 属性 | 类型  |  说明 | 默认值 |
+|-----|-------|------|-------|
+| theme | dark \| light | 主题 | dark |
+| trigger | hover \| click \| focus | 触发形式 | hover |
+| position | top \| right \| bottom \| left | 位置 | bottom |
+| disabled | Boolean | 是否禁用 | false |
+| content |  String | 提示文本 | |
+| maxWidth | String | 最大宽度 |  300px |
+| showDelay | String | 出现延时 | 100ms |
+| hideDelay | String | 隐藏延时 | 100ms |
 
-```html
-<style>
-  .pop-confirm {
-    font-size: 16px;
-    margin: 5px;
-  }
-  .footer {
-    text-align: right;
-    margin-top: 1em;
-  }
-</style>
-<template>
-  <c-tip
-    theme="light"
-    position="top"
-    trigger="click"
-    max-width="600px"
-    ref="tip"
-  >
-    <div slot="content" class="pop-confirm">
-      <div class="body">
-        你真的确定要删除我吗？
-      </div>
-      <div class="footer">
-        <c-button outline size="md" @click="$refs.tip.hide()">取消</c-button>
-        <c-button primary size="md" @click="$refs.tip.hide()">确认</c-button>
-      </div>
-    </div>
-    <c-button primary>删除</c-button>
-  </c-tip>
-</template>
-```
+## slot
+
+| 名称 |   说明   |
+|-----|-------|------|-------|
+| default |  触发 tip 的内容  |
+| content |  显示在 tip 中的内容  |
