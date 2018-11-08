@@ -1,3 +1,15 @@
+# [0.6.0](https://github.com/clair-design/clair/compare/v0.5.10...v0.6.0) (2018-11-08)
+
+
+### Bug Fixes
+
+* **tip:** fix `.show` method ([5864fec](https://github.com/clair-design/clair/commit/5864fec))
+
+
+### Features
+
+* add PopConfirm component ([ea4e4d7](https://github.com/clair-design/clair/commit/ea4e4d7))
+
 ## [0.5.10](https://github.com/clair-design/clair/compare/v0.5.9...v0.5.10) (2018-11-02)
 
 
