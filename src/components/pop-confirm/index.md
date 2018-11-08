@@ -123,7 +123,6 @@ export default {
 |-----|-------|------|-------|
 | position | top \| right \| bottom \| left | 位置 | bottom |
 | disabled | Boolean | 是否禁用 | false |
-| focus
 | okText |  String | 确认按钮文字 | 确定 |
 | cancelText | String | 取消按钮文字 |  取消 |
 
