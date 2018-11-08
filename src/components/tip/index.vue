@@ -91,7 +91,7 @@ export default {
   },
 
   methods: {
-    show ({ type }) {
+    show ({ type = 'click' }) {
       if (SHOW_MATCH_MAP[this.trigger] === type) {
         this.clearTimeout()
         this.visible = true
