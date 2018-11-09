@@ -10,7 +10,7 @@ const external = function (id) {
 }
 
 const banner = `/*!
- * Clair v${pkg.version}
+ * Clair __RELEASE__VERSION__
  * (c) 2017-present clair-design@75team
  * Released under the MIT License.
  */
