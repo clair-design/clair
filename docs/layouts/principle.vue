@@ -16,7 +16,10 @@
 </template>
 
 <script>
+import SEOMixin from './mixin/seo'
+
 export default {
+  mixins: [SEOMixin],
   data () {
     return {
       menu: [

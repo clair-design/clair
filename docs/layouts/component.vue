@@ -34,7 +34,10 @@
 <script>
 import throttle from 'lodash/throttle'
 
+import SEOMixin from './mixin/seo'
+
 export default {
+  mixins: [SEOMixin],
   data () {
     return {
       showToTop: false,

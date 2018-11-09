@@ -13,3 +13,11 @@
     </div>
   </div>
 </template>
+
+<script>
+import SEOMixin from './mixin/seo'
+
+export default {
+  mixins: [SEOMixin]
+}
+</script>

@@ -16,3 +16,11 @@
           router-view
       c-footer
 </template>
+
+<script>
+import SEOMixin from './mixin/seo'
+
+export default {
+  mixins: [SEOMixin]
+}
+</script>
