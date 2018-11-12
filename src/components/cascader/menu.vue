@@ -23,9 +23,16 @@ div
       :level="level + 1"
     )
 </template>
+
 <script>
+import Icon from '../icon/index.vue'
+
 export default {
   name: 'c-cascader-menu',
+  components: {
+    'c-icon': Icon
+  },
+  inject: ['$cascader'],
   props: {
     level: {
       type: Number,
@@ -75,7 +82,6 @@ export default {
       default: null
     }
   },
-  inject: ['$cascader'],
   data () {
     return {
       optionList: [],
@@ -119,6 +125,7 @@ export default {
         this.$set(item, 'selected', false)
         return item
       })
+
       if (this.$cascader.value.length) {
         const selectedItem = this.optionList.find(
           option => option[this.valueKey] === this.$cascader.value[this.level])
@@ -169,6 +176,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-
-</style>

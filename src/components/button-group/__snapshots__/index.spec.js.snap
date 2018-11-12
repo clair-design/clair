@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should works with size 1`] = `
+<div class="c-button-group is-md"><button type="button" class="c-button c-button--primary c-button--outline">
+    <!----><span>A</span></button> <button type="button" class="c-button c-button--primary c-button--outline">
+    <!----><span>B</span></button> <button type="button" class="c-button c-button--primary c-button--outline">
+    <!----><span>C</span></button></div>
+`;

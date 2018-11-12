@@ -22,11 +22,11 @@ route: /component/calendar
 
 ```html
 <c-calendar
-  :value="'2017-9-15'"
-  :maxDate="'2018-8-15'"
-  :minDate="'2017-8-15'"
+  value="2017-9-15"
+  maxDate="2018-8-15"
+  minDate="2017-8-15"
   @update="dateChange"
-  :pattern="'yyyy/MM/dd'"
+  pattern="yyyy/MM/dd"
 >
 </c-calendar>
 
@@ -47,12 +47,12 @@ export default {
 
 ```html
 <c-calendar
-  :type="'month'"
-  :value="'2017-9'"
-  :maxDate="'2018-8-15'"
-  :minDate="'2017-8-15'"
+  type="month"
+  value="2017-9"
+  maxDate="2018-8-15"
+  minDate="2017-8-15"
   @update="dateChange"
-  :pattern="'yyyy/MM'"
+  pattern="yyyy/MM"
 >
 </c-calendar>
 

@@ -52,8 +52,13 @@
 import './index.css'
 import Mixin from './mixin.js'
 
+import Icon from '../icon/index.vue'
+
 export default {
   name: 'c-dateheader',
+  components: {
+    'c-icon': Icon
+  },
   props: {
     monthsShow: Boolean,
     year: [String, Number],

@@ -1,7 +1,7 @@
 <template lang="pug">
 .c-cascader(
   @click="isOpen = true"
-  )
+)
   .cascader-context
     c-input(
       :placeholder="placeholder"
@@ -9,11 +9,12 @@
       width="normal"
       :size="size"
       :disabled="disabled"
-      )
+    )
     c-icon.c-cascader__icon(name="chevron-down")
   .cascader-dropmenu(
     :class="className"
-    )
+    ref="dropmenu"
+  )
     template(v-if="isOpen")
       c-cascader-menu(
         :parentMenu="parentMenu"
@@ -29,13 +30,18 @@
 
 <script>
 import './index.css'
+import ZIndexManager from '@util/zIndexManager.js'
+
 import Menu from './menu.vue'
-import ZIndexManager from '../../scripts/utils/zIndexManager.js'
+import Icon from '../icon/index.vue'
+import Input from '../input/index.vue'
 
 export default {
   name: 'c-cascader',
   components: {
-    'c-cascader-menu': Menu
+    'c-cascader-menu': Menu,
+    'c-icon': Icon,
+    'c-input': Input
   },
   provide () {
     return {
@@ -103,11 +109,9 @@ export default {
     this.optionList = [...this.options]
   },
   mounted () {
-    if (typeof document === 'object') {
-      this.cascaderMenu = document.querySelector('.cascader-dropmenu')
-      document.body.appendChild(this.cascaderMenu)
-      this.resize()
-    }
+    this.cascaderMenu = this.$refs.dropmenu
+    document.body.appendChild(this.cascaderMenu)
+    this.resize()
     window.addEventListener('resize', this.resize, false)
   },
   beforeDestroy () {

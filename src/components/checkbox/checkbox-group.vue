@@ -12,7 +12,7 @@
 
 <script>
 import validatable from '@scripts/mixins/validatable'
-
+import Checkbox from './index'
 const name = 'c-checkbox-group'
 const pass = { valid: true, msg: '' }
 
@@ -48,6 +48,9 @@ const props = {
 
 export default {
   name,
+  components: {
+    'c-checkbox': Checkbox
+  },
   model: {
     event: 'change'
   },

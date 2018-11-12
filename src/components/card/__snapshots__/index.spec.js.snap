@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render card correctly 1`] = `
+<div class="c-card">
+  <div class="c-card__title">
+    <h3>卡片标题</h3>
+  </div>
+  <!---->
+  <div class="c-card__body">
+    <div>这里是卡片介绍</div>
+  </div>
+  <div class="c-card__actions"><button type="button" class="c-button c-button--primary c-button--flat"><span class="c-icon">​<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart" style="vertical-align: middle;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></span><span>加入收藏</span></button><button type="button" class="c-button c-button--flat"><span class="c-icon">​<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-download" style="vertical-align: middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></span><span>下载</span></button></div>
+</div>
+`;
+
+exports[`should render horizontal card correctly 1`] = `
+<div class="c-card is-horizontal">
+  <!---->
+  <div class="c-card__media"><img src="https://p0.ssl.qhimg.com/dm/100_100_90/t019549f24fd684aeb8.jpg"></div>
+  <div class="c-card__body">
+    <div>云中温度低于0℃的许多小云滴在冰晶上互相碰撞凝结形成雪珠，小雪珠是由许多细白的冰粒聚集而成的。</div>
+  </div>
+  <!---->
+</div>
+`;

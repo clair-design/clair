@@ -1,0 +1,196 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should work as month selector 1`] = `
+<div class="c-calendar md">
+  <div class="c-calendar__header">
+    <div class="c-calendar__prev-year disabled"><span class="c-icon">​<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-left" style="vertical-align: text-top;"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg></span></div><a class="c-calendar__prev-month" style="display: none;"><span class="c-icon">​<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left" style="vertical-align: text-top;"><polyline points="15 18 9 12 15 6"></polyline></svg></span></a><span class="c-calendar__year">2017</span><span class="c-calendar__spacer" style="display: none;">-</span><span class="c-calendar__month" style="display: none;">09</span><a class="c-calendar__next-month" style="display: none;"><span class="c-icon">​<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right" style="vertical-align: text-top;"><polyline points="9 18 15 12 9 6"></polyline></svg></span></a><a class="c-calendar__next-year"><span class="c-icon">​<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-right" style="vertical-align: text-top;"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg></span></a>
+  </div>
+  <div class="c-calendar__body">
+    <table class="c-calendar__month-table">
+      <tbody>
+        <tr>
+          <td><a class="month-cell disabled">一月</a></td>
+          <td><a class="month-cell disabled">二月</a></td>
+          <td><a class="month-cell disabled">三月</a></td>
+        </tr>
+        <tr>
+          <td><a class="month-cell disabled">四月</a></td>
+          <td><a class="month-cell disabled">五月</a></td>
+          <td><a class="month-cell disabled">六月</a></td>
+        </tr>
+        <tr>
+          <td><a class="month-cell disabled">七月</a></td>
+          <td><a class="month-cell">八月</a></td>
+          <td><a class="month-cell active">九月</a></td>
+        </tr>
+        <tr>
+          <td><a class="month-cell">十月</a></td>
+          <td><a class="month-cell">十一月</a></td>
+          <td><a class="month-cell">十二月</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <!---->
+  </div>
+</div>
+`;
+
+exports[`should work with defined props 1`] = `
+<div class="c-calendar md">
+  <div class="c-calendar__header">
+    <div class="c-calendar__prev-year disabled"><span class="c-icon">​<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-left" style="vertical-align: text-top;"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg></span></div><a class="c-calendar__prev-month"><span class="c-icon">​<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left" style="vertical-align: text-top;"><polyline points="15 18 9 12 15 6"></polyline></svg></span></a><span class="c-calendar__year">2017</span><span class="c-calendar__spacer">-</span><span class="c-calendar__month">09</span><a class="c-calendar__next-month"><span class="c-icon">​<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right" style="vertical-align: text-top;"><polyline points="9 18 15 12 9 6"></polyline></svg></span></a><a class="c-calendar__next-year"><span class="c-icon">​<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-right" style="vertical-align: text-top;"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg></span></a>
+  </div>
+  <div class="c-calendar__body">
+    <!---->
+    <table class="c-calendar__day-table">
+      <thead>
+        <tr>
+          <th>日</th>
+          <th>一</th>
+          <th>二</th>
+          <th>三</th>
+          <th>四</th>
+          <th>五</th>
+          <th>六</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="lastmonth"><a data-rowindex="0" data-index="0" class="day-cell">27</a></td>
+          <td class="lastmonth"><a data-rowindex="0" data-index="1" class="day-cell">28</a></td>
+          <td class="lastmonth"><a data-rowindex="0" data-index="2" class="day-cell">29</a></td>
+          <td class="lastmonth"><a data-rowindex="0" data-index="3" class="day-cell">30</a></td>
+          <td class="lastmonth"><a data-rowindex="0" data-index="4" class="day-cell">31</a></td>
+          <td class="curmonth"><a data-rowindex="0" data-index="5" class="day-cell">1</a></td>
+          <td class="curmonth"><a data-rowindex="0" data-index="6" class="day-cell">2</a></td>
+        </tr>
+        <tr>
+          <td class="curmonth"><a data-rowindex="1" data-index="0" class="day-cell">3</a></td>
+          <td class="curmonth"><a data-rowindex="1" data-index="1" class="day-cell">4</a></td>
+          <td class="curmonth"><a data-rowindex="1" data-index="2" class="day-cell">5</a></td>
+          <td class="curmonth"><a data-rowindex="1" data-index="3" class="day-cell">6</a></td>
+          <td class="curmonth"><a data-rowindex="1" data-index="4" class="day-cell">7</a></td>
+          <td class="curmonth"><a data-rowindex="1" data-index="5" class="day-cell">8</a></td>
+          <td class="curmonth"><a data-rowindex="1" data-index="6" class="day-cell">9</a></td>
+        </tr>
+        <tr>
+          <td class="curmonth"><a data-rowindex="2" data-index="0" class="day-cell">10</a></td>
+          <td class="curmonth"><a data-rowindex="2" data-index="1" class="day-cell">11</a></td>
+          <td class="curmonth"><a data-rowindex="2" data-index="2" class="day-cell">12</a></td>
+          <td class="curmonth"><a data-rowindex="2" data-index="3" class="day-cell">13</a></td>
+          <td class="curmonth"><a data-rowindex="2" data-index="4" class="day-cell">14</a></td>
+          <td class="curmonth active"><a data-rowindex="2" data-index="5" class="day-cell">15</a></td>
+          <td class="curmonth"><a data-rowindex="2" data-index="6" class="day-cell">16</a></td>
+        </tr>
+        <tr>
+          <td class="curmonth"><a data-rowindex="3" data-index="0" class="day-cell">17</a></td>
+          <td class="curmonth"><a data-rowindex="3" data-index="1" class="day-cell">18</a></td>
+          <td class="curmonth"><a data-rowindex="3" data-index="2" class="day-cell">19</a></td>
+          <td class="curmonth"><a data-rowindex="3" data-index="3" class="day-cell">20</a></td>
+          <td class="curmonth"><a data-rowindex="3" data-index="4" class="day-cell">21</a></td>
+          <td class="curmonth"><a data-rowindex="3" data-index="5" class="day-cell">22</a></td>
+          <td class="curmonth"><a data-rowindex="3" data-index="6" class="day-cell">23</a></td>
+        </tr>
+        <tr>
+          <td class="curmonth"><a data-rowindex="4" data-index="0" class="day-cell">24</a></td>
+          <td class="curmonth"><a data-rowindex="4" data-index="1" class="day-cell">25</a></td>
+          <td class="curmonth"><a data-rowindex="4" data-index="2" class="day-cell">26</a></td>
+          <td class="curmonth"><a data-rowindex="4" data-index="3" class="day-cell">27</a></td>
+          <td class="curmonth"><a data-rowindex="4" data-index="4" class="day-cell">28</a></td>
+          <td class="curmonth"><a data-rowindex="4" data-index="5" class="day-cell">29</a></td>
+          <td class="curmonth"><a data-rowindex="4" data-index="6" class="day-cell">30</a></td>
+        </tr>
+        <tr>
+          <td class="nextmonth"><a data-rowindex="5" data-index="0" class="day-cell">1</a></td>
+          <td class="nextmonth"><a data-rowindex="5" data-index="1" class="day-cell">2</a></td>
+          <td class="nextmonth"><a data-rowindex="5" data-index="2" class="day-cell">3</a></td>
+          <td class="nextmonth"><a data-rowindex="5" data-index="3" class="day-cell">4</a></td>
+          <td class="nextmonth"><a data-rowindex="5" data-index="4" class="day-cell">5</a></td>
+          <td class="nextmonth"><a data-rowindex="5" data-index="5" class="day-cell">6</a></td>
+          <td class="nextmonth"><a data-rowindex="5" data-index="6" class="day-cell">7</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`should works in basic mode 1`] = `
+<div class="c-calendar md">
+  <div class="c-calendar__header">
+    <div class="c-calendar__prev-year"><span class="c-icon">​<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-left" style="vertical-align: text-top;"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg></span></div><a class="c-calendar__prev-month"><span class="c-icon">​<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left" style="vertical-align: text-top;"><polyline points="15 18 9 12 15 6"></polyline></svg></span></a><span class="c-calendar__year">2018</span><span class="c-calendar__spacer">-</span><span class="c-calendar__month">11</span><a class="c-calendar__next-month"><span class="c-icon">​<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right" style="vertical-align: text-top;"><polyline points="9 18 15 12 9 6"></polyline></svg></span></a><a class="c-calendar__next-year"><span class="c-icon">​<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-right" style="vertical-align: text-top;"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg></span></a>
+  </div>
+  <div class="c-calendar__body">
+    <!---->
+    <table class="c-calendar__day-table">
+      <thead>
+        <tr>
+          <th>日</th>
+          <th>一</th>
+          <th>二</th>
+          <th>三</th>
+          <th>四</th>
+          <th>五</th>
+          <th>六</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="lastmonth"><a data-rowindex="0" data-index="0" class="day-cell">28</a></td>
+          <td class="lastmonth"><a data-rowindex="0" data-index="1" class="day-cell">29</a></td>
+          <td class="lastmonth"><a data-rowindex="0" data-index="2" class="day-cell">30</a></td>
+          <td class="lastmonth"><a data-rowindex="0" data-index="3" class="day-cell">31</a></td>
+          <td class="curmonth"><a data-rowindex="0" data-index="4" class="day-cell">1</a></td>
+          <td class="curmonth"><a data-rowindex="0" data-index="5" class="day-cell">2</a></td>
+          <td class="curmonth"><a data-rowindex="0" data-index="6" class="day-cell">3</a></td>
+        </tr>
+        <tr>
+          <td class="curmonth"><a data-rowindex="1" data-index="0" class="day-cell">4</a></td>
+          <td class="curmonth"><a data-rowindex="1" data-index="1" class="day-cell">5</a></td>
+          <td class="curmonth"><a data-rowindex="1" data-index="2" class="day-cell">6</a></td>
+          <td class="curmonth"><a data-rowindex="1" data-index="3" class="day-cell">7</a></td>
+          <td class="curmonth"><a data-rowindex="1" data-index="4" class="day-cell">8</a></td>
+          <td class="curmonth"><a data-rowindex="1" data-index="5" class="day-cell">9</a></td>
+          <td class="curmonth"><a data-rowindex="1" data-index="6" class="day-cell">10</a></td>
+        </tr>
+        <tr>
+          <td class="curmonth"><a data-rowindex="2" data-index="0" class="day-cell">11</a></td>
+          <td class="curmonth active"><a data-rowindex="2" data-index="1" class="day-cell">12</a></td>
+          <td class="curmonth"><a data-rowindex="2" data-index="2" class="day-cell">13</a></td>
+          <td class="curmonth"><a data-rowindex="2" data-index="3" class="day-cell">14</a></td>
+          <td class="curmonth"><a data-rowindex="2" data-index="4" class="day-cell">15</a></td>
+          <td class="curmonth"><a data-rowindex="2" data-index="5" class="day-cell">16</a></td>
+          <td class="curmonth"><a data-rowindex="2" data-index="6" class="day-cell">17</a></td>
+        </tr>
+        <tr>
+          <td class="curmonth"><a data-rowindex="3" data-index="0" class="day-cell">18</a></td>
+          <td class="curmonth"><a data-rowindex="3" data-index="1" class="day-cell">19</a></td>
+          <td class="curmonth"><a data-rowindex="3" data-index="2" class="day-cell">20</a></td>
+          <td class="curmonth"><a data-rowindex="3" data-index="3" class="day-cell">21</a></td>
+          <td class="curmonth"><a data-rowindex="3" data-index="4" class="day-cell">22</a></td>
+          <td class="curmonth"><a data-rowindex="3" data-index="5" class="day-cell">23</a></td>
+          <td class="curmonth"><a data-rowindex="3" data-index="6" class="day-cell">24</a></td>
+        </tr>
+        <tr>
+          <td class="curmonth"><a data-rowindex="4" data-index="0" class="day-cell">25</a></td>
+          <td class="curmonth"><a data-rowindex="4" data-index="1" class="day-cell">26</a></td>
+          <td class="curmonth"><a data-rowindex="4" data-index="2" class="day-cell">27</a></td>
+          <td class="curmonth"><a data-rowindex="4" data-index="3" class="day-cell">28</a></td>
+          <td class="curmonth"><a data-rowindex="4" data-index="4" class="day-cell">29</a></td>
+          <td class="curmonth"><a data-rowindex="4" data-index="5" class="day-cell">30</a></td>
+          <td class="nextmonth"><a data-rowindex="4" data-index="6" class="day-cell">1</a></td>
+        </tr>
+        <tr>
+          <td class="nextmonth"><a data-rowindex="5" data-index="0" class="day-cell">2</a></td>
+          <td class="nextmonth"><a data-rowindex="5" data-index="1" class="day-cell">3</a></td>
+          <td class="nextmonth"><a data-rowindex="5" data-index="2" class="day-cell">4</a></td>
+          <td class="nextmonth"><a data-rowindex="5" data-index="3" class="day-cell">5</a></td>
+          <td class="nextmonth"><a data-rowindex="5" data-index="4" class="day-cell">6</a></td>
+          <td class="nextmonth"><a data-rowindex="5" data-index="5" class="day-cell">7</a></td>
+          <td class="nextmonth"><a data-rowindex="5" data-index="6" class="day-cell">8</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;

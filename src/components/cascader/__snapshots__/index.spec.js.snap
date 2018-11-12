@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render cascader correctly 1`] = `
+<div>
+  <ul class="cascader-menu">
+    <li class="casecader-menu-item">藻类<span class="cascader-icon"><span class="c-icon">​<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right" style="vertical-align: baseline;"><polyline points="9 18 15 12 9 6"></polyline></svg></span></span></li>
+    <li class="casecader-menu-item">苔藓<span class="cascader-icon"><span class="c-icon">​<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right" style="vertical-align: baseline;"><polyline points="9 18 15 12 9 6"></polyline></svg></span></span></li>
+    <li class="casecader-menu-item">蕨类<span class="cascader-icon"><span class="c-icon">​<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right" style="vertical-align: baseline;"><polyline points="9 18 15 12 9 6"></polyline></svg></span></span></li>
+    <li class="casecader-menu-item">种子植物<span class="cascader-icon"><span class="c-icon">​<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right" style="vertical-align: baseline;"><polyline points="9 18 15 12 9 6"></polyline></svg></span></span></li>
+  </ul>
+  <div class="c-cascader__childmenu">
+    <!---->
+  </div>
+</div>
+`;
+
+exports[`should render cascader correctly 2`] = `
+<div class="c-cascader">
+  <div class="cascader-context">
+    <div class="c-input-wrap is-normal"><input type="text" class="c-input">
+      <!---->
+      <!---->
+    </div><span class="c-icon c-cascader__icon">​<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down" style="vertical-align: baseline;"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+  </div>
+</div>
+`;

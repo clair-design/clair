@@ -2,7 +2,7 @@
 .c-calendar(
   v-show="show"
   :class="className"
-  )
+)
   c-dateheader(
     :minDate="minDate"
     :maxDate="maxDate"
@@ -21,7 +21,7 @@
       :year="year"
       :month="month"
       @change="selectMonth"
-      )
+    )
     c-datetable(
       v-if="!monthsShow"
       :minDate="minDate"
@@ -33,15 +33,23 @@
       @yearchange="yearchange"
       @change="selectDay"
     )
-
 </template>
 
 <script>
 import './index.css'
 import Mixin from './mixin.js'
 
+import DateHeader from './date-header.vue'
+import DateTable from './date-table.vue'
+import MonthTable from './month-table.vue'
+
 export default {
   name: 'c-calendar',
+  components: {
+    'c-dateheader': DateHeader,
+    'c-datetable': DateTable,
+    'c-monthtable': MonthTable
+  },
   props: {
     value: String,
     size: String,
