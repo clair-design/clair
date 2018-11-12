@@ -1,10 +1,26 @@
 import { mount, shallowMount } from '@vue/test-utils'
 import Switch from '@/components/switch'
-import SwitchVModelFixture from './fixtures/switch/v-model.vue'
+
+const VModelSwitch = {
+  template: `
+<c-switch
+  checked-color="#C7543A"
+  unchecked-color="#E9CD4C"
+  v-model="checked"
+/>`,
+  components: {
+    'c-switch': Switch
+  },
+  data () {
+    return {
+      checked: true
+    }
+  }
+}
 
 describe('switch', function () {
   it('should trigger v-model changes', () => {
-    const wrapper = mount(SwitchVModelFixture)
+    const wrapper = mount(VModelSwitch)
     expect(wrapper.vm.checked).toEqual(true)
 
     wrapper.find('.c-switch__layoutbox').trigger('click')

@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Chip from '@/components/chip'
+import Chip from './index.vue'
 
 describe('chip', function () {
   it('should use props.label as content', () => {
