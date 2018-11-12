@@ -60,10 +60,7 @@ export default {
 
   computed: {
     iconType () {
-      if (!this.type) {
-        return this.$clair.icon || 'feather'
-      }
-      return this.type
+      return this.type || 'feather'
     },
     isSvg () {
       return this.iconType === 'feather'

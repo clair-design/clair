@@ -25,10 +25,8 @@
 // import css
 import './index.css'
 
-import {
-  toVueProps,
-  toClassNames
-} from '@util'
+import { toVueProps, toClassNames } from '@util'
+import Icon from '../icon/index.vue'
 
 const name = 'c-button'
 const block = `c-button`
@@ -60,6 +58,9 @@ const classNames = toClassNames(block, modifiers)
 export default {
   name,
   props,
+  components: {
+    'c-icon': Icon
+  },
   inject: {
     $form: { default: null }
   },

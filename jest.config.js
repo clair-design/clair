@@ -3,6 +3,7 @@ const aliases = {}
 Object.keys(resolveAlias).forEach(key => {
   const val = resolveAlias[key]
   aliases[`^${key}/(.*)$`] = `<rootDir>/${val}/$1`
+  aliases[`^${key}$`] = `<rootDir>/${val}`
 })
 
 module.exports = {

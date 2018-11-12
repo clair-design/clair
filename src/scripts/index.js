@@ -19,7 +19,6 @@ export const Clair = {
       const $clair = new Vue({
         data: {
           responsive: null,
-          icon: 'feather',
           defaultThrottleTime: 150
         }
       })

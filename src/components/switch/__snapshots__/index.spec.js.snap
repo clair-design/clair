@@ -1,24 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`switch should not trigger changes if disabled 1`] = `
+exports[`should not trigger changes if disabled 1`] = `
 <div class="c-switch"><input type="checkbox" disabled="disabled" name="c-switch" class="c-switch__checkbox" value="false">
   <div class="c-switch__layoutbox"></div>
 </div>
 `;
 
-exports[`switch should transform undefined values to boolean 1`] = `
+exports[`should transform undefined values to boolean 1`] = `
 <div class="c-switch"><input type="checkbox" name="c-switch" class="c-switch__checkbox" value="checked">
   <div class="c-switch__layoutbox"></div>
 </div>
 `;
 
-exports[`switch should trigger v-model changes 1`] = `
+exports[`should trigger v-model changes 1`] = `
 <div class="c-switch"><input type="checkbox" name="c-switch" class="c-switch__checkbox" value="false">
   <div class="c-switch__layoutbox" style="background-color: rgb(233, 205, 76); border-color: #e9cd4c;"></div>
 </div>
 `;
 
-exports[`switch should use given value instead of boolean values 1`] = `
+exports[`should use given value instead of boolean values 1`] = `
 <div class="c-switch"><input type="checkbox" name="c-switch" class="c-switch__checkbox" value="checked">
   <div class="c-switch__layoutbox"></div>
 </div>
