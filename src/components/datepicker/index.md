@@ -13,11 +13,11 @@ layout: component
 ```html
 <template>
   <c-datepicker
-    ref="mydatepicker"
     v-model="date"
-    :placeholder="'请输入或者选择日期'"
+    placeholder="请输入或者选择日期"
     @change="dateChange"
   ></c-datepicker>
+
   <c-datepicker
     v-model="date"
     :disabled="disabled"
@@ -57,7 +57,7 @@ li {
   <p>通过extra-option的方式:</p>
   <c-datepicker
     v-model="date"
-    :placeholder="'请输入或者选择日期'"
+    placeholder="请输入或者选择日期"
     @change="dateChange"
     :format="format"
     :extra-option="extraOption"
@@ -65,7 +65,7 @@ li {
   <p>通过slot的方式:</p>
   <c-datepicker
     v-model="date"
-    :placeholder="'请输入或者选择日期'"
+    placeholder="请输入或者选择日期"
     @change="dateChange"
     :format="format"
   >
@@ -124,7 +124,7 @@ li {
 <template>
   <c-datepicker
     v-model="date"
-    :placeholder="'请输入或者选择日期'"
+    placeholder="请输入或者选择日期"
     size="lg"
     :minDate="minDate"
     :maxDate="maxDate"
@@ -166,15 +166,15 @@ li {
 <template>
   <c-datepicker
     v-model="dateRange"
-    :type="'daterange'"
-    :placeholder="'请选择日期'"
+    type="daterange"
+    placeholder="请选择日期"
     @change="dateRangeChange"
   ></c-datepicker>
   <p>通过slot的方式:</p>
   <c-datepicker
     v-model="daterange"
-    :type="'daterange'"
-    :placeholder="'请选择日期'"
+    type="daterange"
+    placeholder="请选择日期"
     size="sm"
     @change="dateChange"
   >
@@ -186,8 +186,8 @@ li {
   <p>通过extra-option的方式:</p>
   <c-datepicker
     v-model="dateRange"
-    :type="'daterange'"
-    :placeholder="'请选择日期'"
+    type="daterange"
+    placeholder="请选择日期"
     @change="dateRangeChange"
     :extra-option="extraOption"
   ></c-datepicker>
@@ -249,8 +249,8 @@ li {
 <template>
   <c-datepicker
     v-model="date"
-    :type="'month'"
-    :placeholder="'请输入或者选择月份'"
+    type="month"
+    placeholder="请输入或者选择月份"
     @change="dateChange"
   ></c-datepicker>
 </template>
@@ -280,8 +280,8 @@ li {
 <template>
   <c-datepicker
     v-model="monthrange"
-    :type="'monthrange'"
-    :placeholder="'请选择日期'"
+    type="monthrange"
+    placeholder="请选择日期"
     size="sm"
     @change="monthChange"
   ></c-datepicker>

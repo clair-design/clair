@@ -80,7 +80,11 @@
 import './index.css'
 import validatable from '@scripts/mixins/validatable'
 import resettable from '@scripts/mixins/resettable'
-import ZIndexManager from '../../scripts/utils/zIndexManager.js'
+import ZIndexManager from '@scripts/utils/zIndexManager.js'
+
+import Icon from '../icon/index.vue'
+import Input from '../input/index.vue'
+import Calendar from '../calendar/index.vue'
 
 export default {
   name: 'c-datepicker',
@@ -88,6 +92,11 @@ export default {
     event: 'change'
   },
   mixins: [resettable, validatable],
+  components: {
+    'c-icon': Icon,
+    'c-input': Input,
+    'c-calendar': Calendar
+  },
   props: {
     value: {
       type: [String, Array],

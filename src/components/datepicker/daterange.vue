@@ -2,7 +2,7 @@
   .c-datepicker__range(
     v-show="show"
     :class="className"
-    )
+  )
     .c-datepicker__content.c-calendar
       c-dateheader(
         :minDate="minDate"
@@ -22,7 +22,7 @@
           :year="startYear"
           :month="startMonth"
           @change="startSelectMonth"
-          )
+        )
         c-datetable(
           v-if="!startMonthsShow"
           type="range"
@@ -93,9 +93,13 @@
 
 <script>
 import Mixin from '../calendar/mixin.js'
+import Button from '../button/index.vue'
 
 export default {
   name: 'c-daterange',
+  components: {
+    'c-button': Button
+  },
   props: {
     value: [Array, String],
     size: String,

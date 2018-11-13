@@ -2,7 +2,12 @@ import { mount } from '@vue/test-utils'
 import Calendar from './index.vue'
 
 it('should works in basic mode', () => {
-  const wrapper = mount(Calendar)
+  const wrapper = mount(Calendar, {
+    propsData: {
+      // specify date, or test could fail
+      value: '2017-09-14'
+    }
+  })
   expect(wrapper).toMatchSnapshot()
 })
 
