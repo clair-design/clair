@@ -62,6 +62,8 @@
   background: color(var(--white));
   padding: 1em;
   font-size: 14px;
+  display: flex;
+  padding-bottom: 4em;
 
   &.is-sm {
     font-size: 12px;
@@ -106,6 +108,10 @@
 .c-datepicker__text {
   text-align: center;
   margin: 0.5em 0;
+  position: absolute;
+  bottom: 1em;
+  padding-right: 2em;
+  width: 100%;
 }
 
 .c-datepicker__btns {
@@ -121,6 +127,7 @@
   padding-top: 6px;
   background-color: #fff;
   overflow: auto;
+  width: 6em;
 }
 
 .c-datepicker__sidebar ul {

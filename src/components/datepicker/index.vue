@@ -8,7 +8,7 @@
     :class="className"
   )
     c-icon(name="x-circle")
-  .c-datepicker__icon(:clas="className")
+  .c-datepicker__icon(:class="className")
     c-icon(name="calendar")
   c-input(
     v-if="type == 'daterange' || type == 'monthrange'"
@@ -81,6 +81,7 @@ import './index.css'
 import validatable from '@scripts/mixins/validatable'
 import resettable from '@scripts/mixins/resettable'
 import ZIndexManager from '@scripts/utils/zIndexManager.js'
+import { getScrollBarSize } from '@util'
 
 import Icon from '../icon/index.vue'
 import Input from '../input/index.vue'
@@ -285,10 +286,11 @@ export default {
 
       const clientY = clientRect.y
       const compTop = windowH - droplistHeight - scrollHeight
-      const marginRight = 15 // scrollbar width
-      const left = droplistWidth + clientRect.left + window.pageXOffset > windowW ? windowW - droplistWidth - marginRight : clientRect.left + window.pageXOffset
+      const marginRight = getScrollBarSize() + 5 // scrollbar width
+      const left = droplistWidth + clientRect.left + marginRight + window.pageXOffset > windowW ? windowW - droplistWidth - marginRight : clientRect.left + window.pageXOffset
       const top = droplistHeight + clientHeight + clientY + scrollHeight > windowH ? compTop : defaultTop
       const zIndex = ZIndexManager.next()
+
       return `
         position: absolute;
         top: ${top}px;
