@@ -17,12 +17,13 @@
     :disabled="disabled"
     width="normal"
     :size="size"
+    readonly
     @focusin.native="open"
     @focusout.native="onBlur"
   )
   c-input(
     v-else-if="type == 'date' || type == 'month'"
-    v-model="date"
+    v-model="showDate"
     :size="size"
     width="normal"
     :placeholder="placeholder"
@@ -106,7 +107,8 @@ export default {
       }
     },
     pattern: {
-      type: String
+      type: String,
+      default: 'yyyy-MM-dd'
     },
     size: String,
     disabled: Boolean,
@@ -147,6 +149,7 @@ export default {
   data () {
     return {
       date: '',
+      showDate: '',
       datepickerPanel: '',
       isOpen: false,
       mousedownInPanel: false
@@ -178,6 +181,7 @@ export default {
 
   created () {
     this.date = this.value
+    this.showDate = this.value
   },
 
   mounted () {
@@ -250,10 +254,33 @@ export default {
     resetDate (e) {
       e.preventDefault()
       this.date = ''
+      this.showDate = ''
       this.$emit('change', '')
     },
+    checkDateValid (value) {
+      const separtor = this.pattern.replace(/\w/g, '').slice(0, 1)
+      const dates = value.split(separtor)
+      const reg = new RegExp('^\\d{4}' + separtor + '\\d{2}' + separtor + '\\d{2}$')
+      const valueValid = reg.test(value)
+      console.log(value)
+      if (valueValid) {
+        const year = parseInt(dates[0])
+        const month = parseInt(dates[1])
+        const day = parseInt(dates[2])
+        const yearValid = year > 1987
+        const monthValid = month >= 0 && month < 12
+        const maxDay = year % 4 === 0 && month === 2 ? 29 : 28
+        const dayValid = day >= 0 && day < maxDay
+        return yearValid && monthValid && dayValid
+      } else {
+        return false
+      }
+    },
     dateChange (value) {
-      this.$emit('change', value)
+      const dateValid = this.checkDateValid(value)
+      if (dateValid) {
+        this.date = value
+      }
     },
     onBodyClick (e) {
       const isInPicker = this.$el.contains(e.target)
@@ -261,6 +288,11 @@ export default {
       if (!isInPicker && !isInPanel) {
         this.close()
         this.$el.focus()
+        if ((this.type === 'date' || this.type === 'month') && this.checkDateValid(this.showDate)) {
+          this.date = this.showDate
+        } else if (this.type === 'date' || this.type === 'month') {
+          this.showDate = this.date
+        }
       }
     },
     setDateRange (daterange) {
@@ -269,7 +301,8 @@ export default {
       this.close()
     },
     setDate (date, notClose) {
-      this.date = date
+      // this.date = date
+      this.showDate = date
       this.$emit('change', date)
       !notClose && this.close()
     },

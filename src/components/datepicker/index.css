@@ -18,6 +18,10 @@
     margin: 0;
     width: 100%;
   }
+  & .c-input[readonly] {
+    background: #fff;
+    color: var(--text-color);
+  }
 
   &:hover .c-datepicker__hovericon + .c-datepicker__icon {
     z-index: -1;

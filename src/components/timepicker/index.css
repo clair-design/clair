@@ -66,6 +66,7 @@
     background: color(var(--gray) l(95%));
   }
 }
+
 .c-timepicker__wrap {
   display: none;
   background: #fff;
@@ -94,11 +95,12 @@
       overflow-y: auto;
     }
   }
-  
+
   & .c-timepicker__item + .c-timepicker__item {
     border-left: 1px solid color(var(--gray) l(85%));
   }
 }
+
 .show {
   display: block;
 }

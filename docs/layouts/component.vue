@@ -77,6 +77,7 @@ export default {
             { title: '滑块', name: 'slider' },
             { title: '取色器', name: 'color-picker' },
             { title: '表单', name: 'form' },
+            { title: '时间选择', name: 'timepicker' },
             { title: '日期选择', name: 'datepicker' },
             { title: '级联选择', name: 'cascader' },
             { title: '文件上传', name: 'upload' }

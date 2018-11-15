@@ -1,15 +1,22 @@
 <template lang="pug">
-.c-timepicker(@click="openTimePanel")
-  .c-timepicker__icon.c-timepicker__hovericon(:class="sizeClassName"
-  v-if="!disabled")
+.c-timepicker
+  .c-timepicker__icon.c-timepicker__hovericon(
+    :class="sizeClassName"
+    @click="clear"
+    v-if="!disabled")
     c-icon(name="x-circle")
-  .c-timepicker__icon(:class="sizeClassName")
+  .c-timepicker__icon(
+    :class="sizeClassName"
+    @click="openTimePanel"
+    )
     c-icon(type="feather" name="clock")
   c-input(
     v-model="showValue"
     :placeholder="placeholder"
     :disabled="disabled"
     :size="size"
+    :readonly="readonly"
+    @click.native="openTimePanel"
     @change="valueChange"
     )
   .c-timepicker__wrap(
@@ -21,13 +28,16 @@
       :hour="hour"
       :minute="minute"
       :second="second"
+      :format="format"
+      :secondStep="secondStep"
+      :minuteStep="minuteStep"
+      :hourStep="hourStep"
       :defaultValue="defaultValue"
       @change="timeChange"
     )
 </template>
 
 <script>
-import { VueTypes } from '@util'
 import './index.css'
 import { getScrollBarSize } from '@util'
 import ZIndexManager from '../../scripts/utils/zIndexManager.js'
@@ -41,7 +51,11 @@ export default {
       type: String,
       default: 'hh:mm:ss'
     },
+    secondStep: Number,
+    minuteStep: Number,
+    hourStep: Number,
     disabled: Boolean,
+    readonly: Boolean,
     placeholder: {
       type: String,
       default: '请输入时间'
@@ -62,6 +76,15 @@ export default {
   computed: {
     sizeClassName () {
       return this.size ? `is-size-${this.size}` : ''
+    },
+    hasHour () {
+      return this.format.toLowerCase().indexOf('h') > -1
+    },
+    hasMinute () {
+      return this.format.toLowerCase().indexOf('m') > -1
+    },
+    hasSecond () {
+      return this.format.toLowerCase().indexOf('s') > -1
     }
   },
   watch: {
@@ -78,7 +101,11 @@ export default {
     value (newVal) {
       if (newVal !== this.showValue) {
         this.showValue = newVal
-        [this.hour, this.minute, this.second] = this.showValue ? this.showValue.split(':') : ['', '', '']
+        if (this.showValue) {
+          this.hour = this.showValue.split(':')[0]
+          this.minute = this.showValue.split(':')[1]
+          this.second = this.showValue.split(':')[2]
+        }
       }
     }
   },
@@ -95,34 +122,53 @@ export default {
     }
   },
   methods: {
+    clear (e) {
+      e.preventDefault()
+      this.showValue = ''
+      this.hour = ''
+      this.minute = ''
+      this.second = ''
+      this.emitEvent()
+    },
+    emitEvent () {
+      this.$emit('input', this.showValue)
+      this.$emit('change', this.showValue)
+    },
     valueChange (value) {
-      console.log(value)
-      if (this.showValue) {
-        [this.hour, this.minute, this.second] = this.showValue.split(':')
-      } else {
-        this.hour = ''
-        this.minute = ''
-        this.second = ''
+      if (/^\d{1,2}:\d{1,2}:\d{2}$/.test(value) && this.checkValue()) {
+        this.hour = `0${value.split(':')[0]}`.slice(-2)
+        this.minute = `0${value.split(':')[1]}`.slice(-2)
+        this.second = `0${value.split(':')[2]}`.slice(-2)
       }
     },
+    generateValue () {
+      const result = []
+      this.hasHour && result.push(this.hour)
+      this.hasMinute && result.push(this.minute)
+      this.hasSecond && result.push(this.second)
+      return result.join(':')
+    },
+    updateTime () {
+      const valueValid = this.hour || this.minute || this.second
+      this.showValue = valueValid ? this.generateValue() : ''
+    },
     checkValue () {
-      console.log('check')
-      if (this.second > 59 || this.minute > 59 || this.hour > 23) {
-        this.showValue = this.lastValue
-        // [this.hour, this.minute, this.second] = this.lastValue.split(':')
-      }
+      const [hour, minute, second] = this.showValue.split(':')
+      return !(second > 59 || minute > 59 || hour > 23)
     },
     timeChange ({ hour, minute, second }) {
       this.hour = hour
       this.minute = minute
       this.second = second
-      this.showValue = `${this.hour}:${this.minute}:${this.second}`
+      this.showValue = this.generateValue()
+      this.emitEvent()
     },
     onBodyClick (e) {
       const isInPicker = this.$el.contains(e.target)
       const isInPanel = this.timepickerPanel.contains(e.target)
       if (!isInPicker && !isInPanel) {
-        this.$emit('change', this.showValue)
+        this.updateTime()
+        this.emitEvent()
         this.close()
         this.$el.focus()
       }
@@ -130,10 +176,9 @@ export default {
     close () {
       this.isOpen = false
     },
-    openTimePanel () {
+    openTimePanel (e) {
       if (this.disabled) return
       this.isOpen = true
-      console.log('open time')
     },
     getStyle () {
       const clientRect = this.$el.getBoundingClientRect()
