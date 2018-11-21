@@ -1,5 +1,5 @@
 <template lang="pug">
-.c-timepicker
+.c-timepicker(ref="timepicker")
   .c-timepicker__icon.c-timepicker__hovericon(
     :class="sizeClassName"
     @click="clear"
@@ -10,6 +10,12 @@
     @click="openTimePanel"
     )
     c-icon(type="feather" name="clock")
+  c-timerange(
+    :value="value"
+    v-if="timeType == 'timerange'"
+    :format="format"
+    @change="timerangeChange"
+  )
   c-input(
     v-model="showValue"
     :placeholder="placeholder"
@@ -18,9 +24,11 @@
     :readonly="readonly"
     @click.native="openTimePanel"
     @change="valueChange"
+    v-if="timeType=='timepicker'"
     )
   .c-timepicker__wrap(
     ref="timepickerPanel"
+    v-if="timeType=='timepicker'"
     :class="{show: isOpen}"
   )
     c-timepanel(
@@ -29,6 +37,8 @@
       :minute="minute"
       :second="second"
       :format="format"
+      :minTime="minTime"
+      :maxTime="maxTime"
       :secondStep="secondStep"
       :minuteStep="minuteStep"
       :hourStep="hourStep"
@@ -45,7 +55,13 @@ import ZIndexManager from '../../scripts/utils/zIndexManager.js'
 export default {
   name: 'c-timepicker',
   props: {
-    value: String,
+    timeType: {
+      type: String,
+      default: 'timepicker'
+    },
+    value: [String, Array],
+    minTime: String,
+    maxTime: String,
     size: String,
     format: {
       type: String,
@@ -99,7 +115,7 @@ export default {
       }
     },
     value (newVal) {
-      if (newVal !== this.showValue) {
+      if (newVal !== this.showValue && this.timeType !== 'timerange') {
         this.showValue = newVal
         if (this.showValue) {
           this.hour = this.showValue.split(':')[0]
@@ -110,6 +126,7 @@ export default {
     }
   },
   mounted () {
+    if (this.timeType === 'timerange') return
     this.showValue = this.value
     if (this.showValue) {
       [this.hour, this.minute, this.second] = this.showValue.split(':')
@@ -133,6 +150,10 @@ export default {
     emitEvent () {
       this.$emit('input', this.showValue)
       this.$emit('change', this.showValue)
+    },
+    timerangeChange (range) {
+      this.$emit('input', range)
+      this.$emit('change', range)
     },
     valueChange (value) {
       if (/^\d{1,2}:\d{1,2}:\d{2}$/.test(value) && this.checkValue()) {

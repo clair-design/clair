@@ -132,6 +132,7 @@ export default {
       if (this.type === 'month') {
         const date = `${this.year}-${this.fixZero(this.month + 1)}`
         this.date = new Date(date).format(this.format)
+        console.log(this.date)
         this.$emit('update', this.date)
       }
     },

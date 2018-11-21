@@ -107,8 +107,7 @@ export default {
       }
     },
     pattern: {
-      type: String,
-      default: 'yyyy-MM-dd'
+      type: String
     },
     size: String,
     disabled: Boolean,
@@ -175,6 +174,7 @@ export default {
     value (newVal) {
       if (newVal !== this.date) {
         this.date = newVal
+        this.showDate = newVal
       }
     }
   },
@@ -258,7 +258,7 @@ export default {
       this.$emit('change', '')
     },
     checkDateValid (value) {
-      const separtor = this.pattern.replace(/\w/g, '').slice(0, 1)
+      const separtor = this.datePattern.replace(/\w/g, '').slice(0, 1)
       const dates = value.split(separtor)
       const reg = new RegExp('^\\d{4}' + separtor + '\\d{2}' + separtor + '\\d{2}$')
       const valueValid = reg.test(value)
@@ -277,6 +277,7 @@ export default {
       }
     },
     dateChange (value) {
+      console.log(value)
       const dateValid = this.checkDateValid(value)
       if (dateValid) {
         this.date = value
@@ -302,6 +303,7 @@ export default {
     },
     setDate (date, notClose) {
       // this.date = date
+      console.log(date)
       this.showDate = date
       this.$emit('change', date)
       !notClose && this.close()

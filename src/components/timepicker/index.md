@@ -8,11 +8,12 @@ layout: component
 
 选择或者输入时间
 
-## 基本用法
+## 时间范围
 
 ```html
 <c-timepicker
   v-model="time"
+  :timeType="type"
   @change="timeChange"
 ></c-timepicker>
 
@@ -20,6 +21,33 @@ layout: component
   export default {
     data () {
       return {
+        type: 'timerange',
+        time: ['10:12:45', '12:32:43'],
+      }
+    },
+    methods: {
+      timeChange (time) {
+        console.log('time changed')
+      }
+    }
+  }
+</script>
+```
+
+## 基本用法
+
+```html
+<c-timepicker
+  v-model="time"
+  :minTime="minTime"
+  @change="timeChange"
+></c-timepicker>
+
+<script>
+  export default {
+    data () {
+      return {
+        minTime: '20:40:03',
         time: '10:12:45',
       }
     },
@@ -162,5 +190,7 @@ layout: component
 | placeholder | String | 请输入时间 | 未进行选择时的提示 |
 | disabled | Boolean | false | 时间框是否被禁用 |
 | readonly | Boolean | false | 是否可以输入日期 |
+| minTime | String |  | 设置最小时间 |
+| maxTime | String |  | 设置最大时间 |
 | size | String | normal | 尺寸大小 |
 | defaultValue | String |  | 默认显示的时间 |
