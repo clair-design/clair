@@ -1,3 +1,16 @@
+## [0.6.1](https://github.com/clair-design/clair/compare/v0.6.0...v0.6.1) (2018-11-22)
+
+
+### Bug Fixes
+
+* **datepicker:** fix datepicker disabled can clear ([12a8261](https://github.com/clair-design/clair/commit/12a8261))
+* **datepicker:** fix datepicker input, add timepicker ([925db7b](https://github.com/clair-design/clair/commit/925db7b))
+* **datepicker:** fix datepicker style bug ([1c6ebbb](https://github.com/clair-design/clair/commit/1c6ebbb))
+* **fix conflict and add timepicker:** add timepicker and fix datepicker input bug ([ed42255](https://github.com/clair-design/clair/commit/ed42255))
+* **fix css lint:** fix css lint ([e0da6af](https://github.com/clair-design/clair/commit/e0da6af))
+* **timepicker:** update timepicker for range ([95287b0](https://github.com/clair-design/clair/commit/95287b0))
+* **timepicker:** update timepicker for range ([2b7bd91](https://github.com/clair-design/clair/commit/2b7bd91))
+
 # [0.6.0](https://github.com/clair-design/clair/compare/v0.5.10...v0.6.0) (2018-11-08)
 
 
