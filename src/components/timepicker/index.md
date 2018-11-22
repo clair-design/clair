@@ -175,8 +175,7 @@ layout: component
         type: 'timerange',
         readonly: false,
         disabled: false,
-        format: 'HH:mm',
-        time: ['10:12', '12:32'],
+        time: ['10:13:23', '12:32:56'],
       }
     },
     methods: {

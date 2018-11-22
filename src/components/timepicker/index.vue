@@ -93,7 +93,10 @@ export default {
   },
   computed: {
     sizeClassName () {
-      return this.size ? `is-size-${this.size}` : ''
+      return [
+        this.size ? `is-size-${this.size}` : '',
+        this.disabled ? 'disabled' : ''
+      ]
     },
     hasHour () {
       return this.format.toLowerCase().indexOf('h') > -1

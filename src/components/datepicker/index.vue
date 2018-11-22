@@ -3,7 +3,7 @@
   @click="open"
 )
   .c-datepicker__icon.c-datepicker__hovericon(
-    v-if="!disabled && date != '' || daterange != ''"
+    v-if="!disabled && (date != '' || daterange != '')"
     @click="resetDate"
     :class="className"
   )
@@ -130,7 +130,10 @@ export default {
       return this
     },
     className () {
-      return this.size ? `is-size-${this.size}` : ''
+      return [
+        this.size ? `is-size-${this.size}` : '',
+        this.disabled ? 'disabled' : ''
+      ]
     },
     daterange () {
       if (this.type.indexOf('range') === -1) return []

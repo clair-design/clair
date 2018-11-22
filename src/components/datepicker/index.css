@@ -41,6 +41,10 @@
   top: 50%;
   transform: translateY(-50%);
   color: color(var(--text-color) l(65%));
+
+  &.disabled {
+    cursor: not-allowed;
+  }
 }
 
 .c-datepicker__hovericon {

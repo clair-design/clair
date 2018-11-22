@@ -7,10 +7,9 @@
   display: inline-block;
   position: relative;
   border-radius: 0.2em;
-  width: 15em;
 
   & .c-input-wrap {
-    width: 100%;
+    width: 12em;
   }
 
   & input {
@@ -24,6 +23,10 @@
     top: 50%;
     transform: translateY(-50%);
     color: color(var(--text-color) l(65%));
+
+    &.disabled {
+      cursor: not-allowed;
+    }
   }
 
   & .c-timepicker__hovericon {
@@ -111,9 +114,10 @@
 }
 
 .c-timepicker__timerange {
-  width: 100%;
+  width: 15em;
   border: 1px solid color(var(--gray) l(85%));
   border-radius: 3px;
+
 
   & .c-timerange__wrapper {
     display: flex;
