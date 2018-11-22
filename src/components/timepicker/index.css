@@ -118,6 +118,18 @@
   & .c-timerange__wrapper {
     display: flex;
 
+    &.readonly {
+      background-color: color(var(--gray) l(97%));
+      color: color(var(--gray) l(65%));
+      cursor: default;
+    }
+
+    &.disabled {
+      background-color: color(var(--gray) l(90%));
+      color: color(var(--gray) l(75%));
+      cursor: not-allowed;
+    }
+
     & input {
       border: 0;
       box-shadow: none;
@@ -125,6 +137,16 @@
 
     & span {
       line-height: 32px;
+    }
+
+    &.is-size__lg span {
+      line-height: 40px;
+      font-size: 16px;
+    }
+
+    &.is-size__sm span {
+      line-height: 26px;
+      font-size: 12px;
     }
   }
 }

@@ -1,13 +1,23 @@
 <template lang="pug">
 .c-timepicker__timerange(@click="openPanel")
-  .c-timerange__wrapper
+  .c-timerange__wrapper(
+    :class="wrapperClassname"
+  )
     c-input(
       v-model="startTime"
+      placeholder="开始时间"
+      :disabled="disabled"
+      :readonly="readonly"
+      :size="size"
       @change="startInputChange"
     )
     span 至
     c-input(
       v-model="endTime"
+      placeholder="结束时间"
+      :disabled="disabled"
+      :readonly="readonly"
+      :size="size"
       @change="endInputChange"
     )
   .c-timerange__panel(:class="{show: isOpen}")
@@ -62,6 +72,9 @@ export default {
   props: {
     value: Array,
     format: String,
+    readonly: Boolean,
+    disabled: Boolean,
+    size: String,
     hourStep: {
       type: Number,
       default: 1
@@ -87,6 +100,15 @@ export default {
       timerange: '',
       startTime: '',
       endTime: ''
+    }
+  },
+  computed: {
+    wrapperClassname () {
+      return [
+        `is-size__${this.size}`,
+        this.disabled ? 'disabled' : '',
+        this.readonly ? 'readonly' : ''
+      ]
     }
   },
   mounted () {
@@ -125,7 +147,6 @@ export default {
       }
     },
     confirmRange () {
-      console.log('confirm')
       // 验证数据合法性
       if (this.checkValue(this.startTime) && this.checkValue(this.endTime)) {
         this.emitEvent()
@@ -136,7 +157,7 @@ export default {
     },
     checkValue (value) {
       if (!value) return false
-      const [hour, minute, second] = value
+      const [hour, minute, second] = value.split(':')
       return !(second > 59 || minute > 59 || hour > 23)
     },
     cancel () {
@@ -145,6 +166,7 @@ export default {
       this.close()
     },
     openPanel () {
+      if (this.disabled) return
       this.isOpen = true
     },
     close () {
@@ -194,15 +216,18 @@ export default {
       second && result.push(second)
       return result.join(':')
     },
+    valueRegValid (value) {
+      const str = `^${this.format.replace(/\w/g, '\\d')}$`
+      const reg = new RegExp(str)
+      return reg.test(value)
+    },
     startInputChange (value) {
-      const regValid = /^\d{2}:\d{2}:\d{2}$/.test(value)
-      if (regValid && this.checkValue(value)) {
+      if (this.valueRegValid(value) && this.checkValue(value)) {
         [this.startHour, this.startMinute, this.startSecond] = value.split(':')
       }
     },
     endInputChange (value) {
-      const regValid = /^\d{2}:\d{2}:\d{2}$/.test(value)
-      if (regValid && this.checkValue(value)) {
+      if (this.valueRegValid(value) && this.checkValue(value)) {
         [this.endHour, this.endMinute, this.endSecond] = value.split(':')
       }
     },
@@ -219,7 +244,6 @@ export default {
       this.endTime = this.generateValue(hour, minute, second)
     },
     emitEvent () {
-      // this.$emit('input', [this.startTime, this.endTime])
       this.$emit('change', [this.startTime, this.endTime])
     }
   }

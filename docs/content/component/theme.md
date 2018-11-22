@@ -25,7 +25,7 @@ Clair 默认使用蓝色系的配色，可以使用在大部分场合使用。�
 }
 ```
 
-Clair 使用的完整 CSS 变量列表，请 [查看 github 代码](https://github.com/clair-design/clair/blob/master/src/css/default.css)
+Clair 使用的完整 CSS 变量列表，请 [查看 github 代码](https://github.com/clair-design/clair/blob/master/src/styles/default.css)
 
 ### 2. 在你的项目中引入 Clair 的样式
 

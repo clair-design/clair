@@ -12,6 +12,9 @@
     c-icon(type="feather" name="clock")
   c-timerange(
     :value="value"
+    :readonly="readonly"
+    :disabled="disabled"
+    :size="size"
     v-if="timeType == 'timerange'"
     :format="format"
     @change="timerangeChange"
@@ -85,8 +88,7 @@ export default {
       isOpen: false,
       hour: '',
       minute: '',
-      second: '',
-      lastValue: ''
+      second: ''
     }
   },
   computed: {
@@ -107,7 +109,6 @@ export default {
     isOpen () {
       if (this.isOpen) {
         this.resize()
-        this.lastValue = this.showValue
         window.addEventListener('mouseup', this.onBodyClick, true)
       } else {
         this.checkValue()
@@ -141,6 +142,11 @@ export default {
   methods: {
     clear (e) {
       e.preventDefault()
+      if (this.timeType === 'timerange') {
+        this.$emit('input', ['', ''])
+        this.$emit('change', ['', ''])
+        return
+      }
       this.showValue = ''
       this.hour = ''
       this.minute = ''

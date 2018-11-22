@@ -8,32 +8,6 @@ layout: component
 
 选择或者输入时间
 
-## 时间范围
-
-```html
-<c-timepicker
-  v-model="time"
-  :timeType="type"
-  @change="timeChange"
-></c-timepicker>
-
-<script>
-  export default {
-    data () {
-      return {
-        type: 'timerange',
-        time: ['10:12:45', '12:32:43'],
-      }
-    },
-    methods: {
-      timeChange (time) {
-        console.log('time changed')
-      }
-    }
-  }
-</script>
-```
-
 ## 基本用法
 
 ```html
@@ -180,6 +154,39 @@ layout: component
 </script>
 ```
 
+## 时间范围
+
+```html
+<c-timepicker
+  v-model="time"
+  :timeType="type"
+  :readonly="readonly"
+  :disabled="disabled"
+  :format="format"
+  @change="timeChange"
+></c-timepicker>
+
+<script>
+  export default {
+    data () {
+      return {
+        small: 'sm',
+        big: 'lg',
+        type: 'timerange',
+        readonly: false,
+        disabled: false,
+        format: 'HH:mm',
+        time: ['10:12', '12:32'],
+      }
+    },
+    methods: {
+      timeChange (time) {
+        console.log('time changed')
+      }
+    }
+  }
+</script>
+```
 
 ## API
 
@@ -187,10 +194,14 @@ layout: component
 
 | 属性 | 类型 | 默认值 | 说明 |
 |-----|------|-------|-----|
-| placeholder | String | 请输入时间 | 未进行选择时的提示 |
+| timeType | String | timepicker | 时间选择timepicker， 时间范围timerange |
+| placeholder | String | 请输入时间 | 时间选择默认提示 |
 | disabled | Boolean | false | 时间框是否被禁用 |
 | readonly | Boolean | false | 是否可以输入日期 |
 | minTime | String |  | 设置最小时间 |
 | maxTime | String |  | 设置最大时间 |
-| size | String | normal | 尺寸大小 |
-| defaultValue | String |  | 默认显示的时间 |
+| size | String |  | 尺寸大小，可以设置为sm, lg|
+| defaultValue | String |  | 默认显示的时间，针对时间选择设置 |
+| hourStep | Number | 1 | 小时的间隔步长 |
+| minuteStep | Number | 1 | 分钟的间隔步长 |
+| secondStep | Number | 1 | 秒的间隔步长 |

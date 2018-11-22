@@ -176,6 +176,13 @@ export default {
       currentItem.className = currentItem.className ? currentItem.className + ' active' : 'active'
       parentEl.parentElement.scrollTop = item / step * itemHeight
     },
+    emitChange () {
+      this.$emit('change', {
+        hour: this.hasHour ? this.selectHour : '',
+        minute: this.hasMinute ? this.selectMinute : '',
+        second: this.hasSecond ? this.selectSecond : ''
+      })
+    },
     itemClick (e, item, step) {
       const parentEl = e.target.parentElement
       this.addItemActive(parentEl, item, step)
@@ -184,31 +191,19 @@ export default {
       if (this.isHourDisabled(item)) return
       this.itemClick(e, item, this.hourStep)
       this.selectHour = item
-      this.$emit('change', {
-        hour: this.selectHour,
-        minute: this.selectMinute,
-        second: this.selectSecond
-      })
+      this.emitChange()
     },
     minuteClick (e, item) {
       if (this.isMinuteDisabled(item)) return
       this.itemClick(e, item, this.minuteStep)
       this.selectMinute = item
-      this.$emit('change', {
-        hour: this.selectHour,
-        minute: this.selectMinute,
-        second: this.selectSecond
-      })
+      this.emitChange()
     },
     secondClick (e, item) {
       if (this.isSecondDisabled(item)) return
       this.itemClick(e, item, this.secondStep)
       this.selectSecond = item
-      this.$emit('change', {
-        hour: this.selectHour,
-        minute: this.selectMinute,
-        second: this.selectSecond
-      })
+      this.emitChange()
     }
   }
 }
