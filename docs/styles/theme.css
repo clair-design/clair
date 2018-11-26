@@ -86,7 +86,6 @@
 }
 
 .main {
-  height: calc(100vh - 4em);
   margin-top: 4em;
 
   & .sidebar,
@@ -95,11 +94,17 @@
   }
 
   & .sidebar {
-    position: relative;
+    position: fixed;
+    height: calc(100vh - 4em);
     background: #fff;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
     padding-bottom: 5em;
   }
+}
+
+[media="xs"] .main .sidebar {
+  position: relative;
+  height: auto;
 }
 
 .hero {

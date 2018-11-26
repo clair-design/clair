@@ -15,7 +15,7 @@
             )
               | {{sub.title}}
               span.is-text-gray-6.has-margin-left-sm(v-if="sub.name") {{ sub.name }}
-      c-box-item.content(xs=12 sm=8 md=9 lg=10)
+      c-box-item.content(xs=12 sm="8 offset-4" md="9 offset-3" lg="10 offset-2")
         transition(name='fade')
           router-view.c-container.is-lg
         c-footer
