@@ -91,6 +91,7 @@ export default {
       if (this.size === 'small') {
         return 'is-sm'
       }
+      return undefined
     }
   },
   methods: {

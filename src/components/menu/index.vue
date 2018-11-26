@@ -30,6 +30,7 @@ export default {
           width: this.width
         }
       }
+      return null
     },
     isVertical () {
       return this.mode === 'vertical'
