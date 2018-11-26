@@ -81,8 +81,7 @@
 import './index.css'
 import validatable from '@scripts/mixins/validatable'
 import resettable from '@scripts/mixins/resettable'
-import ZIndexManager from '@scripts/utils/zIndexManager.js'
-import { getScrollBarSize } from '@util'
+import { getPopupStyle } from '@util'
 
 import Icon from '../icon/index.vue'
 import Input from '../input/index.vue'
@@ -305,36 +304,13 @@ export default {
       this.close()
     },
     setDate (date, notClose) {
-      // this.date = date
       console.log(date)
       this.showDate = date
       this.$emit('change', date)
       !notClose && this.close()
     },
     getStyle () {
-      const clientRect = this.$el.getBoundingClientRect()
-      const windowH = window.innerHeight
-      const windowW = window.innerWidth
-      const marginTop = 2
-      const scrollHeight = document.body.scrollWidth > window.innerWidth ? 20 : 0
-      const droplistHeight = this.datepickerPanel.clientHeight
-      const droplistWidth = this.datepickerPanel.clientWidth
-      const defaultTop = clientRect.top + clientRect.height + marginTop + window.pageYOffset
-      const clientHeight = clientRect.height + marginTop
-
-      const clientY = clientRect.y
-      const compTop = windowH - droplistHeight - scrollHeight
-      const marginRight = getScrollBarSize() + 5 // scrollbar width
-      const left = droplistWidth + clientRect.left + marginRight + window.pageXOffset > windowW ? windowW - droplistWidth - marginRight : clientRect.left + window.pageXOffset
-      const top = droplistHeight + clientHeight + clientY + scrollHeight > windowH ? compTop : defaultTop
-      const zIndex = ZIndexManager.next()
-
-      return `
-        position: absolute;
-        top: ${top}px;
-        left: ${left}px;
-        z-index: ${zIndex};
-      `
+      return getPopupStyle(this.$el, this.datepickerPanel)
     },
     resize () {
       this.$nextTick(() => {

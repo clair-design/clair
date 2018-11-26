@@ -1,4 +1,5 @@
 import VueTypes from './vue-types'
+import ZIndexManager from './ZIndexManager'
 export { VueTypes }
 
 /**
@@ -110,4 +111,41 @@ export function defer () {
  */
 export function contains (elem, target) {
   return elem && elem.contains ? elem.contains(target) : false
+}
+
+/**
+ *
+ */
+export function getPopupStyle (elem, panel) {
+  if (!elem || !panel) {
+    return 'position: absolute;'
+  }
+  const clientRect = elem.getBoundingClientRect()
+  const windowH = window.innerHeight
+  const windowW = window.innerWidth
+  const marginTop = 4
+  const scrollBarSize = getScrollBarSize()
+  const droplistHeight = panel.clientHeight
+  const droplistWidth = panel.clientWidth
+  const clientHeight = clientRect.height + marginTop
+  const defaultTop = clientRect.top + clientHeight + window.pageYOffset
+
+  const clientY = clientRect.y
+  const compTop = clientY + window.pageYOffset - droplistHeight - marginTop
+  const left =
+    droplistWidth + clientRect.left + scrollBarSize + window.pageXOffset > windowW
+      ? windowW - droplistWidth - scrollBarSize
+      : clientRect.left + window.pageXOffset
+  const top =
+    droplistHeight + clientHeight + clientY + scrollBarSize > windowH
+      ? compTop
+      : defaultTop
+  const zIndex = ZIndexManager.next()
+
+  return `
+        position: absolute;
+        top: ${top}px;
+        left: ${left}px;
+        z-index: ${zIndex};
+      `
 }
