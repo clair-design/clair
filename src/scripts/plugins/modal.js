@@ -60,16 +60,16 @@ function createModal (Vue, attrs, Component) {
     }
   })
 
-  // TODO: throw error or something
-  if (typeof document !== 'undefined' && document.body) {
-    const div = document.createElement('div')
-    document.body.appendChild(div)
-    vm.$mount(div)
-  }
-
   return new Promise((resolve, reject) => {
     handlers.cancel = reject
     handlers.confirm = resolve
     handlers.destroy = () => vm.$destroy()
+
+    // TODO: throw error or something
+    if (typeof document !== 'undefined' && document.body) {
+      const div = document.createElement('div')
+      document.body.appendChild(div)
+      vm.$mount(div)
+    }
   })
 }
