@@ -1,3 +1,12 @@
+## [0.6.2](https://github.com/clair-design/clair/compare/v0.6.1...v0.6.2) (2018-11-26)
+
+
+### Bug Fixes
+
+* **docs:** fix doc sidebar not in mobile with fixed ([6bec651](https://github.com/clair-design/clair/commit/6bec651)), closes [#29](https://github.com/clair-design/clair/issues/29)
+* **modal:** modal promises not resolved ([c778d88](https://github.com/clair-design/clair/commit/c778d88))
+* just merge ([7c29480](https://github.com/clair-design/clair/commit/7c29480))
+
 ## [0.6.1](https://github.com/clair-design/clair/compare/v0.6.0...v0.6.1) (2018-11-22)
 
 
