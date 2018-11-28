@@ -154,6 +154,8 @@ export default {
         [navWrapper, contentWrapper]
       )
     }
+
+    return null
   }
 }
 </script>

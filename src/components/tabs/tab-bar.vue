@@ -38,6 +38,7 @@ export default {
           transform: `translateY(${this.barOffset}px)`
         }
       }
+      return null
     }
   },
 
