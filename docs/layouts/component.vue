@@ -87,7 +87,7 @@ export default {
           title: '导航',
           icon: 'navigation',
           children: [
-            { title: '标签页', name: 'tab' },
+            { title: '标签页', name: 'tabs' },
             { title: '导航菜单', name: 'menu' },
             { title: '面包屑', name: 'breadcrumb' },
             { title: '工具栏', name: 'toolbar' },
