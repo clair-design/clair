@@ -1,5 +1,5 @@
 import VueTypes from './vue-types'
-import ZIndexManager from './ZIndexManager'
+import zIndexManager from './zIndexManager'
 export { VueTypes }
 
 /**
@@ -140,7 +140,7 @@ export function getPopupStyle (elem, panel) {
     droplistHeight + clientHeight + clientY + scrollBarSize > windowH
       ? compTop
       : defaultTop
-  const zIndex = ZIndexManager.next()
+  const zIndex = zIndexManager.next()
 
   return `
         position: absolute;

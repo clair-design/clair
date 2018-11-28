@@ -30,7 +30,7 @@
 
 <script>
 import './index.css'
-import ZIndexManager from '@util/zIndexManager.js'
+import zIndexManager from '@util/zIndexManager.js'
 
 import Menu from './menu.vue'
 import Icon from '../icon/index.vue'
@@ -189,7 +189,7 @@ export default {
         droplistHeight + clientHeight + clientY + scrollHeight > windowH
           ? compTop
           : defaultTop
-      const zIndex = ZIndexManager.next()
+      const zIndex = zIndexManager.next()
       return `
         position: absolute;
         top: ${top}px;
