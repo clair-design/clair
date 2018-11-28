@@ -1,3 +1,15 @@
+# [0.7.0](https://github.com/clair-design/clair/compare/v0.6.2...v0.7.0) (2018-11-28)
+
+
+### Bug Fixes
+
+* **timepicker:** change getPopupStyle form timepicker, datepicker to util ([5f0ee33](https://github.com/clair-design/clair/commit/5f0ee33))
+
+
+### Features
+
+* add component c-tabs ([488d483](https://github.com/clair-design/clair/commit/488d483))
+
 ## [0.6.2](https://github.com/clair-design/clair/compare/v0.6.1...v0.6.2) (2018-11-26)
 
 
