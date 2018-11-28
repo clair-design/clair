@@ -24,8 +24,9 @@ after_script:
 # E: Build LifeCycle
 
 after_success:
-  # - test $TRAVIS_PULL_REQUEST = "false" &&
-    # npx travis-deploy-once "npx semantic-release"
+  - test $TRAVIS_PULL_REQUEST = "false" && \
+    test $TRAVIS_BRANCH" = "master" && \
+    npx travis-deploy-once "npx semantic-release"
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
