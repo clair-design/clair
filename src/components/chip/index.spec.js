@@ -15,7 +15,7 @@ it('should use props.label as content', () => {
 it('should use slots.default as label value', () => {
   const wrapper = shallowMount(Chip, {
     slots: {
-      defalut: ['test']
+      default: ['test']
     }
   })
   expect(wrapper).toMatchSnapshot()
