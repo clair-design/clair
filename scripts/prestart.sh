@@ -10,7 +10,7 @@ DIR_NAME=${0%/*}
 while true; do
   read -p "Do you want to sync local repo with upstream?" yn
   case $yn in
-    [Yy]* ) ${DIR_NAME}/git-sync-fork.sh upstream origin; break;;
+    [Yy]* ) ${DIR_NAME}/sync-upstream.sh; break;;
     [Nn]* ) exit;;
     * ) echo "Please answer yes or no.";;
   esac

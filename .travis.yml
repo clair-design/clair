@@ -25,7 +25,7 @@ after_script:
 
 after_success:
   - test $TRAVIS_PULL_REQUEST = "false" && \
-    test $TRAVIS_BRANCH" = "master" && \
+    test $TRAVIS_BRANCH = "master" && \
     npx travis-deploy-once "npx semantic-release"
 branches:
   except:
