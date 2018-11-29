@@ -206,7 +206,7 @@ export default {
 ## 监听用户提交
 
 ```html
-<c-form @submit="onSubmit" ref="form">
+<c-form @submit.prevent="onSubmit" ref="form">
   <c-form-item label="用户名" required>
     <c-input v-model="userName" />
   </c-form-item>
@@ -228,7 +228,6 @@ export default {
   },
   methods: {
     onSubmit (e) {
-      e.preventDefault()
       const form = this.$refs.form
       if (form.isValid()) {
         alert('登录成功')
@@ -507,7 +506,7 @@ Clair 目前支持验证的 `type` 有：
 如果要重置表单的验证结果，也就是清除错误提示，可以调用表单的 `resetValidity()` 方法。另外，表单还有一个 `reset()` 方法，可以将表单重置为用户修改之前的状态，同时清除错误提示。**`reset()` 是重置表单项为初始值，而不是清空其内容。**
 
 ```html
-<c-form @submit="onSubmit" ref="form" label-width="6em" width="long">
+<c-form @submit.prevent="onSubmit" ref="form" label-width="6em" width="long">
   <c-form-item label="任务名称：" required>
     <c-input v-model="name" :rules="rules.name" />
   </c-form-item>
@@ -565,7 +564,7 @@ Clair 目前支持验证的 `type` 有：
   </c-form-item>
   <c-form-item label=" ">
     <c-button type="submit" primary>生成报告</c-button>
-    <c-button type="button" @click="onReset">重置表单</c-button>
+    <c-button type="button" @click.prevent="onReset">重置表单</c-button>
   </c-form-item>
 </c-form>
 
@@ -604,7 +603,6 @@ export default {
   },
   methods: {
     onSubmit (e) {
-      e.preventDefault()
       const form = this.$refs.form
       form.isValid().then(valid => {
         if (!valid) return
@@ -613,7 +611,6 @@ export default {
       })
     },
     onReset (e) {
-      e.preventDefault()
       this.$refs.form.reset()
     }
   }
