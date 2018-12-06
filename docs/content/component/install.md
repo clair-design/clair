@@ -11,7 +11,9 @@ route: /component/install
 * 现代浏览器和 IE 10+
 * Vue.js 服务器端渲染
 
-## 使用 Clair 项目模版
+## 使用 Clair 项目模版 （Deprecated）
+
+<del>
 
 为了更快速地使用 Clair 开发项目，你可以使用我们提供的项目模版，免去繁琐的配置环节。项目模版提供了以下功能：
 
@@ -28,6 +30,19 @@ route: /component/install
 $ npm install vue-cli -g
 $ vue init clair-design/template my-project
 ```
+</del>
+
+## 使用 vue-cli 3 (@vue/cli) 开发
+
+强烈建议使用 vue-cli3 进行项目开发。我们为此专门开发了插件 [vue-cli-plugin-clair](https://github.com/clair-design/vue-cli-plugin-clair)。
+
+整个流程大致分为以下三步：
+
+1. [@vue/cli 的全局安装](https://cli.vuejs.org/zh/guide/installation.html)
+2. [使用 @vue/cli 创建项目](https://cli.vuejs.org/zh/guide/creating-a-project.html)
+3. [添加 vue-cli-plugin-clair 组件](https://github.com/clair-design/vue-cli-plugin-clair)
+
+以上步骤，直接点击阅读对应的文档即可了解更多。
 
 ## 直接使用我们的CDN地址
 
