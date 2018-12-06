@@ -78,3 +78,17 @@ import 'clair/dist/clair.css'
 
 Vue.use(Clair)
 ```
+
+## 关于 polyfill，兼谈在 vue-cli 3 项目中的使用
+
+因为 Clair 项目中使用到了一些新的 ES201x 特性（主要是 Array 和 Object 的一些拓展），在构建时我们并未对这些特性（如`Array#findIndex` `Object.assign`等）进行 polyfill。我们认为，对这些特性的 polyfill 工作应该交给开发者/使用者。
+
+下面以 `vue-cli@3` 生成的项目，说明如何解决 polyfill 问题。在 vue-cli 3 的默认配置中，babel 并不会对 node_modules 中的模块进行处理（transpile），关于这一点，可参阅[vue-cli 官方文档](https://cli.vuejs.org/zh/guide/browser-compatibility.html#polyfill)。
+
+你需要在 `vue.config.js` 文件中，添加如下配置：
+
+```js
+  // .... other configurations
+  transpileDependencies: ['clair']
+  // ...
+```
