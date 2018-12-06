@@ -1,3 +1,10 @@
+## [0.7.1](https://github.com/clair-design/clair/compare/v0.7.0...v0.7.1) (2018-12-06)
+
+
+### Bug Fixes
+
+* **tip:** support multiple trigger types ([40ef808](https://github.com/clair-design/clair/commit/40ef808))
+
 # [0.7.0](https://github.com/clair-design/clair/compare/v0.6.2...v0.7.0) (2018-11-28)
 
 
