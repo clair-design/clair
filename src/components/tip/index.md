@@ -123,22 +123,36 @@ layout: component
 
 通过 `trigger` 属性可以改变触发方式。可选值包括 `hover` `focus` `click`，默认值是 `hover`。
 
+一般来说，采用 `['hover', 'focus']` 即能满足多数使用 PC 端场景（使用鼠标操作，或使用 <kbd>tab</kbd> 键操作）。
 
 ```html
-<c-tip theme="light" position="top" trigger="hover">
-  <div slot="content">怨春不语，算只有殷勤画檐蛛网，尽日惹飞絮</div>
-  <c-button primary>hover (default)</c-button>
-</c-tip>
+<p>
+  <c-tip theme="light" position="top" trigger="hover">
+    <div slot="content">怨春不语，算只有殷勤画檐蛛网，尽日惹飞絮</div>
+    <div>hover</div>
+  </c-tip>
+</p>
 
-<c-tip theme="light" position="top" trigger="focus">
-  <div slot="content">怨春不语，算只有殷勤画檐蛛网，尽日惹飞絮</div>
-  <c-button primary>focus</c-button>
-</c-tip>
+<p>
+  <c-tip theme="light" position="top" trigger="focus">
+    <div slot="content">怨春不语，算只有殷勤画檐蛛网，尽日惹飞絮</div>
+    <a href="javascript:;">focus</span>
+  </c-tip>
+</p>
 
-<c-tip theme="light" position="top" trigger="click">
-  <div slot="content">怨春不语，算只有殷勤画檐蛛网，尽日惹飞絮</div>
-  <c-button primary>click</c-button>
-</c-tip>
+<p>
+  <c-tip theme="light" position="top" trigger="click">
+    <div slot="content">怨春不语，算只有殷勤画檐蛛网，尽日惹飞絮</div>
+    <div>click</div>
+  </c-tip>
+</p>
+
+<p>
+  <c-tip theme="light" position="top" :trigger="['hover', 'focus']">
+    <div slot="content">怨春不语，算只有殷勤画檐蛛网，尽日惹飞絮</div>
+    <a href="javascript;">hover or focus</a>
+  </c-tip>
+</p>
 ```
 
 ## API
@@ -146,7 +160,7 @@ layout: component
 | 属性 | 类型  |  说明 | 默认值 |
 |-----|-------|------|-------|
 | theme | dark \| light | 主题 | dark |
-| trigger | hover \| click \| focus | 触发形式 | hover |
+| trigger | hover \| click \| focus | 触发形式，可以使用数组 | hover |
 | position | top \| right \| bottom \| left | 位置 | bottom |
 | disabled | Boolean | 是否禁用 | false |
 | content |  String | 提示文本 | |

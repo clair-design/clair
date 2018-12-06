@@ -66,7 +66,14 @@ export default {
 
   props: {
     theme: VueTypes.oneOf(['dark', 'light']).def('dark'),
-    trigger: VueTypes.oneOf(['hover', 'click', 'focus']).def('hover'),
+    trigger: {
+      type: [String, Array],
+      default: 'hover',
+      validator (val) {
+        const validTypes = ['hover', 'click', 'focus']
+        return [].concat(val).every(v => validTypes.includes(v))
+      }
+    },
     disabled: VueTypes.bool.def(false),
     content: VueTypes.string.def(''),
     maxWidth: VueTypes.string.def('300px'),
@@ -87,23 +94,36 @@ export default {
     arrowClass () {
       const position = OPPOSITE_DIRECTION[this.position]
       return `c-tip__arrow--${position}`
+    },
+    triggers () {
+      const { trigger } = this
+      const triggers = [].concat(trigger)
+      return triggers
     }
   },
 
   methods: {
     show ({ type = 'click' }) {
-      if (SHOW_MATCH_MAP[this.trigger] === type) {
-        this.clearTimeout()
-        this.visible = true
+      const { triggers } = this
+      for (let i = 0; i < triggers.length; i++) {
+        if (SHOW_MATCH_MAP[triggers[i]] === type) {
+          this.clearTimeout()
+          this.visible = true
+          break
+        }
       }
     },
 
     hide ({ type = 'click' } = {}) {
-      if (HIDE_MATCH_MAP[this.trigger] === type) {
-        this.clearTimeout()
-        this.tidOut = setTimeout(() => {
-          this.visible = false
-        }, this.hideDelay)
+      const { triggers } = this
+      for (let i = 0; i < triggers.length; i++) {
+        if (HIDE_MATCH_MAP[triggers[i]] === type) {
+          this.clearTimeout()
+          this.tidOut = setTimeout(() => {
+            this.visible = false
+          }, this.hideDelay)
+          break
+        }
       }
     },
 
