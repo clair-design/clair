@@ -324,12 +324,36 @@ export default {
   },
 
   methods: {
+    /**
+     * SEE https://github.com/clair-design/clair/issues/40
+     * 1. should not focus on `this.$el` if we just clicked another
+     *    element that is focusable
+     * 2. should not set focus on `this.$el` if it's gone out of screen,
+     *    at least, prevent `this.$el` from scrolling into visible area,
+     *    which can cause the page jumping/flashing
+     *
+     * @param {HTMLElement} target the element that may be focused
+     */
+    setFocusIfPossible (target) {
+      const activeElement = document.activeElement
+      // https://developer.mozilla.org/en-US/docs/Web/API/DocumentOrShadowRoot/activeElement
+      // "When there is no selection, the active element is the page's <body> or null".
+      if (activeElement !== document.body) {
+        // SEE https://stackoverflow.com/a/51746983
+        if (activeElement.contains(target) || activeElement === target) {
+          return
+        }
+      }
+      // SEE https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus
+      this.$el.focus({ preventScroll: true })
+    },
+
     toggleOpen () {
       if (this.disabled) return
       if (this.isOpen) {
         this.close()
       } else {
-        this.open()
+        this.$nextTick(this.open)
       }
     },
 
@@ -363,7 +387,7 @@ export default {
 
     focusOnInput () {
       this.$nextTick(() => {
-        this.$refs.input.focus()
+        this.$refs.input.focus({ preventScroll: true })
       })
     },
 
@@ -453,12 +477,12 @@ export default {
       menuEl.style.zIndex = zIndex.next()
     },
 
-    onBodyClick (e) {
-      const isInSelect = this.$el.contains(e.target)
-      const isInMenu = this.menuEl.contains(e.target)
+    onBodyClick ({ target }) {
+      const isInSelect = this.$el.contains(target)
+      const isInMenu = this.menuEl.contains(target)
       if (!isInSelect && !isInMenu) {
         this.close()
-        this.$el.focus()
+        this.setFocusIfPossible(target)
       }
     },
 
