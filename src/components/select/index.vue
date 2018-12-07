@@ -40,6 +40,7 @@
       :class="multiple ? 'is-multiple' : 'is-single'"
     )
       input(
+        ref="input"
         v-model="query"
         autocomplete="off"
         @click.stop="noop"
@@ -87,7 +88,7 @@
 import throttle from 'lodash/throttle'
 
 import zIndex from '@util/zIndexManager'
-import { getPosition, POSITION } from './position'
+import { getPosition } from './position'
 import resettable from '@scripts/mixins/resettable'
 import validatable from '@scripts/mixins/validatable'
 import PortalComponent from '../portal'
@@ -117,6 +118,10 @@ export default {
     placeholder: {
       type: String,
       default: '请选择...'
+    },
+    shouldMenuOverlap: {
+      type: Boolean,
+      default: true
     },
     multiple: Boolean,
     combobox: Boolean,
@@ -205,7 +210,7 @@ export default {
     },
     showPlaceholder () {
       const empty = !this.selectedOptions.length
-      return empty && !this.isOpen
+      return empty && !this.showInput
     },
     exceedMaxChipCount () {
       return this.selectedOptions.length > this.maxChipCount
@@ -225,7 +230,10 @@ export default {
     isOpen () {
       if (this.isOpen) {
         this.menuStyle.minWidth = `${this.$el.offsetWidth}px`
-        this.positionMenu()
+        // reset positon to next tick
+        // this would fix cases where input element in `<c-select autocomplete />`
+        // is expanding (add a new line)
+        this.$nextTick(this.positionMenu)
         window.addEventListener('click', this.onBodyClick, true)
       } else {
         window.removeEventListener('click', this.onBodyClick, true)
@@ -248,9 +256,7 @@ export default {
 
     selectedOptions: function () {
       if (!this.multiple || this.$isServer) return
-      this.$nextTick(function () {
-        this.positionMenu()
-      })
+      this.$nextTick(this.positionMenu)
     }
   },
 
@@ -354,14 +360,18 @@ export default {
       }
     },
 
+    focusOnInput () {
+      this.$nextTick(() => {
+        this.$refs.input.focus()
+      })
+    },
+
     open () {
       this.isOpen = true;
       [this.activeOption] = this.filteredOptions
       if (this.showInput) {
         this.query = ''
-        this.$nextTick(_ => {
-          this.$el.querySelector('input').focus()
-        })
+        this.focusOnInput()
       }
     },
 
@@ -426,15 +436,20 @@ export default {
       const index = this.selectedOptions.indexOf(option)
       this.selectedOptions.splice(index, 1)
       this.emitChange()
+      // 输入框重新获得焦点
+      this.focusOnInput()
     },
 
     positionMenu () {
-      const pos = this.canInput ? POSITION.BOTTOM : POSITION.TOP
-      const { top, left } = getPosition(this.menuEl, this.$el, pos)
-      const { style } = this.menuEl
-      style.top = `${top}px`
-      style.left = `${left}px`
-      style.zIndex = zIndex.next()
+      const { shouldMenuOverlap, canInput, menuEl } = this
+      const { top, left, height } = getPosition(menuEl, this.$el)
+      const overlap = shouldMenuOverlap && !canInput
+
+      const offset = 4
+      const menuTop = overlap ? top : (top + height + offset)
+      menuEl.style.left = `${left}px`
+      menuEl.style.top = `${menuTop}px`
+      menuEl.style.zIndex = zIndex.next()
     },
 
     onBodyClick (e) {
