@@ -8,6 +8,7 @@
   :tabindex="disabled ? -1 : 0"
   :class="classNames"
   @keydown="onKeyDown"
+  @keydown.tab="onTabOut"
   @click="toggleOpen"
 )
   i.c-select__caret
@@ -463,6 +464,12 @@ export default {
 
     onDeleteKey (e) {
       if (!this.query) this.selectedOptions.pop()
+    },
+
+    // 通过 Tab 键跳到下一个焦点
+    // 理应关闭弹出菜单
+    onTabOut () {
+      this.close()
     },
 
     onKeyDown (e) {
