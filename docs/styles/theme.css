@@ -222,17 +222,19 @@ footer a {
 }
 
 /* scrollbar */
-::-webkit-scrollbar {
-  background-color: transparent;
-  width: 6px;
-  height: 6px;
-}
+.is-windows {
+  ::-webkit-scrollbar {
+    background-color: transparent;
+    width: 6px;
+    height: 6px;
+  }
 
-::-webkit-scrollbar-thumb {
-  background-color: rgba(50, 50, 50, 0.65);
-  background-repeat: no-repeat;
-  background-position: center center;
-  border-radius: 3px;
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(50, 50, 50, 0.65);
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 3px;
+  }
 }
 
 .hljs {
