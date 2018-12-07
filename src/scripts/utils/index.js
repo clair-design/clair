@@ -3,6 +3,15 @@ import zIndexManager from './zIndexManager'
 export { VueTypes }
 
 /**
+ * pretty simple pascalCase function
+ *
+ * @param {String} str
+ */
+export function pascalCase (str) {
+  return str.replace(/(^|-)([a-z])/g, (_, __, g2) => g2.toUpperCase())
+}
+
+/**
  * @desc get Vue Constructor inside Vue instances
  * @param vm {VueComponent} Vue instance
  */
