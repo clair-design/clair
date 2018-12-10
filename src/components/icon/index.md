@@ -3,9 +3,6 @@ title: 图标
 layout: component
 route: /component/icon
 meta:
-  script:
-    - src: https://lib.baomitu.com/clipboard.js/1.7.1/clipboard.min.js
-    - src: https://lib.baomitu.com/yamljs/0.3.0/yaml.min.js
   link:
     -
       href: https://lib.baomitu.com/font-mfizz/2.4.1/font-mfizz.min.css
@@ -13,7 +10,6 @@ meta:
     -
       href: https://lib.baomitu.com/material-design-icons/3.0.1/iconfont/material-icons.css
       rel: stylesheet
-
 ---
 
 # 字体图标
@@ -208,7 +204,6 @@ meta:
 
     mounted () {
       const url = 'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/37a838af4ddf679b566b0043ba9ebb45af36571e/src/icons.yml'
-
       fetch(url).then(r => r.text()).then(text => {
         this.icons = window.YAML.parse(text).icons.map(i => i.id)
         new window.Clipboard('.icon-item')
