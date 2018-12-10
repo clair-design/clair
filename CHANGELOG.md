@@ -1,3 +1,18 @@
+## [0.7.2](https://github.com/clair-design/clair/compare/v0.7.1...v0.7.2) (2018-12-10)
+
+
+### Bug Fixes
+
+* expose featherIcons to Vue prototype ([048c6ac](https://github.com/clair-design/clair/commit/048c6ac))
+* register components with PascalCase ([58f3870](https://github.com/clair-design/clair/commit/58f3870))
+* **select:** select component's focusing issues ([d28007c](https://github.com/clair-design/clair/commit/d28007c))
+* **select:** select component's focusing issues ([b8bb492](https://github.com/clair-design/clair/commit/b8bb492))
+* **select:** 下拉效果 ([5c59490](https://github.com/clair-design/clair/commit/5c59490))
+* **select:** 下拉效果 ([c337f53](https://github.com/clair-design/clair/commit/c337f53))
+* **select:** 通过 Tab 键跳到下一个焦点时关闭弹出菜单 ([bc9e49f](https://github.com/clair-design/clair/commit/bc9e49f))
+* **select:** 通过 Tab 键跳到下一个焦点时关闭弹出菜单 ([ea64eac](https://github.com/clair-design/clair/commit/ea64eac))
+* **tree:** recursive components ([2b5d22d](https://github.com/clair-design/clair/commit/2b5d22d))
+
 ## [0.7.1](https://github.com/clair-design/clair/compare/v0.7.0...v0.7.1) (2018-12-06)
 
 
