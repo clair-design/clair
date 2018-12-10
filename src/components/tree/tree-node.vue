@@ -17,7 +17,7 @@
     )
     .c-tree__label
       c-node-label(:node="node")
-  .c-tree_children(v-show="showChildren")
+  .c-tree_children(v-if="hasChildren", v-show="showChildren")
     c-tree-node(
       ref="children"
       v-for="(child, index) in node.children"

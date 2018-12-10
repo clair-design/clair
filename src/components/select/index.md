@@ -38,6 +38,34 @@ export default {
 </script>
 ```
 
+### 弹出选项是否覆盖
+
+select 组件触发后，弹出的选项默认会覆盖在选择框上。但有时候产品并不想要这种效果。这时候可以通过`shouldMenuOverlap` 属性（`should-menu-overlap`）加以调整。下面分别是两种不同的效果：
+
+```html
+
+<c-select v-model="dim" :options="options" />
+<c-select v-model="dim" :options="options" :should-menu-overlap="false" />
+
+<script>
+export default {
+  data () {
+    return {
+      dim: '',
+      options: [
+        { label: '浏览量', value: 'pv' },
+        { label: '访客数', value: 'uv' },
+        { label: '新访客数', value: 'nv' },
+        { label: '访问时长', value: 'du' },
+        { label: '转化次数', value: 'cv' },
+        { label: 'IP 数', value: 'ip' }
+      ]
+    }
+  }
+}
+</script>
+```
+
 ### 多选
 
 给 `c-select` 添加 `multiple` 属性可以将其设置为多选。在多选时，`v-model` 绑定的值是一个数组。

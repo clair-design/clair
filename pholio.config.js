@@ -18,6 +18,9 @@ module.exports = {
   externals: [
     'https://lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css',
     'https://lib.baomitu.com/babel-polyfill/6.26.0/polyfill.min.js',
-    'https://lib.baomitu.com/fetch/2.0.3/fetch.min.js'
+    'https://lib.baomitu.com/fetch/2.0.3/fetch.min.js',
+    // the following two files are helpers
+    'https://lib.baomitu.com/clipboard.js/1.7.1/clipboard.min.js',
+    'https://lib.baomitu.com/yamljs/0.3.0/yaml.min.js'
   ]
 }
