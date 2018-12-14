@@ -63,6 +63,9 @@
         :value="date"
         :size="size"
         :show="isOpen"
+        :minDate="minDate"
+        :maxDate="maxDate"
+        :pattern="datePattern"
         @change="setDateRange"
       )
     .c-datepicker__body(
@@ -73,6 +76,9 @@
         :size="size"
         :show="isOpen"
         type="month"
+        :minDate="minDate"
+        :maxDate="maxDate"
+        :pattern="datePattern"
         @change="setDateRange"
       )
 </template>
