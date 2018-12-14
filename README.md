@@ -5,6 +5,7 @@
 [![dependency status](https://david-dm.org/clair-design/clair.svg)](https://david-dm.org/clair-design/clair)
 [![Package Quality](http://npm.packagequality.com/shield/clair.svg)](http://packagequality.com/#?package=clair)
 [![License](https://img.shields.io/npm/l/clair.svg)](LICENSE)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 
 💥💥💥 WARNING: UNDER DEVELOPMENT, DON'T USE IT! 💥💥💥
