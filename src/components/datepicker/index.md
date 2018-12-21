@@ -167,6 +167,8 @@ li {
   <c-datepicker
     v-model="dateRange"
     type="daterange"
+    :minDate="minDate"
+    :maxDate="maxDate"
     placeholder="请选择日期"
     @change="dateRangeChange"
   ></c-datepicker>
@@ -198,6 +200,8 @@ li {
     data () {
       return {
         daterange: [],
+        minDate: '2018-01-01',
+        maxDate: '2019-02-15',
         dateRange: ['2018-01-02', '2018-02-15'],
         extraOption: {
           optionList: [

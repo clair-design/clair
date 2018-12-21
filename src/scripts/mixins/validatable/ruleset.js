@@ -68,7 +68,7 @@ const ruleset = {
    * 固定电话格式
    */
   telType: function (value) {
-    const pattern = /^(0[0-9]{2,3}-)?([2-9][0-9]{6,7})+(-[0-9]{1,4})?$/
+    const pattern = /^(0[0-9]{2,3}-)?([2-9][0-9]{6,7})(-[0-9]{1,4})?$/
     const valid = pattern.test(toString(value))
     const msg = valid ? '' : '固定电话号码格式不正确'
     return { valid, msg }
