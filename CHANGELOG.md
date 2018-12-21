@@ -1,3 +1,11 @@
+## [0.7.3](https://github.com/clair-design/clair/compare/v0.7.2...v0.7.3) (2018-12-21)
+
+
+### Bug Fixes
+
+* **datepicker:** fix daterange minDate, maxDate ([1e0be0b](https://github.com/clair-design/clair/commit/1e0be0b))
+* [#44](https://github.com/clair-design/clair/issues/44) ([c14fd59](https://github.com/clair-design/clair/commit/c14fd59))
+
 ## [0.7.2](https://github.com/clair-design/clair/compare/v0.7.1...v0.7.2) (2018-12-10)
 
 
