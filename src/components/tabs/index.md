@@ -84,11 +84,11 @@ layout: component
 通过给`<c-tab-pane>`设置`disabled`，使当前标签页呈现不可点击状态。
 
 ```html
-<c-tabs activeIndex="2">
-  <c-tab-pane label="video" disabled>
+<c-tabs activeIndex="3">
+  <c-tab-pane label="video">
     It's not what happens to you, but how you react to it that matters.
   </c-tab-pane>
-  <c-tab-pane label="sun">
+  <c-tab-pane label="sun" disabled>
     Be the type of person you want to meet.
   </c-tab-pane>
   <c-tab-pane label="slack">
@@ -144,9 +144,9 @@ export default {
 ```
 
 ## 事件捕捉
-`@handleClicked`可捕捉触发切换标签事件。
+`@changed`可捕捉触发切换标签事件。
 ```html
-<c-tabs activeIndex="2" @handleClicked="onClick">
+<c-tabs activeIndex="2" @changed="onClick">
   <c-tab-pane label="video" disabled>
     It's not what happens to you, but how you react to it that matters.
   </c-tab-pane>
@@ -191,3 +191,25 @@ export default {
   </c-tab-pane>
 </c-tabs>
 ```
+
+## c-tabs属性说明
+
+| 属性 | 类型 | 默认值 | 说明 | 可选值 |
+|-----|------|-------|-----|-------|
+| activeIndex | String | 1 | 当前展示项索引 | 1,2,3... |
+| position | String | top | 标签位置 | top / bottom / left / right |
+| mode | String | - | 标签形式 | - / 'card' |
+
+## c-tabs事件说明
+
+| 事件 | 类型 | 说明 | 回调参数 |
+|-----|-----|-----|-------|
+| changed | Function(activeKey) {} | 切换tab时的回调 | 被选中标签的index值 |
+
+
+## c-tab-pane属性说明
+
+| 属性 | 类型 | 默认值 | 说明 | 可选值 |
+|-----|------|-------|-----|-------|
+| label | String | - | 标签页标题 | - |
+| disabled | Boolean | false | 禁用某一项 | false / true |
