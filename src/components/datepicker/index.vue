@@ -146,7 +146,7 @@ export default {
       return !start && !end ? '' : `${start} 至 ${end}`
     },
     datePattern () {
-      return this.pattern ? this.pattern : this.type === 'month' ? 'yyyy-MM' : 'yyyy-MM-dd'
+      return this.pattern ? this.pattern : this.type.indexOf('month') > -1 ? 'yyyy-MM' : 'yyyy-MM-dd'
     },
     optionList () {
       return this.extraOption ? this.extraOption.optionList : []
@@ -310,6 +310,7 @@ export default {
     },
     setDateRange (daterange) {
       this.date = daterange
+      console.log(daterange)
       this.$emit('change', this.date)
       this.close()
     },

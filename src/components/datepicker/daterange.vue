@@ -269,6 +269,7 @@ export default {
       this.$emit('change', this.value)
     },
     confirmRange () {
+      console.log('confirm range')
       if (this.start && this.end) {
         this.$emit('change', [this.start, this.end])
       } else {

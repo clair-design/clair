@@ -71,6 +71,12 @@ export default {
       const endDay = new Date(this.end).getDate()
       return this.year === endYear && this.month === endMonth ? endDay : ''
     },
+    minTime () {
+      return new Date(this.minYear, this.minMonth, this.minDay).getTime()
+    },
+    maxTime () {
+      return new Date(this.maxYear, this.maxMonth, this.maxDay).getTime()
+    },
     minYear () {
       return new Date(this.minDate).getFullYear()
     },
@@ -111,9 +117,21 @@ export default {
       }
       const mapDayObj = (list, classname) => {
         return list.map(item => {
+          let month = this.month
+          let year = this.year
+          const months = 12
+          if (classname === 'lastmonth') {
+            year = +this.month === 0 ? (this.year - 1) : this.year
+            month = (this.month - 1 + months) % months
+          } else if (classname === 'nextmonth') {
+            year = +this.month === 11 ? (this.year + 1) : this.year
+            month = (this.month + 1) % months
+          }
           return {
             class: classname,
-            day: item
+            day: item,
+            month: month,
+            year: year
           }
         })
       }
@@ -180,30 +198,8 @@ export default {
       }
     },
     isDateDisabled (item) {
-      const months = 12
-      const dateValidCheck = (year, month, day) => {
-        const isYearValid = year >= this.minYear && year <= this.maxYear
-        const isMonthValid = year === this.minYear ? month >= this.minMonth
-          : year === this.maxYear ? month <= this.maxMonth : isYearValid
-        const isDayValid = year === this.minYear && month === this.minMonth ? item.day >= this.minDay
-          : year === this.maxYear && month === this.maxMonth ? item.day <= this.maxDay
-            : isMonthValid
-        return isDayValid
-      }
-      let isDateValid = true
-      switch (item.class) {
-        case 'lastmonth':
-          const prevYear = this.month === 0 ? this.year - 1 : this.year
-          isDateValid = dateValidCheck(prevYear, (this.month - 1 + months) % months, item.day)
-          break
-        case 'nextmonth':
-          const nextYear = this.month === 11 ? this.year + 1 : this.year
-          isDateValid = dateValidCheck(nextYear, (this.month + 1) % months, item.day)
-          break
-        default:
-          isDateValid = dateValidCheck(this.year, this.month, item.day)
-      }
-      return !isDateValid
+      const curTime = new Date(item.year, item.month, item.day).getTime()
+      return curTime < this.minTime || curTime > this.maxTime
     },
     isSelectedDate (item) {
       const isCurMonth = item.class === 'curmonth'
