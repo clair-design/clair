@@ -198,12 +198,11 @@ export default {
 
       if (endMonth === this.startMonth) {
         [this.endYear, this.endMonth] = this.updateMonth(this.endYear, endMonth, 1, 'plus')
-      } else if (!endMonth) {
+      } else if (!endMonth && endMonth !== 0) {
         [this.endYear, this.endMonth] = this.updateMonth(this.endYear, this.startMonth, 1, 'plus')
       } else {
         this.endMonth = endMonth
       }
-
       this.endDay = endYear === this.startYear && endMonth === this.startMonth ? '' : endDay
     },
     onRangeChange (obj) {

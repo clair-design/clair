@@ -181,15 +181,29 @@ export default {
     },
     isDateDisabled (item) {
       const months = 12
-      const isPrevMonthValid = item.class === 'lastmonth' &&
-        !this.isSelectedMonth((this.month - 1) % months)
-      const isNextMonthValid = item.class === 'nextmonth' &&
-        !this.isSelectedMonth((this.month + 1) % months)
-      const isCurMonthValid = item.class === 'curmonth' &&
-        ((this.year === this.minYear && this.month === this.minMonth &&
-        item.day < this.minDay) || (this.year === this.maxYear &&
-        this.month === this.maxMonth && item.day > this.maxDay))
-      return isCurMonthValid || isPrevMonthValid || isNextMonthValid
+      const dateValidCheck = (year, month, day) => {
+        const isYearValid = year >= this.minYear && year <= this.maxYear
+        const isMonthValid = year === this.minYear ? month >= this.minMonth
+          : year === this.maxYear ? month <= this.maxMonth : isYearValid
+        const isDayValid = year === this.minYear && month === this.minMonth ? item.day >= this.minDay
+          : year === this.maxYear && month === this.maxMonth ? item.day <= this.maxDay
+            : isMonthValid
+        return isDayValid
+      }
+      let isDateValid = true
+      switch (item.class) {
+        case 'lastmonth':
+          const prevYear = this.month === 0 ? this.year - 1 : this.year
+          isDateValid = dateValidCheck(prevYear, (this.month - 1 + months) % months, item.day)
+          break
+        case 'nextmonth':
+          const nextYear = this.month === 11 ? this.year + 1 : this.year
+          isDateValid = dateValidCheck(nextYear, (this.month + 1) % months, item.day)
+          break
+        default:
+          isDateValid = dateValidCheck(this.year, this.month, item.day)
+      }
+      return !isDateValid
     },
     isSelectedDate (item) {
       const isCurMonth = item.class === 'curmonth'

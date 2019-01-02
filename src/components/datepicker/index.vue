@@ -164,7 +164,11 @@ export default {
   },
 
   beforeDestroy () {
-    this.datepickerPanel.remove()
+    if (this.datepickerPanel.remove) {
+      this.datepickerPanel.remove()
+    } else {
+      this.datepickerPanel.parentNode.removeChild(this.datepickerPanel)
+    }
     window.removeEventListener('resize', this.resize, false)
   },
 
