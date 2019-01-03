@@ -146,7 +146,7 @@ export default {
       return !start && !end ? '' : `${start} 至 ${end}`
     },
     datePattern () {
-      return this.pattern ? this.pattern : this.type === 'month' ? 'yyyy-MM' : 'yyyy-MM-dd'
+      return this.pattern ? this.pattern : this.type.indexOf('month') > -1 ? 'yyyy-MM' : 'yyyy-MM-dd'
     },
     optionList () {
       return this.extraOption ? this.extraOption.optionList : []
@@ -164,7 +164,11 @@ export default {
   },
 
   beforeDestroy () {
-    this.datepickerPanel.remove()
+    if (this.datepickerPanel.remove) {
+      this.datepickerPanel.remove()
+    } else {
+      this.datepickerPanel.parentNode.removeChild(this.datepickerPanel)
+    }
     window.removeEventListener('resize', this.resize, false)
   },
 
@@ -270,7 +274,6 @@ export default {
       const dates = value.split(separtor)
       const reg = new RegExp('^\\d{4}' + separtor + '\\d{2}' + separtor + '\\d{2}$')
       const valueValid = reg.test(value)
-      console.log(value)
       if (valueValid) {
         const year = parseInt(dates[0])
         const month = parseInt(dates[1])
@@ -285,7 +288,6 @@ export default {
       }
     },
     dateChange (value) {
-      console.log(value)
       const dateValid = this.checkDateValid(value)
       if (dateValid) {
         this.date = value
@@ -310,7 +312,6 @@ export default {
       this.close()
     },
     setDate (date, notClose) {
-      console.log(date)
       this.showDate = date
       this.$emit('change', date)
       !notClose && this.close()

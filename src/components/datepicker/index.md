@@ -177,6 +177,7 @@ li {
     v-model="daterange"
     type="daterange"
     placeholder="请选择日期"
+    :maxDate="today"
     size="sm"
     @change="dateChange"
   >
@@ -200,6 +201,7 @@ li {
     data () {
       return {
         daterange: [],
+        today: new Date().format('yyyy-MM-dd'),
         minDate: '2018-01-01',
         maxDate: '2019-02-15',
         dateRange: ['2018-01-02', '2018-02-15'],

@@ -71,6 +71,12 @@ export default {
       const endDay = new Date(this.end).getDate()
       return this.year === endYear && this.month === endMonth ? endDay : ''
     },
+    minTime () {
+      return new Date(this.minYear, this.minMonth, this.minDay).getTime()
+    },
+    maxTime () {
+      return new Date(this.maxYear, this.maxMonth, this.maxDay).getTime()
+    },
     minYear () {
       return new Date(this.minDate).getFullYear()
     },
@@ -109,25 +115,35 @@ export default {
       const getRowArr = (N, i = 1) => {
         return Array.from(new Array(N), (val, index) => index + i)
       }
-      const mapDayObj = (list, classname) => {
+      const mapDayObj = (list, classname, year, month) => {
         return list.map(item => {
           return {
             class: classname,
-            day: item
+            day: item,
+            month: month,
+            year: year
           }
         })
       }
-      const currentMonthDays = new Date(this.year, this.month + 1, 0).getDate()
-      const lastMonthDays = new Date(this.year, this.month, 0).getDate()
+      const lastDayOfCurrentMonth = new Date(this.year, this.month + 1, 0)
+      const dayCountOfCurrentMonth = lastDayOfCurrentMonth.getDate()
+      const lastDayOfLastMonth = new Date(this.year, this.month, 0)
+      const dayCountOfLastMonth = lastDayOfLastMonth.getDate()
+      const yearOfLastMonth = lastDayOfLastMonth.getFullYear()
+      const monthOfLastMonth = lastDayOfLastMonth.getMonth()
+      const lastDayOfNextMonth = new Date(this.year, this.month + 2, 0)
+      const yearOfNextMonth = lastDayOfNextMonth.getFullYear()
+      const monthOfNextMonth = lastDayOfNextMonth.getMonth()
+
       const startWeek = new Date(this.year, this.month, 1).getDay()
       const lastMonthDayCount = startWeek || weekDays
-      const nextMonthDays = allDays - lastMonthDayCount - currentMonthDays
+      const nextMonthDays = allDays - lastMonthDayCount - dayCountOfCurrentMonth
       const lastMonthDates = mapDayObj(
-        getRowArr(lastMonthDays).slice(-lastMonthDayCount),
-        'lastmonth')
-      const currentMonthDates = mapDayObj(getRowArr(currentMonthDays),
-        'curmonth')
-      const nextMonthDates = mapDayObj(getRowArr(nextMonthDays), 'nextmonth')
+        getRowArr(dayCountOfLastMonth).slice(-lastMonthDayCount),
+        'lastmonth', yearOfLastMonth, monthOfLastMonth)
+      const currentMonthDates = mapDayObj(getRowArr(dayCountOfCurrentMonth),
+        'curmonth', this.year, this.month)
+      const nextMonthDates = mapDayObj(getRowArr(nextMonthDays), 'nextmonth', yearOfNextMonth, monthOfNextMonth)
       const allDate = [
         ...lastMonthDates,
         ...currentMonthDates,
@@ -180,16 +196,8 @@ export default {
       }
     },
     isDateDisabled (item) {
-      const months = 12
-      const isPrevMonthValid = item.class === 'lastmonth' &&
-        !this.isSelectedMonth((this.month - 1) % months)
-      const isNextMonthValid = item.class === 'nextmonth' &&
-        !this.isSelectedMonth((this.month + 1) % months)
-      const isCurMonthValid = item.class === 'curmonth' &&
-        ((this.year === this.minYear && this.month === this.minMonth &&
-        item.day < this.minDay) || (this.year === this.maxYear &&
-        this.month === this.maxMonth && item.day > this.maxDay))
-      return isCurMonthValid || isPrevMonthValid || isNextMonthValid
+      const curTime = new Date(item.year, item.month, item.day).getTime()
+      return curTime < this.minTime || curTime > this.maxTime
     },
     isSelectedDate (item) {
       const isCurMonth = item.class === 'curmonth'
