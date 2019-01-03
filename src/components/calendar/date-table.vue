@@ -115,18 +115,8 @@ export default {
       const getRowArr = (N, i = 1) => {
         return Array.from(new Array(N), (val, index) => index + i)
       }
-      const mapDayObj = (list, classname) => {
+      const mapDayObj = (list, classname, year, month) => {
         return list.map(item => {
-          let month = this.month
-          let year = this.year
-          const months = 12
-          if (classname === 'lastmonth') {
-            year = +this.month === 0 ? (this.year - 1) : this.year
-            month = (this.month - 1 + months) % months
-          } else if (classname === 'nextmonth') {
-            year = +this.month === 11 ? (this.year + 1) : this.year
-            month = (this.month + 1) % months
-          }
           return {
             class: classname,
             day: item,
@@ -135,17 +125,25 @@ export default {
           }
         })
       }
-      const currentMonthDays = new Date(this.year, this.month + 1, 0).getDate()
-      const lastMonthDays = new Date(this.year, this.month, 0).getDate()
+      const lastDayOfCurrentMonth = new Date(this.year, this.month + 1, 0)
+      const dayCountOfCurrentMonth = lastDayOfCurrentMonth.getDate()
+      const lastDayOfLastMonth = new Date(this.year, this.month, 0)
+      const dayCountOfLastMonth = lastDayOfLastMonth.getDate()
+      const yearOfLastMonth = lastDayOfLastMonth.getFullYear()
+      const monthOfLastMonth = lastDayOfLastMonth.getMonth()
+      const lastDayOfNextMonth = new Date(this.year, this.month + 2, 0)
+      const yearOfNextMonth = lastDayOfNextMonth.getFullYear()
+      const monthOfNextMonth = lastDayOfNextMonth.getMonth()
+
       const startWeek = new Date(this.year, this.month, 1).getDay()
       const lastMonthDayCount = startWeek || weekDays
-      const nextMonthDays = allDays - lastMonthDayCount - currentMonthDays
+      const nextMonthDays = allDays - lastMonthDayCount - dayCountOfCurrentMonth
       const lastMonthDates = mapDayObj(
-        getRowArr(lastMonthDays).slice(-lastMonthDayCount),
-        'lastmonth')
-      const currentMonthDates = mapDayObj(getRowArr(currentMonthDays),
-        'curmonth')
-      const nextMonthDates = mapDayObj(getRowArr(nextMonthDays), 'nextmonth')
+        getRowArr(dayCountOfLastMonth).slice(-lastMonthDayCount),
+        'lastmonth', yearOfLastMonth, monthOfLastMonth)
+      const currentMonthDates = mapDayObj(getRowArr(dayCountOfCurrentMonth),
+        'curmonth', this.year, this.month)
+      const nextMonthDates = mapDayObj(getRowArr(nextMonthDays), 'nextmonth', yearOfNextMonth, monthOfNextMonth)
       const allDate = [
         ...lastMonthDates,
         ...currentMonthDates,

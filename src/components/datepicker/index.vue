@@ -274,7 +274,6 @@ export default {
       const dates = value.split(separtor)
       const reg = new RegExp('^\\d{4}' + separtor + '\\d{2}' + separtor + '\\d{2}$')
       const valueValid = reg.test(value)
-      console.log(value)
       if (valueValid) {
         const year = parseInt(dates[0])
         const month = parseInt(dates[1])
@@ -289,7 +288,6 @@ export default {
       }
     },
     dateChange (value) {
-      console.log(value)
       const dateValid = this.checkDateValid(value)
       if (dateValid) {
         this.date = value
@@ -310,12 +308,10 @@ export default {
     },
     setDateRange (daterange) {
       this.date = daterange
-      console.log(daterange)
       this.$emit('change', this.date)
       this.close()
     },
     setDate (date, notClose) {
-      console.log(date)
       this.showDate = date
       this.$emit('change', date)
       !notClose && this.close()
