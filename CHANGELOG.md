@@ -1,3 +1,12 @@
+## [0.7.4](https://github.com/clair-design/clair/compare/v0.7.3...v0.7.4) (2019-01-03)
+
+
+### Bug Fixes
+
+* **datepciker:** fix month range format and update maxdate checked valid ([2ad02f4](https://github.com/clair-design/clair/commit/2ad02f4))
+* **datepicker:** fix maxDate bug, IE node remove no support ([148500f](https://github.com/clair-design/clair/commit/148500f))
+* **datepicker:** update datepicker td render and remove console ([e79cced](https://github.com/clair-design/clair/commit/e79cced))
+
 ## [0.7.3](https://github.com/clair-design/clair/compare/v0.7.2...v0.7.3) (2018-12-21)
 
 
