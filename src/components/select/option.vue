@@ -15,7 +15,7 @@
 export default {
   name: 'c-option',
   props: {
-    label: String,
+    label: [String, Number, Boolean],
     disabled: Boolean,
     isActive: Boolean,
     isSelected: Boolean,
