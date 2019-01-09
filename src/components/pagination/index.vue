@@ -47,7 +47,8 @@
       class="c-pagination_prev"
       @click.prevent="goPage(pageNumber + 1)"
     )
-      c-icon(name="chevron-right" valign="middle")
+      slot(name="next")
+        c-icon(name="chevron-right" valign="middle")
   </span>
 </template>
 
