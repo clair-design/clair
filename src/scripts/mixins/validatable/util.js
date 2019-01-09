@@ -7,7 +7,7 @@ export function isEmpty (value) {
     return value.length === 0
   }
   if (typeof value === 'boolean') return !value
-  if (typeof value === 'number') return value === 0
+  if (typeof value === 'number') return false
   if (typeof value === 'object') return Object.keys(value).length === 0
 }
 
