@@ -1,3 +1,12 @@
+## [0.7.5](https://github.com/clair-design/clair/compare/v0.7.4...v0.7.5) (2019-01-15)
+
+
+### Bug Fixes
+
+* **pagination:** add a slot for customizing "next page" button ([852d3b1](https://github.com/clair-design/clair/commit/852d3b1))
+* **select:** label of options can be string, number and boolean ([2ab0136](https://github.com/clair-design/clair/commit/2ab0136))
+* **validation:** number 0 should NOT treated as empty value ([0803195](https://github.com/clair-design/clair/commit/0803195))
+
 ## [0.7.4](https://github.com/clair-design/clair/compare/v0.7.3...v0.7.4) (2019-01-03)
 
 
