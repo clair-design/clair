@@ -108,7 +108,8 @@ div(:class="className")
     template(v-if="height")
       +TableWithHeight("columns", "scrollBody", "onScroll")
     template(v-else)
-      +Table("columns")
+      .c-scroll__table
+        +Table("columns")
 </template>
 
 <script>
