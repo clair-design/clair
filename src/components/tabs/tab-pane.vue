@@ -1,7 +1,10 @@
 <template lang="pug">
 div(
+  :id="tabIndex"
   v-if="shownav"
   @click="handleClick"
+  :aria-selected="active"
+  :aria-controls="paneIndex"
   :class="[active ? 'is-active' : '']"
 )
   slot {{ label }}
@@ -22,6 +25,12 @@ export default {
     active () {
       const active = this.$parent.currentIndex === this.index
       return active
+    },
+    tabIndex () {
+      return `tab-${this.index}`
+    },
+    paneIndex () {
+      return `pane-${this.index}`
     }
   },
   methods: {
