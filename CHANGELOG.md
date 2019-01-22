@@ -1,3 +1,10 @@
+## [0.7.6](https://github.com/clair-design/clair/compare/v0.7.5...v0.7.6) (2019-01-22)
+
+
+### Bug Fixes
+
+* **tabs:** add keydown handler, fix layout bug in IE ([4469538](https://github.com/clair-design/clair/commit/4469538))
+
 ## [0.7.5](https://github.com/clair-design/clair/compare/v0.7.4...v0.7.5) (2019-01-15)
 
 
