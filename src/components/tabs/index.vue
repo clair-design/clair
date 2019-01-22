@@ -37,8 +37,6 @@ export default {
   },
   mounted () {
     this.setPanes()
-    window.addEventListener('blur', this.windowBlurHandler)
-    window.addEventListener('focus', this.windowFocusHandler)
   },
   watch: {
     activeIndex (value) {
@@ -69,15 +67,7 @@ export default {
       if (pane.componentOptions && pane.componentOptions.propsData && pane.componentOptions.propsData.disabled) return
       if (this.currentIndex === value) return
       this.currentIndex = value
-      this.setPaneAriaHidden(value)
-      this.$emit('changed', value)
-    },
-    setPaneAriaHidden (value) {
-      const paneList = [].slice.call(this.$el.querySelectorAll('[role=tabpanel]'))
-      for (let i = 0; i < paneList.length; i++) {
-        paneList[i].setAttribute('aria-hidden', true)
-      }
-      paneList[value - 1].removeAttribute('aria-hidden')
+      this.$emit('change', value)
     },
     getPaneChildren (pane) {
       if (!pane.componentOptions.children) {
@@ -99,15 +89,8 @@ export default {
       this.removeFocus()
       this.setCurrentIndex(value, pane)
     },
-    windowBlurHandler () {
-      this.focusable = false
-    },
-    windowFocusHandler () {
-      setTimeout(() => {
-        this.focusable = true
-      }, 50)
-    },
     keydownHandler (e) {
+      e.preventDefault()
       const keyCode = e.keyCode
       let nextIndex
       let currentIndex, tabList, validTabArray
@@ -227,7 +210,7 @@ export default {
         class: 'tab-pane__content'
       },
       panes.map((pane, index) => {
-        let ariaHidden = +this.activeIndex === index + 1 ? {} : { 'aria-hidden': true }
+        let ariaHidden = this.currentIndex === index + 1 ? {} : { 'aria-hidden': true }
         return h(
           pane.componentOptions.tag,
           {

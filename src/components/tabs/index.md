@@ -144,9 +144,9 @@ export default {
 ```
 
 ## 事件捕捉
-`@changed`可捕捉触发切换标签事件。
+`@change`可捕捉触发切换标签事件。
 ```html
-<c-tabs activeIndex="2" @changed="onClick">
+<c-tabs activeIndex="2" @change="onClick">
   <c-tab-pane label="video" disabled>
     It's not what happens to you, but how you react to it that matters.
   </c-tab-pane>
@@ -204,7 +204,7 @@ export default {
 
 | 事件 | 类型 | 说明 | 回调参数 |
 |-----|-----|-----|-------|
-| changed | Function(activeKey) {} | 切换tab时的回调 | 被选中标签的index值 |
+| change | Function(activeKey) {} | 切换tab时的回调 | 被选中标签的index值 |
 
 
 ## c-tab-pane属性说明
