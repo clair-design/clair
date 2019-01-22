@@ -52,10 +52,15 @@
 
 .c-scroll__thead {
   overflow-x: hidden;
+  overflow-y: scroll;
 
   & table {
     table-layout: fixed;
   }
+}
+
+.c-fixtable__left .c-scroll__thead {
+  overflow-y: hidden;
 }
 
 .c-table__body table {
@@ -68,6 +73,9 @@
 .c-scroll__tbody,
 .c-scrolltable {
   overflow-x: auto;
+  position: relative;
+  -ms-scroll-chaining: none;
+  overscroll-behavior: none;
 
   & table {
     table-layout: fixed;
@@ -177,6 +185,9 @@
 
 .c-table__body {
   overflow-y: auto;
+  position: relative;
+  -ms-scroll-chaining: none;
+  overscroll-behavior: none;
 }
 
 .c-table__all.c-table {
