@@ -51,17 +51,10 @@
 }
 
 .c-scroll__thead {
-  -ms-overflow-style: none;
-  overflow-x: auto;
-  -ms-scroll-chaining: none;
-  overscroll-behavior: none;
+  overflow-x: hidden;
 
   & table {
     table-layout: fixed;
-  }
-
-  &::-webkit-scrollbar {
-    display: none;
   }
 }
 
@@ -75,22 +68,6 @@
 .c-scroll__tbody,
 .c-scrolltable {
   overflow-x: auto;
-  -ms-scroll-chaining: none;
-  overscroll-behavior: none;
-
-  &::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #ced3d9;
-    border-radius: 30px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #eaeced;
-  }
 
   & table {
     table-layout: fixed;
@@ -200,22 +177,6 @@
 
 .c-table__body {
   overflow-y: auto;
-  -ms-scroll-chaining: none;
-  overscroll-behavior: none;
-
-  &::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #ced3d9;
-    border-radius: 30px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #eaeced;
-  }
 }
 
 .c-table__all.c-table {
@@ -340,10 +301,7 @@
     & .c-table__body {
       border-bottom: 0;
       -ms-overflow-style: none;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
+      overflow: hidden;
     }
   }
 
