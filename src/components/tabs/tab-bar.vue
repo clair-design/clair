@@ -34,6 +34,7 @@ export default {
       }
       if (['left', 'right'].indexOf(this.position) >= 0) {
         return {
+          top: 0,
           height: `${this.barHeight}px`,
           transform: `translateY(${this.barOffset}px)`
         }

@@ -197,7 +197,15 @@ export default {
       )
     })
 
-    const navWrapperElem = this.mode === 'default' ? [navs, navBar] : [navs]
+    const navOuter = h(
+      'div',
+      {
+        class: 'nav-outer'
+      },
+      navs
+    )
+
+    const navWrapperElem = this.mode === 'default' ? [navOuter, navBar] : [navs]
     const navWrapper = h(
       'div',
       {
