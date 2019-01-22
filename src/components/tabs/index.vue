@@ -20,7 +20,9 @@ export default {
     return {
       panes: [],
       currentIndex: +this.activeIndex,
-      reset: true
+      reset: true,
+      focusable: true,
+      isFocused: false
     }
   },
   computed: {
@@ -65,17 +67,76 @@ export default {
       if (pane.componentOptions && pane.componentOptions.propsData && pane.componentOptions.propsData.disabled) return
       if (this.currentIndex === value) return
       this.currentIndex = value
-      this.$emit('handleClicked', value)
+      this.$emit('change', value)
+    },
+    getPaneChildren (pane) {
+      if (!pane.componentOptions.children) {
+        return pane.componentOptions.propsData.label
+      }
+      return pane.componentOptions.children.filter(
+        child => child.data && child.data.slot === 'label'
+      )
+    },
+    getPaneContent (pane) {
+      if (!pane.componentOptions.children) {
+        return ''
+      }
+      return pane.componentOptions.children.filter(child => {
+        return !child.data || child.data.slot !== 'label'
+      })
+    },
+    clickHandler (value, pane) {
+      this.removeFocus()
+      this.setCurrentIndex(value, pane)
+    },
+    keydownHandler (e) {
+      e.preventDefault()
+      const keyCode = e.keyCode
+      let nextIndex
+      let currentIndex, tabList, validTabArray
+      if ([37, 38, 39, 40].indexOf(keyCode) !== -1) {
+        tabList = e.currentTarget.querySelectorAll('[role=tab]')
+        validTabArray = Array.prototype.slice.call(tabList).filter(item => +item.getAttribute('tabindex') !== -1)
+        currentIndex = Array.prototype.indexOf.call(validTabArray, e.target)
+      } else {
+        return
+      }
+      if (keyCode === 37 || keyCode === 38) {
+        if (currentIndex === 0) {
+          nextIndex = validTabArray.length - 1
+        } else {
+          nextIndex = currentIndex - 1
+        }
+      } else {
+        if (currentIndex < validTabArray.length - 1) {
+          nextIndex = currentIndex + 1
+        } else {
+          nextIndex = 0
+        }
+      }
+      validTabArray[nextIndex].focus()
+      validTabArray[nextIndex].click()
+      this.setFocus()
+    },
+    setFocus () {
+      if (this.focusable) {
+        this.isFocused = true
+      }
+    },
+    removeFocus () {
+      this.isFocused = false
     }
   },
   render (h) {
     let {
-      setCurrentIndex,
+      clickHandler,
       currentIndex,
       classNames,
-      position
+      position,
+      keydownHandler,
+      setFocus,
+      removeFocus
     } = this
-
     const panes = this.$slots.default.filter(pane => {
       return pane && pane.componentOptions
     })
@@ -100,25 +161,45 @@ export default {
             index: index + 1,
             disabled: disabled
           }),
+          attrs: {
+            role: 'tab',
+            tabindex: disabled ? -1 : index
+          },
           ref: `tabs${index}`,
           slot: 'label',
-          class: `tabs-nav__item ${disabled ? 'disabled' : ''}`,
+          class: `tabs-nav__item ${disabled ? 'disabled' : ''} ${this.isFocused ? 'is-focused' : ''}`,
           on: {
-            tabClicked: value => setCurrentIndex(value, pane)
+            tabClicked: value => clickHandler(value, pane)
+          },
+          nativeOn: {
+            focus: () => setFocus(),
+            blur: () => removeFocus()
           }
         },
-        pane.componentOptions.children.filter(child => {
-          return child.data && child.data.slot === 'label'
-        })
+        this.getPaneChildren(pane)
       )
     })
 
-    const navWrapperElem = this.mode === 'default' ? [navs, navBar] : [navs]
+    const navOuter = h(
+      'div',
+      {
+        class: 'nav-outer'
+      },
+      navs
+    )
+
+    const navWrapperElem = this.mode === 'default' ? [navOuter, navBar] : [navs]
     const navWrapper = h(
       'div',
       {
         class: 'tabs-nav',
-        ref: 'nav'
+        ref: 'nav',
+        attrs: {
+          role: 'tablist'
+        },
+        on: {
+          keydown: (event) => keydownHandler(event)
+        }
       },
       navWrapperElem
     )
@@ -129,6 +210,7 @@ export default {
         class: 'tab-pane__content'
       },
       panes.map((pane, index) => {
+        let ariaHidden = this.currentIndex === index + 1 ? {} : { 'aria-hidden': true }
         return h(
           pane.componentOptions.tag,
           {
@@ -136,12 +218,15 @@ export default {
               shownav: false,
               index: index + 1
             }),
+            attrs: Object.assign({
+              id: `pane-${index + 1}`,
+              role: 'tabpanel',
+              'aria-labelledby': `tab-${index + 1}`
+            }, ariaHidden),
             ref: `panes${index}`,
             slot: 'label'
           },
-          pane.componentOptions.children.filter(child => {
-            return !child.data || child.data.slot !== 'label'
-          })
+          this.getPaneContent(pane)
         )
       })
     )
