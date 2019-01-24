@@ -1,3 +1,14 @@
+## [0.7.7](https://github.com/clair-design/clair/compare/v0.7.6...v0.7.7) (2019-01-24)
+
+
+### Bug Fixes
+
+* **cascader:** changing icon to border ([89994ee](https://github.com/clair-design/clair/commit/89994ee))
+* **cascader:** update cascader snapshot for unit test ([82408f8](https://github.com/clair-design/clair/commit/82408f8))
+* **table:** changing custom scrollbar style to origin ([ae8fa54](https://github.com/clair-design/clair/commit/ae8fa54))
+* **table:** fix normal table width long without scrollbar and fix stylelint error ([3974ca6](https://github.com/clair-design/clair/commit/3974ca6))
+* **table:** update table scrollbar style ([a2f0d6d](https://github.com/clair-design/clair/commit/a2f0d6d))
+
 ## [0.7.6](https://github.com/clair-design/clair/compare/v0.7.5...v0.7.6) (2019-01-22)
 
 
