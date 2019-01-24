@@ -15,12 +15,12 @@ exports[`should render cascader correctly 1`] = `
 `;
 
 exports[`should render cascader correctly 2`] = `
-<div class="c-cascader">
+<div class="c-cascader is-open">
   <div class="cascader-context">
     <div class="c-input-wrap is-normal"><input type="text" class="c-input">
       <!---->
       <!---->
-    </div><span class="c-icon c-cascader__icon">​<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down" style="vertical-align: baseline;"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+    </div><i class="c-select__caret"></i>
   </div>
 </div>
 `;

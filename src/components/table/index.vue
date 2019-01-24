@@ -84,6 +84,8 @@ div(:class="className")
           template(v-else)
             +TableWithHeight("fixedRightColumns", "fixedright", "onYscroll", "true")
     template(v-else)
+      .c-scrolltable(@scroll="onScroll")
+        +Table("columns")
       .c-fixtable__left(
         :class="{'c-fixed__leftscroll': isScrollMove}"
         v-if="fixedLeftColumns.length > 0"
@@ -92,8 +94,6 @@ div(:class="className")
           +Table("fixedLeftColumns")
         template(v-else)
           +Table("fixedLeftColumns", "true")
-      .c-scrolltable(@scroll="onScroll")
-        +Table("columns")
       .c-fixtable__right(
         :class="{'c-fixed__rightscroll': isScrollMove}"
         v-if="fixedRightColumns.length > 0"
@@ -108,7 +108,8 @@ div(:class="className")
     template(v-if="height")
       +TableWithHeight("columns", "scrollBody", "onScroll")
     template(v-else)
-      +Table("columns")
+      .c-scroll__table
+        +Table("columns")
 </template>
 
 <script>
@@ -299,11 +300,7 @@ export default {
       tbodyEl.style.maxHeight = `${this.height - theadHeight}px`
     },
     getCurrentScrollBarSize () {
-      const ua = window.navigator.userAgent
-      if (ua.indexOf('MSIE') > 0 ||
-        Boolean(ua.match(/Trident.*rv:11./))) {
-        this.scrollBarSize = getScrollBarSize()
-      }
+      this.scrollBarSize = getScrollBarSize()
     },
     rowEnter (index) {
       this.hoverRowIndex = index
@@ -325,7 +322,6 @@ export default {
       scrollEl.scrollTop = e.target.scrollTop
     },
     onScroll (e) {
-      const maxWidth = e.target.scrollWidth - e.target.offsetWidth
       if (!e.target.className.includes(this.scrollBox)) {
         // fix mouseleave but scroll is keeping
         e.target.scrollTop = this.$refs.fixedleft.scrollTop
@@ -341,10 +337,6 @@ export default {
       }
       if (this.$refs.fixedright) {
         this.$refs.fixedright.scrollTop = scrollTop
-      }
-      if (scrollLeft > maxWidth) {
-        e.target.scrollLeft = maxWidth
-        return
       }
       if (scrollEl) {
         scrollEl.scrollLeft = scrollLeft

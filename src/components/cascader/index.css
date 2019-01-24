@@ -96,6 +96,25 @@
   }
 }
 
+.c-select__caret {
+  position: absolute;
+  z-index: 1;
+  right: 0.5em;
+  top: 50%;
+  margin-top: -6px;
+  color: var(--gray);
+  border: 4px solid;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  transform: rotate(-45deg);
+  transform-origin: 25% 75%;
+  transition: transform 0.2s ease;
+}
+
+.is-open .c-select__caret {
+  transform: rotate(-225deg);
+}
+
 .cascader-icon {
   position: absolute;
   right: 5px;

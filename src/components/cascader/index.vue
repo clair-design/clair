@@ -1,5 +1,6 @@
 <template lang="pug">
 .c-cascader(
+  :class="{'is-open': isOpen}"
   @click="isOpen = true"
 )
   .cascader-context
@@ -10,7 +11,7 @@
       :size="size"
       :disabled="disabled"
     )
-    c-icon.c-cascader__icon(name="chevron-down")
+    i.c-select__caret
   .cascader-dropmenu(
     :class="className"
     ref="dropmenu"
