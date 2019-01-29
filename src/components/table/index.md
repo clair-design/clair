@@ -193,7 +193,7 @@ export default {
   >
     <template slot="opt-td" slot-scope="props">
       <div class="c-table__opt">
-        <a href="javascript:;" @click="showIp(props.item.ip)">  查看ip
+        <a href="javascript:;" @click="showIp(props)">  查看ip
         </a>
       </div>
     </template>
@@ -246,8 +246,9 @@ export default {
     }
   },
   methods: {
-    showIp (ip) {
-      alert('ip 为 ' + ip)
+    showIp (props) {
+      console.log(props)
+      alert('ip 为 ' + props.item.ip + '行号：' + props.rowIndex)
     },
     sorter (sortObj) {
       this.sortKey = sortObj.key
