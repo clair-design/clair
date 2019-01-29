@@ -51,6 +51,7 @@ table
           slot(
             :name="columnsItem.key + '-base-td'"
             :item="dataItem"
+            :rowIndex="index"
           )
             span.c-table__expand(v-if="columnsItem.type === 'expand'")
               c-icon(name="chevron-down" v-if="dataItem._showExpand")

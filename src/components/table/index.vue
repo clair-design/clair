@@ -6,14 +6,14 @@ mixin templateCell(columns)
     slot-scope="props"
     v-if="$scopedSlots[item.key+'-th']"
     )
-    slot(:name="item.key + '-th'" :item="props")
+    slot(:name="item.key + '-th'" :item="props.item")
   template(
     v-for='item in ' + columns
     :slot="item.key + '-base-td'"
     slot-scope="props"
     v-if="$scopedSlots[item.key+'-td']"
   )
-    slot(:name="item.key + '-td'" :item="props.item")
+    slot(:name="item.key + '-td'" :item="props.item"   :rowIndex="props.rowIndex")
   template(slot="expandRow" slot-scope="props")
     slot(name="expand" :row="props.row")
 mixin Table(columns, onlyhead, onlybody)
@@ -179,7 +179,7 @@ export default {
   watch: {
     datasource: {
       handler (newVal, oldVal) {
-        if (newVal === oldVal) return
+        if (newVal === this.dataList) return
         this.composeData()
         this.getColumnsDetail()
         this.$nextTick(_ => {
