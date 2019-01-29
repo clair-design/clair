@@ -150,7 +150,7 @@ layout: component
 <p>
   <c-tip theme="light" position="top" :trigger="['hover', 'focus']">
     <div slot="content">怨春不语，算只有殷勤画檐蛛网，尽日惹飞絮</div>
-    <a href="javascript;">hover or focus</a>
+    <a href="javascript:;">hover or focus</a>
   </c-tip>
 </p>
 ```
