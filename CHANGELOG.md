@@ -1,3 +1,10 @@
+## [0.7.8](https://github.com/clair-design/clair/compare/v0.7.7...v0.7.8) (2019-01-29)
+
+
+### Bug Fixes
+
+* **table:** add prop "rowIndex" to table cell slot ([b3ea4ee](https://github.com/clair-design/clair/commit/b3ea4ee))
+
 ## [0.7.7](https://github.com/clair-design/clair/compare/v0.7.6...v0.7.7) (2019-01-24)
 
 
