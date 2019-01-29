@@ -179,7 +179,6 @@ export default {
   watch: {
     datasource: {
       handler (newVal, oldVal) {
-        if (newVal === this.dataList) return
         this.composeData()
         this.getColumnsDetail()
         this.$nextTick(_ => {
