@@ -3,7 +3,8 @@
     <input v-model="checked" @change="togglePre" type="checkbox" tabindex="-1" aria-hidden="true"/>
     <label aria-hidden="true"></label>
     <div class="vue-demo-tool-snippets">
-      <a @click="$code.open($event)" title="在 Codepen 中打开"><c-icon type="feather" name="codepen" class="vue-demo-tools__icon"/></a>
+      <a @click="$code.open($event, 'codepen')" title="在 Codepen 中打开"><c-icon type="feather" name="codepen" class="vue-demo-tools__icon"/></a>
+      <a @click="$code.open($event, 'codesandbox')" title="在 CodeSandbox 中打开"><c-icon type="feather" name="edit-3" class="vue-demo-tools__icon"/></a>
       <a @click="$code.copy($event)" title="复制代码"><c-icon type="feather" name="copy" class="vue-demo-tools__icon"/></a>
     </div>
   </div>
