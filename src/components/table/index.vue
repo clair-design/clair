@@ -113,7 +113,6 @@ div(:class="className")
 </template>
 
 <script>
-/* global window */
 import './index.css'
 import { getScrollBarSize } from '@util'
 
