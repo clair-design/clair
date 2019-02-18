@@ -31,7 +31,7 @@
 
 <script>
 import './index.css'
-import zIndexManager from '@util/zIndexManager.js'
+import { getPopupStyle } from '@util'
 
 import Menu from './menu.vue'
 import Icon from '../icon/index.vue'
@@ -172,31 +172,7 @@ export default {
       }
     },
     getStyle () {
-      const clientRect = this.$el.getBoundingClientRect()
-      const windowH = window.innerHeight
-      const marginTop = 2
-      const scrollBarWidth = 20
-      const scrollHeight =
-        document.body.scrollWidth > window.innerWidth ? scrollBarWidth : 0
-      const droplistHeight = this.cascaderMenu.clientHeight
-      const defaultTop =
-        clientRect.top + clientRect.height + marginTop + window.pageYOffset
-      const clientHeight = clientRect.height + marginTop
-
-      const clientY = clientRect.y
-      const compTop = windowH - droplistHeight - scrollHeight
-      const left = clientRect.left + window.pageXOffset
-      const top =
-        droplistHeight + clientHeight + clientY + scrollHeight > windowH
-          ? compTop
-          : defaultTop
-      const zIndex = zIndexManager.next()
-      return `
-        position: absolute;
-        top: ${top}px;
-        left: ${left}px;
-        z-index: ${zIndex};
-      `
+      return getPopupStyle(this.$el, this.cascaderMenu)
     },
     resize () {
       this.$nextTick(() => {

@@ -74,8 +74,6 @@
 .c-scrolltable {
   overflow-x: auto;
   position: relative;
-  -ms-scroll-chaining: none;
-  overscroll-behavior: none;
 
   & table {
     table-layout: fixed;
