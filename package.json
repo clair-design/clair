@@ -1,6 +1,6 @@
 {
   "name": "clair",
-  "version": "0.7.8",
+  "version": "0.7.9",
   "description": "A design system including principles, Vue components and resources",
   "main": "dist/clair.cjs.js",
   "module": "dist/clair.es.js",

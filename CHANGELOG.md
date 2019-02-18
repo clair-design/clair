@@ -1,3 +1,13 @@
+## [0.7.9](https://github.com/clair-design/clair/compare/v0.7.8...v0.7.9) (2019-02-18)
+
+
+### Bug Fixes
+
+* **cascader:** fix cascader menu popupstyle ([1e93b70](https://github.com/clair-design/clair/commit/1e93b70))
+* **table:** fix normal table within mouse, page can not scroll ([6b29f28](https://github.com/clair-design/clair/commit/6b29f28))
+* **table:** fix table column template without rowIndex and fix datasource watch bug ([8edf58d](https://github.com/clair-design/clair/commit/8edf58d))
+* **table:** fix table datasource watch unused code ([4dec9ee](https://github.com/clair-design/clair/commit/4dec9ee))
+
 ## [0.7.8](https://github.com/clair-design/clair/compare/v0.7.7...v0.7.8) (2019-01-29)
 
 
