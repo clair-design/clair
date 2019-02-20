@@ -116,12 +116,12 @@ export default {
 
   methods: {
     onChange (e) {
-      this.$emit('change', e.target.value)
+      this.$emit('change', e.target.value, e)
       this.resizeTextArea()
     },
 
-    onBlur () {
-      this.$emit('blur')
+    onBlur (e) {
+      this.$emit('blur', e.target.value, e)
     },
 
     resizeTextArea () {
