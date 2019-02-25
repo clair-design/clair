@@ -33,7 +33,13 @@ export default [
     ...resolveAlias
   }),
   cssNoop(),
-  vue({ css: false }),
+  vue({
+    css: false,
+    // fix: buble options
+    vue: {
+      transforms: null
+    }
+  }),
   buble({
     objectAssign: 'Object.assign'
   }),

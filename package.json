@@ -54,7 +54,7 @@
     "jest-puppeteer": "^3.3.1",
     "jest-serializer-vue": "^2.0.2",
     "lint-staged": "^8.1.0",
-    "pholio": "^0.4.1",
+    "pholio": "^0.4.2",
     "postcss-cli": "^6.0.0",
     "postcss-cssnext": "^3.0.2",
     "postcss-each": "^0.10.0",
@@ -81,10 +81,11 @@
     "feather-vue": "^1.0.1",
     "lodash": "^4.17.4",
     "v-color": "^1.1.0",
-    "v-ctrl": "^1.1.0"
+    "v-ctrl": "^1.1.0",
+    "vue": "^2.6.7"
   },
   "peerDependencies": {
-    "vue": "^2.5.16"
+    "vue": "^2.6.0"
   },
   "gitHooks": {
     "pre-commit": "lint-staged && npm run test:unit",
