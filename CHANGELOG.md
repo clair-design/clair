@@ -1,3 +1,12 @@
+## [0.7.10](https://github.com/clair-design/clair/compare/v0.7.9...v0.7.10) (2019-02-25)
+
+
+### Bug Fixes
+
+* **input:**  event callback params are now in pattern `(value, event)` ([471dd82](https://github.com/clair-design/clair/commit/471dd82))
+* support `Vue.use` when install components ([8862635](https://github.com/clair-design/clair/commit/8862635))
+* upgrade compile runtime to vue@2.6.7+ ([8fe3bca](https://github.com/clair-design/clair/commit/8fe3bca))
+
 ## [0.7.9](https://github.com/clair-design/clair/compare/v0.7.8...v0.7.9) (2019-02-18)
 
 
