@@ -11,13 +11,16 @@ export default {
     const keys = reqs.keys()
     for (let i = 0; i < keys.length; i++) {
       const module = getModule(reqs(keys[i]))
-
-      // turn components' names to Pascal Case
-      // so that we can use markups like `<CSelect />`
-      // which would meet the needs of those PascalCase fans
-      // TODO
-      // we will turn all `name` fields in SFC into pacal case in the future
-      module.name && Vue.component(pascalCase(module.name), module)
+      if (typeof module.install === 'function') {
+        Vue.use(module)
+      } else if (module && module.name) {
+        // turn components' names to Pascal Case
+        // so that we can use markups like `<CSelect />`
+        // which would meet the needs of those PascalCase fans
+        // TODO
+        // we will turn all `name` fields in SFC into pacal case in the future
+        Vue.component(pascalCase(module.name), module)
+      }
     }
   }
 }
