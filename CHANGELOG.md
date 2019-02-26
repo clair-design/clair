@@ -1,3 +1,11 @@
+## [0.7.11](https://github.com/clair-design/clair/compare/v0.7.10...v0.7.11) (2019-02-26)
+
+
+### Bug Fixes
+
+* **css:** remove `flex-basis: content` ([de7f934](https://github.com/clair-design/clair/commit/de7f934))
+* **css:** use `flex-start` instead of `start` ([f6d17b0](https://github.com/clair-design/clair/commit/f6d17b0))
+
 ## [0.7.10](https://github.com/clair-design/clair/compare/v0.7.9...v0.7.10) (2019-02-25)
 
 
