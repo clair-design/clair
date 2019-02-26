@@ -19,7 +19,6 @@
 .c-box__item {
   padding: calc(var(--grid-gap) * 0.5);
   flex: 1 1 auto;
-  flex-basis: content;
 
   &.is-narrow {
     flex-grow: 0;
