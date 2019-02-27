@@ -67,7 +67,7 @@ table
               v-html="columnsItem.render(index, dataItem[columnsItem.key], dataItem)"
             )
             span(v-else) {{dataItem[columnsItem.key]}}
-      tr(v-show="hasExpand && dataItem._showExpand")
+      tr(v-if="hasExpand && dataItem._showExpand")
         td(:colspan="allColumns.length")
           slot(name="expandRow" :row="dataItem")
 </template>
