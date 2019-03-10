@@ -1,3 +1,10 @@
+## [0.7.12](https://github.com/clair-design/clair/compare/v0.7.11...v0.7.12) (2019-03-10)
+
+
+### Bug Fixes
+
+* **table:** fix table with undisplay tr ([dac451c](https://github.com/clair-design/clair/commit/dac451c))
+
 ## [0.7.11](https://github.com/clair-design/clair/compare/v0.7.10...v0.7.11) (2019-02-26)
 
 
