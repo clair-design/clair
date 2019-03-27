@@ -37,7 +37,7 @@ table
       tr(
         @mouseenter="setCurrentItem(dataItem, index)"
         @mouseleave="resetCurrentItem"
-        :class="getRowClassName(item, index)"
+        :class="getRowClassName(dataItem, index)"
       )
         td(
           v-for="columnsItem,colIndex in allColumns"
@@ -177,10 +177,10 @@ export default {
       if (typeof rowClassName === 'string') {
         classes.push(rowClassName)
       } else if (typeof rowClassName === 'function') {
-        classes.push(rowClassName({
+        classes.push(rowClassName(
           row,
           rowIndex
-        }))
+        ))
       }
 
       if (rowIndex === this.hoverRowIndex) {

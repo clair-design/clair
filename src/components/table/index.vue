@@ -223,14 +223,12 @@ export default {
     updateSelectAll (status) {
       this.allChecked = status
       this.dataList = this.dataList.map(item => {
-        this.$set(item, '_checked', status)
+        if (!item._disabled) {
+          this.$set(item, '_checked', status)
+        }
         return item
       })
-      if (status) {
-        this.selection = this.dataList.filter(item => item._checked && !item._disabled)
-      } else {
-        this.selection = []
-      }
+      this.selection = this.dataList.filter(item => item._checked)
     },
     onSelectAllChange (status) {
       this.updateSelectAll(status)
@@ -243,8 +241,10 @@ export default {
     onSelectChange (currentItem, status) {
       if (status) {
         this.selection.push(currentItem)
+      } else {
+        this.selection = this.selection.filter(item => item._indexId !== currentItem._indexId)
       }
-      this.selection = this.selection.filter(item => item._checked && !item._disabled)
+      this.selection = this.selection.filter(item => item._checked)
       this.$nextTick(() => {
         this.allChecked = this.selection.length === this.dataList.length
         this.indeterminate = this.selection.length > 0 &&
@@ -257,6 +257,7 @@ export default {
       const list = []
       const selectedList = []
       this.datasource && this.datasource.map((item, index) => {
+        item._indexId = index
         item._checked = (item.hasOwnProperty('_checked') && item._checked) || this.allChecked
         item._disabled = (item.hasOwnProperty('_disabled') && item._disabled) || this.allChecked
         item._showExpand = (item.hasOwnProperty('_showExpand') && item._showExpand)
