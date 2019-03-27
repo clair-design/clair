@@ -11,11 +11,15 @@ import Notification from './plugins/notification'
 import validatable from './mixins/validatable'
 import resettable from './mixins/resettable'
 
+import zIndexManager from './utils/zIndexManager'
+
 const mixins = { validatable, resettable }
 
 export const Clair = {
   mixins,
-  install (Vue) {
+  install (Vue, option = {}) {
+    zIndexManager.setInitialZIndex(option.zIndex || 1992)
+
     const VuePrototype = Vue.prototype
     const defineReadOnly = function (key, val) {
       Object.defineProperty(VuePrototype, key, {
@@ -52,5 +56,9 @@ export const Clair = {
     Vue.use(Modal)
     Vue.use(Responsive)
     Vue.use(Notification)
+  },
+
+  setInitialZIndex (zIndex) {
+    zIndexManager.setInitialZIndex(Number(zIndex) || 1992)
   }
 }
