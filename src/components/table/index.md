@@ -68,7 +68,6 @@ export default {
       return 'test--row'
     },
     changeData () {
-      console.log('ddd')
       this.datasource1 = this.datasource
     }
   }
