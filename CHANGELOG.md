@@ -1,3 +1,10 @@
+## [0.7.14](https://github.com/clair-design/clair/compare/v0.7.13...v0.7.14) (2019-03-27)
+
+
+### Bug Fixes
+
+* make zIndex configurable ([ecd8e05](https://github.com/clair-design/clair/commit/ecd8e05))
+
 ## [0.7.13](https://github.com/clair-design/clair/compare/v0.7.12...v0.7.13) (2019-03-27)
 
 
