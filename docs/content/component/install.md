@@ -94,6 +94,22 @@ import 'clair/dist/clair.css'
 Vue.use(Clair)
 ```
 
+## 配置 zIndex 起始大小
+
+```javascript
+import Vue from 'vue'
+import Clair from 'clair'
+import 'clair/dist/clair.css'
+
+Vue.use(Clair, { zIndex: 12345 })
+```
+
+如果你是通过 `<script>` 标签直接引入 Clair 的话，则可以使用如下方式配置：
+
+```javascript
+window.Clair.setInitialZIndex(12345)
+```
+
 ## 关于 polyfill，兼谈在 vue-cli 3 项目中的使用
 
 因为 Clair 项目中使用到了一些新的 ES201x 特性（主要是 Array 和 Object 的一些拓展），在构建时我们并未对这些特性（如`Array#findIndex` `Object.assign`等）进行 polyfill。我们认为，对这些特性的 polyfill 工作应该交给开发者/使用者。
