@@ -4,12 +4,6 @@ if (process.env.NODE_ENV === 'production') {
   require('../../src/styles/entry.css')
 }
 
-const Clair = process.env.NODE_ENV === 'production'
+module.exports = process.env.NODE_ENV === 'production'
   ? require('../../dist/clair.cjs')
   : require('../../src/entry')
-
-module.exports = {
-  install (Vue) {
-    Clair.setInitialZIndex(1999)
-  }
-}
