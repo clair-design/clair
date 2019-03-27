@@ -1,3 +1,11 @@
+## [0.7.13](https://github.com/clair-design/clair/compare/v0.7.12...v0.7.13) (2019-03-27)
+
+
+### Bug Fixes
+
+* **table:** fix table about checkbox with disabled ([f29b5bf](https://github.com/clair-design/clair/commit/f29b5bf))
+* **table:** rowClassname function params error ([d3fc824](https://github.com/clair-design/clair/commit/d3fc824))
+
 ## [0.7.12](https://github.com/clair-design/clair/compare/v0.7.11...v0.7.12) (2019-03-10)
 
 
