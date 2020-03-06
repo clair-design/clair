@@ -12,6 +12,7 @@ export default {
             <div>
               <div>
                 1. 强烈建议使用 <a href="https://clair.lap.360.cn/">新版 Clair 组件库</a>。
+              </div>
               <div>
                 2. 请使用 <em>vue@2.5.x</em> 或者 <em>vue@2.6.7+</em>。
               </div>
