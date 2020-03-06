@@ -1,8 +1,8 @@
 export default {
   install (Vue) {
     if (typeof window !== 'undefined') {
-      window.addEventListener('load', () => {
-        const vm = new Vue()
+      const vm = new Vue()
+      const notify = () => {
         vm.$notify({
           title: '️⚠️️️️️ 重要提醒',
           type: 'error',
@@ -24,6 +24,19 @@ export default {
             </div>
           `
         })
+      }
+
+      window.addEventListener('load', () => {
+        vm.$warning({
+          title: '重要更新',
+          msg: '新版 Clair 已经发布啦，要不要尝尝鲜？'
+        })
+          .then(_ => {
+            location.href = 'https://clair.lap.360.cn/'
+          })
+          .catch(_ => {
+            notify()
+          })
       })
     }
   }
