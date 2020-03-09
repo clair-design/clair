@@ -519,20 +519,23 @@ export default {
 某些场景下，你会需要根据用户的输入从服务器端获取相关选项。你可以指定 `filter` 函数返回一个 `Promise` 即可。使用 `filter` 函数时，可以通过 `filterThrottle` 指定最小触发间隔，其默认值为 `0`。
 
 ```html
+<!-- multiple -->
 <c-select
   v-model="choice"
   :options="options"
   :filter="search"
   :filterThrottle="1000"
   autocomplete
+  @change="onChange"
   multiple
 >
 </c-select>
 
 <script>
 const rdn = _ => Math.random().toString(36).substr(-3)
+let num = 0
 const defaultOptions = ['option 1', 'option 2', 'option 3']
-  .map(value => ({label: value, value}))
+  .map(value => ({label: value, value: num++}))
 export default {
   data () {
     return {
