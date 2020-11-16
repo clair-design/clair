@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>CheckCircle</title>
+    <desc>Created with Sketch.</desc>
+    <g id="CheckCircle" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="蒙版" opacity="0.200000003" x="0" y="0" width="24" height="24"></rect>
+            <circle id="椭圆形" fill="#6E6E6E" cx="12" cy="12" r="11.1428571"></circle>
+            <polyline id="路径-9" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="6.6122449 12 11.0204082 16.4081633 17.5102041 9.06122449"></polyline>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,298 @@
+@import 'variables';
+@import 'icon';
+
+.c-tabs {
+  display: flex;
+  flex-direction: column;
+
+  &--bottom {
+    flex-direction: column-reverse;
+  }
+
+  &--left {
+    flex-direction: row;
+  }
+
+  &--right {
+    flex-direction: row-reverse;
+  }
+
+  .c-tabs__pane-container {
+    flex-grow: 1;
+  }
+
+  [role='tab'] {
+    outline: none;
+  }
+
+  &--top,
+  &--bottom,
+  &--left,
+  &--right {
+    border: 2px solid transparent;
+  }
+
+  // tabs nav
+  &--left .c-tabs__nav-container,
+  &--right .c-tabs__nav-container {
+    padding: $--tabs-vertical-nav-padding 0;
+  }
+
+  // tabs nav::after, "border-bottom"
+  .c-tabs__nav-container::after {
+    width: 100%;
+    height: $--tabs-border-width;
+  }
+
+  &--top .c-tabs__nav-container::after,
+  &--bottom .c-tabs__nav-container::after {
+    left: 0;
+  }
+
+  &--top .c-tabs__nav-container::after,
+  &--card .c-tabs__nav-container::after {
+    bottom: 0;
+  }
+
+  &--bottom .c-tabs__nav-container::after {
+    top: 0;
+  }
+
+  &--left .c-tabs__nav-container::after,
+  &--right .c-tabs__nav-container::after {
+    top: 0;
+    width: $--tabs-border-width;
+    height: 100%;
+  }
+
+  &--left .c-tabs__nav-container::after {
+    right: 0;
+  }
+
+  &--right .c-tabs__nav-container::after {
+    left: 0;
+  }
+
+  .c-tabs__nav {
+    display: flex;
+  }
+
+  // tabs nav container
+  &--left .c-tabs__nav,
+  &--right .c-tabs__nav {
+    flex-direction: column;
+  }
+
+  // tabs nav item
+  &--top .c-tabs__item:not(:last-child),
+  &--bottom .c-tabs__item:not(:last-child) {
+    margin-right: $--tabs-gap;
+  }
+
+  // tabs bar
+  .c-tabs__nav-bar {
+    position: absolute;
+    z-index: 1;
+    background-color: $--primary-color;
+    transition: transition(transform);
+  }
+
+  &--top .c-tabs__nav-bar,
+  &--bottom .c-tabs__nav-bar {
+    left: 0;
+    height: $--tabs-bar-width;
+  }
+
+  &--top .c-tabs__nav-bar {
+    bottom: 0;
+  }
+
+  &--bottom .c-tabs__nav-bar {
+    top: 0;
+  }
+
+  &--left .c-tabs__nav-bar,
+  &--right .c-tabs__nav-bar {
+    top: $--tabs-vertical-nav-padding;
+    width: $--tabs-bar-width;
+  }
+
+  &--left .c-tabs__nav-bar {
+    right: 0;
+  }
+
+  &--right .c-tabs__nav-bar {
+    left: 0;
+  }
+
+  .add-btn-container {
+    position: absolute;
+    top: 50%;
+    right: 3px;
+    padding: 2px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  .add-btn-container button {
+    position: relative;
+    display: block;
+    width: 15px;
+    height: 15px;
+    color: $--tabs-add-btn-color;
+    background: transparent;
+    border: transparent;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      color: $--primary-color;
+    }
+
+    &:focus-visible {
+      outline: 3px solid $--primary-color;
+      outline-offset: 2px;
+    }
+  }
+
+  .add-btn-container button::before {
+    position: absolute;
+    top: 7px;
+    left: 1px;
+    width: 13px;
+    height: 1px;
+    background-color: currentColor;
+    content: '';
+  }
+
+  .add-btn-container button::after {
+    position: absolute;
+    bottom: 1px;
+    left: 7px;
+    width: 1px;
+    height: 13px;
+    background-color: currentColor;
+    content: '';
+  }
+}
+
+.c-tabs__nav-container {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    position: absolute;
+
+    background-color: $--tabs-nav-border-color;
+    content: '';
+  }
+
+  .c-tabs__nav-list {
+    max-width: 900px;
+    overflow-x: auto;
+  }
+}
+
+.c-tabs__item {
+  display: flex;
+  align-items: center;
+  padding: $--tabs-default-padding;
+
+  color: $--tabs-text-color;
+  line-height: $--tabs-line-height;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition: transition(color);
+
+  &-active {
+    color: $--primary-color;
+  }
+
+  &-disabled {
+    color: $--tabs-disabled-color;
+    cursor: no-drop;
+    pointer-events: none;
+  }
+
+  &:not(&-disabled):hover {
+    color: $--primary-color;
+  }
+
+  .c-icon--svg svg {
+    width: $--tabs-icon-size;
+    height: $--tabs-icon-size;
+    fill: $--icon-color;
+
+    &:hover {
+      fill: $--primary-color;
+    }
+  }
+
+  .c-icon--svg:focus-visible {
+    outline: 3px solid $--primary-color;
+  }
+}
+
+.c-tabs--card .c-icon--close-tab {
+  margin-left: 8px;
+  font-size: $--base-font-size;
+}
+
+.c-tabs--card .c-icon--close-tab:hover {
+  color: $--primary-color;
+}
+
+.c-tabs--card .c-icon--close-tab:focus {
+  outline: none;
+}
+
+.c-tabs--card .c-tabs__item {
+  $border: $--tabs-border-width solid $--tabs-nav-border-color;
+  margin-right: 0;
+  padding: $--tabs--card-padding;
+
+  border-top: $border;
+  border-right: $border;
+
+  &-closable {
+    padding-right: 12px;
+  }
+
+  &:first-child {
+    border-left: $border;
+    border-top-left-radius: $--tabs--card-border-radius;
+  }
+
+  &:last-child {
+    border-top-right-radius: $--tabs--card-border-radius;
+  }
+
+  &-active {
+    position: relative;
+    z-index: 1;
+  }
+
+  &-active::after {
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: $--tabs-border-width;
+    background-color: $--tabs-nav-bg-color;
+    content: '';
+  }
+}
+
+// .c-tabs__item-active:focus {
+.c-tabs__item-active:focus-visible {
+  outline: 3px solid $--primary-color;
+  outline-offset: -3px;
+}
+
+.c-tabs--card .c-tabs__item-active:focus-visible::after {
+  z-index: -1;
+}

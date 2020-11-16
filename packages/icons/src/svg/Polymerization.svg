@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Polymerization</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Polymerization" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M15,1.57735027 L24.2583302,6.92264973 C24.8771324,7.27991532 25.2583302,7.94016936 25.2583302,8.65470054 L25.2583302,19.3452995 C25.2583302,20.0598306 24.8771324,20.7200847 24.2583302,21.0773503 L15,26.4226497 C14.3811978,26.7799153 13.6188022,26.7799153 13,26.4226497 L3.74166975,21.0773503 C3.1228676,20.7200847 2.74166975,20.0598306 2.74166975,19.3452995 L2.74166975,8.65470054 C2.74166975,7.94016936 3.1228676,7.27991532 3.74166975,6.92264973 L13,1.57735027 C13.6188022,1.22008468 14.3811978,1.22008468 15,1.57735027 Z" id="多边形" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round"></path>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" cx="14" cy="14" r="4"></circle>
+            <path d="M14,2 L17.7852325,12.7049255" id="路径-34" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M10.2147675,15.2950745 L14,26" id="路径-34" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

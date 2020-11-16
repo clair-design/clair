@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Compass</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Compass" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="蒙版" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <circle id="椭圆形-copy-6" stroke="#6E6E6E" stroke-width="2" cx="14" cy="14" r="13"></circle>
+            <path d="M12.2494407,12.2501276 L9.01636558,18.9975591 L15.7512046,15.7508429 L18.9980224,9.02410016 L12.2494407,12.2501276 Z" id="矩形" stroke="#6E6E6E" stroke-width="2"></path>
+        </g>
+    </g>
+</svg>

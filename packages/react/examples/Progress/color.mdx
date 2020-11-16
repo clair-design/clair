@@ -1,0 +1,29 @@
+## 自定义颜色
+
+设置 `strokeColor` 属性可以为进度条指定已完成部分的颜色。
+
+```tsx live=true
+function Demo() {
+  const [colorIndex, setColorIndex] = React.useState(0);
+
+  const colors = [
+    "#006bff",
+    "#3cae11",
+    "#fd8c13",
+    "#fa4136",
+    "#7748a7",
+    "#777",
+    "#0facab",
+    "#ea2e94"
+  ];
+  return (
+    <>
+      <Progress value={50} strokeColor={colors[colorIndex]} />
+      <br />
+      <Button onClick={() => setColorIndex((colorIndex + 1) % colors.length)}>
+        换个颜色
+      </Button>
+    </>
+  );
+}
+```

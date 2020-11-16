@@ -1,0 +1,39 @@
+### 原生非受控表单组件
+
+`register`方法负责接管原生非受控表单组件，配合`ErrorMessage`来显示表单验证信息
+
+```tsx live=true className=s-form-example
+function Index() {
+  const { register, validate, control } = useForm();
+
+  const onSubmit = e => {
+    e.preventDefault();
+    validate().then(valiList => {
+      const isValid = !valiList.some(({ isValid }) => !isValid);
+      if (isValid) {
+        message({ type: "success", message: "提交成功" });
+      }
+    });
+  };
+
+  return (
+    <form onSubmit={onSubmit}>
+      <input
+        name="phoneNumber"
+        ref={register([
+          { required: true, message: "请输入联系电话", trigger: "change" },
+          { min: 6, message: "请输入大于 6 位的数字", trigger: "change" }
+        ])}
+        className="c-input c-input--normal"
+        placeholder="请输入联系电话"
+        label="联系电话"
+      />
+      <ErrorMessage as={Tip} name="phoneNumber" control={control} />
+      <button htmltype="submit">提交</button>
+    </form>
+  );
+}
+function Tip({ message, isValid }) {
+  return <p>{isValid ? "✅ 校验通过" : `❌ ${message}`}</p>;
+}
+```

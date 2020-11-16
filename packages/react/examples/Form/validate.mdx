@@ -1,0 +1,132 @@
+## 表单验证
+
+在防止用户犯错的前提下，尽可能让用户更早地发现并纠正错误。
+
+```tsx live=true className=s-form-example
+function Index() {
+  const formRef = React.useRef();
+
+  const defaultValue = {
+    projectName: "Clair Group",
+    projectAttr: ["2"],
+    phoneNumber: "177",
+    projectDesc: "",
+    projectRule: true
+  };
+
+  const rules = {
+    projectName: [
+      { required: true, message: "请输入项目名称", trigger: "blur" }
+    ],
+    projectAttr: [
+      {
+        type: "array",
+        required: true,
+        message: "项目属性不能为空",
+        trigger: "change"
+      }
+    ],
+    phoneNumber: [
+      { required: true, message: "请输入联系电话", trigger: "change" },
+      { min: 6, message: "请输入大于 6 位的数字", trigger: "change" }
+    ],
+    projectDesc: [
+      { required: true, message: "请输入项目说明", trigger: "change" }
+    ],
+    projectRule: [
+      {
+        type: "boolean",
+        required: true,
+        message: "请阅读免责条例",
+        trigger: "change",
+        validator(_, value) {
+          return !!value;
+        }
+      }
+    ]
+  };
+
+  const onSubmit = (isValid, data) => {
+    console.log("data:", data);
+    isValid && message({ type: "success", message: "提交成功" });
+  };
+
+  const reset = () => {
+    formRef.current.reset();
+  };
+  const validatePhoneNumber = () => {
+    formRef.current.validate(["phoneNumber"]);
+  };
+
+  const resetPhoneNumber = () => {
+    formRef.current.reset(["phoneNumber"]);
+  };
+
+  return (
+    <Form
+      ref={formRef}
+      defaultValue={defaultValue}
+      onSubmit={onSubmit}
+      labelWidth={120}
+      className="demo-form"
+    >
+      <FormItem
+        name="projectName"
+        as="input"
+        className="c-input c-input--normal"
+        placeholder="请输入名称"
+        rules={rules.projectName}
+        label="项目名称"
+      />
+      <FormItem
+        name="projectAttr"
+        as={
+          <CheckboxGroup>
+            <Checkbox value="1">大数据</Checkbox>
+            <Checkbox value="2">高科技</Checkbox>
+            <Checkbox value="3">城市安全</Checkbox>
+          </CheckboxGroup>
+        }
+        rules={rules.projectAttr}
+        label="项目属性"
+      />
+      <FormItem
+        name="phoneNumber"
+        as="input"
+        className="c-input c-input--normal"
+        rules={rules.phoneNumber}
+        label="联系电话"
+        placeholder="请输入电话"
+      />
+      <FormItem
+        name="projectDesc"
+        as="textarea"
+        className="c-input c-input--normal"
+        label="项目说明"
+        rules={rules.projectDesc}
+        placeholder="请输入内容"
+      />
+      <FormItem
+        name="projectRule"
+        as={<Checkbox>我已阅读免责条例</Checkbox>}
+        label="免责条例"
+        valueName="checked"
+        rules={rules.projectRule}
+      />
+      <div class="c-form-item">
+        <label class="c-form-item__label" style={{ width: 120 }}></label>
+        <div class="c-form-item__content">
+          <Button type="primary" htmlType="submit">
+            提交
+          </Button>
+          <Button onClick={reset}>重置</Button>
+          <Button type="primary" onClick={validatePhoneNumber}>
+            只校验联系电话
+          </Button>
+          <Button onClick={resetPhoneNumber}>只重置联系电话</Button>
+        </div>
+      </div>
+    </Form>
+  );
+}
+```

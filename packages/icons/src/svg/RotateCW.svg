@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>RotateCW</title>
+    <desc>Created with Sketch.</desc>
+    <g id="RotateCW" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M23,12 L27,14 C27,6.82029825 21.1797017,1 14,1 C6.82029825,1 1,6.82029825 1,14 C1,21.1797017 6.82029825,27 14,27 C19.7798633,27 24.6787371,23.2280358 26.3693049,18.0114239" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>

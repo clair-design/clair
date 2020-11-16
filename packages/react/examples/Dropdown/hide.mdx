@@ -1,0 +1,27 @@
+## 点击隐藏
+
+可以通过菜单的 `hideOnClick` 属性，使点击下拉菜单项后隐藏菜单
+
+```tsx live=true deps=Dropdown
+function Index() {
+  const overlay = (
+    <Dropdown.Menu hideOnClick>
+      <Dropdown.Item itemKey="0">北京</Dropdown.Item>
+      <Dropdown.Item itemKey="1">上海</Dropdown.Item>
+      <Dropdown.Item itemKey="2">广州</Dropdown.Item>
+      <Dropdown.Item itemKey="3" disabled>
+        深圳
+      </Dropdown.Item>
+    </Dropdown.Menu>
+  );
+  return (
+    <>
+      <Dropdown overlay={overlay} trigger={["hover"]}>
+        <a>下拉菜单</a>
+        &nbsp;
+        <IconArrowDown />
+      </Dropdown>
+    </>
+  );
+}
+```

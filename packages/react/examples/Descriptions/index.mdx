@@ -1,0 +1,37 @@
+import Basic from "./basic.mdx";
+import Size from "./size.mdx";
+import Border from "./border.mdx";
+import Layout from "./layout.mdx";
+
+# Descriptions 描述列表
+
+## 定义
+
+成组展示多个只读字段。
+
+## 使用场景
+
+常见于详情页的信息展示。
+
+<Basic />
+<Border />
+<Layout />
+<Size />
+
+## Props
+
+### Descriptions
+
+| Name     | Description                   | Type                                 | Required       | Default |
+| -------- | ----------------------------- | ------------------------------------ | -------------- | ------- |
+| bordered | 是否展示边框                  | `boolean`                            | `false`        | `false` |
+| column   | 一行的 Descriptions Item 数量 | `number`                             | `false`        | `3`     |
+| size     | 设置列表的大小                | `"large"` \| `"normal"` \| `"small"` | `"normal"`     |
+| layout   | 描述布局                      | `"horizontal"` \| `"vertical"`       | `"horizontal"` |
+
+### DescriptionsItem
+
+| Name  | Description  | Type        | Required | Default |
+| ----- | ------------ | ----------- | -------- | ------- |
+| label | 内容的描述   | `ReactNode` | `false`  | `-`     |
+| span  | 包含列的数量 | `number`    | `false`  | `1`     |

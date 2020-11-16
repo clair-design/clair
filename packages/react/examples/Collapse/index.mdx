@@ -1,0 +1,100 @@
+# Collapse
+
+## 基础
+
+```tsx live=true
+<Collapse>
+  <CollapseItem itemKey="1" title="item 1 title">
+    item 1
+  </CollapseItem>
+  <CollapseItem itemKey="2" title="item 2 title">
+    item 2
+  </CollapseItem>
+  <CollapseItem itemKey="3" title="item 3 title">
+    item 3
+  </CollapseItem>
+</Collapse>
+```
+
+## 受控
+
+```tsx live=true
+function App() {
+  const [activeKeys, setActiveKeys] = React.useState([]);
+  const onChange = ({ detail: { key, isActive } }) => {
+    setActiveKeys(prevKeys => {
+      if (isActive) {
+        return prevKeys.concat(key);
+      }
+      return prevKeys.filter(k => k !== key);
+    });
+  };
+  return (
+    <Collapse activeKeys={activeKeys} onChange={onChange}>
+      <CollapseItem itemKey="1" title="item 1 title">
+        item 1
+      </CollapseItem>
+      <CollapseItem itemKey="2" title="item 2 title">
+        item 2
+      </CollapseItem>
+      <CollapseItem itemKey="3" title="item 3 title">
+        item 3
+      </CollapseItem>
+    </Collapse>
+  );
+}
+```
+
+## 手风琴
+
+```tsx live=true
+<Collapse accordion>
+  <CollapseItem itemKey="1" title="item 1 title">
+    item 1
+  </CollapseItem>
+  <CollapseItem itemKey="2" title="item 2 title">
+    item 2
+  </CollapseItem>
+  <CollapseItem itemKey="3" title="item 3 title">
+    item 3
+  </CollapseItem>
+</Collapse>
+```
+
+## 自定义
+
+```tsx live=true
+<Collapse>
+  <CollapseItem
+    itemKey="1"
+    title={
+      <>
+        <IconInfoCircle /> info
+      </>
+    }
+  >
+    item 1
+  </CollapseItem>
+  <CollapseItem itemKey="2" title="disabled" disabled>
+    item 2
+  </CollapseItem>
+</Collapse>
+```
+
+## Props
+
+### Collapse Props
+
+| Name       | Description                   | Type                                                      | Required | Default        |
+| ---------- | ----------------------------- | --------------------------------------------------------- | -------- | -------------- |
+| activeKeys | 当前展开元素的 `itemKey` 集合 | `string[]`                                                | `false`  | `[]`           |
+| accordion  | 是否使用手风琴模式            | `boolean`                                                 | `false`  | `false`        |
+| onChange   | 展开元素变化时的回调函数      | `({ detail: { key: string; isActive: boolean }}) => void` | `false`  | `() => void 0` |
+
+### CollapseItem Props
+
+| Name     | Description       | Type        | Required | Default |
+| -------- | ----------------- | ----------- | -------- | ------- |
+| itemKey  | 当前元素的唯一 id | `string`    | `false`  | 随机值  |
+| title    | 标题内容          | `ReactNode` | `false`  | -       |
+| disabled | 是否禁用当前元素  | `boolean`   | `false`  | `false` |

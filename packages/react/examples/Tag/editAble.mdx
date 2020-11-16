@@ -1,0 +1,70 @@
+## 动态编辑
+
+可动态添加和删除标签。
+
+```tsx live=true
+function Index() {
+  const [visible, setVisibility] = React.useState(false);
+  const [value, setValue] = React.useState("");
+  const [colors, setColors] = React.useState([
+    "red",
+    "orange",
+    "yellow",
+    "green",
+    "cyan",
+    "blue",
+    "indigo",
+    "purple",
+    "pink"
+  ]);
+  const showInput = () => {
+    setVisibility(true);
+  };
+  const hideInput = () => {
+    setValue("");
+    setVisibility(false);
+  };
+  const onKeyPress = event => {
+    if (event.key == "Enter") {
+      if (event.target.value) {
+        setColors(colors.concat(event.target.value));
+      }
+      hideInput();
+    }
+  };
+  const onChange = event => {
+    if (event.target.value) {
+      setValue(event.target.value);
+    }
+  };
+
+  return (
+    <>
+      {colors.map(tag => (
+        <Tag closable key={tag} style={{ margin: "0 5px" }}>
+          {tag}
+        </Tag>
+      ))}
+      {visible && (
+        <input
+          autoFocus
+          onKeyPress={onKeyPress}
+          onChange={onChange}
+          onBlur={hideInput}
+          value={value}
+        />
+      )}
+      {!visible && (
+        <Button
+          type="default"
+          size="small"
+          onClick={showInput}
+          style={{ borderStyle: "dashed" }}
+        >
+          + New Tag
+        </Button>
+      )}
+    </>
+  );
+}
+```

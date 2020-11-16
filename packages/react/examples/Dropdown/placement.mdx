@@ -1,0 +1,54 @@
+## 不同方向
+
+可以通过设置 `placement` 配置下拉菜单的弹出方向。
+
+```tsx live=true deps=Dropdown
+function Index() {
+  const overlay = (
+    <Dropdown.Menu>
+      <Dropdown.Item>北京</Dropdown.Item>
+      <Dropdown.Item>上海</Dropdown.Item>
+      <Dropdown.Item>广州</Dropdown.Item>
+    </Dropdown.Menu>
+  );
+  return (
+    <>
+      <Dropdown placement="bottom" overlay={overlay}>
+        <a>bottom</a>
+        &nbsp;
+        <IconArrowDown />
+      </Dropdown>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <Dropdown placement="bottom-left" overlay={overlay}>
+        <a>bottom-left</a>
+        &nbsp;
+        <IconArrowDown />
+      </Dropdown>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <Dropdown placement="bottom-right" overlay={overlay}>
+        <a>bottom-right</a>
+        &nbsp;
+        <IconArrowDown />
+      </Dropdown>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <Dropdown placement="top" overlay={overlay}>
+        <a>top</a>
+        &nbsp;
+        <IconArrowUp />
+      </Dropdown>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <Dropdown placement="top-left" overlay={overlay}>
+        <a>top-left</a>
+        &nbsp;
+        <IconArrowUp />
+      </Dropdown>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <Dropdown placement="top-right" overlay={overlay}>
+        <a>top-right</a>
+        &nbsp;
+        <IconArrowUp />
+      </Dropdown>
+    </>
+  );
+}
+```

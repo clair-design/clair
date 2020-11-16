@@ -1,0 +1,162 @@
+## 侧边导航
+
+垂直菜单，可内嵌子菜单。
+
+```tsx live=true
+function Index() {
+  const [activeIndex, setActiveIndex] = React.useState();
+  const onSelect = ({ detail }) => {
+    setActiveIndex(detail.name);
+  };
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-around",
+        padding: "16px",
+        background: "#fafafa",
+        minHeight: "400px"
+      }}
+    >
+      <Menu
+        activeIndex={activeIndex}
+        onSelect={onSelect}
+        mode="vertical"
+        width="300px"
+        expandedIndex={["3-2"]}
+      >
+        <MenuItem index={1}>
+          <IconHome />
+          一级导航 1
+        </MenuItem>
+        <SubMenu
+          title={
+            <React.Fragment>
+              <IconSetting />
+              一级导航 2
+            </React.Fragment>
+          }
+          index={2}
+        >
+          <MenuItem index={"2-1"}>
+            <IconFile />
+            二级导航 1
+          </MenuItem>
+          <MenuItem index={"2-2"}>
+            <IconFile />
+            二级导航 2
+          </MenuItem>
+        </SubMenu>
+        <SubMenu
+          title={
+            <React.Fragment>
+              <IconFile />
+              一级导航 3
+            </React.Fragment>
+          }
+          index={3}
+        >
+          <MenuItem index={"3-1"}>
+            <IconFile />
+            二级导航 1
+          </MenuItem>
+          <SubMenu
+            title={
+              <React.Fragment>
+                <IconFile />
+                二级导航 2
+              </React.Fragment>
+            }
+            index={"3-2"}
+          >
+            <MenuItem index={"3-2-1"}>
+              <IconFile />
+              三级导航 1
+            </MenuItem>
+            <MenuItem index={"3-2-2"}>
+              <IconFile />
+              三级导航 2
+            </MenuItem>
+            <SubMenu
+              title={
+                <React.Fragment>
+                  <IconFile />
+                  三级导航 3
+                </React.Fragment>
+              }
+              index={"3-2-3"}
+            >
+              <MenuItem index={"3-2-3-1"}>
+                <IconFile />
+                四级导航 1
+              </MenuItem>
+              <SubMenu
+                title={
+                  <React.Fragment>
+                    <IconFile />
+                    四级导航 2
+                  </React.Fragment>
+                }
+                index={"3-2-3-2"}
+              >
+                <MenuItem index={"3-2-3-2-1"}>
+                  <IconFile />
+                  五级导航 1
+                </MenuItem>
+                <MenuItemGroup title="分组">
+                  <MenuItem index={"3-2-3-2-2"}>
+                    <IconFile />
+                    五级导航 2
+                  </MenuItem>
+                  <MenuItem index={"3-2-3-2-3"}>
+                    <IconFile />
+                    五级导航 3
+                  </MenuItem>
+                </MenuItemGroup>
+              </SubMenu>
+            </SubMenu>
+            <SubMenu
+              title={
+                <React.Fragment>
+                  <IconFile />
+                  三级导航 4
+                </React.Fragment>
+              }
+              index={"3-2-31"}
+            >
+              <MenuItem index={"3-2-3-11"}>
+                <IconFile />
+                四级导航 1
+              </MenuItem>
+              <SubMenu
+                title={
+                  <React.Fragment>
+                    <IconFile />
+                    四级导航 2
+                  </React.Fragment>
+                }
+                index={"3-2-3-21"}
+              >
+                <MenuItem index={"3-2-3-2-11"}>
+                  <IconFile />
+                  五级导航 1
+                </MenuItem>
+                <MenuItemGroup title="分组">
+                  <MenuItem index={"3-2-3-2-21"}>
+                    <IconFile />
+                    五级导航 2
+                  </MenuItem>
+                  <MenuItem index={"3-2-3-2-31"}>
+                    <IconFile />
+                    五级导航 3
+                  </MenuItem>
+                </MenuItemGroup>
+              </SubMenu>
+            </SubMenu>
+          </SubMenu>
+        </SubMenu>
+      </Menu>
+    </div>
+  );
+}
+```

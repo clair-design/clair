@@ -1,0 +1,31 @@
+## <i></i>全局配置
+
+支持全局设置 `duration` 属性。
+
+> 会影响**全局**，即全部 `message`，需要手动重置。
+
+```tsx live=true className=s-container--button deps=message
+<>
+  <Button
+    type="primary"
+    onClick={() => {
+      message.config({
+        duration: 4000
+      });
+      message.success({ message: "config is the new dev" });
+      message.warning({ message: "I beg you pardon??" });
+    }}
+  >
+    config
+  </Button>
+  <Button
+    onClick={() => {
+      message.config({
+        duration: 3000
+      });
+    }}
+  >
+    reset
+  </Button>
+</>
+```

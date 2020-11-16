@@ -1,0 +1,15 @@
+## 小型样式
+
+适用于区域较小的情况。
+
+```tsx live=true
+<div style={{ width: "200px" }}>
+  <Progress value={50} size="small" />
+  <br />
+  <Progress value={63} size="small" status="active" customInfo="加载中…" />
+  <br />
+  <Progress value={86} size="small" status="exception" />
+  <br />
+  <Progress value={100} size="small" status="success" />
+</div>
+```

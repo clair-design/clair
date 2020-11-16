@@ -1,0 +1,84 @@
+## 限制文件大小
+
+- 指定`maxSize`属性可限制文件大小，目前支持的单位有`KB` `MB` `GB`，默认为`"1024 MB"`
+- 如若需要处理超过最大尺寸事件，请绑定`onOverSize`事件
+
+```tsx live=true deps=notification
+function Demo() {
+  const onSuccess = ({ detail }) => {
+    const { file, allFiles, response } = detail;
+    notification.success({
+      title: "上传成功！",
+      content: `文件${file.rawFile.name}上传成功！`
+    });
+  };
+  const onError = ({ detail }) => {
+    const { file, allFiles, error } = detail;
+    notification.error({
+      title: "上传失败！",
+      content: `文件${file.rawFile.name}上传失败！`
+    });
+  };
+  const onOverSize = ({ detail }) => {
+    const { overMaxSizeFiles, allFiles } = detail;
+    notification.error({
+      title: "上传失败！",
+      content: `${overMaxSizeFiles.length}个文件超过最大尺寸`
+    });
+  };
+  return (
+    <div>
+      <Upload
+        maxSize="1 MB"
+        action="https://jsonplaceholder.typicode.com/posts/"
+        onSuccess={onSuccess}
+        onError={onError}
+        onOverSize={onOverSize}
+      />
+    </div>
+  );
+}
+```
+
+## 限制最大上传文件数量
+
+- 指定`maxCount`属性可限制最大上传文件数量，默认为`Infinity`
+- 如若需要处理超过最大数量事件，请绑定`onOverCount`事件
+
+```tsx live=true deps=notification
+function Demo() {
+  const onSuccess = ({ detail }) => {
+    const { file, allFiles, response } = detail;
+    notification.success({
+      title: "上传成功！",
+      content: `文件${file.rawFile.name}上传成功！`
+    });
+  };
+  const onError = ({ detail }) => {
+    const { file, allFiles, error } = detail;
+    notification.error({
+      title: "上传失败！",
+      content: `文件${file.rawFile.name}上传失败！`
+    });
+  };
+  const onOverCount = ({ detail }) => {
+    const { changeFiles, allFiles } = detail;
+    notification.error({
+      title: "上传失败！",
+      content: `超过最大上传文件数量2`
+    });
+  };
+  return (
+    <div>
+      <Upload
+        multiple
+        maxCount={2}
+        action="https://jsonplaceholder.typicode.com/posts/"
+        onSuccess={onSuccess}
+        onError={onError}
+        onOverCount={onOverCount}
+      />
+    </div>
+  );
+}
+```

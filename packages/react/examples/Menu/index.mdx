@@ -1,0 +1,48 @@
+import Dark from "./dark.mdx";
+import Horizontal from "./horizontal.mdx";
+import Vertical from "./vertical.mdx";
+import Collapsed from "./collapsed.mdx";
+import Sub from "./sub.mdx";
+import Group from "./group.mdx";
+
+# Menu 导航菜单
+
+<Horizontal />
+<Dark />
+<Sub />
+<Group />
+<Vertical />
+<Collapsed />
+
+### Menu Props
+
+| Name               | Description                                    | Type                                                | Default      |
+| ------------------ | ---------------------------------------------- | --------------------------------------------------- | ------------ |
+| mode               | 排版模式                                       | `"horizontal"` \| `"vertical"`                      | `"vertical"` |
+| activeIndex        | 选中菜单唯一标识                               | `string` \| `number`                                | -            |
+| defaultActiveIndex | 默认选中菜单唯一标识                           | `string` \| `number`                                | -            |
+| expandedIndex      | 打开子菜单唯一标识数组（仅 vertical 模式可用） | `string[]` \| `number[]`                            | `[]`         |
+| theme              | 主题色                                         | `"light"` \| `"dark"`                               | `"light"`    |
+| collapsed          | 是否收起菜单（仅 vertical 模式可用）           | `boolean`                                           | `false`      |
+| width              | 菜单宽度（仅在 vertical 模式可用）             | `string`                                            | -            |
+| onSelect           | Menu Item 选中时回调                           | `({ detail: { name: string` \| `number }}) => void` | -            |
+
+### SubMenu Props
+
+| Name     | Description | Type                    | Default |
+| -------- | ----------- | ----------------------- | ------- |
+| title    | 子菜单名称  | `string` \| `ReactNode` | -       |
+| disabled | 是否禁用    | `boolean`               | `false` |
+
+### Menu Item Props
+
+| Name     | Description    | Type                 | Default |
+| -------- | -------------- | -------------------- | ------- |
+| index    | 子菜单唯一标识 | `string` \| `number` | -       |
+| disabled | 是否禁用       | `boolean`            | `false` |
+
+### Menu Item Group Props
+
+| Name  | Description | Type                    | Default |
+| ----- | ----------- | ----------------------- | ------- |
+| title | 子菜单名称  | `string` \| `ReactNode` | -       |

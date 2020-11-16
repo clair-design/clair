@@ -1,0 +1,65 @@
+import Responsive from "./reponsive.mdx";
+import Justify from "./justify.mdx";
+import Span from "./span.mdx";
+import Gutter from "./gutter.mdx";
+import Align from "./align.mdx";
+import Start from "./start.mdx";
+import Order from "./order.mdx";
+
+# Grid
+
+12 栅格系统。
+
+将每一行（`Row`）分割为 12 个等宽盒子（`Col`）。
+
+采用了真·Grid 布局方式。
+
+栅格的使用方式为：
+
+- 用 `Row` 包裹 n 个 `Col`；
+- 具体内容放在 `Col` 中；
+- 根据布局需求，调整 `Row` 或者 `Col` 的 `props`。
+
+<Span />
+
+<Gutter />
+
+<Start />
+
+<Justify />
+
+<Align />
+
+<Order />
+
+<Responsive />
+
+## Props
+
+### Row
+
+| 属性    | 类型                                                    | 默认值       | 必选 | 说明                                                                                                                           |
+| ------- | ------------------------------------------------------- | ------------ | ---- | ------------------------------------------------------------------------------------------------------------------------------ |
+| gutter  | `string`                                                | -            | 否   | 列间距。可取 CSS 中有效的长度，比如 `"1px"` `"1em"` `"6%"` 。也可传入响应式对象，比如`{xs: "2px", md: "2em" }`。               |
+| justify | `string`                                                | `flex-start` | 否   | 控制子元素在水平方向的分布方式。取值参考 [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)。 |
+| align   | `string`                                                | `stretch`    | 否   | 控制子元素在垂直方向的对齐方式。取值参考 [align-items](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items)。         |
+| xs      | `{ gutter?: string; justify?: string; align?: string }` | -            | 否   | 响应式 row。响应式调整 `gutter`，`justify` 以及 `align`。                                                                      |
+| sm      | `{ gutter?: string; justify?: string; align?: string }` | -            | 否   | 同上                                                                                                                           |
+| md      | `{ gutter?: string; justify?: string; align?: string }` | -            | 否   | 同上                                                                                                                           |
+| lg      | `{ gutter?: string; justify?: string; align?: string }` | -            | 否   | 同上                                                                                                                           |
+| xl      | `{ gutter?: string; justify?: string; align?: string }` | -            | 否   | 同上                                                                                                                           |
+| xxl     | `{ gutter?: string; justify?: string; align?: string }` | -            | 否   | 同上                                                                                                                           |
+
+### Col
+
+| 属性  | 类型                                                            | 默认值 | 必选 | 说明                                                                                       |
+| ----- | --------------------------------------------------------------- | ------ | ---- | ------------------------------------------------------------------------------------------ |
+| span  | `number`                                                        | `1`    | 否   | 指定该列所占栅格数。取值范围 0-12。                                                        |
+| start | `number`                                                        | -      | 否   | 指定该列从几个栅格开始。取值范围 0-12。                                                    |
+| order | `number`                                                        | -      | 否   | 调整该列的在水平方向的顺序。                                                               |
+| xs    | `number` \| `{ span?: number; start?: number; order?: number }` | -      | 否   | 响应式 col。为 `number` 类型时表示 `span` 值，为 `object` 类型时可以分别指定其他属性的值。 |
+| sm    | `number` \| `{ span?: number; start?: number; order?: number }` | -      | 否   | 同上                                                                                       |
+| md    | `number` \| `{ span?: number; start?: number; order?: number }` | -      | 否   | 同上                                                                                       |
+| lg    | `number` \| `{ span?: number; start?: number; order?: number }` | -      | 否   | 同上                                                                                       |
+| xl    | `number` \| `{ span?: number; start?: number; order?: number }` | -      | 否   | 同上                                                                                       |
+| xxl   | `number` \| `{ span?: number; start?: number; order?: number }` | -      | 否   | 同上                                                                                       |

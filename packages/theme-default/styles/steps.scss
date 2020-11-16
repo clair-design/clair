@@ -1,0 +1,237 @@
+@import 'variables';
+@import 'icon';
+
+.c-steps {
+  display: flex;
+  justify-content: space-between;
+}
+
+.c-steps--horizontal .c-step {
+  margin-right: $--steps-horizontal-gap;
+
+  .c-step__title {
+    position: relative;
+  }
+}
+
+.c-steps--horizontal .c-step:not(:last-child) .c-step__title::after {
+  flex-grow: 1;
+  height: 1px;
+
+  margin-top: $--base-icon-large-size / 2;
+  margin-left: 20px;
+  content: '';
+}
+
+.c-steps--horizontal .c-step:last-child {
+  margin-right: 0;
+}
+
+.c-steps--vertical {
+  flex-direction: column;
+}
+
+.c-steps--vertical .c-step {
+  position: relative;
+  margin-bottom: $--steps-vertical-gap;
+
+  &:not(:last-child)::after {
+    position: absolute;
+
+    top: $--base-icon-large-size + 10px;
+    left: $--base-icon-large-size / 2;
+    width: 1px;
+    height: 100%;
+    content: '';
+  }
+
+  &.c-step--finish::after {
+    background-color: $--primary-color;
+  }
+
+  &.c-step--process::after,
+  &.c-step--wait::after {
+    background-color: $--steps-wait-line-color;
+  }
+}
+
+.c-steps--vertical .c-step:last-child {
+  margin-bottom: 0;
+}
+
+.c-step {
+  display: flex;
+  flex-grow: 1;
+  overflow: hidden;
+
+  &__icon {
+    display: flex;
+    box-sizing: border-box;
+    width: $--base-icon-large-size;
+    height: $--base-icon-large-size;
+    margin-right: $--steps-icon-margin;
+    text-align: center;
+  }
+
+  &__icon > * {
+    flex-grow: 1;
+  }
+
+  &__icon .c-step__icon-num {
+    border-radius: 50%;
+  }
+
+  &__content {
+    flex-grow: 1;
+  }
+
+  &__title {
+    display: flex;
+    font-size: $--base-title-font-size;
+    line-height: $--base-title-font-size * 3 / 2;
+  }
+
+  &__desc {
+    margin-top: $--steps-text-margin;
+    color: $--tertiary-text-color;
+    font-size: $--base-font-size;
+  }
+  &__title,
+  &__desc {
+    max-width: 100%;
+  }
+}
+
+.c-step--wait {
+  $border-width: 1px;
+  .c-step__icon-num {
+    color: $--steps-wait-color;
+    line-height: $--base-icon-large-size - 2 * $border-width;
+    border: $border-width solid $--steps-wait-color;
+  }
+  .c-step__title {
+    color: $--tertiary-text-color;
+  }
+  .c-step__icon::after,
+  .c-step__title::after {
+    background-color: $--steps-wait-line-color;
+  }
+  .c-step__dot {
+    background-color: $--steps-wait-color;
+  }
+}
+
+.c-step--process {
+  .c-step__icon-num {
+    color: #fff;
+    line-height: $--base-icon-large-size;
+    background-color: $--primary-color;
+  }
+  .c-step__title {
+    color: $--base-text-color;
+  }
+  .c-step__icon::after,
+  .c-step__title::after,
+  .c-step__dot::after {
+    background-color: $--steps-wait-line-color;
+  }
+  .c-step__dot,
+  .c-step__dot::before {
+    background-color: $--primary-color;
+  }
+}
+
+.c-step--finish {
+  .c-step__icon {
+    color: $--primary-color;
+    font-size: $--base-icon-large-size;
+  }
+  .c-step__title {
+    color: $--secondary-text-color;
+  }
+  .c-step__icon::after,
+  .c-step__title::after,
+  .c-step__dot {
+    background-color: $--primary-color;
+  }
+}
+
+.c-step--error {
+  color: $--danger-color;
+
+  .c-step__icon {
+    font-size: $--base-icon-large-size;
+  }
+  .c-step__title,
+  .c-step__desc,
+  .c-step__icon {
+    color: currentColor;
+  }
+  .c-step__icon::after,
+  .c-step__title::after {
+    background-color: $--steps-wait-line-color;
+  }
+  .c-step__dot {
+    background-color: currentColor;
+  }
+}
+
+.c-steps--dotted {
+  .c-step__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 $--steps-horizontal-gap;
+  }
+  .c-step__title::after {
+    background: none;
+  }
+
+  .c-step--wait::before,
+  .c-step--wait::after,
+  .c-step--process::after,
+  .c-step--error::after {
+    background-color: $--steps-wait-line-color;
+  }
+  .c-step--process::before,
+  .c-step--finish::before,
+  .c-step--finish::after,
+  .c-step--error::before {
+    background-color: $--primary-color;
+  }
+}
+
+.c-steps--dotted .c-step {
+  position: relative;
+  flex-direction: column;
+
+  &:not(:last-child)::after,
+  &:not(:first-child)::before {
+    position: absolute;
+    top: $--steps-dot-length / 2;
+    height: 1px;
+    content: '';
+  }
+
+  &:not(:last-child)::after {
+    right: 0;
+    left: 50%;
+  }
+
+  &:not(:first-child)::before {
+    right: 50%;
+    left: 0;
+  }
+}
+
+.c-step__dot {
+  z-index: 1;
+  width: $--steps-dot-length;
+  height: $--steps-dot-length;
+  margin: 0 auto $--steps-dot-length;
+  border-radius: $--steps-dot-length / 2;
+}
+
+.c-step--has-no-desc:last-child {
+  flex: none;
+}

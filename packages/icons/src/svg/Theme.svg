@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Theme</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="28"></rect>
+    </defs>
+    <g id="Theme" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="矩形" opacity="0.200000003"></g>
+            <path d="M11,27 L1,17" id="路径-133" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" mask="url(#mask-2)" transform="translate(6.000000, 22.000000) scale(-1, 1) translate(-6.000000, -22.000000) "></path>
+            <polygon id="星形" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round" mask="url(#mask-2)" transform="translate(16.595078, 11.434359) rotate(45.000000) translate(-16.595078, -11.434359) " points="16.595078 19.0054902 9.17867018 22.9343592 10.595078 14.612881 4.59507805 8.71957746 12.8868741 7.50549016 16.595078 -0.0656407956 20.303282 7.50549016 28.595078 8.71957746 22.595078 14.612881 24.0114859 22.9343592"></polygon>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<title>Tabs</title>
+<link rel="stylesheet" href="../styles/tabs.scss" />
+
+<style>
+  body {
+    max-width: 1200px;
+    margin: 30px auto;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .c-tabs {
+    margin-bottom: 40px;
+  }
+
+  .c-tab-pane {
+    padding: 16px 0;
+  }
+
+  .c-tabs--left .c-tab-pane,
+  .c-tabs--right .c-tab-pane {
+    padding: 8px 16px;
+  }
+
+  .c-tabs--right .c-tab-pane {
+    text-align: right;
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+<h2>常规，tabs在上</h2>
+<div class="c-tabs c-tabs--top">
+  <div class="c-tabs__nav-container">
+    <div class="c-tabs__nav" role="tablist">
+      <div
+        class="c-tabs__item c-tabs__item-active"
+        role="tab"
+        aria-selected="true"
+        aria-controls="panel-1"
+        id="tab-1"
+        tabindex="0"
+      >
+        Tab1
+      </div>
+      <div
+        class="c-tabs__item"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-2"
+        id="tab-2"
+        tabindex="-1"
+      >
+        Tab2
+      </div>
+      <div
+        class="c-tabs__item"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-3"
+        id="tab-3"
+        tabindex="-1"
+      >
+        Tab3
+      </div>
+      <div
+        class="c-tabs__item c-tabs__item-disabled"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-4"
+        id="tab-4"
+        tabindex="-1"
+      >
+        disabled
+      </div>
+    </div>
+    <div class="c-tabs__nav-bar" style="width: 57px;"></div>
+  </div>
+  <div class="c-tabs__pane-container">
+    <div
+      class="c-tab-pane"
+      id="panel-1"
+      role="tabpanel"
+      aria-labelledby="tab-1"
+    >
+      <p>I am content1.</p>
+    </div>
+    <div
+      class="c-tab-pane"
+      id="panel-2"
+      role="tabpanel"
+      hidden
+      aria-labelledby="tab-2"
+      hidden
+    >
+      <p>I am content2.</p>
+    </div>
+    <div
+      class="c-tab-pane"
+      id="panel-3"
+      role="tabpanel"
+      hidden
+      aria-labelledby="tab-3"
+      hidden
+    >
+      <p>I am content3.</p>
+    </div>
+    <div
+      class="c-tab-pane"
+      id="panel-4"
+      role="tabpanel"
+      hidden
+      aria-labelledby="tab-4"
+      hidden
+    >
+      <p>I am content4.</p>
+    </div>
+  </div>
+</div>
+
+<h2>tabs在下</h2>
+<div class="c-tabs c-tabs--bottom">
+  <div class="c-tabs__nav-container">
+    <div class="c-tabs__nav" role="tablist">
+      <div
+        class="c-tabs__item c-tabs__item-active"
+        role="tab"
+        aria-selected="true"
+        aria-controls="panel-1"
+        id="tab-1"
+        tabindex="0"
+      >
+        Tab1
+      </div>
+      <div
+        class="c-tabs__item"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-2"
+        id="tab-2"
+        tabindex="-1"
+      >
+        Tab2
+      </div>
+      <div
+        class="c-tabs__item"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-3"
+        id="tab-3"
+        tabindex="-1"
+      >
+        Tab3
+      </div>
+    </div>
+    <div class="c-tabs__nav-bar" style="width: 57px;"></div>
+  </div>
+  <div class="c-tabs__pane-container">
+    <div
+      class="c-tab-pane"
+      id="panel-1"
+      role="tabpanel"
+      aria-labelledby="tab-1"
+    >
+      <p>I am content1.</p>
+    </div>
+    <div
+      class="c-tab-pane"
+      id="panel-2"
+      role="tabpanel"
+      hidden
+      aria-labelledby="tab-2"
+      hidden
+    >
+      <p>I am content2.</p>
+    </div>
+    <div
+      class="c-tab-pane"
+      id="panel-3"
+      role="tabpanel"
+      hidden
+      aria-labelledby="tab-3"
+      hidden
+    >
+      <p>I am content3.</p>
+    </div>
+  </div>
+</div>
+
+<h2>tabs在左</h2>
+<div class="c-tabs c-tabs--left">
+  <div class="c-tabs__nav-container">
+    <div class="c-tabs__nav" role="tablist">
+      <div
+        class="c-tabs__item c-tabs__item-active"
+        role="tab"
+        aria-selected="true"
+        aria-controls="panel-1"
+        id="tab-1"
+        tabindex="0"
+      >
+        Tab1
+      </div>
+      <div
+        class="c-tabs__item"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-2"
+        id="tab-2"
+        tabindex="-1"
+      >
+        Tab2
+      </div>
+      <div
+        class="c-tabs__item"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-3"
+        id="tab-3"
+        tabindex="-1"
+      >
+        Tab3
+      </div>
+    </div>
+    <div class="c-tabs__nav-bar" style="height: 40px;"></div>
+  </div>
+  <div class="c-tabs__pane-container">
+    <div
+      class="c-tab-pane"
+      id="panel-1"
+      role="tabpanel"
+      aria-labelledby="tab-1"
+    >
+      <p>I am content1.</p>
+    </div>
+    <div
+      class="c-tab-pane"
+      id="panel-2"
+      role="tabpanel"
+      hidden
+      aria-labelledby="tab-2"
+      hidden
+    >
+      <p>I am content2.</p>
+    </div>
+    <div
+      class="c-tab-pane"
+      id="panel-3"
+      role="tabpanel"
+      hidden
+      aria-labelledby="tab-3"
+      hidden
+    >
+      <p>I am content3.</p>
+    </div>
+  </div>
+</div>
+
+<h2>tabs在右</h2>
+<div class="c-tabs c-tabs--right">
+  <div class="c-tabs__nav-container">
+    <div class="c-tabs__nav" role="tablist">
+      <div
+        class="c-tabs__item c-tabs__item-active"
+        role="tab"
+        aria-selected="true"
+        aria-controls="panel-1"
+        id="tab-1"
+        tabindex="0"
+      >
+        Tab1
+      </div>
+      <div
+        class="c-tabs__item"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-2"
+        id="tab-2"
+        tabindex="-1"
+      >
+        Tab2
+      </div>
+      <div
+        class="c-tabs__item"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-3"
+        id="tab-3"
+        tabindex="-1"
+      >
+        Tab3
+      </div>
+    </div>
+    <div class="c-tabs__nav-bar" style="height: 40px;"></div>
+  </div>
+  <div class="c-tabs__pane-container">
+    <div
+      class="c-tab-pane"
+      id="panel-1"
+      role="tabpanel"
+      aria-labelledby="tab-1"
+    >
+      <p>I am content1.</p>
+    </div>
+    <div
+      class="c-tab-pane"
+      id="panel-2"
+      role="tabpanel"
+      hidden
+      aria-labelledby="tab-2"
+      hidden
+    >
+      <p>I am content2.</p>
+    </div>
+    <div
+      class="c-tab-pane"
+      id="panel-3"
+      role="tabpanel"
+      hidden
+      aria-labelledby="tab-3"
+      hidden
+    >
+      <p>I am content3.</p>
+    </div>
+  </div>
+</div>
+
+<div class="c-tabs c-tabs--top">
+  <div class="c-tabs__nav-container">
+    <div class="c-tabs__nav" role="tablist">
+      <div
+        class="c-tabs__item c-tabs__item-active"
+        role="tab"
+        aria-selected="true"
+        aria-controls="panel-1"
+        id="tab-1"
+        tabindex="0"
+      >
+        <i class="c-icon--svg" style="margin-right: 6px;">
+          <svg viewBox="0 0 1024 1024">
+            <path
+              d="M658.285714 877.714286h146.285715V365.714286h21.723428L512 96.329143 197.705143 365.714286H219.428571v512h146.285715V585.142857h292.571428v292.571429zM512 0l512 438.857143h-146.285714v512H146.285714V438.857143H0l512-438.857143zM438.857143 658.285714v219.428572h146.285714V658.285714H438.857143z"
+              p-id="964"
+            ></path>
+          </svg>
+        </i>
+        Tab1
+      </div>
+      <div
+        class="c-tabs__item"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-2"
+        id="tab-2"
+        tabindex="-1"
+      >
+        <i class="c-icon--svg" style="margin-right: 6px;">
+          <svg viewBox="0 0 1024 1024">
+            <path
+              d="M658.285714 877.714286h146.285715V365.714286h21.723428L512 96.329143 197.705143 365.714286H219.428571v512h146.285715V585.142857h292.571428v292.571429zM512 0l512 438.857143h-146.285714v512H146.285714V438.857143H0l512-438.857143zM438.857143 658.285714v219.428572h146.285714V658.285714H438.857143z"
+              p-id="964"
+            ></path>
+          </svg>
+        </i>
+        Tab2
+      </div>
+      <div
+        class="c-tabs__item c-tabs__item-disabled"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-3"
+        id="tab-3"
+        tabindex="-1"
+      >
+        <i class="c-icon--svg" style="margin-right: 6px;">
+          <svg viewBox="0 0 1024 1024">
+            <path
+              d="M658.285714 877.714286h146.285715V365.714286h21.723428L512 96.329143 197.705143 365.714286H219.428571v512h146.285715V585.142857h292.571428v292.571429zM512 0l512 438.857143h-146.285714v512H146.285714V438.857143H0l512-438.857143zM438.857143 658.285714v219.428572h146.285714V658.285714H438.857143z"
+              p-id="964"
+            ></path>
+          </svg>
+        </i>
+        Tab3
+      </div>
+    </div>
+    <div class="c-tabs__nav-bar" style="width: 77px;"></div>
+  </div>
+  <div class="c-tabs__pane-container">
+    <div
+      class="c-tab-pane"
+      id="panel-1"
+      role="tabpanel"
+      aria-labelledby="tab-1"
+    >
+      <p>I am content1.</p>
+    </div>
+    <div
+      class="c-tab-pane"
+      id="panel-2"
+      role="tabpanel"
+      hidden
+      aria-labelledby="tab-2"
+      hidden
+    >
+      <p>I am content2.</p>
+    </div>
+    <div
+      class="c-tab-pane"
+      id="panel-3"
+      role="tabpanel"
+      hidden
+      aria-labelledby="tab-3"
+      hidden
+    >
+      <p>I am content3.</p>
+    </div>
+  </div>
+</div>
+
+<h2>卡片形式</h2>
+<div class="c-tabs c-tabs--card">
+  <div class="c-tabs__nav-container">
+    <div class="c-tabs__nav" role="tablist">
+      <div
+        class="c-tabs__item"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-1"
+        id="tab-1"
+        tabindex="-1"
+      >
+        Tab1
+      </div>
+      <div
+        class="c-tabs__item c-tabs__item-active"
+        role="tab"
+        aria-selected="true"
+        aria-controls="panel-2"
+        id="tab-2"
+        tabindex="0"
+      >
+        Tab2
+      </div>
+      <div
+        class="c-tabs__item"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-3"
+        id="tab-3"
+        tabindex="-1"
+      >
+        Tab3
+      </div>
+      <div
+        class="c-tabs__item c-tabs__item-disabled"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-4"
+        id="tab-4"
+        tabindex="-1"
+      >
+        disabled
+      </div>
+    </div>
+  </div>
+  <div class="c-tabs__pane-container">
+    <div
+      class="c-tab-pane"
+      id="panel-1"
+      role="tabpanel"
+      aria-labelledby="tab-1"
+    >
+      <p>I am content1.</p>
+    </div>
+    <div
+      class="c-tab-pane"
+      id="panel-2"
+      role="tabpanel"
+      hidden
+      aria-labelledby="tab-2"
+      hidden
+    >
+      <p>I am content2.</p>
+    </div>
+    <div
+      class="c-tab-pane"
+      id="panel-3"
+      role="tabpanel"
+      hidden
+      aria-labelledby="tab-3"
+      hidden
+    >
+      <p>I am content3.</p>
+    </div>
+    <div
+      class="c-tab-pane"
+      id="panel-4"
+      role="tabpanel"
+      hidden
+      aria-labelledby="tab-4"
+      hidden
+    >
+      <p>I am content4.</p>
+    </div>
+  </div>
+</div>
+
+<h2>卡片形式，可动态增减</h2>
+<div class="c-tabs c-tabs--card c-tabs-editable">
+  <div class="c-tabs__nav-container">
+    <div class="c-tabs__nav" role="tablist">
+      <div
+        class="c-tabs__item"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-1"
+        id="tab-1"
+        tabindex="-1"
+      >
+        Tab1
+        <!-- <i class="c-icon--svg c-icon--close-tab">
+          <svg viewBox="0 0 1024 1024">
+            <path
+              d="M460.28019 512L279.260854 330.980664l51.71981-51.71981 181.019336 181.019336L693.019336 279.260854l51.71981 51.71981L563.71981 512 744.739146 693.019336l-51.71981 51.71981L512 563.71981 330.980664 744.739146l-51.71981-51.71981 181.019336-181.019336z"
+            ></path>
+          </svg>
+        </i> -->
+      </div>
+      <div
+        class="c-tabs__item c-tabs__item--closable c-tabs__item-active"
+        role="tab"
+        aria-selected="true"
+        aria-controls="panel-2"
+        id="tab-2"
+        tabindex="0"
+      >
+        Tab2
+        <i class="c-icon--svg c-icon--close-tab">
+          <svg viewBox="0 0 1024 1024">
+            <path
+              d="M460.28019 512L279.260854 330.980664l51.71981-51.71981 181.019336 181.019336L693.019336 279.260854l51.71981 51.71981L563.71981 512 744.739146 693.019336l-51.71981 51.71981L512 563.71981 330.980664 744.739146l-51.71981-51.71981 181.019336-181.019336z"
+            ></path>
+          </svg>
+        </i>
+      </div>
+      <div
+        class="c-tabs__item c-tabs__item--closable"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-3"
+        id="tab-3"
+        tabindex="-1"
+      >
+        Tab3
+        <i class="c-icon--svg c-icon--close-tab">
+          <svg viewBox="0 0 1024 1024">
+            <path
+              d="M460.28019 512L279.260854 330.980664l51.71981-51.71981 181.019336 181.019336L693.019336 279.260854l51.71981 51.71981L563.71981 512 744.739146 693.019336l-51.71981 51.71981L512 563.71981 330.980664 744.739146l-51.71981-51.71981 181.019336-181.019336z"
+            ></path>
+          </svg>
+        </i>
+      </div>
+      <div
+        class="c-tabs__item c-tabs__item--closable c-tabs__item-disabled"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-4"
+        id="tab-4"
+        tabindex="-1"
+      >
+        disabled
+        <i class="c-icon--svg c-icon--close-tab">
+          <svg viewBox="0 0 1024 1024">
+            <path
+              d="M460.28019 512L279.260854 330.980664l51.71981-51.71981 181.019336 181.019336L693.019336 279.260854l51.71981 51.71981L563.71981 512 744.739146 693.019336l-51.71981 51.71981L512 563.71981 330.980664 744.739146l-51.71981-51.71981 181.019336-181.019336z"
+            ></path>
+          </svg>
+        </i>
+      </div>
+    </div>
+    <div class="add-btn-container">
+      <button></button>
+    </div>
+  </div>
+  <div class="c-tabs__pane-container">
+    <div
+      class="c-tab-pane"
+      id="panel-1"
+      role="tabpanel"
+      aria-labelledby="tab-1"
+    >
+      <p>I am content1.</p>
+    </div>
+    <div
+      class="c-tab-pane"
+      id="panel-2"
+      role="tabpanel"
+      hidden
+      aria-labelledby="tab-2"
+      hidden
+    >
+      <p>I am content2.</p>
+    </div>
+    <div
+      class="c-tab-pane"
+      id="panel-3"
+      role="tabpanel"
+      hidden
+      aria-labelledby="tab-3"
+      hidden
+    >
+      <p>I am content3.</p>
+    </div>
+    <div
+      class="c-tab-pane"
+      id="panel-4"
+      role="tabpanel"
+      hidden
+      aria-labelledby="tab-4"
+      hidden
+    >
+      <p>I am content4.</p>
+    </div>
+  </div>
+</div>
+
+<h2>带选择器样式</h2>
+waiting for "dropdown"...

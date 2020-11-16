@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>EyeClosed</title>
+    <desc>Created with Sketch.</desc>
+    <g id="EyeClosed" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="蒙版" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M1,11 C3.03647514,15.0974604 8.06394997,18 14,18 C19.9339293,18 24.9620837,15.0951429 27,11" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M14,22 L14,19" id="路径-47" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M5.04043242,20.0044913 L5.01676159,16.8491041" id="路径-47" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(5.028597, 18.426798) rotate(30.000000) translate(-5.028597, -18.426798) "></path>
+            <path d="M22.9887705,20.0044913 L22.9650996,16.8491041" id="路径-47" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(22.976935, 18.426798) rotate(150.429809) translate(-22.976935, -18.426798) "></path>
+        </g>
+    </g>
+</svg>

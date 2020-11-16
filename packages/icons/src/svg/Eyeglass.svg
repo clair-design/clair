@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Eyeglass</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Eyeglass" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" cx="6.5" cy="19.5" r="5.5"></circle>
+            <path d="M11.252607,18.3354379 C12.0757748,18.7601718 13.0098799,19 14,19 L14,19 C14.9991746,19 15.9413052,18.7557653 16.7699486,18.3237391" id="路径" stroke="#6E6E6E" stroke-width="2" transform="translate(14.011278, 18.661870) scale(1, -1) translate(-14.011278, -18.661870) "></path>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" cx="21.5" cy="19.5" r="5.5"></circle>
+            <path d="M1.62958049,16.9192111 L6.48031264,4.21162233 C6.79560187,3.47654294 7.51852846,3 8.31837158,3 L9,3" id="形状" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M19,16.9192111 L23.8503126,4.21162233 C24.1656019,3.47654294 24.8885285,3 25.6883716,3 L26.37,3" id="形状" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(22.685000, 9.959606) scale(-1, 1) translate(-22.685000, -9.959606) "></path>
+        </g>
+    </g>
+</svg>

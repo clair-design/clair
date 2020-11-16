@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>QuestionCircle</title>
+    <desc>Created with Sketch.</desc>
+    <g id="QuestionCircle" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="蒙版" opacity="0.200000003" x="0" y="0" width="24" height="24"></rect>
+            <circle id="椭圆形" fill="#6E6E6E" cx="12" cy="12" r="11.1428571"></circle>
+            <path d="M8.57370057,10.0368121 C8.57370057,9.48342403 8.78862987,7.00714384 11.4550482,6.65185547 C13.8388572,6.33422353 15.3694984,8.3520672 14.8394352,10.1837731 C14.433252,11.5873946 13.4022276,12.0901879 12.6971402,12.6532312 C12.6164202,12.7176896 12.1788006,13.0576471 12.0620928,13.4360165 C12.0291297,13.5428837 12.0084321,13.7218466 12,13.9729054" id="路径-2" stroke="#FFFFFF" stroke-width="1.71428571" stroke-linecap="round"></path>
+            <path d="M12,17.1378479 L12,17.1500637" id="路径-31" stroke="#FFFFFF" stroke-width="1.71428571" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

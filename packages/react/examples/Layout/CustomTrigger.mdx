@@ -1,0 +1,56 @@
+## 自定义展开收起
+
+使用 `trigger` 属性可以对展开、收起按钮进行定制。使用 `width` 和 `collapsedWidth` 可以分别指定侧边栏展开和收起时的宽度。
+
+```jsx live=true className=s-layout-example
+function Demo() {
+  const [collapsed, setCollapsed] = React.useState(false);
+  const trigger = collapsed ? <IconArrowheadRight /> : <IconArrowheadLeft />;
+  const onCollapse = ({ detail: { collapsed } }) => setCollapsed(collapsed);
+
+  return (
+    <Layout>
+      <Aside
+        collapsible
+        trigger={trigger}
+        onCollapse={onCollapse}
+        collapsedWidth={100}
+      >
+        Aside
+      </Aside>
+      <Layout>
+        <Header>Header</Header>
+        <Main>Main</Main>
+        <Footer>Footer</Footer>
+      </Layout>
+    </Layout>
+  );
+}
+```
+
+如果把切换展开收起的按钮放在侧边栏之外，可以将默认的按钮隐藏，然后通过 `collapsed` 控制展开收起。
+
+```jsx live=true className=s-layout-example
+function Demo() {
+  const [collapsed, setCollapsed] = React.useState(false);
+  const onClick = () => setCollapsed(!collapsed);
+  const togglerStyle = { minWidth: 0, border: 0, background: "transparent" };
+
+  return (
+    <Layout>
+      <Aside collapsible trigger={null} collapsed={collapsed}>
+        aside
+      </Aside>
+      <Layout>
+        <Header style={{ justifyContent: "left" }}>
+          <Button onClick={onClick} style={togglerStyle}>
+            {collapsed ? <IconMenuUnfold /> : <IconMenuFold />}
+          </Button>
+        </Header>
+        <Main>main</Main>
+        <Footer>footer</Footer>
+      </Layout>
+    </Layout>
+  );
+}
+```

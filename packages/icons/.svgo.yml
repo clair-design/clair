@@ -1,0 +1,56 @@
+# replace default config
+
+# multipass: true
+# full: true
+
+plugins:
+
+  # - name
+  #
+  # or:
+  # - name: false
+  # - name: true
+  #
+  # or:
+  # - name:
+  #     param1: 1
+  #     param2: 2
+
+  - removeDoctype
+  - removeComments
+  - removeMetadata
+  - removeEditorsNSData
+  - cleanupAttrs
+  - cleanupIDs
+  - removeRasterImages
+  - removeUselessDefs
+  - removeUnknownsAndDefaults
+  - removeNonInheritableGroupAttrs
+  - removeUselessStrokeAndFill
+  - cleanupEnableBackground
+  - removeHiddenElems
+  - removeEmptyText
+  - collapseGroups
+  - removeEmptyAttrs
+  - removeEmptyContainers
+  - removeUnusedNS
+  - sortAttrs
+  - sortDefsChildren
+  - removeTitle
+  - removeDesc
+  - removeDimensions: true
+  - removeXMLNS: true
+  - convertShapeToPath: false
+  - removeAttrs:
+      attrs:
+        - 'stroke-width'
+        - 'mask'
+        - 'xlink'
+
+# configure the indent (default 4 spaces) used by `--pretty` here:
+#
+# @see https://github.com/svg/svgo/blob/master/lib/svgo/js2svg.js#L6 for more config options
+#
+# js2svg:
+#  pretty: true
+#  indent: '  '

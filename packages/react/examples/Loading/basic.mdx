@@ -1,0 +1,50 @@
+## 使用场景
+
+用于页面和区块的加载中状态。
+
+```tsx live=true
+<>
+  <Loading>
+    <div style={{ padding: "30px 50px", background: "#ddd" }}></div>
+  </Loading>
+</>
+```
+
+可以直接把内容内嵌到 Loading 中，将现有容器变为加载状态。
+
+按钮加载中
+
+```tsx live=true
+<>
+  <Loading size="small">
+    <Button>按钮加载</Button>
+  </Loading>
+</>
+```
+
+卡片加载中
+
+```tsx live=true
+function Demo() {
+  const [loading, setLoading] = React.useState(true);
+  const onChange = e => {
+    setLoading(!loading);
+  };
+
+  return (
+    <div>
+      <div style={{ marginBottom: 10 }}>
+        Loading state：
+        <Switch checked={loading} onChange={onChange} />
+      </div>
+      <Loading loading={loading}>
+        <Card title="这是标题" actions="这是操作" id="card">
+          <p>这是内容1</p>
+          <p>这是内容2</p>
+          <p>这是内容3</p>
+        </Card>
+      </Loading>
+    </div>
+  );
+}
+```

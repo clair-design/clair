@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<title>Descriptions</title>
+<link rel="stylesheet" href="../styles/descriptions.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body {
+    margin: 30px auto;
+    max-width: 1200px;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+
+  p {
+    margin-bottom: 20px;
+    color: #999;
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+<h1>Descriptions 描述列表</h1>
+
+<h2>定义</h2>
+<p>成组展示多个只读字段。</p>
+
+<h2>使用场景</h2>
+<p>常见于详情页的信息展示。</p>
+
+<h2>基础样式</h2>
+<p>简单的展示。</p>
+
+<table class="c-descriptions">
+  <tbody>
+    <tr class="c-descriptions-row">
+      <td class="c-descriptions-item">
+        <span class="c-descriptions-item__label">产品名称：</span>
+        <span class="c-descriptions-item__content">ToB设计规范</span>
+      </td>
+      <td class="c-descriptions-item">
+        <span class="c-descriptions-item__label">版本号：</span>
+        <span class="c-descriptions-item__content">V1.0.0</span>
+      </td>
+      <td class="c-descriptions-item">
+        <span class="c-descriptions-item__label">开发团队：</span>
+        <span class="c-descriptions-item__content">前端部</span>
+      </td>
+    </tr>
+    <tr class="c-descriptions-row">
+      <td class="c-descriptions-item">
+        <span class="c-descriptions-item__label">发布时间：</span>
+        <span class="c-descriptions-item__content">2019-12-16 10:40:35</span>
+      </td>
+      <td class="c-descriptions-item">
+        <span class="c-descriptions-item__label">注册信息：</span>
+        <span class="c-descriptions-item__content">设计公司</span>
+      </td>
+      <td class="c-descriptions-item">
+        <span class="c-descriptions-item__label">设计团队：</span>
+        <span class="c-descriptions-item__content">用户体验部</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>带边框样式</h2>
+<p>带边框和背景颜色列表。</p>
+
+<table class="c-descriptions c-descriptions--bordered">
+  <tbody>
+    <tr class="c-descriptions-row">
+      <td class="c-descriptions-item__label">产品名称</td>
+      <td class="c-descriptions-item__content">ToB设计规范</td>
+      <td class="c-descriptions-item__label">版本号</td>
+      <td class="c-descriptions-item__content">V1.0.0</td>
+      <td class="c-descriptions-item__label">开发团队</td>
+      <td class="c-descriptions-item__content">前端部</td>
+    </tr>
+    <tr class="c-descriptions-row">
+      <td class="c-descriptions-item__label">发布时间</td>
+      <td class="c-descriptions-item__content">2019-12-16 10:40:35</td>
+      <td class="c-descriptions-item__label">注册信息</td>
+      <td class="c-descriptions-item__content">设计公司</td>
+      <td class="c-descriptions-item__label">设计团队</td>
+      <td class="c-descriptions-item__content">体验部</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>垂直样式</h2>
+<p>垂直的列表。</p>
+
+<table class="c-descriptions">
+  <tbody>
+    <tr class="c-descriptions-row">
+      <td class="c-descriptions-item">
+        <span class="c-descriptions-item__label">产品名称：</span>
+      </td>
+      <td class="c-descriptions-item">
+        <span class="c-descriptions-item__label">版本号：</span>
+      </td>
+      <td class="c-descriptions-item">
+        <span class="c-descriptions-item__label">开发团队：</span>
+      </td>
+    </tr>
+    <tr class="c-descriptions-row">
+      <td class="c-descriptions-item">
+        <span class="c-descriptions-item__content">ToB设计规范</span>
+      </td>
+      <td class="c-descriptions-item">
+        <span class="c-descriptions-item__content">V1.0.0</span>
+      </td>
+      <td class="c-descriptions-item">
+        <span class="c-descriptions-item__content">前端部</span>
+      </td>
+    </tr>
+    <tr class="c-descriptions-row">
+      <td colspan="3" class="c-descriptions-item">
+        <span class="c-descriptions-item__label">备注信息：</span>
+      </td>
+    </tr>
+    <tr class="c-descriptions-row">
+      <td colspan="3" class="c-descriptions-item">
+        <span class="c-descriptions-item__content">
+          迭代持续中，更多功能敬请期待
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>带边框垂直样式</h2>
+<p>垂直带边框和背景颜色的列表。</p>
+
+<table class="c-descriptions c-descriptions--bordered">
+  <tbody>
+    <tr class="c-descriptions-row">
+      <td class="c-descriptions-item__label">产品名称</td>
+      <td class="c-descriptions-item__label">发布时间</td>
+      <td class="c-descriptions-item__label">版本号</td>
+      <td class="c-descriptions-item__label">备注信息</td>
+    </tr>
+    <tr class="c-descriptions-row">
+      <td class="c-descriptions-item__content">ToB设计规范</td>
+      <td class="c-descriptions-item__content">2019-12-16 10:40:35</td>
+      <td class="c-descriptions-item__content">V1.0.0</td>
+      <td class="c-descriptions-item__content">迭代持续中，更多功能敬请期待</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>自定义尺寸</h2>
+<p>自定义尺寸，适应在各种容器中展示。</p>
+
+<p>large</p>
+<table class="c-descriptions c-descriptions--bordered c-descriptions--large">
+  <tbody>
+    <tr class="c-descriptions-row">
+      <td class="c-descriptions-item__label">产品名称</td>
+      <td class="c-descriptions-item__content">ToB设计规范</td>
+      <td class="c-descriptions-item__label">版本号</td>
+      <td class="c-descriptions-item__content">V1.0.0</td>
+      <td class="c-descriptions-item__label">开发团队</td>
+      <td class="c-descriptions-item__content">前端部</td>
+    </tr>
+    <tr class="c-descriptions-row">
+      <td class="c-descriptions-item__label">发布时间</td>
+      <td class="c-descriptions-item__content">2019-12-16 10:40:35</td>
+      <td class="c-descriptions-item__label">注册信息</td>
+      <td class="c-descriptions-item__content">设计公司</td>
+      <td class="c-descriptions-item__label">设计团队</td>
+      <td class="c-descriptions-item__content">体验部</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>normal</p>
+<table class="c-descriptions c-descriptions--bordered">
+  <tbody>
+    <tr class="c-descriptions-row">
+      <td class="c-descriptions-item__label">产品名称</td>
+      <td class="c-descriptions-item__content">ToB设计规范</td>
+      <td class="c-descriptions-item__label">版本号</td>
+      <td class="c-descriptions-item__content">V1.0.0</td>
+      <td class="c-descriptions-item__label">开发团队</td>
+      <td class="c-descriptions-item__content">前端部</td>
+    </tr>
+    <tr class="c-descriptions-row">
+      <td class="c-descriptions-item__label">发布时间</td>
+      <td class="c-descriptions-item__content">2019-12-16 10:40:35</td>
+      <td class="c-descriptions-item__label">注册信息</td>
+      <td class="c-descriptions-item__content">设计公司</td>
+      <td class="c-descriptions-item__label">设计团队</td>
+      <td class="c-descriptions-item__content">体验部</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>small</p>
+<table class="c-descriptions c-descriptions--bordered c-descriptions--small">
+  <tbody>
+    <tr class="c-descriptions-row">
+      <td class="c-descriptions-item__label">产品名称</td>
+      <td class="c-descriptions-item__content">ToB设计规范</td>
+      <td class="c-descriptions-item__label">版本号</td>
+      <td class="c-descriptions-item__content">V1.0.0</td>
+      <td class="c-descriptions-item__label">开发团队</td>
+      <td class="c-descriptions-item__content">前端部</td>
+    </tr>
+    <tr class="c-descriptions-row">
+      <td class="c-descriptions-item__label">发布时间</td>
+      <td class="c-descriptions-item__content">2019-12-16 10:40:35</td>
+      <td class="c-descriptions-item__label">注册信息</td>
+      <td class="c-descriptions-item__content">设计公司</td>
+      <td class="c-descriptions-item__label">设计团队</td>
+      <td class="c-descriptions-item__content">体验部</td>
+    </tr>
+  </tbody>
+</table>

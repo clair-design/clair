@@ -1,0 +1,97 @@
+<!-- 自定义列 -->
+
+```tsx live=true
+function CustomColumn() {
+  const btnStyle = {
+    marginRight: "12px",
+    textDecoration: "none",
+    color: "#006bff"
+  };
+
+  const columns = [
+    { title: "日期", prop: "date" },
+    { title: "名称", prop: "name" },
+    {
+      title: "标签",
+      prop: "tags",
+      render: ({ value, row, index }) => (
+        <>
+          {value.map((val, index) => (
+            <Tag color="blue" key={index} style={{ marginRight: "12px" }}>
+              {val}
+            </Tag>
+          ))}
+        </>
+      )
+    },
+    {
+      title: "操作",
+      prop: "action",
+      render: ({ value, row, index }) => (
+        <>
+          <a href="javascript:void(0)" style={btnStyle}>
+            编辑
+          </a>
+          <a href="javascript:void(0)" style={btnStyle}>
+            查看
+          </a>
+          <a
+            style={btnStyle}
+            onClick={() => onDelete(value, row, index)}
+            href="javascript:void(0)"
+          >
+            删除
+          </a>
+        </>
+      )
+    }
+  ];
+
+  const defaultData = [
+    { date: "2019-01-01", name: "项目名称 1", tags: ["标签1"] },
+    { date: "2019-01-02", name: "项目名称 2", tags: ["标签1", "标签2"] },
+    { date: "2019-01-03", name: "项目名称 3", tags: ["标签3"] }
+  ];
+
+  const [dataSource, setDataSource] = React.useState(defaultData);
+  const [current, setCurrent] = React.useState({});
+  const [visible, setVisible] = React.useState(false);
+
+  // methods
+  const onDelete = (value, record, index) => {
+    setCurrent({
+      ...record,
+      index
+    });
+    setVisible(true);
+  };
+  const onCancel = () => {
+    setCurrent({});
+    setVisible(false);
+  };
+  const onConfirm = () => {
+    const _dataSource = [...dataSource];
+    const { index } = current;
+    _dataSource.splice(index, 1);
+    setDataSource(_dataSource);
+    onCancel();
+  };
+
+  return (
+    <div>
+      <Table columns={columns} dataSource={dataSource} rowKey="name" />
+
+      <Modal
+        visible={visible}
+        onConfirm={onConfirm}
+        onCancel={onCancel}
+        title={`确定需要删除 ${current.name} 吗？`}
+      >
+        <p>名称：{current.name}</p>
+        <p>日期：{current.date}</p>
+        <p>标签：{current.tags}</p>
+      </Modal>
+    </div>
+  );
+}
+```

@@ -1,0 +1,49 @@
+@import 'variables';
+
+.c-upload {
+  display: inline-block;
+}
+
+.c-upload--hidden {
+  display: none;
+}
+
+.c-upload__loading-icon {
+  padding-right: $--upload--loading-icon-padding-right;
+}
+
+.c-upload__drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: $--upload--drop-width;
+  height: $--upload--drop-height;
+  font-size: 14px;
+  border: 1px solid $--upload--drop-border-color;
+  pointer-events: none;
+}
+
+.c-upload__drop--enter {
+  background-color: $--upload--drop-enter-background-color;
+  border: 1px dashed $--upload--drop-enter-border-color;
+}
+
+.c-upload__drop-icon {
+  padding-top: 42px;
+  color: $--upload--drop-text-color;
+  font-size: 34px;
+  stroke-width: 2px;
+}
+
+.c-upload__drop-text {
+  margin: 0;
+  padding-top: 20px;
+  color: $--upload--drop-text-color;
+  line-height: 22px;
+}
+
+.c-upload__drop-accept-text {
+  margin: 0;
+  color: $--upload--drop-accept-text-color;
+  line-height: 22px;
+}

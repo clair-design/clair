@@ -1,0 +1,67 @@
+<!-- 表头分组 -->
+
+```tsx live=true
+function Index() {
+  const dataSource = [
+    {
+      date: "2019-01-01",
+      name: "企业名称 1",
+      city: "北京市",
+      district: "朝阳区",
+      street: "酒仙桥路",
+      amount: 12234,
+      note: ""
+    },
+    {
+      date: "2019-01-02",
+      name: "企业名称 2",
+      city: "广东省 广州市",
+      district: "越秀区",
+      street: "东湖路",
+      amount: 8734,
+      note: ""
+    },
+    {
+      date: "2019-01-03",
+      name: "企业名称 3",
+      city: "上海市",
+      district: "黄浦区",
+      street: "南京东路",
+      amount: 44654,
+      note: "提交信息不完整"
+    }
+  ];
+  const columns = [
+    { title: "日期", prop: "date", fixed: "left" },
+    {
+      title: "基础信息",
+      prop: "baseInfo",
+      children: [
+        { title: "名称", prop: "name" },
+        {
+          title: "地址",
+          prop: "address",
+          children: [
+            { title: "省市", prop: "city" },
+            { title: "区县", prop: "district" },
+            { title: "街道", prop: "street" }
+          ]
+        }
+      ]
+    },
+    {
+      title: "附加信息",
+      prop: "otherInfo",
+      children: [
+        { title: "金额(元)", prop: "amount" },
+        { title: "备注", prop: "note" }
+      ]
+    }
+  ];
+  return (
+    <div>
+      <Table dataSource={dataSource} columns={columns} bordered rowKey="name" />
+    </div>
+  );
+}
+```

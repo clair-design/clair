@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Coffee</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Coffee" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M1,9 L23,9 L23,21 C23,24.3137085 20.3137085,27 17,27 L7,27 C3.6862915,27 1,24.3137085 1,21 L1,9 Z" id="矩形" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round"></path>
+            <path d="M22,11 L25,11 C26.1045695,11 27,11.8954305 27,13 L27,19 C27,20.1045695 26.1045695,21 25,21 L22,21" id="路径-53" stroke="#6E6E6E" stroke-width="2"></path>
+            <path d="M6,1 L6,5" id="路径-54" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M12,1 L12,5" id="路径-54" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M18,1 L18,5" id="路径-54" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,56 @@
+# Avatar 头像
+
+## 定义
+
+表达用户信息相关的图片
+
+## 使用场景
+
+需要提示当前用户信息时；
+一般情况下头像与用户名结合使用；
+可以根据业务场景识别用户在线、离线、忙碌等状态；
+
+## 基础样式
+
+提供三种尺寸，两种形状的头像
+
+```tsx live=true className=s-avatar-demo
+<>
+  <Avatar size="large" />
+  <Avatar />
+  <Avatar size="small"></Avatar>
+  <Avatar shape="square" size="large" />
+  <Avatar shape="square" />
+  <Avatar shape="square" size="small" />
+</>
+```
+
+## 头像类型
+
+头像支持三种类型：Icon、字符和图片，其中 Icon 和字符颜色及背景色可自定义。
+
+```tsx live=true className=s-avatar-demo
+<>
+  <Avatar />
+  <Avatar>N</Avatar>
+  <Avatar>NA</Avatar>
+  <Avatar src="https://p1.ssl.qhimg.com/t01c746959090f19f97.jpg" />
+  <Avatar backgroundColor="#57617B" color="#FFF">
+    N
+  </Avatar>
+  <Avatar backgroundColor="#006BFF" color="#FFF" />
+</>
+```
+
+## API
+
+### Props
+
+| Name             | Description          | Type                                  | Required | Default    |
+| ---------------- | -------------------- | ------------------------------------- | -------- | ---------- |
+| shape            | 形状                 | `"circle"` \| `"square"`              | `false`  | `"circle"` |
+| size             | 大小                 | `"large"` \| `"normal"` \| `"small"`  | `false`  | `"normal"` |
+| src              | 头像图片的资源地址   | `string`                              | `false`  | -          |
+| children         | 字符头像             | `React.ReactNode`(`string` preferred) | `false`  | -          |
+| background-color | icon/text 的背景颜色 | `string`                              | `false`  | -          |
+| color            | icon/text 的颜色     | `string`                              | `false`  | -          |

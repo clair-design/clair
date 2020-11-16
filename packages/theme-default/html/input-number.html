@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<title>InputNumber 计数器</title>
+<link rel="stylesheet" href="../styles/input-number.scss" />
+<!-- <script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script> -->
+
+<style>
+  body {
+    margin: 30px auto;
+    max-width: 1200px;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+</style>
+
+<h1>InputNumber 计数器</h1>
+
+<h2>基础用法</h2>
+<div class="c-input-number c-input-number--normal c-input-number--left-right">
+  <span class="c-input-number__controls c-input-number__decrease">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M1 6h12v2H1z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <span class="c-input-number__controls c-input-number__increase">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M6 6V1h2v5h5v2H8v5H6V8H1V6h5z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <div class="c-input-number__input">
+    <input class="c-input-number__inner" value="1" autocomplete="off" />
+  </div>
+</div>
+
+<h2>禁用状态</h2>
+<div
+  class="c-input-number c-input-number--large c-input-number--left-right"
+  aria-disabled="true"
+>
+  <span class="c-input-number__controls c-input-number__decrease">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M1 6h12v2H1z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <span class="c-input-number__controls c-input-number__increase">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M6 6V1h2v5h5v2H8v5H6V8H1V6h5z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <div class="c-input-number__input">
+    <input
+      class="c-input-number__inner"
+      value="1"
+      autocomplete="off"
+      disabled="disabled"
+    />
+  </div>
+</div>
+
+<div
+  class="c-input-number c-input-number--normal c-input-number--left-right"
+  aria-disabled="true"
+>
+  <span class="c-input-number__controls c-input-number__decrease">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M1 6h12v2H1z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <span class="c-input-number__controls c-input-number__increase">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M6 6V1h2v5h5v2H8v5H6V8H1V6h5z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <div class="c-input-number__input">
+    <input
+      class="c-input-number__inner"
+      value="1"
+      autocomplete="off"
+      disabled="disabled"
+    />
+  </div>
+</div>
+
+<div
+  class="c-input-number c-input-number--small c-input-number--left-right"
+  aria-disabled="true"
+>
+  <span class="c-input-number__controls c-input-number__decrease">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M1 6h12v2H1z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <span class="c-input-number__controls c-input-number__increase">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M6 6V1h2v5h5v2H8v5H6V8H1V6h5z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <div class="c-input-number__input">
+    <input
+      class="c-input-number__inner"
+      value="1"
+      autocomplete="off"
+      disabled="disabled"
+    />
+  </div>
+</div>
+
+<h2>步数</h2>
+<div class="c-input-number c-input-number--normal c-input-number--left-right">
+  <span class="c-input-number__controls c-input-number__decrease">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M1 6h12v2H1z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <span class="c-input-number__controls c-input-number__increase">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M6 6V1h2v5h5v2H8v5H6V8H1V6h5z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <div class="c-input-number__input">
+    <input
+      class="c-input-number__inner"
+      value="1"
+      autocomplete="off"
+      disabled="disabled"
+    />
+  </div>
+</div>
+
+<h2>固定步数</h2>
+<div class="c-input-number c-input-number--normal c-input-number--left-right">
+  <span class="c-input-number__controls c-input-number__decrease">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M1 6h12v2H1z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <span class="c-input-number__controls c-input-number__increase">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M6 6V1h2v5h5v2H8v5H6V8H1V6h5z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <div class="c-input-number__input">
+    <input
+      class="c-input-number__inner"
+      value="1"
+      autocomplete="off"
+      disabled="disabled"
+    />
+  </div>
+</div>
+
+<h2>精度</h2>
+<div class="c-input-number c-input-number--normal c-input-number--left-right">
+  <span class="c-input-number__controls c-input-number__decrease">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M1 6h12v2H1z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <span class="c-input-number__controls c-input-number__increase">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M6 6V1h2v5h5v2H8v5H6V8H1V6h5z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <div class="c-input-number__input">
+    <input
+      class="c-input-number__inner"
+      value="1"
+      autocomplete="off"
+      disabled="disabled"
+    />
+  </div>
+</div>
+
+<h2>尺寸</h2>
+<!-- 大尺寸 -->
+<div class="c-input-number c-input-number--large c-input-number--left-right">
+  <span class="c-input-number__controls c-input-number__decrease">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M1 6h12v2H1z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <span class="c-input-number__controls c-input-number__increase">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M6 6V1h2v5h5v2H8v5H6V8H1V6h5z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <div class="c-input-number__input">
+    <input class="c-input-number__inner" value="1" autocomplete="off" />
+  </div>
+</div>
+<!-- 基础尺寸 -->
+<div class="c-input-number c-input-number--normal c-input-number--left-right">
+  <span class="c-input-number__controls c-input-number__decrease">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M1 6h12v2H1z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <span class="c-input-number__controls c-input-number__increase">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M6 6V1h2v5h5v2H8v5H6V8H1V6h5z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <div class="c-input-number__input">
+    <input class="c-input-number__inner" value="1" autocomplete="off" />
+  </div>
+</div>
+
+<!-- 小尺寸 -->
+<div class="c-input-number c-input-number--small c-input-number--left-right">
+  <span class="c-input-number__controls c-input-number__decrease">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M1 6h12v2H1z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <span class="c-input-number__controls c-input-number__increase">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M6 6V1h2v5h5v2H8v5H6V8H1V6h5z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <div class="c-input-number__input">
+    <input class="c-input-number__inner" value="1" autocomplete="off" />
+  </div>
+</div>
+
+<h2>按钮位置</h2>
+<div class="c-input-number c-input-number--large c-input-number--up-down">
+  <span class="c-input-number__controls c-input-number__decrease">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path
+          d="M2.924 5.076a.6.6 0 0 0-.848.848L7 10.85l4.924-4.925a.6.6 0 0 0-.848-.848L7 9.15 2.924 5.076z"
+          fill-rule="nonzero"
+        />
+      </svg>
+    </i>
+  </span>
+  <span class="c-input-number__controls c-input-number__increase">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path
+          d="M2.924 9.924a.6.6 0 0 1-.848-.848L7 4.15l4.924 4.925a.6.6 0 0 1-.848.848L7 5.85 2.924 9.924z"
+          fill-rule="nonzero"
+        />
+      </svg>
+    </i>
+  </span>
+  <div class="c-input-number__input">
+    <input class="c-input-number__inner" value="1" autocomplete="off" />
+  </div>
+</div>
+
+<div class="c-input-number c-input-number--normal c-input-number--up-down">
+  <span class="c-input-number__controls c-input-number__decrease">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path
+          d="M2.924 5.076a.6.6 0 0 0-.848.848L7 10.85l4.924-4.925a.6.6 0 0 0-.848-.848L7 9.15 2.924 5.076z"
+          fill-rule="nonzero"
+        />
+      </svg>
+    </i>
+  </span>
+  <span class="c-input-number__controls c-input-number__increase">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path
+          d="M2.924 9.924a.6.6 0 0 1-.848-.848L7 4.15l4.924 4.925a.6.6 0 0 1-.848.848L7 5.85 2.924 9.924z"
+          fill-rule="nonzero"
+        />
+      </svg>
+    </i>
+  </span>
+  <div class="c-input-number__input">
+    <input class="c-input-number__inner" value="1" autocomplete="off" />
+  </div>
+</div>
+
+<div class="c-input-number c-input-number--small c-input-number--up-down">
+  <span class="c-input-number__controls c-input-number__decrease">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path
+          d="M2.924 5.076a.6.6 0 0 0-.848.848L7 10.85l4.924-4.925a.6.6 0 0 0-.848-.848L7 9.15 2.924 5.076z"
+          fill-rule="nonzero"
+        />
+      </svg>
+    </i>
+  </span>
+  <span class="c-input-number__controls c-input-number__increase">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path
+          d="M2.924 9.924a.6.6 0 0 1-.848-.848L7 4.15l4.924 4.925a.6.6 0 0 1-.848.848L7 5.85 2.924 9.924z"
+          fill-rule="nonzero"
+        />
+      </svg>
+    </i>
+  </span>
+  <div class="c-input-number__input">
+    <input class="c-input-number__inner" value="1" autocomplete="off" />
+  </div>
+</div>
+
+<h2>按钮在右侧禁用状态</h2>
+<div
+  class="c-input-number c-input-number--large c-input-number--up-down"
+  aria-disabled="true"
+>
+  <span class="c-input-number__controls c-input-number__decrease">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path
+          d="M2.924 5.076a.6.6 0 0 0-.848.848L7 10.85l4.924-4.925a.6.6 0 0 0-.848-.848L7 9.15 2.924 5.076z"
+          fill-rule="nonzero"
+        />
+      </svg>
+    </i>
+  </span>
+  <span class="c-input-number__controls c-input-number__increase">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path
+          d="M2.924 9.924a.6.6 0 0 1-.848-.848L7 4.15l4.924 4.925a.6.6 0 0 1-.848.848L7 5.85 2.924 9.924z"
+          fill-rule="nonzero"
+        />
+      </svg>
+    </i>
+  </span>
+  <div class="c-input-number__input">
+    <input class="c-input-number__inner" value="1" autocomplete="off" />
+  </div>
+</div>
+
+<div
+  class="c-input-number c-input-number--normal c-input-number--up-down"
+  aria-disabled="true"
+>
+  <span class="c-input-number__controls c-input-number__decrease">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path
+          d="M2.924 5.076a.6.6 0 0 0-.848.848L7 10.85l4.924-4.925a.6.6 0 0 0-.848-.848L7 9.15 2.924 5.076z"
+          fill-rule="nonzero"
+        />
+      </svg>
+    </i>
+  </span>
+  <span class="c-input-number__controls c-input-number__increase">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path
+          d="M2.924 9.924a.6.6 0 0 1-.848-.848L7 4.15l4.924 4.925a.6.6 0 0 1-.848.848L7 5.85 2.924 9.924z"
+          fill-rule="nonzero"
+        />
+      </svg>
+    </i>
+  </span>
+  <div class="c-input-number__input">
+    <input class="c-input-number__inner" value="1" autocomplete="off" />
+  </div>
+</div>
+
+<div
+  class="c-input-number c-input-number--small c-input-number--up-down"
+  aria-disabled="true"
+>
+  <span class="c-input-number__controls c-input-number__decrease">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path
+          d="M2.924 5.076a.6.6 0 0 0-.848.848L7 10.85l4.924-4.925a.6.6 0 0 0-.848-.848L7 9.15 2.924 5.076z"
+          fill-rule="nonzero"
+        />
+      </svg>
+    </i>
+  </span>
+  <span class="c-input-number__controls c-input-number__increase">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path
+          d="M2.924 9.924a.6.6 0 0 1-.848-.848L7 4.15l4.924 4.925a.6.6 0 0 1-.848.848L7 5.85 2.924 9.924z"
+          fill-rule="nonzero"
+        />
+      </svg>
+    </i>
+  </span>
+  <div class="c-input-number__input">
+    <input class="c-input-number__inner" value="1" autocomplete="off" />
+  </div>
+</div>
+
+<h2>单个按钮禁用状态</h2>
+
+<div class="c-input-number c-input-number--normal c-input-number--left-right">
+  <span class="c-input-number__controls c-input-number__decrease">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M1 6h12v2H1z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <span
+    class="c-input-number__controls c-input-number__increase"
+    aria-disabled="true"
+  >
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M6 6V1h2v5h5v2H8v5H6V8H1V6h5z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <div class="c-input-number__input">
+    <input class="c-input-number__inner" value="1" autocomplete="off" />
+  </div>
+</div>
+
+<div class="c-input-number c-input-number--normal c-input-number--up-down">
+  <span
+    class="c-input-number__controls c-input-number__decrease"
+    aria-disabled="true"
+  >
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path
+          d="M2.924 5.076a.6.6 0 0 0-.848.848L7 10.85l4.924-4.925a.6.6 0 0 0-.848-.848L7 9.15 2.924 5.076z"
+          fill-rule="nonzero"
+        />
+      </svg>
+    </i>
+  </span>
+  <span class="c-input-number__controls c-input-number__increase">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path
+          d="M2.924 9.924a.6.6 0 0 1-.848-.848L7 4.15l4.924 4.925a.6.6 0 0 1-.848.848L7 5.85 2.924 9.924z"
+          fill-rule="nonzero"
+        />
+      </svg>
+    </i>
+  </span>
+  <div class="c-input-number__input">
+    <input class="c-input-number__inner" value="1" autocomplete="off" />
+  </div>
+</div>
+
+<h2>隐藏控制按钮</h2>
+<div
+  class="c-input-number c-input-number--hide-controls c-input-number--normal c-input-number--left-right"
+>
+  <span class="c-input-number__controls c-input-number__decrease">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M1 6h12v2H1z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <span class="c-input-number__controls c-input-number__increase">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path d="M6 6V1h2v5h5v2H8v5H6V8H1V6h5z" fill-rule="evenodd" />
+      </svg>
+    </i>
+  </span>
+  <div class="c-input-number__input">
+    <input class="c-input-number__inner" value="1" autocomplete="off" />
+  </div>
+</div>
+
+<div
+  class="c-input-number c-input-number--hide-controls c-input-number--normal c-input-number--up-down"
+>
+  <span class="c-input-number__controls c-input-number__decrease">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path
+          d="M2.924 5.076a.6.6 0 0 0-.848.848L7 10.85l4.924-4.925a.6.6 0 0 0-.848-.848L7 9.15 2.924 5.076z"
+          fill-rule="nonzero"
+        />
+      </svg>
+    </i>
+  </span>
+  <span class="c-input-number__controls c-input-number__increase">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14">
+        <path
+          d="M2.924 9.924a.6.6 0 0 1-.848-.848L7 4.15l4.924 4.925a.6.6 0 0 1-.848.848L7 5.85 2.924 9.924z"
+          fill-rule="nonzero"
+        />
+      </svg>
+    </i>
+  </span>
+  <div class="c-input-number__input">
+    <input class="c-input-number__inner" value="1" autocomplete="off" />
+  </div>
+</div>

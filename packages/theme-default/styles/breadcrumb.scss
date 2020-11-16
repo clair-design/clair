@@ -1,0 +1,43 @@
+@import 'variables';
+
+.c-breadcrumb {
+  display: flex;
+  color: $--breadcrumb-font-color;
+  font-size: $--base-font-size;
+  line-height: $--breadcrumb-line-height;
+}
+
+.c-breadcrumb__item {
+  color: $--breadcrumb-font-color;
+
+  a {
+    color: $--breadcrumb-font-color;
+    text-decoration: none;
+
+    &:hover {
+      color: $--primary-color;
+    }
+  }
+
+  [role='link']:hover {
+    color: $--primary-color;
+    cursor: pointer;
+  }
+
+  .c-icon--svg + span {
+    margin-left: $--breadcrumb-item-text-with-icon-margin-left;
+  }
+
+  &:last-child {
+    color: $--base-text-color;
+
+    .c-breadcrumb__separator {
+      display: none;
+    }
+  }
+
+  .c-breadcrumb__separator {
+    margin: $--breadcrumb-item-separator-margin;
+    color: $--tertiary-text-color;
+  }
+}

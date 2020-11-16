@@ -1,0 +1,67 @@
+import Basic from "./basic.mdx";
+import Close from "./close.mdx";
+import Duration from "./duration.mdx";
+import NoClose from "./noClose.mdx";
+import Placement from "./placement.mdx";
+import TypeIcon from "./typeIcon.mdx";
+
+# Notification
+
+## 目标
+
+Notification 组件 props 和相关 API 讨论
+
+### 基础使用方法
+
+<Basic />
+
+### 多种图标样式
+
+<TypeIcon />
+
+### 其他位置
+
+<Placement />
+
+### 不显示关闭按钮
+
+<NoClose />
+
+### 自定义显示时长
+
+<Duration />
+
+### 关闭特定或全部通知
+
+<Close />
+
+## API
+
+Notification 包的默认输出为对象，包含以下方法：
+
+| Name       | Arguments | Description                                                                                                                       |
+| ---------- | --------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `open`     | object    | 打开通知，参数为打开通知组件的属性；返回拥有`close`方法的对象，`close`方法不需要参数，用来手动关闭本次打开的通知组件              |
+| `success`  | object    | 打开`type`属性为`success`的通知，参数为包含打开通知组件属性的对象（`type`和`iconClass`属性无效）；返回拥有`close`方法的对象，同上 |
+| `info`     | object    | 打开`type`属性为`info`的通知，参数为包含打开通知组件属性的对象（`type`和`iconClass`属性无效）；返回拥有`close`方法的对象，同上    |
+| `error`    | object    | 打开`type`属性为`error`的通知，参数为包含打开通知组件属性的对象（`type`和`iconClass`属性无效）；返回拥有`close`方法的对象，同上   |
+| `warning`  | object    | 打开`type`属性为`warning`的通知，参数为包含打开通知组件属性的对象（`type`和`iconClass`属性无效）；返回拥有`close`方法的对象，同上 |
+| `config`   | object    | 对通知组件进行全局设置，打开的所有通知组件的默认属性由此方法设置                                                                  |
+| `closeAll` | -         | 关闭所有通知                                                                                                                      |
+
+## 属性
+
+Notification 组件属性
+
+| Name      | Description                                         | Type                                                                 | Required | Default        |
+| --------- | --------------------------------------------------- | -------------------------------------------------------------------- | -------- | -------------- |
+| title     | 通知提醒标题                                        | `React.ReactNode`                                                    | `true`   | -              |
+| content   | 通知提醒内容                                        | `React.ReactNode`                                                    | `false`  | -              |
+| type      | 通知主题样式的种类                                  | `"success"`\|`"info"`\|`"warning"`\|`"error"`                        | `false`  | -              |
+| className | 通知组件附加类名                                    | `string`                                                             | `false`  | -              |
+| style     | 通知组件附加样式                                    | `React.CSSProperties`                                                | `false`  | -              |
+| showClose | 是否显示关闭按钮                                    | `boolean`                                                            | `false`  | `true`         |
+| placement | 悬浮位置                                            | `"top-right"` \| `"top-left"` \| `"bottom-right"` \| `"bottom-left"` | `false`  | `"top-right"`  |
+| duration  | 显示持续时间，单位毫秒，如果值为`0`，则不会自动关闭 | `number`                                                             | `false`  | `4500`         |
+| onClick   | 点击通知面板时触发                                  | `(e: React.SyntheticEvent) => void`                                  | `false`  | `() => void 0` |
+| onClose   | 关闭时触发                                          | `() => void`                                                         | `false`  | `() => void 0` |

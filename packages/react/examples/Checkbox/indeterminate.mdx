@@ -1,0 +1,48 @@
+## 未决状态
+
+通过`indeterminate`属性使`checkbox`样式呈现未决状态，一般用于实现全选效果
+
+```tsx live=true className=s-container--button
+function Index() {
+  const fruitList = ["苹果", "香蕉", "西瓜", "草莓"];
+  const [isIndeterminate, switchIndeterminateStatus] = React.useState(true);
+  const [isCheckedAll, switchCheckAllStatus] = React.useState(false);
+  const [checkedList, updateCheckedList] = React.useState(["苹果", "西瓜"]);
+
+  const handleCheckAll = ({ target: { checked } }) => {
+    const checkedList = checked ? fruitList.concat() : [];
+
+    switchIndeterminateStatus(false);
+    switchCheckAllStatus(checked);
+    updateCheckedList(checkedList);
+  };
+
+  const handleChange = ({ target: { value } }) => {
+    const checkedCount = value.length;
+    const totalCount = fruitList.length;
+
+    switchCheckAllStatus(checkedCount === totalCount);
+    updateCheckedList(value);
+    switchIndeterminateStatus(checkedCount > 0 && checkedCount < totalCount);
+  };
+
+  return (
+    <>
+      <Checkbox
+        indeterminate={isIndeterminate}
+        checked={isCheckedAll}
+        onChange={handleCheckAll}
+      >
+        全选
+      </Checkbox>
+      <CheckboxGroup value={checkedList} name="fruit" onChange={handleChange}>
+        {fruitList.map(name => (
+          <Checkbox key={name} value={name}>
+            {name}
+          </Checkbox>
+        ))}
+      </CheckboxGroup>
+    </>
+  );
+}
+```

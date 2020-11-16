@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>ThumbsUp</title>
+    <desc>Created with Sketch.</desc>
+    <g id="ThumbsUp" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M2.9999472,10 C4.29138464,10 5.9580689,10 8,10 C10,10 11.1749688,5.70823492 12.0099479,3 C12.8298573,0.340643546 16.0984461,0.405983369 17.0099479,3 C17.722951,5.02911492 16.6386055,8 19,8 C20.3165309,8 21.6330618,8 22.9495927,8 C25.1587317,8 26.9495927,9.790861 26.9495927,12 C26.9495927,12.308463 26.9139121,12.6158908 26.8432622,12.9161541 L24.7256081,21.9162176 C24.3004651,23.7230819 22.6881458,25.0000635 20.8319387,25.0000635 L2.9999472,25.0000635 C1.8953777,25.0000635 0.999947198,24.104633 0.999947198,23.0000635 L0.999947198,12.0000187 C0.999928512,10.8954389 1.89536738,10 2.9999472,10 Z" id="路径-102" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round"></path>
+            <path d="M7,11 L7,24" id="路径-101" stroke="#6E6E6E" stroke-width="2"></path>
+        </g>
+    </g>
+</svg>

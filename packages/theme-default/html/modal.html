@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<title>modal</title>
+<link rel="stylesheet" href="../styles/modal.scss" />
+
+<style>
+  body {
+    max-width: 800px;
+    margin: 30px auto;
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  .c-modal {
+    margin-bottom: 30px;
+  }
+</style>
+
+<!-- normal -->
+<div class="c-modal" style="width: 500px;">
+  <div class="c-modal__header">
+    标题
+    <!-- close icon -->
+    <button class="c-modal__closeBtn">
+      <i aria-hidden="true" class="c-icon--svg c-icon--close">
+        <svg viewBox="0 0 1024 1024">
+          <path
+            d="M559.36 512l262.848 262.848a33.472 33.472 0 1 1-47.36 47.36L512 559.36l-262.848 262.848a33.472 33.472 0 1 1-47.36-47.36L464.64 512 201.792 249.152a33.472 33.472 0 0 1 47.36-47.36L512 464.64l262.848-262.848a33.472 33.472 0 1 1 47.36 47.36L559.36 512z"
+          ></path>
+        </svg>
+      </i>
+    </button>
+  </div>
+
+  <div class="c-modal__body">
+    你所提交的信息已经审核失败，可以进入个人信箱查看原因，如有疑问，请联系客服人员。
+  </div>
+
+  <div class="c-modal__footer">
+    <button class="c-button c-button--normal c-button--default">取消</button>
+    <button class="c-button c-button--normal c-button--primary">确定</button>
+  </div>
+</div>
+
+<!-- light weight -->
+<div class="c-modal c-modal--light" style="width: 500px;">
+  <div class="c-modal__header">
+    <!-- <slot></slot> -->
+    <i class="c-icon--svg c-icon--warning">
+      <svg viewBox="0 0 1024 1024">
+        <path
+          d="M512 32C246.91 32 32 246.91 32 512s214.91 480 480 480 480-214.91 480-480S777.09 32 512 32z m297.12 356.378L439.87 765.091a27.578 27.578 0 0 1-40.277 0l-141.12-141.382a30.895 30.895 0 0 1 0-42.153 27.578 27.578 0 0 1 40.276 0l120.96 120.262L768.8 346.182a27.578 27.578 0 0 1 40.276 0c11.128 11.65 11.128 30.545 0 42.196z"
+        ></path>
+      </svg>
+    </i>
+    标题
+  </div>
+
+  <div class="c-modal__body">
+    你所提交的信息已经审核失败，可以进入个人信箱查看原因，如有疑问，请联系客服人员。
+  </div>
+
+  <div class="c-modal__footer">
+    <button class="c-button c-button--normal c-button--default">取消</button>
+    <button class="c-button c-button--normal c-button--primary">确定</button>
+  </div>
+</div>
+
+<!--no header nor footer-->
+<div class="c-modal" style="width: 500px;">
+  <div class="c-modal__header">
+    <!-- close icon -->
+    <button class="c-modal__closeBtn">
+      <i aria-hidden="true" class="c-icon--svg c-icon--close">
+        <svg viewBox="0 0 1024 1024">
+          <path
+            d="M559.36 512l262.848 262.848a33.472 33.472 0 1 1-47.36 47.36L512 559.36l-262.848 262.848a33.472 33.472 0 1 1-47.36-47.36L464.64 512 201.792 249.152a33.472 33.472 0 0 1 47.36-47.36L512 464.64l262.848-262.848a33.472 33.472 0 1 1 47.36 47.36L559.36 512z"
+          ></path>
+        </svg>
+      </i>
+    </button>
+  </div>
+
+  <div class="c-modal__body">
+    你所提交的信息已经审核失败，可以进入个人信箱查看原因，如有疑问，请联系客服人员。
+  </div>
+
+  <div class="c-modal__footer"></div>
+</div>

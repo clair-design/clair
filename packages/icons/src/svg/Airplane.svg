@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Airplane</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="28"></rect>
+    </defs>
+    <g id="Airplane" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="蒙版" opacity="0.200000003"></g>
+            <polyline id="路径-115" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)" transform="translate(4.837920, 18.274026) rotate(-44.000000) translate(-4.837920, -18.274026) " points="2.36447987 19.7737978 2.31212265 16.7742547 7.36371834 19.6865357"></polyline>
+            <polyline id="路径-115" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)" transform="translate(10.287689, 23.722718) scale(1, -1) rotate(45.000000) translate(-10.287689, -23.722718) " points="7.7876894 24.9727182 7.7876894 22.4727182 12.7876894 24.9727182"></polyline>
+            <path d="M11.1129282,14.2721141 L7.64756357,10.7452465 L1.41852455,7.37280978 L1.45545558,5 L16.9952256,8.19087609 L11.1129282,14.2721141 Z M21.2035812,26.8437746 L17.8879926,20.5204557 L14.4185245,16.9831535 L20.3972531,11 L23.5343416,26.8062103 L21.2035812,26.8437746 Z" id="路径-62" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round" fill-rule="nonzero" mask="url(#mask-2)"></path>
+            <path d="M1.58695652,12.0814755 L27.4130435,12.0814755 C28.5639446,12.0857742 31,13.4148057 31,14.0814755 C31,14.748136 28.6153386,16.0855084 27.4130435,16.0814755 L1.58695652,16.0814755 L-2,14.0814755 L1.58695652,12.0814755 Z" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round" fill-rule="nonzero" mask="url(#mask-2)" transform="translate(14.500000, 14.081475) rotate(-45.000000) translate(-14.500000, -14.081475) "></path>
+        </g>
+    </g>
+</svg>

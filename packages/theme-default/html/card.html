@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<title>Card</title>
+<link rel="stylesheet" href="../styles/card.scss" />
+<style>
+  body {
+    margin: 2em;
+    color: #222;
+    line-height: 1.6;
+  }
+
+  /* stylelint-disable */
+  .action {
+    display: block;
+    color: #006bff;
+    font-size: 14px;
+    line-height: 3;
+    text-decoration: none;
+  }
+
+  .action:hover {
+    opacity: 0.8;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+<h1>Card 卡片</h1>
+
+<h2>基础卡片</h2>
+
+<div class="c-card c-card--bordered">
+  <div class="c-card__header">
+    <h3 class="c-card__title">卡片标题</h3>
+    <div class="c-card__actions">
+      <a href="#" role="button" class="action">操作按钮</a>
+    </div>
+  </div>
+  <div class="c-card__body">
+    这里是卡片内容...
+    <br />
+    这里是卡片内容...
+    <br />
+    这里是卡片内容...
+  </div>
+</div>
+
+<h2>只包含内容的卡片</h2>
+
+<div class="c-card c-card--bordered">
+  <div class="c-card__body">
+    这里是卡片内容...
+    <br />
+    这里是卡片内容...
+    <br />
+    这里是卡片内容...
+  </div>
+</div>
+
+<h2>带投影的卡片</h2>
+
+<div class="c-card c-card--raised">
+  <div class="c-card__header">
+    <h3 class="c-card__title">卡片标题</h3>
+    <div class="c-card__actions">
+      <a href="#" role="button" class="action">操作按钮</a>
+    </div>
+  </div>
+  <div class="c-card__body">
+    这里是卡片内容...
+    <br />
+    这里是卡片内容...
+    <br />
+    这里是卡片内容...
+  </div>
+</div>
+
+<h2>带图片的卡片</h2>
+
+<div class="c-card c-card--bordered" style="width: 400px;">
+  <div class="c-card__cover">
+    <img src="https://picsum.photos/id/49/500/300" />
+  </div>
+  <div class="c-card__header">
+    <h3 class="c-card__title">卡片标题</h3>
+    <div class="c-card__actions">
+      <a href="#" role="button" class="action">操作按钮</a>
+    </div>
+  </div>
+  <div class="c-card__body">
+    这里是卡片内容...
+    <br />
+    这里是卡片内容...
+    <br />
+    这里是卡片内容...
+  </div>
+</div>
+
+<h2>无边框卡片</h2>
+
+<div style="padding: 20px; background: #e5ebf1;">
+  <div class="c-card">
+    <div class="c-card__header">
+      <h3 class="c-card__title">卡片标题</h3>
+      <div class="c-card__actions">
+        <a href="#" role="button" class="action">操作按钮</a>
+      </div>
+    </div>
+    <div class="c-card__body">
+      这里是卡片内容...
+      <br />
+      这里是卡片内容...
+      <br />
+      这里是卡片内容...
+    </div>
+  </div>
+</div>

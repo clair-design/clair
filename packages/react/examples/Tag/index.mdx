@@ -1,0 +1,35 @@
+import Basic from "./basic.mdx";
+import EditAble from "./editAble.mdx";
+import CustomColor from "./customColor.mdx";
+import CustomSize from "./customSize.mdx";
+
+# Tag
+
+## 定义
+
+进行标记和分类的小标签。
+
+## 使用场景
+
+用于标记事物的属性和维度，对事物进行分类。
+
+<Basic />
+<EditAble />
+<CustomSize />
+<CustomColor />
+
+## <i></i>Props
+
+| Name      | Description                                          | Type                                 | Required | Default    |
+| --------- | ---------------------------------------------------- | ------------------------------------ | -------- | ---------- |
+| size      | 标签尺寸                                             | `"large"` \| `"normal"` \| `"small"` | `false`  | `"normal"` |
+| closable  | 标签是否可以关闭                                     | `boolean`                            | `false`  | `false`    |
+| color     | 标签色                                               | `string`                             | `false`  | -          |
+| onClose   | 关闭时的回调                                         | `(e) => void`                        | `false`  | -          |
+| style     | 设置标签的样式                                       | `React.CSSProperties`                | `false`  | -          |
+| className | 自定义类名称                                         | `string`                             | `false`  | -          |
+| visible   | 标签是否显示，一般和 `onClose` + `closable` 一同使用 | `boolean`                            | `false`  | -          |
+
+> `<Tag />` 同时支持常见的 HTML attributes，并可以响应大部分原生事件。
+>
+> 例如 `tabindex`，`onClick` 等。

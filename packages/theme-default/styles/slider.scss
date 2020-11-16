@@ -1,0 +1,122 @@
+@import 'variables';
+@import 'mixins/mixins';
+@import 'tooltip';
+
+@function get-thumb-or-mark-offset($size) {
+  @return ($--slider__bar-line-width - $size) / 2;
+}
+
+.c-slider {
+  padding: ($--slider__thumb-size / 2) 0;
+  outline: none;
+}
+
+.c-slider__background-bar,
+.c-slider__progress-bar {
+  height: $--slider__bar-line-width;
+  border-radius: $--slider__bar-line-width / 2;
+}
+
+.c-slider__background-bar {
+  position: relative;
+  background-color: $--slider-background-bar-color;
+}
+
+.c-slider__progress-bar {
+  position: absolute;
+  top: 0;
+  background-color: $--primary-color;
+}
+
+.c-slider__step-marks {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.c-slider__thumb,
+.c-slider__step-mark {
+  position: absolute;
+  background-color: #fff;
+  border: $--slider__thumb-and-step-mark-border-width solid;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.c-slider__thumb {
+  top: get-thumb-or-mark-offset($--slider__thumb-size);
+  z-index: 2;
+  width: $--slider__thumb-size;
+  height: $--slider__thumb-size;
+  padding: 0;
+  border-color: $--primary-color;
+  outline: none;
+  cursor: pointer;
+
+  &:focus {
+    @include focus-ring;
+  }
+}
+.c-slider__step-mark {
+  top: get-thumb-or-mark-offset($--slider__step-mark-size);
+  z-index: 1;
+  box-sizing: border-box;
+  width: $--slider__step-mark-size;
+  height: $--slider__step-mark-size;
+  border-color: $--slider-background-bar-color;
+
+  &--active {
+    border-color: $--primary-color;
+  }
+}
+
+.c-slider--vertical {
+  width: $--slider__bar-line-width;
+  padding: 0 ($--slider__thumb-size / 2);
+
+  &,
+  .c-slider__background-bar {
+    height: 100%;
+  }
+
+  .c-slider__background-bar,
+  .c-slider__progress-bar {
+    width: $--slider__bar-line-width;
+  }
+
+  .c-slider__progress-bar {
+    top: auto;
+    bottom: 0;
+  }
+
+  .c-slider__thumb,
+  .c-slider__step-mark {
+    top: auto;
+    transform: translateY(50%);
+  }
+
+  .c-slider__thumb {
+    left: get-thumb-or-mark-offset($--slider__thumb-size);
+  }
+
+  .c-slider__step-mark {
+    left: get-thumb-or-mark-offset($--slider__step-mark-size);
+  }
+}
+
+.c-slider--disabled {
+  .c-slider__progress-bar {
+    background-color: $--slider-disabled-color;
+  }
+
+  .c-slider__thumb {
+    border-color: $--slider-disabled-color;
+    cursor: default;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}

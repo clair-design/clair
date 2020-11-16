@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>InfoCircle</title>
+    <desc>Created with Sketch.</desc>
+    <g id="InfoCircle" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="蒙版" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" cx="14" cy="14" r="13"></circle>
+            <polyline id="路径-27" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="13 12 14 12 14 20"></polyline>
+            <path d="M14,8.01263428 L14,7.99105835" id="路径-28" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M13,20 L15,20" id="路径-29" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>

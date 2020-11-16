@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<title>Collapse</title>
+<link rel="stylesheet" href="../styles/collapse.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body {
+    margin: 30px auto;
+    max-width: 1200px;
+  }
+
+  .c-collapse-item--active .c-collapse-item__content {
+    max-height: unset;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+<h1>Collapse 折叠面板</h1>
+<h2>定义</h2>
+<h2>使用场景</h2>
+<h2>基础样式</h2>
+<div class="c-collapse">
+  <div class="c-collapse-item">
+    <div class="c-collapse-item__header">
+      <i aria-hidden="true" class="c-icon--svg c-collapse-item__icon">
+        <svg viewBox="0 0 14 14" style="stroke-width: 1.16667;">
+          <g fill="none" fill-rule="evenodd" stroke="currentColor">
+            <polyline
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              transform="translate(7.750000, 7.000000) scale(-1, 1) rotate(-270.000000) translate(-7.750000, -7.000000) "
+              points="1.25 3.75 7.75 10.25 14.25 3.75"
+            ></polyline>
+          </g>
+        </svg>
+      </i>
+      <div>折叠面板1</div>
+    </div>
+    <div class="c-collapse-item__content">
+      <div class="c-collapse-item__inner">
+        这是一段关于折叠面板内容的描述，可能会很长...
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2>展开</h2>
+<div class="c-collapse">
+  <div class="c-collapse-item c-collapse-item--active">
+    <div class="c-collapse-item__header">
+      <i aria-hidden="true" class="c-icon--svg c-collapse-item__icon">
+        <svg viewBox="0 0 14 14" style="stroke-width: 1.16667;">
+          <g fill="none" fill-rule="evenodd" stroke="currentColor">
+            <polyline
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              transform="translate(7.750000, 7.000000) scale(-1, 1) rotate(-270.000000) translate(-7.750000, -7.000000) "
+              points="1.25 3.75 7.75 10.25 14.25 3.75"
+            ></polyline>
+          </g>
+        </svg>
+      </i>
+      <div>折叠面板1</div>
+    </div>
+    <div class="c-collapse-item__content">
+      <div class="c-collapse-item__inner">
+        这是一段关于折叠面板内容的描述，可能会很长...
+      </div>
+    </div>
+  </div>
+</div>

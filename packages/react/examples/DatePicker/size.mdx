@@ -1,0 +1,28 @@
+## 三种尺寸
+
+大中小三种组合，可以和表单输入框进行对应。
+
+```tsx live=true
+function App() {
+  const styles = {
+    marginBottom: 20,
+    marginRight: 20
+  };
+  return (
+    <>
+      <div>
+        <DatePicker style={styles} size="small" />
+        <RangePicker style={styles} size="small" />
+      </div>
+      <div>
+        <DatePicker style={styles} size="normal" />
+        <RangePicker style={styles} size="normal" />
+      </div>
+      <div>
+        <DatePicker style={styles} size="large" />
+        <RangePicker style={styles} size="large" />
+      </div>
+    </>
+  );
+}
+```

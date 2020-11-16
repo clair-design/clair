@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Merge</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Merge" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M14,1 L14,9.5" id="路径-13" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" transform="translate(14.000000, 5.250000) scale(1, -1) translate(-14.000000, -5.250000) "></path>
+            <polyline id="路径-6" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(14.000000, 8.500000) scale(1, -1) rotate(90.000000) translate(-14.000000, -8.500000) " points="16 4.5 12 8.5 16 12.5"></polyline>
+            <path d="M14,19 L14,27" id="路径-13" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <polyline id="路径-6" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(14.000000, 20.000000) rotate(90.000000) translate(-14.000000, -20.000000) " points="16 16 12 20 16 24"></polyline>
+            <path d="M1,14 L27,14" id="路径-37" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

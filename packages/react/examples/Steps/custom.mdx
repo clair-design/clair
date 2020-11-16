@@ -1,0 +1,28 @@
+# 自定义用法
+
+```tsx live=true
+<Steps>
+  <Step stepKey="1" title="第一步" icon={<IconHome />} status="finish" />
+  <Step
+    stepKey="2"
+    title={<span>自定义 title</span>}
+    description={<span>自定义 description</span>}
+    status="process"
+  />
+  <Step stepKey="3" title="第三步" />
+  <Step stepKey="4" title="完成" />
+</Steps>
+```
+
+```tsx live=true
+const App = () => {
+  const MyStep = ({ name }) => <Step stepKey={name} title={`test-${name}`} />;
+  return (
+    <Steps activeKey="2">
+      <MyStep name="1" />
+      <MyStep name="2" />
+      <MyStep name="3" />
+    </Steps>
+  );
+};
+```

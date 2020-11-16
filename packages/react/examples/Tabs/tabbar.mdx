@@ -1,0 +1,112 @@
+## 自定义页签标题
+
+```tsx live=true
+<Tabs>
+  <TabPane
+    label={
+      <>
+        Tab1
+        <IconSearch style={{ marginLeft: 8 }} />
+      </>
+    }
+    tabKey="tab1"
+  >
+    <div>Tab1 Content</div>
+  </TabPane>
+  <TabPane label="Tab2" tabKey="tab2">
+    <div>Tab2 Content</div>
+  </TabPane>
+</Tabs>
+```
+
+## 卡片样式
+
+设置 type="card"，可以实现卡片形式的标签。
+
+```tsx live=true
+<Tabs type="card">
+  <TabPane label="Tab1" tabKey="tab1">
+    <div>Tab1 Content</div>
+  </TabPane>
+  <TabPane label="Tab2" tabKey="tab2">
+    <div>Tab2 Content</div>
+  </TabPane>
+</Tabs>
+```
+
+## 动态增减样式
+
+只有卡片样式的页签支持新增和关闭选项。
+
+```tsx live=true
+const App = () => {
+  const [tabs, setTabs] = React.useState([
+    { label: "Tab 1", key: "1", content: "Tab Content 1" },
+    { label: "Tab 2", key: "2", content: "Tab Content 2" },
+    { label: "Tab 3", key: "3", content: "Tab Content 3" }
+  ]);
+  const counter = React.useRef(tabs.length);
+  const handleClose = event => {
+    const key = event.detail.key;
+    setTabs(tabs.filter(tab => tab.key !== key));
+  };
+  const handleAdd = () => {
+    counter.current++;
+    setTabs([
+      ...tabs,
+      {
+        label: `Tab ${counter.current}`,
+        key: `${counter.current}`,
+        content: `Tab Content ${counter.current}`
+      }
+    ]);
+  };
+  return (
+    <Tabs
+      defaultActiveKey="1"
+      type="card"
+      addable
+      onClose={handleClose}
+      onAdd={handleAdd}
+    >
+      {tabs.map(tab => (
+        <TabPane label={tab.label} tabKey={tab.key} key={tab.key} closeable>
+          <div>{tab.content}</div>
+        </TabPane>
+      ))}
+    </Tabs>
+  );
+};
+```
+
+## 设置页签位置
+
+页签默认放在内容的上方，可以通过 `tabPosition` 属性将页签放在内容左边、右边或者下面。
+
+```tsx live=true
+const App = () => {
+  const [position, setPosition] = React.useState("top");
+  return (
+    <>
+      页签位置：
+      <RadioGroup value={position} onChange={e => setPosition(e.target.value)}>
+        <RadioButton value="top">top</RadioButton>
+        <RadioButton value="bottom">bottom</RadioButton>
+        <RadioButton value="left">left</RadioButton>
+        <RadioButton value="right">right</RadioButton>
+      </RadioGroup>
+      <Tabs defaultActiveKey="tab1" tabPosition={position}>
+        <TabPane label="Tab1" tabKey="tab1">
+          <div>Tab1 Content</div>
+        </TabPane>
+        <TabPane label="Tab2" tabKey="tab2">
+          <div>Tab2 Content</div>
+        </TabPane>
+        <TabPane label="Tab3" tabKey="tab3">
+          <div>Tab3 Content</div>
+        </TabPane>
+      </Tabs>
+    </>
+  );
+};
+```

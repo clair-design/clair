@@ -1,0 +1,1693 @@
+<title>time-picker</title>
+<link rel="stylesheet" href="../styles/time-picker.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body {
+    margin: 30px auto;
+    max-width: 1200px;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+
+  .demo-only {
+    position: relative;
+    height: 45%;
+  }
+
+  .c-container-size .c-time-picker,
+  .c-container-group-size .c-time-picker-group {
+    margin-right: 20px;
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+<h1>TimePicker</h1>
+
+<h2>固定时间点</h2>
+<div class="demo-only">
+  <div
+    tabindex="-1"
+    class="c-input-affix-container c-input-affix-container--normal c-time-picker"
+    aria-labeledby="c-time-picker__label-1"
+  >
+    <input
+      type="text"
+      placeholder="选择时间"
+      class="c-input c-input--normal"
+      name="time-1"
+    />
+    <div class="c-time-picker__icon">
+      <i class="c-icon--svg" style="display: none;">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <circle stroke="currentColor" cx="7" cy="7" r="6.5"></circle>
+            <polyline
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              points="6.5 3 6.5 8 9.5 9.5"
+            ></polyline>
+          </g>
+        </svg>
+      </i>
+      <i
+        class="c-icon--svg c-icon--svg-circle c-icon--svg-light"
+        style="background-color: rgb(110, 110, 110);"
+      >
+        <svg viewBox="0 0 14 14">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M7 7L.5.5 7 7 13.5.5 7 7zm0 0l6.5 6.5L7 7 .5 13.5 7 7z"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </div>
+  </div>
+  <div class="c-time-picker-popup" style="top: 38px;">
+    <ul role="listbox" aria-labelledby="c-time-picker-popup__label-1">
+      <li
+        tabindex="-1"
+        role="option"
+        aria-selected="true"
+        style="font-weight: bold;"
+      >
+        08:00
+      </li>
+      <li tabindex="-1" role="option">08:00</li>
+      <li tabindex="-1" role="option">08:00</li>
+      <li role="option" aria-disabled="true">08:00</li>
+      <li tabindex="-1" role="option">08:00</li>
+      <li tabindex="-1" role="option">08:00</li>
+      <li tabindex="-1" role="option">08:00</li>
+      <li tabindex="-1" role="option">08:00</li>
+      <li tabindex="-1" role="option">08:00</li>
+      <li tabindex="-1" role="option">08:00</li>
+      <li tabindex="-1" role="option">08:00</li>
+      <li tabindex="-1" role="option">08:00</li>
+      <li tabindex="-1" role="option">08:00</li>
+      <li tabindex="-1" role="option">08:00</li>
+      <li tabindex="-1" role="option">08:00</li>
+      <li tabindex="-1" role="option">08:00</li>
+      <li tabindex="-1" role="option">08:00</li>
+      <li tabindex="-1" role="option">08:00</li>
+      <li tabindex="-1" role="option">08:00</li>
+      <li tabindex="-1" role="option">08:00</li>
+      <li tabindex="-1" role="option">08:00</li>
+      <li tabindex="-1" role="option">08:00</li>
+    </ul>
+  </div>
+</div>
+
+<h2>时分</h2>
+<div class="demo-only">
+  <div
+    tabindex="-1"
+    class="c-input-affix-container c-input-affix-container--normal c-time-picker"
+    aria-labelledby="c-time-picker__label-2"
+  >
+    <input
+      type="text"
+      placeholder="选择时间"
+      class="c-input c-input--normal"
+      name="time-2"
+    />
+    <div class="c-time-picker__icon">
+      <i class="c-icon--svg" style="display: none;">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <circle stroke="currentColor" cx="7" cy="7" r="6.5"></circle>
+            <polyline
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              points="6.5 3 6.5 8 9.5 9.5"
+            ></polyline>
+          </g>
+        </svg>
+      </i>
+      <i
+        class="c-icon--svg c-icon--svg-circle c-icon--svg-light"
+        style="background-color: rgb(110, 110, 110);"
+      >
+        <svg viewBox="0 0 14 14">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M7 7L.5.5 7 7 13.5.5 7 7zm0 0l6.5 6.5L7 7 .5 13.5 7 7z"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </div>
+  </div>
+  <div
+    class="c-time-picker-popup"
+    style="top: 38px;"
+    aria-labelledby="c-time-picker-popup__label-2"
+  >
+    <ul role="listbox">
+      <li tabindex="-1" role="option" aria-selected="true">00</li>
+      <li tabindex="-1" role="option">01</li>
+      <li tabindex="-1" role="option">02</li>
+      <li role="option" aria-disabled="true">03</li>
+      <li tabindex="-1" role="option">04</li>
+      <li tabindex="-1" role="option">05</li>
+      <li tabindex="-1" role="option">06</li>
+      <li tabindex="-1" role="option">07</li>
+      <li tabindex="-1" role="option">08</li>
+      <li tabindex="-1" role="option">09</li>
+      <li tabindex="-1" role="option">10</li>
+      <li tabindex="-1" role="option">11</li>
+      <li tabindex="-1" role="option">12</li>
+      <li tabindex="-1" role="option">13</li>
+      <li tabindex="-1" role="option">14</li>
+      <li tabindex="-1" role="option">15</li>
+      <li tabindex="-1" role="option">16</li>
+      <li tabindex="-1" role="option">17</li>
+      <li tabindex="-1" role="option">18</li>
+      <li tabindex="-1" role="option">19</li>
+      <li tabindex="-1" role="option">20</li>
+      <li tabindex="-1" role="option">21</li>
+    </ul>
+    <ul role="listbox">
+      <li tabindex="-1" role="option" aria-selected="true">00</li>
+      <li tabindex="-1" role="option">01</li>
+      <li tabindex="-1" role="option">02</li>
+      <li role="option" aria-disabled="true">03</li>
+      <li tabindex="-1" role="option">04</li>
+      <li tabindex="-1" role="option">05</li>
+      <li tabindex="-1" role="option">06</li>
+      <li tabindex="-1" role="option">07</li>
+      <li tabindex="-1" role="option">08</li>
+      <li tabindex="-1" role="option">09</li>
+      <li tabindex="-1" role="option">10</li>
+      <li tabindex="-1" role="option">11</li>
+      <li tabindex="-1" role="option">12</li>
+      <li tabindex="-1" role="option">13</li>
+      <li tabindex="-1" role="option">14</li>
+      <li tabindex="-1" role="option">15</li>
+      <li tabindex="-1" role="option">16</li>
+      <li tabindex="-1" role="option">17</li>
+      <li tabindex="-1" role="option">18</li>
+      <li tabindex="-1" role="option">19</li>
+      <li tabindex="-1" role="option">20</li>
+      <li tabindex="-1" role="option">21</li>
+    </ul>
+  </div>
+</div>
+
+<h2>时间</h2>
+<div class="demo-only">
+  <div
+    tabindex="-1"
+    class="c-input-affix-container c-input-affix-container--normal c-time-picker"
+    aria-labelledby="c-time-picker__label-3"
+  >
+    <input
+      type="text"
+      placeholder="选择时间"
+      class="c-input c-input--normal"
+      name="time-3"
+    />
+    <div class="c-time-picker__icon">
+      <i class="c-icon--svg" style="display: none;">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <circle stroke="currentColor" cx="7" cy="7" r="6.5"></circle>
+            <polyline
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              points="6.5 3 6.5 8 9.5 9.5"
+            ></polyline>
+          </g>
+        </svg>
+      </i>
+      <i
+        class="c-icon--svg c-icon--svg-circle c-icon--svg-light"
+        style="background-color: rgb(110, 110, 110);"
+      >
+        <svg viewBox="0 0 14 14">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M7 7L.5.5 7 7 13.5.5 7 7zm0 0l6.5 6.5L7 7 .5 13.5 7 7z"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </div>
+  </div>
+  <div
+    class="c-time-picker-popup"
+    style="top: 38px;"
+    aria-labelledby="c-time-picker-popup__label-3"
+  >
+    <ul role="listbox">
+      <li tabindex="-1" role="option" aria-selected="true">00</li>
+      <li tabindex="-1" role="option">01</li>
+      <li tabindex="-1" role="option">02</li>
+      <li role="option" aria-disabled="true">03</li>
+      <li tabindex="-1" role="option">04</li>
+      <li tabindex="-1" role="option">05</li>
+      <li tabindex="-1" role="option">06</li>
+      <li tabindex="-1" role="option">07</li>
+      <li tabindex="-1" role="option">08</li>
+      <li tabindex="-1" role="option">09</li>
+      <li tabindex="-1" role="option">10</li>
+      <li tabindex="-1" role="option">11</li>
+      <li tabindex="-1" role="option">12</li>
+      <li tabindex="-1" role="option">13</li>
+      <li tabindex="-1" role="option">14</li>
+      <li tabindex="-1" role="option">15</li>
+      <li tabindex="-1" role="option">16</li>
+      <li tabindex="-1" role="option">17</li>
+      <li tabindex="-1" role="option">18</li>
+      <li tabindex="-1" role="option">19</li>
+      <li tabindex="-1" role="option">20</li>
+      <li tabindex="-1" role="option">21</li>
+    </ul>
+    <ul role="listbox">
+      <li tabindex="-1" role="option" aria-selected="true">00</li>
+      <li tabindex="-1" role="option">01</li>
+      <li tabindex="-1" role="option">02</li>
+      <li role="option" aria-disabled="true">03</li>
+      <li tabindex="-1" role="option">04</li>
+      <li tabindex="-1" role="option">05</li>
+      <li tabindex="-1" role="option">06</li>
+      <li tabindex="-1" role="option">07</li>
+      <li tabindex="-1" role="option">08</li>
+      <li tabindex="-1" role="option">09</li>
+      <li tabindex="-1" role="option">10</li>
+      <li tabindex="-1" role="option">11</li>
+      <li tabindex="-1" role="option">12</li>
+      <li tabindex="-1" role="option">13</li>
+      <li tabindex="-1" role="option">14</li>
+      <li tabindex="-1" role="option">15</li>
+      <li tabindex="-1" role="option">16</li>
+      <li tabindex="-1" role="option">17</li>
+      <li tabindex="-1" role="option">18</li>
+      <li tabindex="-1" role="option">19</li>
+      <li tabindex="-1" role="option">20</li>
+      <li tabindex="-1" role="option">21</li>
+    </ul>
+    <ul role="listbox">
+      <li tabindex="-1" role="option" aria-selected="true">00</li>
+      <li tabindex="-1" role="option">01</li>
+      <li tabindex="-1" role="option">02</li>
+      <li role="option" aria-disabled="true">03</li>
+      <li tabindex="-1" role="option">04</li>
+      <li tabindex="-1" role="option">05</li>
+      <li tabindex="-1" role="option">06</li>
+      <li tabindex="-1" role="option">07</li>
+      <li tabindex="-1" role="option">08</li>
+      <li tabindex="-1" role="option">09</li>
+      <li tabindex="-1" role="option">10</li>
+      <li tabindex="-1" role="option">11</li>
+      <li tabindex="-1" role="option">12</li>
+      <li tabindex="-1" role="option">13</li>
+      <li tabindex="-1" role="option">14</li>
+      <li tabindex="-1" role="option">15</li>
+      <li tabindex="-1" role="option">16</li>
+      <li tabindex="-1" role="option">17</li>
+      <li tabindex="-1" role="option">18</li>
+      <li tabindex="-1" role="option">19</li>
+      <li tabindex="-1" role="option">20</li>
+      <li tabindex="-1" role="option">21</li>
+    </ul>
+  </div>
+</div>
+
+<h2>时间范围</h2>
+<div class="demo-only">
+  <div
+    class="c-time-picker-range"
+    aria-labelledby="c-time-picker-range__label-1"
+  >
+    <input
+      type="text"
+      placeholder="开始时间"
+      class="c-input c-input--normal"
+      name="start-time-1"
+    />
+    <i aria-hidden="true" class="c-icon--svg c-time-picker__separator">
+      <svg viewBox="0 0 14 14" style="stroke-width: 0.666667;">
+        <g fill-rule="evenodd">
+          <path d="M1,7 L13,7" stroke-linecap="round"></path>
+        </g>
+      </svg>
+    </i>
+    <div
+      tabindex="-1"
+      class="c-input-affix-container c-input-affix-container--normal"
+    >
+      <input
+        type="text"
+        placeholder="结束时间"
+        class="c-input c-input--normal"
+        name="end-time-1"
+      />
+      <div class="c-time-picker__icon">
+        <i class="c-icon--svg" style="display: none;">
+          <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+            <g fill="none" fill-rule="evenodd">
+              <circle stroke="currentColor" cx="7" cy="7" r="6.5"></circle>
+              <polyline
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                points="6.5 3 6.5 8 9.5 9.5"
+              ></polyline>
+            </g>
+          </svg>
+        </i>
+        <i
+          class="c-icon--svg c-icon--svg-circle c-icon--svg-light"
+          style="background-color: rgb(110, 110, 110);"
+        >
+          <svg viewBox="0 0 14 14">
+            <g fill="none" fill-rule="evenodd">
+              <path
+                d="M7 7L.5.5 7 7 13.5.5 7 7zm0 0l6.5 6.5L7 7 .5 13.5 7 7z"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </g>
+          </svg>
+        </i>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="c-time-picker-popup c-time-picker-popup--range"
+    style="top: 38px;"
+  >
+    <div
+      class="c-time-picker-list-group"
+      aria-labelledby="c-time-picker-popup__start-time-1"
+    >
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+    </div>
+    <div
+      class="c-time-picker-list-group"
+      aria-labelledby="c-time-picker-popup__end-time-1"
+    >
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h2>time-picker-size</h2>
+<div class="demo-only">
+  <div
+    tabindex="-1"
+    class="c-input-affix-container c-input-affix-container--small c-time-picker"
+    aria-labelledby="c-time-picker__label-4"
+  >
+    <input
+      type="text"
+      placeholder="选择时间"
+      class="c-input c-input--small"
+      name="time-4"
+    />
+    <div class="c-time-picker__icon">
+      <i class="c-icon--svg" style="display: none;">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <circle stroke="currentColor" cx="7" cy="7" r="6.5"></circle>
+            <polyline
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              points="6.5 3 6.5 8 9.5 9.5"
+            ></polyline>
+          </g>
+        </svg>
+      </i>
+      <i
+        class="c-icon--svg c-icon--svg-circle c-icon--svg-light"
+        style="background-color: rgb(110, 110, 110);"
+      >
+        <svg viewBox="0 0 14 14">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M7 7L.5.5 7 7 13.5.5 7 7zm0 0l6.5 6.5L7 7 .5 13.5 7 7z"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </div>
+  </div>
+  <div
+    class="c-time-picker-popup c-time-picker-popup--small"
+    style="top: 38px;"
+    aria-labelledby="c-time-picker-popup__label-4"
+  >
+    <ul role="listbox">
+      <li tabindex="-1" role="option" aria-selected="true">00</li>
+      <li tabindex="-1" role="option">01</li>
+      <li tabindex="-1" role="option">02</li>
+      <li role="option" aria-disabled="true">03</li>
+      <li tabindex="-1" role="option">04</li>
+      <li tabindex="-1" role="option">05</li>
+      <li tabindex="-1" role="option">06</li>
+      <li tabindex="-1" role="option">07</li>
+      <li tabindex="-1" role="option">08</li>
+      <li tabindex="-1" role="option">09</li>
+      <li tabindex="-1" role="option">10</li>
+      <li tabindex="-1" role="option">11</li>
+      <li tabindex="-1" role="option">12</li>
+      <li tabindex="-1" role="option">13</li>
+      <li tabindex="-1" role="option">14</li>
+      <li tabindex="-1" role="option">15</li>
+      <li tabindex="-1" role="option">16</li>
+      <li tabindex="-1" role="option">17</li>
+      <li tabindex="-1" role="option">18</li>
+      <li tabindex="-1" role="option">19</li>
+      <li tabindex="-1" role="option">20</li>
+      <li tabindex="-1" role="option">21</li>
+    </ul>
+    <ul role="listbox">
+      <li tabindex="-1" role="option" aria-selected="true">00</li>
+      <li tabindex="-1" role="option">01</li>
+      <li tabindex="-1" role="option">02</li>
+      <li role="option" aria-disabled="true">03</li>
+      <li tabindex="-1" role="option">04</li>
+      <li tabindex="-1" role="option">05</li>
+      <li tabindex="-1" role="option">06</li>
+      <li tabindex="-1" role="option">07</li>
+      <li tabindex="-1" role="option">08</li>
+      <li tabindex="-1" role="option">09</li>
+      <li tabindex="-1" role="option">10</li>
+      <li tabindex="-1" role="option">11</li>
+      <li tabindex="-1" role="option">12</li>
+      <li tabindex="-1" role="option">13</li>
+      <li tabindex="-1" role="option">14</li>
+      <li tabindex="-1" role="option">15</li>
+      <li tabindex="-1" role="option">16</li>
+      <li tabindex="-1" role="option">17</li>
+      <li tabindex="-1" role="option">18</li>
+      <li tabindex="-1" role="option">19</li>
+      <li tabindex="-1" role="option">20</li>
+      <li tabindex="-1" role="option">21</li>
+    </ul>
+    <ul role="listbox">
+      <li tabindex="-1" role="option" aria-selected="true">00</li>
+      <li tabindex="-1" role="option">01</li>
+      <li tabindex="-1" role="option">02</li>
+      <li role="option" aria-disabled="true">03</li>
+      <li tabindex="-1" role="option">04</li>
+      <li tabindex="-1" role="option">05</li>
+      <li tabindex="-1" role="option">06</li>
+      <li tabindex="-1" role="option">07</li>
+      <li tabindex="-1" role="option">08</li>
+      <li tabindex="-1" role="option">09</li>
+      <li tabindex="-1" role="option">10</li>
+      <li tabindex="-1" role="option">11</li>
+      <li tabindex="-1" role="option">12</li>
+      <li tabindex="-1" role="option">13</li>
+      <li tabindex="-1" role="option">14</li>
+      <li tabindex="-1" role="option">15</li>
+      <li tabindex="-1" role="option">16</li>
+      <li tabindex="-1" role="option">17</li>
+      <li tabindex="-1" role="option">18</li>
+      <li tabindex="-1" role="option">19</li>
+      <li tabindex="-1" role="option">20</li>
+      <li tabindex="-1" role="option">21</li>
+    </ul>
+  </div>
+
+  <div
+    tabindex="-1"
+    class="c-input-affix-container c-input-affix-container--normal c-time-picker"
+    aria-labelledby="c-time-picker__label-5"
+    style="margin: 0 100px;"
+  >
+    <input
+      type="text"
+      placeholder="选择时间"
+      class="c-input c-input--normal"
+      name="time-5"
+    />
+    <div class="c-time-picker__icon">
+      <i class="c-icon--svg" style="display: none;">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <circle stroke="currentColor" cx="7" cy="7" r="6.5"></circle>
+            <polyline
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              points="6.5 3 6.5 8 9.5 9.5"
+            ></polyline>
+          </g>
+        </svg>
+      </i>
+      <i
+        class="c-icon--svg c-icon--svg-circle c-icon--svg-light"
+        style="background-color: rgb(110, 110, 110);"
+      >
+        <svg viewBox="0 0 14 14">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M7 7L.5.5 7 7 13.5.5 7 7zm0 0l6.5 6.5L7 7 .5 13.5 7 7z"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </div>
+  </div>
+  <div
+    class="c-time-picker-popup"
+    style="top: 42px; left: 304px;"
+    aria-labelledby="c-time-picker-popup__label-5"
+  >
+    <ul role="listbox">
+      <li tabindex="-1" role="option" aria-selected="true">00</li>
+      <li tabindex="-1" role="option">01</li>
+      <li tabindex="-1" role="option">02</li>
+      <li role="option" aria-disabled="true">03</li>
+      <li tabindex="-1" role="option">04</li>
+      <li tabindex="-1" role="option">05</li>
+      <li tabindex="-1" role="option">06</li>
+      <li tabindex="-1" role="option">07</li>
+      <li tabindex="-1" role="option">08</li>
+      <li tabindex="-1" role="option">09</li>
+      <li tabindex="-1" role="option">10</li>
+      <li tabindex="-1" role="option">11</li>
+      <li tabindex="-1" role="option">12</li>
+      <li tabindex="-1" role="option">13</li>
+      <li tabindex="-1" role="option">14</li>
+      <li tabindex="-1" role="option">15</li>
+      <li tabindex="-1" role="option">16</li>
+      <li tabindex="-1" role="option">17</li>
+      <li tabindex="-1" role="option">18</li>
+      <li tabindex="-1" role="option">19</li>
+      <li tabindex="-1" role="option">20</li>
+      <li tabindex="-1" role="option">21</li>
+    </ul>
+    <ul role="listbox">
+      <li tabindex="-1" role="option" aria-selected="true">00</li>
+      <li tabindex="-1" role="option">01</li>
+      <li tabindex="-1" role="option">02</li>
+      <li role="option" aria-disabled="true">03</li>
+      <li tabindex="-1" role="option">04</li>
+      <li tabindex="-1" role="option">05</li>
+      <li tabindex="-1" role="option">06</li>
+      <li tabindex="-1" role="option">07</li>
+      <li tabindex="-1" role="option">08</li>
+      <li tabindex="-1" role="option">09</li>
+      <li tabindex="-1" role="option">10</li>
+      <li tabindex="-1" role="option">11</li>
+      <li tabindex="-1" role="option">12</li>
+      <li tabindex="-1" role="option">13</li>
+      <li tabindex="-1" role="option">14</li>
+      <li tabindex="-1" role="option">15</li>
+      <li tabindex="-1" role="option">16</li>
+      <li tabindex="-1" role="option">17</li>
+      <li tabindex="-1" role="option">18</li>
+      <li tabindex="-1" role="option">19</li>
+      <li tabindex="-1" role="option">20</li>
+      <li tabindex="-1" role="option">21</li>
+    </ul>
+    <ul role="listbox">
+      <li tabindex="-1" role="option" aria-selected="true">00</li>
+      <li tabindex="-1" role="option">01</li>
+      <li tabindex="-1" role="option">02</li>
+      <li role="option" aria-disabled="true">03</li>
+      <li tabindex="-1" role="option">04</li>
+      <li tabindex="-1" role="option">05</li>
+      <li tabindex="-1" role="option">06</li>
+      <li tabindex="-1" role="option">07</li>
+      <li tabindex="-1" role="option">08</li>
+      <li tabindex="-1" role="option">09</li>
+      <li tabindex="-1" role="option">10</li>
+      <li tabindex="-1" role="option">11</li>
+      <li tabindex="-1" role="option">12</li>
+      <li tabindex="-1" role="option">13</li>
+      <li tabindex="-1" role="option">14</li>
+      <li tabindex="-1" role="option">15</li>
+      <li tabindex="-1" role="option">16</li>
+      <li tabindex="-1" role="option">17</li>
+      <li tabindex="-1" role="option">18</li>
+      <li tabindex="-1" role="option">19</li>
+      <li tabindex="-1" role="option">20</li>
+      <li tabindex="-1" role="option">21</li>
+    </ul>
+  </div>
+
+  <div
+    tabindex="-1"
+    class="c-input-affix-container c-input-affix-container--large c-time-picker"
+    aria-labelledby="c-time-picker__label-6"
+  >
+    <input
+      type="text"
+      placeholder="选择时间"
+      class="c-input c-input--large"
+      name="time-6"
+    />
+    <div class="c-time-picker__icon">
+      <i class="c-icon--svg" style="display: none;">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <circle stroke="currentColor" cx="7" cy="7" r="6.5"></circle>
+            <polyline
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              points="6.5 3 6.5 8 9.5 9.5"
+            ></polyline>
+          </g>
+        </svg>
+      </i>
+      <i
+        class="c-icon--svg c-icon--svg-circle c-icon--svg-light"
+        style="background-color: rgb(110, 110, 110);"
+      >
+        <svg viewBox="0 0 14 14">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M7 7L.5.5 7 7 13.5.5 7 7zm0 0l6.5 6.5L7 7 .5 13.5 7 7z"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </div>
+  </div>
+  <div
+    class="c-time-picker-popup c-time-picker-popup--large"
+    style="top: 46px; left: 608px;"
+    aria-labelledby="c-time-picker-popup__label-6"
+  >
+    <ul role="listbox">
+      <li tabindex="-1" role="option" aria-selected="true">00</li>
+      <li tabindex="-1" role="option">01</li>
+      <li tabindex="-1" role="option">02</li>
+      <li role="option" aria-disabled="true">03</li>
+      <li tabindex="-1" role="option">04</li>
+      <li tabindex="-1" role="option">05</li>
+      <li tabindex="-1" role="option">06</li>
+      <li tabindex="-1" role="option">07</li>
+      <li tabindex="-1" role="option">08</li>
+      <li tabindex="-1" role="option">09</li>
+      <li tabindex="-1" role="option">10</li>
+      <li tabindex="-1" role="option">11</li>
+      <li tabindex="-1" role="option">12</li>
+      <li tabindex="-1" role="option">13</li>
+      <li tabindex="-1" role="option">14</li>
+      <li tabindex="-1" role="option">15</li>
+      <li tabindex="-1" role="option">16</li>
+      <li tabindex="-1" role="option">17</li>
+      <li tabindex="-1" role="option">18</li>
+      <li tabindex="-1" role="option">19</li>
+      <li tabindex="-1" role="option">20</li>
+      <li tabindex="-1" role="option">21</li>
+    </ul>
+    <ul role="listbox">
+      <li tabindex="-1" role="option" aria-selected="true">00</li>
+      <li tabindex="-1" role="option">01</li>
+      <li tabindex="-1" role="option">02</li>
+      <li role="option" aria-disabled="true">03</li>
+      <li tabindex="-1" role="option">04</li>
+      <li tabindex="-1" role="option">05</li>
+      <li tabindex="-1" role="option">06</li>
+      <li tabindex="-1" role="option">07</li>
+      <li tabindex="-1" role="option">08</li>
+      <li tabindex="-1" role="option">09</li>
+      <li tabindex="-1" role="option">10</li>
+      <li tabindex="-1" role="option">11</li>
+      <li tabindex="-1" role="option">12</li>
+      <li tabindex="-1" role="option">13</li>
+      <li tabindex="-1" role="option">14</li>
+      <li tabindex="-1" role="option">15</li>
+      <li tabindex="-1" role="option">16</li>
+      <li tabindex="-1" role="option">17</li>
+      <li tabindex="-1" role="option">18</li>
+      <li tabindex="-1" role="option">19</li>
+      <li tabindex="-1" role="option">20</li>
+      <li tabindex="-1" role="option">21</li>
+    </ul>
+    <ul role="listbox">
+      <li tabindex="-1" role="option" aria-selected="true">00</li>
+      <li tabindex="-1" role="option">01</li>
+      <li tabindex="-1" role="option">02</li>
+      <li role="option" aria-disabled="true">03</li>
+      <li tabindex="-1" role="option">04</li>
+      <li tabindex="-1" role="option">05</li>
+      <li tabindex="-1" role="option">06</li>
+      <li tabindex="-1" role="option">07</li>
+      <li tabindex="-1" role="option">08</li>
+      <li tabindex="-1" role="option">09</li>
+      <li tabindex="-1" role="option">10</li>
+      <li tabindex="-1" role="option">11</li>
+      <li tabindex="-1" role="option">12</li>
+      <li tabindex="-1" role="option">13</li>
+      <li tabindex="-1" role="option">14</li>
+      <li tabindex="-1" role="option">15</li>
+      <li tabindex="-1" role="option">16</li>
+      <li tabindex="-1" role="option">17</li>
+      <li tabindex="-1" role="option">18</li>
+      <li tabindex="-1" role="option">19</li>
+      <li tabindex="-1" role="option">20</li>
+      <li tabindex="-1" role="option">21</li>
+    </ul>
+  </div>
+</div>
+
+<h2>time-picker-range-size</h2>
+<div class="demo-only">
+  <div
+    class="c-time-picker-range c-time-picker-range--small"
+    aria-labelledby="c-time-picker-range__label-2"
+  >
+    <input
+      type="text"
+      placeholder="开始时间"
+      class="c-input c-input--small"
+      name="start-time-2"
+    />
+    <i aria-hidden="true" class="c-icon--svg c-time-picker__separator">
+      <svg viewBox="0 0 14 14" style="stroke-width: 0.666667;">
+        <g fill-rule="evenodd">
+          <path d="M1,7 L13,7" stroke-linecap="round"></path>
+        </g>
+      </svg>
+    </i>
+    <div
+      tabindex="-1"
+      class="c-input-affix-container c-input-affix-container--sc-input--small"
+    >
+      <input
+        type="text"
+        placeholder="结束时间"
+        class="c-input c-input--small"
+        name="end-time-2"
+      />
+      <div class="c-time-picker__icon">
+        <i class="c-icon--svg" style="display: none;">
+          <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+            <g fill="none" fill-rule="evenodd">
+              <circle stroke="currentColor" cx="7" cy="7" r="6.5"></circle>
+              <polyline
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                points="6.5 3 6.5 8 9.5 9.5"
+              ></polyline>
+            </g>
+          </svg>
+        </i>
+        <i
+          class="c-icon--svg c-icon--svg-circle c-icon--svg-light"
+          style="background-color: rgb(110, 110, 110);"
+        >
+          <svg viewBox="0 0 14 14">
+            <g fill="none" fill-rule="evenodd">
+              <path
+                d="M7 7L.5.5 7 7 13.5.5 7 7zm0 0l6.5 6.5L7 7 .5 13.5 7 7z"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </g>
+          </svg>
+        </i>
+      </div>
+    </div>
+  </div>
+  <div
+    class="c-time-picker-popup c-time-picker-popup--small c-time-picker-popup--range"
+    style="top: 30px;"
+  >
+    <div
+      class="c-time-picker-list-group"
+      aria-labelledby="c-time-picker-popup__start-time-2"
+    >
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+    </div>
+    <div
+      class="c-time-picker-list-group"
+      aria-labelledby="c-time-picker-popup__end-time-2"
+    >
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="demo-only">
+  <div
+    class="c-time-picker-range c-time-picker-range--normal"
+    aria-labelledby="c-time-picker-range__label-3"
+  >
+    <input
+      type="text"
+      placeholder="开始时间"
+      class="c-input c-input--normal"
+      name="start-time-3"
+    />
+    <i aria-hidden="true" class="c-icon--svg c-time-picker__separator">
+      <svg viewBox="0 0 14 14" style="stroke-width: 0.666667;">
+        <g fill-rule="evenodd">
+          <path d="M1,7 L13,7" stroke-linecap="round"></path>
+        </g>
+      </svg>
+    </i>
+    <div
+      tabindex="-1"
+      class="c-input-affix-container c-input-affix-container--sc-input--normal"
+    >
+      <input
+        type="text"
+        placeholder="结束时间"
+        class="c-input c-input--normal"
+        name="end-time-3"
+      />
+      <div class="c-time-picker__icon">
+        <i class="c-icon--svg" style="display: none;">
+          <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+            <g fill="none" fill-rule="evenodd">
+              <circle stroke="currentColor" cx="7" cy="7" r="6.5"></circle>
+              <polyline
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                points="6.5 3 6.5 8 9.5 9.5"
+              ></polyline>
+            </g>
+          </svg>
+        </i>
+        <i
+          class="c-icon--svg c-icon--svg-circle c-icon--svg-light"
+          style="background-color: rgb(110, 110, 110);"
+        >
+          <svg viewBox="0 0 14 14">
+            <g fill="none" fill-rule="evenodd">
+              <path
+                d="M7 7L.5.5 7 7 13.5.5 7 7zm0 0l6.5 6.5L7 7 .5 13.5 7 7z"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </g>
+          </svg>
+        </i>
+      </div>
+    </div>
+  </div>
+  <div
+    class="c-time-picker-popup c-time-picker-popup--range"
+    style="top: 38px;"
+  >
+    <div
+      class="c-time-picker-list-group"
+      aria-labelledby="c-time-picker-popup__start-time-3"
+    >
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+    </div>
+    <div
+      class="c-time-picker-list-group"
+      aria-labelledby="c-time-picker-popup__end-time-3"
+    >
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="demo-only">
+  <div
+    class="c-time-picker-range c-time-picker-range--large"
+    aria-labelledby="c-time-picker-range__label-4"
+  >
+    <input
+      type="text"
+      placeholder="开始时间"
+      class="c-input c-input--large"
+      name="start-time-4"
+    />
+    <i aria-hidden="true" class="c-icon--svg c-time-picker__separator">
+      <svg viewBox="0 0 14 14" style="stroke-width: 0.666667;">
+        <g fill-rule="evenodd">
+          <path d="M1,7 L13,7" stroke-linecap="round"></path>
+        </g>
+      </svg>
+    </i>
+    <div
+      tabindex="-1"
+      class="c-input-affix-container c-input-affix-container--sc-input--large"
+    >
+      <input
+        type="text"
+        placeholder="结束时间"
+        class="c-input c-input--large"
+        name="end-time-4"
+      />
+      <div class="c-time-picker__icon">
+        <i class="c-icon--svg" style="display: none;">
+          <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+            <g fill="none" fill-rule="evenodd">
+              <circle stroke="currentColor" cx="7" cy="7" r="6.5"></circle>
+              <polyline
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                points="6.5 3 6.5 8 9.5 9.5"
+              ></polyline>
+            </g>
+          </svg>
+        </i>
+        <i
+          class="c-icon--svg c-icon--svg-circle c-icon--svg-light"
+          style="background-color: rgb(110, 110, 110);"
+        >
+          <svg viewBox="0 0 14 14">
+            <g fill="none" fill-rule="evenodd">
+              <path
+                d="M7 7L.5.5 7 7 13.5.5 7 7zm0 0l6.5 6.5L7 7 .5 13.5 7 7z"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </g>
+          </svg>
+        </i>
+      </div>
+    </div>
+  </div>
+  <div
+    class="c-time-picker-popup c-time-picker-popup--large c-time-picker-popup--range"
+    style="top: 46px;"
+  >
+    <div
+      class="c-time-picker-list-group"
+      aria-labelledby="c-time-picker-popup__start-time-4"
+    >
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+    </div>
+    <div
+      class="c-time-picker-list-group"
+      aria-labelledby="c-time-picker-popup__end-time-4"
+    >
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+      <ul role="listbox">
+        <li tabindex="-1" role="option" aria-selected="true">00</li>
+        <li tabindex="-1" role="option">01</li>
+        <li tabindex="-1" role="option">02</li>
+        <li role="option" aria-disabled="true">03</li>
+        <li tabindex="-1" role="option">04</li>
+        <li tabindex="-1" role="option">05</li>
+        <li tabindex="-1" role="option">06</li>
+        <li tabindex="-1" role="option">07</li>
+        <li tabindex="-1" role="option">08</li>
+        <li tabindex="-1" role="option">09</li>
+        <li tabindex="-1" role="option">10</li>
+        <li tabindex="-1" role="option">11</li>
+        <li tabindex="-1" role="option">12</li>
+        <li tabindex="-1" role="option">13</li>
+        <li tabindex="-1" role="option">14</li>
+        <li tabindex="-1" role="option">15</li>
+        <li tabindex="-1" role="option">16</li>
+        <li tabindex="-1" role="option">17</li>
+        <li tabindex="-1" role="option">18</li>
+        <li tabindex="-1" role="option">19</li>
+        <li tabindex="-1" role="option">20</li>
+        <li tabindex="-1" role="option">21</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h2>禁止</h2>
+<div
+  class="c-input-affix-container c-input-affix-container--normal c-input-affix-container--disabled c-time-picker"
+  aria-disabled="true"
+  aria-labelledby="c-time-picker--disabled"
+>
+  <input
+    disabled
+    type="text"
+    placeholder="选择时间"
+    class="c-input c-input--normal"
+    name="time-7"
+  />
+  <div class="c-time-picker__icon">
+    <i class="c-icon--svg">
+      <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+        <g fill="none" fill-rule="evenodd">
+          <circle stroke="currentColor" cx="7" cy="7" r="6.5"></circle>
+          <polyline
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            points="6.5 3 6.5 8 9.5 9.5"
+          ></polyline>
+        </g>
+      </svg>
+    </i>
+    <i
+      class="c-icon--svg c-icon--svg-circle c-icon--svg-light"
+      style="background-color: rgb(110, 110, 110); display: none;"
+    >
+      <svg viewBox="0 0 14 14">
+        <g fill="none" fill-rule="evenodd">
+          <path
+            d="M7 7L.5.5 7 7 13.5.5 7 7zm0 0l6.5 6.5L7 7 .5 13.5 7 7z"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </g>
+      </svg>
+    </i>
+  </div>
+</div>
+
+<div class="demo-only">
+  <div
+    class="c-time-picker-range c-time-picker-range--normal"
+    aria-labelledby="c-time-picker-range__label-5"
+    aria-disabled="true"
+  >
+    <input
+      type="text"
+      placeholder="开始时间"
+      class="c-input c-input--normal"
+      name="start-time-5"
+      disabled
+    />
+    <i aria-hidden="true" class="c-icon--svg c-time-picker__separator">
+      <svg viewBox="0 0 14 14" style="stroke-width: 0.666667;">
+        <g fill-rule="evenodd">
+          <path d="M1,7 L13,7" stroke-linecap="round"></path>
+        </g>
+      </svg>
+    </i>
+    <input
+      disabled
+      type="text"
+      placeholder="结束时间"
+      class="c-input c-input--normal"
+      name="end-time-5"
+    />
+    <div class="c-time-picker__icon">
+      <i class="c-icon--svg">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <circle stroke="currentColor" cx="7" cy="7" r="6.5"></circle>
+            <polyline
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              points="6.5 3 6.5 8 9.5 9.5"
+            ></polyline>
+          </g>
+        </svg>
+      </i>
+      <i
+        class="c-icon--svg c-icon--svg-circle c-icon--svg-light"
+        style="background-color: rgb(110, 110, 110); display: none;"
+      >
+        <svg viewBox="0 0 14 14">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M7 7L.5.5 7 7 13.5.5 7 7zm0 0l6.5 6.5L7 7 .5 13.5 7 7z"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </div>
+  </div>
+</div>

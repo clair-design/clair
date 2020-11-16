@@ -1,0 +1,60 @@
+import Basic from "./basic.mdx";
+import Placement from "./placement.mdx";
+import Trigger from "./trigger.mdx";
+import Control from "./control.mdx";
+import Hide from "./hide.mdx";
+import Click from "./click.mdx";
+
+# Dropdown
+
+<Basic />
+<Placement />
+<Trigger />
+<Control />
+<Hide />
+<Click />
+
+## 需求分解
+
+`Dropdown`下拉菜单组件的需求可被分解为**下拉**加**菜单**
+
+## 设计
+
+因此，将`Dropdown`的导出设计为：
+
+- Dropdown
+- Dropdown.Menu
+- Dropdown.Item
+
+## 属性
+
+### Dropdown 组件属性
+
+| Name               | Description                                                                     | Type                                                                                  | Required | Default     |
+| ------------------ | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | -------- | ----------- |
+| placement          | 菜单弹出位置                                                                    | `'top'`\|`'top-left'`\|`'top-right'`\|`'bottom'`\|`'bottom-left'`\|`'bottom-right'`\| | `false`  | `'bottom'`  |
+| overlay            | 下拉菜单内容                                                                    | `(() => <Dropdown.Menu />)` \| `<Dropdown.Menu />`                                    | `false`  | -           |
+| trigger            | 触发下拉的行为                                                                  | `Array<'click'` \| `'hover'` \| `'focus'>`                                            | `false`  | `['hover']` |
+| visible            | 菜单是否显示                                                                    | `boolean`                                                                             | `false`  | -           |
+| defaultVisible     | 初始情况菜单是否显示（优先级低于 visible）                                      | `boolean`                                                                             | `false`  | -           |
+| showDelay          | 下拉菜单出现的延迟                                                              | `number`                                                                              | `false`  | `100`       |
+| hideDelay          | 下拉菜单消失的延迟                                                              | `number`                                                                              | `false`  | `100`       |
+| tabindex           | 下拉菜单按钮的`tabindex`                                                        | `number`                                                                              | `false`  | `0`         |
+| className          | 下拉菜单组件附加类名                                                            | `string`                                                                              | `false`  | -           |
+| style              | 下拉菜单组件附加样式                                                            | `React.CSSProperties`                                                                 | `false`  | -           |
+| onVisibilityChange | 菜单显示状态改变时调用，eventHandler 中`detail.visible`的值为改变后菜单是否显示 | `({ detail: { visible: boolean; }}) => void`                                          | `false`  | -           |
+
+### Dropdown.Menu 组件属性
+
+| Name        | Description                                                                                                       | Type                                                                                  | Required | Default |
+| ----------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | -------- | ------- |
+| onClick     | 点击子元素中的`Dropdown.Item`时调用此函数，eventHandler 中`detail.key`的值为被点击`Dropdown.Item`的`item-key`属性 | `({ detail: { key: string` \| `number` \| `object; }, nativeEvent: Event; }) => void` | `false`  | -       |
+| hideOnClick | 点击子元素中的`Dropdown.Item`后，是否隐藏                                                                         | `boolean`                                                                             | `false`  | `false` |
+
+### Dropdown.Item 组件属性
+
+| Name     | Description               | Type                             | Required | Default |
+| -------- | ------------------------- | -------------------------------- | -------- | ------- |
+| disabled | 选项是否被禁用            | `boolean`                        | `false`  | `false` |
+| divided  | 是否有分割线              | `boolean`                        | `false`  | `false` |
+| itemKey  | `Dropdown.Item`的唯一标识 | `string` \| `number` \| `object` | `true`   | -       |

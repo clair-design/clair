@@ -1,0 +1,105 @@
+@import 'variables';
+@import 'icon';
+
+.c-alert {
+  display: flex;
+  align-items: flex-start;
+  padding: $--alert-padding;
+
+  color: $--secondary-text-color;
+
+  border: 1px solid transparent;
+
+  border-radius: $--base-border-radius;
+
+  transition: transition(opacity);
+
+  &__title {
+    margin-bottom: $--base-title-space-bottom;
+    color: $--base-text-color;
+    font-weight: bold;
+    font-size: $--base-title-font-size;
+    line-height: $--base-line-height;
+  }
+
+  &__content {
+    flex: 1 0 0;
+    font-size: $--base-font-size;
+    line-height: $--base-line-height;
+  }
+
+  > .c-icon--svg:first-child {
+    margin-top: floor(($--base-real-line-height - $--base-icon-size) / 2);
+    margin-right: $--base-icon-space-right;
+    font-size: $--base-icon-size;
+    line-height: 1;
+  }
+
+  > .c-icon--close {
+    margin-top: floor(($--base-real-line-height - $--base-icon-size) / 2);
+    font-size: $--base-icon-size;
+  }
+}
+
+// ----------------------------------------------------------------
+.c-alert--has-title {
+  padding: $--alert-padding-with-title;
+
+  > .c-icon--svg:first-child {
+    margin-top: floor(
+      ($--base-real-title-line-height - $--base-icon-large-size) / 2
+    );
+    margin-right: $--base-icon-large-space-right;
+    font-size: $--base-icon-large-size;
+  }
+
+  > .c-icon--close {
+    margin-top: floor(($--base-real-title-line-height - $--base-icon-size) / 2);
+    font-size: $--base-icon-size;
+  }
+}
+
+// ----------------------------------------------------------------
+// themes
+
+@mixin mixin-alert-theme(
+  $color,
+  $background-lightness: 3%,
+  $border-lightness: 50%,
+  $border-saturation: 100%
+) {
+  background-color: change-color(
+    $color,
+    $lightness: get-lightness($background-lightness)
+  );
+  border-color: change-color(
+    $color,
+    $lightness: get-lightness($border-lightness),
+    $saturation: $border-saturation
+  );
+}
+
+.c-alert--success {
+  @include mixin-alert-theme(
+    $--success-color,
+    $background-lightness: 4%,
+    $border-saturation: 60%
+  );
+}
+
+.c-alert--warning {
+  @include mixin-alert-theme($--warning-color, $background-lightness: 5%);
+}
+
+.c-alert--error {
+  @include mixin-alert-theme($--danger-color, $border-lightness: 35%);
+}
+
+.c-alert--info {
+  @include mixin-alert-theme($--info-color, $border-lightness: 35%);
+}
+
+.c-alert-fade-enter,
+.c-alert-fade-leave-active {
+  opacity: 0;
+}

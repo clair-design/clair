@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>SkipBack</title>
+    <desc>Created with Sketch.</desc>
+    <g id="SkipBack" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="蒙版" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M3,25 L3,3" id="路径-3" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M23.4124028,3.15289322 L9.58959066,13.1908464 C9.14270748,13.5153674 9.04351331,14.140714 9.36803429,14.5875972 C9.42978577,14.6726324 9.50455549,14.7474021 9.58959066,14.8091536 L23.4124028,24.8471068 C23.859286,25.1716278 24.4846326,25.0724336 24.8091536,24.6255504 C24.9331953,24.4547382 25,24.249053 25,24.0379532 L25,3.96204681 C25,3.40976206 24.5522847,2.96204681 24,2.96204681 C23.7889002,2.96204681 23.583215,3.02885155 23.4124028,3.15289322 Z" id="路径-4" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>

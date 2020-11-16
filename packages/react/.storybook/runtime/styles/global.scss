@@ -1,0 +1,198 @@
+// 这里编写的是文档中需要用的样式
+
+.s-container {
+  &--button {
+    button {
+      margin: 10px;
+    }
+  }
+}
+
+.s-grid-example {
+  .c-grid__row {
+    margin: 10px auto;
+    background: #eee;
+  }
+
+  .c-grid__col {
+    background: #00a0e9;
+    color: #fff;
+    text-align: center;
+    padding: 16px 0;
+  }
+
+  .c-grid__col:nth-child(odd) {
+    background: rgba(0, 160, 233, 0.7);
+  }
+}
+
+.s-input-example {
+  & {
+    margin-bottom: -1em;
+  }
+  & > div {
+    margin-bottom: 1em;
+  }
+  & > div:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  & > .c-input {
+    margin: 0 1em 1em 0;
+  }
+
+  .prefix-text,
+  .suffix-text {
+    background-color: #f5f7fa;
+    color: #909399;
+    border: 1px solid #dcdfe6;
+    padding: 0 10px;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 30px;
+  }
+
+  .prefix-text {
+    border-right: 0;
+  }
+  .suffix-text {
+    border-left: 0;
+  }
+}
+
+.s-icon-demo .c-grid__col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 2em;
+  padding: 1em;
+}
+
+.s-avatar-demo .c-avatar {
+  margin-right: 40px;
+}
+
+$--demo-border: 1px solid #f1f3f4;
+$--demo-transition: all 0.3s;
+.react-demo {
+  margin: 20px auto;
+}
+
+.react-demo__live {
+  padding: 28px;
+  border: $--demo-border;
+  border-bottom: none;
+}
+
+.react-demo__source-code {
+  border: $--demo-border;
+  border-top: none;
+  overflow: hidden;
+  transition: $--demo-transition;
+}
+
+.react-demo__toggle {
+  border: $--demo-border !important;
+  background-color: transparent !important;
+  margin: 0 !important;
+}
+
+.react-demo__button {
+  transition: $--demo-transition;
+
+  &-up {
+    transform: rotate(180deg);
+  }
+
+  &-down {
+    transform: rotate(0);
+  }
+}
+
+.react-demo-container--badge {
+  .c-badge {
+    margin-right: 40px;
+  }
+  .example {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: #eff0f2;
+  }
+  .controls {
+    margin-bottom: 30px;
+  }
+}
+
+.s-layout-example {
+  .c-layout__aside {
+    background: #c6dcfe;
+  }
+
+  .c-layout__header,
+  .c-layout__footer {
+    background: #d3e4ff;
+    height: 3em;
+  }
+
+  .c-layout__main {
+    background: #e1ecff;
+    height: 6em;
+  }
+
+  /* make text centered vertically and horizontally */
+  .c-layout__header,
+  .c-layout__main,
+  .c-layout__aside,
+  .c-layout__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4b75b4;
+  }
+}
+
+.c-tab-pane > div {
+  padding-block-start: 1em;
+}
+
+.c-tabs--bottom .c-tab-pane > div {
+  padding-block-end: 1em;
+}
+
+.c-tabs--top .c-tab-pane > div {
+  padding-block-start: 1em;
+}
+
+.c-tabs--left .c-tab-pane > div {
+  padding-inline-start: 1em;
+}
+
+.c-tabs--right .c-tab-pane > div {
+  padding-inline-end: 1em;
+}
+
+.s-form-example {
+  input {
+    font-size: 12px;
+  }
+  .c-checkbox-group {
+    display: flex;
+  }
+  .c-button {
+    margin-right: 8px;
+  }
+  .demo-button-add {
+    width: 320px;
+    border-style: dashed;
+  }
+  .demo-button-rm {
+    width: 24px;
+    min-width: 0;
+    padding-right: 0;
+    padding-left: 0;
+    text-align: center;
+    border-radius: 24px;
+  }
+}

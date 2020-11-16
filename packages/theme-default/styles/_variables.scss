@@ -1,0 +1,750 @@
+@import 'functions/utils';
+@import 'functions/color';
+@import 'functions/motion';
+@import 'functions/size';
+
+// set the base to $--base-font-size
+@function px2em($px, $fixed: 5) {
+  @return convert-px-to-em($px, $--base-font-size, $fixed);
+}
+
+// make a color more more closer to background color
+// @access public
+// @param {Color} $color - base color
+// @param {Percentage} $amount - amount of lightness change
+// @return {Color}
+@function dim($color, $amount) {
+  @return shift-color($color, $--base-background-color, $amount);
+}
+
+// make a color more closer to text color
+// @access public
+// @param {Color} $color - base color
+// @param {Percentage} $amount - amount of lightness change
+// @return {Color}
+@function highlight($color, $amount) {
+  @return shift-color($color, $--base-text-color, $amount);
+}
+
+// Slightly lighten (or darken in dark theme) a color
+// @access public
+// @param {Color} $color - color to tint
+// @param {Number} $amount - amount of lightness change
+// @return {Color}
+@function tint($color, $amount) {
+  @return shift-lightness($color, $--base-background-color, $amount);
+}
+
+// Slightly darken (or lighten in dark theme) a color
+// @access public
+// @param {Color} $color - color to shade
+// @param {Number} $amount - amount of lightness chang
+// @return {Color}
+@function shade($color, $amount) {
+  @return shift-lightness($color, $--base-text-color, $amount);
+}
+
+// SEE get-text-color
+@function text-color($bg-color, $threshold: 0.65) {
+  @return get-text-color(
+    $bg-color,
+    $--base-text-color,
+    $--base-background-color,
+    $threshold
+  );
+}
+
+// SEE get-lightness-base-on-bg
+@function get-lightness($lightness-diff) {
+  @return get-lightness-base-on-bg($lightness-diff, $--base-background-color);
+}
+
+// SEE make-transition
+@function transition($property, $duration: $--transition-duration) {
+  @return make-transition($property, $duration, $--transition-easing);
+}
+
+/* ------------------------------------------------------------------------- */
+/// Colors
+$--primary-color: #006bff !default;
+$--success-color: #52b818 !default;
+$--warning-color: #fea119 !default;
+$--danger-color: #f84e44 !default;
+$--info-color: $--primary-color !default;
+
+// base background color, used in page body
+$--base-background-color: #fff !default;
+// base text color, used in title, contents, label...
+$--base-text-color: #202020 !default;
+// secondary text color, used in popup content
+$--secondary-text-color: tint($--base-text-color, 21%) !default;
+// text for tips
+$--tertiary-text-color: tint($--base-text-color, 48%) !default;
+// disabled text-color
+$--disabled-text-color: shade($--base-background-color, 22%) !default;
+
+// primary border color, used in form element border
+$--primary-border-color: shade($--base-background-color, 13%) !default;
+// secondary border color, used in popup border, etc...
+$--secondary-border-color: change-color(
+  shift-color($--base-background-color, $--primary-color, 6%),
+  $saturation: 10%
+) !default;
+
+// gray background color
+$--gray-background-color: shade($--base-background-color, 10%) !default;
+// light gray background color
+$--light-gray-background-color: change-color(
+  $--primary-color,
+  $lightness: get-lightness(5%),
+  $saturation: 20%
+) !default;
+
+// light background color from tinted primary color
+$--pastel-background-color: shift-color(
+  $--base-background-color,
+  $--primary-color,
+  3%
+) !default;
+// light background mixed with a little primary color
+$--light-background-color: change-color(
+  $--pastel-background-color,
+  $saturation: 30%
+) !default;
+// disabled element background color
+$--disabled-background-color: shade($--base-background-color, 3%) !default;
+
+// icon color
+$--icon-color: tint($--base-text-color, 30%) !default;
+
+/* ------------------------------------------------------------------------- */
+/// Base: common values for Alert, Message, Modal, Input, etc.
+$--base-line-height: 1.5 !default;
+$--base-title-font-size: 16px !default;
+$--base-title-space-bottom: 8px !default;
+$--base-modal-title-font-size: $--base-title-font-size !default;
+
+// font size
+$--base-font-size: 14px !default;
+$--small-font-size: ($--base-font-size)-2 !default;
+$--large-font-size: ($--base-font-size)+2 !default;
+
+// box sizes & decorations
+$--base-padding: 16px 24px !default;
+$--base-border-radius: 0 !default;
+$--base-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15) !default;
+$--base-drop-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !default;
+
+// normal icons
+$--base-icon-size: $--base-font-size !default;
+$--base-icon-space-right: 8px !default;
+
+// large icons
+$--base-icon-large-size: 24px !default;
+$--base-icon-large-space-right: 12px !default;
+
+// motions
+$--transition-duration: 240ms;
+$--transition-easing: cubic-bezier(0.1, 1, 0.2, 1);
+
+// ---------------------------------------------------------------
+// computations
+// The real height of a single line of content
+$--base-real-line-height: $--base-line-height * $--base-font-size;
+// The real height of a single line of title
+$--base-real-title-line-height: $--base-line-height * $--base-title-font-size;
+
+/* ------------------------------------------------------------------------- */
+/// Layout
+$--layout-aside-width: 200px !default;
+$--layout-aside-collapsed-width: 60px !default;
+$--layout-collapse-trigger-height: 3em !default;
+
+/* ------------------------------------------------------------------------- */
+/// Form elements
+
+// border for form elements
+$--form-element-border-color: $--primary-border-color !default;
+// mini form element height, used in button only
+$--mini-form-element-height: 20px !default;
+// small form element height
+$--small-form-element-height: 24px !default;
+// base form element height
+$--base-form-element-height: 32px !default;
+// large form element height
+$--large-form-element-height: 40px !default;
+$--form-item-tip-height: 20px !default;
+
+/* ------------------------------------------------------------------------- */
+/// Button
+
+// 按钮圆角大小
+$--button-border-radius: $--base-border-radius !default;
+// 按钮 CSS transition
+$--button-transition: transition((background-color, border-color)) !default;
+// 默认按钮字体大小
+$--button-default-font-size: $--base-font-size !default;
+
+// 默认按钮背景色
+$--button-default-background-color: $--base-background-color !default;
+// 默认按钮边框颜色
+$--button-default-border-color: $--form-element-border-color !default;
+// 默认按钮高度
+$--button-default-height: $--base-form-element-height !default;
+// 默认按钮 padding
+$--button-default-padding: 0 16px !default;
+// 默认按钮最小宽度
+$--button-default-min-width: 88px !default;
+
+// 形状变化时的按钮样式
+$--button-circle-height: $--button-default-height;
+$--button-circle-min-width: $--button-default-height;
+
+// 小号按钮字体大小
+$--button-small-font-size: $--small-font-size !default;
+// 小号按钮高度
+$--button-small-height: $--small-form-element-height !default;
+// 小号按钮 padding
+$--button-small-padding: 0 10px !default;
+// 小号按钮最小宽度
+$--button-small-min-width: 68px !default;
+
+// 大号按钮字体大小
+$--button-large-font-size: $--large-font-size !default;
+// 小号按钮高度
+$--button-large-height: $--large-form-element-height !default;
+// 大号按钮 padding
+$--button-large-padding: 0 24px !default;
+// 大号按钮最小宽度
+$--button-large-min-width: 104px !default;
+
+/* ------------------------------------------------------------------------- */
+/// Icon
+$--icon-close-fill-color: tint(#000, 55%) !default;
+$--icon-close-hover-fill-color: darken($--icon-close-fill-color, 20%) !default;
+$--icon-close-transition-duration: 0.2s !default;
+$--icon-close-tag-hover-color: #a3a7b0 !default;
+$--icon-close-tag-fill-color: rgba($--icon-close-tag-hover-color, 0.7) !default;
+
+/* ------------------------------------------------------------------------- */
+/// Alert
+$--alert-padding: 9px 16px !default;
+$--alert-padding-with-title: $--base-padding !default;
+
+/* ------------------------------------------------------------------------- */
+/// Notification
+$--notification-max-width: 380px !default;
+$--notification-padding: 18px 24px !default;
+
+/* ------------------------------------------------------------------------- */
+/// Message
+$--msg-padding: 10px 14px !default;
+$--msg-max-width: 400px !default;
+
+/* ------------------------------------------------------------------------- */
+/// Popconfirm
+$--popconfirm-background-color: $--base-background-color !default;
+$--popconfirm-color: $--secondary-text-color !default;
+$--popconfirm-max-width: 220px !default;
+$--popconfirm-line-height: 22px !default;
+$--popconfirm-base-padding: 16px !default;
+$--popconfirm-box-shadow: $--base-box-shadow !default;
+$--popconfirm-footer-margin-top: 16px !default;
+$--popconfirm-button-margin-left: 8px !default;
+
+/* ------------------------------------------------------------------------- */
+/// Input
+
+$--input-default-padding-horizontal: 12px !default;
+// 默认input高度
+$--input-default-width: 240px !default;
+// 默认input高度
+$--input-default-height: $--base-form-element-height !default;
+// 默认input.textarea最大高度
+$--input-textarea-default-height: 114px !default;
+// 默认input行高
+$--input-default-line-height: $--base-form-element-height !default;
+// 默认input padding
+$--input-default-padding: 0 $--input-default-padding-horizontal !default;
+// 默认affix icon 宽 * 高
+$--input-default-affix-size: 16px !default;
+// 默认input字体大小
+$--input-default-font-size: $--base-font-size !default;
+// 默认input间距
+$--input-default-suffix-padding: 10px !default;
+
+// 小号input字体大小
+$--input-small-font-size: $--small-font-size !default;
+// 小号input高度
+$--input-small-height: $--small-form-element-height !default;
+// 小号input padding
+$--input-small-padding: 0 8px !default;
+
+// 大号input字体大小
+$--input-large-font-size: $--large-font-size !default;
+// 小号input高度
+$--input-large-height: $--large-form-element-height !default;
+// 大号input padding
+$--input-large-padding: 0 16px !default;
+
+// input圆角大小
+$--input-border-radius: $--base-border-radius !default;
+// input CSS transition
+$--input-transition: transition(all) !default;
+
+// 默认input背景色
+$--input-default-background-color: $--base-background-color !default;
+// 默认input字体颜色
+$--input-default-color: $--base-text-color !default;
+// 默认input边框颜色
+$--input-default-border-color: $--form-element-border-color !default;
+// 默认input边框focus颜色
+$--input-focus-border-color: $--primary-color !default;
+
+$--input-success-color: $--success-color !default;
+$--input-warning-color: $--warning-color !default;
+$--input-error-color: $--danger-color !default;
+
+/* ------------------------------------------------------------------------- */
+/// Radio
+$--radio-circle-outer-size: 14px !default;
+$--radio-circle-inner-size: 5px !default;
+$--radio-button-border-radius: 2px !default;
+$--radio-space-between-two-radio: 30px !default;
+$--radio-space-between-input-label: 8px !default;
+
+$--radio-text-color: $--base-text-color !default;
+$--radio-checked-text-color: $--primary-color !default;
+$--radio-disabled-text-color: $--disabled-text-color !default;
+
+$--radio-hover-color: $--primary-color !default;
+
+$--radio-border-color: $--form-element-border-color !default;
+$--radio-bg-color: $--base-background-color !default;
+$--radio-checked-color: $--primary-color !default;
+
+$--radio-disabled-border-color: $--form-element-border-color !default;
+$--radio-disabled-bg-color: $--disabled-background-color !default;
+$--radio-disabled-checked-color: $--disabled-text-color !default;
+
+/* ------------------------------------------------------------------------- */
+/// InputNumber
+$--input-number-border-color: $--form-element-border-color !default;
+$--input-number-border-hover-color: $--primary-color !default;
+$--input-number-controls-disabled-background-color: $--disabled-background-color !default;
+$--input-number-controls-focus-background-color: $--pastel-background-color !default;
+
+// 默认尺寸（normal）
+$--input-number-normal-font-size: $--base-font-size !default;
+$--input-number-normal-width: 126px !default;
+$--input-number-normal-height: $--input-default-height !default;
+$--input-number-normal-controls-width: 32px !default;
+
+// 大尺寸（big）
+$--input-number-large-font-size: $--large-font-size !default;
+$--input-number-large-width: 162px !default;
+$--input-number-large-height: $--input-large-height !default;
+$--input-number-large-controls-width: 40px !default;
+
+// 小尺寸（small）
+$--input-number-small-font-size: $--small-font-size !default;
+$--input-number-small-width: 96px !default;
+$--input-number-small-height: $--input-small-height !default;
+$--input-number-small-controls-width: 24px !default;
+
+/* ------------------------------------------------------------------------- */
+/// Tag
+$--tag-font-size: $--small-font-size !default;
+$--tag-blue-color: #006bff !default;
+$--tag-green-color: #3cae11 !default;
+$--tag-orange-color: #fd8c13 !default;
+$--tag-red-color: #fa4136 !default;
+$--tag-purple-color: #7748a7 !default;
+$--tag-grey-color: #777 !default;
+$--tag-cyan-color: #0facab !default;
+$--tag-magenta-color: #ea2e94 !default;
+
+/* ------------------------------------------------------------------------- */
+/// Tabs
+$--tabs-text-color: $--secondary-text-color !default;
+$--tabs-disabled-color: $--disabled-text-color !default;
+$--tabs-nav-border-color: $--primary-border-color !default;
+$--tabs-nav-bg-color: $--base-background-color !default;
+$--tabs-vertical-nav-padding: 8px !default;
+$--tabs-border-width: 1px !default;
+$--tabs-bar-width: 2px !default;
+$--tabs-line-height: 18px !default;
+$--tabs-default-padding: 11px 14px !default;
+$--tabs-gap: 32px !default;
+$--tabs--card-padding: 9px 18px !default;
+$--tabs--card-border-radius: 4px !default;
+$--tabs-icon-size: 14px !default;
+$--tabs-add-btn-color: $--icon-color !default;
+
+/* ------------------------------------------------------------------------- */
+/// Select
+
+$--select-width: 240px !default;
+$--select-dropdown-padding: 8px !default;
+
+$--select-small-height: $--input-small-height !default;
+$--select-small-font-size: $--small-font-size !default;
+$--select-small-icon-size: $--select-small-font-size - 2px !default;
+
+$--select-normal-height: $--input-default-height !default;
+$--select-normal-font-size: $--base-font-size !default;
+$--select-normal-icon-size: $--select-normal-font-size - 2px !default;
+
+$--select-large-height: $--input-large-height !default;
+$--select-large-font-size: $--large-font-size !default;
+$--select-large-icon-size: $--select-large-font-size - 2px !default;
+
+$--select-padding-right: $--input-default-padding-horizontal;
+
+$--select-dropdown-padding-blank: $--select-dropdown-padding * 2+2px !default;
+
+$--select-option-small-font-size: $--small-font-size !default;
+$--select-option-small-height: $--select-option-small-font-size * 2 !default;
+$--select-dropdown-small-height: $--select-option-small-height * 6 +
+  $--select-dropdown-padding-blank;
+
+$--select-option-font-size: $--base-font-size !default;
+$--select-option-height: $--select-option-font-size * 2+4px !default;
+$--select-dropdown-height: $--select-option-height * 6 +
+  $--select-dropdown-padding-blank;
+
+$--select-option-large-font-size: $--large-font-size !default;
+$--select-option-large-height: $--select-option-large-font-size * 2 !default;
+$--select-dropdown-large-height: $--select-option-large-height * 6 +
+  $--select-dropdown-padding-blank;
+
+$--select-option-font-color: $--base-text-color !default;
+$--select-option-active-background: $--pastel-background-color !default;
+
+/* ------------------------------------------------------------------------- */
+/// Rating
+
+$--rating-default-color: #eaeaec !default;
+$--rating-margin-right: 8px !default;
+$--rating-transform-scale: 1.1 !default;
+$--rating-font-size-default: $--large-font-size !default;
+
+/* ------------------------------------------------------------------------- */
+/// Checkbox
+
+// size
+$--checkbox-font-size--large: $--large-font-size !default;
+$--checkbox-font-size--normal: $--base-font-size !default;
+$--checkbox-font-size--small: $--small-font-size !default;
+
+$--checkbox-label-padding--normal: $--checkbox-font-size--normal - 6 !default;
+$--checkbox-label-padding--large: $--checkbox-label-padding--normal !default;
+$--checkbox-label-padding--small: $--checkbox-label-padding--normal !default;
+
+// color
+$--checkbox-bg-color: $--base-background-color !default;
+$--checkbox-bg-color--disabled: $--disabled-background-color !default;
+$--checkbox-mark-color: $--base-background-color !default;
+$--checkbox-mark-color--disabled: $--disabled-text-color !default;
+$--checkbox-border: 1px solid $--form-element-border-color !default;
+
+/* ------------------------------------------------------------------------- */
+// cascader-panel
+// 层级面板border
+$--cascader-border: 1px solid $--secondary-border-color !default;
+// 鼠标悬浮背景色和字色
+$--cascader-hover-bgColor: $--pastel-background-color !default;
+// 检索词命中飘红色
+$--cascader-highlight-color: #f84e44 !default;
+$--cascader-width: $--select-width !default;
+
+/* ------------------------------------------------------------------------- */
+/// Dropdown
+
+$--dropdown-link-text-color: $--primary-color !default;
+$--dropdown-menu-background-color: $--base-background-color !default;
+$--dropdown-menu-base-padding: 8px 0 !default;
+$--dropdown-menu-base-offset: 6px !default;
+$--dropdown-menu-base-font-size: $--base-font-size !default;
+$--dropdown-menu-base-text-color: $--base-text-color !default;
+$--dropdown-menu-item-text-hover-background: $--pastel-background-color !default;
+$--dropdown-menu-item-divided-offset: 7px !default;
+$--dropdown-menu-item-disabled-color: $--disabled-text-color !default;
+
+// Table
+// size
+$--table-padding: 1em !default;
+$--table-small-padding: 0.8em !default;
+$--table-mini-padding: 0.5em !default;
+
+// color
+$--table-td-background-color: $--base-background-color !default;
+$--table-thead-background-color: $--light-background-color !default;
+$--table-text-color: $--base-text-color !default;
+$--table-row-hover-background-color: $--pastel-background-color !default;
+$--table-border-color: $--secondary-border-color !default;
+$--table-sort-arrow-background-color: $--disabled-text-color !default;
+$--table-sort-arrow-active-color: $--primary-color !default;
+$--table-expand-td-background-color: $--table-thead-background-color !default;
+$--table-shadow-color: rgba(0, 0, 0, 0.05) !default;
+
+// collapse
+$--collapse-item-padding: 15px !default;
+$--collapse-item-font: $--base-font-size !default;
+$--collapse-item-title-height: 44px !default;
+$--collapse-item-line-height: 1.5 !default;
+$--collapse-item-color: $--base-text-color !default;
+$--collapse-border-color: $--secondary-border-color !default;
+$--collapse-background-color: $--light-background-color !default;
+$--collapse-disabled-text-color: $--disabled-text-color !default;
+
+// Progress
+$--progress-primary-color: $--primary-color !default;
+$--progress-success-color: $--success-color !default;
+$--progress-exception-color: $--danger-color !default;
+$--progress-bg-color: $--disabled-background-color !default;
+$--progress-line-color: $--tertiary-text-color !default;
+$--progress-circle-color: $--secondary-text-color !default;
+$--progress-space-between-line-and-text: 8px !default;
+$--progress-line-normal-stroke-width: 8px !default;
+$--progress-line-small-stroke-width: 6px !default;
+$--progress-line-normal-text-width: 56px !default;
+$--progress-line-small-text-width: 48px !default;
+$--progress-line-normal-font-size: 14px !default;
+$--progress-line-small-font-size: 12px !default;
+$--progress-circle-normal-font-size: 20px !default;
+$--progress-circle-small-font-size: 14px !default;
+
+/// Empty
+$--empty-padding: 20px 0 !default;
+$--empty-margin--small: 8px !default;
+$--empty-margin--large: 12px !default;
+$--empty-img-width--small: 56px !default;
+$--empty-img-width--large: 112px !default;
+
+// Pagination
+$--pagination-page-size: $--base-form-element-height - 2px !default;
+$--pagination-page-small-size: $--mini-form-element-height - 2px !default;
+
+// Tree
+$--tree-text-color: $--base-text-color !default;
+$--tree-active-text-color: $--primary-color !default;
+$--tree-font-size: $--base-font-size !default;
+$--tree-node-background-color: $--pastel-background-color !default;
+$--tree-icon-color: #6e6e6e !default;
+
+/* ------------------------------------------------------------------------- */
+/// badge
+$--badge-content-color: text-color($--danger-color) !default;
+$--badge-content-background-color: $--danger-color !default;
+$--badge-content-border-radius: 9px !default;
+$--badge-content-line-height: 18px !default;
+$--badge-content-x-padding: 6px !default;
+$--badge-content-right: 10px !default;
+$--badge-content-dot-size: 8px !default;
+$--badge-content-font-size: 12px !default;
+
+/// Breadcrumb
+$--breadcrumb-font-color: $--secondary-text-color !default;
+$--breadcrumb-line-height: 20px !default;
+$--breadcrumb-item-separator-margin: 0 6px !default;
+$--breadcrumb-item-text-with-icon-margin-left: 6px !default;
+
+/* ------------------------------------------------------------------------- */
+/// time-picker
+$--time-picker-width: 200px;
+$--time-picker-range-width: 340px;
+$--time-picker-dropdown-box-shadow: 0 0 4px 0 rgba(40, 58, 92, 0.15);
+$--time-picker-default-background-color: $--base-background-color !default;
+$--time-picker-dropdown-default-height: 198px !default;
+$--time-picker-dropdown-default-line-height: 28px !default;
+// small
+$--time-picker-small-height: $--small-form-element-height !default;
+$--time-picker-small-padding-left: 8px !default;
+// normal
+$--time-picker-base-font-size: $--base-font-size !default;
+$--time-picker-base-height: $--base-form-element-height !default;
+$--time-picker-base-padding-left: 10px !default;
+// large
+$--time-picker-large-height: $--large-form-element-height !default;
+$--time-picker-large-padding-left: 12px !default;
+// border
+$--time-picker-border-width: 1px !default;
+$--time-picker-border-style: solid;
+$--time-picker-border-color: $--form-element-border-color !default;
+// scrollbar
+$--time-picker-default-scroll-width: 4px !default;
+$--time-picker-default-scroll-radius: 5px !default;
+$--time-picker-default-scroll-background-color: change_color(
+  $--primary-color,
+  $saturation: 19%,
+  $lightness: get-lightness(25%)
+) !default;
+// list
+$--time-picker-default-text-align: center;
+$--time-picker-default-hover-background-color: change_color(
+  $--primary-color,
+  $saturation: 38%,
+  $lightness: 97%
+) !default;
+$--time-picker-default-selected-background-color: change_color(
+  $--primary-color,
+  $saturation: 38%,
+  $lightness: get-lightness(3%)
+) !default;
+$--time-picker-default-selected-font-color: $--primary-color !default;
+$--time-picker-separator-width: 12px !default;
+$--time-picker-dropdown-width: 88px !default;
+$--time-picker-dropdown-font-color: $--base-text-color !default;
+
+/* ------------------------------------------------------------------------- */
+/// Date-picker
+$--date-picker-width: 200px !default;
+$--date-picker-range-width: 340px !default;
+
+$--date-picker-padding--normal: 12px !default;
+$--date-picker-padding--large: ($--date-picker-padding--normal)+2 !default;
+$--date-picker-padding--small: ($--date-picker-padding--normal) - 2 !default;
+
+/// Date-picker-popup
+$--date-picker-header-padding: 9px !default;
+$--date-picker-content-padding: 10px 20px 6px !default;
+$--date-picker-month-content-padding: 27px 30px !default;
+
+$--date-picker-border: 1px solid $--primary-border-color !default;
+$--date-picker-border-active: 1px solid $--primary-color !default;
+$--date-picker-border-inside: 1px solid $--secondary-border-color !default;
+
+$--date-picker-weekbar-text-color: change-color(
+  $--primary-color,
+  $saturation: 20%,
+  $lightness: get-lightness(40%)
+) !default;
+$--date-picker-block-size: 2em !default;
+$--date-picker-block-gap: 10px !default;
+$--date-picker-footer-btn-padding: 8px !default;
+$--date-picker-footer-padding: 6px !default;
+$--date-picker-month-block-gap: 40px !default;
+$--date-picker-row-gap: 4px !default;
+$--date-picker-month-row-gap: 26px !default;
+
+$--date-picker-highlight-bg-color: $--pastel-background-color !default;
+$--date-picker-disabled-bg-color: $--light-background-color !default;
+$--date-picker-active-bg-color: $--primary-color !default;
+$--date-picker-text-color-active: text-color($--primary-color) !default;
+$--date-picker-text-color-dimmed: dim($--base-text-color, 55%) !default;
+
+// disabled
+$--date-picker-border-disabled: 1px solid $--primary-border-color !default;
+
+/* ------------------------------------------------------------------------- */
+/// Menu
+
+$--menu-dark-bg-color: #30323a !default;
+$--menu-dark-vertical-inner-bg-color: #25282f !default;
+$--menu-dark-text-color: #9aa0ac !default;
+$--menu-dark-active-color: #fff !default;
+$--menu-dark-active-border: $--primary-color !default;
+$--menu-dark-active-bg-color: #363948 !default;
+$--submenu__dropdown-min-width: 180px !default;
+$--menu--vertical-menu-item-height: 40px !default;
+$--menu--collapsed-width: 50px !default;
+/// Loading
+
+$--loading-spin-dot-small: 16px !default;
+$--loading-spin-dot-normal: 24px !default;
+$--loading-spin-dot-large: 32px !default;
+$--loading-text-margin-small: ($--base-font-size)-10 !default;
+$--loading-text-margin-normal: ($--base-font-size)-8 !default;
+$--loading-text-margin-large: ($--base-font-size)-4 !default;
+
+/* ------------------------------------------------------------------------- */
+/// Card
+$--card-header-padding: 0 16px 0 24px !default;
+$--card-title-font-size: $--large-font-size !default;
+$--card-title-line-height: 1.5 !default;
+$--card-title-padding: 10px 0 !default;
+$--card-body-padding: 16px 24px !default;
+$--card-cover-margin-bottom: 8px !default;
+
+/* ------------------------------------------------------------------------- */
+/// Switch
+
+$--switch-font-size: $--small-font-size !default;
+$--switch-color: $--base-background-color !default;
+$--switch-circle-bg-color: $--base-background-color !default;
+$--switch-border-radius: 40px !default;
+$--switch-bg-color: #cfd0d3 !default;
+$--switch-checked-bg-color: $--primary-color !default;
+
+$--switch-default-height: 22px !default;
+$--switch-default-width: $--switch-default-height * 2 !default;
+$--switch-small-height: 14px !default;
+$--switch-small-width: $--switch-small-height * 2 !default;
+$--switch-circle-default-size: $--switch-default-height - 4 !default;
+$--switch-circle-small-size: $--switch-small-height - 2 !default;
+$--switch-circle-default-space: 2px !default;
+$--switch-circle-small-space: 1px !default;
+$--switch-label-default-space: 7px !default;
+$--switch-label-small-space: 2px !default;
+
+/* ------------------------------------------------------------------------- */
+/// Avatar
+
+$--avatar-large-size: 56px !default;
+$--avatar-large-font-size: 24px !default;
+$--avatar-normal-size: 32px !default;
+$--avatar-normal-font-size: 16px !default;
+$--avatar-small-size: 24px !default;
+$--avatar-small-font-size: 12px !default;
+
+/* ------------------------------------------------------------------------- */
+/// Steps
+
+$--steps-horizontal-gap: 20px !default;
+$--steps-vertical-gap: 10px !default;
+$--steps-wait-color: tint($--base-text-color, 65%) !default;
+$--steps-text-margin: 4px !default;
+$--steps-icon-margin: 12px !default;
+$--steps-wait-line-color: #e0e2e4 !default;
+$--steps-dot-length: 8px !default;
+
+/* ------------------------------------------------------------------------- */
+/// Slider
+$--slider-background-bar-color: #eff0f2 !default;
+$--slider-disabled-color: $--disabled-text-color !default;
+$--slider__thumb-size: 14px !default;
+$--slider__step-mark-size: 8px !default;
+$--slider__bar-line-width: 4px !default;
+$--slider__thumb-and-step-mark-border-width: 2px !default;
+
+/* ------------------------------------------------------------------------- */
+/// Timeline
+$--timeline-padding: 20px !default;
+$--timeline-size: 10px !default;
+$--timeline-icon-size: $--large-font-size !default;
+$--timeline-border-size: 2px !default;
+
+/// Upload
+$--upload--loading-icon-padding-right: 4px;
+$--upload--drop-width: 540px;
+$--upload--drop-height: 180px;
+$--upload--drop-border-color: $--primary-border-color !default;
+$--upload--drop-enter-background-color: change-color(
+  $--primary-color,
+  $saturation: 100%,
+  $lightness: get-lightness(2%)
+) !default;
+$--upload--drop-enter-border-color: change-color(
+  $--primary-color,
+  $saturation: 100%,
+  $lightness: get-lightness(30%)
+) !default;
+$--upload--drop-text-color: #999 !default;
+$--upload--drop-accept-text-color: #bbb !default;
+
+/// descriptions
+$--descriptions-large-padding: 14px !default;
+$--descriptions-padding: 10px !default;
+$--descriptions-small-padding: 6px !default;
+$--descriptions-border: 1px solid $--primary-border-color !default;

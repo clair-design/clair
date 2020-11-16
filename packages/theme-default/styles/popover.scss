@@ -1,0 +1,61 @@
+@import 'variables';
+@import 'mixins/tooltipTriangle';
+
+$--drop-shadow: get-drop-shadow($--base-box-shadow);
+
+@include triangle('.c-popover', $bgColor: $--base-background-color);
+@include remove-triangle('.c-popover--no-triangle');
+
+.c-popover {
+  position: absolute;
+  width: max-content;
+  color: $--secondary-text-color;
+  font-size: $--base-font-size;
+  line-height: $--base-line-height;
+  background-color: $--base-background-color;
+  border-radius: $--base-border-radius;
+  box-shadow: $--base-box-shadow;
+
+  &__container {
+    height: 100%;
+    overflow: auto;
+  }
+}
+
+@supports (filter: drop-shadow(#{$--drop-shadow})) {
+  .c-popover {
+    box-shadow: none;
+    filter: drop-shadow(#{$--drop-shadow});
+  }
+
+  // avoid stacking filter
+  .c-popover .c-popover {
+    filter: none;
+  }
+}
+
+// for vue transition
+.c-popover-fade-enter-active,
+.c-popover-fade-leave-active {
+  transition: opacity 0.3s;
+}
+
+.c-popover-fade-enter,
+.c-popover-fade-leave-to {
+  opacity: 0;
+}
+
+.c-popover-slide-down-enter,
+.c-popover-slide-down-leave-to {
+  transform: translateY(-10px);
+  opacity: 0;
+}
+.c-popover-slide-down-leave,
+.c-popover-slide-down-enter-to {
+  transform: translateY(0);
+  opacity: 1;
+}
+.c-popover-slide-down-enter-active,
+.c-popover-slide-down-leave-active {
+  transition: transition((opacity, transform));
+}

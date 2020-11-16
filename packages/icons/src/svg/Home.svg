@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Home</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="蒙版" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M14,1 L3.32732721,10.7024298 C3.11885281,10.891952 3,11.1606249 3,11.4423699 L3,25 C3,26.1045695 3.8954305,27 5,27 L23,27 C24.1045695,27 25,26.1045695 25,25 L25,11.4423699 C25,11.1606249 24.8811472,10.891952 24.6726728,10.7024298 L14,1 Z" id="路径-40" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>

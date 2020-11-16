@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<title>Tooltip</title>
+<link rel="stylesheet" href="../styles/tooltip.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body {
+    margin: 30px auto;
+    max-width: 1200px;
+  }
+
+  .c-tooltip {
+    margin: 10px;
+  }
+
+  .m-t50 {
+    margin-top: 50px;
+  }
+
+  [x-placement] {
+    margin-right: 50px;
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+
+<h2>显示在上</h2>
+<div class="c-tooltip" x-placement="top-left">
+  <span class="c-tooltip__text">我是一个好看的提示</span>
+</div>
+<div class="c-tooltip" x-placement="top-center">
+  <span class="c-tooltip__text">我是一个好看的提示</span>
+</div>
+<div class="c-tooltip" x-placement="top-right">
+  <span class="c-tooltip__text">我是一个好看的提示</span>
+</div>
+
+<h2 class="m-t50">显示在右</h2>
+<div class="c-tooltip" x-placement="right-top">
+  <span class="c-tooltip__text">我是一个好看的提示</span>
+</div>
+<div class="c-tooltip" x-placement="right-center">
+  <span class="c-tooltip__text">我是一个好看的提示</span>
+</div>
+<div class="c-tooltip" x-placement="right-bottom">
+  <span class="c-tooltip__text">我是一个好看的提示</span>
+</div>
+
+<h2 class="m-t50">显示在下</h2>
+<div class="c-tooltip" x-placement="bottom-left">
+  <span class="c-tooltip__text">
+    我是一个好看的提示，我是，一个好看的提示，我是一个好看的提示。
+  </span>
+</div>
+<div class="c-tooltip" x-placement="bottom-center">
+  <span class="c-tooltip__text">我是一个好看的提示</span>
+</div>
+<div class="c-tooltip" x-placement="bottom-right">
+  <span class="c-tooltip__text">我是一个好看的提示</span>
+</div>
+
+<h2 class="m-t50">显示在左</h2>
+<div class="c-tooltip" x-placement="left-top">
+  <span class="c-tooltip__text">我是一个好看的提示</span>
+</div>
+<div class="c-tooltip" x-placement="left-center">
+  <span class="c-tooltip__text">我是一个好看的提示</span>
+</div>
+<div class="c-tooltip" x-placement="left-bottom">
+  <span class="c-tooltip__text">我是一个好看的提示</span>
+</div>

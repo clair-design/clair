@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<title>Layout</title>
+<link rel="stylesheet" href="../styles/layout.scss" />
+
+<style>
+  body > .c-layout + .c-layout {
+    margin-top: 2em;
+  }
+
+  .c-layout header,
+  .c-layout aside,
+  .c-layout main,
+  .c-layout footer {
+    color: rgb(51, 82, 129);
+    text-align: center;
+  }
+
+  .c-layout header,
+  .c-layout footer {
+    line-height: 4;
+    background: #d3e4ff;
+  }
+
+  .c-layout main {
+    line-height: 10;
+    background: #e1ecff;
+  }
+
+  .c-layout aside {
+    line-height: 10;
+    background: #c6dcfe;
+  }
+
+  body {
+    margin: 2em;
+  }
+
+  iframe {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 2em;
+    border: none;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+<h1>Layout 布局</h1>
+
+<p>提示：为方便演示，点击侧边栏可以切换收起/展开状态。</p>
+
+<h2>上中下布局</h2>
+
+<div class="c-layout">
+  <header class="c-layout__header">header</header>
+  <main class="c-layout__main">main</main>
+  <footer class="c-layout__footer">footer</footer>
+</div>
+
+<h2>顶部通栏+左右两栏</h2>
+
+<div class="c-layout">
+  <header class="c-layout__header">header</header>
+  <div class="c-layout c-layout--has-aside">
+    <aside class="c-layout__aside">aside</aside>
+    <main class="c-layout__main">main</main>
+  </div>
+  <footer class="c-layout__footer">footer</footer>
+</div>
+
+<div class="c-layout">
+  <header class="c-layout__header">header</header>
+  <div class="c-layout c-layout--has-aside">
+    <main class="c-layout__main">main</main>
+    <aside class="c-layout__aside">aside</aside>
+  </div>
+  <footer class="c-layout__footer">footer</footer>
+</div>
+
+<h2>侧边通栏</h2>
+
+<div class="c-layout c-layout--has-aside">
+  <aside class="c-layout__aside">aside</aside>
+  <div class="c-layout">
+    <header class="c-layout__header">header</header>
+    <main class="c-layout__main">main</main>
+    <footer class="c-layout__footer">footer</footer>
+  </div>
+</div>
+
+<div class="c-layout c-layout--has-aside">
+  <div class="c-layout">
+    <header class="c-layout__header">header</header>
+    <main class="c-layout__main">main</main>
+    <footer class="c-layout__footer">footer</footer>
+  </div>
+  <aside class="c-layout__aside">aside</aside>
+</div>
+
+<h2>侧边栏收起</h2>
+
+<div class="c-layout c-layout--has-aside">
+  <aside class="c-layout__aside c-layout__aside--collapsed">aside</aside>
+  <div class="c-layout">
+    <header class="c-layout__header">header</header>
+    <main class="c-layout__main">main</main>
+    <footer class="c-layout__footer">footer</footer>
+  </div>
+</div>
+
+<div class="c-layout">
+  <header class="c-layout__header">header</header>
+  <div class="c-layout c-layout--has-aside">
+    <main class="c-layout__main">main</main>
+    <aside class="c-layout__aside c-layout__aside--collapsed">aside</aside>
+  </div>
+  <footer class="c-layout__footer">footer</footer>
+</div>
+
+<h2>固定头部</h2>
+
+<div class="iframed">
+  <div class="c-layout">
+    <header class="c-layout__header c-layout__header--fixed">header</header>
+    <div class="c-layout c-layout--has-aside" style="margin-top: 4em;">
+      <main class="c-layout__main">
+        <p>main</p>
+        <p>...</p>
+        <p>...</p>
+        <p>...</p>
+        <p>...</p>
+      </main>
+      <aside class="c-layout__aside" onclick="toggle(this)">aside</aside>
+    </div>
+    <footer class="c-layout__footer">footer</footer>
+  </div>
+</div>
+
+<h2>仅固定侧边栏(头部不固定)</h2>
+
+<div class="iframed">
+  <div class="c-layout">
+    <header class="c-layout__header">header</header>
+    <div class="c-layout c-layout--has-aside">
+      <aside class="c-layout__aside" onclick="toggle(this)">static aside</aside>
+      <main class="c-layout__main">
+        <p>main</p>
+        <p>...</p>
+        <p>...</p>
+        <p>...</p>
+        <p>...</p>
+      </main>
+      <aside
+        class="c-layout__aside c-layout__aside--sticky"
+        onclick="toggle(this)"
+      >
+        sticky aside
+      </aside>
+    </div>
+    <footer class="c-layout__footer">footer</footer>
+  </div>
+</div>
+
+<h2>固定头部和侧边栏</h2>
+
+<div class="iframed">
+  <div class="c-layout c-layout--scroll-main">
+    <header class="c-layout__header">header</header>
+    <div class="c-layout c-layout--has-aside">
+      <aside class="c-layout__aside" onclick="toggle(this)">aside 1</aside>
+      <main class="c-layout__main">
+        <p>main</p>
+        <p>...</p>
+        <p>...</p>
+        <p>...</p>
+        <p>...</p>
+      </main>
+      <aside class="c-layout__aside" onclick="toggle(this)">aside 2</aside>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 演示展开收起功能
+  {
+    const sidebars = Array.from(document.querySelectorAll('.c-layout__aside'))
+    sidebars.forEach(sidebar => {
+      sidebar.addEventListener('click', e => {
+        sidebar.classList.toggle('c-layout__aside--collapsed')
+      })
+    })
+  }
+
+  // 演示固定头部或侧边栏时，因 fixed 定位，所以在 iframe 中展示
+  {
+    const demos = Array.from(document.querySelectorAll('.iframed'))
+    demos.forEach(demo => {
+      const head = Array.from(document.head.children)
+        .filter(node => node.tagName !== 'SCRIPT')
+        .map(node => node.outerHTML)
+        .join('')
+      const endScriptTag = '<' + '/script>'
+      const html = `
+        ${head}
+        <body style="margin:0">
+          ${demo.innerHTML}
+          <script>
+            function toggle(sidebar) {
+              sidebar.classList.toggle('c-layout__aside--collapsed')
+            }
+          ${endScriptTag}
+        </body>
+      `
+      const iframe = document.createElement('iframe')
+      demo.innerHTML = ''
+      demo.append(iframe)
+      iframe.src = 'about:blank'
+      iframe.contentDocument.write(html)
+      iframe.contentDocument.close()
+    })
+  }
+</script>

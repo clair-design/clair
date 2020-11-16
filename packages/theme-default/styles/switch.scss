@@ -1,0 +1,110 @@
+@import 'variables';
+@import 'mixins/mixins';
+
+.c-switch__input {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+
+.c-switch__box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: $--switch-bg-color;
+  border-radius: $--switch-border-radius;
+  cursor: inherit;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: $--switch-circle-default-space;
+    width: $--switch-circle-default-size;
+    height: $--switch-circle-default-size;
+    margin: auto 0;
+    background: $--switch-circle-bg-color;
+    border-radius: 50%;
+    content: '';
+  }
+}
+
+.c-switch__label {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: inherit;
+  padding: 0 $--switch-label-default-space 0 $--switch-label-default-space +
+    $--switch-circle-default-size;
+  color: $--switch-color;
+  font-size: $--switch-font-size;
+  cursor: inherit;
+}
+
+.c-switch {
+  position: relative;
+  display: inline-block;
+  min-width: $--switch-default-width;
+  height: $--switch-default-height;
+  line-height: 0;
+  cursor: pointer;
+
+  &__input:checked + &__box {
+    background: $--switch-checked-bg-color;
+  }
+
+  &__input:checked + &__box::after {
+    left: 100%;
+    margin-left: -$--switch-circle-default-space;
+    transform: translateX(-100%);
+  }
+
+  &__input:focus-visible + &__box {
+    @include focus-ring;
+  }
+
+  &__input:checked ~ &__label {
+    padding: 0 $--switch-label-default-space + $--switch-circle-default-size 0
+      $--switch-label-default-space;
+  }
+
+  &__input:disabled + &__box,
+  &__input:disabled ~ &__label {
+    cursor: default;
+    opacity: 0.5;
+  }
+
+  &__box::after,
+  &__label {
+    transition: all 0.2s linear;
+  }
+}
+
+/// size
+.c-switch--small {
+  min-width: $--switch-small-width;
+  height: $--switch-small-height;
+
+  .c-switch__box::after {
+    left: $--switch-circle-small-space;
+    width: $--switch-circle-small-size;
+    height: $--switch-circle-small-size;
+  }
+
+  .c-switch__input:checked + .c-switch__box::after {
+    margin-left: -$--switch-circle-small-space;
+  }
+
+  .c-switch__label {
+    padding: 0 $--switch-label-small-space 0 $--switch-label-small-space +
+      $--switch-circle-small-size;
+  }
+
+  .c-switch__input:checked ~ .c-switch__label {
+    padding: 0 $--switch-label-small-space + $--switch-circle-small-size 0
+      $--switch-label-small-space;
+  }
+}

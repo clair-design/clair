@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Approval</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Approval" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" x="0" y="0" width="28" height="28"></rect>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" cx="13.5" cy="6.5" r="5.5"></circle>
+            <path d="M11,11.5 L11,16 L5,16 C2.790861,16 1,17.790861 1,20 L1,23 L27,23 L27,20 C27,17.790861 25.209139,16 23,16 L16,16 L16,11.5" id="路径-148" stroke="#6E6E6E" stroke-width="2"></path>
+            <path d="M2,27 L26,27" id="路径-149" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

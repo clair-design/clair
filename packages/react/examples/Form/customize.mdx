@@ -1,0 +1,89 @@
+## 自定义校验
+
+自己定义校验的时机和内容
+
+```tsx live=true className=s-form-example
+function Index() {
+  const formRef = React.useRef(null);
+
+  const defaultValue = {
+    password: "",
+    confirmPassword: "",
+    idNumber: ""
+  };
+
+  const rules = {
+    password: [
+      { required: true, message: "请输入密码", trigger: "change" },
+      {
+        min: 6,
+        max: 16,
+        message: "密码必须是 6 ~ 16 位的字符",
+        trigger: "change"
+      }
+    ],
+    confirmPassword: [
+      { required: true, message: "请再次输入密码", trigger: "change" },
+      {
+        validator: (rule, value) =>
+          value === formRef.current.getValue(["password"])[0].value,
+        message: "两次输入密码不一致",
+        trigger: "change"
+      }
+    ],
+    idNumber: [{ required: true, message: "请输入身份证号", trigger: "change" }]
+  };
+
+  const onSubmit = (isValid, result) => {
+    console.log(result);
+    isValid && message({ type: "success", message: "提交成功" });
+  };
+
+  const reset = () => {
+    formRef.current.reset();
+  };
+
+  return (
+    <Form
+      ref={formRef}
+      onSubmit={onSubmit}
+      defaultValue={defaultValue}
+      labelWidth={120}
+      className="demo-form"
+    >
+      <FormItem
+        as="input"
+        name="password"
+        className="c-input c-input--normal"
+        placeholder="请输入密码"
+        rules={rules.password}
+        label="设置密码"
+      />
+      <FormItem
+        as="input"
+        name="confirmPassword"
+        className="c-input c-input--normal"
+        placeholder="请再次输入密码"
+        rules={rules.confirmPassword}
+        label="再次确认密码"
+      />
+      <FormItem
+        as="input"
+        name="idNumber"
+        className="c-input c-input--normal"
+        rules={rules.idNumber}
+        label="身份证号"
+      />
+      <div class="c-form-item">
+        <label class="c-form-item__label" style={{ width: 120 }}></label>
+        <div class="c-form-item__content">
+          <Button type="primary" htmlType="submit">
+            提交
+          </Button>
+          <Button onClick={reset}>重置</Button>
+        </div>
+      </div>
+    </Form>
+  );
+}
+```

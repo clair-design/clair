@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Code</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Code" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <polyline id="路径-10" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="8 10 1 14 8 18"></polyline>
+            <polyline id="路径-10" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(23.500000, 14.000000) scale(-1, 1) translate(-23.500000, -14.000000) " points="27 10 20 14 27 18"></polyline>
+            <path d="M15,7 L13,21" id="路径-18" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

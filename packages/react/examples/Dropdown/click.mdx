@@ -1,0 +1,40 @@
+## 点击事件
+
+可以设置点击下拉菜单项触发的事件
+
+```tsx live=true deps=message
+function Index() {
+  const handleClick = e => {
+    const {
+      detail: { key },
+      nativeEvent
+    } = e;
+    const {
+      target: { innerText }
+    } = nativeEvent;
+    message({
+      type: "success",
+      message: `已点击DropdownItem，itemKey的值为${key}，内容为${innerText}`
+    });
+  };
+  const overlay = (
+    <Dropdown.Menu onClick={handleClick}>
+      <Dropdown.Item itemKey="0">北京</Dropdown.Item>
+      <Dropdown.Item itemKey="1">上海</Dropdown.Item>
+      <Dropdown.Item itemKey="2">广州</Dropdown.Item>
+      <Dropdown.Item itemKey="3" disabled>
+        深圳
+      </Dropdown.Item>
+    </Dropdown.Menu>
+  );
+  return (
+    <>
+      <Dropdown overlay={overlay} trigger={["hover"]}>
+        <a>下拉菜单</a>
+        &nbsp;
+        <IconArrowDown />
+      </Dropdown>
+    </>
+  );
+}
+```

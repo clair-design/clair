@@ -1,4 +1,0 @@
-dist/**/*.js
-.site/**/*.js
-node_modules/
-scripts/boilerplate/template

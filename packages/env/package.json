@@ -1,0 +1,9 @@
+{
+  "name": "env",
+  "version": "1.1.0",
+  "description": "Shared env for clair",
+  "main": "index.js",
+  "author": "Yuchen Liu",
+  "license": "MIT",
+  "private": true
+}

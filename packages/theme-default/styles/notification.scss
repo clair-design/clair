@@ -1,0 +1,140 @@
+@import 'variables';
+@import 'icon';
+
+.c-notification {
+  display: flex;
+  align-items: flex-start;
+  box-sizing: border-box;
+
+  max-width: $--notification-max-width;
+  margin-bottom: 8px;
+  padding: $--notification-padding;
+
+  color: $--secondary-text-color;
+
+  background: $--base-background-color;
+
+  border-radius: $--base-border-radius;
+  box-shadow: $--base-box-shadow;
+
+  &__title {
+    margin-bottom: $--base-title-space-bottom;
+    color: $--base-text-color;
+    font-weight: bold;
+    font-size: $--base-title-font-size;
+    line-height: $--base-line-height;
+  }
+
+  &__title--nodesc {
+    margin-bottom: 0;
+  }
+
+  &__content {
+    flex: 1 0 0;
+    align-self: center;
+    font-size: $--base-font-size;
+    line-height: $--base-line-height;
+    text-align: justify;
+  }
+
+  // use large icon by default
+  > .c-icon--svg:first-child {
+    margin-top: floor(
+      ($--base-real-title-line-height - $--base-icon-large-size) / 2
+    );
+    margin-right: $--base-icon-large-space-right;
+    font-size: $--base-icon-large-size;
+    stroke-width: 2px;
+  }
+
+  > .c-icon--close {
+    margin-top: floor(($--base-real-title-line-height - $--base-icon-size) / 2);
+    margin-left: 16px;
+    font-size: $--base-icon-size;
+  }
+}
+
+.c-notification-container {
+  $timing: $--transition-easing;
+  $container-offset: 20px;
+  $animation-duration: $--transition-duration;
+
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+
+  &--top-right {
+    top: $container-offset;
+    right: $container-offset;
+
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  &--bottom-right {
+    right: $container-offset;
+    bottom: $container-offset;
+
+    flex-direction: column-reverse;
+    align-items: flex-end;
+  }
+
+  &--top-right .c-notification-enter-active,
+  &--bottom-right .c-notification-enter-active {
+    animation: $animation-duration notification-fade-in-right $timing both;
+  }
+
+  &--top-left {
+    top: $container-offset;
+    left: $container-offset;
+
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &--bottom-left {
+    bottom: $container-offset;
+    left: $container-offset;
+
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+
+  &--top-left .c-notification-enter-active,
+  &--bottom-left .c-notification-enter-active {
+    animation: $animation-duration notification-fade-in-left $timing both;
+  }
+
+  .c-notification-leave-active {
+    animation: $animation-duration notification-fade-out $timing both;
+  }
+}
+
+@keyframes notification-fade-in-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes notification-fade-in-left {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes notification-fade-out {
+  from {
+    max-height: 100px;
+    opacity: 1;
+  }
+
+  to {
+    max-height: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+  }
+}

@@ -1,0 +1,42 @@
+## <i></i>基础样式
+
+```tsx live=true className=s-container--button deps=message
+<>
+  <Button
+    type="primary"
+    onClick={() => message({ type: "info", message: "info" })}
+  >
+    info
+  </Button>
+  <Button onClick={() => message({ type: "success", message: "success" })}>
+    success
+  </Button>
+  <Button
+    type="warning"
+    onClick={() => message({ type: "warning", message: "warning" })}
+  >
+    warning
+  </Button>
+  <Button
+    type="danger"
+    onClick={() => message({ type: "error", message: "error" })}
+  >
+    error
+  </Button>
+</>
+```
+
+## 手动调用
+
+```tsx live=true
+<Button
+  onClick={function popMessage() {
+    message({
+      type: "success",
+      message: "^_^"
+    });
+  }}
+>
+  打开success弹窗
+</Button>
+```

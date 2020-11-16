@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Power</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Power" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M7.02940607,3.0248648 C3.4046871,5.33182828 1,9.38509176 1,14 C1,21.1797017 6.82029825,27 14,27 L14,27 C21.1797017,27 27,21.1797017 27,14 C27,9.39939289 24.6101936,5.35695497 21.0042566,3.04636221" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M14,1 L14,14" id="路径-72" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

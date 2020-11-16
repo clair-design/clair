@@ -1,0 +1,24 @@
+## 自定义指示符
+
+若默认的加载指示符不满足要求，用户可自行定义。
+
+```tsx live=true
+<>
+  <Loading
+    indicator={
+      <i>
+        <img
+          style={{ width: "1em" }}
+          src="https://s3.ssl.qhres.com/static/236d4b33eca05fb7.svg"
+        />
+      </i>
+    }
+  >
+    <Card>
+      <p>这是内容1</p>
+      <p>这是内容2</p>
+      <p>这是内容3</p>
+    </Card>
+  </Loading>
+</>
+```

@@ -1,0 +1,23 @@
+## <i></i>关闭全部
+
+可以一次性关闭所有的 `message`。
+
+```tsx live=true className=s-container--button deps=message
+<>
+  <Button
+    type="primary"
+    onClick={() =>
+      new Array(10).fill(0).forEach((_, index) =>
+        message({
+          type: "info",
+          message: `message ${index + 1}`,
+          duration: 100000
+        })
+      )
+    }
+  >
+    10 messages
+  </Button>
+  <Button onClick={() => message.closeAll()}>close all</Button>
+</>
+```

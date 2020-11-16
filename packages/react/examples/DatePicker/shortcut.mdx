@@ -1,0 +1,49 @@
+## 快捷方式
+
+通过 `shortcut` 在弹出的选择框底部显示一些快捷方式方便用户选择常用的日期或日期范围。
+
+```tsx live=true
+function App() {
+  // state
+  const [value, setValue] = React.useState("");
+  const [rangeValue, setRangeValue] = React.useState(["", ""]);
+
+  // date functions
+  const oneDay = 3600 * 1000 * 24;
+  const today = new Date();
+  const daysAgo = n => new Date(today.getTime() - oneDay * n);
+
+  // datepicker shortcuts
+  const shortcut = (
+    <>
+      <button onClick={() => setValue(today)}>今天</button>
+      <button onClick={() => setValue(daysAgo(7))}>一周前</button>
+      <button onClick={() => setValue(daysAgo(30))}>一个月前</button>
+    </>
+  );
+
+  // rangepicker shortcuts
+  const rangeShortcut = (
+    <>
+      <button onClick={() => setRangeValue([daysAgo(7), today])}>
+        最近一周
+      </button>
+      <button onClick={() => setRangeValue([daysAgo(30), today])}>
+        最近30天
+      </button>
+    </>
+  );
+
+  // render
+  const style = {
+    marginRight: 20,
+    marginBottom: 20
+  };
+  return (
+    <>
+      <DatePicker value={value} shortcut={shortcut} style={style} />
+      <RangePicker value={rangeValue} shortcut={rangeShortcut} style={style} />
+    </>
+  );
+}
+```

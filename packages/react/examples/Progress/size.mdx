@@ -1,0 +1,62 @@
+## 自定义尺寸
+
+```tsx live=true
+function Demo() {
+  const [lineWidth, setLineWidth] = React.useState(200);
+  const [lineStrokeWidth, setLineStrokeWidth] = React.useState(6);
+  const changeLineWidth = value => {
+    const validVal = value > 250 ? 250 : value < 150 ? 150 : value;
+    return setLineWidth(validVal);
+  };
+  const changeLineStrokeWidth = value => {
+    const validVal = value > 10 ? 10 : value < 1 ? 1 : value;
+    return setLineStrokeWidth(validVal);
+  };
+  return (
+    <>
+      <Row>
+        <Col span={6}>
+          整体宽度(150, 250)：
+          <input
+            value={lineWidth}
+            min={150}
+            max={250}
+            type="number"
+            step={1}
+            onChange={e => changeLineWidth(+e.target.value)}
+          />
+        </Col>
+        <Col span={6}>
+          线条粗细(1, 10)：
+          <input
+            value={lineStrokeWidth}
+            min={1}
+            max={10}
+            type="number"
+            step={1}
+            onChange={e => changeLineStrokeWidth(+e.target.value)}
+          />
+        </Col>
+      </Row>
+      <br />
+      <Row>
+        <Col span={6}>
+          <Progress
+            value={68}
+            type="circle"
+            strokeWidth={lineStrokeWidth}
+            width={lineWidth}
+          />
+        </Col>
+        <Col span={6}>
+          <Progress
+            value={68}
+            strokeWidth={lineStrokeWidth}
+            width={lineWidth}
+          />
+        </Col>
+      </Row>
+    </>
+  );
+}
+```

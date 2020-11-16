@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Car</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Car" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M2.36754447,13.5441518 L3.69209979,13.1026334 C3.89603273,13.0346558 4.10959113,13 4.32455532,13 L23.6754447,13 C23.8904089,13 24.1039673,13.0346558 24.3079002,13.1026334 L25.6324555,13.5441518 C26.4491398,13.8163799 27,14.5806576 27,15.4415184 L27,19 C27,20.1045695 26.1045695,21 25,21 L3,21 C1.8954305,21 1,20.1045695 1,19 L1,15.4415184 C1,14.5806576 1.55086019,13.8163799 2.36754447,13.5441518 Z" id="矩形" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round"></path>
+            <path d="M3,22 L3,24" id="路径-121" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M25,22 L25,24" id="路径-121" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M3,13 L4.65196909,5.56613908 C4.85531912,4.65106397 5.66694592,4 6.60434321,4 L21.3956568,4 C22.3330541,4 23.1446809,4.65106397 23.3480309,5.56613908 L25,13" id="路径-122" stroke="#6E6E6E" stroke-width="2"></path>
+            <path d="M5,17 L6,17" id="路径-123" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M22,17 L23,17" id="路径-123" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M3,13 L1,12" id="路径-124" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M27,13 L25,12" id="路径-124" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(26.000000, 12.500000) scale(-1, 1) translate(-26.000000, -12.500000) "></path>
+        </g>
+    </g>
+</svg>

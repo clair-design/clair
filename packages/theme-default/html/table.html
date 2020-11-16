@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<title>Table</title>
+<link rel="stylesheet" href="../styles/table.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body {
+    max-width: 1200px;
+    margin: 30px auto;
+    font-size: 14px;
+  }
+  .c-table .yellow-bg {
+    background: rgba(255, 255, 43, 1);
+  }
+  .c-table .red-bg {
+    background: rgba(255, 0, 0, 1);
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+<h1>无数据表格</h1>
+<div class="c-table">
+  <div class="c-table--content c-table--normal c-table--bordered">
+    <table>
+      <colgroup>
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>来源类型</th>
+          <th>浏览量</th>
+          <th>访客数</th>
+          <th>新访客数</th>
+          <th>访问时长</th>
+          <th>转化次数</th>
+          <th>IP 数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="7" class="c-table__text--center">
+            <div class="c-empty">
+              <img
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEiIGhlaWdodD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTMgLTQpIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIG9wYWNpdHk9Ii4yIiBkPSJNMCAwaDU2djU2SDB6Ii8+PHBhdGggZmlsbD0iI0MxQzdENiIgZD0iTTEwIDIzaDlsLTYuNzIgMTJoLTl6TTQ2LjAwOSAyM2gtOWw2LjcyIDEyaDl6Ii8+PHBhdGggZmlsbD0iI0RDRTBFRCIgZD0iTTEwIDIzaDM2djEzSDEweiIvPjxwYXRoIGQ9Ik0yMS41IDM3YTguNSA4LjUgMCAxIDAgMC0xNyA4LjUgOC41IDAgMCAwIDAgMTd6IiBzdHJva2U9IiNDMUM3RDYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWRhc2hhcnJheT0iMCwzIi8+PHBhdGggZD0iTTIyIDM3YzEwLjY3MyAwIDE5LjAwNi03LjU1MyAyNS0yMi42NTgiIHN0cm9rZT0iI0MxQzdENiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtZGFzaGFycmF5PSIwLDMiLz48cmVjdCBmaWxsPSIjRUZGMUY5IiB4PSIzIiB5PSIzNCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjE4IiByeD0iMiIvPjxyZWN0IGZpbGw9IiNDMUM3RDgiIHg9IjE4IiB5PSI0MSIgd2lkdGg9IjIwIiBoZWlnaHQ9IjQiIHJ4PSIyIi8+PHBhdGggZD0iTTUzLjk3NyA0LjM5bC0xLjM3MyA3Ljk2N2EuMzI4LjMyOCAwIDAgMS0uMzIzLjI3NC4zNi4zNiAwIDAgMS0uMTI0LS4wMjdsLTIuMzI1LS45NS0xLjI0MiAxLjUxNmEuMy4zIDAgMCAxLS4yNTIuMTE3LjI4Ni4yODYgMCAwIDEtLjExNC0uMDIuMzI3LjMyNyAwIDAgMS0uMjE2LS4zMDh2LTEuNzkybDQuNDk0LTUuNTE5LTUuNTQ2IDQuODMxLTIuMDI3LS44M2MtLjEyNy0uMDQ4LS4xOTYtLjE0Mi0uMjA1LS4yODRhLjMwNy4zMDcgMCAwIDEgLjE2NC0uMzA0bDguNi01LjAxMWEuMzE3LjMxNyAwIDAgMSAuMTY1LS4wNDVjLjA3IDAgLjEzLjAxOC4xODYuMDU3LjExNC4wODIuMTYuMTkxLjEzOC4zMjd6IiBmaWxsPSIjQzFDN0Q2Ii8+PC9nPjwvc3ZnPg=="
+                alt="暂无相关数据"
+                class="c-empty__img"
+              />
+              <div class="c-empty__description">暂无相关数据</div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h1>数据表格</h1>
+<div class="c-table">
+  <div class="c-table--content c-table--mini">
+    <table>
+      <colgroup>
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>来源类型</th>
+          <th>浏览量</th>
+          <th>访客数</th>
+          <th>新访客数</th>
+          <th>访问时长</th>
+          <th>转化次数</th>
+          <th>IP 数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>直接访问</td>
+          <td>12</td>
+          <td>3</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>搜索引擎</td>
+          <td>123</td>
+          <td>31</td>
+          <td>12</td>
+          <td>21</td>
+          <td>15</td>
+          <td>9</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h1>表头固定</h1>
+<div class="c-table">
+  <div
+    class="c-table--content c-table--small c-table--with-height"
+    style="height: 300px;"
+  >
+    <table>
+      <colgroup>
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+      </colgroup>
+      <thead class="c-table__thead--sticky">
+        <tr>
+          <th>来源类型</th>
+          <th>浏览量</th>
+          <th>访客数</th>
+          <th>新访客数</th>
+          <th>访问时长</th>
+          <th>转化次数</th>
+          <th>IP 数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>直接访问</td>
+          <td>12</td>
+          <td>3</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>搜索引擎</td>
+          <td>123</td>
+          <td>31</td>
+          <td>12</td>
+          <td>21</td>
+          <td>15</td>
+          <td>9</td>
+        </tr>
+        <tr>
+          <td>直接访问</td>
+          <td>12</td>
+          <td>3</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>搜索引擎</td>
+          <td>123</td>
+          <td>31</td>
+          <td>12</td>
+          <td>21</td>
+          <td>15</td>
+          <td>9</td>
+        </tr>
+        <tr>
+          <td>直接访问</td>
+          <td>12</td>
+          <td>3</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>搜索引擎</td>
+          <td>123</td>
+          <td>31</td>
+          <td>12</td>
+          <td>21</td>
+          <td>15</td>
+          <td>9</td>
+        </tr>
+        <tr>
+          <td>直接访问</td>
+          <td>12</td>
+          <td>3</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>搜索引擎</td>
+          <td>123</td>
+          <td>31</td>
+          <td>12</td>
+          <td>21</td>
+          <td>15</td>
+          <td>9</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="c-table__shadow--sticky-top" style="top: 43px;"></div>
+</div>
+
+<h1>列固定</h1>
+<div class="c-table">
+  <div class="c-table--content c-table--normal">
+    <table class="c-table--fix">
+      <colgroup>
+        <col style="width: 200px;" />
+        <col style="width: 200px;" />
+        <col style="width: 200px;" />
+        <col style="width: 200px;" />
+        <col style="width: 200px;" />
+        <col style="width: 200px;" />
+        <col style="width: 200px;" />
+        <col style="width: 200px;" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th class="c-table__cell--sticky" style="left: 0;">来源类型</th>
+          <th
+            class="c-table__cell--sticky c-table__cell--sticky-left"
+            style="left: 200px;"
+          >
+            浏览量
+          </th>
+          <th>访客数</th>
+          <th>新访客数</th>
+          <th>访问时长</th>
+          <th>转化次数</th>
+          <th>IP 数</th>
+          <th
+            class="c-table__cell--sticky c-table__cell--sticky-right"
+            style="right: 0;"
+          >
+            订单量
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="c-table__cell--sticky" style="left: 0;">直接访问</td>
+          <td
+            class="c-table__cell--sticky c-table__cell--sticky-left"
+            style="left: 200px;"
+          >
+            12
+          </td>
+          <td>3</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>3</td>
+          <td
+            class="c-table__cell--sticky c-table__cell--sticky-right"
+            style="right: 0;"
+          >
+            34
+          </td>
+        </tr>
+        <tr>
+          <td class="c-table__cell--sticky" style="left: 0;">搜索引擎</td>
+          <td
+            class="c-table__cell--sticky c-table__cell--sticky-left"
+            style="left: 200px;"
+          >
+            123
+          </td>
+          <td>31</td>
+          <td>12</td>
+          <td>21</td>
+          <td>15</td>
+          <td>9</td>
+          <td
+            class="c-table__cell--sticky c-table__cell--sticky-right"
+            style="right: 0;"
+          >
+            3
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h1>表头和列固定</h1>
+<div class="c-table">
+  <div class="c-table--content c-table--normal" style="height: 200px;">
+    <table class="c-table--fix c-table--with-height">
+      <colgroup>
+        <col style="width: 200px;" />
+        <col style="width: 200px;" />
+        <col style="width: 200px;" />
+        <col style="width: 200px;" />
+        <col style="width: 200px;" />
+        <col style="width: 200px;" />
+        <col style="width: 200px;" />
+        <col style="width: 200px;" />
+      </colgroup>
+      <thead class="c-table__thead--sticky">
+        <tr>
+          <th class="c-table__cell--sticky" style="left: 0;">来源类型</th>
+          <th
+            class="c-table__cell--sticky c-table__cell--sticky-left"
+            style="left: 200px;"
+          >
+            浏览量
+          </th>
+          <th>访客数</th>
+          <th>新访客数</th>
+          <th>访问时长</th>
+          <th>转化次数</th>
+          <th>IP 数</th>
+          <th
+            class="c-table__cell--sticky c-table__cell--sticky-right"
+            style="right: 0;"
+          >
+            订单量
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="c-table__cell--sticky" style="left: 0;">直接访问</td>
+          <td
+            class="c-table__cell--sticky c-table__cell--sticky-left"
+            style="left: 200px;"
+          >
+            12
+          </td>
+          <td>3</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>3</td>
+          <td
+            class="c-table__cell--sticky c-table__cell--sticky-right"
+            style="right: 0;"
+          >
+            34
+          </td>
+        </tr>
+        <tr>
+          <td class="c-table__cell--sticky" style="left: 0;">搜索引擎</td>
+          <td
+            class="c-table__cell--sticky c-table__cell--sticky-left"
+            style="left: 200px;"
+          >
+            123
+          </td>
+          <td>31</td>
+          <td>12</td>
+          <td>21</td>
+          <td>15</td>
+          <td>9</td>
+          <td
+            class="c-table__cell--sticky c-table__cell--sticky-right"
+            style="right: 0;"
+          >
+            3
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="c-table__shadow--sticky-top" style="top: 48px;"></div>
+</div>
+
+<h1>设置列class</h1>
+<div class="c-table">
+  <div class="c-table--content c-table--normal">
+    <table>
+      <colgroup>
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>来源类型</th>
+          <th>浏览量</th>
+          <th class="yellow-bg">访客数</th>
+          <th>新访客数</th>
+          <th>访问时长</th>
+          <th>转化次数</th>
+          <th>IP 数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>直接访问</td>
+          <td>12</td>
+          <td class="yellow-bg">3</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>搜索引擎</td>
+          <td>123</td>
+          <td class="yellow-bg">31</td>
+          <td>12</td>
+          <td>21</td>
+          <td>15</td>
+          <td>9</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h1>设置行class</h1>
+<div class="c-table">
+  <div class="c-table--content c-table--normal">
+    <table>
+      <colgroup>
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>来源类型</th>
+          <th>浏览量</th>
+          <th>访客数</th>
+          <th>新访客数</th>
+          <th>访问时长</th>
+          <th>转化次数</th>
+          <th>IP 数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>直接访问</td>
+          <td>12</td>
+          <td>3</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td class="red-bg">搜索引擎</td>
+          <td class="red-bg">123</td>
+          <td class="red-bg">31</td>
+          <td class="red-bg">12</td>
+          <td class="red-bg">21</td>
+          <td class="red-bg">15</td>
+          <td class="red-bg">9</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h1>自定义单元格</h1>
+<div class="c-table">
+  <div class="c-table--content c-table--normal">
+    <table>
+      <colgroup>
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>来源类型</th>
+          <th>浏览量</th>
+          <th>访客数</th>
+          <th>新访客数</th>
+          <th>访问时长</th>
+          <th>转化次数</th>
+          <th>IP 数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>直接访问</td>
+          <td>12</td>
+          <td>3</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td><span>~~8~~</span></td>
+        </tr>
+        <tr>
+          <td>搜索引擎</td>
+          <td>123</td>
+          <td>31</td>
+          <td>12</td>
+          <td>21</td>
+          <td>15</td>
+          <td><span>~~12~~</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h1>表头分组</h1>
+<div class="c-table c-table--bordered">
+  <div class="c-table--content c-table--normal">
+    <table>
+      <colgroup>
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th rowspan="1" colspan="2">来源类型</th>
+          <th rowspan="2" colspan="1">基础流量</th>
+          <th rowspan="1" colspan="3">访客时长</th>
+          <th rowspan="2" colspan="1">IP 数</th>
+        </tr>
+        <tr>
+          <th rowspan="1">浏览量</th>
+          <th rowspan="1">访客数</th>
+          <th rowspan="1">新访客数</th>
+          <th rowspan="1">访问时长</th>
+          <th rowspan="1">转化次数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>直接访问</td>
+          <td>12</td>
+          <td>3</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>搜索引擎</td>
+          <td>123</td>
+          <td>31</td>
+          <td>12</td>
+          <td>21</td>
+          <td>15</td>
+          <td>9</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h1>表格排序</h1>
+<div class="c-table">
+  <div class="c-table--content c-table--normal">
+    <table>
+      <colgroup>
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>来源类型</th>
+          <th>
+            <span>浏览量</span>
+            <span class="c-table__sort c-table__sort--asc">
+              <i class="c-table__sort--asc-icon"></i>
+              <i class="c-table__sort--desc-icon"></i>
+            </span>
+          </th>
+          <th>访客数</th>
+          <th>新访客数</th>
+          <th>访问时长</th>
+          <th>转化次数</th>
+          <th>IP 数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>直接访问</td>
+          <td>12</td>
+          <td>3</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>搜索引擎</td>
+          <td>123</td>
+          <td>31</td>
+          <td>12</td>
+          <td>21</td>
+          <td>15</td>
+          <td>9</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h1>可扩展表格</h1>
+<div class="c-table">
+  <div class="c-table--content c-table--normal">
+    <table>
+      <colgroup>
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th></th>
+          <th>来源类型</th>
+          <th>浏览量</th>
+          <th>访客数</th>
+          <th>新访客数</th>
+          <th>访问时长</th>
+          <th>转化次数</th>
+          <th>IP 数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <i
+              data-v-3eecd26d=""
+              aria-hidden="true"
+              class="c-icon--svg c-icon--svg-fill"
+              style="stroke-width: 1;"
+            >
+              <svg viewBox="0 0 14 14" style="stroke-width: 0.5;">
+                <g
+                  transform="translate(7, 7) rotate(90) translate(-7, -7)"
+                  fill="none"
+                  fill-rule="evenodd"
+                >
+                  <path
+                    d="M4.82539569,1.70748202 L10.5571003,6.6203717 C10.7667632,6.80008277 10.791044,7.11573277 10.6113329,7.32539569 C10.5946706,7.34483509 10.5765397,7.36296595 10.5571003,7.3796283 L4.82539569,12.292518 C4.61573277,12.4722291 4.30008277,12.4479483 4.1203717,12.2382854 C4.04269608,12.1476638 4,12.0322453 4,11.9128897 L4,2.08711032 C4,1.81096794 4.22385763,1.58711032 4.5,1.58711032 C4.61935564,1.58711032 4.73477413,1.6298064 4.82539569,1.70748202 Z"
+                    fill-rule="nonzero"
+                  ></path>
+                </g>
+              </svg>
+            </i>
+          </td>
+          <td>直接访问</td>
+          <td>12</td>
+          <td>3</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>3</td>
+        </tr>
+        <tr class="c-table__expand">
+          <td></td>
+          <td colspan="7">I am expand row~</td>
+        </tr>
+        <tr>
+          <td>
+            <i aria-hidden="true" class="c-icon--svg c-icon--svg-fill">
+              <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+                <g fill="none" fill-rule="evenodd">
+                  <path
+                    d="M4.82539569,1.70748202 L10.5571003,6.6203717 C10.7667632,6.80008277 10.791044,7.11573277 10.6113329,7.32539569 C10.5946706,7.34483509 10.5765397,7.36296595 10.5571003,7.3796283 L4.82539569,12.292518 C4.61573277,12.4722291 4.30008277,12.4479483 4.1203717,12.2382854 C4.04269608,12.1476638 4,12.0322453 4,11.9128897 L4,2.08711032 C4,1.81096794 4.22385763,1.58711032 4.5,1.58711032 C4.61935564,1.58711032 4.73477413,1.6298064 4.82539569,1.70748202 Z"
+                    fill-rule="nonzero"
+                  ></path>
+                </g>
+              </svg>
+            </i>
+          </td>
+          <td>搜索引擎</td>
+          <td>123</td>
+          <td>31</td>
+          <td>12</td>
+          <td>21</td>
+          <td>15</td>
+          <td>9</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h1>可选择表格</h1>
+<div class="c-table">
+  <div class="c-table--content c-table--normal">
+    <table>
+      <colgroup>
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th rowspan="1" class="">
+            <label for="c-checkbox__input-1" class="c-checkbox">
+              <input
+                id="c-checkbox__input-1"
+                aria-labelledby="c-checkbox__label-2"
+                type="checkbox"
+                name="allSelected"
+                class="c-checkbox__input"
+                value="false"
+              />
+              <span class="c-checkbox__box"></span>
+              <span id="c-checkbox__label-2" class="c-checkbox__label"></span>
+            </label>
+          </th>
+          <th>来源类型</th>
+          <th>浏览量</th>
+          <th>访客数</th>
+          <th>新访客数</th>
+          <th>访问时长</th>
+          <th>转化次数</th>
+          <th>IP 数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="1" rowspan="1" class="">
+            <label for="c-checkbox__input-3" class="c-checkbox">
+              <input
+                id="c-checkbox__input-3"
+                aria-labelledby="c-checkbox__label-4"
+                type="checkbox"
+                name="tdDataChecked"
+                class="c-checkbox__input"
+                value="false"
+              />
+              <span class="c-checkbox__box"></span>
+              <span id="c-checkbox__label-4" class="c-checkbox__label"></span>
+            </label>
+          </td>
+          <td>直接访问</td>
+          <td>12</td>
+          <td>3</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="">
+            <label for="c-checkbox__input-3" class="c-checkbox">
+              <input
+                id="c-checkbox__input-3"
+                aria-labelledby="c-checkbox__label-4"
+                type="checkbox"
+                name="tdDataChecked"
+                class="c-checkbox__input"
+                value="false"
+              />
+              <span class="c-checkbox__box"></span>
+              <span id="c-checkbox__label-4" class="c-checkbox__label"></span>
+            </label>
+          </td>
+          <td>搜索引擎</td>
+          <td>123</td>
+          <td>31</td>
+          <td>12</td>
+          <td>21</td>
+          <td>15</td>
+          <td>9</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h1>合并单元格</h1>
+<div class="c-table">
+  <div class="c-table--content c-table--normal c-table--bordered">
+    <table>
+      <colgroup>
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>来源类型</th>
+          <th>浏览量</th>
+          <th>访客数</th>
+          <th>新访客数</th>
+          <th>访问时长</th>
+          <th>转化次数</th>
+          <th>IP 数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="2">直接访问</td>
+          <td>3</td>
+          <td>1</td>
+          <td>2</td>
+          <td rowspan="2">1</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>搜索引擎</td>
+          <td>123</td>
+          <td>31</td>
+          <td>12</td>
+          <td>21</td>
+          <td>9</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h1>自定义表头和尾部</h1>
+<div class="c-table">
+  <div class="c-table__header">
+    here is header
+  </div>
+  <div class="c-table--content c-table--small c-table--bordered">
+    <table>
+      <colgroup>
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>来源类型</th>
+          <th>浏览量</th>
+          <th>访客数</th>
+          <th>新访客数</th>
+          <th>访问时长</th>
+          <th>转化次数</th>
+          <th>IP 数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>直接访问</td>
+          <td>12</td>
+          <td>3</td>
+          <td>1</td>
+          <td>2</td>
+          <td>1</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>搜索引擎</td>
+          <td>123</td>
+          <td>31</td>
+          <td>12</td>
+          <td>21</td>
+          <td>15</td>
+          <td>9</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="c-table__footer">
+    here is footer
+  </div>
+</div>

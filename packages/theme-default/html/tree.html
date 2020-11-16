@@ -1,0 +1,399 @@
+<title>Tree</title>
+<link rel="stylesheet" href="../styles/tree.scss" />
+
+<h2>基础样式</h2>
+
+<ul class="c-tree" role="tree" aria-multiselectable="true">
+  <li
+    role="treeitem"
+    aria-expanded="false"
+    aria-selected="false"
+    aria-level="1"
+    tabindex="0"
+  >
+    <div class="c-tree__content">
+      <span class="c-tree__toggle">
+        <svg viewBox="0 0 14 14">
+          <polygon
+            stroke="none"
+            fill="currentColor"
+            points="5 3 10 7 5 11"
+          ></polygon>
+        </svg>
+      </span>
+      <span class="c-tree__label" title="一级 1">一级 1</span>
+    </div>
+    <ul role="group">
+      <li
+        role="treeitem"
+        aria-expanded="false"
+        aria-selected="false"
+        aria-level="3"
+        tabindex="-1"
+      >
+        <div class="c-tree__content" style="padding-left: 24px;">
+          <span class="c-tree__toggle"></span>
+          <span class="c-tree__label" title="二级 1-1">二级 1-1</span>
+        </div>
+      </li>
+      <li
+        role="treeitem"
+        aria-expanded="false"
+        aria-selected="false"
+        aria-level="3"
+        tabindex="-1"
+      >
+        <div class="c-tree__content" style="padding-left: 24px;">
+          <span class="c-tree__toggle"></span>
+          <span class="c-tree__label" title="二级 1-2">二级 1-2</span>
+        </div>
+      </li>
+    </ul>
+  </li>
+  <li
+    role="treeitem"
+    aria-expanded="true"
+    aria-selected="false"
+    aria-level="1"
+    tabindex="-1"
+  >
+    <div class="c-tree__content">
+      <span class="c-tree__toggle">
+        <svg viewBox="0 0 14 14">
+          <polygon
+            stroke="none"
+            fill="currentColor"
+            points="5 3 10 7 5 11"
+          ></polygon>
+        </svg>
+      </span>
+      <span class="c-tree__label" title="一级 2">一级 2</span>
+    </div>
+    <ul role="group">
+      <li
+        role="treeitem"
+        aria-expanded="true"
+        aria-selected="false"
+        aria-level="2"
+        tabindex="-1"
+      >
+        <div class="c-tree__content" style="padding-left: 24px;">
+          <span class="c-tree__toggle">
+            <svg viewBox="0 0 14 14">
+              <polygon
+                stroke="none"
+                fill="currentColor"
+                points="5 3 10 7 5 11"
+              ></polygon>
+            </svg>
+          </span>
+          <span class="c-tree__label" title="二级 2-1">二级 2-1</span>
+        </div>
+        <ul role="group">
+          <li role="treeitem" aria-selected="true" aria-level="3" tabindex="-1">
+            <div class="c-tree__content" style="padding-left: 48px;">
+              <span class="c-tree__toggle"></span>
+              <span class="c-tree__label" title="三级 2-1-1">三级 2-1-1</span>
+            </div>
+          </li>
+          <li role="treeitem" aria-selected="true" aria-level="3" tabindex="-1">
+            <div class="c-tree__content" style="padding-left: 48px;">
+              <span class="c-tree__toggle"></span>
+              <span class="c-tree__label" title="三级 2-1-2">三级 2-1-2</span>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li
+        role="treeitem"
+        aria-busy="true"
+        aria-selected="false"
+        aria-level="2"
+        tabindex="-1"
+      >
+        <div class="c-tree__content" style="padding-left: 24px;">
+          <span class="c-tree__toggle">
+            <!-- icon: spin -->
+            <i
+              aria-hidden="true"
+              class="c-icon--svg c-icon--spin"
+              style="stroke-width: 2;"
+            >
+              <svg viewBox="0 0 14 14" style="stroke-width: 0.666667;">
+                <g fill="none" fill-rule="evenodd">
+                  <circle
+                    cx="7"
+                    cy="7"
+                    r="6"
+                    stroke-linecap="round"
+                    stroke-dasharray="calc(0.35*2*3.1415926*6) calc(0.65*2*3.1415926*6)"
+                    stroke-dashoffset="calc(0.25*2*3.1415926*6)"
+                  ></circle>
+                </g>
+              </svg>
+            </i>
+          </span>
+          <span class="c-tree__label" title="二级 2-2">二级 2-2</span>
+        </div>
+      </li>
+    </ul>
+  </li>
+  <li
+    role="treeitem"
+    aria-expanded="false"
+    aria-selected="false"
+    aria-level="1"
+    tabindex="-1"
+  >
+    <div class="c-tree__content">
+      <span class="c-tree__toggle">
+        <svg viewBox="0 0 14 14">
+          <polygon
+            stroke="none"
+            fill="currentColor"
+            points="5 3 10 7 5 11"
+          ></polygon>
+        </svg>
+      </span>
+      <span class="c-tree__label" title="一级 3">一级 3</span>
+    </div>
+  </li>
+</ul>
+
+<h2>可勾选样式</h2>
+
+<ul class="c-tree" role="tree" aria-multiselectable="false">
+  <li role="treeitem" aria-expanded="false" aria-level="1" tabindex="0">
+    <div class="c-tree__content">
+      <span class="c-tree__toggle">
+        <svg viewBox="0 0 14 14">
+          <polygon
+            stroke="none"
+            fill="currentColor"
+            points="5 3 10 7 5 11"
+          ></polygon>
+        </svg>
+      </span>
+      <label class="c-checkbox">
+        <input type="checkbox" />
+        <span class="c-checkbox__box"></span>
+      </label>
+      <span class="c-tree__label" title="一级 1">一级 1</span>
+    </div>
+    <ul role="group">
+      <li role="treeitem" aria-level="3" tabindex="-1">
+        <div class="c-tree__content" style="padding-left: 24px;">
+          <span class="c-tree__toggle"></span>
+          <label class="c-checkbox">
+            <input type="checkbox" />
+            <span class="c-checkbox__box"></span>
+          </label>
+          <span class="c-tree__label" title="二级 1-1">二级 1-1</span>
+        </div>
+      </li>
+      <li role="treeitem" aria-level="3" tabindex="-1">
+        <div class="c-tree__content" style="padding-left: 24px;">
+          <span class="c-tree__toggle"></span>
+          <label class="c-checkbox">
+            <input type="checkbox" />
+            <span class="c-checkbox__box"></span>
+          </label>
+          <span class="c-tree__label" title="二级 1-2">二级 1-2</span>
+        </div>
+      </li>
+    </ul>
+  </li>
+  <li role="treeitem" aria-expanded="true" aria-level="1" tabindex="-1">
+    <div class="c-tree__content">
+      <span class="c-tree__toggle">
+        <svg viewBox="0 0 14 14">
+          <polygon
+            stroke="none"
+            fill="currentColor"
+            points="5 3 10 7 5 11"
+          ></polygon>
+        </svg>
+      </span>
+      <label class="c-checkbox">
+        <input type="checkbox" id="c-checkbox__input-0" />
+        <span class="c-checkbox__box"></span>
+      </label>
+      <span class="c-tree__label" title="一级 2">一级 2</span>
+    </div>
+    <ul role="group">
+      <li
+        role="treeitem"
+        aria-disabled="true"
+        aria-expanded="true"
+        aria-level="2"
+        tabindex="-1"
+      >
+        <div class="c-tree__content" style="padding-left: 24px;">
+          <span class="c-tree__toggle">
+            <svg viewBox="0 0 14 14">
+              <polygon
+                stroke="none"
+                fill="currentColor"
+                points="5 3 10 7 5 11"
+              ></polygon>
+            </svg>
+          </span>
+          <label class="c-checkbox">
+            <input type="checkbox" id="c-checkbox__input-1" disabled />
+            <span class="c-checkbox__box"></span>
+          </label>
+          <span class="c-tree__label" title="二级 2-1">二级 2-1</span>
+        </div>
+        <ul role="group">
+          <li role="treeitem" aria-disabled="true" aria-level="3" tabindex="-1">
+            <div class="c-tree__content" style="padding-left: 48px;">
+              <span class="c-tree__toggle"></span>
+              <label class="c-checkbox">
+                <input type="checkbox" checked disabled />
+                <span class="c-checkbox__box"></span>
+              </label>
+              <span class="c-tree__label" title="三级 2-1-1">三级 2-1-1</span>
+            </div>
+          </li>
+          <li role="treeitem" aria-disabled="true" aria-level="3" tabindex="-1">
+            <div class="c-tree__content" style="padding-left: 48px;">
+              <span class="c-tree__toggle"></span>
+              <label class="c-checkbox">
+                <input type="checkbox" disabled />
+                <span class="c-checkbox__box"></span>
+              </label>
+              <span class="c-tree__label" title="三级 2-1-2">三级 2-1-2</span>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li role="treeitem" aria-expanded="false" aria-level="2" tabindex="-1">
+        <div class="c-tree__content" style="padding-left: 24px;">
+          <span class="c-tree__toggle">
+            <svg viewBox="0 0 14 14">
+              <polygon
+                stroke="none"
+                fill="currentColor"
+                points="5 3 10 7 5 11"
+              ></polygon>
+            </svg>
+          </span>
+          <label class="c-checkbox">
+            <input type="checkbox" />
+            <span class="c-checkbox__box"></span>
+          </label>
+          <span class="c-tree__label" title="二级 2-2">二级 2-2</span>
+        </div>
+      </li>
+    </ul>
+  </li>
+  <li role="treeitem" aria-expanded="false" aria-level="1" tabindex="-1">
+    <div class="c-tree__content">
+      <span class="c-tree__toggle">
+        <svg viewBox="0 0 14 14">
+          <polygon
+            stroke="none"
+            fill="currentColor"
+            points="5 3 10 7 5 11"
+          ></polygon>
+        </svg>
+      </span>
+      <label class="c-checkbox">
+        <input type="checkbox" checked />
+        <span class="c-checkbox__box"></span>
+      </label>
+      <span class="c-tree__label" title="一级 3">一级 3</span>
+    </div>
+  </li>
+</ul>
+
+<h2>自定义图标</h2>
+
+<ul class="c-tree" role="tree" aria-multiselectable="false">
+  <li role="treeitem" aria-expanded="true" aria-level="1" tabindex="0">
+    <div class="c-tree__content">
+      <span class="c-tree__toggle">
+        <svg viewBox="0 0 14 14">
+          <polygon
+            stroke="none"
+            fill="currentColor"
+            points="5 3 10 7 5 11"
+          ></polygon>
+        </svg>
+      </span>
+      <span class="c-tree__custom-icon">
+        <i class="c-icon--svg" style="stroke-width: 1; font-size: 14px;">
+          <svg viewBox="0 0 28 28" style="stroke-width: 2;">
+            <g fill="none" fill-rule="evenodd">
+              <path
+                d="M8.015 9H25.36a2 2 0 011.925 2.541l-3.375 12A2 2 0 0121.985 25H2l4.09-14.541A2 2 0 018.015 9z"
+                stroke="currentColor"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M21 25H3a2 2 0 01-2-2V5a2 2 0 012-2h3c.155 0 1.072.036 1.211.106L9.79 4.894C9.928 4.964 10.845 5 11 5h10a2 2 0 012 2v2"
+                stroke="currentColor"
+              ></path>
+            </g>
+          </svg>
+        </i>
+      </span>
+      <span class="c-tree__label" title="一级 1">一级 1</span>
+    </div>
+    <ul role="group">
+      <li role="treeitem" aria-level="3" tabindex="-1">
+        <div class="c-tree__content" style="padding-left: 24px;">
+          <span class="c-tree__toggle"></span>
+          <span class="c-tree__custom-icon">
+            <i class="c-icon--svg" style="stroke-width: 1; font-size: 14px;">
+              <svg viewBox="0 0 28 28" style="stroke-width: 2;">
+                <g fill="none" fill-rule="evenodd">
+                  <path
+                    d="M5 3h18a2 2 0 012 2v18a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z"
+                    stroke="currentColor"
+                  ></path>
+                  <path
+                    d="M9 11h6M9 17h6"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </g>
+              </svg>
+            </i>
+          </span>
+          <span class="c-tree__label" title="二级 1-1">二级 1-1</span>
+        </div>
+      </li>
+      <li role="treeitem" aria-level="3" tabindex="-1">
+        <div class="c-tree__content" style="padding-left: 24px;">
+          <span class="c-tree__toggle"></span>
+          <span class="c-tree__custom-icon">
+            <i class="c-icon--svg" style="stroke-width: 1; font-size: 14px;">
+              <svg viewBox="0 0 28 28" style="stroke-width: 2;">
+                <g fill="none" fill-rule="evenodd">
+                  <path
+                    d="M5 3h18a2 2 0 012 2v18a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z"
+                    stroke="currentColor"
+                  ></path>
+                  <path
+                    d="M9 11h6M9 17h6"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </g>
+              </svg>
+            </i>
+          </span>
+          <span class="c-tree__label" title="二级 1-2">二级 1-2</span>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<script>
+  document.getElementById('c-checkbox__input-0').indeterminate = true
+  document.getElementById('c-checkbox__input-1').indeterminate = true
+</script>

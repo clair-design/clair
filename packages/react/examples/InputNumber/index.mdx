@@ -1,0 +1,36 @@
+import Basic from "./basic.mdx";
+import Other from "./other.mdx";
+import Size from "./size.mdx";
+
+# InputNumber
+
+## 定义
+
+允许输入标准的数字值，可定义范围
+
+## 使用场景
+
+- 通过预配置的数值区间内逐级进行数值变更
+- 数值可直接输入，也可在数值区间内逐级变更
+
+<Basic />
+<Other />
+<Size />
+
+## Props
+
+| Name            | Description            | Type                                                   | Required | Default        |
+| --------------- | ---------------------- | ------------------------------------------------------ | -------- | -------------- |
+| value           | 值                     | `number`                                               | `true`   | `0`            |
+| defaultValue    | 默认值                 | `number`                                               | `true`   | `0`            |
+| min             | 计数器的最小值         | `number`                                               | `false`  | `-Infinity`    |
+| max             | 计数器的最大值         | `number`                                               | `false`  | `Infinity`     |
+| step            | 计数器变更的步长       | `number`                                               | `false`  | `1`            |
+| stepFixed       | 是否只能输入步长的倍数 | `boolean`                                              | `false`  | `false`        |
+| precision       | 数值精度               | `number`                                               | `false`  | -              |
+| disabled        | 是否禁用计数器         | `boolean`                                              | `false`  | `false`        |
+| size            | 尺寸大小               | `'large'` \| `'normal'` \| `'small'`                   | `false`  | `'normal'`     |
+| controlPosition | 按钮位置(左右/上下)    | `'left-right'` \| `'up-down'`                          | `false`  | `'left-right'` |
+| onChange        | 输入值改变时触发       | `{ target: { value: number } }`                        | `false`  |  -             |
+| onFocus         | input 获取焦点时触发   | `{ target: { value: number }, nativeEvent: Event; } }` | `false`  |  -             |
+| onBlur          | input 失去焦点时触发   | `{ target: { value: number }, nativeEvent: Event; } }` | `false`  |  -             |

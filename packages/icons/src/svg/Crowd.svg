@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Crowd</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Crowd" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="蒙版" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M22.741301,27.0051156 C22.2075017,24.9768165 20.8757066,22.4096845 19.0088754,21.0290088 C16.6722473,19.3008795 14.5,19 12,19 C9.5,19 7.33611349,19.2980838 5.00035846,21.0221863 C3.12872928,22.4037012 1.79344106,24.9733885 1.25873686,27.0049717" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M26.9049072,27.0051156 C26.7210693,24.6628418 25.4581299,21.487915 22.8859863,19 C21.2311491,17.3993528 18.9554961,16.1374512 18.8428955,16.1374512" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M19,15.9755859 C21.0131836,14.1417643 22.0197754,11.718099 22.0197754,8.70458984 C22.0197754,6.8503418 21.334554,4.94881185 19.9641113,3" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M6,9 C6,12.3137085 8.6862915,15 12,15 C15.3137085,15 18,12.3137085 18,9 C18,5.6862915 15.3137085,3 12,3 C8.6862915,3 6,5.6862915 6,9 Z" id="路径" stroke="#6E6E6E" stroke-width="2"></path>
+        </g>
+    </g>
+</svg>

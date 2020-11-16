@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<head>
+  <title>Form</title>
+  <link rel="stylesheet" href="../styles/form.scss" />
+  <link rel="stylesheet" href="../styles/input.scss" />
+  <link rel="stylesheet" href="../styles/radio.scss" />
+  <link rel="stylesheet" href="../styles/checkbox.scss" />
+  <link rel="stylesheet" href="../styles/button.scss" />
+  <script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+  <style>
+    body {
+      max-width: 1200px;
+      margin: 30px auto;
+    }
+
+    /*
+      This will hide the focus indicator if the element receives focus via the mouse,
+      but it will still show up on keyboard focus.
+    */
+    .js-focus-visible :focus:not(.focus-visible) {
+      outline: none;
+    }
+
+    /* Demo style */
+    .c-form {
+      max-width: 960px;
+    }
+    .c-input-affix-container {
+      width: 320px;
+    }
+    .c-input {
+      width: 320px;
+    }
+    .demo-button-add {
+      width: 320px;
+      border-style: dashed;
+    }
+  </style>
+</head>
+<body>
+  <h1>Form</h1>
+
+  <h2>典型表单</h2>
+  <form class="c-form">
+    <div class="c-form-item">
+      <label class="c-form-item__label" style="width: 100px;">项目名称</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <input
+            type="text"
+            class="c-input c-input--normal"
+            placeholder="请输入名称"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="c-form-item">
+      <label class="c-form-item__label" style="width: 100px;">联系电话</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <input
+            type="text"
+            class="c-input c-input--normal"
+            placeholder="请输入电话"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="c-form-item">
+      <label class="c-form-item__label" style="width: 100px;">项目风险</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <div role="radiogroup" class="c-radio-group">
+            <label class="c-radio">
+              <input
+                type="radio"
+                name="projectRisk"
+                class="c-radio__input"
+                value="高危"
+              />
+              <span class="c-radio__box"></span>
+              <span class="c-radio__label">高危</span>
+            </label>
+
+            <label class="c-radio c-radio--checked">
+              <input
+                type="radio"
+                name="projectRisk"
+                checked
+                class="c-radio__input"
+                value="一般"
+              />
+              <span class="c-radio__box"></span>
+              <span class="c-radio__label">一般</span>
+            </label>
+
+            <label class="c-radio">
+              <input
+                type="radio"
+                name="projectRisk"
+                class="c-radio__input"
+                value="低"
+              />
+              <span class="c-radio__box"></span>
+              <span class="c-radio__label">低</span>
+            </label>
+
+            <label class="c-radio">
+              <input
+                type="radio"
+                name="projectRisk"
+                class="c-radio__input"
+                value="极低"
+              />
+              <span class="c-radio__box"></span>
+              <span class="c-radio__label">极低</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="c-form-item">
+      <label class="c-form-item__label" style="width: 100px;">项目说明</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <textarea
+            placeholder="请输入内容"
+            class="c-input c-textarea c-input--normal"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="c-form-item">
+      <label class="c-form-item__label" style="width: 100px;"></label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <button class="c-button c-button--normal c-button--primary">
+            立即提交
+          </button>
+          <button class="c-button c-button--normal c-button--default">
+            取消
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <h2>水平表单</h2>
+  <form class="c-form c-form--inline">
+    <div class="c-form-item">
+      <label class="c-form-item__label">项目名称</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <input
+            type="text"
+            class="c-input c-input--normal"
+            placeholder="请输入名称"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="c-form-item">
+      <label class="c-form-item__label">项目地点</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <input
+            type="text"
+            class="c-input c-input--normal"
+            placeholder="请选择地点"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="c-form-item">
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <button class="c-button c-button--normal c-button--primary">
+            查询
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <h2>对齐方式</h2>
+
+  <h3>左对齐</h3>
+  <form class="c-form c-form--label-left">
+    <div class="c-form-item">
+      <label class="c-form-item__label" style="width: 100px;">名称</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <input
+            type="text"
+            class="c-input c-input--normal"
+            placeholder="请输入名称"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="c-form-item">
+      <label class="c-form-item__label" style="width: 100px;">联系电话</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <input
+            type="text"
+            class="c-input c-input--normal"
+            placeholder="请输入电话"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="c-form-item">
+      <label class="c-form-item__label" style="width: 100px;">联系人</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <input
+            type="text"
+            class="c-input c-input--normal"
+            placeholder="请输入联系人"
+          />
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <h3>右对齐</h3>
+  <form class="c-form c-form--label-right">
+    <div class="c-form-item">
+      <label class="c-form-item__label" style="width: 100px;">名称</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <input
+            type="text"
+            class="c-input c-input--normal"
+            placeholder="请输入名称"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="c-form-item">
+      <label class="c-form-item__label" style="width: 100px;">联系电话</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <input
+            type="text"
+            class="c-input c-input--normal"
+            placeholder="请输入电话"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="c-form-item">
+      <label class="c-form-item__label" style="width: 100px;">联系人</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <input
+            type="text"
+            class="c-input c-input--normal"
+            placeholder="请输入联系人"
+          />
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <h3>顶部对齐</h3>
+  <form class="c-form c-form--label-top">
+    <div class="c-form-item">
+      <label class="c-form-item__label" style="width: 100px;">名称</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <input
+            type="text"
+            class="c-input c-input--normal"
+            placeholder="请输入名称"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="c-form-item">
+      <label class="c-form-item__label" style="width: 100px;">联系电话</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <input
+            type="text"
+            class="c-input c-input--normal"
+            placeholder="请输入电话"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="c-form-item">
+      <label class="c-form-item__label" style="width: 100px;">联系人</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <input
+            type="text"
+            class="c-input c-input--normal"
+            placeholder="请输入联系人"
+          />
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <h2>表单验证</h2>
+  <form class="c-form">
+    <div class="c-form-item is-required is-error c-form-item--with-help">
+      <label class="c-form-item__label" style="width: 100px;">项目名称</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <input
+            type="text"
+            class="c-input c-input--normal"
+            placeholder="请输入名称"
+          />
+        </div>
+        <div class="c-form-item__error">项目名称不能为空</div>
+      </div>
+    </div>
+    <div class="c-form-item is-required is-error c-form-item--with-help">
+      <label class="c-form-item__label" style="width: 100px;">联系电话</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <div
+            class="c-input-affix-container c-input-affix-container--normal"
+            tabindex="0"
+          >
+            <span class="c-input-prefix">
+              <svg
+                viewBox="0 0 1024 1024"
+                width="16"
+                height="16"
+                fill="currentColor"
+              >
+                <path
+                  d="M64 384a235.2 235.2 0 0 1 0-64c20.48-3.2 39.424-3.072 59.712 0 104.512 131.456 236.288 192 418.176 192 122.112 0 253.888-60.544 358.4-192 20.288-3.072 39.168-3.2 59.712 0 2.88 21.76 2.944 42.048 0 64-132.928 124.544-279.872 192-418.112 192C343.872 576 196.928 508.544 64 384z"
+                  p-id="2605"
+                ></path>
+                <path
+                  d="M480 576a32 32 0 0 1 64 0v127.68a32 32 0 1 1-64 0V576zM684.16 587.968a32 32 0 1 1 59.328-23.936l35.328 87.808a32 32 0 1 1-59.392 23.936l-35.328-87.808zM365.12 570.752a32 32 0 1 0-59.648-23.232l-40.064 103.04a32 32 0 1 0 59.648 23.168l40.064-103.04zM858.24 492.032a32 32 0 1 1 47.104-43.328l69.376 75.264a32 32 0 1 1-47.104 43.392L858.24 492.032zM166.912 491.584a32 32 0 1 0-44.416-46.08L41.792 523.328a32 32 0 1 0 44.416 46.08l80.64-77.824z"
+                  p-id="2606"
+                ></path>
+              </svg>
+            </span>
+            <input
+              type="text"
+              class="c-input c-input--normal"
+              placeholder="请输入要搜索的内容"
+            />
+            <span class="c-input-suffix">
+              <svg
+                viewBox="0 0 1024 1024"
+                width="16"
+                height="16"
+                fill="currentColor"
+              >
+                <path
+                  d="M512 256C357.184 256 213.888 339.392 80.512 512 213.888 684.608 357.184 768 512 768c154.88 0 298.624-83.392 432.896-256C810.624 339.392 666.88 256 512 256z m0 576C323.456 832 153.088 725.312 0.832 512 153.152 298.688 323.456 192 512 192c188.544 0 359.424 106.688 512.832 320-153.408 213.312-324.288 320-512.832 320z"
+                  p-id="3047"
+                ></path>
+                <path
+                  d="M512 640a128 128 0 1 0 0-256 128 128 0 0 0 0 256z m0 64a192 192 0 1 1 0-384 192 192 0 0 1 0 384z"
+                  p-id="3048"
+                ></path>
+              </svg>
+            </span>
+          </div>
+        </div>
+        <div class="c-form-item__error">电话不能为空</div>
+      </div>
+    </div>
+    <div class="c-form-item is-required is-error c-form-item--with-help">
+      <label class="c-form-item__label" style="width: 100px;">项目风险</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wraper">
+          <div role="radiogroup" class="c-radio-group">
+            <label class="c-radio">
+              <input
+                type="radio"
+                name="projectRisk"
+                class="c-radio__input"
+                value="高危"
+              />
+              <span class="c-radio__box"></span>
+              <span class="c-radio__label">高危</span>
+            </label>
+
+            <label class="c-radio c-radio--checked">
+              <input
+                type="radio"
+                name="projectRisk"
+                class="c-radio__input"
+                value="一般"
+              />
+              <span class="c-radio__box"></span>
+              <span class="c-radio__label">一般</span>
+            </label>
+
+            <label class="c-radio">
+              <input
+                type="radio"
+                name="projectRisk"
+                class="c-radio__input"
+                value="低"
+              />
+              <span class="c-radio__box"></span>
+              <span class="c-radio__label">低</span>
+            </label>
+
+            <label class="c-radio">
+              <input
+                type="radio"
+                name="projectRisk"
+                class="c-radio__input"
+                value="极低"
+              />
+              <span class="c-radio__box"></span>
+              <span class="c-radio__label">极低</span>
+            </label>
+          </div>
+        </div>
+        <div class="c-form-item__error">请选择一项</div>
+      </div>
+    </div>
+    <div class="c-form-item is-required is-error c-form-item--with-help">
+      <label class="c-form-item__label" style="width: 100px;">项目说明</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <textarea
+            placeholder="请输入内容"
+            class="c-input c-textarea"
+          ></textarea>
+        </div>
+        <div class="c-form-item__error">请填写内容</div>
+      </div>
+    </div>
+    <div class="c-form-item">
+      <label class="c-form-item__label" style="width: 100px;"></label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <button class="c-button c-button--normal c-button--primary">
+            立即提交
+          </button>
+          <button class="c-button c-button--normal c-button--default">
+            取消
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <h2>自定义校验</h2>
+  <form class="c-form c-form--label-right">
+    <div class="c-form-item c-form-item--with-help">
+      <label class="c-form-item__label" style="width: 110px;">用户名</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <input
+            type="text"
+            class="c-input c-input--normal"
+            placeholder="请输入用户名"
+          />
+          <div class="c-form-item__helper-text">
+            请使用英文字母 + 数字的格式
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="c-form-item is-error c-form-item--with-help">
+      <label class="c-form-item__label" style="width: 110px;">手机号</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <input
+            type="text"
+            class="c-input c-input--normal"
+            placeholder="请输入手机号"
+          />
+          <div class="c-form-item__helper-text">注：只能使用大陆手机号</div>
+        </div>
+
+        <div class="c-form-item__error">此项是必填项</div>
+      </div>
+    </div>
+    <div class="c-form-item is-success">
+      <label class="c-form-item__label" style="width: 110px;">设置密码</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <input
+            type="text"
+            value="12345678"
+            class="c-input c-input--normal"
+            placeholder="请输入密码"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="c-form-item is-error c-form-item--with-help">
+      <label class="c-form-item__label" style="width: 110px;">
+        再次确认密码
+      </label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <input
+            type="text"
+            value="123456"
+            class="c-input c-input--normal"
+            placeholder="请再次输入密码"
+          />
+        </div>
+        <div class="c-form-item__error">两次输入密码不一致</div>
+      </div>
+    </div>
+    <div class="c-form-item is-error c-form-item--with-help">
+      <label class="c-form-item__label" style="width: 110px;">身份证号</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <input
+            type="text"
+            value="010604198020304"
+            class="c-input c-input--normal"
+            placeholder="请输入身份证号"
+          />
+        </div>
+        <div class="c-form-item__error">请输入正确的身份证号码</div>
+      </div>
+    </div>
+    <div class="c-form-item">
+      <label class="c-form-item__label" style="width: 110px;"></label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <button class="c-button c-button--normal c-button--primary">
+            确认
+          </button>
+          <button class="c-button c-button--normal c-button--default">
+            取消
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <h2>动态增减表单项</h2>
+  <form class="c-form">
+    <div class="c-form-item">
+      <label class="c-form-item__label" style="width: 100px;">用户姓名</label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <input
+            type="text"
+            class="c-input c-input--normal"
+            placeholder="请输入姓名"
+          />
+          <button class="c-button c-button--normal c-button--default">
+            删除
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="c-form-item">
+      <label class="c-form-item__label" style="width: 100px;"></label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <button
+            class="c-button c-button--normal c-button--default demo-button-add"
+          >
+            添加用户
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="c-form-item">
+      <label class="c-form-item__label" style="width: 100px;"></label>
+      <div class="c-form-item__content">
+        <div class="c-form-item__wrapper">
+          <button class="c-button c-button--normal c-button--primary">
+            提交
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</body>

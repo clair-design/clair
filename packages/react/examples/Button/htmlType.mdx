@@ -1,0 +1,17 @@
+## 设置 button 原生属性
+
+```tsx live=true className=s-container--button
+<form>
+  <input type="text" name="message" />
+  <Button htmlType="reset" type="default">
+    重置
+  </Button>
+  <Button
+    html-type="submit"
+    type="primary"
+    onSubmit={() => console.log("submit")}
+  >
+    提交
+  </Button>
+</form>
+```

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>PieChart</title>
+    <desc>Created with Sketch.</desc>
+    <g id="PieChart" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M10.0296904,1.61744705 C4.79179478,3.29554759 1,8.20496323 1,14 C1,21.1797017 6.82029825,27 14,27 C17.3337631,27 20.3744334,25.7451209 22.6754231,23.6819505 C24.3557888,22.1752595 25.6416767,20.2375001 26.359157,18.0426023" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M27,14 C27,6.82029825 21.1797017,1 14,1 L14,12 C14,13.1045695 14.8954305,14 16,14 L27,14 Z" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>

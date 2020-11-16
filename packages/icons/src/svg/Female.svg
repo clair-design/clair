@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33px" height="33px" viewBox="0 0 33 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Female</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Female" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="2" y="3" width="28" height="28"></rect>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" cx="19" cy="14" r="10"></circle>
+            <path d="M3,20 L13,30" id="路径-130" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M3,21.1871415 L11.8128585,30" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" transform="translate(7.406429, 25.593571) rotate(-90.000000) translate(-7.406429, -25.593571) "></path>
+        </g>
+    </g>
+</svg>

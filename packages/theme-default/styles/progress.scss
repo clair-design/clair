@@ -1,0 +1,156 @@
+@import 'variables';
+@import 'icon';
+
+@mixin mixin-progress-line-status($color) {
+  .c-progress__inner {
+    background-color: $color;
+  }
+
+  .c-progress__text {
+    display: inline-flex;
+    color: $color;
+  }
+}
+
+@mixin mixin-progress-circle-status($color) {
+  .c-progress__inner {
+    stroke: $color;
+  }
+
+  .c-progress__text {
+    display: inline-flex;
+    color: $color;
+  }
+}
+
+.c-progress--line {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  transition: transition(width);
+
+  .c-progress__bg {
+    flex-grow: 1;
+    height: $--progress-line-normal-stroke-width;
+    overflow: hidden;
+    background-color: $--progress-bg-color;
+    transition: transition((height, border-radius));
+  }
+
+  .c-progress__inner {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    background-color: $--progress-primary-color;
+    transition: transition((width, background-color, border-radius));
+  }
+
+  .c-progress__text {
+    flex: none;
+    width: $--progress-line-normal-text-width;
+    margin-left: $--progress-space-between-line-and-text;
+    color: $--progress-line-color;
+    font-size: $--progress-line-normal-font-size;
+    line-height: 1;
+    transition: transition((color, font-size));
+  }
+
+  &.c-progress--active .c-progress__inner::before {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.22) 100%
+    );
+    animation: clair-default-progress linear 2.5s infinite;
+    content: '';
+  }
+
+  &.c-progress--success {
+    @include mixin-progress-line-status($--progress-success-color);
+  }
+
+  &.c-progress--exception {
+    @include mixin-progress-line-status($--progress-exception-color);
+  }
+}
+
+.c-progress--line.c-progress--small {
+  .c-progress__bg {
+    height: $--progress-line-small-stroke-width;
+  }
+
+  .c-progress__text {
+    width: $--progress-line-small-text-width;
+    font-size: $--progress-line-small-font-size;
+  }
+}
+
+.c-progress--circle {
+  position: relative;
+  display: inline-block;
+  transition: transition((height, width));
+
+  .c-progress__bg {
+    transition: transition((r, stroke-width));
+    stroke: $--progress-bg-color;
+  }
+
+  .c-progress__inner {
+    transform: rotate(-90deg);
+    transform-origin: center;
+    transition: transition((r, stroke, stroke-width, stroke-dasharray));
+    stroke: $--progress-primary-color;
+    stroke-linecap: round;
+  }
+
+  .c-progress__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: $--progress-circle-color;
+    font-size: $--progress-circle-normal-font-size;
+    transform: translate(-50%, -50%);
+    transition: transition((color, font-size));
+  }
+
+  &.c-progress--success {
+    @include mixin-progress-circle-status($--progress-success-color);
+  }
+
+  &.c-progress--exception {
+    @include mixin-progress-circle-status($--progress-exception-color);
+  }
+
+  .c-icon--svg {
+    opacity: 1;
+  }
+}
+
+.c-progress--circle.c-progress--small .c-progress__text {
+  font-size: $--progress-circle-small-font-size;
+}
+
+@keyframes clair-default-progress {
+  0% {
+    width: 0;
+    opacity: 0.5;
+  }
+
+  25% {
+    width: 50%;
+    opacity: 1;
+  }
+
+  50% {
+    width: 100%;
+    opacity: 0;
+  }
+
+  100% {
+    width: 100%;
+    opacity: 0;
+  }
+}

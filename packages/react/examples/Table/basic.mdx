@@ -1,0 +1,20 @@
+<!-- 基本用法 -->
+
+```tsx live=true
+function Basic() {
+  const columns = [
+    { title: "来源类型", prop: "type" },
+    { title: "浏览量", prop: "pv" },
+    { title: "访客数", prop: "uv" },
+    { title: "IP 数", prop: "ip" }
+  ];
+
+  const dataSource = [
+    { type: "直接访问", pv: 13, uv: 9, ip: 8 },
+    { type: "搜索引擎", pv: 11, uv: 7, ip: 6 },
+    { type: "外部网站", pv: 32, uv: 27, ip: 22 }
+  ];
+
+  return <Table columns={columns} dataSource={dataSource} rowKey="type" />;
+}
+```

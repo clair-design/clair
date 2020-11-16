@@ -1,0 +1,19 @@
+# 点状步骤条
+
+```tsx live=true
+<Steps isDot>
+  <Step stepKey="1" title="第一步" description="第一步的描述" />
+  <Step stepKey="2" title="第二步" description="第二步的描述" />
+  <Step stepKey="3" title="第三步" description="第三步的描述" />
+  <Step stepKey="4" title="完成" description="第四步的描述" />
+</Steps>
+```
+
+```tsx live=true
+<Steps isDot>
+  <Step stepKey="1" title="第一步" description="第一步的描述" status="finish" />
+  <Step stepKey="2" title="第二步" description="第二步的描述" status="error" />
+  <Step stepKey="3" title="第三步" description="第三步的描述" />
+  <Step stepKey="4" title="完成" description="第四步的描述" />
+</Steps>
+```

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Volume</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Volume" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M7,8 L3,8 C1.8954305,8 1,8.8954305 1,10 L1,18 C1,19.1045695 1.8954305,20 3,20 L6,20 L15,25 L15,3 L7,8 Z" id="路径-103" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round"></path>
+            <path d="M19.0050548,18.8938191 C20.2392644,17.631733 21,15.9047062 21,14 C21,12.1120056 20.2525552,10.3985863 19.0374318,9.13950846" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M23.1864088,23.1983636 C25.5424597,20.8453558 27,17.5928913 27,14 C27,10.3990589 25.5359211,7.14007166 23.1705591,4.78583419" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,25 @@
+import Basic from "./basic.mdx";
+import Size from "./size.mdx";
+import Indicator from "./indicator.mdx";
+import Text from "./text.mdx";
+import Fullscreen from "./fullscreen.mdx";
+
+# Loading
+
+<Basic />
+<Size />
+<Text />
+<Indicator />
+<Fullscreen />
+
+## Props
+
+| Name       | Description          | Type                                 | Required | Default    |
+| ---------- | -------------------- | ------------------------------------ | -------- | ---------- |
+| loading    | 是否为加载中状态     | `boolean`                            | `false`  | `true`     |
+| text       | 加载描述文字         | `string`                             | `false`  | -          |
+| size       | 旋转图标尺寸         | `"large"` \| `"normal"` \| `"small"` | `false`  | `"normal"` |
+| indicator  | 加载指示符           | `ReactElement`                       | `false`  | -          |
+| style      | Loading 的自定义样式 | `object`                             | `false`  | -          |
+| className  | Loading 的自定义类名 | `string`                             | `false`  | -          |
+| fullscreen | 是否全屏 Loading     | `boolean`                            | `false`  | `false`    |

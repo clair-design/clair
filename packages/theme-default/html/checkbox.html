@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<title>Checkbox</title>
+<link rel="stylesheet" href="../styles/checkbox.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body,
+  html {
+    max-width: 1200px;
+    margin: 30px;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+
+  .example-indeterminate {
+    display: flex;
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+
+<h1>Checkbox</h1>
+
+<div style="margin-bottom: 1em;">
+  <h2>基础样式</h2>
+
+  <label class="c-checkbox">
+    <input type="checkbox" checked />
+    <span class="c-checkbox__box"></span>
+    <span class="c-checkbox__label">选项1</span>
+  </label>
+
+  <label class="c-checkbox">
+    <input type="checkbox" />
+    <span class="c-checkbox__box"></span>
+    <span class="c-checkbox__label">选项1</span>
+  </label>
+
+  <div style="margin-bottom: 1em;">
+    <h2>禁用样式</h2>
+
+    <label class="c-checkbox">
+      <input type="checkbox" checked disabled />
+      <span class="c-checkbox__box"></span>
+      <span class="c-checkbox__label">已选失效项</span>
+    </label>
+
+    <label class="c-checkbox">
+      <input type="checkbox" disabled />
+      <span class="c-checkbox__box"></span>
+      <span class="c-checkbox__label">未选失效项</span>
+    </label>
+  </div>
+
+  <div style="margin-bottom: 1em;">
+    <h2>全选样式</h2>
+    <p>可以全选子项</p>
+
+    <div class="example-indeterminate">
+      <label class="c-checkbox c-checkbox--large">
+        <input type="checkbox" disabled />
+        <span class="c-checkbox__box"></span>
+        <span class="c-checkbox__label">全选</span>
+      </label>
+      <label class="c-checkbox">
+        <input type="checkbox" />
+        <span class="c-checkbox__box"></span>
+        <span class="c-checkbox__label">全选</span>
+      </label>
+      <label class="c-checkbox c-checkbox--small">
+        <input type="checkbox" />
+        <span class="c-checkbox__box"></span>
+        <span class="c-checkbox__label">全选</span>
+      </label>
+    </div>
+
+    <script>
+      // indeterminate状态只能通过 js 设置
+      document
+        .querySelectorAll('.example-indeterminate input')
+        .forEach(el => (el.indeterminate = true))
+    </script>
+  </div>
+
+  <div style="margin-bottom: 1em;">
+    <h2>边框类型因使用场景过少 delay</h2>
+  </div>
+
+  <div style="margin-bottom: 1em;">
+    <h2>不带边框的大中小三种组合，可以和表单输入框进行对应配合</h2>
+
+    <div>
+      <label class="c-checkbox c-checkbox--large">
+        <input type="checkbox" checked />
+        <span class="c-checkbox__box"></span>
+        <span class="c-checkbox__label">选项1</span>
+      </label>
+
+      <label class="c-checkbox c-checkbox--large">
+        <input type="checkbox" />
+        <span class="c-checkbox__box"></span>
+        <span class="c-checkbox__label">选项3</span>
+      </label>
+
+      <label class="c-checkbox c-checkbox--large">
+        <input type="checkbox" checked disabled />
+        <span class="c-checkbox__box"></span>
+        <span class="c-checkbox__label">选项4</span>
+      </label>
+
+      <label class="c-checkbox c-checkbox--large">
+        <input type="checkbox" disabled />
+        <span class="c-checkbox__box"></span>
+        <span class="c-checkbox__label">选项5</span>
+      </label>
+    </div>
+
+    <div style="margin: 20px 0;">
+      <label class="c-checkbox">
+        <input type="checkbox" checked />
+        <span class="c-checkbox__box"></span>
+        <span class="c-checkbox__label">选项1</span>
+      </label>
+
+      <label class="c-checkbox">
+        <input type="checkbox" />
+        <span class="c-checkbox__box"></span>
+        <span class="c-checkbox__label">选项3</span>
+      </label>
+
+      <label class="c-checkbox">
+        <input type="checkbox" checked disabled />
+        <span class="c-checkbox__box"></span>
+        <span class="c-checkbox__label">选项4</span>
+      </label>
+
+      <label class="c-checkbox c-checkbox--disabled">
+        <input type="checkbox" disabled />
+        <span class="c-checkbox__box"></span>
+        <span class="c-checkbox__label">选项5</span>
+      </label>
+    </div>
+
+    <div>
+      <label class="c-checkbox c-checkbox--small">
+        <input type="checkbox" checked />
+        <span class="c-checkbox__box"></span>
+        <span class="c-checkbox__label">选项1</span>
+      </label>
+
+      <label class="c-checkbox c-checkbox--small">
+        <input type="checkbox" />
+        <span class="c-checkbox__box"></span>
+        <span class="c-checkbox__label">选项3</span>
+      </label>
+
+      <label class="c-checkbox c-checkbox--small">
+        <input type="checkbox" checked disabled />
+        <span class="c-checkbox__box"></span>
+        <span class="c-checkbox__label">选项4</span>
+      </label>
+
+      <label class="c-checkbox c-checkbox--small">
+        <input type="checkbox" disabled />
+        <span class="c-checkbox__box"></span>
+        <span class="c-checkbox__label">选项5</span>
+      </label>
+    </div>
+  </div>
+</div>

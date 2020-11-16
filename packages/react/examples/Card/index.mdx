@@ -1,0 +1,31 @@
+import Basic from "./basic.mdx";
+import Size from "./size.mdx";
+import Raised from "./raised.mdx";
+import Simple from "./simple.mdx";
+import Cover from "./cover.mdx";
+
+# Card
+
+## 定义
+
+信息聚合在卡片容器中展示。
+
+## 使用场景
+
+卡片容器可承载文字、列表、图片、段落，突出关键信息，常用于后台预览页面。
+
+<Basic />
+<Size />
+<Raised />
+<Simple />
+<Cover />
+
+## Props
+
+| Name    | Description                | Type                    | Required | Default    |
+| ------- | -------------------------- | ----------------------- | -------- | ---------- |
+| title   | 卡片标题                   | `React.ReactNode`       | `false`  | -          |
+| size    | 卡片尺寸                   | `"normal"` \| `"small"` | `false`  | `"normal"` |
+| raised  | 是否显示阴影               | `boolean`               | `false`  | `false`    |
+| actions | 卡片的操作，至于标题右上角 | `React.ReactNode`       | `false`  | -          |
+| cover   | 用于展示图片、视频等内容   | `React.ReactNode`       | `false`  | -          |

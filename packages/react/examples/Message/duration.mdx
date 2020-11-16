@@ -1,0 +1,16 @@
+## <i></i>消失延迟
+
+自定义消失延迟时长。
+
+```tsx live=true deps=message
+<Button
+  onClick={() => {
+    message({
+      duration: 1000,
+      message: "duration is 1s"
+    });
+  }}
+>
+  custom duration
+</Button>
+```

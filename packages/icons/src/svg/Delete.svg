@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Delete</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Delete" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="蒙版" opacity="0.200000003" x="0" y="1" width="28" height="28"></rect>
+            <path d="M1,5 L27,5" id="路径-4" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M9,5 L9,3 C9,1.8954305 9.8954305,1 11,1 L17,1 C18.1045695,1 19,1.8954305 19,3 L19,5" id="路径-5" stroke="#6E6E6E" stroke-width="2"></path>
+            <path d="M5,5 L5,25 C5,26.1045694 5.8954305,27 7,27 L21,27 C22.1045694,27 23,26.1045694 23,25 L23,5" id="路径-6" stroke="#6E6E6E" stroke-width="2"></path>
+            <path d="M11,11 L11,21" id="路径-7" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M17,11 L17,21" id="路径-8" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,2403 @@
+<!DOCTYPE html>
+<title>Date-picker</title>
+<link rel="stylesheet" href="../styles/date-picker.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body {
+    max-width: 1200px;
+    margin: 30px auto;
+  }
+  .c-date-picker-popup {
+    position: relative;
+    z-index: 1;
+    width: min-content;
+  }
+  .c-icon--svg svg {
+    stroke: currentColor;
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+<h2>基础样式</h2>
+<h5>--active样式用于键盘操作</h5>
+<div class="c-date-picker" id="c-date-picker-1">
+  <input class="c-date-picker__input" type="text" placeholder="请选择日期" />
+  <i class="c-icon--svg">
+    <svg viewBox="0 0 14 14">
+      <g fill="none" fill-rule="evenodd">
+        <path
+          d="M0.5,2.5 L0.5,12.5 C0.5,13.0522847 0.94771525,13.5 1.5,13.5 L12.5,13.5 C13.0522847,13.5 13.5,13.0522847 13.5,12.5 L13.5,2.5 C13.5,1.94771525 13.0522847,1.5 12.5,1.5 L1.5,1.5 C0.94771525,1.5 0.5,1.94771525 0.5,2.5 Z"
+        ></path>
+        <path d="M3.5,0.5 L3.5,2.5" stroke-linecap="round"></path>
+        <path d="M10.5,0.5 L10.5,2.5" stroke-linecap="round"></path>
+        <path d="M0.5,4.5 L13.5,4.5 L0.5,4.5 Z"></path>
+        <path
+          d="M3.5,10.5 L4.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M3.5,7.5 L4.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,10.5 L7.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,7.5 L7.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,10.5 L10.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,7.5 L10.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </g>
+    </svg>
+  </i>
+</div>
+<br />
+<div
+  class="c-date-picker-popup"
+  style="margin-top: 7px;"
+  aria-labelledby="c-date-picker-1"
+>
+  <div>
+    <div class="c-date-picker-popup__content">
+      <div class="c-date-picker-calendar">
+        <div class="c-date-picker-calendar__header">
+          <button>
+            <i aria-hidden="true" class="c-icon--svg" font-size="14">
+              <svg viewBox="0 0 14 14" style="stroke-width: 1.16667;">
+                <g fill="none" fill-rule="evenodd">
+                  <polyline
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    transform="translate(6.250000, 7.000000) rotate(90.000000) translate(-6.250000, -7.000000) "
+                    points="-0.25 3.75 6.25 10.25 12.75 3.75"
+                  ></polyline>
+                </g>
+              </svg>
+            </i>
+          </button>
+          <button>
+            <i aria-hidden="true" class="c-icon--svg" font-size="14">
+              <svg viewBox="0 0 14 14" style="stroke-width: 1.16667;">
+                <g fill="none" fill-rule="evenodd">
+                  <polyline
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    transform="translate(6.250000, 7.000000) rotate(90.000000) translate(-6.250000, -7.000000) "
+                    points="-0.25 3.75 6.25 10.25 12.75 3.75"
+                  ></polyline>
+                </g>
+              </svg>
+            </i>
+          </button>
+          <div>
+            <button>2019年</button>
+            <button>5月</button>
+          </div>
+          <button>
+            <i class="c-icon--svg" font-size="14">
+              <svg viewBox="0 0 14 14">
+                <g fill="none" fill-rule="evenodd">
+                  <polyline
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    transform="translate(7.750000, 7.000000) scale(-1, 1) rotate(-270.000000) translate(-7.750000, -7.000000) "
+                    points="1.25 3.75 7.75 10.25 14.25 3.75"
+                  ></polyline>
+                </g>
+              </svg>
+            </i>
+          </button>
+          <button>
+            <i class="c-icon--svg" font-size="14">
+              <svg viewBox="0 0 14 14">
+                <g fill="none" fill-rule="evenodd">
+                  <polyline
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    transform="translate(7.750000, 7.000000) scale(-1, 1) rotate(-270.000000) translate(-7.750000, -7.000000) "
+                    points="1.25 3.75 7.75 10.25 14.25 3.75"
+                  ></polyline>
+                </g>
+              </svg>
+            </i>
+          </button>
+        </div>
+        <div role="grid" class="c-date-picker-calendar__days">
+          <div role="row" class="c-date-picker-calendar__days__header">
+            <span>日</span>
+            <span>一</span>
+            <span>二</span>
+            <span>三</span>
+            <span>四</span>
+            <span>五</span>
+            <span>六</span>
+          </div>
+          <div role="rowgroup" class="c-date-picker-calendar__days__body">
+            <div role="row">
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                29
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                30
+              </button>
+              <button role="gridcell" tabindex="-1">1</button>
+              <button role="gridcell" tabindex="-1">2</button>
+              <button role="gridcell" tabindex="-1">3</button>
+              <button disabled role="gridcell" tabindex="-1">4</button>
+              <button disabled role="gridcell" tabindex="-1">5</button>
+            </div>
+            <div role="row">
+              <button disabled role="gridcell" tabindex="-1">6</button>
+              <button disabled role="gridcell" tabindex="-1">7</button>
+              <button disabled role="gridcell" tabindex="-1">8</button>
+              <button disabled role="gridcell" tabindex="-1">9</button>
+              <button disabled role="gridcell" tabindex="-1">10</button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--current"
+              >
+                11
+              </button>
+              <button role="gridcell" tabindex="-1">12</button>
+            </div>
+            <div role="row">
+              <button role="gridcell" tabindex="-1">13</button>
+              <button role="gridcell" tabindex="-1">14</button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--active"
+              >
+                15
+              </button>
+              <button role="gridcell" tabindex="-1">16</button>
+              <button
+                role="gridcell"
+                tabindex="0"
+                class="c-date-picker__day--selected"
+                aria-selected="true"
+              >
+                17
+              </button>
+              <button role="gridcell" tabindex="-1">18</button>
+              <button role="gridcell" tabindex="-1">19</button>
+            </div>
+            <div role="row">
+              <button role="gridcell" tabindex="-1">20</button>
+              <button role="gridcell" tabindex="-1">21</button>
+              <button role="gridcell" tabindex="-1">22</button>
+              <button role="gridcell" tabindex="-1">23</button>
+              <button role="gridcell" tabindex="-1">24</button>
+              <button role="gridcell" tabindex="-1">25</button>
+              <button role="gridcell" tabindex="-1">26</button>
+            </div>
+            <div role="row">
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--today"
+              >
+                27
+              </button>
+              <button role="gridcell" tabindex="-1">28</button>
+              <button role="gridcell" tabindex="-1">29</button>
+              <button role="gridcell" tabindex="-1">30</button>
+              <button role="gridcell" tabindex="-1">31</button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                1
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                2
+              </button>
+            </div>
+            <div role="row">
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                3
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                4
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                5
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                6
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                7
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                8
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                9
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 快捷键只有一个，居中显示；否则，靠左依次排列 -->
+    <div class="c-date-picker-popup__footer">
+      <button>今天</button>
+    </div>
+  </div>
+</div>
+
+<h2>基础样式禁用样式</h2>
+<div class="c-date-picker c-date-picker--disabled">
+  <input class="c-date-picker__input" type="text" value="2019-05-17" disabled />
+  <i class="c-icon--svg">
+    <svg viewBox="0 0 14 14">
+      <g fill="none" fill-rule="evenodd">
+        <path
+          d="M0.5,2.5 L0.5,12.5 C0.5,13.0522847 0.94771525,13.5 1.5,13.5 L12.5,13.5 C13.0522847,13.5 13.5,13.0522847 13.5,12.5 L13.5,2.5 C13.5,1.94771525 13.0522847,1.5 12.5,1.5 L1.5,1.5 C0.94771525,1.5 0.5,1.94771525 0.5,2.5 Z"
+        ></path>
+        <path d="M3.5,0.5 L3.5,2.5" stroke-linecap="round"></path>
+        <path d="M10.5,0.5 L10.5,2.5" stroke-linecap="round"></path>
+        <path d="M0.5,4.5 L13.5,4.5 L0.5,4.5 Z"></path>
+        <path
+          d="M3.5,10.5 L4.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M3.5,7.5 L4.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,10.5 L7.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,7.5 L7.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,10.5 L10.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,7.5 L10.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </g>
+    </svg>
+  </i>
+</div>
+
+<h2>周样式</h2>
+<div class="c-date-picker" id="c-date-picker-2">
+  <input
+    class="c-date-picker__input"
+    type="text"
+    placeholder="请选择周"
+    value="2019w21"
+  />
+  <i class="c-icon--svg">
+    <svg viewBox="0 0 14 14">
+      <g fill="none" fill-rule="evenodd">
+        <path
+          d="M0.5,2.5 L0.5,12.5 C0.5,13.0522847 0.94771525,13.5 1.5,13.5 L12.5,13.5 C13.0522847,13.5 13.5,13.0522847 13.5,12.5 L13.5,2.5 C13.5,1.94771525 13.0522847,1.5 12.5,1.5 L1.5,1.5 C0.94771525,1.5 0.5,1.94771525 0.5,2.5 Z"
+        ></path>
+        <path d="M3.5,0.5 L3.5,2.5" stroke-linecap="round"></path>
+        <path d="M10.5,0.5 L10.5,2.5" stroke-linecap="round"></path>
+        <path d="M0.5,4.5 L13.5,4.5 L0.5,4.5 Z"></path>
+        <path
+          d="M3.5,10.5 L4.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M3.5,7.5 L4.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,10.5 L7.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,7.5 L7.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,10.5 L10.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,7.5 L10.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </g>
+    </svg>
+  </i>
+</div>
+<br />
+<div
+  class="c-date-picker-popup"
+  style="margin-top: 7px;"
+  aria-labelledby="c-date-picker-3"
+>
+  <div class="c-date-picker-calendar">
+    <div class="c-date-picker-calendar__header">
+      <button>
+        <i aria-hidden="true" class="c-icon--svg" font-size="14">
+          <svg viewBox="0 0 14 14" style="stroke-width: 1.16667;">
+            <g fill="none" fill-rule="evenodd">
+              <polyline
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                transform="translate(6.250000, 7.000000) rotate(90.000000) translate(-6.250000, -7.000000) "
+                points="-0.25 3.75 6.25 10.25 12.75 3.75"
+              ></polyline>
+            </g>
+          </svg>
+        </i>
+      </button>
+      <button>
+        <i aria-hidden="true" class="c-icon--svg" font-size="14">
+          <svg viewBox="0 0 14 14" style="stroke-width: 1.16667;">
+            <g fill="none" fill-rule="evenodd">
+              <polyline
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                transform="translate(6.250000, 7.000000) rotate(90.000000) translate(-6.250000, -7.000000) "
+                points="-0.25 3.75 6.25 10.25 12.75 3.75"
+              ></polyline>
+            </g>
+          </svg>
+        </i>
+      </button>
+      <div>
+        <button>2019年</button>
+        <button>5月</button>
+      </div>
+      <button>
+        <i class="c-icon--svg" font-size="14">
+          <svg viewBox="0 0 14 14">
+            <g fill="none" fill-rule="evenodd">
+              <polyline
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                transform="translate(7.750000, 7.000000) scale(-1, 1) rotate(-270.000000) translate(-7.750000, -7.000000) "
+                points="1.25 3.75 7.75 10.25 14.25 3.75"
+              ></polyline>
+            </g>
+          </svg>
+        </i>
+      </button>
+      <button>
+        <i class="c-icon--svg" font-size="14">
+          <svg viewBox="0 0 14 14">
+            <g fill="none" fill-rule="evenodd">
+              <polyline
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                transform="translate(7.750000, 7.000000) scale(-1, 1) rotate(-270.000000) translate(-7.750000, -7.000000) "
+                points="1.25 3.75 7.75 10.25 14.25 3.75"
+              ></polyline>
+            </g>
+          </svg>
+        </i>
+      </button>
+    </div>
+    <div class="c-date-picker-calendar__weeks">
+      <div class="c-date-picker-calendar__weeks__header">
+        <span>日</span>
+        <span>一</span>
+        <span>二</span>
+        <span>三</span>
+        <span>四</span>
+        <span>五</span>
+        <span>六</span>
+      </div>
+      <div role="grid" class="c-date-picker-calendar__weeks__body">
+        <div role="row">
+          <button role="gridcell" class="c-date-picker-week-row" tabindex="-1">
+            <span class="c-date-picker__day--dimmed">29</span>
+            <span class="c-date-picker__day--dimmed">30</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+          </button>
+        </div>
+        <div role="row">
+          <button
+            role="gridcell"
+            disabled
+            class="c-date-picker-week-row"
+            tabindex="-1"
+          >
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+            <span>10</span>
+            <span>11</span>
+            <span>12</span>
+          </button>
+        </div>
+        <div role="row">
+          <button
+            role="gridcell"
+            class="c-date-picker-week-row"
+            tabindex="0"
+            aria-selected="true"
+          >
+            <span>13</span>
+            <span>14</span>
+            <span>15</span>
+            <span>16</span>
+            <span>17</span>
+            <span>18</span>
+            <span>19</span>
+          </button>
+        </div>
+        <div role="row">
+          <button
+            role="gridcell"
+            class="c-date-picker-week-row c-date-picker__week--current"
+            tabindex="-1"
+          >
+            <span>20</span>
+            <span>21</span>
+            <span>22</span>
+            <span>23</span>
+            <span>24</span>
+            <span>25</span>
+            <span>26</span>
+          </button>
+        </div>
+        <div role="row">
+          <button
+            role="gridcell"
+            class="c-date-picker-week-row c-date-picker__week--active"
+            tabindex="-1"
+          >
+            <span class="c-date-picker__day--today">27</span>
+            <span>28</span>
+            <span>29</span>
+            <span>30</span>
+            <span>31</span>
+            <span class="c-date-picker__day--dimmed">1</span>
+            <span class="c-date-picker__day--dimmed">2</span>
+          </button>
+        </div>
+        <div role="row">
+          <button class="c-date-picker-week-row" tabindex="-1">
+            <span class="c-date-picker__day--dimmed">3</span>
+            <span class="c-date-picker__day--dimmed">4</span>
+            <span class="c-date-picker__day--dimmed">5</span>
+            <span class="c-date-picker__day--dimmed">6</span>
+            <span class="c-date-picker__day--dimmed">7</span>
+            <span class="c-date-picker__day--dimmed">8</span>
+            <span class="c-date-picker__day--dimmed">9</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2>月样式</h2>
+<div class="c-date-picker" id="c-date-picker-3">
+  <input
+    class="c-date-picker__input"
+    type="text"
+    placeholder="请选择年月"
+    value="2019-05"
+  />
+  <i class="c-icon--svg">
+    <svg viewBox="0 0 14 14">
+      <g fill="none" fill-rule="evenodd">
+        <path
+          d="M0.5,2.5 L0.5,12.5 C0.5,13.0522847 0.94771525,13.5 1.5,13.5 L12.5,13.5 C13.0522847,13.5 13.5,13.0522847 13.5,12.5 L13.5,2.5 C13.5,1.94771525 13.0522847,1.5 12.5,1.5 L1.5,1.5 C0.94771525,1.5 0.5,1.94771525 0.5,2.5 Z"
+        ></path>
+        <path d="M3.5,0.5 L3.5,2.5" stroke-linecap="round"></path>
+        <path d="M10.5,0.5 L10.5,2.5" stroke-linecap="round"></path>
+        <path d="M0.5,4.5 L13.5,4.5 L0.5,4.5 Z"></path>
+        <path
+          d="M3.5,10.5 L4.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M3.5,7.5 L4.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,10.5 L7.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,7.5 L7.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,10.5 L10.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,7.5 L10.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </g>
+    </svg>
+  </i>
+</div>
+<br />
+<div
+  class="c-date-picker-popup"
+  style="margin-top: 7px;"
+  aria-labelledby="c-date-picker-2"
+>
+  <div class="c-date-picker-calendar">
+    <div class="c-date-picker-calendar__header">
+      <button>
+        <i aria-hidden="true" class="c-icon--svg" font-size="14">
+          <svg viewBox="0 0 14 14" style="stroke-width: 1.16667;">
+            <g fill="none" fill-rule="evenodd">
+              <polyline
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                transform="translate(6.250000, 7.000000) rotate(90.000000) translate(-6.250000, -7.000000) "
+                points="-0.25 3.75 6.25 10.25 12.75 3.75"
+              ></polyline>
+            </g>
+          </svg>
+        </i>
+      </button>
+      <div>
+        <button>2019年</button>
+      </div>
+      <button>
+        <i class="c-icon--svg" font-size="14">
+          <svg viewBox="0 0 14 14">
+            <g fill="none" fill-rule="evenodd">
+              <polyline
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                transform="translate(7.750000, 7.000000) scale(-1, 1) rotate(-270.000000) translate(-7.750000, -7.000000) "
+                points="1.25 3.75 7.75 10.25 14.25 3.75"
+              ></polyline>
+            </g>
+          </svg>
+        </i>
+      </button>
+    </div>
+    <div role="grid" class="c-date-picker-calendar__months">
+      <div role="row">
+        <button role="gridcell" tabindex="-1" disabled>
+          一月
+        </button>
+        <button role="gridcell" tabindex="-1" disabled>
+          二月
+        </button>
+        <button role="gridcell" tabindex="-1" disabled>
+          三月
+        </button>
+      </div>
+      <div role="row">
+        <button role="gridcell" tabindex="-1">四月</button>
+        <button
+          role="gridcell"
+          tabindex="0"
+          class="c-date-picker__month--selected"
+          aria-selected="true"
+        >
+          五月
+        </button>
+        <button role="gridcell" tabindex="-1">六月</button>
+      </div>
+      <div role="row">
+        <button role="gridcell" tabindex="-1">七月</button>
+        <button role="gridcell" tabindex="-1">八月</button>
+        <button
+          role="gridcell"
+          tabindex="-1"
+          class="c-date-picker__month--current"
+        >
+          九月
+        </button>
+      </div>
+      <div role="row">
+        <button
+          role="gridcell"
+          tabindex="-1"
+          class="c-date-picker__month--active"
+        >
+          十月
+        </button>
+        <button role="gridcell" tabindex="-1">十一月</button>
+        <button role="gridcell" tabindex="-1">十二月</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2>季样式</h2>
+<div class="c-date-picker" id="c-date-picker-4">
+  <input
+    class="c-date-picker__input"
+    type="text"
+    placeholder="请选择季"
+    value="2019q3"
+  />
+  <i class="c-icon--svg">
+    <svg viewBox="0 0 14 14">
+      <g fill="none" fill-rule="evenodd">
+        <path
+          d="M0.5,2.5 L0.5,12.5 C0.5,13.0522847 0.94771525,13.5 1.5,13.5 L12.5,13.5 C13.0522847,13.5 13.5,13.0522847 13.5,12.5 L13.5,2.5 C13.5,1.94771525 13.0522847,1.5 12.5,1.5 L1.5,1.5 C0.94771525,1.5 0.5,1.94771525 0.5,2.5 Z"
+        ></path>
+        <path d="M3.5,0.5 L3.5,2.5" stroke-linecap="round"></path>
+        <path d="M10.5,0.5 L10.5,2.5" stroke-linecap="round"></path>
+        <path d="M0.5,4.5 L13.5,4.5 L0.5,4.5 Z"></path>
+        <path
+          d="M3.5,10.5 L4.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M3.5,7.5 L4.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,10.5 L7.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,7.5 L7.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,10.5 L10.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,7.5 L10.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </g>
+    </svg>
+  </i>
+</div>
+<br />
+<div
+  class="c-date-picker-popup"
+  style="margin-top: 7px;"
+  aria-labelledby="c-date-picker-2"
+>
+  <div class="c-date-picker-calendar">
+    <div class="c-date-picker-calendar__header">
+      <button>
+        <i aria-hidden="true" class="c-icon--svg" font-size="14">
+          <svg viewBox="0 0 14 14" style="stroke-width: 1.16667;">
+            <g fill="none" fill-rule="evenodd">
+              <polyline
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                transform="translate(6.250000, 7.000000) rotate(90.000000) translate(-6.250000, -7.000000) "
+                points="-0.25 3.75 6.25 10.25 12.75 3.75"
+              ></polyline>
+            </g>
+          </svg>
+        </i>
+      </button>
+      <div>
+        <button>2019年</button>
+      </div>
+      <button>
+        <i class="c-icon--svg" font-size="14">
+          <svg viewBox="0 0 14 14">
+            <g fill="none" fill-rule="evenodd">
+              <polyline
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                transform="translate(7.750000, 7.000000) scale(-1, 1) rotate(-270.000000) translate(-7.750000, -7.000000) "
+                points="1.25 3.75 7.75 10.25 14.25 3.75"
+              ></polyline>
+            </g>
+          </svg>
+        </i>
+      </button>
+    </div>
+    <div
+      role="grid"
+      class="c-date-picker-calendar__months c-date-picker-calendar__quarters__body"
+    >
+      <div role="row">
+        <button role="gridcell" tabindex="-1" disabled>
+          <span>一月</span>
+          <span>二月</span>
+          <span>三月</span>
+        </button>
+      </div>
+      <div role="row">
+        <button
+          role="gridcell"
+          tabindex="0"
+          aria-selected="true"
+          class="c-date-picker__quarter--selected"
+        >
+          <span>四月</span>
+          <span>五月</span>
+          <span>六月</span>
+        </button>
+      </div>
+      <div role="row">
+        <button
+          role="gridcell"
+          tabindex="-1"
+          class="c-date-picker__quarter--current"
+        >
+          <span>七月</span>
+          <span>八月</span>
+          <span>九月</span>
+        </button>
+      </div>
+      <div role="row">
+        <button
+          role="gridcell"
+          tabindex="-1"
+          class="c-date-picker__quarter--active"
+        >
+          <span>十月</span>
+          <span>十一月</span>
+          <span>十二月</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2>年样式</h2>
+<p>年的样式：header中显示的年份范围，不需要可点。</p>
+<div class="c-date-picker-popup" style="margin-top: 7px;">
+  <div class="c-date-picker-calendar">
+    <div class="c-date-picker-calendar__header">
+      <button>
+        <i aria-hidden="true" class="c-icon--svg" font-size="14">
+          <svg viewBox="0 0 14 14" style="stroke-width: 1.16667;">
+            <g fill="none" fill-rule="evenodd">
+              <polyline
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                transform="translate(6.250000, 7.000000) rotate(90.000000) translate(-6.250000, -7.000000) "
+                points="-0.25 3.75 6.25 10.25 12.75 3.75"
+              ></polyline>
+            </g>
+          </svg>
+        </i>
+      </button>
+      <div>
+        <span>2010年-2019年</span>
+      </div>
+      <button>
+        <i class="c-icon--svg" font-size="14">
+          <svg viewBox="0 0 14 14">
+            <g fill="none" fill-rule="evenodd">
+              <polyline
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                transform="translate(7.750000, 7.000000) scale(-1, 1) rotate(-270.000000) translate(-7.750000, -7.000000) "
+                points="1.25 3.75 7.75 10.25 14.25 3.75"
+              ></polyline>
+            </g>
+          </svg>
+        </i>
+      </button>
+    </div>
+    <div role="grid" class="c-date-picker-calendar__years">
+      <div role="row">
+        <button
+          role="gridcell"
+          tabindex="-1"
+          class="c-date-picker__year--dimmed"
+        >
+          2009
+        </button>
+        <button role="gridcell" tabindex="-1">2010</button>
+        <button
+          role="gridcell"
+          tabindex="-1"
+          class="c-date-picker__year--current"
+        >
+          2011
+        </button>
+      </div>
+      <div role="row">
+        <button role="gridcell" tabindex="-1" disabled>
+          2012
+        </button>
+        <button role="gridcell" tabindex="-1" disabled>
+          2013
+        </button>
+        <button role="gridcell" tabindex="-1" disabled>
+          2014
+        </button>
+      </div>
+      <div role="row">
+        <button role="gridcell" tabindex="-1">2015</button>
+        <button
+          role="gridcell"
+          tabindex="-1"
+          class="c-date-picker__year--active"
+        >
+          2016
+        </button>
+        <button role="gridcell" tabindex="-1">2017</button>
+      </div>
+      <div role="row">
+        <button role="gridcell" tabindex="-1">2018</button>
+        <button
+          role="gridcell"
+          tabindex="0"
+          class="c-date-picker__year--selected"
+          aria-selected="true"
+        >
+          2019
+        </button>
+        <button
+          role="gridcell"
+          tabindex="-1"
+          class="c-date-picker__year--dimmed"
+        >
+          2020
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2>年月样式禁用样式</h2>
+<div class="c-date-picker c-date-picker--disabled">
+  <input class="c-date-picker__input" type="text" value="2019-05" disabled />
+  <i class="c-icon--svg">
+    <svg viewBox="0 0 14 14">
+      <g fill="none" fill-rule="evenodd">
+        <path
+          d="M0.5,2.5 L0.5,12.5 C0.5,13.0522847 0.94771525,13.5 1.5,13.5 L12.5,13.5 C13.0522847,13.5 13.5,13.0522847 13.5,12.5 L13.5,2.5 C13.5,1.94771525 13.0522847,1.5 12.5,1.5 L1.5,1.5 C0.94771525,1.5 0.5,1.94771525 0.5,2.5 Z"
+        ></path>
+        <path d="M3.5,0.5 L3.5,2.5" stroke-linecap="round"></path>
+        <path d="M10.5,0.5 L10.5,2.5" stroke-linecap="round"></path>
+        <path d="M0.5,4.5 L13.5,4.5 L0.5,4.5 Z"></path>
+        <path
+          d="M3.5,10.5 L4.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M3.5,7.5 L4.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,10.5 L7.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,7.5 L7.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,10.5 L10.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,7.5 L10.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </g>
+    </svg>
+  </i>
+</div>
+
+<h2>日期范围样式</h2>
+<div class="c-date-picker c-date-picker-range" id="c-date-picker-5">
+  <input
+    class="c-date-picker__input"
+    type="text"
+    placeholder="开始日期"
+    value=""
+  />
+  <span class="c-date-picker-range__separator">-</span>
+  <input
+    class="c-date-picker__input"
+    type="text"
+    placeholder="结束日期"
+    value=""
+  />
+  <i class="c-icon--svg">
+    <svg viewBox="0 0 14 14">
+      <g fill="none" fill-rule="evenodd">
+        <path
+          d="M0.5,2.5 L0.5,12.5 C0.5,13.0522847 0.94771525,13.5 1.5,13.5 L12.5,13.5 C13.0522847,13.5 13.5,13.0522847 13.5,12.5 L13.5,2.5 C13.5,1.94771525 13.0522847,1.5 12.5,1.5 L1.5,1.5 C0.94771525,1.5 0.5,1.94771525 0.5,2.5 Z"
+        ></path>
+        <path d="M3.5,0.5 L3.5,2.5" stroke-linecap="round"></path>
+        <path d="M10.5,0.5 L10.5,2.5" stroke-linecap="round"></path>
+        <path d="M0.5,4.5 L13.5,4.5 L0.5,4.5 Z"></path>
+        <path
+          d="M3.5,10.5 L4.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M3.5,7.5 L4.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,10.5 L7.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,7.5 L7.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,10.5 L10.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,7.5 L10.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </g>
+    </svg>
+  </i>
+</div>
+<br />
+<div
+  class="c-date-picker-popup c-date-picker-popup-range"
+  style="margin-top: 7px;"
+  aria-labelledby="c-date-picker-4"
+>
+  <div>
+    <div class="c-date-picker-popup__content">
+      <div class="c-date-picker-calendar">
+        <div class="c-date-picker-calendar__header">
+          <button>
+            <i aria-hidden="true" class="c-icon--svg" font-size="14">
+              <svg viewBox="0 0 14 14" style="stroke-width: 1.16667;">
+                <g fill="none" fill-rule="evenodd">
+                  <polyline
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    transform="translate(6.250000, 7.000000) rotate(90.000000) translate(-6.250000, -7.000000) "
+                    points="-0.25 3.75 6.25 10.25 12.75 3.75"
+                  ></polyline>
+                </g>
+              </svg>
+            </i>
+          </button>
+          <button>
+            <i aria-hidden="true" class="c-icon--svg" font-size="14">
+              <svg viewBox="0 0 14 14" style="stroke-width: 1.16667;">
+                <g fill="none" fill-rule="evenodd">
+                  <polyline
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    transform="translate(6.250000, 7.000000) rotate(90.000000) translate(-6.250000, -7.000000) "
+                    points="-0.25 3.75 6.25 10.25 12.75 3.75"
+                  ></polyline>
+                </g>
+              </svg>
+            </i>
+          </button>
+          <div>
+            <button>2019年</button>
+            <button>5月</button>
+          </div>
+          <span></span>
+          <span></span>
+        </div>
+        <div role="grid" class="c-date-picker-calendar__days">
+          <div role="row" class="c-date-picker-calendar__days__header">
+            <span>日</span>
+            <span>一</span>
+            <span>二</span>
+            <span>三</span>
+            <span>四</span>
+            <span>五</span>
+            <span>六</span>
+          </div>
+          <div role="rowgroup" class="c-date-picker-calendar__days__body">
+            <div role="row">
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                29
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                30
+              </button>
+              <button role="gridcell" tabindex="-1">1</button>
+              <button role="gridcell" tabindex="-1">2</button>
+              <button role="gridcell" tabindex="-1">3</button>
+              <button role="gridcell" tabindex="-1">4</button>
+              <button role="gridcell" tabindex="-1">5</button>
+            </div>
+            <div role="row">
+              <button role="gridcell" tabindex="-1">6</button>
+              <button role="gridcell" tabindex="-1">7</button>
+              <button role="gridcell" tabindex="-1">8</button>
+              <button role="gridcell" tabindex="-1">9</button>
+              <button role="gridcell" tabindex="-1">10</button>
+              <button role="gridcell" tabindex="-1">11</button>
+              <button role="gridcell" tabindex="-1">12</button>
+            </div>
+            <div role="row">
+              <button role="gridcell" tabindex="-1">13</button>
+              <button role="gridcell" tabindex="-1">14</button>
+              <button role="gridcell" tabindex="-1">15</button>
+              <button role="gridcell" tabindex="-1">16</button>
+              <button
+                role="gridcell"
+                tabindex="0"
+                aria-selected="true"
+                class="c-date-picker__day--selected"
+              >
+                17
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                18
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                19
+              </button>
+            </div>
+            <div role="row">
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                20
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                21
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                22
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                23
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                24
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                25
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                26
+              </button>
+            </div>
+            <div role="row">
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--today c-date-picker__day--highlight"
+              >
+                27
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                28
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                29
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                30
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                31
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                1
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                2
+              </button>
+            </div>
+            <div role="row">
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                3
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                4
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                5
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                6
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                7
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                8
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                9
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="c-date-picker-calendar">
+        <div class="c-date-picker-calendar__header">
+          <span></span>
+          <span></span>
+          <div>
+            <button>2019年</button>
+            <button>6月</button>
+          </div>
+          <button>
+            <i class="c-icon--svg" font-size="14">
+              <svg viewBox="0 0 14 14">
+                <g fill="none" fill-rule="evenodd">
+                  <polyline
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    transform="translate(7.750000, 7.000000) scale(-1, 1) rotate(-270.000000) translate(-7.750000, -7.000000) "
+                    points="1.25 3.75 7.75 10.25 14.25 3.75"
+                  ></polyline>
+                </g>
+              </svg>
+            </i>
+          </button>
+          <button>
+            <i class="c-icon--svg" font-size="14">
+              <svg viewBox="0 0 14 14">
+                <g fill="none" fill-rule="evenodd">
+                  <polyline
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    transform="translate(7.750000, 7.000000) scale(-1, 1) rotate(-270.000000) translate(-7.750000, -7.000000) "
+                    points="1.25 3.75 7.75 10.25 14.25 3.75"
+                  ></polyline>
+                </g>
+              </svg>
+            </i>
+          </button>
+        </div>
+        <div role="grid" class="c-date-picker-calendar__days">
+          <div role="row" class="c-date-picker-calendar__days__header">
+            <span>日</span>
+            <span>一</span>
+            <span>二</span>
+            <span>三</span>
+            <span>四</span>
+            <span>五</span>
+            <span>六</span>
+          </div>
+          <div role="rowgroup" class="c-date-picker-calendar__days__body">
+            <div role="row">
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                27
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                28
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                29
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                30
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                31
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                1
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                2
+              </button>
+            </div>
+            <div role="row">
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                3
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                4
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                5
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                6
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                7
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                8
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                9
+              </button>
+            </div>
+            <div role="row">
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                10
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                11
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                12
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                13
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                14
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                15
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                16
+              </button>
+            </div>
+            <div role="row">
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                17
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                18
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                19
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                20
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                21
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                22
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                23
+              </button>
+            </div>
+            <div role="row">
+              <button
+                role="gridcell"
+                tabindex="0"
+                aria-selected="true"
+                class="c-date-picker__day--selected"
+              >
+                24
+              </button>
+              <button role="gridcell" tabindex="-1">25</button>
+              <button role="gridcell" tabindex="-1">26</button>
+              <button role="gridcell" tabindex="-1">27</button>
+              <button role="gridcell" tabindex="-1">28</button>
+              <button role="gridcell" tabindex="-1">29</button>
+              <button role="gridcell" tabindex="-1">30</button>
+            </div>
+            <div role="row">
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                1
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                2
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                3
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                4
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                5
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                6
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                7
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<div class="c-date-picker c-date-picker-range" style="margin-top: 30px;">
+  <input
+    class="c-date-picker__input"
+    type="text"
+    placeholder="开始日期"
+    value=""
+  />
+  <span class="c-date-picker-range__separator">-</span>
+  <input
+    class="c-date-picker__input"
+    type="text"
+    placeholder="结束日期"
+    value=""
+  />
+  <i class="c-icon--svg">
+    <svg viewBox="0 0 14 14">
+      <g fill="none" fill-rule="evenodd">
+        <path
+          d="M0.5,2.5 L0.5,12.5 C0.5,13.0522847 0.94771525,13.5 1.5,13.5 L12.5,13.5 C13.0522847,13.5 13.5,13.0522847 13.5,12.5 L13.5,2.5 C13.5,1.94771525 13.0522847,1.5 12.5,1.5 L1.5,1.5 C0.94771525,1.5 0.5,1.94771525 0.5,2.5 Z"
+        ></path>
+        <path d="M3.5,0.5 L3.5,2.5" stroke-linecap="round"></path>
+        <path d="M10.5,0.5 L10.5,2.5" stroke-linecap="round"></path>
+        <path d="M0.5,4.5 L13.5,4.5 L0.5,4.5 Z"></path>
+        <path
+          d="M3.5,10.5 L4.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M3.5,7.5 L4.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,10.5 L7.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,7.5 L7.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,10.5 L10.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,7.5 L10.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </g>
+    </svg>
+  </i>
+</div>
+<br />
+<div
+  class="c-date-picker-popup c-date-picker-popup-range"
+  style="margin-top: 7px;"
+>
+  <div>
+    <div class="c-date-picker-popup__content">
+      <div class="c-date-picker-calendar">
+        <div class="c-date-picker-calendar__header">
+          <button>
+            <i aria-hidden="true" class="c-icon--svg" font-size="14">
+              <svg viewBox="0 0 14 14" style="stroke-width: 1.16667;">
+                <g fill="none" fill-rule="evenodd">
+                  <polyline
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    transform="translate(6.250000, 7.000000) rotate(90.000000) translate(-6.250000, -7.000000) "
+                    points="-0.25 3.75 6.25 10.25 12.75 3.75"
+                  ></polyline>
+                </g>
+              </svg>
+            </i>
+          </button>
+          <button>
+            <i aria-hidden="true" class="c-icon--svg" font-size="14">
+              <svg viewBox="0 0 14 14" style="stroke-width: 1.16667;">
+                <g fill="none" fill-rule="evenodd">
+                  <polyline
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    transform="translate(6.250000, 7.000000) rotate(90.000000) translate(-6.250000, -7.000000) "
+                    points="-0.25 3.75 6.25 10.25 12.75 3.75"
+                  ></polyline>
+                </g>
+              </svg>
+            </i>
+          </button>
+          <div>
+            <button>2019年</button>
+            <button>5月</button>
+          </div>
+          <button>
+            <i class="c-icon--svg" font-size="14">
+              <svg viewBox="0 0 14 14">
+                <g fill="none" fill-rule="evenodd">
+                  <polyline
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    transform="translate(7.750000, 7.000000) scale(-1, 1) rotate(-270.000000) translate(-7.750000, -7.000000) "
+                    points="1.25 3.75 7.75 10.25 14.25 3.75"
+                  ></polyline>
+                </g>
+              </svg>
+            </i>
+          </button>
+          <button>
+            <i class="c-icon--svg" font-size="14">
+              <svg viewBox="0 0 14 14">
+                <g fill="none" fill-rule="evenodd">
+                  <polyline
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    transform="translate(7.750000, 7.000000) scale(-1, 1) rotate(-270.000000) translate(-7.750000, -7.000000) "
+                    points="1.25 3.75 7.75 10.25 14.25 3.75"
+                  ></polyline>
+                </g>
+              </svg>
+            </i>
+          </button>
+        </div>
+        <div role="grid" class="c-date-picker-calendar__days">
+          <div role="row" class="c-date-picker-calendar__days__header">
+            <span>日</span>
+            <span>一</span>
+            <span>二</span>
+            <span>三</span>
+            <span>四</span>
+            <span>五</span>
+            <span>六</span>
+          </div>
+          <div role="rowgroup" class="c-date-picker-calendar__days__body">
+            <div role="row">
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                29
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                30
+              </button>
+              <button role="gridcell" tabindex="-1">1</button>
+              <button role="gridcell" tabindex="-1">2</button>
+              <button role="gridcell" tabindex="-1">3</button>
+              <button role="gridcell" tabindex="-1">4</button>
+              <button role="gridcell" tabindex="-1">5</button>
+            </div>
+            <div role="row">
+              <button role="gridcell" tabindex="-1">6</button>
+              <button role="gridcell" tabindex="-1">7</button>
+              <button role="gridcell" tabindex="-1">8</button>
+              <button role="gridcell" tabindex="-1">9</button>
+              <button role="gridcell" tabindex="-1">10</button>
+              <button role="gridcell" tabindex="-1">11</button>
+              <button role="gridcell" tabindex="-1">12</button>
+            </div>
+            <div role="row">
+              <button role="gridcell" tabindex="-1">13</button>
+              <button role="gridcell" tabindex="-1">14</button>
+              <button role="gridcell" tabindex="-1">15</button>
+              <button role="gridcell" tabindex="-1">16</button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--today"
+              >
+                17
+              </button>
+              <button role="gridcell" tabindex="-1">18</button>
+              <button role="gridcell" tabindex="-1">19</button>
+            </div>
+            <div role="row">
+              <button role="gridcell" tabindex="-1">20</button>
+              <button role="gridcell" tabindex="-1">21</button>
+              <button role="gridcell" tabindex="-1">22</button>
+              <button role="gridcell" tabindex="-1">23</button>
+              <button role="gridcell" tabindex="-1">24</button>
+              <button role="gridcell" tabindex="-1">25</button>
+              <button role="gridcell" tabindex="-1">26</button>
+            </div>
+            <div role="row">
+              <button
+                role="gridcell"
+                tabindex="0"
+                aria-selected="true"
+                class="c-date-picker__day--selected"
+              >
+                27
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                28
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                29
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                30
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--highlight"
+              >
+                31
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                1
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                2
+              </button>
+            </div>
+            <div role="row">
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                3
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                4
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                5
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                6
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                7
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                8
+              </button>
+              <button
+                role="gridcell"
+                tabindex="-1"
+                class="c-date-picker__day--dimmed"
+              >
+                9
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="c-date-picker-calendar">
+        <div class="c-date-picker-calendar__header">
+          <button>
+            <i aria-hidden="true" class="c-icon--svg" font-size="14">
+              <svg viewBox="0 0 14 14" style="stroke-width: 1.16667;">
+                <g fill="none" fill-rule="evenodd">
+                  <polyline
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    transform="translate(6.250000, 7.000000) rotate(90.000000) translate(-6.250000, -7.000000) "
+                    points="-0.25 3.75 6.25 10.25 12.75 3.75"
+                  ></polyline>
+                </g>
+              </svg>
+            </i>
+          </button>
+          <div>
+            <span>2010年-2019年</span>
+          </div>
+          <button>
+            <i class="c-icon--svg" font-size="14">
+              <svg viewBox="0 0 14 14">
+                <g fill="none" fill-rule="evenodd">
+                  <polyline
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    transform="translate(7.750000, 7.000000) scale(-1, 1) rotate(-270.000000) translate(-7.750000, -7.000000) "
+                    points="1.25 3.75 7.75 10.25 14.25 3.75"
+                  ></polyline>
+                </g>
+              </svg>
+            </i>
+          </button>
+        </div>
+        <div role="grid" class="c-date-picker-calendar__years">
+          <div role="row">
+            <button
+              role="gridcell"
+              tabindex="-1"
+              class="c-date-picker__year--dimmed"
+            >
+              2009
+            </button>
+            <button role="gridcell" tabindex="-1">2010</button>
+            <button role="gridcell" tabindex="-1">2011</button>
+          </div>
+          <div role="row">
+            <button role="gridcell" tabindex="-1">2012</button>
+            <button role="gridcell" tabindex="-1">2013</button>
+            <button role="gridcell" tabindex="-1">2014</button>
+          </div>
+          <div role="row">
+            <button role="gridcell" tabindex="-1">2015</button>
+            <button role="gridcell" tabindex="-1">2016</button>
+            <button role="gridcell" tabindex="-1">2017</button>
+          </div>
+          <div role="row">
+            <button role="gridcell" tabindex="-1">2018</button>
+            <button
+              role="gridcell"
+              tabindex="0"
+              class="c-date-picker__year--selected"
+              aria-selected="true"
+            >
+              2019
+            </button>
+            <button
+              role="gridcell"
+              tabindex="-1"
+              class="c-date-picker__year--dimmed"
+            >
+              2020
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 快捷键只有一个，居中显示；否则，靠左依次排列 -->
+    <div class="c-date-picker-popup__footer">
+      <button>今天</button>
+      <button>昨天</button>
+      <button>一周前</button>
+      <button>一个月前</button>
+    </div>
+  </div>
+</div>
+
+<h2>日期范围样式禁用样式</h2>
+<div class="c-date-picker c-date-picker-range c-date-picker--disabled">
+  <input class="c-date-picker__input" type="text" value="2019-05-17" disabled />
+  <span class="c-date-picker-range__separator">-</span>
+  <input class="c-date-picker__input" type="text" value="2019-05-27" disabled />
+  <i class="c-icon--svg">
+    <svg viewBox="0 0 14 14">
+      <g fill="none" fill-rule="evenodd">
+        <path
+          d="M0.5,2.5 L0.5,12.5 C0.5,13.0522847 0.94771525,13.5 1.5,13.5 L12.5,13.5 C13.0522847,13.5 13.5,13.0522847 13.5,12.5 L13.5,2.5 C13.5,1.94771525 13.0522847,1.5 12.5,1.5 L1.5,1.5 C0.94771525,1.5 0.5,1.94771525 0.5,2.5 Z"
+        ></path>
+        <path d="M3.5,0.5 L3.5,2.5" stroke-linecap="round"></path>
+        <path d="M10.5,0.5 L10.5,2.5" stroke-linecap="round"></path>
+        <path d="M0.5,4.5 L13.5,4.5 L0.5,4.5 Z"></path>
+        <path
+          d="M3.5,10.5 L4.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M3.5,7.5 L4.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,10.5 L7.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,7.5 L7.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,10.5 L10.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,7.5 L10.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </g>
+    </svg>
+  </i>
+</div>
+
+<h2>三种尺寸</h2>
+<div class="c-date-picker c-date-picker--large">
+  <input class="c-date-picker__input" type="text" placeholder="请选择日期" />
+  <i class="c-icon--svg">
+    <svg viewBox="0 0 14 14">
+      <g fill="none" fill-rule="evenodd">
+        <path
+          d="M0.5,2.5 L0.5,12.5 C0.5,13.0522847 0.94771525,13.5 1.5,13.5 L12.5,13.5 C13.0522847,13.5 13.5,13.0522847 13.5,12.5 L13.5,2.5 C13.5,1.94771525 13.0522847,1.5 12.5,1.5 L1.5,1.5 C0.94771525,1.5 0.5,1.94771525 0.5,2.5 Z"
+        ></path>
+        <path d="M3.5,0.5 L3.5,2.5" stroke-linecap="round"></path>
+        <path d="M10.5,0.5 L10.5,2.5" stroke-linecap="round"></path>
+        <path d="M0.5,4.5 L13.5,4.5 L0.5,4.5 Z"></path>
+        <path
+          d="M3.5,10.5 L4.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M3.5,7.5 L4.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,10.5 L7.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,7.5 L7.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,10.5 L10.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,7.5 L10.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </g>
+    </svg>
+  </i>
+</div>
+<br />
+<div class="c-date-picker" style="margin: 10px 0;">
+  <input class="c-date-picker__input" type="text" placeholder="请选择日期" />
+  <i class="c-icon--svg">
+    <svg viewBox="0 0 14 14">
+      <g fill="none" fill-rule="evenodd">
+        <path
+          d="M0.5,2.5 L0.5,12.5 C0.5,13.0522847 0.94771525,13.5 1.5,13.5 L12.5,13.5 C13.0522847,13.5 13.5,13.0522847 13.5,12.5 L13.5,2.5 C13.5,1.94771525 13.0522847,1.5 12.5,1.5 L1.5,1.5 C0.94771525,1.5 0.5,1.94771525 0.5,2.5 Z"
+        ></path>
+        <path d="M3.5,0.5 L3.5,2.5" stroke-linecap="round"></path>
+        <path d="M10.5,0.5 L10.5,2.5" stroke-linecap="round"></path>
+        <path d="M0.5,4.5 L13.5,4.5 L0.5,4.5 Z"></path>
+        <path
+          d="M3.5,10.5 L4.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M3.5,7.5 L4.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,10.5 L7.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,7.5 L7.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,10.5 L10.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,7.5 L10.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </g>
+    </svg>
+  </i>
+</div>
+<br />
+<div class="c-date-picker c-date-picker--small">
+  <input class="c-date-picker__input" type="text" placeholder="请选择日期" />
+  <i class="c-icon--svg">
+    <svg viewBox="0 0 14 14">
+      <g fill="none" fill-rule="evenodd">
+        <path
+          d="M0.5,2.5 L0.5,12.5 C0.5,13.0522847 0.94771525,13.5 1.5,13.5 L12.5,13.5 C13.0522847,13.5 13.5,13.0522847 13.5,12.5 L13.5,2.5 C13.5,1.94771525 13.0522847,1.5 12.5,1.5 L1.5,1.5 C0.94771525,1.5 0.5,1.94771525 0.5,2.5 Z"
+        ></path>
+        <path d="M3.5,0.5 L3.5,2.5" stroke-linecap="round"></path>
+        <path d="M10.5,0.5 L10.5,2.5" stroke-linecap="round"></path>
+        <path d="M0.5,4.5 L13.5,4.5 L0.5,4.5 Z"></path>
+        <path
+          d="M3.5,10.5 L4.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M3.5,7.5 L4.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,10.5 L7.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,7.5 L7.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,10.5 L10.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,7.5 L10.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </g>
+    </svg>
+  </i>
+</div>
+<br />
+<div
+  class="c-date-picker c-date-picker--large c-date-picker-range"
+  style="margin-top: 20px;"
+>
+  <input
+    class="c-date-picker__input"
+    type="text"
+    placeholder="开始日期"
+    value=""
+  />
+  <span class="c-date-picker-range__separator">-</span>
+  <input
+    class="c-date-picker__input"
+    type="text"
+    placeholder="结束日期"
+    value=""
+  />
+  <i class="c-icon--svg">
+    <svg viewBox="0 0 14 14">
+      <g fill="none" fill-rule="evenodd">
+        <path
+          d="M0.5,2.5 L0.5,12.5 C0.5,13.0522847 0.94771525,13.5 1.5,13.5 L12.5,13.5 C13.0522847,13.5 13.5,13.0522847 13.5,12.5 L13.5,2.5 C13.5,1.94771525 13.0522847,1.5 12.5,1.5 L1.5,1.5 C0.94771525,1.5 0.5,1.94771525 0.5,2.5 Z"
+        ></path>
+        <path d="M3.5,0.5 L3.5,2.5" stroke-linecap="round"></path>
+        <path d="M10.5,0.5 L10.5,2.5" stroke-linecap="round"></path>
+        <path d="M0.5,4.5 L13.5,4.5 L0.5,4.5 Z"></path>
+        <path
+          d="M3.5,10.5 L4.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M3.5,7.5 L4.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,10.5 L7.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,7.5 L7.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,10.5 L10.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,7.5 L10.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </g>
+    </svg>
+  </i>
+</div>
+<br />
+<div class="c-date-picker c-date-picker-range" style="margin: 10px 0;">
+  <input
+    class="c-date-picker__input"
+    type="text"
+    placeholder="开始日期"
+    value=""
+  />
+  <span class="c-date-picker-range__separator">-</span>
+  <input
+    class="c-date-picker__input"
+    type="text"
+    placeholder="结束日期"
+    value=""
+  />
+  <i class="c-icon--svg">
+    <svg viewBox="0 0 14 14">
+      <g fill="none" fill-rule="evenodd">
+        <path
+          d="M0.5,2.5 L0.5,12.5 C0.5,13.0522847 0.94771525,13.5 1.5,13.5 L12.5,13.5 C13.0522847,13.5 13.5,13.0522847 13.5,12.5 L13.5,2.5 C13.5,1.94771525 13.0522847,1.5 12.5,1.5 L1.5,1.5 C0.94771525,1.5 0.5,1.94771525 0.5,2.5 Z"
+        ></path>
+        <path d="M3.5,0.5 L3.5,2.5" stroke-linecap="round"></path>
+        <path d="M10.5,0.5 L10.5,2.5" stroke-linecap="round"></path>
+        <path d="M0.5,4.5 L13.5,4.5 L0.5,4.5 Z"></path>
+        <path
+          d="M3.5,10.5 L4.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M3.5,7.5 L4.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,10.5 L7.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,7.5 L7.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,10.5 L10.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,7.5 L10.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </g>
+    </svg>
+  </i>
+</div>
+<br />
+<div class="c-date-picker c-date-picker--small c-date-picker-range">
+  <input
+    class="c-date-picker__input"
+    type="text"
+    placeholder="开始日期"
+    value=""
+  />
+  <span class="c-date-picker-range__separator">-</span>
+  <input
+    class="c-date-picker__input"
+    type="text"
+    placeholder="结束日期"
+    value=""
+  />
+  <i class="c-icon--svg">
+    <svg viewBox="0 0 14 14">
+      <g fill="none" fill-rule="evenodd">
+        <path
+          d="M0.5,2.5 L0.5,12.5 C0.5,13.0522847 0.94771525,13.5 1.5,13.5 L12.5,13.5 C13.0522847,13.5 13.5,13.0522847 13.5,12.5 L13.5,2.5 C13.5,1.94771525 13.0522847,1.5 12.5,1.5 L1.5,1.5 C0.94771525,1.5 0.5,1.94771525 0.5,2.5 Z"
+        ></path>
+        <path d="M3.5,0.5 L3.5,2.5" stroke-linecap="round"></path>
+        <path d="M10.5,0.5 L10.5,2.5" stroke-linecap="round"></path>
+        <path d="M0.5,4.5 L13.5,4.5 L0.5,4.5 Z"></path>
+        <path
+          d="M3.5,10.5 L4.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M3.5,7.5 L4.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,10.5 L7.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M6.5,7.5 L7.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,10.5 L10.5,10.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+        <path
+          d="M9.5,7.5 L10.5,7.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </g>
+    </svg>
+  </i>
+</div>

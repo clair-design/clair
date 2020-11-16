@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<title>Alert</title>
+<link rel="stylesheet" href="../styles/alert.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body {
+    margin: 30px auto;
+    max-width: 800px;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+
+  .c-alert {
+    margin-bottom: 20px;
+  }
+</style>
+
+<h1>不带标题</h1>
+<div role="alert" class="c-alert c-alert--success" style="width: 512px;">
+  <i class="c-icon--svg is-success">
+    <svg viewBox="0 0 1024 1024">
+      <path
+        d="M512 32C246.91 32 32 246.91 32 512s214.91 480 480 480 480-214.91 480-480S777.09 32 512 32z m297.12 356.378L439.87 765.091a27.578 27.578 0 0 1-40.277 0l-141.12-141.382a30.895 30.895 0 0 1 0-42.153 27.578 27.578 0 0 1 40.276 0l120.96 120.262L768.8 346.182a27.578 27.578 0 0 1 40.276 0c11.128 11.65 11.128 30.545 0 42.196z"
+      ></path>
+    </svg>
+  </i>
+  <div class="c-alert__content">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </div>
+
+  <i class="c-icon--svg is-danger">
+    <svg viewBox="0 0 1024 1024" width="16" height="16">
+      <path
+        d="M559.36 512l262.848 262.848a33.472 33.472 0 1 1-47.36 47.36L512 559.36l-262.848 262.848a33.472 33.472 0 1 1-47.36-47.36L464.64 512 201.792 249.152a33.472 33.472 0 0 1 47.36-47.36L512 464.64l262.848-262.848a33.472 33.472 0 1 1 47.36 47.36L559.36 512z"
+      ></path>
+    </svg>
+  </i>
+</div>
+
+<div role="alert" class="c-alert c-alert--warning" style="width: 512px;">
+  <i class="c-icon--svg is-warning">
+    <svg viewBox="0 0 1024 1024">
+      <path
+        d="M512 0C229.236364 0 0 229.236364 0 512s229.236364 512 512 512 512-229.236364 512-512S794.763636 0 512 0z m0 750.917818a34.117818 34.117818 0 1 1 0 68.282182 34.117818 34.117818 0 0 1 0-68.282182z m-10.845091-68.235636a23.272727 23.272727 0 0 1-23.272727-23.272727V228.072727a23.272727 23.272727 0 0 1 23.272727-23.272727h21.690182a23.272727 23.272727 0 0 1 23.272727 23.272727v431.336728a23.272727 23.272727 0 0 1-23.272727 23.272727h-21.690182z"
+      ></path>
+    </svg>
+  </i>
+  <div class="c-alert__content">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat.
+  </div>
+</div>
+
+<div role="alert" class="c-alert c-alert--error" style="width: 512px;">
+  <i class="c-icon--svg is-danger">
+    <svg viewBox="0 0 1024 1024">
+      <path
+        d="M0 512C0 229.236364 229.236364 0 512 0s512 229.236364 512 512-229.236364 512-512 512S0 794.763636 0 512z"
+      ></path>
+      <path
+        d="M546.443636 512l191.162182 191.162182a24.343273 24.343273 0 1 1-34.443636 34.443636L512 546.443636l-191.162182 191.162182a24.343273 24.343273 0 1 1-34.443636-34.443636L477.556364 512 286.394182 320.837818a24.343273 24.343273 0 0 1 34.443636-34.443636L512 477.556364l191.162182-191.162182a24.343273 24.343273 0 1 1 34.443636 34.443636L546.443636 512z"
+        fill="#ffffff"
+      ></path>
+    </svg>
+  </i>
+  <div class="c-alert__content">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat.
+  </div>
+</div>
+
+<h1>带标题</h1>
+
+<div
+  role="alert"
+  class="c-alert c-alert--has-title c-alert--success"
+  style="width: 512px;"
+>
+  <i class="c-icon--svg is-success">
+    <svg viewBox="0 0 1024 1024">
+      <path
+        d="M512 32C246.91 32 32 246.91 32 512s214.91 480 480 480 480-214.91 480-480S777.09 32 512 32z m297.12 356.378L439.87 765.091a27.578 27.578 0 0 1-40.277 0l-141.12-141.382a30.895 30.895 0 0 1 0-42.153 27.578 27.578 0 0 1 40.276 0l120.96 120.262L768.8 346.182a27.578 27.578 0 0 1 40.276 0c11.128 11.65 11.128 30.545 0 42.196z"
+      ></path>
+    </svg>
+  </i>
+  <div class="c-alert__content">
+    <div class="c-alert__title">Lorem ipsum dolor sit amet</div>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat.
+  </div>
+</div>
+
+<div
+  role="alert"
+  class="c-alert c-alert--has-title c-alert--warning"
+  style="width: 512px;"
+>
+  <i class="c-icon--svg is-warning">
+    <svg viewBox="0 0 1024 1024">
+      <path
+        d="M512 0C229.236364 0 0 229.236364 0 512s229.236364 512 512 512 512-229.236364 512-512S794.763636 0 512 0z m0 750.917818a34.117818 34.117818 0 1 1 0 68.282182 34.117818 34.117818 0 0 1 0-68.282182z m-10.845091-68.235636a23.272727 23.272727 0 0 1-23.272727-23.272727V228.072727a23.272727 23.272727 0 0 1 23.272727-23.272727h21.690182a23.272727 23.272727 0 0 1 23.272727 23.272727v431.336728a23.272727 23.272727 0 0 1-23.272727 23.272727h-21.690182z"
+      ></path>
+    </svg>
+  </i>
+  <div class="c-alert__content">
+    <div class="c-alert__title">Lorem ipsum dolor sit amet</div>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat.
+  </div>
+</div>
+
+<div
+  role="alert"
+  class="c-alert c-alert--has-title c-alert--error"
+  style="width: 512px;"
+>
+  <i class="c-icon--svg is-danger" aria-hidden="true">
+    <svg viewBox="0 0 1024 1024">
+      <path
+        d="M0 512C0 229.236364 229.236364 0 512 0s512 229.236364 512 512-229.236364 512-512 512S0 794.763636 0 512z"
+      ></path>
+      <path
+        d="M546.443636 512l191.162182 191.162182a24.343273 24.343273 0 1 1-34.443636 34.443636L512 546.443636l-191.162182 191.162182a24.343273 24.343273 0 1 1-34.443636-34.443636L477.556364 512 286.394182 320.837818a24.343273 24.343273 0 0 1 34.443636-34.443636L512 477.556364l191.162182-191.162182a24.343273 24.343273 0 1 1 34.443636 34.443636L546.443636 512z"
+        fill="#ffffff"
+      ></path>
+    </svg>
+  </i>
+
+  <div class="c-alert__content">
+    <div class="c-alert__title">Lorem ipsum dolor sit amet</div>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat.
+  </div>
+
+  <i class="c-icon--svg is-danger">
+    <svg viewBox="0 0 1024 1024">
+      <path
+        d="M559.36 512l262.848 262.848a33.472 33.472 0 1 1-47.36 47.36L512 559.36l-262.848 262.848a33.472 33.472 0 1 1-47.36-47.36L464.64 512 201.792 249.152a33.472 33.472 0 0 1 47.36-47.36L512 464.64l262.848-262.848a33.472 33.472 0 1 1 47.36 47.36L559.36 512z"
+      ></path>
+    </svg>
+  </i>
+</div>

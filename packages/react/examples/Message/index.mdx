@@ -1,0 +1,33 @@
+import Basic from "./basic.mdx";
+import Duration from "./duration.mdx";
+import CloseAll from "./closeAll.mdx";
+import Level from "./level.mdx";
+import Config from "./config.mdx";
+
+# Message
+
+## 定义
+
+用户产生操作，出现 message 提示。3s 消失；通过 message 中的提示语告知用户信息。让用户的行为在使用过程中得到反馈和帮助。
+
+## <i></i>使用场景
+
+当某个页面需要向用户显示警告的信息时；非浮层的静态展现形式，始终展现，不会自动消失，有的组件用户可以点击关闭。
+
+<Basic />
+
+<Duration />
+
+<Level />
+
+<Config />
+
+<CloseAll />
+
+## <i></i>Options
+
+| Name     | Description          | Type                                                | Required | Default  |
+| -------- | -------------------- | --------------------------------------------------- | -------- | -------- |
+| type     | 类型                 | `"success"` \| `"warning"` \| `"error"` \| `"info"` | `false`  | `"info"` |
+| duration | 消息显示时间（`ms`） | `number`                                            | `false`  | 3000     |
+| message  | 正文内容             | `React.ReactNode`                                   | `true`   |          |

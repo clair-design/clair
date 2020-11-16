@@ -1,0 +1,69 @@
+<!-- 可选择 -->
+
+```tsx live=true
+function Selection() {
+  const columns = [
+    { type: "selection", prop: "selected", width: 25, align: "center" },
+    { title: "来源类型", prop: "type" },
+    { title: "浏览量", prop: "pv" },
+    { title: "访客数", prop: "uv" },
+    { title: "IP 数", prop: "ip" }
+  ];
+
+  const dataSource = [
+    { type: "直接访问", pv: 13, uv: 9, ip: 8 },
+    { type: "搜索引擎", pv: 11, uv: 7, ip: 6 },
+    { type: "外部网站", pv: 32, uv: 27, ip: 22 }
+  ];
+
+  const [selectedRowKeys, setSelectedRowKeys] = React.useState(["搜索引擎"]);
+
+  const onSelectRow = (key, selected) => {
+    console.log("触发了自定义 onSelectRow 事件。", key, selected);
+    let keys = [...selectedRowKeys];
+    if (selected) {
+      keys.push(key);
+    } else {
+      keys = selectedRowKeys.filter(item => item !== key);
+    }
+    setSelectedRowKeys(keys);
+  };
+
+  const checkedRow = () => {
+    let keys = [];
+    if (selectedRowKeys.includes("搜索引擎")) {
+      keys = selectedRowKeys.filter(key => key !== "搜索引擎");
+    } else {
+      keys = [...selectedRowKeys, "搜索引擎"];
+    }
+    setSelectedRowKeys(keys);
+  };
+
+  const onSelectAll = selected => {
+    let keys = [];
+    if (selected) {
+      keys = dataSource.map(item => item.type);
+    }
+    setSelectedRowKeys(keys);
+  };
+
+  return (
+    <div>
+      <div style={{ marginBottom: "12px" }}>
+        <Button type="primary" onClick={checkedRow}>
+          {selectedRowKeys.includes("搜索引擎") ? "取消选中" : "选中"}
+          “搜索引擎”
+        </Button>
+      </div>
+      <Table
+        rowKey="type"
+        columns={columns}
+        dataSource={dataSource}
+        onSelectRow={onSelectRow}
+        onSelectAll={onSelectAll}
+        selectedRowKeys={selectedRowKeys}
+      />
+    </div>
+  );
+}
+```

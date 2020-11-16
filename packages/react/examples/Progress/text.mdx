@@ -1,0 +1,22 @@
+## 自定义文本
+
+```tsx live=true
+function Demo() {
+  const value = 68;
+  const max = 100;
+  const TextContent = `(${value}/${max})`;
+  return (
+    <>
+      // 自定义文本
+      <Progress
+        value={value}
+        strokeColor="#fea119"
+        infoWidth={60}
+        customInfo={TextContent}
+      />
+      // 隐藏文本
+      <Progress value={100} showInfo={false} />
+    </>
+  );
+}
+```

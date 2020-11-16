@@ -1,0 +1,508 @@
+@import 'variables';
+@import 'mixins/mixins';
+@import 'icon';
+@import 'popover';
+
+$--picker-popup-margin-top: 7px;
+
+.c-date-picker {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+
+  width: $--date-picker-width;
+  height: $--base-form-element-height;
+
+  padding-right: $--date-picker-block-gap;
+  padding-left: $--date-picker-padding--normal;
+
+  font-size: $--base-font-size;
+  border: 1px solid $--form-element-border-color;
+  outline: none;
+  cursor: pointer;
+
+  &__input {
+    flex: auto;
+    align-self: stretch;
+    width: 0;
+    padding: 0;
+    font-size: inherit;
+    border: none;
+    cursor: inherit;
+
+    &:focus {
+      border: none;
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  &__input::placeholder {
+    color: $--disabled-text-color;
+  }
+
+  &:not(.c-date-picker--disabled):hover {
+    border: 1px solid $--primary-color;
+  }
+
+  &--large {
+    height: $--large-form-element-height;
+    padding-left: $--date-picker-padding--large;
+  }
+
+  &--small {
+    height: $--small-form-element-height;
+    padding-left: $--date-picker-padding--small;
+    font-size: $--small-font-size;
+  }
+
+  &--disabled {
+    background-color: $--disabled-background-color;
+    border: $--date-picker-border-disabled;
+  }
+  &----disabled:focus,
+  &----disabled:hover,
+  &----disabled:focus-within {
+    outline: none;
+  }
+
+  &--disabled &__input {
+    color: $--disabled-text-color;
+    background-color: $--disabled-background-color;
+  }
+
+  &--disabled .c-icon--svg {
+    color: $--disabled-text-color;
+  }
+
+  .c-icon--clear {
+    cursor: pointer;
+  }
+
+  &--open,
+  &--disabled {
+    cursor: default;
+  }
+
+  &:focus-within,
+  &:focus,
+  &.c-date-picker--open {
+    @include focus-ring;
+    border: $--date-picker-border-active;
+  }
+}
+
+.c-date-picker-range {
+  width: $--date-picker-range-width;
+
+  .c-date-picker__input {
+    padding-left: 0;
+    text-align: center;
+  }
+}
+
+// popup
+.c-date-picker-popup {
+  margin-top: $--picker-popup-margin-top;
+  font-size: $--base-font-size;
+  background: $--base-background-color;
+  border: $--date-picker-border;
+  outline: none;
+  box-shadow: 0 0 4px 0 rgba(40, 58, 92, 0.15);
+  > div > div {
+    outline: none;
+  }
+
+  // popup buttons
+  button {
+    padding: 0;
+    font-size: inherit;
+    line-height: 1;
+    background: inherit;
+    border: none;
+    border-radius: $--base-border-radius;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+  }
+
+  &__content {
+    display: flex;
+  }
+}
+
+// popup footer
+.c-date-picker-popup__footer {
+  padding: $--date-picker-footer-padding;
+  border-top: $--date-picker-border-inside;
+
+  button {
+    padding: $--date-picker-footer-btn-padding;
+    color: $--primary-color;
+
+    &:only-child {
+      display: block;
+      margin: auto;
+    }
+
+    &:hover {
+      font-weight: bolder;
+    }
+  }
+}
+
+// calendar header
+.c-date-picker-calendar__header {
+  display: flex;
+  align-items: center;
+
+  padding: $--date-picker-header-padding;
+  border-bottom: $--date-picker-border-inside;
+
+  > button {
+    width: $--small-form-element-height;
+    height: $--small-form-element-height;
+    color: $--icon-color;
+
+    &:hover {
+      color: $--primary-color;
+    }
+  }
+
+  > div {
+    flex: 1;
+    text-align: center;
+  }
+
+  > div button {
+    padding: 2px;
+  }
+
+  // be used in type of "range"
+  // transparent block for replacing buttons
+  // happens when the range is between two consecutive months
+  > span {
+    width: $--small-form-element-height;
+  }
+
+  .c-icon--svg {
+    color: inherit;
+    font-size: 12px;
+  }
+}
+
+// calendar -> days / weeks
+.c-date-picker-calendar__days,
+.c-date-picker-calendar__weeks {
+  box-sizing: border-box;
+  padding: $--date-picker-content-padding;
+}
+
+.c-date-picker-calendar__days__header,
+.c-date-picker-calendar__weeks__header {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: $--date-picker-row-gap;
+
+  color: $--date-picker-weekbar-text-color;
+  font-size: $--base-font-size - 2;
+
+  span {
+    width: $--date-picker-block-size;
+    line-height: $--date-picker-block-size;
+
+    text-align: center;
+  }
+}
+
+.c-date-picker-calendar__days__body {
+  [role='row'] {
+    display: flex;
+
+    &:not(:last-child) {
+      margin-bottom: $--date-picker-row-gap;
+    }
+  }
+
+  button {
+    width: $--date-picker-block-size;
+    height: $--date-picker-block-size;
+
+    background-color: transparent;
+
+    &:not(:last-child) {
+      margin-right: $--date-picker-block-gap;
+    }
+
+    // custom focused outline style
+    &:focus {
+      outline: 0;
+    }
+
+    &:not(:disabled):not(.c-date-picker__day--dimmed):focus::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      outline: 2px solid $--primary-color;
+      content: '';
+    }
+  }
+
+  // highlight
+  .c-date-picker__day--highlight {
+    background-color: $--date-picker-highlight-bg-color;
+  }
+
+  // filling gap background color among highlight or disabled area
+  .c-date-picker__day--highlight:not(:first-child)::before,
+  button:disabled:not(:first-child)::before,
+  .c-date-picker__day--end:not(:first-child)::before {
+    position: absolute;
+    top: 0;
+    left: -$--date-picker-block-gap;
+
+    z-index: -1;
+    width: $--date-picker-block-gap;
+    height: 100%;
+    background-color: inherit;
+
+    content: '';
+  }
+  .c-date-picker__day--highlight.c-date-picker__day--selected::before {
+    background-color: transparent;
+  }
+  .c-date-picker__day--highlight.c-date-picker__day--current:not(:first-child)::before,
+  .c-date-picker__day--current:disabled:not(:first-child)::before {
+    top: -1px;
+    left: -11px;
+    height: calc(100% + 2px);
+  }
+  .c-date-picker__day--highlight + .c-date-picker__day--selected::before,
+  button:not(:disabled) + .c-date-picker__day--highlight:disabled::before {
+    background-color: $--date-picker-highlight-bg-color;
+  }
+  button:not(:disabled)
+    + .c-date-picker__day--highlight.c-date-picker__day--dimmed:disabled::before {
+    background-color: $--base-background-color;
+  }
+
+  .c-date-picker__day--end:not(:first-child)::before {
+    background-color: $--date-picker-highlight-bg-color;
+  }
+
+  .c-date-picker__day--dimmed + .c-date-picker__day--highlight::before,
+  button:not(:disabled)
+    + button:not(.c-date-picker__day--highlight):disabled::before {
+    background-color: transparent;
+  }
+  .c-date-picker__day--dimmed {
+    background-color: $--base-background-color;
+  }
+}
+
+.c-date-picker-calendar__weeks__body,
+.c-date-picker-calendar__quarters__body {
+  [role='row']:not(:last-child) {
+    margin-bottom: $--date-picker-row-gap;
+  }
+
+  .c-date-picker-week-row {
+    display: flex;
+    cursor: pointer;
+
+    &:not(:disabled):hover {
+      background-color: $--date-picker-highlight-bg-color;
+    }
+  }
+
+  [aria-selected='true'] {
+    color: unset;
+    background-color: $--date-picker-highlight-bg-color;
+    box-shadow: none;
+  }
+  [aria-selected='true'] span:first-child,
+  [aria-selected='true'] span:last-child {
+    color: #fff;
+    background-color: #006bff;
+  }
+
+  span {
+    width: $--date-picker-block-size;
+    line-height: $--date-picker-block-size;
+
+    &:not(:last-child) {
+      margin-right: $--date-picker-block-gap;
+    }
+  }
+}
+
+.c-date-picker-calendar__months {
+  .c-date-picker-month-row:disabled {
+    background-color: $--disabled-background-color;
+    border: none;
+    cursor: default;
+  }
+  .c-date-picker-month-row:not(:disabled):hover {
+    background-color: $--date-picker-highlight-bg-color;
+  }
+
+  [aria-selected='true'] {
+    color: unset;
+    background-color: $--date-picker-highlight-bg-color;
+    box-shadow: none;
+  }
+
+  .c-date-picker-month-row:not(:disabled):hover button,
+  [aria-selected='true'] button {
+    color: #006bff;
+    background-color: inherit;
+  }
+
+  .c-date-picker-month-row[aria-selected='true']
+    button:not(:disabled):not(.c-date-picker__day--selected):not(.c-date-picker__month--selected):first-child,
+  .c-date-picker-month-row[aria-selected='true']
+    button:not(:disabled):not(.c-date-picker__day--selected):not(.c-date-picker__month--selected):last-child {
+    color: #fff;
+    background-color: #006bff;
+  }
+}
+
+// calendar includes days / weeks / month / years
+.c-date-picker-calendar {
+  outline: none;
+  button {
+    position: relative;
+
+    &:disabled {
+      color: $--disabled-text-color;
+      background-color: $--disabled-background-color;
+      border: none;
+      cursor: default;
+    }
+
+    &:not(:disabled):not(.c-date-picker__day--selected):not(.c-date-picker__year--selected):not(.c-date-picker__month--selected):hover {
+      color: $--primary-color;
+    }
+  }
+
+  .c-date-picker-calendar__header > button:disabled {
+    background-color: $--base-background-color;
+  }
+
+  // today
+  .c-date-picker__day--current,
+  .c-date-picker__week--current,
+  .c-date-picker__quarter--current,
+  .c-date-picker__month--current,
+  .c-date-picker__year--current {
+    box-sizing: border-box;
+    line-height: calc(2em - 2px);
+    background-color: $--date-picker-highlight-bg-color;
+    border: $--date-picker-border-active;
+  }
+  .c-date-picker__day--current:disabled,
+  .c-date-picker__month--current:disabled,
+  .c-date-picker__year--current:disabled,
+  .c-date-picker__week--current:disabled,
+  .c-date-picker__quarter--current:disabled {
+    border: $--date-picker-border-active;
+  }
+  .c-date-picker__week--current .c-date-picker__day--current,
+  .c-date-picker__quarter--current .c-date-picker__month--current {
+    border: none;
+    box-shadow: none;
+  }
+
+  // active, start, end
+  .c-date-picker__year--selected,
+  .c-date-picker__month--selected,
+  .c-date-picker__day--selected {
+    color: $--date-picker-text-color-active;
+    background-color: $--date-picker-active-bg-color;
+    box-shadow: none;
+  }
+}
+.c-date-picker__year--active,
+.c-date-picker__quarter--active,
+.c-date-picker__month--active,
+.c-date-picker__week--active,
+.c-date-picker__day--active {
+  @include focus-ring;
+}
+
+// dimmed
+.c-date-picker__day--dimmed {
+  color: $--date-picker-text-color-dimmed;
+}
+
+// month / year picker
+.c-date-picker-calendar__months,
+.c-date-picker-calendar__years {
+  padding: $--date-picker-month-content-padding;
+
+  [role='row'] {
+    display: flex;
+    justify-content: space-between;
+
+    &:not(:last-child) {
+      margin-bottom: $--date-picker-month-row-gap;
+    }
+  }
+
+  button {
+    width: $--base-font-size * 3 + 10;
+    height: $--base-font-size * 2;
+
+    white-space: nowrap;
+
+    &:not(:last-child) {
+      margin-right: $--date-picker-month-block-gap;
+    }
+  }
+}
+.c-date-picker-calendar__quarters__body {
+  button {
+    display: flex;
+    width: auto;
+  }
+  span {
+    width: $--base-font-size * 3 + 10;
+    line-height: $--base-font-size * 2;
+
+    &:not(:last-child) {
+      margin-right: $--date-picker-month-block-gap;
+    }
+  }
+}
+// dimmed
+.c-date-picker__year--dimmed {
+  color: $--date-picker-text-color-dimmed;
+}
+
+// range
+.c-date-picker-range__separator {
+  color: $--tertiary-text-color;
+}
+
+.c-date-picker--disabled {
+  pointer-events: none;
+
+  .c-date-picker-range__separator {
+    color: $--disabled-text-color;
+  }
+}
+
+// highlight
+.c-date-picker-popup {
+  .c-date-picker__month--highlight:not([aria-selected='true']),
+  .c-date-picker__week--highlight:not([aria-selected='true']),
+  .c-date-picker__quarter--highlight:not([aria-selected='true']),
+  .c-date-picker__year--highlight:not([aria-selected='true']) {
+    background-color: $--date-picker-highlight-bg-color;
+  }
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Drawing</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="28"></rect>
+    </defs>
+    <g id="Drawing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="蒙版" opacity="0.200000003"></g>
+            <path d="M22.6471143,1.75480947 L22.3528857,19.2451905" id="路径-72" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" mask="url(#mask-2)" transform="translate(22.500000, 10.500000) rotate(-150.000000) translate(-22.500000, -10.500000) "></path>
+            <path d="M26.3423116,9.69413312 C24.7708923,5.27541136 17.7491679,0.179625728 10.0617687,2.87080227 C2.06616326,5.66987454 -0.817468871,13.9409693 1.55289246,19.6306666 C3.92325378,25.3203639 9.86507028,19.2335523 12.2131465,21.166565 C14.5612227,23.0995777 9.21314649,26.3627174 14.2932735,27.5636793 C19.3734005,28.7646412 24.538464,24.8184888 26.0564132,18.1893236" id="路径-74" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" mask="url(#mask-2)" transform="translate(13.545759, 14.949930) rotate(-30.000000) translate(-13.545759, -14.949930) "></path>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" mask="url(#mask-2)" transform="translate(7.732051, 18.732051) rotate(-30.000000) translate(-7.732051, -18.732051) " cx="7.73205081" cy="18.7320508" r="2"></circle>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" mask="url(#mask-2)" transform="translate(7.732051, 10.732051) rotate(-30.000000) translate(-7.732051, -10.732051) " cx="7.73205081" cy="10.7320508" r="2"></circle>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" mask="url(#mask-2)" transform="translate(14.732051, 6.732051) rotate(-30.000000) translate(-14.732051, -6.732051) " cx="14.7320508" cy="6.73205081" r="2"></circle>
+        </g>
+    </g>
+</svg>

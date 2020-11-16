@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="29px" height="28px" viewBox="0 0 29 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>WIFI</title>
+    <desc>Created with Sketch.</desc>
+    <g id="WIFI" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0.0171618376" y="0" width="28" height="28"></rect>
+            <path d="M14.0171618,22.9639406 L14.0171618,23" id="路径-91" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M18.5462792,19.0644976 C17.4462489,17.7996227 15.8250863,17 14.0171618,17 C12.2081494,17 10.5861236,17.8005854 9.48605907,19.0667817" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M22.7977289,14.8205889 C20.6070786,12.4699677 17.4837849,11 14.0171618,11 C10.5536621,11 7.43287331,12.4673201 5.24251819,14.8142375" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M27.0398393,10.5737785 C23.7619719,7.13957631 19.1394293,5 14.0171618,5 C8.8977668,5 4.27753627,7.13717737 1,10.5680024" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

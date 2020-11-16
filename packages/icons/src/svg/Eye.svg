@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Eye</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Eye" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M14,24 C18.3397027,24 22.5286864,21.2598874 26.5669511,15.7796621 L26.5669575,15.7796668 C27.3467933,14.7213717 27.3467935,13.2786426 26.566958,12.2203473 C22.5286912,6.74011578 18.3397052,4 14,4 C9.66014391,4 5.47196248,6.74030633 1.43545571,12.220919 L1.43544677,12.2209124 C0.656183639,13.2789657 0.656183343,14.7210142 1.43544604,15.7790679 C5.47195578,21.2596893 9.66014044,24 14,24 Z" id="椭圆形" stroke="#6E6E6E" stroke-width="2"></path>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" cx="14" cy="14" r="5"></circle>
+        </g>
+    </g>
+</svg>

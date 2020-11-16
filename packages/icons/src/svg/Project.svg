@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Project</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Project" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M3.26556444,11 L24.7344356,11 C25.8390051,11 26.7344356,11.8954305 26.7344356,13 C26.7344356,13.08293 26.7292775,13.1657798 26.7189913,13.2480695 L25.2189913,25.2480695 C25.0938841,26.2489271 24.2430821,27 23.2344356,27 L4.76556444,27 C3.7569179,27 2.90611589,26.2489271 2.78100868,25.2480695 L1.28100868,13.2480695 C1.1440037,12.1520296 1.92145509,11.1524492 3.01749497,11.0154442 C3.09978462,11.005158 3.18263439,11 3.26556444,11 Z" id="矩形" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round"></path>
+            <path d="M11,23 L17,23" id="路径-135" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M5,6 L23,6" id="路径-135" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M9,1 L19,1" id="路径-135" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

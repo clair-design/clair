@@ -1,0 +1,6 @@
+@import 'variables';
+
+.c-grid__row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}

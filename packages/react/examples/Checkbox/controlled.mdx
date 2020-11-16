@@ -1,0 +1,32 @@
+## 受控 Checkbox
+
+通过`checked`属性使`checkbox`成为受控组件
+
+```tsx live=true className=s-container--button
+function Index() {
+  const [checked, switchCheckedState] = React.useState(false);
+  const [disabled, switchDisabledState] = React.useState(false);
+
+  const checkedStatus = checked ? "选中" : "未选中";
+  const disabledStatus = disabled ? "禁用" : "启用";
+  const label = `${checkedStatus} - ${disabledStatus}`;
+
+  return (
+    <>
+      <Checkbox
+        onChange={({ target: { checked } }) => switchCheckedState(checked)}
+        checked={checked}
+        disabled={disabled}
+      >
+        {label}
+      </Checkbox>
+      <Button size="small" onClick={() => switchCheckedState(!checked)}>
+        {checkedStatus}
+      </Button>
+      <Button size="small" onClick={() => switchDisabledState(!disabled)}>
+        {disabledStatus}
+      </Button>
+    </>
+  );
+}
+```

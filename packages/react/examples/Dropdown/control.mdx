@@ -1,0 +1,85 @@
+## 受控下拉菜单
+
+通过设置`visible`属性使`Dropdown`成为受控组件
+
+```tsx live=true deps=message
+function Index() {
+  const [visible, setVisibility] = React.useState(false);
+
+  const handleClick = e => {
+    const {
+      detail: { visible }
+    } = e;
+    setVisibility(visible);
+  };
+
+  const overlay = (
+    <Dropdown.Menu>
+      <Dropdown.Item>北京</Dropdown.Item>
+      <Dropdown.Item disabled>上海</Dropdown.Item>
+      <Dropdown.Item>广州</Dropdown.Item>
+    </Dropdown.Menu>
+  );
+
+  return (
+    <>
+      <div>
+        <Button type="primary" onClick={() => setVisibility(!visible)}>
+          {visible ? "隐藏下拉" : "显示下拉"}
+        </Button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <Dropdown
+          visible={visible}
+          overlay={overlay}
+          onVisibilityChange={handleClick}
+        >
+          <a>下拉菜单</a>
+          &nbsp;
+          <IconArrowDown />
+        </Dropdown>
+      </div>
+    </>
+  );
+}
+```
+
+<!-- ## 点击事件
+
+可以设置点击下拉菜单项触发的事件
+
+```tsx live=true deps=Dropdown
+function Index() {
+  const handleClick = e => {
+    const {
+      detail: { key },
+      nativeEvent
+    } = e;
+    const {
+      target: { innerText }
+    } = nativeEvent;
+    message({
+      type: "success",
+      message: `已点击DropdownItem，itemKey的值为${key}，内容为${innerText}`
+    });
+  };
+  const overlay = (
+    <Dropdown.Menu onClick={handleClick}>
+      <Dropdown.Item itemKey="0">北京</Dropdown.Item>
+      <Dropdown.Item itemKey="1">上海</Dropdown.Item>
+      <Dropdown.Item itemKey="2">广州</Dropdown.Item>
+      <Dropdown.Item itemKey="3" disabled>
+        深圳
+      </Dropdown.Item>
+    </Dropdown.Menu>
+  );
+  return (
+    <>
+      <Dropdown overlay={overlay} trigger={["hover"]}>
+        <a>下拉菜单</a>
+        &nbsp;
+        <IconArrowDown />
+      </Dropdown>
+    </>
+  );
+}
+``` -->

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Location</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Location" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="蒙版" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M14,27 C16.5,27 24.2796752,21.1839333 25.617622,16.0167555 C25.867207,15.0528532 26,14.0419343 26,13 C26,6.372583 20.627417,1 14,1 C7.372583,1 2,6.372583 2,13 C2,14.0400592 2.13231547,15.0492144 2.38103163,16.0115509 C3.71717304,21.1813706 11.5,27 14,27 Z" id="椭圆形" stroke="#6E6E6E" stroke-width="2" fill-rule="nonzero"></path>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" fill-rule="nonzero" cx="14" cy="13" r="4"></circle>
+        </g>
+    </g>
+</svg>

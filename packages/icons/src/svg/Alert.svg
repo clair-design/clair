@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Alert</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Alert" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M14,11 L14,17" id="路径-27" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M14,21.010025 L14,20.9884491" id="路径-28" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M15.6782387,3.95803882 L26.6516024,21.929858 C27.2272206,22.8725868 26.9296187,24.1034502 25.9868899,24.6790683 C25.6730221,24.870712 25.3123914,24.9721069 24.944641,24.9721069 L3,24.9721069 C1.8954305,24.9721069 1,24.0766764 1,22.9721069 C1,22.604414 1.10136324,22.2438374 1.29295045,21.9300024 L12.2642277,3.95818319 C12.8397661,3.01540575 14.0706043,2.71769971 15.0133818,3.29323815 C15.2846798,3.45885775 15.5125961,3.68675483 15.6782387,3.95803882 Z" id="三角形" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>

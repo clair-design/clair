@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<title>Cascader</title>
+<link rel="stylesheet" href="../styles/cascader.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body {
+    max-width: 806px;
+    margin: 30px auto;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+
+  .demo-container {
+    display: inline-block;
+    width: 400px;
+  }
+
+  .example-demo {
+    display: flex;
+    max-height: 200px;
+    margin-top: 6px;
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+
+<h2>Cascader 和 Cascader-panel</h2>
+
+<section class="demo-container">
+  <h3>Cascader-panel 级联面板</h3>
+  <div class="example-demo">
+    <div class="c-cascader__panel c-cascader__panel--bordered">
+      <ul class="c-cascader__list" role="listbox">
+        <li
+          role="option"
+          tabindex="-1"
+          aria-expanded="true"
+          aria-selected="true"
+          aria-level="1"
+        >
+          <span class="c-cascader__label">北京</span>
+          <span class="c-cascader__icon">
+            <svg
+              style="transform: rotate(-90deg);"
+              width="14px"
+              height="14px"
+              viewBox="0 0 14 14"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+              <title>ic/select/direction-down/gray70%_normal_14px</title>
+              <desc>Created with Sketch.</desc>
+              <g
+                id="ic/select/direction-down/gray70%_normal_14px"
+                stroke="none"
+                stroke-width="1"
+                fill="none"
+                fill-rule="evenodd"
+              >
+                <g id="ic/菜单栏_展开" fill-rule="nonzero">
+                  <rect
+                    id="Rectangle-5"
+                    opacity="0.200000003"
+                    x="0"
+                    y="0"
+                    width="14"
+                    height="14"
+                  ></rect>
+                  <path
+                    d="M2.92426407,5.07573593 C2.68994949,4.84142136 2.31005051,4.84142136 2.07573593,5.07573593 C1.84142136,5.31005051 1.84142136,5.68994949 2.07573593,5.92426407 L7,10.8485281 L11.9242641,5.92426407 C12.1585786,5.68994949 12.1585786,5.31005051 11.9242641,5.07573593 C11.6899495,4.84142136 11.3100505,4.84142136 11.0757359,5.07573593 L7,9.15147186 L2.92426407,5.07573593 Z"
+                    id="Path-2"
+                    fill="#909399"
+                    opacity="0.699999988"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+          </span>
+        </li>
+        <li role="option" tabindex="-1" aria-level="1">
+          <span class="c-cascader__label">上海</span>
+          <span class="c-cascader__icon">
+            <svg
+              style="transform: rotate(-90deg);"
+              width="14px"
+              height="14px"
+              viewBox="0 0 14 14"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+              <title>ic/select/direction-down/gray70%_normal_14px</title>
+              <desc>Created with Sketch.</desc>
+              <g
+                id="ic/select/direction-down/gray70%_normal_14px"
+                stroke="none"
+                stroke-width="1"
+                fill="none"
+                fill-rule="evenodd"
+              >
+                <g id="ic/菜单栏_展开" fill-rule="nonzero">
+                  <rect
+                    id="Rectangle-5"
+                    opacity="0.200000003"
+                    x="0"
+                    y="0"
+                    width="14"
+                    height="14"
+                  ></rect>
+                  <path
+                    d="M2.92426407,5.07573593 C2.68994949,4.84142136 2.31005051,4.84142136 2.07573593,5.07573593 C1.84142136,5.31005051 1.84142136,5.68994949 2.07573593,5.92426407 L7,10.8485281 L11.9242641,5.92426407 C12.1585786,5.68994949 12.1585786,5.31005051 11.9242641,5.07573593 C11.6899495,4.84142136 11.3100505,4.84142136 11.0757359,5.07573593 L7,9.15147186 L2.92426407,5.07573593 Z"
+                    id="Path-2"
+                    fill="#909399"
+                    opacity="0.699999988"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+          </span>
+        </li>
+        <li role="option" tabindex="-1" aria-level="1">
+          <span class="c-cascader__label">广州</span>
+          <span class="c-cascader__icon">
+            <svg
+              style="transform: rotate(-90deg);"
+              width="14px"
+              height="14px"
+              viewBox="0 0 14 14"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+              <title>ic/select/direction-down/gray70%_normal_14px</title>
+              <desc>Created with Sketch.</desc>
+              <g
+                id="ic/select/direction-down/gray70%_normal_14px"
+                stroke="none"
+                stroke-width="1"
+                fill="none"
+                fill-rule="evenodd"
+              >
+                <g id="ic/菜单栏_展开" fill-rule="nonzero">
+                  <rect
+                    id="Rectangle-5"
+                    opacity="0.200000003"
+                    x="0"
+                    y="0"
+                    width="14"
+                    height="14"
+                  ></rect>
+                  <path
+                    d="M2.92426407,5.07573593 C2.68994949,4.84142136 2.31005051,4.84142136 2.07573593,5.07573593 C1.84142136,5.31005051 1.84142136,5.68994949 2.07573593,5.92426407 L7,10.8485281 L11.9242641,5.92426407 C12.1585786,5.68994949 12.1585786,5.31005051 11.9242641,5.07573593 C11.6899495,4.84142136 11.3100505,4.84142136 11.0757359,5.07573593 L7,9.15147186 L2.92426407,5.07573593 Z"
+                    id="Path-2"
+                    fill="#909399"
+                    opacity="0.699999988"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+          </span>
+        </li>
+      </ul>
+
+      <ul class="c-cascader__list">
+        <li role="option" tabindex="-1" aria-level="2">
+          <span class="c-cascader__label">海淀</span>
+        </li>
+        <li role="option" tabindex="-1" aria-selected="true" aria-level="2">
+          <span class="c-cascader__label">朝阳</span>
+        </li>
+        <li role="option" tabindex="-1" aria-level="2">
+          <span class="c-cascader__label">西城</span>
+        </li>
+        <li role="option" tabindex="-1" aria-level="2">
+          <span class="c-cascader__label">东城</span>
+        </li>
+        <li role="option" tabindex="-1" aria-level="2">
+          <span class="c-cascader__label">顺义</span>
+        </li>
+        <li role="option" tabindex="-1" aria-level="2">
+          <span class="c-cascader__label">通州</span>
+        </li>
+        <li role="option" tabindex="-1" aria-level="2">
+          <span class="c-cascader__label">昌平</span>
+        </li>
+        <li role="option" tabindex="-1" aria-level="2">
+          <span class="c-cascader__label">石景山</span>
+        </li>
+        <li role="option" tabindex="-1" aria-level="2">
+          <span class="c-cascader__label">大兴</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="demo-container">
+  <h3>禁用某选项</h3>
+  <div class="example-demo">
+    <div class="c-cascader__panel c-cascader__panel--bordered">
+      <ul class="c-cascader__list" role="listbox">
+        <li tabindex="-1" role="option" aria-expanded="true" aria-level="1">
+          <span class="c-cascader__label">北京</span>
+          <span class="c-cascader__icon">
+            <svg
+              style="transform: rotate(-90deg);"
+              width="14px"
+              height="14px"
+              viewBox="0 0 14 14"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+              <title>ic/select/direction-down/gray70%_normal_14px</title>
+              <desc>Created with Sketch.</desc>
+              <g
+                id="ic/select/direction-down/gray70%_normal_14px"
+                stroke="none"
+                stroke-width="1"
+                fill="none"
+                fill-rule="evenodd"
+              >
+                <g id="ic/菜单栏_展开" fill-rule="nonzero">
+                  <rect
+                    id="Rectangle-5"
+                    opacity="0.200000003"
+                    x="0"
+                    y="0"
+                    width="14"
+                    height="14"
+                  ></rect>
+                  <path
+                    d="M2.92426407,5.07573593 C2.68994949,4.84142136 2.31005051,4.84142136 2.07573593,5.07573593 C1.84142136,5.31005051 1.84142136,5.68994949 2.07573593,5.92426407 L7,10.8485281 L11.9242641,5.92426407 C12.1585786,5.68994949 12.1585786,5.31005051 11.9242641,5.07573593 C11.6899495,4.84142136 11.3100505,4.84142136 11.0757359,5.07573593 L7,9.15147186 L2.92426407,5.07573593 Z"
+                    id="Path-2"
+                    fill="#909399"
+                    opacity="0.699999988"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+          </span>
+        </li>
+        <li role="option" tabindex="-1" aria-disabled="true" aria-level="1">
+          <span class="c-cascader__label">上海</span>
+          <span class="c-cascader__icon">
+            <svg
+              style="transform: rotate(-90deg);"
+              width="14px"
+              height="14px"
+              viewBox="0 0 14 14"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+              <title>ic/select/direction-down/gray70%_normal_14px</title>
+              <desc>Created with Sketch.</desc>
+              <g
+                id="ic/select/direction-down/gray70%_normal_14px"
+                stroke="none"
+                stroke-width="1"
+                fill="none"
+                fill-rule="evenodd"
+              >
+                <g id="ic/菜单栏_展开" fill-rule="nonzero">
+                  <rect
+                    id="Rectangle-5"
+                    opacity="0.200000003"
+                    x="0"
+                    y="0"
+                    width="14"
+                    height="14"
+                  ></rect>
+                  <path
+                    d="M2.92426407,5.07573593 C2.68994949,4.84142136 2.31005051,4.84142136 2.07573593,5.07573593 C1.84142136,5.31005051 1.84142136,5.68994949 2.07573593,5.92426407 L7,10.8485281 L11.9242641,5.92426407 C12.1585786,5.68994949 12.1585786,5.31005051 11.9242641,5.07573593 C11.6899495,4.84142136 11.3100505,4.84142136 11.0757359,5.07573593 L7,9.15147186 L2.92426407,5.07573593 Z"
+                    id="Path-2"
+                    fill="#909399"
+                    opacity="0.699999988"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+          </span>
+        </li>
+        <li role="option" tabindex="-1" aria-level="1">
+          <span class="c-cascader__label">广州</span>
+          <span class="c-cascader__icon">
+            <svg
+              style="transform: rotate(-90deg);"
+              width="14px"
+              height="14px"
+              viewBox="0 0 14 14"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+              <title>ic/select/direction-down/gray70%_normal_14px</title>
+              <desc>Created with Sketch.</desc>
+              <g
+                id="ic/select/direction-down/gray70%_normal_14px"
+                stroke="none"
+                stroke-width="1"
+                fill="none"
+                fill-rule="evenodd"
+              >
+                <g id="ic/菜单栏_展开" fill-rule="nonzero">
+                  <rect
+                    id="Rectangle-5"
+                    opacity="0.200000003"
+                    x="0"
+                    y="0"
+                    width="14"
+                    height="14"
+                  ></rect>
+                  <path
+                    d="M2.92426407,5.07573593 C2.68994949,4.84142136 2.31005051,4.84142136 2.07573593,5.07573593 C1.84142136,5.31005051 1.84142136,5.68994949 2.07573593,5.92426407 L7,10.8485281 L11.9242641,5.92426407 C12.1585786,5.68994949 12.1585786,5.31005051 11.9242641,5.07573593 C11.6899495,4.84142136 11.3100505,4.84142136 11.0757359,5.07573593 L7,9.15147186 L2.92426407,5.07573593 Z"
+                    id="Path-2"
+                    fill="#909399"
+                    opacity="0.699999988"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+          </span>
+        </li>
+      </ul>
+      <ul class="c-cascader__list" role="listbox">
+        <li role="option" tabindex="-1" aria-level="2">
+          <span class="c-cascader__label">海淀</span>
+        </li>
+        <li role="option" tabindex="-1" aria-level="2">
+          <span class="c-cascader__label">朝阳</span>
+        </li>
+        <li role="option" aria-disabled="true" aria-level="2">
+          <span class="c-cascader__label">西城</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="demo-container">
+  <h3>空数据源</h3>
+  <div class="example-demo">
+    <div class="c-cascader__panel c-cascader__panel--bordered">
+      <div class="c-cascader__empty-text">暂无数据</div>
+    </div>
+  </div>
+</section>
+
+<section class="demo-container">
+  <h3>搜索：搜索词飘红</h3>
+  <div class="example-demo">
+    <div class="c-cascader__panel c-cascader__panel--bordered">
+      <ul class="c-cascader__list" role="listbox">
+        <li tabindex="-1" role="option">
+          <em>北京</em>
+          市 / 朝阳区
+        </li>
+        <li tabindex="-1" role="option">
+          <em>北京</em>
+          市 / 海淀区
+        </li>
+        <li tabindex="-1" role="option">
+          <em>北京</em>
+          市 / 西城区
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="demo-container">
+  <h3>搜索：搜索结果不可用</h3>
+  <div class="example-demo">
+    <div class="c-cascader__panel c-cascader__panel--bordered">
+      <ul class="c-cascader__list" role="listbox">
+        <li aria-disabled="true" role="option">
+          <em>北京</em>
+          市 / 朝阳区
+        </li>
+        <li tabindex="-1" role="option">
+          <em>北京</em>
+          市 / 海淀区
+        </li>
+        <li tabindex="-1" role="option">
+          <em>北京</em>
+          市 / 西城区
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="demo-container">
+  <h3>搜索：搜索结果选中</h3>
+  <div class="example-demo">
+    <div class="c-cascader__panel c-cascader__panel--bordered">
+      <ul class="c-cascader__list" role="listbox">
+        <li aria-disabled="true" role="option">
+          <em>北京</em>
+          市 / 朝阳区
+        </li>
+        <li tabindex="-1" role="option" aria-selected="true">
+          <em>北京</em>
+          市 / 海淀区
+        </li>
+        <li tabindex="-1" role="option">
+          <em>北京</em>
+          市 / 西城区
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="demo-container">
+  <h3>搜索：搜索结果为空</h3>
+  <div class="example-demo">
+    <div class="c-cascader__panel c-cascader__panel--bordered">
+      <div class="c-cascader__empty-text">
+        无匹配数据
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+## 多选框组
+
+通过一个数组控制多个`checkbox`的状态
+
+```tsx live=true className=s-container--button
+function Index() {
+  const [fruitList, updateFruitList] = React.useState([]);
+
+  const handleChange = ({ target: { value } }) => {
+    updateFruitList(value);
+  };
+
+  return (
+    <>
+      <CheckboxGroup name="fruit" onChange={handleChange}>
+        <Checkbox value="苹果">苹果</Checkbox>
+        <Checkbox value="香蕉">香蕉</Checkbox>
+        <Checkbox value="watermelon">西瓜</Checkbox>
+        <Checkbox value="strawberry">草莓</Checkbox>
+      </CheckboxGroup>
+      <p style={{ marginTop: 10 }}>[{fruitList.join(",")}]</p>
+    </>
+  );
+}
+```

@@ -1,0 +1,25 @@
+import Basic from "./basic.mdx";
+import Status from "./status.mdx";
+import Placement from "./placement.mdx";
+import CustomNode from "./customNode.mdx";
+
+# Timeline
+
+<Basic />
+<Status />
+<CustomNode />
+<Placement />
+
+## Timeline Props
+
+| Name      | Description | Type                                | Required | Default  |
+| --------- | ----------- | ----------------------------------- | -------- | -------- |
+| placement | 方位        | `"left"` \| `"center"` \| `"right"` | `false`  | `"left"` |
+
+## TimelineItem Props
+
+| Name  | Description     | Type        | Required | Default |
+| ----- | --------------- | ----------- | -------- | ------- |
+| color | icon 节点的颜色 | `string`    | `false`  | -       |
+| solid | 节点实心        | `boolean`   | `false`  | `false` |
+| icon  | 节点图标        | `ReactNode` | `false`  | `false` |

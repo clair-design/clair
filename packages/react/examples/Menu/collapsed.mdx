@@ -1,0 +1,100 @@
+## 折叠导航
+
+内嵌菜单可以被缩起 / 展开
+
+```tsx live=true
+function Index() {
+  const [activeIndex, setActiveIndex] = React.useState(1);
+  const [isCollapsed, setIsCollapsed] = React.useState(true);
+  const onSelect = ({ detail }) => {
+    setActiveIndex(detail.name);
+  };
+
+  return (
+    <div>
+      <Button
+        onClick={() => setIsCollapsed(!isCollapsed)}
+        style={{
+          marginBottom: "15px"
+        }}
+      >
+        切换
+      </Button>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          padding: "16px",
+          background: "#fafafa",
+          minHeight: "300px"
+        }}
+      >
+        <Menu
+          activeIndex={activeIndex}
+          onSelect={onSelect}
+          mode="vertical"
+          collapsed={isCollapsed}
+          width="300px"
+        >
+          <MenuItem index={"1-1"}>
+            <IconHome />
+            一级导航 1
+          </MenuItem>
+          <SubMenu
+            title={
+              <React.Fragment>
+                <IconFile />
+                一级导航 2
+              </React.Fragment>
+            }
+            index={2}
+          >
+            <MenuItem index={"2-1"}>二级导航 1</MenuItem>
+            <SubMenu
+              title={<React.Fragment>二级导航 2</React.Fragment>}
+              index={"2-2"}
+            >
+              <MenuItem index={"3-2"}>三级导航 1</MenuItem>
+              <MenuItem index={"3-3"}>三级导航 2</MenuItem>
+              <SubMenu
+                title={<React.Fragment>三级导航 3</React.Fragment>}
+                index={3}
+              >
+                <MenuItem index={"4-1"}>四级导航 1</MenuItem>
+                <SubMenu
+                  title={<React.Fragment>四级导航 2</React.Fragment>}
+                  index={"4-2"}
+                >
+                  <MenuItem index={"5-1"}>五级导航 1</MenuItem>
+                  <MenuItemGroup title="分组">
+                    <MenuItem index={"5-2"}>五级导航 5-2</MenuItem>
+                    <MenuItem index={"5-3"}>五级导航 5-3</MenuItem>
+                  </MenuItemGroup>
+                </SubMenu>
+              </SubMenu>
+            </SubMenu>
+          </SubMenu>
+          <MenuItem index={"1-3"}>
+            <IconSetting />
+            一级导航 3
+          </MenuItem>
+        </Menu>
+        <Menu mode="vertical" theme="dark" collapsed>
+          <MenuItem index={1}>
+            <IconHome />
+            一级导航 1
+          </MenuItem>
+          <MenuItem index={2}>
+            <IconFile />
+            一级导航 2
+          </MenuItem>
+          <MenuItem index={3}>
+            <IconSetting />
+            一级导航 3
+          </MenuItem>
+        </Menu>
+      </div>
+    </div>
+  );
+}
+```

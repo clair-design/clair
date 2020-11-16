@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>UserTrend</title>
+    <desc>Created with Sketch.</desc>
+    <g id="UserTrend" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M14.0012631,19 C10.5084575,19 7.33737663,19.2980838 5.0016216,21.0221863 C3.12999242,22.4037012 1.7947042,24.9733885 1.26,27.0049717" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M7,8 C7,11.8659932 10.1340068,15 14,15 C17.8659932,15 21,11.8659932 21,8 C21,4.13400675 17.8659932,1 14,1 C10.1340068,1 7,4.13400675 7,8 Z" id="路径" stroke="#6E6E6E" stroke-width="2"></path>
+            <polyline id="路径-5" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="12 26 17.0909091 22 22 26 27 22"></polyline>
+        </g>
+    </g>
+</svg>

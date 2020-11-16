@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<title>Button</title>
+<link rel="stylesheet" href="../styles/button.scss" />
+<!-- <script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script> -->
+
+<style>
+  body {
+    margin: 30px auto;
+    max-width: 1200px;
+  }
+
+  .c-button {
+    margin-right: 1em;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none !important;
+  }
+
+  .focus-visible {
+    outline: 2px solid #f00;
+  }
+
+  .c-button-group {
+    margin-bottom: 1em;
+  }
+
+  .c-button-group .c-button {
+    margin-right: 0;
+  }
+</style>
+
+<h1>Button</h1>
+
+<h2>类型按钮</h2>
+<button class="c-button c-button--normal c-button--default">默认按钮</button>
+<button class="c-button c-button--normal c-button--primary">主要按钮</button>
+<button class="c-button c-button--normal c-button--success">成功按钮</button>
+<button class="c-button c-button--normal c-button--warning">警告按钮</button>
+<button class="c-button c-button--normal c-button--danger">危险按钮</button>
+<button class="c-button c-button--normal c-button--ghost">幽灵按钮</button>
+
+<h2>Round Button</h2>
+<button class="c-button c-button--normal c-button--default c-button--round">
+  默认按钮
+</button>
+<button class="c-button c-button--normal c-button--primary c-button--round">
+  主要按钮
+</button>
+<button class="c-button c-button--normal c-button--success c-button--round">
+  成功按钮
+</button>
+<button class="c-button c-button--normal c-button--warning c-button--round">
+  警告按钮
+</button>
+<button class="c-button c-button--normal c-button--danger c-button--round">
+  危险按钮
+</button>
+<button class="c-button c-button--normal c-button--ghost c-button--round">
+  幽灵按钮
+</button>
+
+<h2>禁用状态</h2>
+<button disabled class="c-button c-button--normal c-button--default">
+  默认按钮
+</button>
+<button disabled class="c-button c-button--normal c-button--primary">
+  主要按钮
+</button>
+<button disabled class="c-button c-button--normal c-button--success">
+  成功按钮
+</button>
+<button disabled class="c-button c-button--normal c-button--warning">
+  警告按钮
+</button>
+<button disabled class="c-button c-button--normal c-button--danger">
+  危险按钮
+</button>
+<button disabled class="c-button c-button--normal c-button--ghost">
+  幽灵按钮
+</button>
+
+<h2>不同尺寸</h2>
+
+<h3>并列展示</h3>
+<div style="margin-bottom: 1em;">
+  <button class="c-button c-button--default c-button--small">小按钮</button>
+  <button class="c-button c-button--default c-button--normal">默认按钮</button>
+  <button class="c-button c-button--default c-button--large">大按钮</button>
+</div>
+<div style="margin-bottom: 1em;">
+  <button class="c-button c-button--primary c-button--small">
+    小按钮
+  </button>
+  <button class="c-button c-button--primary c-button--normal">默认按钮</button>
+  <button class="c-button c-button--primary c-button--large">
+    大按钮
+  </button>
+</div>
+<div style="margin-bottom: 1em;">
+  <button class="c-button c-button--normal c-button--warning c-button--small">
+    小按钮
+  </button>
+  <button class="c-button c-button--normal c-button--warning">默认按钮</button>
+  <button class="c-button c-button--normal c-button--warning c-button--large">
+    大按钮
+  </button>
+</div>
+<div style="margin-bottom: 1em;">
+  <button class="c-button c-button--normal c-button--danger c-button--small">
+    小按钮
+  </button>
+  <button class="c-button c-button--normal c-button--danger">默认按钮</button>
+  <button class="c-button c-button--normal c-button--danger c-button--large">
+    大按钮
+  </button>
+</div>
+
+<h2>Block Button</h2>
+<div style="width: 400px;">
+  <button
+    style="margin-top: 20px;"
+    class="c-button c-button--normal c-button--default c-button--block"
+  >
+    block button
+  </button>
+  <button
+    style="margin-top: 20px;"
+    class="c-button c-button--normal c-button--primary c-button--block"
+  >
+    block button
+  </button>
+  <button
+    style="margin-top: 20px;"
+    class="c-button c-button--normal c-button--success c-button--block"
+  >
+    block button
+  </button>
+  <button
+    style="margin-top: 20px;"
+    class="c-button c-button--normal c-button--warning c-button--block"
+  >
+    block button
+  </button>
+  <button
+    style="margin-top: 20px;"
+    class="c-button c-button--normal c-button--danger c-button--block"
+  >
+    block button
+  </button>
+</div>
+
+<h2>Button Group</h2>
+
+<div>
+  <div class="c-button-group">
+    <button class="c-button c-button--default c-button--normal">
+      默认按钮
+    </button>
+    <button class="c-button c-button--default c-button--normal">
+      默认按钮
+    </button>
+    <button class="c-button c-button--default c-button--normal">
+      默认按钮
+    </button>
+  </div>
+</div>
+
+<div>
+  <div class="c-button-group">
+    <button class="c-button c-button--primary c-button--normal">
+      主要按钮
+    </button>
+    <button class="c-button c-button--primary c-button--normal">
+      主要按钮
+    </button>
+    <button class="c-button c-button--primary c-button--normal">
+      主要按钮
+    </button>
+  </div>
+</div>
+
+<div>
+  <div class="c-button-group">
+    <button class="c-button c-button--normal c-button--warning">
+      警告按钮
+    </button>
+    <button class="c-button c-button--normal c-button--warning">
+      警告按钮
+    </button>
+    <button class="c-button c-button--normal c-button--warning">
+      警告按钮
+    </button>
+  </div>
+</div>
+
+<div>
+  <div class="c-button-group">
+    <button class="c-button c-button--normal c-button--danger">危险按钮</button>
+    <button class="c-button c-button--normal c-button--danger">危险按钮</button>
+    <button class="c-button c-button--normal c-button--danger">危险按钮</button>
+  </div>
+</div>

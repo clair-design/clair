@@ -1,0 +1,16 @@
+// return transition list from a list of properties
+// @param $property {string|list} property list
+// @param $duration {string} transition duration
+// @param $easing {string} easing function
+// @return transition list
+@function make-transition($property, $duration, $easing) {
+  $result: ();
+  @if (type-of($property) == 'string') {
+    $property: ($property);
+  }
+  @each $prop in $property {
+    $declaration: $prop $easing $duration;
+    $result: append($result, $declaration, $separator: comma);
+  }
+  @return $result;
+}

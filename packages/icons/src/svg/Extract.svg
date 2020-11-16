@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="29px" viewBox="0 0 28 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Extract</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Extract" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M1,28 L27,28" id="路径-42" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <polyline id="路径-43" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="7 8 14 1 21 8"></polyline>
+            <path d="M14,3 L14,16" id="路径-44" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M14,20 L14,20.0146457" id="路径-45" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M14,24 L14,24.0146457" id="路径-45" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

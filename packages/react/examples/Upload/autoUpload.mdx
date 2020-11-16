@@ -1,0 +1,67 @@
+## 手动上传
+
+- 如果不希望选取文件后立即进行上传，可以设置`autoUpload`属性为`false`
+- 当`autoUpload`为`false`时需要手动调用组件的`submit()`方法来进行文件的上传
+
+```tsx live=true
+function Demo() {
+  const [uploading, setUploading] = React.useState(false);
+  const [percent, setPercent] = React.useState(0);
+  const [loading, setLoading] = React.useState(false);
+  const onSuccess = ({ detail }) => {
+    const { file, allFiles, response } = detail;
+    notification.success({
+      title: "上传成功！",
+      content: `文件${file.rawFile.name}上传成功！`
+    });
+    setUploading(false);
+  };
+  const onError = ({ detail }) => {
+    const { file, allFiles, error } = detail;
+    notification.error({
+      title: "上传失败！",
+      content: `文件${file.rawFile.name}上传失败！`
+    });
+  };
+  const onProgress = ({ detail }) => {
+    setPercent(detail.file.percent);
+  };
+  const onComplete = () => {
+    setLoading(false);
+  };
+  const onReady = ({ detail }) => {
+    setUploading(true);
+  };
+  let uploadNode;
+  const bindRef = node => {
+    uploadNode = node;
+  };
+  const onClick = () => {
+    setLoading(true);
+    uploadNode.submit();
+  };
+  return (
+    <div>
+      <Upload
+        ref={bindRef}
+        autoUpload={false}
+        action="https://jsonplaceholder.typicode.com/posts/"
+        onReady={onReady}
+        onProgress={onProgress}
+        onSuccess={onSuccess}
+        onError={onError}
+        onComplete={onComplete}
+      ></Upload>
+      <Button
+        type="primary"
+        style={{ margin: "10px" }}
+        onClick={onClick}
+        disabled={!uploading}
+      >
+        手动提交
+      </Button>
+      {loading ? <Tag color="blue">上传进度：{parseInt(percent)}</Tag> : null}
+    </div>
+  );
+}
+```

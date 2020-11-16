@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<title>Badge</title>
+<link rel="stylesheet" href="../styles/badge.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body {
+    margin: 30px auto;
+    max-width: 1200px;
+  }
+  .c-badge {
+    margin-right: 40px;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+</style>
+
+<!-- 在下面写你的 HTML -->
+<h1>Badge 微标数</h1>
+<h2>定义</h2>
+<h2>使用场景</h2>
+<h2>基础样式</h2>
+<div class="c-badge">
+  <button class="c-button c-button--normal c-button--default">评论</button>
+  <span class="c-badge__content">10</span>
+</div>
+<div class="c-badge">
+  <button class="c-button c-button--normal c-button--default">回复</button>
+  <span class="c-badge__content">new</span>
+</div>
+<div class="c-badge">
+  <button class="c-button c-button--normal c-button--default">新消息</button>
+  <span class="c-badge__content c-badge__content--dot"></span>
+</div>
+<div class="c-badge">
+  <span
+    class="c-badge__content c-badge__content--dot c-badge__content--empty"
+  ></span>
+</div>

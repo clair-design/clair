@@ -1,0 +1,17 @@
+## 自定义 footer
+
+### 覆盖默认 footer
+
+```tsx live=true
+<PopConfirm content="div" footer={<div>override footer</div>}>
+  <Button>DIY footer</Button>
+</PopConfirm>
+```
+
+### 没有 footer
+
+```tsx live=true
+<PopConfirm content="no footer" footer={null}>
+  <Button>DIY footer</Button>
+</PopConfirm>
+```

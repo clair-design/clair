@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<title>Grid</title>
+<link rel="stylesheet" href="../styles/grid.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body {
+    margin: 30px auto;
+    max-width: 1200px;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+
+  .c-grid__row {
+    margin: 10px auto;
+  }
+
+  .c-grid__col {
+    background: #00a0e9;
+    color: #fff;
+    text-align: center;
+    padding: 16px 0;
+  }
+
+  .c-grid__col:nth-child(odd) {
+    background: rgba(0, 160, 233, 0.7);
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+<div class="c-grid">
+  <h2>gutter</h2>
+
+  <!-- gutter -->
+  <div class="c-grid__row" style="grid-column-gap: 20px;">
+    <div class="c-grid__col" style="grid-column: span 4;">col-4</div>
+    <div class="c-grid__col" style="grid-column: span 4;">col-4</div>
+    <div class="c-grid__col" style="grid-column: span 4;">col-4</div>
+  </div>
+  <!-- justify  -->
+
+  <h2>justify</h2>
+  <h3>justify space around</h3>
+  <div
+    class="c-grid__row"
+    style="
+      justify-content: space-around;
+      grid-template-columns: repeat(12, 30px);
+      grid-gap: 10px;
+    "
+  >
+    <div class="c-grid__col" style="grid-column: span 4;">col-4</div>
+    <div class="c-grid__col" style="grid-column: span 4;">col-4</div>
+    <div class="c-grid__col" style="grid-column: span 4;">col-4</div>
+  </div>
+  <h3>justify start</h3>
+  <div
+    class="c-grid__row"
+    style="
+      justify-content: start;
+      grid-template-columns: repeat(12, 30px);
+      grid-gap: 10px;
+    "
+  >
+    <div class="c-grid__col" style="grid-column: span 4;">col-4</div>
+    <div class="c-grid__col" style="grid-column: span 4;">col-4</div>
+    <div class="c-grid__col" style="grid-column: span 4;">col-4</div>
+  </div>
+  <h3>justify end</h3>
+  <div
+    class="c-grid__row"
+    style="
+      justify-content: end;
+      grid-template-columns: repeat(12, 30px);
+      grid-gap: 10px;
+    "
+  >
+    <div class="c-grid__col" style="grid-column: span 4;">col-4</div>
+    <div class="c-grid__col" style="grid-column: span 4;">col-4</div>
+    <div class="c-grid__col" style="grid-column: span 4;">col-4</div>
+  </div>
+
+  <h2>align</h2>
+  <!-- align -->
+  <h3>align start</h3>
+  <div class="c-grid__row" style="align-items: start; grid-column-gap: 20px;">
+    <div class="c-grid__col" style="grid-column: span 3;">
+      <div style="height: 100px;">col-3</div>
+    </div>
+    <div class="c-grid__col" style="grid-column: span 3;">
+      <div style="height: 80px;">col-3</div>
+    </div>
+    <div class="c-grid__col" style="grid-column: span 3;">
+      <div style="height: 120px;">col-3</div>
+    </div>
+    <div class="c-grid__col" style="grid-column: span 3;">
+      <div style="height: 150px;">col-3</div>
+    </div>
+  </div>
+  <h3>align center</h3>
+  <div class="c-grid__row" style="align-items: center; grid-column-gap: 20px;">
+    <div class="c-grid__col" style="grid-column: span 3;">
+      <div style="height: 100px;">col-3</div>
+    </div>
+    <div class="c-grid__col" style="grid-column: span 3;">
+      <div style="height: 80px;">col-3</div>
+    </div>
+    <div class="c-grid__col" style="grid-column: span 3;">
+      <div style="height: 120px;">col-3</div>
+    </div>
+    <div class="c-grid__col" style="grid-column: span 3;">
+      <div style="height: 150px;">col-3</div>
+    </div>
+  </div>
+  <h3>align end</h3>
+  <div class="c-grid__row" style="align-items: end; grid-column-gap: 20px;">
+    <div class="c-grid__col" style="grid-column: span 3;">
+      <div style="height: 100px;">col-3</div>
+    </div>
+    <div class="c-grid__col" style="grid-column: span 3;">
+      <div style="height: 80px;">col-3</div>
+    </div>
+    <div class="c-grid__col" style="grid-column: span 3;">
+      <div style="height: 120px;">col-3</div>
+    </div>
+    <div class="c-grid__col" style="grid-column: span 3;">
+      <div style="height: 150px;">col-3</div>
+    </div>
+  </div>
+  <h2>span</h2>
+
+  <!-- span 1 -->
+  <div class="c-grid__row">
+    <div class="c-grid__col" style="grid-column: span 6;">col-6</div>
+    <div class="c-grid__col" style="grid-column: span 6;">col-6</div>
+  </div>
+
+  <!-- span 2 -->
+  <div class="c-grid__row">
+    <div class="c-grid__col" style="grid-column: span 4;">col-4</div>
+    <div class="c-grid__col" style="grid-column: span 4;">col-4</div>
+    <div class="c-grid__col" style="grid-column: span 4;">col-4</div>
+  </div>
+  <h2>offset</h2>
+
+  <!-- offset need to add spans of before siblings-->
+  <div class="c-grid__row" style="grid-column-gap: 20px;">
+    <div class="c-grid__col" style="grid-column: span 4;">col-4</div>
+    <div class="c-grid__col" style="grid-column: 8 / span 4;">
+      col-4 offset 4
+    </div>
+  </div>
+  <h2>order</h2>
+  <!-- order -->
+  <div class="c-grid__row" style="grid-column-gap: 20px;">
+    <div class="c-grid__col" style="order: 2; grid-column: span 4;">
+      first col-4
+    </div>
+    <div class="c-grid__col" style="order: 1; grid-column: span 8;">
+      second col-8
+    </div>
+  </div>
+</div>

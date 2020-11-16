@@ -1,0 +1,28 @@
+import Placement from "./placement.mdx";
+import Trigger from "./trigger.mdx";
+import Visible from "./visibleProps.mdx";
+import Delay from "./delay.mdx";
+import Content from "./content.mdx";
+
+# Tooltip
+
+<Placement />
+<Trigger />
+<Visible />
+<Delay />
+<Content />
+
+## Props
+
+| Name               | Description                                                  | Type                                                                                                                                                                                           | Required | Default              |
+| ------------------ | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------------------- |
+| content            | 提示文字                                                     | `React.ReactNode`                                                                                                                                                                              | `true`   | -                    |
+| visible            | 是否显示，可由 props 主动控制，不设置时，组件内部 state 控制 | `boolean`                                                                                                                                                                                      | `false`  | -                    |
+| placement          | 悬浮位置                                                     | `"top"` \| `"right"` \| `"bottom"` \| `"left"` \| `"top-left"` \| `"top-right"` \| `"right-top"` \| `"right-bottom"` \| `"bottom-right"` \| `"bottom-left"` \| `"left-bottom"` \| `"left-top"` | `false`  | `"top"`              |
+| showDelay          | 显示延迟                                                     | `number`                                                                                                                                                                                       | `false`  | `0`                  |
+| hideDelay          | 隐藏延迟                                                     | `number`                                                                                                                                                                                       | `false`  | `100`                |
+| trigger            | 触发方式                                                     | `"hover"` \| `"click"` \| `"focus"` \| `Array<"hover"` \| `"click"` \| `"focus">`                                                                                                              | `false`  | `["hover", "focus"]` |
+| appendTarget       | 悬浮元素插入的容器节点                                       | `HTMLElement`                                                                                                                                                                                  | `false`  | `document.body`      |
+| onVisibilityChange | 显示改变时候的回调                                           | `({ detail: { visible: boolean; source: "hover"` \| `"click"` \| `"focus"` \| `"away" } }) => void` （"away" 是指点击非触发元素，且非弹出元素区域）                                            | `false`  | -                    |
+
+同 DOM，可以传递 `className`，`style`，分别为 tooltip 添加类名、样式。

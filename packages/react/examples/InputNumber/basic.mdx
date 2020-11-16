@@ -1,0 +1,22 @@
+## 基础样式
+
+```tsx live=true
+function Index() {
+  const [state, setstate] = React.useState();
+  const onChange = ({ target: { value } }) => {
+    setstate(value);
+  };
+
+  return <InputNumber value={state} onChange={onChange} />;
+}
+```
+
+## 禁用样式
+
+输入框不可用状态
+
+```tsx live=true
+function Index() {
+  return <InputNumber defaultValue={1} disabled />;
+}
+```

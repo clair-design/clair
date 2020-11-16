@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Kettle</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Kettle" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M5,27 L27,27 L27,22.5882353 C27,16.7405144 22.0751322,12 16,12 C9.92486775,12 5,16.7405144 5,22.5882353" id="形状" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M19,13 L19,11 C19,9.34314575 17.6568542,8 16,8 C14.3431458,8 13,9.34314575 13,11 L13,13" id="路径" stroke="#6E6E6E" stroke-width="2"></path>
+            <path d="M5,18 L1,16" id="路径-159" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M24,8.61904762 C24,4.41116381 20.418278,1 16,1 C11.581722,1 8,4.41116381 8,8.61904762 L8,15" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,42 @@
+## 触发方式
+
+可以配置 `click`、 `hover` 或 `focus` 时展开菜单。
+
+```tsx live=true deps=Dropdown
+function Index() {
+  const overlay = (
+    <Dropdown.Menu>
+      <Dropdown.Item>北京</Dropdown.Item>
+      <Dropdown.Item>上海</Dropdown.Item>
+      <Dropdown.Item>广州</Dropdown.Item>
+    </Dropdown.Menu>
+  );
+  return (
+    <div>
+      <Dropdown trigger={["hover"]} overlay={overlay}>
+        <a>hover激活</a>
+        &nbsp;
+        <IconArrowDown />
+      </Dropdown>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <Dropdown trigger={["click"]} overlay={overlay}>
+        <a>click激活</a>
+        &nbsp;
+        <IconArrowDown />
+      </Dropdown>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <Dropdown trigger={["focus"]} overlay={overlay}>
+        <a>focus激活</a>
+        &nbsp;
+        <IconArrowDown />
+      </Dropdown>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <Dropdown trigger={["hover", "click", "focus"]} overlay={overlay}>
+        <a>hover/click/focus都可激活</a>
+        &nbsp;
+        <IconArrowDown />
+      </Dropdown>
+    </div>
+  );
+}
+```

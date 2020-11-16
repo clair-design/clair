@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Read</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Read" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M2.15205718,3.17723957 L14,5 L25.8479428,3.17723957 C26.3938054,3.0932607 26.9043928,3.46769146 26.9883717,4.01355408 C26.9961126,4.06386993 27,4.11470344 27,4.16561126 L27,22.142081 C27,22.6356521 26.6398889,23.0554017 26.1520572,23.1304527 L14,25 L1.84794282,23.1304527 C1.36011113,23.0554017 1,22.6356521 1,22.142081 L1,4.16561126 C1,3.61332651 1.44771525,3.16561126 2,3.16561126 C2.05090783,3.16561126 2.10174133,3.16949867 2.15205718,3.17723957 Z" id="矩形" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round"></path>
+            <path d="M14,4 L14,25" id="路径-2" stroke="#6E6E6E" stroke-width="2"></path>
+            <path d="M5.00794266,9.18999215 L10,10" id="路径-3" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M5.00794266,14.1899921 L10,15" id="路径-3" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M18.0079427,9.18999215 L23,10" id="路径-3" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" transform="translate(20.503971, 9.594996) scale(-1, 1) translate(-20.503971, -9.594996) "></path>
+            <path d="M18.0079427,14.1899921 L23,15" id="路径-3" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" transform="translate(20.503971, 14.594996) scale(-1, 1) translate(-20.503971, -14.594996) "></path>
+        </g>
+    </g>
+</svg>

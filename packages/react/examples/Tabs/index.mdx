@@ -1,0 +1,37 @@
+import Basic from "./basic.mdx";
+import TabBar from "./tabbar.mdx";
+import Other from "./other.mdx";
+
+# Tabs 标签页
+
+## 定义
+
+可以为平级的大块信息内容进行分类收纳和展现，保持界面整洁，用户不需跳转页面即可比较和浏览信息。
+
+<Basic />
+<TabBar />
+<Other />
+
+## Tabs Props
+
+| Name             | Description                                                   | Type                                           | Required | Default |
+| ---------------- | ------------------------------------------------------------- | ---------------------------------------------- | -------- | ------- |
+| defaultActiveKey | 默认选中项，仅在第一次渲染时有效                              | `string`                                       | `false`  | -       |
+| activeKey        | 当前选中项，和 defaultActiveKey 互斥，且 activeKey 优先级更高 | `string`                                       | `false`  | -       |
+| tabPosition      | 选项卡的显示位置                                              | `"top"` \| `"right"` \| `"bottom"` \| `"left"` | `false`  | `"top"` |
+| type             | 选项卡的样式                                                  | `undefined` \| `'card'`                        | `false`  | -       |
+| addable          | 选项卡是否可添加                                              | `boolean`                                      | `false`  | `false` |
+| onChange         | 切换时的回调                                                  | `({ detail: { key: string; }}) => void`        | `false`  | -       |
+| onTabClick       | 点击时的回调                                                  | `({ detail: { key: string; }}) => void`        | `false`  | -       |
+| onClose          | 关闭（删除）时的回调                                          | `({ detail: { key: string; }}) => void`        | `false`  | -       |
+| onAdd            | 添加时的回调                                                  | `() => void`                                   | `false`  | -       |
+
+## TabPane Props
+
+| Name      | Description        | Type        | Required | Default |
+| --------- | ------------------ | ----------- | -------- | ------- |
+| label     | 标签页的标题       | `ReactNode` | `true`   | -       |
+| tabKey    | 标签页的 key       | `string`    | `true`   | -       |
+| closeable | 标签页是否可关闭   | `boolean`   | `false`  | `false` |
+| disabled  | 标签页是否禁用     | `boolean`   | `false`  | `false` |
+| lazy      | 当前标签页延迟渲染 | `boolean`   | `false`  | `false` |

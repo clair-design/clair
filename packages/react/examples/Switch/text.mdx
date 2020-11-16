@@ -1,0 +1,21 @@
+## 文字样式
+
+带有文字的开关，当背景颜色太浅容易导致文字显示不明显时，可自行设置文字颜色
+
+```tsx live=true
+<>
+  <Switch defaultChecked checkedChildren="开" unCheckedChildren="关" />
+  <br />
+  <br />
+  <Switch defaultChecked checkedChildren="✓" unCheckedChildren="✗" />
+  <br />
+  <br />
+  <Switch
+    defaultChecked
+    checkedColor="#52B818"
+    unCheckedColor="#F1F9EB"
+    checkedChildren={<font style={{ color: "#F1F9EB" }}>开</font>}
+    unCheckedChildren={<font style={{ color: "#52B818" }}>关</font>}
+  />
+</>
+```

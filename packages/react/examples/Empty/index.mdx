@@ -1,0 +1,27 @@
+import Basic from "./basic.mdx";
+import Custom from "./custom.mdx";
+
+# Empty 空状态
+
+## 定义
+
+空状态通常在初次使用、完成或清空内容、软件出错等情境下出现的页面状态。
+
+## 使用场景
+
+页面无数据、用户未进行操作、用户操作结果、出错。
+
+空状态应该达成三个目标：教育用户、取悦用户、引导用户。每个空状态都有其核心需要达成的目标。
+
+<Basic />
+
+<Custom />
+
+## Props
+
+| Name        | Description    | Type                    | Required | Default      |
+| ----------- | -------------- | ----------------------- | -------- | ------------ |
+| size        | 尺寸           | `"normal"` \| `"large"` | `false`  | `"normal"`   |
+| description | 描述内容       | `ReactNode`             | `false`  | `"暂无数据"` |
+| imgStyle    | 图片样式       | `CSSProperties`         | `false`  | -            |
+| imgUrl      | 自定义图片地址 | `string`                | `false`  | -            |

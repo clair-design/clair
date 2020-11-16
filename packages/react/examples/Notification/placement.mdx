@@ -1,0 +1,49 @@
+```tsx live=true deps=notification
+function Index() {
+  const showTopRight = () => {
+    notification.info({
+      title: "Top-Right Notification",
+      content: "Some content...",
+      placement: "top-right"
+    });
+  };
+  const showTopLeft = () => {
+    notification.info({
+      title: "Top-Left Notification",
+      content: "Some content...",
+      placement: "top-left"
+    });
+  };
+  const showBottomRight = () => {
+    notification.info({
+      title: "Bottom-Right Notification",
+      content: "Some content...",
+      placement: "bottom-right"
+    });
+  };
+  const showBottomLeft = () => {
+    notification.info({
+      title: "Bottom-Left Notification",
+      content: "Some content...",
+      placement: "bottom-left"
+    });
+  };
+
+  return (
+    <div className="s-wrapper--button">
+      <Button type="primary" onClick={showTopRight}>
+        右上弹出通知
+      </Button>
+      <Button type="default" onClick={showTopLeft}>
+        左上弹出通知
+      </Button>
+      <Button type="warning" onClick={showBottomRight}>
+        右下弹出通知
+      </Button>
+      <Button type="danger" onClick={showBottomLeft}>
+        左下弹出通知
+      </Button>
+    </div>
+  );
+}
+```

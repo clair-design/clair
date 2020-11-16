@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Champion</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Champion" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M13.9571347,21 C18.9040237,21 23,16.9705627 23,12 C23,9.2472282 23.0088963,6.25087476 23.026689,3.0109397 C23.0327344,1.90639799 22.1422438,1.00607282 21.0377022,1.00000703 C21.0340412,0.99998693 21.0303802,0.999976877 21.0267192,0.999976877 L7.09158966,0.999976877 C5.99936893,0.99995385 5.10913163,1.87618935 5.09181793,2.96827285 C5.03060598,6.82929493 5,9.83987064 5,12 C5,16.9705627 9.01024582,21 13.9571347,21 Z" id="椭圆形" stroke="#6E6E6E" stroke-width="2"></path>
+            <path d="M14,21 L14,27" id="路径-58" stroke="#6E6E6E" stroke-width="2"></path>
+            <path d="M8,27 L20,27" id="路径-60" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M23.0078018,12.7760529 C23.3183735,12.9211217 23.6522781,13 24,13 L24,13 C25.6568542,13 27,11.209139 27,9 C27,6.790861 25.6568542,5 24,5 C23.6640031,5 23.3409073,5.07364849 23.0392979,5.20949848" id="路径" stroke="#6E6E6E" stroke-width="2"></path>
+            <path d="M1.00780183,12.7760529 C1.31837347,12.9211217 1.65227811,13 2,13 L2,13 C3.65685425,13 5,11.209139 5,9 C5,6.790861 3.65685425,5 2,5 C1.66400308,5 1.3409073,5.07364849 1.03929791,5.20949848" id="路径" stroke="#6E6E6E" stroke-width="2" transform="translate(3.003901, 9.000000) scale(-1, 1) translate(-3.003901, -9.000000) "></path>
+        </g>
+    </g>
+</svg>

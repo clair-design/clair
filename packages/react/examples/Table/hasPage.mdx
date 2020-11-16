@@ -1,0 +1,44 @@
+<!-- 可翻页 -->
+
+```tsx live=true
+function Basic() {
+  const generateData = () => {
+    const random = () => Math.round(Math.random() * 1000);
+    return [...new Array(5)].map((_, i) => ({
+      date: "2019-07-05",
+      key: i,
+      pv: random(),
+      uv: random(),
+      ip: random()
+    }));
+  };
+
+  const [dataSource, setDataSource] = React.useState(generateData());
+  const [pagination, setPagination] = React.useState({
+    pn: 1,
+    total: 20,
+    ps: 5
+  });
+
+  const columns = [
+    { title: "日期", prop: "date" },
+    { title: "浏览量", prop: "pv" },
+    { title: "访客数", prop: "uv" },
+    { title: "IP 数", prop: "ip" }
+  ];
+
+  const onPageChange = evenet => {
+    console.log(event);
+  };
+
+  return (
+    <Table
+      columns={columns}
+      dataSource={dataSource}
+      pagination={pagination}
+      rowKey="key"
+      onPageChange={onPageChange}
+    />
+  );
+}
+```

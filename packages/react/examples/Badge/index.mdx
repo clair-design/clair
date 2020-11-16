@@ -1,0 +1,126 @@
+# Badge
+
+## 定义
+
+持有少量信息的标签。
+
+## 使用场景
+
+提示重要信息当前的状态，图标有上角圆点或圆形徽标数字。
+
+## 基础样式
+
+最简单的徽标，用于新消息提示。定义 value 属性
+
+```JSX live=true className=react-demo-container--badge
+<>
+  <Badge value={9} >
+    <a href="#" className="example" style={{}}></a>
+  </Badge>
+  <Badge value="new"  >
+    <a href="#" className="example"></a>
+  </Badge>
+  <Badge value={<IconClock />} >
+    <a href="#" className="example"></a>
+  </Badge>
+</>
+```
+
+## 最大值样式
+
+```JSX live=true className=react-demo-container--badge
+<>
+ <Badge value={24} max={10}>
+  <a href="#" className="example"></a>
+ </Badge>
+ <Badge value={100} max={99}>
+  <a href="#" className="example"></a>
+ </Badge>
+  <Badge value={1000} max={999}>
+  <a href="#" className="example"></a>
+ </Badge>
+</>
+```
+
+## 自定义内容
+
+可以显示数字以外的文本内容
+
+```JSX live=true className=react-demo-container--badge
+<>
+ <Badge value="new" style={{marginRight:"10px"}}>
+  <a href="#" className="example"></a>
+ </Badge>
+</>
+```
+
+## 小红点
+
+```JSX live=true className=react-demo-container--badge
+<>
+ <Badge isDot={true} value={9} >
+  <a href="#" className="example"></a>
+ </Badge>
+ <Badge isDot={true} value={33} >
+  <IconFile />
+ </Badge>
+ <Badge isDot={true} value={999} >
+  <a href="#" >最新消息</a>
+ </Badge>
+</>
+```
+
+## 自定义颜色
+
+```JSX live=true className=react-demo-container--badge
+<>
+  <Badge value="9" backgroundColor="#F84E44" />
+  <Badge value="9" backgroundColor="#FEA119" />
+  <Badge value="9" backgroundColor="#006BFF" />
+  <Badge value={9} backgroundColor="#52B818" />
+  <Badge value={9} backgroundColor="#C7C7C7" />
+  <Badge value={9} backgroundColor="#F84E44" isDot={true} />
+  <Badge value={9} backgroundColor="#FEA119" isDot={true} />
+  <Badge value={9} backgroundColor="#006BFF" isDot={true} />
+  <Badge value={9} backgroundColor="#52B818" isDot={true} />
+  <Badge value={9} backgroundColor="#C7C7C7" isDot={true} />
+  <Badge  value="9" style={{ backgroundColor: "#fff", color: "#999", boxShadow: "0 0 0 1px #d9d9d9 inset" }} >
+    <a href="#" className="example"></a>
+  </Badge>
+</>
+```
+
+## 隐藏和显示
+
+```JSX live=true className=react-demo-container--badge
+function Index() {
+  const [badgeVisible, setBadgeVisible] = React.useState("0");
+
+  return (
+    <>
+      <div className="controls">
+        <RadioGroup value={badgeVisible} onChange={e=>{setBadgeVisible(e.target.value)}}>
+          <RadioButton name="badge" value="0">显示</RadioButton>
+          <RadioButton name="badge" value="1">隐藏</RadioButton>
+        </RadioGroup>
+      </div>
+      <Badge value={9} hidden={!!(badgeVisible*1)} >
+        <a href="#" className="example"></a>
+      </Badge>
+      <Badge isDot hidden={!!(badgeVisible*1)} >
+        <a href="#" className="example"></a>
+      </Badge>
+    </>
+  );
+}
+```
+
+## Props
+
+| Name            | Description                            | Type                 | Required | Default     |
+| --------------- | -------------------------------------- | -------------------- | -------- | ----------- |
+| value           | 显示值                                 | `string` \| `number` | `false`  | -           |
+| max             | 最大显示值，超过 max 值会显示`${max}+` | `number`             | `false`  | -           |
+| isDot           | 小圆点                                 | `boolean`            | `false`  | `false`     |
+| hidden          | 隐藏 badge                             | `boolean`            | `false`  | -           |
+| backgroundColor | 徽标数背景色                           | `string`             | `false`  | `"#F84E44"` |

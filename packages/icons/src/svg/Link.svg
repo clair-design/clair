@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Link</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="28"></rect>
+    </defs>
+    <g id="Link" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="矩形" opacity="0.200000003"></g>
+            <path d="M12.119005,24.8699427 L6.11900505,24.8699427 C2.80529655,24.8699427 0.119005045,22.1836512 0.119005045,18.8699427 C0.119005045,15.5562342 2.80529655,12.8699427 6.11900505,12.8699427 L12.119005,12.8699427 C15.4327135,12.8699427 18.119005,15.5562342 18.119005,18.8699427" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" mask="url(#mask-2)" transform="translate(9.119005, 18.869943) rotate(-45.000000) translate(-9.119005, -18.869943) "></path>
+            <path d="M21.8689598,15.1343592 L15.8689598,15.1343592 C12.5552513,15.1343592 9.86895982,12.4480677 9.86895982,9.13435925 C9.86895982,5.82065075 12.5552513,3.13435925 15.8689598,3.13435925 L21.8689598,3.13435925 C25.1826683,3.13435925 27.8689598,5.82065075 27.8689598,9.13435925" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" mask="url(#mask-2)" transform="translate(18.868960, 9.134359) rotate(135.000000) translate(-18.868960, -9.134359) "></path>
+        </g>
+    </g>
+</svg>

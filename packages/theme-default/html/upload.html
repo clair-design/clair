@@ -1,0 +1,108 @@
+<title>Upload</title>
+<link rel="stylesheet" href="../styles/upload.scss" />
+<link rel="stylesheet" href="../styles/button.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body {
+    max-width: 1200px;
+    margin: 30px auto;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+<h1>Upload</h1>
+
+<section>
+  <h3>上传按钮使用button组件样式</h3>
+  <button class="c-button c-button--normal c-button--default">默认</button>
+  <button class="c-button c-button--normal c-button--primary">主要</button>
+  <button class="c-button c-button--normal c-button--success">成功</button>
+  <button class="c-button c-button--normal c-button--warning">警告</button>
+  <button class="c-button c-button--normal c-button--danger">危险</button>
+</section>
+
+<section>
+  <h3>Upload组件为inline-block样式，可在同一行同时显示多个内联元素</h3>
+  <div class="c-upload">
+    <div class="c-upload__trigger">
+      <button type="button" class="c-button c-button--default c-button--normal">
+        上传
+      </button>
+    </div>
+    <input name="file" type="file" class="c-upload--hidden" />
+  </div>
+  <input type="username" value="我是内联元素" />
+  <input type="date" value="我是内联元素" />
+  <input type="radio" value="我是内联元素" />
+  <input type="week" value="我是内联元素" />
+  <input type="color" value="我是内联元素" />
+</section>
+
+<section>
+  <h3>input file元素为隐藏元素，只为了触发onChange方法</h3>
+</section>
+
+<section>
+  <h3>拖拽上传默认样式</h3>
+  <div class="c-upload">
+    <div aria-label="上传">
+      <div class="c-upload__drop">
+        <i class="c-icon--svg c-upload__drop-icon">
+          <svg viewBox="0 0 28 28" style="stroke-width: 1.64706;">
+            <g fill="none" fill-rule="evenodd">
+              <path
+                d="M1 20v5a2 2 0 002 2h22a2 2 0 002-2v-5M14 2v19"
+                stroke="currentColor"
+                stroke-linecap="round"
+              ></path>
+              <polyline
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                points="5 11 14 2 23 11"
+              ></polyline>
+            </g>
+          </svg>
+        </i>
+        <p class="c-upload__drop-text">点击或将文件拖拽到这里上传</p>
+        <p class="c-upload__drop-accept-text">支持扩展名：.jpg, .png, .dmg</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>拖拽上传文件进入时样式</h3>
+  <div class="c-upload">
+    <div aria-label="上传">
+      <div class="c-upload__drop c-upload__drop--enter">
+        <i class="c-icon--svg c-upload__drop-icon">
+          <svg viewBox="0 0 28 28" style="stroke-width: 1.64706;">
+            <g fill="none" fill-rule="evenodd">
+              <path
+                d="M1 20v5a2 2 0 002 2h22a2 2 0 002-2v-5M14 2v19"
+                stroke="currentColor"
+                stroke-linecap="round"
+              ></path>
+              <polyline
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                points="5 11 14 2 23 11"
+              ></polyline>
+            </g>
+          </svg>
+        </i>
+        <p class="c-upload__drop-text">点击或将文件拖拽到这里上传</p>
+        <p class="c-upload__drop-accept-text">支持扩展名：.jpg, .png, .dmg</p>
+      </div>
+    </div>
+  </div>
+</section>

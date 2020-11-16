@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Robot</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Robot" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M25.5,15 C26.3284271,15 27,15.6715729 27,16.5 L27,21.5 C27,22.3284271 26.3284271,23 25.5,23 L24,23 L24,15 L25.5,15 Z" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round"></path>
+            <path d="M2.5,15 C3.32842712,15 4,15.6715729 4,16.5 L4,21.5 C4,22.3284271 3.32842712,23 2.5,23 L1,23 L1,15 L2.5,15 Z" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round" transform="translate(2.500000, 19.000000) scale(-1, 1) translate(-2.500000, -19.000000) "></path>
+            <rect id="矩形" stroke="#6E6E6E" stroke-width="2" x="8" y="15" width="12" height="4" rx="2"></rect>
+            <path d="M14,8 L14,4" id="路径-118" stroke="#6E6E6E" stroke-width="2"></path>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" cx="14" cy="3" r="2"></circle>
+            <path d="M4,27 L24,27" id="路径-119" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M14,8 C19.5228475,8 24,12.4771525 24,18 L24,23 L4,23 L4,18 C4,12.4771525 8.4771525,8 14,8 Z" id="矩形" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>

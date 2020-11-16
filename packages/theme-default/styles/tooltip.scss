@@ -1,0 +1,51 @@
+@import 'variables';
+@import 'mixins/tooltipTriangle';
+@import 'popover';
+
+$--tooltip-background-color: change-color(
+  #000,
+  $lightness: get-lightness(90%),
+  $alpha: 0.8
+) !default;
+$--tooltip-color: text-color($--tooltip-background-color);
+$--tooltip-max-width: 320px;
+$--tooltip-base-padding: 8px;
+
+.c-tooltip {
+  &,
+  &.c-popover {
+    position: relative;
+    display: inline-block;
+    max-width: $--tooltip-max-width;
+    padding: $--tooltip-base-padding;
+    color: $--tooltip-color;
+    font-size: $--base-font-size;
+    background-color: $--tooltip-background-color;
+    border-radius: $--base-border-radius;
+  }
+
+  &__text {
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+@include triangle('.c-tooltip', $bgColor: $--tooltip-background-color);
+
+@include triangle(
+  '.c-tooltip.c-popover',
+  $bgColor: $--tooltip-background-color
+);
+
+.c-tooltip-effect-enter-active,
+.c-tooltip-effect-leave-active {
+  transition: transition(opacity);
+}
+
+.c-tooltip-effect-enter,
+.c-tooltip-effect-leave-to {
+  opacity: 0;
+}

@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "es5"
+  },
+  "exclude": ["node_modules"],
+  "include": ["runtime", "../types", "../src"],
+  "extends": "../tsconfig.json"
+}

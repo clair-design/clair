@@ -1,0 +1,36 @@
+```tsx live=true deps=notification
+function Close() {
+  let infoAList = [];
+  const showAInfo = () => {
+    const info = notification.info({
+      title: "Key A Notification",
+      content: "Some content...",
+      onClose() {
+        infoAList = infoAList.filter(item => item !== info);
+      }
+    });
+    infoAList.push(info);
+  };
+  const closeAInfo = () => {
+    infoAList.forEach(info => info.close());
+    infoAList = [];
+  };
+  const closeAll = () => {
+    notification.closeAll();
+  };
+
+  return (
+    <div className="s-wrapper--button">
+      <Button type="primary" onClick={showAInfo}>
+        打开A弹窗
+      </Button>
+      <Button type="warning" onClick={closeAInfo}>
+        关闭所有A弹窗
+      </Button>
+      <Button type="danger" onClick={closeAll}>
+        关闭所有弹窗
+      </Button>
+    </div>
+  );
+}
+```

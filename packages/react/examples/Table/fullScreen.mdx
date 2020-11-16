@@ -1,0 +1,41 @@
+<!-- 全屏展示 -->
+
+```tsx live=true
+function Index() {
+  const random = () => Math.round(Math.random() * 1000);
+  const dataSource = [...new Array(100)].map((_, i) => ({
+    date: "2019-07-05",
+    key: i,
+    pv: random(),
+    uv: random(),
+    ip: random()
+  }));
+
+  const columns = [
+    { title: "日期", prop: "date" },
+    { title: "浏览量", prop: "pv" },
+    { title: "访客数", prop: "uv" },
+    { title: "IP 数", prop: "ip" }
+  ];
+
+  const tableRef = React.useRef(null);
+  const onClick = () => {
+    tableRef.current.fullScreen();
+  };
+  return (
+    <div>
+      <Button type="primary" onClick={onClick} style={{ marginBottom: "12px" }}>
+        全屏展示
+      </Button>
+      <Table
+        bordered
+        height={200}
+        rowKey="key"
+        ref={tableRef}
+        columns={columns}
+        dataSource={dataSource}
+      />
+    </div>
+  );
+}
+```

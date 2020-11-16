@@ -1,0 +1,69 @@
+import Basic from "./basic.mdx";
+import Disabled from "./disabled.mdx";
+import Droppable from "./droppable.mdx";
+import Exceed from "./exceed.mdx";
+import AutoUpload from "./autoUpload.mdx";
+import Directory from "./directory.mdx";
+import List from "./list.mdx";
+
+# Upload
+
+## 定义
+
+选取文件并进行上传。
+
+## 使用场景
+
+用于将本地文件上传到指定服务器地址。
+
+## 文件状态
+
+Upload 组件对于所有文件都赋予了 4 种状态并保存到该文件对象的 `fileState` 属性中，使用者大部分情况下不需要了解这些状态，但理解这些状态会对您的项目开发有所帮助。以下为该属性的 4 种状态详解。
+
+- `ready` 为 `该文件已经准备好可以上传` 状态，选取文件并通过校验时该文件会被设置为 `ready` ，每次上传时会把所有状态为 `ready` 的文件进行上传
+- `uploading` 为 `该文件正在上传` 状态，文件正在上传时该文件会被设置为 `uploading`
+- `success` 为 `该文件上传成功` 状态，所有上传成功的文件都会被设置为 `success`
+- `fail` 为 `该文件上传失败` 状态，所有上传失败的文件都会被设置为 `fail`
+
+<Basic />
+<Droppable />
+<AutoUpload />
+<Directory />
+<List />
+
+## Props
+
+| Name            | Description                                                                                                           | Type                                                           | Required | Default     |
+| --------------- | --------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- | -------- | ----------- |
+| action          | 上传的地址                                                                                                            | `string`                                                       | `true`   | `""`        |
+| disabled        | 是否禁用组件                                                                                                          | `boolean`                                                      | `false`  | `false`     |
+| name            | 发到后台的文件参数名                                                                                                  | `string`                                                       | `false`  | `""`        |
+| accept          | 规定通过文件上传来提交的文件的类型                                                                                    | `string`                                                       | `false`  | `""`        |
+| method          | 上传请求的 http method                                                                                                | `string`                                                       | `false`  | `"post"`    |
+| data            | 上传所需参数                                                                                                          | `object`                                                       | `false`  | `{}`        |
+| headers         | 设置上传的请求头部                                                                                                    | `object`                                                       | `false`  | `{}`        |
+| withCredentials | 上传请求时是否携带 cookie                                                                                             | `boolean`                                                      | `false`  | `false`     |
+| directory       | 是否支持上传文件夹                                                                                                    | `boolean`                                                      | `false`  | `false`     |
+| droppable       | 是否启用拖拽上传                                                                                                      | `boolean`                                                      | `false`  | `false`     |
+| multiple        | 是否支持多选文件                                                                                                      | `boolean`                                                      | `false`  | `false`     |
+| maxCount        | 最大上传文件数量                                                                                                      | `number`                                                       | `false`  | `Infinity`  |
+| maxSize         | 限制上传文件大小，指定 max-size 属性可限制文件大小，目前支持的单位有 KB MB GB，默认为"1024 MB"                        | `string`                                                       | `false`  | `"1024 MB"` |
+| autoUpload      | 是否在选取文件后立即进行上传                                                                                          | `boolean`                                                      | `false`  | `true`      |
+| onHttpRequest   | 覆盖默认的上传行为，可以自定义上传的实现，内部上传所用到的所有参数将包装成 opt 对象提供给开发者，使用方法参考示例文档 | `(requestOption) => Promise`                                   | `false`  | -           |
+| onReady         | 当选择的该批次文件中所有文件都被设置为 ready 状态时触发该事件                                                         | `({ detail: { readyFiles, allFiles }}) => void`                | `false`  | -           |
+| onBeforeUpload  | 即将触发上传文件方法之前的钩子                                                                                        | `({ detail: {readyFiles, allFiles} }) => Promise<Array<File>>` | `false`  | -           |
+| onProgress      | 上传中回调                                                                                                            | `({ detail: { file, allFiles}, nativeEvent }) => void`         | `false`  | -           |
+| onSuccess       | 上传成功回调                                                                                                          | `({ detail: { file, allFiles, response }}) => void`            | `false`  | -           |
+| onError         | 上传失败回调                                                                                                          | `({ detail: { file, allFiles, erorr }}) => void`               | `false`  | -           |
+| onChange        | 上传文件改变时的状态                                                                                                  | `({ detail: { file, allFiles, type }}) => void`                | `false`  | -           |
+| onComplete      | 该批次文件上传全部完成事件                                                                                            | `({ detail: { completeFiles, allFiles }}) => void`             | `false`  | -           |
+| onOverCount     | 超过最大上传文件限制                                                                                                  | `({ detail: { changeFiles, allFiles }}) => void`               | `false`  | -           |
+| onOverSize      | 超过最大尺寸事件，选择的该批次文件中只要有任何一个超过最大尺寸，则触发该事件                                          | `(overMaxSizeFiles, allFiles) => void`                         | `false`  | -           |
+| onAfterRemove   | 移除文件后时的回调                                                                                                    | `({ detail: { allFiles }}) => void`                            | `false`  | -           |
+
+## Methods
+
+| Method Name | Description                  | parameter |
+| ----------- | ---------------------------- | --------- |
+| submit      | 手动上传时需要主动调用该方法 | -         |
+| remove      | 删除文件                     | `files`   |

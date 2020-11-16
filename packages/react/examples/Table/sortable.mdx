@@ -1,0 +1,50 @@
+<!-- 表格排序 -->
+
+```tsx live=true
+function Basic() {
+  const columns = [
+    { title: "来源类型", prop: "type" },
+    { title: "浏览量", prop: "pv" },
+    { title: "访客数", prop: "uv", sortable: true },
+    { title: "IP 数", prop: "ip" }
+  ];
+
+  const [dataSource, setDataSource] = React.useState([
+    { type: "直接访问", pv: 13, uv: 9, ip: 8 },
+    { type: "搜索引擎", pv: 11, uv: 7, ip: 6 },
+    { type: "外部网站", pv: 32, uv: 27, ip: 22 }
+  ]);
+
+  const onSortChange = ({ detail }) => {
+    const { column, order } = detail;
+    const _dataSource = [...dataSource];
+    if (!column) {
+      // 取消排序
+      _dataSource.sort((a, b) => {
+        if (a.date > b.date) return 1;
+        if (a.date < b.date) return -1;
+        return 0;
+      });
+    } else {
+      _dataSource.sort((a, b) => {
+        const sign = order === "ascending" ? 1 : -1;
+        return (a[column] - b[column]) * sign;
+      });
+    }
+    setDataSource(_dataSource);
+  };
+
+  return (
+    <Table
+      type="type"
+      columns={columns}
+      dataSource={dataSource}
+      defaultSort={{
+        column: "uv",
+        order: "ascending"
+      }}
+      onSortChange={onSortChange}
+    />
+  );
+}
+```

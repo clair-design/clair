@@ -1,0 +1,50 @@
+## 垂直样式
+
+垂直的列表。
+
+```tsx live=true
+<>
+  <div>
+    <h5 style={{ fontSize: "14px", fontWeight: 600, marginBottom: "20px" }}>
+      产品信息
+    </h5>
+    <Descriptions layout="vertical">
+      <DescriptionsItem label="产品名称：">Clair Design</DescriptionsItem>
+      <DescriptionsItem label="发布时间：">
+        2019-12-16 10:40:35
+      </DescriptionsItem>
+      <DescriptionsItem label="版本号：">V1.0.0</DescriptionsItem>
+      <DescriptionsItem label="注册信息：">设计公司</DescriptionsItem>
+      <DescriptionsItem label="备注信息：">
+        迭代持续中，更多功能敬请期待，欢迎访问我们的网站
+      </DescriptionsItem>
+    </Descriptions>
+  </div>
+</>
+```
+
+## 垂直带边框样式
+
+垂直带边框和背景颜色的列表。
+
+```tsx live=true
+<>
+  <div>
+    <h5 style={{ fontSize: "14px", fontWeight: 600, marginBottom: "20px" }}>
+      产品信息
+    </h5>
+    <Descriptions bordered layout="vertical">
+      <DescriptionsItem label="产品名称">Clair Design</DescriptionsItem>
+      <DescriptionsItem label="发布时间">2019-12-16 10:40:35</DescriptionsItem>
+      <DescriptionsItem label="版本号">V1.0.0</DescriptionsItem>
+      <DescriptionsItem label="注册信息">设计公司</DescriptionsItem>
+      <DescriptionsItem label="备注信息" span={3}>
+        迭代持续中，更多功能敬请期待，欢迎访问我们的网站
+      </DescriptionsItem>
+      <DescriptionsItem label="评分">
+        <Rating readonly defaultValue={3.7} />
+      </DescriptionsItem>
+    </Descriptions>
+  </div>
+</>
+```

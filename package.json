@@ -1,116 +1,57 @@
 {
-  "name": "clair",
-  "version": "0.7.14",
-  "description": "A design system including principles, Vue components and resources",
-  "main": "dist/clair.cjs.js",
-  "module": "dist/clair.es.js",
-  "unpkg": "dist/clair.js",
-  "files": [
-    "dist",
-    "src"
+  "name": "clair-design",
+  "private": true,
+  "workspaces": [
+    "packages/*"
   ],
+  "description": "Clair Design",
   "scripts": {
     "commit": "git-cz",
-    "test:unit": "jest --config jest.config.js",
-    "test:e2e": "jest --config jest.config.e2e.js",
-    "test": "npm run test:unit && npm run test:e2e",
-    "new": "node ./scripts/boilerplate",
-    "bundle": "sh ./scripts/bundle.sh",
-    "build": "rm -rf .site && npm run bundle && pholio build",
-    "prestart": "sh ./scripts/prestart.sh",
-    "start": "pholio start",
-    "lint": "eslint --format friendly --ext .js,.vue src docs"
+    "bootstrap": "lerna bootstrap",
+    "start": "node -r esm bin/start",
+    "serve": "node -r esm bin/serve",
+    "deploy": "node -r esm bin/deploy",
+    "lint": "lerna run lint --stream --parallel",
+    "fix": "lerna run fix --stream --parallel",
+    "test": "node -r esm bin/test",
+    "test:clean": "lerna run test:clean --stream",
+    "prepublish@npm": "yarn lint && yarn test",
+    "publish@npm": "lerna publish --conventional-commits"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/clair-design/clair.git"
+  "author": {
+    "name": "Yuchen Liu",
+    "email": "liuyuchenzh@gmail.com"
   },
-  "keywords": [
-    "Design",
-    "Vue",
-    "Components"
-  ],
-  "author": "webzhao@gmail.com",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/clair-design/clair/issues"
-  },
-  "homepage": "https://github.com/clair-design/clair#readme",
   "devDependencies": {
-    "@babel/core": "^7.0.1",
-    "@babel/preset-env": "^7.0.0",
-    "@vue/test-utils": "1.0.0-beta.25",
-    "babel-core": "^7.0.0-0",
-    "babel-jest": "^23.6.0",
-    "codesandbox": "^2.1.1",
-    "commitizen": "^3.0.2",
-    "cssnano": "^4.1.0",
-    "cz-conventional-changelog": "^2.1.0",
-    "eslint": "^5.9.0",
-    "eslint-config-clair": "^1.0.1",
-    "eslint-formatter-friendly": "^6.0.0",
-    "eslint-plugin-jest": "^22.1.0",
-    "jest": "^23.6.0",
-    "jest-puppeteer": "^3.3.1",
-    "jest-serializer-vue": "^2.0.2",
-    "lint-staged": "^8.1.0",
-    "pholio": "^0.4.2",
-    "postcss-cli": "^6.0.0",
-    "postcss-cssnext": "^3.0.2",
-    "postcss-each": "^0.10.0",
-    "postcss-easy-import": "^3.0.0",
-    "postcss-for": "^2.1.1",
-    "postcss-reduce-idents": "^4.0.0",
-    "pug": "^2.0.0-rc.4",
-    "puppeteer": "^1.8.0",
-    "rollup": "^0.66.4",
-    "rollup-plugin-alias": "^1.4.0",
-    "rollup-plugin-buble": "^0.19.2",
-    "rollup-plugin-commonjs": "^9.1.6",
-    "rollup-plugin-node-resolve": "^3.3.0",
-    "rollup-plugin-progress": "^0.4.0",
-    "rollup-plugin-replace": "^2.0.0",
-    "rollup-plugin-require-context": "^0.0.2",
-    "rollup-plugin-vue": "3.0.0",
-    "stylelint": "^9.6.0",
-    "stylelint-config-standard": "^18.2.0",
-    "vue-jest": "^3.0.1",
-    "yorkie": "^2.0.0"
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "@commitlint/config-lerna-scopes": "^8.1.0",
+    "commitizen": "^4.0.3",
+    "conventional-changelog-core": "^4.0.2",
+    "cz-lerna-changelog": "^2.0.2",
+    "danger": "^10.1.1",
+    "esm": "^3.2.25",
+    "husky": "^3.0.2",
+    "inquirer": "^7.0.0",
+    "lerna": "^3.16.4",
+    "lodash": "^4.17.15"
   },
-  "dependencies": {
-    "feather-vue": "^1.0.1",
-    "lodash": "^4.17.4",
-    "v-color": "^1.1.0",
-    "v-ctrl": "^1.1.0",
-    "vue": "^2.6.7"
-  },
-  "peerDependencies": {
-    "vue": "^2.6.0"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged && npm run test:unit",
-    "commit-msg": "node scripts/commit-msg.js"
-  },
-  "lint-staged": {
-    "*.css": [
-      "stylelint"
-    ],
-    "*.js": [
-      "eslint --format friendly"
-    ],
-    "*.vue": [
-      "eslint --format friendly"
-    ]
+  "resolutions": {
+    "react": "16.13.0",
+    "react-dom": "16.13.0"
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "./node_modules/cz-lerna-changelog"
     }
   },
-  "resolveAlias": {
-    "@": "src/",
-    "@components": "src/components/",
-    "@scripts": "src/scripts/",
-    "@util": "src/scripts/utils/"
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lerna run --concurrency 1 --stream precommit",
+      "pre-push": "lerna run test --stream --ignore @clair/react",
+      "post-merge": "yarn && lerna run build --scope @clair/helpers --scope @clair/icons --scope babel-plugin-rewrite-module-path"
+    }
   }
 }

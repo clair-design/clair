@@ -1,0 +1,22 @@
+## `visible` 控制显示
+
+```tsx live=true
+function Index() {
+  const [visible, updateVisible] = React.useState(true);
+  const onClose = () => updateVisible(false);
+  onVisibilityChange = ({ detail: { visible: visibleFromEvent } }) => {
+    updateVisible(visibleFromEvent);
+  };
+  return (
+    <PopConfirm
+      visible={visible}
+      onConfirm={onClose}
+      onCancel={onClose}
+      onVisibilityChange={onVisibilityChange}
+      content={<div>You can also use JSX</div>}
+    >
+      <Button>Using props</Button>
+    </PopConfirm>
+  );
+}
+```

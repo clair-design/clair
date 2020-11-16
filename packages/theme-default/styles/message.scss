@@ -1,0 +1,85 @@
+@import 'variables';
+@import 'icon';
+
+.c-message {
+  display: inline-flex;
+  align-items: flex-start;
+
+  max-width: $--msg-max-width;
+  margin-top: 10px;
+  padding: $--msg-padding;
+
+  color: $--secondary-text-color;
+
+  background: $--base-background-color;
+
+  border-radius: $--base-border-radius;
+  box-shadow: $--base-box-shadow;
+
+  pointer-events: all;
+
+  &__content {
+    flex: 1 0 0;
+    font-size: $--base-font-size;
+    line-height: $--base-line-height;
+  }
+
+  > .c-icon--svg:first-child {
+    margin-top: floor(($--base-real-line-height - $--base-icon-size) / 2);
+    margin-right: $--base-icon-space-right;
+    font-size: $--base-icon-size;
+  }
+}
+
+.c-message-container {
+  position: fixed;
+  top: 20px;
+  right: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+}
+
+// message transition
+.c-message-enter-active,
+.c-message-leave-active {
+  transition: transition(all);
+}
+
+.c-message-enter-active {
+  animation: $--transition-duration $--transition-easing both msg-move-down
+    running;
+}
+
+.c-message-leave-active {
+  animation: $--transition-duration $--transition-easing both msg-move-up
+    running;
+}
+
+@keyframes msg-move-down {
+  0% {
+    transform: translateY(-150%);
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes msg-move-up {
+  0% {
+    opacity: 1;
+  }
+
+  to {
+    max-height: 0;
+    padding: 0;
+    opacity: 0;
+  }
+}

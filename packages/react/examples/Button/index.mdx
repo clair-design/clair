@@ -1,0 +1,36 @@
+import Type from "./type.mdx";
+import Size from "./size.mdx";
+import Interact from "./interact.mdx";
+import Block from "./block.mdx";
+import HtmlType from "./htmlType.mdx";
+
+# Button
+
+## 使用场景
+
+执行对象为一个流程对象；操作按钮
+
+<Type />
+
+<Size />
+
+<Interact />
+
+<Block />
+
+<HtmlType />
+
+## Props
+
+| Name     | Description          | Type                                                                                | Required | Default     |
+| -------- | -------------------- | ----------------------------------------------------------------------------------- | -------- | ----------- |
+| type     | 按钮类型             | `"primary"` \| `"success"` \| `"default"` \| `"warning"` \| `"danger"` \| `"ghost"` | `false`  | `"default"` |
+| size     | 按钮尺寸             | `"large"` \| `"normal"` \| `"small"`                                                | `false`  | `"normal"`  |
+| htmlType | 原生`<button />`类型 | `"button"` \| `"reset"` \| `"submit"`                                               | `false`  | `"button"`  |
+| disabled | 是否禁用             | `boolean`                                                                           | `false`  | `false`     |
+| loading  | 加载中               | `boolean`                                                                           | `false`  | `false`     |
+| block    | 自适应父级元素宽度   | `boolean`                                                                           | `false`  | `false`     |
+
+## Events
+
+支持原生 `<button />` 的所有事件。

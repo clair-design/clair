@@ -1,0 +1,43 @@
+import Basic from "./basic";
+import Size from "./size";
+import Disabled from "./disabled";
+import Controlled from "./controlled";
+import Group from "./group";
+import Indeterminate from "./indeterminate";
+
+# Checkbox
+
+<Basic />
+<Size />
+<Disabled />
+<Controlled />
+<Group />
+<Indeterminate />
+
+# Props
+
+## Checkbox
+
+| Name           | Description                                                                                                              | Type                                                                | Required | Default    |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------- | -------- | ---------- |
+| className      | 类名                                                                                                                     | `string`                                                            | `false`  | -          |
+| style          | 样式                                                                                                                     | `React.CSSProperties`                                               | `false`  | -          |
+| name           | `name`属性                                                                                                               | `string`                                                            | `false`  | -          |
+| checked        | 当前是否勾选                                                                                                             | `boolean`                                                           | `false`  | `false`    |
+| defaultChecked | 默认勾选状态                                                                                                             | `boolean`                                                           | `false`  | `false`    |
+| size           | 尺寸                                                                                                                     | `"large"` \| `"normal"` \| `"small"`                                | `false`  | `"normal"` |
+| disabled       | 当前是禁用状态                                                                                                           | `boolean`                                                           | `false`  | `false`    |
+| indeterminate  | 当前是未决状态                                                                                                           | `boolean`                                                           | `false`  | `false`    |
+| value          | 当与`CheckboxGroup`配合时必填。当前`Checkbox`状态改变时触发`CheckboxGroup onChange`回调，`value`会作为`string[]`传参传入 | `string`                                                            | `false`  | -          |
+| onChange       | 变化时的回调函数                                                                                                         | `(e: { target: { value: typeof value, checked: boolean }}) => void` | `false`  | -          |
+
+## Checkbox.Group
+
+| Name         | Description                    | Type                                           | Required | Default |
+| ------------ | ------------------------------ | ---------------------------------------------- | -------- | ------- |
+| className    | 类名                           | `string`                                       | `false`  | -       |
+| name         | 组内所有`checkbox`的`name`属性 | `string`                                       | `false`  | -       |
+| style        | 样式                           | `React.CSSProperties`                          | `false`  | -       |
+| value        | 当前勾选项                     | `string[]`                                     | `false`  | -       |
+| defaultValue | 默认勾选项                     | `string[]`                                     | `false`  | -       |
+| onChange     | 变化时的回调函数               | `(e: { target: { value: string[] } }) => void` | `false`  | -       |

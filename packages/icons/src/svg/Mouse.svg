@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Mouse</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Mouse" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="蒙版" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M14,1 C19.5228475,1 24,5.4771525 24,11 L24,17 C24,22.5228475 19.5228475,27 14,27 C8.4771525,27 4,22.5228475 4,17 L4,11 C4,5.4771525 8.4771525,1 14,1 Z" id="矩形" stroke="#6E6E6E" stroke-width="2"></path>
+            <path d="M14,7 L14,12" id="路径-55" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

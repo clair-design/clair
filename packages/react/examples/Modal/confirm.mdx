@@ -1,0 +1,54 @@
+```tsx live=true deps=Modal
+function Index() {
+  const showInfo = () => {
+    Modal.info({
+      title: <div>test</div>,
+      children: <a href="https://clair.75team.com/">clair</a>
+    });
+  };
+  const showWarning = () => {
+    Modal.warning({
+      title: "Warning Modal",
+      children: "warning content"
+    });
+  };
+  const showSuccess = () => {
+    Modal.success({
+      title: "Success Modal",
+      children: "Success content"
+    });
+  };
+  const showError = () => {
+    Modal.error({
+      title: "Error Modal",
+      children: "Error content",
+      style: { color: "red" }
+    });
+  };
+
+  return (
+    <>
+      <Button
+        type="success"
+        onClick={showSuccess}
+        style={{ marginRight: "20px" }}
+      >
+        成功提示
+      </Button>
+      <Button type="primary" onClick={showInfo} style={{ marginRight: "20px" }}>
+        信息提示
+      </Button>
+      <Button
+        type="warning"
+        onClick={showWarning}
+        style={{ marginRight: "20px" }}
+      >
+        警告提示
+      </Button>
+      <Button type="danger" onClick={showError}>
+        失败提示
+      </Button>
+    </>
+  );
+}
+```

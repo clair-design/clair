@@ -1,0 +1,35 @@
+import Basic from "./basic.mdx";
+import WithAnIcon from "./withAnIcon.mdx";
+import Separator from "./separator.mdx";
+
+# Breadcrumb 面包屑
+
+## 定义
+
+显示当前页面在系统层级结构中的位置，并能向上返回。
+
+## 使用场景
+
+- 当系统拥有超过两级以上的层级结构时；
+- 当需要告知用户『你在哪里』时；
+- 当需要向上导航的功能时。
+
+<Basic />
+<Separator />
+<WithAnIcon />
+
+## Props
+
+### Breadcrumb
+
+| Name      | Description  | Type        | Required | Default |
+| --------- | ------------ | ----------- | -------- | ------- |
+| separator | 分隔符自定义 | `ReactNode` | `false`  | `"/"`   |
+
+### BreadcrumbItem
+
+| Name | Description  | Type     | Required | Default |
+| ---- | ------------ | -------- | -------- | ------- |
+| href | 链接的目的地 | `string` | `false`  | -       |
+
+BreadcrumbItem 支持原生 `<span />` 的所有事件。

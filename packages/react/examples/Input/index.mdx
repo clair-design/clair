@@ -1,0 +1,177 @@
+import Basic from "./basic.mdx";
+
+# Input
+
+## 定义
+
+获取用户输入的内容。
+
+### 基础用法
+
+简单的常规用法
+
+<Basic />
+
+## 禁用样式
+
+输入框不可用状态
+
+```tsx live=true
+<>
+  <Input placeholder="请输入内容" disabled={true} />
+</>
+```
+
+### 可清空
+
+设置 `clearable` 属性时，输入内容可一键清空。
+
+```tsx live=true
+<>
+  <Input placeholder="请输入内容" clearable />
+</>
+```
+
+### 密码输入框
+
+输入密码分可见、不可见两种状态。
+
+```tsx live=true
+<>
+  <Password placeholder="请输入内容" />
+</>
+```
+
+### 文本域
+
+用于输入多行文本信息。
+
+```tsx live=true
+<>
+  <TextArea defaultRows={5} placeholder="请输入内容" />
+</>
+```
+
+### 自适应高度的文本域
+
+用于输入多行文本信息，可以根据输入的内容自动调整输入框高度。
+
+```tsx live=true
+<>
+  <TextArea placeholder="请输入内容" autoSize={{ minRows: 3, maxRows: 6 }} />
+</>
+```
+
+### 不同的状态
+
+根据输入内容提示不同状态。
+
+```tsx live=true className=s-input-example
+<>
+  <Input
+    placeholder="请输入内容"
+    type="success"
+    suffixIcon={<IconStatusSuccess />}
+  />
+  <Input
+    placeholder="请输入内容"
+    type="warning"
+    suffixIcon={<IconStatusWarning />}
+  />
+  <Input
+    placeholder="请输入内容"
+    type="error"
+    suffixIcon={<IconStatusError />}
+  />
+</>
+```
+
+### 带图标的输入框
+
+输入框可以前置或者后置一个图标。
+
+```tsx live=true className=s-input-example
+<>
+  <Input placeholder="请输入内容" prefixIcon={<IconSearch />} />
+
+  <Input placeholder="请输入内容" suffixIcon={<IconSetting />} />
+</>
+```
+
+### 组合样式
+
+可前置或者后置元素，一般为标签或按钮。
+
+```tsx live=true className=s-input-example
+<>
+  <Input
+    placeholder="请输入内容"
+    prefix={<em className="prefix-text">http://</em>}
+  />
+
+  <Input
+    placeholder="请输入内容"
+    suffix={<em className="suffix-text">.com</em>}
+  />
+
+  <Input
+    placeholder="请输入内容"
+    suffix={<Button type="primary">搜索</Button>}
+  />
+</>
+```
+
+### 不同尺寸
+
+大中小三种组合，可以和表单输入框进行对应。
+
+```tsx live=true className=s-input-example
+<>
+  <Input placeholder="请输入内容" size="large" />
+  <Input placeholder="请输入内容" size="normal" />
+  <Input placeholder="请输入内容" size="small" />
+</>
+```
+
+## Props
+
+| Name         | Description              | Type                                                           | Required | Default    |
+| ------------ | ------------------------ | -------------------------------------------------------------- | -------- | ---------- |
+| value        | input 值                 | `string`                                                       | `false`  | -          |
+| defaultValue | input 默认值             | `string`                                                       | `false`  | -          |
+| htmlType     | input 类型               | `string`                                                       | `false`  | `"text"`   |
+| size         | input 尺寸               | `"large"` \| `"normal"` \| `"small"`                           | `false`  | `"normal"` |
+| placeholder  | 输入框占位文本           | `string`                                                       | `false`  | -          |
+| disabled     | 是否禁用                 | `boolean`                                                      | `false`  | `false`    |
+| type         | input 状态类型           | `"success"` \| `"warning"` \| `"error"`                        | `false`  | -          |
+| prefixIcon   | 输入框头部图标           | `React.ReactNode`                                              | `false`  | -          |
+| suffixIcon   | 输入框尾部图标           | `React.ReactNode`                                              | `false`  | -          |
+| prefix       | 输入框外，头部内容       | `React.ReactNode`                                              | `false`  | -          |
+| suffix       | 输入框外，尾部内容       | `React.ReactNode`                                              | `false`  | -          |
+| clearable    | 可以点击清除图标删除内容 | `boolean`                                                      | `false`  | `false`    |
+| onChange     | input 内容变化           | `({ target: { value: string }, nativeEvent?: Event }) => void` | `false`  | -          |
+
+支持原生 `<input />` 的所有事件和属性。
+
+## Password.Props
+
+| Name        | Description    | Type      | Required | Default |
+| ----------- | -------------- | --------- | -------- | ------- |
+| allowToggle | 是否显示切换键 | `boolean` | `false`  | `true`  |
+
+其它与`<Input />`props 相同
+
+## TextArea.Props
+
+| Name         | Description       | Type                                                           | Required | Default    |
+| ------------ | ----------------- | -------------------------------------------------------------- | -------- | ---------- |
+| value        | textarea 值       | `string`                                                       | `false`  | -          |
+| defaultValue | textarea 默认值   | `string`                                                       | `false`  | -          |
+| disabled     | 是否禁用          | `boolean`                                                      | `false`  | `false`    |
+| size         | textarea 尺寸     | `"large"` \| `"normal"` \| `"small"`                           | `false`  | `"normal"` |
+| type         | textarea 状态类型 | `"success" | "warning" | "error"`                              | `false`  | -          |
+| defaultRows  | 默认行数          | `number`                                                       | `false`  | -          |
+| autoSize     | 自适应内容高度    | `boolean` \| `{ minRows: number; maxRows: number; }`           | `false`  | -          |
+| onChange     | textarea 内容变化 | `({ target: { value: string }, nativeEvent?: Event }) => void` | `false`  | -          |
+
+支持原生 `<textarea />` 的所有事件和属性。

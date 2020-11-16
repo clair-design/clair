@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<title>Input</title>
+<link rel="stylesheet" href="../styles/input.scss" />
+<link rel="stylesheet" href="../styles/button.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body {
+    margin: 30px auto 100px;
+    max-width: 1200px;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+
+  .c-input-demo {
+    width: 200px;
+  }
+
+  .c-search-demo {
+    margin-bottom: 10px;
+  }
+
+  .c-textarea-demo {
+    width: 500px;
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+<h1>Input</h1>
+
+<h2>不同尺寸</h2>
+<div style="margin-bottom: 1em;">
+  <input type="text" class="c-input c-input--small" placeholder="请输入内容" />
+  <input type="text" class="c-input c-input--normal" placeholder="请输入内容" />
+  <input type="text" class="c-input c-input--large" placeholder="请输入内容" />
+</div>
+
+<h2>禁用</h2>
+<div style="margin-bottom: 1em;">
+  <input
+    type="text"
+    class="c-input c-input--small"
+    disabled
+    placeholder="请输入内容"
+  />
+  <input
+    type="text"
+    class="c-input c-input--normal"
+    disabled
+    placeholder="请输入内容"
+  />
+  <input
+    type="text"
+    class="c-input c-input--large"
+    disabled
+    placeholder="请输入内容"
+  />
+</div>
+<h2>错误</h2>
+<div style="margin-bottom: 1em;">
+  <input
+    type="text"
+    class="c-input c-input--small c-input--error"
+    placeholder="请输入内容"
+  />
+  <input
+    type="text"
+    class="c-input c-input--normal c-input--error"
+    placeholder="请输入内容"
+  />
+  <input
+    type="text"
+    class="c-input c-input--large c-input--error"
+    placeholder="请输入内容"
+  />
+</div>
+
+<h2>不同尺寸 + prefix</h2>
+
+<div style="margin-bottom: 1em;">
+  <div
+    class="c-input-affix-container c-input-affix-container--small"
+    tabindex="-1"
+  >
+    <input
+      type="text"
+      class="c-input c-input--small"
+      placeholder="请输入要搜索的内容"
+    />
+    <span class="c-input-suffix">
+      <i class="c-icon--svg">
+        <svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
+          <path
+            d="M64 384a235.2 235.2 0 0 1 0-64c20.48-3.2 39.424-3.072 59.712 0 104.512 131.456 236.288 192 418.176 192 122.112 0 253.888-60.544 358.4-192 20.288-3.072 39.168-3.2 59.712 0 2.88 21.76 2.944 42.048 0 64-132.928 124.544-279.872 192-418.112 192C343.872 576 196.928 508.544 64 384z"
+            p-id="2605"
+          ></path>
+          <path
+            d="M480 576a32 32 0 0 1 64 0v127.68a32 32 0 1 1-64 0V576zM684.16 587.968a32 32 0 1 1 59.328-23.936l35.328 87.808a32 32 0 1 1-59.392 23.936l-35.328-87.808zM365.12 570.752a32 32 0 1 0-59.648-23.232l-40.064 103.04a32 32 0 1 0 59.648 23.168l40.064-103.04zM858.24 492.032a32 32 0 1 1 47.104-43.328l69.376 75.264a32 32 0 1 1-47.104 43.392L858.24 492.032zM166.912 491.584a32 32 0 1 0-44.416-46.08L41.792 523.328a32 32 0 1 0 44.416 46.08l80.64-77.824z"
+            p-id="2606"
+          ></path>
+        </svg>
+      </i>
+    </span>
+  </div>
+
+  <div
+    class="c-input-affix-container c-input-affix-container--normal"
+    tabindex="-1"
+  >
+    <input
+      type="text"
+      class="c-input c-input--normal"
+      placeholder="请输入要搜索的内容"
+    />
+    <span class="c-input-suffix">
+      <i class="c-icon--svg">
+        <svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
+          <path
+            d="M64 384a235.2 235.2 0 0 1 0-64c20.48-3.2 39.424-3.072 59.712 0 104.512 131.456 236.288 192 418.176 192 122.112 0 253.888-60.544 358.4-192 20.288-3.072 39.168-3.2 59.712 0 2.88 21.76 2.944 42.048 0 64-132.928 124.544-279.872 192-418.112 192C343.872 576 196.928 508.544 64 384z"
+            p-id="2605"
+          ></path>
+          <path
+            d="M480 576a32 32 0 0 1 64 0v127.68a32 32 0 1 1-64 0V576zM684.16 587.968a32 32 0 1 1 59.328-23.936l35.328 87.808a32 32 0 1 1-59.392 23.936l-35.328-87.808zM365.12 570.752a32 32 0 1 0-59.648-23.232l-40.064 103.04a32 32 0 1 0 59.648 23.168l40.064-103.04zM858.24 492.032a32 32 0 1 1 47.104-43.328l69.376 75.264a32 32 0 1 1-47.104 43.392L858.24 492.032zM166.912 491.584a32 32 0 1 0-44.416-46.08L41.792 523.328a32 32 0 1 0 44.416 46.08l80.64-77.824z"
+            p-id="2606"
+          ></path>
+        </svg>
+      </i>
+    </span>
+  </div>
+
+  <div
+    class="c-input-affix-container c-input-affix-container--large"
+    tabindex="-1"
+  >
+    <input
+      type="text"
+      class="c-input c-input--large"
+      placeholder="请输入要搜索的内容"
+    />
+    <span class="c-input-suffix">
+      <i class="c-icon--svg">
+        <svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
+          <path
+            d="M64 384a235.2 235.2 0 0 1 0-64c20.48-3.2 39.424-3.072 59.712 0 104.512 131.456 236.288 192 418.176 192 122.112 0 253.888-60.544 358.4-192 20.288-3.072 39.168-3.2 59.712 0 2.88 21.76 2.944 42.048 0 64-132.928 124.544-279.872 192-418.112 192C343.872 576 196.928 508.544 64 384z"
+            p-id="2605"
+          ></path>
+          <path
+            d="M480 576a32 32 0 0 1 64 0v127.68a32 32 0 1 1-64 0V576zM684.16 587.968a32 32 0 1 1 59.328-23.936l35.328 87.808a32 32 0 1 1-59.392 23.936l-35.328-87.808zM365.12 570.752a32 32 0 1 0-59.648-23.232l-40.064 103.04a32 32 0 1 0 59.648 23.168l40.064-103.04zM858.24 492.032a32 32 0 1 1 47.104-43.328l69.376 75.264a32 32 0 1 1-47.104 43.392L858.24 492.032zM166.912 491.584a32 32 0 1 0-44.416-46.08L41.792 523.328a32 32 0 1 0 44.416 46.08l80.64-77.824z"
+            p-id="2606"
+          ></path>
+        </svg>
+      </i>
+    </span>
+  </div>
+</div>
+
+<h2>不同尺寸 + prefix + 禁用</h2>
+<div style="margin-bottom: 1em;">
+  <div
+    class="c-input-affix-container c-input-affix-container--small c-input-affix-container--disabled"
+  >
+    <input
+      type="text"
+      class="c-input c-input--small"
+      disabled
+      placeholder="请输入要搜索的内容"
+    />
+    <span class="c-input-suffix">
+      <i class="c-icon--svg">
+        <svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
+          <path
+            d="M64 384a235.2 235.2 0 0 1 0-64c20.48-3.2 39.424-3.072 59.712 0 104.512 131.456 236.288 192 418.176 192 122.112 0 253.888-60.544 358.4-192 20.288-3.072 39.168-3.2 59.712 0 2.88 21.76 2.944 42.048 0 64-132.928 124.544-279.872 192-418.112 192C343.872 576 196.928 508.544 64 384z"
+            p-id="2605"
+          ></path>
+          <path
+            d="M480 576a32 32 0 0 1 64 0v127.68a32 32 0 1 1-64 0V576zM684.16 587.968a32 32 0 1 1 59.328-23.936l35.328 87.808a32 32 0 1 1-59.392 23.936l-35.328-87.808zM365.12 570.752a32 32 0 1 0-59.648-23.232l-40.064 103.04a32 32 0 1 0 59.648 23.168l40.064-103.04zM858.24 492.032a32 32 0 1 1 47.104-43.328l69.376 75.264a32 32 0 1 1-47.104 43.392L858.24 492.032zM166.912 491.584a32 32 0 1 0-44.416-46.08L41.792 523.328a32 32 0 1 0 44.416 46.08l80.64-77.824z"
+            p-id="2606"
+          ></path>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div
+    class="c-input-affix-container c-input-affix-container--normal c-input-affix-container--disabled"
+  >
+    <input
+      type="text"
+      class="c-input c-input--normal"
+      disabled
+      placeholder="请输入要搜索的内容"
+    />
+    <span class="c-input-suffix">
+      <i class="c-icon--svg">
+        <svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
+          <path
+            d="M64 384a235.2 235.2 0 0 1 0-64c20.48-3.2 39.424-3.072 59.712 0 104.512 131.456 236.288 192 418.176 192 122.112 0 253.888-60.544 358.4-192 20.288-3.072 39.168-3.2 59.712 0 2.88 21.76 2.944 42.048 0 64-132.928 124.544-279.872 192-418.112 192C343.872 576 196.928 508.544 64 384z"
+            p-id="2605"
+          ></path>
+          <path
+            d="M480 576a32 32 0 0 1 64 0v127.68a32 32 0 1 1-64 0V576zM684.16 587.968a32 32 0 1 1 59.328-23.936l35.328 87.808a32 32 0 1 1-59.392 23.936l-35.328-87.808zM365.12 570.752a32 32 0 1 0-59.648-23.232l-40.064 103.04a32 32 0 1 0 59.648 23.168l40.064-103.04zM858.24 492.032a32 32 0 1 1 47.104-43.328l69.376 75.264a32 32 0 1 1-47.104 43.392L858.24 492.032zM166.912 491.584a32 32 0 1 0-44.416-46.08L41.792 523.328a32 32 0 1 0 44.416 46.08l80.64-77.824z"
+            p-id="2606"
+          ></path>
+        </svg>
+      </i>
+    </span>
+  </div>
+
+  <div
+    class="c-input-affix-container c-input-affix-container--large c-input-affix-container--disabled"
+  >
+    <input
+      type="text"
+      class="c-input c-input--large"
+      disabled
+      placeholder="请输入要搜索的内容"
+    />
+    <span class="c-input-suffix">
+      <i class="c-icon--svg">
+        <svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
+          <path
+            d="M64 384a235.2 235.2 0 0 1 0-64c20.48-3.2 39.424-3.072 59.712 0 104.512 131.456 236.288 192 418.176 192 122.112 0 253.888-60.544 358.4-192 20.288-3.072 39.168-3.2 59.712 0 2.88 21.76 2.944 42.048 0 64-132.928 124.544-279.872 192-418.112 192C343.872 576 196.928 508.544 64 384z"
+            p-id="2605"
+          ></path>
+          <path
+            d="M480 576a32 32 0 0 1 64 0v127.68a32 32 0 1 1-64 0V576zM684.16 587.968a32 32 0 1 1 59.328-23.936l35.328 87.808a32 32 0 1 1-59.392 23.936l-35.328-87.808zM365.12 570.752a32 32 0 1 0-59.648-23.232l-40.064 103.04a32 32 0 1 0 59.648 23.168l40.064-103.04zM858.24 492.032a32 32 0 1 1 47.104-43.328l69.376 75.264a32 32 0 1 1-47.104 43.392L858.24 492.032zM166.912 491.584a32 32 0 1 0-44.416-46.08L41.792 523.328a32 32 0 1 0 44.416 46.08l80.64-77.824z"
+            p-id="2606"
+          ></path>
+        </svg>
+      </i>
+    </span>
+  </div>
+</div>
+
+<h2>不同尺寸 + prefix + suffix</h2>
+<div style="margin-bottom: 1em; margin-top: 1em;">
+  <div
+    class="c-input-affix-container c-input-affix-container--small"
+    tabindex="-1"
+  >
+    <span class="c-input-prefix">
+      <i class="c-icon--svg">
+        <svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
+          <path
+            d="M64 384a235.2 235.2 0 0 1 0-64c20.48-3.2 39.424-3.072 59.712 0 104.512 131.456 236.288 192 418.176 192 122.112 0 253.888-60.544 358.4-192 20.288-3.072 39.168-3.2 59.712 0 2.88 21.76 2.944 42.048 0 64-132.928 124.544-279.872 192-418.112 192C343.872 576 196.928 508.544 64 384z"
+            p-id="2605"
+          ></path>
+          <path
+            d="M480 576a32 32 0 0 1 64 0v127.68a32 32 0 1 1-64 0V576zM684.16 587.968a32 32 0 1 1 59.328-23.936l35.328 87.808a32 32 0 1 1-59.392 23.936l-35.328-87.808zM365.12 570.752a32 32 0 1 0-59.648-23.232l-40.064 103.04a32 32 0 1 0 59.648 23.168l40.064-103.04zM858.24 492.032a32 32 0 1 1 47.104-43.328l69.376 75.264a32 32 0 1 1-47.104 43.392L858.24 492.032zM166.912 491.584a32 32 0 1 0-44.416-46.08L41.792 523.328a32 32 0 1 0 44.416 46.08l80.64-77.824z"
+            p-id="2606"
+          ></path>
+        </svg>
+      </i>
+    </span>
+    <input
+      type="text"
+      class="c-input c-input--small"
+      placeholder="请输入要搜索的内容"
+    />
+    <span class="c-input-suffix">
+      <i class="c-icon--svg">
+        <svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
+          <path
+            d="M512 256C357.184 256 213.888 339.392 80.512 512 213.888 684.608 357.184 768 512 768c154.88 0 298.624-83.392 432.896-256C810.624 339.392 666.88 256 512 256z m0 576C323.456 832 153.088 725.312 0.832 512 153.152 298.688 323.456 192 512 192c188.544 0 359.424 106.688 512.832 320-153.408 213.312-324.288 320-512.832 320z"
+            p-id="3047"
+          ></path>
+          <path
+            d="M512 640a128 128 0 1 0 0-256 128 128 0 0 0 0 256z m0 64a192 192 0 1 1 0-384 192 192 0 0 1 0 384z"
+            p-id="3048"
+          ></path>
+        </svg>
+      </i>
+    </span>
+  </div>
+
+  <div
+    class="c-input-affix-container c-input-affix-container--normal"
+    tabindex="-1"
+  >
+    <span class="c-input-prefix">
+      <i class="c-icon--svg">
+        <svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
+          <path
+            d="M64 384a235.2 235.2 0 0 1 0-64c20.48-3.2 39.424-3.072 59.712 0 104.512 131.456 236.288 192 418.176 192 122.112 0 253.888-60.544 358.4-192 20.288-3.072 39.168-3.2 59.712 0 2.88 21.76 2.944 42.048 0 64-132.928 124.544-279.872 192-418.112 192C343.872 576 196.928 508.544 64 384z"
+            p-id="2605"
+          ></path>
+          <path
+            d="M480 576a32 32 0 0 1 64 0v127.68a32 32 0 1 1-64 0V576zM684.16 587.968a32 32 0 1 1 59.328-23.936l35.328 87.808a32 32 0 1 1-59.392 23.936l-35.328-87.808zM365.12 570.752a32 32 0 1 0-59.648-23.232l-40.064 103.04a32 32 0 1 0 59.648 23.168l40.064-103.04zM858.24 492.032a32 32 0 1 1 47.104-43.328l69.376 75.264a32 32 0 1 1-47.104 43.392L858.24 492.032zM166.912 491.584a32 32 0 1 0-44.416-46.08L41.792 523.328a32 32 0 1 0 44.416 46.08l80.64-77.824z"
+            p-id="2606"
+          ></path>
+        </svg>
+      </i>
+    </span>
+    <input
+      type="text"
+      class="c-input c-input--normal"
+      placeholder="请输入要搜索的内容"
+    />
+    <span class="c-input-suffix">
+      <i class="c-icon--svg">
+        <svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
+          <path
+            d="M512 256C357.184 256 213.888 339.392 80.512 512 213.888 684.608 357.184 768 512 768c154.88 0 298.624-83.392 432.896-256C810.624 339.392 666.88 256 512 256z m0 576C323.456 832 153.088 725.312 0.832 512 153.152 298.688 323.456 192 512 192c188.544 0 359.424 106.688 512.832 320-153.408 213.312-324.288 320-512.832 320z"
+            p-id="3047"
+          ></path>
+          <path
+            d="M512 640a128 128 0 1 0 0-256 128 128 0 0 0 0 256z m0 64a192 192 0 1 1 0-384 192 192 0 0 1 0 384z"
+            p-id="3048"
+          ></path>
+        </svg>
+      </i>
+    </span>
+  </div>
+
+  <div
+    class="c-input-affix-container c-input-affix-container--large"
+    tabindex="-1"
+  >
+    <span class="c-input-prefix">
+      <i class="c-icon--svg">
+        <svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
+          <path
+            d="M64 384a235.2 235.2 0 0 1 0-64c20.48-3.2 39.424-3.072 59.712 0 104.512 131.456 236.288 192 418.176 192 122.112 0 253.888-60.544 358.4-192 20.288-3.072 39.168-3.2 59.712 0 2.88 21.76 2.944 42.048 0 64-132.928 124.544-279.872 192-418.112 192C343.872 576 196.928 508.544 64 384z"
+            p-id="2605"
+          ></path>
+          <path
+            d="M480 576a32 32 0 0 1 64 0v127.68a32 32 0 1 1-64 0V576zM684.16 587.968a32 32 0 1 1 59.328-23.936l35.328 87.808a32 32 0 1 1-59.392 23.936l-35.328-87.808zM365.12 570.752a32 32 0 1 0-59.648-23.232l-40.064 103.04a32 32 0 1 0 59.648 23.168l40.064-103.04zM858.24 492.032a32 32 0 1 1 47.104-43.328l69.376 75.264a32 32 0 1 1-47.104 43.392L858.24 492.032zM166.912 491.584a32 32 0 1 0-44.416-46.08L41.792 523.328a32 32 0 1 0 44.416 46.08l80.64-77.824z"
+            p-id="2606"
+          ></path>
+        </svg>
+      </i>
+    </span>
+    <input
+      type="text"
+      class="c-input c-input--large"
+      placeholder="请输入要搜索的内容"
+    />
+    <span class="c-input-suffix">
+      <i class="c-icon--svg">
+        <svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
+          <path
+            d="M512 256C357.184 256 213.888 339.392 80.512 512 213.888 684.608 357.184 768 512 768c154.88 0 298.624-83.392 432.896-256C810.624 339.392 666.88 256 512 256z m0 576C323.456 832 153.088 725.312 0.832 512 153.152 298.688 323.456 192 512 192c188.544 0 359.424 106.688 512.832 320-153.408 213.312-324.288 320-512.832 320z"
+            p-id="3047"
+          ></path>
+          <path
+            d="M512 640a128 128 0 1 0 0-256 128 128 0 0 0 0 256z m0 64a192 192 0 1 1 0-384 192 192 0 0 1 0 384z"
+            p-id="3048"
+          ></path>
+        </svg>
+      </i>
+    </span>
+  </div>
+</div>
+
+<h2>不同尺寸 + prefix + suffix + 禁用</h2>
+<div style="margin-bottom: 1em; margin-top: 1em;">
+  <div
+    class="c-input-affix-container c-input-affix-container--small c-input-affix-container--disabled"
+  >
+    <span class="c-input-prefix">
+      <i class="c-icon--svg">
+        <svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
+          <path
+            d="M64 384a235.2 235.2 0 0 1 0-64c20.48-3.2 39.424-3.072 59.712 0 104.512 131.456 236.288 192 418.176 192 122.112 0 253.888-60.544 358.4-192 20.288-3.072 39.168-3.2 59.712 0 2.88 21.76 2.944 42.048 0 64-132.928 124.544-279.872 192-418.112 192C343.872 576 196.928 508.544 64 384z"
+            p-id="2605"
+          ></path>
+          <path
+            d="M480 576a32 32 0 0 1 64 0v127.68a32 32 0 1 1-64 0V576zM684.16 587.968a32 32 0 1 1 59.328-23.936l35.328 87.808a32 32 0 1 1-59.392 23.936l-35.328-87.808zM365.12 570.752a32 32 0 1 0-59.648-23.232l-40.064 103.04a32 32 0 1 0 59.648 23.168l40.064-103.04zM858.24 492.032a32 32 0 1 1 47.104-43.328l69.376 75.264a32 32 0 1 1-47.104 43.392L858.24 492.032zM166.912 491.584a32 32 0 1 0-44.416-46.08L41.792 523.328a32 32 0 1 0 44.416 46.08l80.64-77.824z"
+            p-id="2606"
+          ></path>
+        </svg>
+      </i>
+    </span>
+    <input
+      type="text"
+      class="c-input c-input--small"
+      placeholder="请输入要搜索的内容"
+      disabled
+    />
+    <span class="c-input-suffix">
+      <i class="c-icon--svg">
+        <svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
+          <path
+            d="M512 256C357.184 256 213.888 339.392 80.512 512 213.888 684.608 357.184 768 512 768c154.88 0 298.624-83.392 432.896-256C810.624 339.392 666.88 256 512 256z m0 576C323.456 832 153.088 725.312 0.832 512 153.152 298.688 323.456 192 512 192c188.544 0 359.424 106.688 512.832 320-153.408 213.312-324.288 320-512.832 320z"
+            p-id="3047"
+          ></path>
+          <path
+            d="M512 640a128 128 0 1 0 0-256 128 128 0 0 0 0 256z m0 64a192 192 0 1 1 0-384 192 192 0 0 1 0 384z"
+            p-id="3048"
+          ></path>
+        </svg>
+      </i>
+    </span>
+  </div>
+
+  <div
+    class="c-input-affix-container c-input-affix-container--normal c-input-affix-container--disabled"
+  >
+    <span class="c-input-prefix">
+      <i class="c-icon--svg">
+        <svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
+          <path
+            d="M64 384a235.2 235.2 0 0 1 0-64c20.48-3.2 39.424-3.072 59.712 0 104.512 131.456 236.288 192 418.176 192 122.112 0 253.888-60.544 358.4-192 20.288-3.072 39.168-3.2 59.712 0 2.88 21.76 2.944 42.048 0 64-132.928 124.544-279.872 192-418.112 192C343.872 576 196.928 508.544 64 384z"
+            p-id="2605"
+          ></path>
+          <path
+            d="M480 576a32 32 0 0 1 64 0v127.68a32 32 0 1 1-64 0V576zM684.16 587.968a32 32 0 1 1 59.328-23.936l35.328 87.808a32 32 0 1 1-59.392 23.936l-35.328-87.808zM365.12 570.752a32 32 0 1 0-59.648-23.232l-40.064 103.04a32 32 0 1 0 59.648 23.168l40.064-103.04zM858.24 492.032a32 32 0 1 1 47.104-43.328l69.376 75.264a32 32 0 1 1-47.104 43.392L858.24 492.032zM166.912 491.584a32 32 0 1 0-44.416-46.08L41.792 523.328a32 32 0 1 0 44.416 46.08l80.64-77.824z"
+            p-id="2606"
+          ></path>
+        </svg>
+      </i>
+    </span>
+    <input
+      type="text"
+      class="c-input c-input--normal"
+      placeholder="请输入要搜索的内容"
+      disabled
+    />
+    <span class="c-input-suffix">
+      <i class="c-icon--svg">
+        <svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
+          <path
+            d="M512 256C357.184 256 213.888 339.392 80.512 512 213.888 684.608 357.184 768 512 768c154.88 0 298.624-83.392 432.896-256C810.624 339.392 666.88 256 512 256z m0 576C323.456 832 153.088 725.312 0.832 512 153.152 298.688 323.456 192 512 192c188.544 0 359.424 106.688 512.832 320-153.408 213.312-324.288 320-512.832 320z"
+            p-id="3047"
+          ></path>
+          <path
+            d="M512 640a128 128 0 1 0 0-256 128 128 0 0 0 0 256z m0 64a192 192 0 1 1 0-384 192 192 0 0 1 0 384z"
+            p-id="3048"
+          ></path>
+        </svg>
+      </i>
+    </span>
+  </div>
+
+  <div
+    class="c-input-affix-container c-input-affix-container--large c-input-affix-container--disabled"
+  >
+    <span class="c-input-prefix">
+      <i class="c-icon--svg">
+        <svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
+          <path
+            d="M64 384a235.2 235.2 0 0 1 0-64c20.48-3.2 39.424-3.072 59.712 0 104.512 131.456 236.288 192 418.176 192 122.112 0 253.888-60.544 358.4-192 20.288-3.072 39.168-3.2 59.712 0 2.88 21.76 2.944 42.048 0 64-132.928 124.544-279.872 192-418.112 192C343.872 576 196.928 508.544 64 384z"
+            p-id="2605"
+          ></path>
+          <path
+            d="M480 576a32 32 0 0 1 64 0v127.68a32 32 0 1 1-64 0V576zM684.16 587.968a32 32 0 1 1 59.328-23.936l35.328 87.808a32 32 0 1 1-59.392 23.936l-35.328-87.808zM365.12 570.752a32 32 0 1 0-59.648-23.232l-40.064 103.04a32 32 0 1 0 59.648 23.168l40.064-103.04zM858.24 492.032a32 32 0 1 1 47.104-43.328l69.376 75.264a32 32 0 1 1-47.104 43.392L858.24 492.032zM166.912 491.584a32 32 0 1 0-44.416-46.08L41.792 523.328a32 32 0 1 0 44.416 46.08l80.64-77.824z"
+            p-id="2606"
+          ></path>
+        </svg>
+      </i>
+    </span>
+    <input
+      type="text"
+      class="c-input c-input--large"
+      placeholder="请输入要搜索的内容"
+      disabled
+    />
+    <span class="c-input-suffix">
+      <i class="c-icon--svg">
+        <svg viewBox="0 0 1024 1024" width="16" height="16" fill="currentColor">
+          <path
+            d="M512 256C357.184 256 213.888 339.392 80.512 512 213.888 684.608 357.184 768 512 768c154.88 0 298.624-83.392 432.896-256C810.624 339.392 666.88 256 512 256z m0 576C323.456 832 153.088 725.312 0.832 512 153.152 298.688 323.456 192 512 192c188.544 0 359.424 106.688 512.832 320-153.408 213.312-324.288 320-512.832 320z"
+            p-id="3047"
+          ></path>
+          <path
+            d="M512 640a128 128 0 1 0 0-256 128 128 0 0 0 0 256z m0 64a192 192 0 1 1 0-384 192 192 0 0 1 0 384z"
+            p-id="3048"
+          ></path>
+        </svg>
+      </i>
+    </span>
+  </div>
+</div>
+
+<h2>带按钮</h2>
+<div class="c-search-demo">
+  <div class="c-input-group c-input-group--small">
+    <input
+      type="text"
+      class="c-input c-input--small"
+      placeholder="请输入要搜索的内容"
+    />
+    <button class="c-button c-button--primary c-button--small">
+      <span class="c-input__suffix-inner c-input-search-icon">
+        <i class="c-icon--svg">
+          <svg
+            viewBox="0 0 1024 1024"
+            width="16"
+            height="16"
+            fill="currentColor"
+          >
+            <path
+              d="M703.979498 749.234332m22.627417-22.627417l0 0q22.627417-22.627417 45.254834 0l181.019336 181.019336q22.627417 22.627417 0 45.254834l0 0q-22.627417 22.627417-45.254834 0l-181.019336-181.019336q-22.627417-22.627417 0-45.254834Z"
+              p-id="2897"
+            ></path>
+            <path
+              d="M480 832c195.328 0 352-158.72 352-352S675.328 128 480 128 128 286.72 128 480 284.672 832 480 832z m0 64a416 416 0 1 1 0-832 416 416 0 0 1 0 832z"
+              p-id="2898"
+            ></path>
+          </svg>
+        </i>
+      </span>
+    </button>
+  </div>
+  <div class="c-input-group c-input-group--normal">
+    <input
+      type="text"
+      class="c-input c-input--normal"
+      placeholder="请输入要搜索的内容"
+    />
+    <button class="c-button c-button--primary c-button--normal">
+      <span class="c-input__suffix-inner c-input-search-icon">
+        <i class="c-icon--svg">
+          <svg
+            viewBox="0 0 1024 1024"
+            width="16"
+            height="16"
+            fill="currentColor"
+          >
+            <path
+              d="M703.979498 749.234332m22.627417-22.627417l0 0q22.627417-22.627417 45.254834 0l181.019336 181.019336q22.627417 22.627417 0 45.254834l0 0q-22.627417 22.627417-45.254834 0l-181.019336-181.019336q-22.627417-22.627417 0-45.254834Z"
+              p-id="2897"
+            ></path>
+            <path
+              d="M480 832c195.328 0 352-158.72 352-352S675.328 128 480 128 128 286.72 128 480 284.672 832 480 832z m0 64a416 416 0 1 1 0-832 416 416 0 0 1 0 832z"
+              p-id="2898"
+            ></path>
+          </svg>
+        </i>
+      </span>
+    </button>
+  </div>
+  <div class="c-input-group c-input-group--large">
+    <input
+      type="text"
+      class="c-input c-input--large"
+      placeholder="请输入要搜索的内容"
+    />
+    <button class="c-button c-button--primary c-button--large">
+      <span class="c-input__suffix-inner c-input-search-icon">
+        <i class="c-icon--svg">
+          <svg
+            viewBox="0 0 1024 1024"
+            width="16"
+            height="16"
+            fill="currentColor"
+          >
+            <path
+              d="M703.979498 749.234332m22.627417-22.627417l0 0q22.627417-22.627417 45.254834 0l181.019336 181.019336q22.627417 22.627417 0 45.254834l0 0q-22.627417 22.627417-45.254834 0l-181.019336-181.019336q-22.627417-22.627417 0-45.254834Z"
+              p-id="2897"
+            ></path>
+            <path
+              d="M480 832c195.328 0 352-158.72 352-352S675.328 128 480 128 128 286.72 128 480 284.672 832 480 832z m0 64a416 416 0 1 1 0-832 416 416 0 0 1 0 832z"
+              p-id="2898"
+            ></path>
+          </svg>
+        </i>
+      </span>
+    </button>
+  </div>
+</div>
+
+<div class="c-search-demo">
+  <div class="c-input-group c-input-group--small">
+    <input
+      type="text"
+      class="c-input c-input--small"
+      placeholder="请输入要搜索的内容"
+    />
+    <button class="c-button c-button--primary c-button--small">搜索</button>
+  </div>
+  <div class="c-input-group c-input-group--normal">
+    <input
+      type="text"
+      class="c-input c-input--normal"
+      placeholder="请输入要搜索的内容"
+    />
+    <button class="c-button c-button--primary c-button--normal">搜索</button>
+  </div>
+  <div class="c-input-group c-input-group--large">
+    <input
+      type="text"
+      class="c-input c-input--large"
+      placeholder="请输入要搜索的内容"
+    />
+    <button class="c-button c-button--primary c-button--large">搜索</button>
+  </div>
+</div>
+
+<div class="c-search-demo">
+  <div class="c-input-group c-input-group--disabled">
+    <input
+      type="text"
+      class="c-input c-input--small"
+      disabled
+      placeholder="请输入要搜索的内容"
+    />
+    <button class="c-button c-button--primary c-button--small" disabled>
+      搜索
+    </button>
+  </div>
+</div>
+
+<h2>文本域</h2>
+<div class="c-textarea-demo">
+  <div style="margin: 10px 0;">
+    <textarea
+      placeholder="请输入内容"
+      class="c-input c-input--normal c-textarea"
+    ></textarea>
+  </div>
+  <div style="margin: 10px 0;">
+    <textarea
+      placeholder="请输入内容"
+      class="c-input c-input--normal c-textarea"
+      disabled
+    ></textarea>
+  </div>
+
+  <div style="margin: 10px 0;">
+    <textarea
+      placeholder="请输入内容"
+      class="c-input c-input--normal c-textarea c-input--error"
+    ></textarea>
+  </div>
+  <div style="margin: 10px 0;">
+    <textarea
+      placeholder="请输入内容"
+      class="c-input c-input--normal c-textarea"
+    ></textarea>
+  </div>
+</div>

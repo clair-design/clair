@@ -1,0 +1,32 @@
+## 顶部导航
+
+水平的顶部导航菜单
+
+```tsx live=true
+function Index() {
+  const [activeIndex, setActiveIndex] = React.useState(2);
+  const onSelect = ({ detail }) => {
+    setActiveIndex(detail.name);
+  };
+  return (
+    <Menu activeIndex={activeIndex} onSelect={onSelect}>
+      <MenuItem index={1}>
+        <IconHome />
+        一级导航 1
+      </MenuItem>
+      <MenuItem index={2}>
+        <IconFile />
+        一级导航 2
+      </MenuItem>
+      <MenuItem index={3}>
+        <IconCalendar />
+        一级导航 3
+      </MenuItem>
+      <MenuItem disabled index={4}>
+        <IconSetting />
+        一级导航 4
+      </MenuItem>
+    </Menu>
+  );
+}
+```

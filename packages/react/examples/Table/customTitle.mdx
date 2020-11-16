@@ -1,0 +1,29 @@
+<!-- 自定义表头 -->
+
+```tsx live=true
+function Basic() {
+  const columns = [
+    { title: "日期", prop: "date" },
+    { title: "名称", prop: "name" },
+    {
+      title: () => (
+        <div>
+          评级
+          <Tooltip content="评级根据活跃度、质量等多个指标计算得出">
+            <IconStatusInfo />
+          </Tooltip>
+        </div>
+      ),
+      prop: "rating"
+    }
+  ];
+
+  const dataSource = [
+    { date: "2019-01-01", name: "项目名称 1", rating: 4.5 },
+    { date: "2019-01-02", name: "项目名称 2", rating: 3.9 },
+    { date: "2019-01-03", name: "项目名称 3", rating: 4.2 }
+  ];
+
+  return <Table columns={columns} dataSource={dataSource} rowKey="name" />;
+}
+```

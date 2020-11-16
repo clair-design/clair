@@ -1,0 +1,244 @@
+@import 'variables';
+@import 'mixins/mixins';
+@import 'checkbox';
+@import 'empty';
+
+.c-table {
+  position: relative;
+  font-size: $--base-font-size;
+}
+.c-table--content {
+  box-sizing: border-box;
+  width: 100%;
+  overflow: auto;
+
+  table {
+    width: 100%;
+    margin: 0;
+    font-size: inherit;
+    border-spacing: 0;
+  }
+
+  tr:not(.c-table__row--empty):hover td,
+  tr[aria-selected='true']:hover td {
+    background: $--table-row-hover-background-color;
+  }
+
+  tr[aria-selected='true'] td {
+    // RFC: extract as a variable? Only used once here
+    background: change_color($--primary-color, $alpha: 0.1);
+  }
+
+  th,
+  td {
+    padding: $--table-padding;
+    color: $--table-text-color;
+    line-height: 1.4;
+    text-align: left;
+    background: $--table-td-background-color;
+    border-bottom: 1px solid $--table-border-color;
+  }
+
+  th {
+    font-weight: normal;
+    vertical-align: middle;
+    background: $--table-thead-background-color;
+  }
+
+  thead {
+    border-bottom: 1px solid $--table-border-color;
+    // stylelint-disable-next-line
+    tr:first-child th {
+      border-top: 1px solid $--table-border-color;
+    }
+    // stylelint-disable
+    th[colspan]:not([colspan='1']) {
+      text-align: center;
+    }
+  }
+
+  .c-table__thead--sticky th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
+  .c-table__thead--sticky .c-table__cell--sticky {
+    z-index: 3;
+  }
+
+  .c-table--fix {
+    table-layout: fixed;
+  }
+
+  .c-table__cell--sticky {
+    position: sticky;
+    z-index: 1;
+    transition: transition(box-shadow);
+  }
+
+  // left and right shadow
+  .c-table__cell--sticky-left::after,
+  .c-table__cell--sticky-right::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+  }
+
+  .c-table__cell--sticky-left::after {
+    left: 100%;
+    background: linear-gradient(
+      to right,
+      $--table-shadow-color 0%,
+      transparent 100%
+    );
+  }
+
+  .c-table__cell--sticky-right::after {
+    right: 100%;
+    background: linear-gradient(
+      to left,
+      $--table-shadow-color 0%,
+      transparent 100%
+    );
+  }
+
+  .c-table__text--center {
+    text-align: center;
+  }
+
+  .c-table__text--left {
+    text-align: left;
+  }
+
+  .c-table__text--right {
+    text-align: right;
+  }
+
+  .c-pagination {
+    text-align: right;
+  }
+}
+
+.c-table__sort {
+  position: relative;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-left: 0.5em;
+  color: $--table-sort-arrow-background-color;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.c-table__sort--asc-icon {
+  position: absolute;
+  top: 0;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0.4em dashed;
+  border-left: 0.3em solid transparent;
+}
+
+.c-table__sort--desc-icon {
+  position: absolute;
+  top: 0.5em;
+  border-top: 0.4em dashed;
+  border-right: 0.3em solid transparent;
+  border-left: 0.3em solid transparent;
+}
+
+.c-table__sort--ascending .c-table__sort--asc-icon,
+.c-table__sort--descending .c-table__sort--desc-icon {
+  color: $--table-sort-arrow-active-color;
+}
+
+.c-table--small {
+  th,
+  td {
+    padding: $--table-small-padding;
+  }
+}
+
+.c-table--mini {
+  th,
+  td {
+    padding: $--table-mini-padding;
+  }
+}
+
+.c-table--with-height {
+  border-bottom: 1px solid $--table-border-color;
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+}
+
+.c-table--bordered {
+  border-left: 1px solid $--table-border-color;
+
+  th,
+  td {
+    border-right: 1px solid $--table-border-color;
+  }
+}
+
+.c-table__content {
+  position: relative;
+}
+
+// Left and right shadow are applied on td/th element directly
+// while top shadow is the special case.
+// If we apply such shadow on the bottom of thead > th,
+// top shadow would create an overlapped visual effect
+// when sticky-left or sticky-right also exist.
+.c-table__shadow--sticky-top {
+  position: absolute;
+  z-index: 4;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(
+    to bottom,
+    $--table-shadow-color 0%,
+    transparent 100%
+  );
+}
+
+.c-table__expand td {
+  background: $--table-expand-td-background-color;
+}
+
+.c-table__expand .c-table__expand--first-cell {
+  padding: 0;
+  border-right: 0;
+}
+
+.c-table__expand .c-table__expand--merge-cell {
+  padding: 0;
+}
+
+.c-table--bordered .c-table__expand .c-table__expand--merge-cell {
+  border: 0;
+  border-right: 1px solid $--table-border-color;
+}
+
+.c-table__expand--arrow {
+  color: $--icon-color;
+  font-size: $--base-font-size - 4px;
+  cursor: pointer;
+}
+
+.c-table__header,
+.c-table__footer {
+  padding: 1em;
+}
+
+.c-table .c-checkbox {
+  margin: 0;
+  vertical-align: middle;
+}
+
+.c-table--content + .c-pagination {
+  margin-top: 1em;
+}

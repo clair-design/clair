@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>最小化</title>
+    <desc>Created with Sketch.</desc>
+    <g id="最小化" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Minimize">
+            <rect id="蒙版" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <polyline id="路径-23" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="4 11 11 11 11 4"></polyline>
+            <path d="M25,25 L17,17" id="路径-24" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M11,11 L3,3" id="路径-25" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <polyline id="路径-26" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="17 24 17 17 24 17"></polyline>
+        </g>
+    </g>
+</svg>

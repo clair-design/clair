@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Basketball</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Basketball" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M14.0093966,1.00625 C10.6825883,1.00625 7.35888339,2.27242331 4.82033003,4.81097667 C-0.256776677,9.88808337 -0.256776677,18.1182099 4.82033003,23.1922132 C7.35888339,25.7307666 10.6856917,27.0000433 14.0125,27.0000433 C17.3393083,27.0000433 20.6661166,25.7307666 23.20467,23.1922132 C28.2817767,18.1151065 28.2817767,9.88498001 23.20467,4.81097667 C20.6630132,2.27242331 17.3362049,1.00625 14.0093966,1.00625 Z" id="路径" stroke="#6E6E6E" stroke-width="2" fill-rule="nonzero"></path>
+            <path d="M14.059375,27.18125 C14.0375,23.859375 12.759375,20.546875 10.225,18.0125 C7.68125,15.46875 4.346875,14.190625 1.0125,14.18125 L1.0125,14.18125" id="路径" stroke="#6E6E6E" stroke-width="2" fill-rule="nonzero"></path>
+            <path d="M14.24375,1.00625 C14.26875,4.321875 15.546875,7.63125 18.078125,10.1625 C20.596875,12.68125 23.8875,13.959375 27.190625,13.99375" id="路径" stroke="#6E6E6E" stroke-width="2" fill-rule="nonzero"></path>
+            <path d="M5,5 L23,23" id="路径-74" stroke="#6E6E6E" stroke-width="2"></path>
+            <path d="M23,5 L5,23" id="路径-75" stroke="#6E6E6E" stroke-width="2"></path>
+        </g>
+    </g>
+</svg>

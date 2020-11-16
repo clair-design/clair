@@ -1,0 +1,49 @@
+## 步长
+
+计数器变更的步数
+
+```tsx live=true
+function Index() {
+  return <InputNumber defaultValue={1} step={2} />;
+}
+```
+
+## 固定步数
+
+是否只能输入步长的倍数
+
+```tsx live=true
+function Index() {
+  return <InputNumber step={3} stepFixed />;
+}
+```
+
+## 精度控制
+
+用来控制数值精度
+
+```tsx live=true
+function Index() {
+  return <InputNumber defaultValue={1} precision={2} />;
+}
+```
+
+## 值区间
+
+可设置最大值最小值
+
+```tsx live=true
+function Index() {
+  return <InputNumber defaultValue={1} min={0} max={10} />;
+}
+```
+
+## 按钮样式
+
+按钮在右边的样式
+
+```tsx live=true
+function Index() {
+  return <InputNumber defaultValue={1} controlPosition="up-down" />;
+}
+```

@@ -1,0 +1,125 @@
+# Radio
+
+## 定义
+
+单个选中。
+
+## 使用场景
+
+用于在多个备选项中选中单个状态。 在一般的表单操作中，方便用户在比较中选择，因此选项不宜过多。
+
+## 基本用法
+
+简单的常规用法。
+
+```tsx live=true
+<>
+  <Radio value="🍊">橘子</Radio>
+  <Radio value="🍊" defaultChecked>
+    橘子
+  </Radio>
+</>
+```
+
+## 禁用状态
+
+单选框不可用的状态。
+
+```tsx live=true
+<>
+  <Radio value="🍊" disabled>
+    橘子
+  </Radio>
+  <Radio value="🍎" defaultChecked disabled>
+    苹果
+  </Radio>
+</>
+```
+
+## Radio Group
+
+```tsx live=true
+function Index() {
+  let [selected, setSelectedVal] = React.useState("🍊");
+
+  const setSelected = e => {
+    setSelectedVal(e.target.value);
+  };
+
+  return (
+    <RadioGroup value={selected} onChange={setSelected}>
+      <Radio value="🍊">橘子</Radio>
+      <Radio value="🍎">苹果</Radio>
+    </RadioGroup>
+  );
+}
+```
+
+通过配置 `options` 参数来渲染单选框。
+
+```tsx live=true
+function Index() {
+  let [selected, setSelectedVal] = React.useState("🍊");
+  let [options] = React.useState([
+    { label: "香蕉", value: "🍌" },
+    { label: "苹果", value: "🍎" },
+    { label: "橘子", value: "🍊" },
+    { label: "梨子", value: "🍐", disabled: true }
+  ]);
+
+  const setSelected = e => {
+    setSelectedVal(e.target.value);
+  };
+
+  return (
+    <RadioGroup value={selected} options={options} onChange={setSelected} />
+  );
+}
+```
+
+## Radio Button
+
+```tsx live=true
+function Index() {
+  let [selected, setSelectedVal] = React.useState("🍊");
+
+  const setSelected = e => {
+    setSelectedVal(e.target.value);
+  };
+
+  return (
+    <RadioGroup value={selected} onChange={setSelected}>
+      <RadioButton name="fruit4" value="🍊">
+        橘子
+      </RadioButton>
+      <RadioButton name="fruit4" value="🍎">
+        苹果
+      </RadioButton>
+      <RadioButton name="fruit4" value="🍐">
+        梨子
+      </RadioButton>
+    </RadioGroup>
+  );
+}
+```
+
+## Radio Props
+
+| Name           | Description                   | Type                                                                                     | Required | Default |
+| -------------- | ----------------------------- | ---------------------------------------------------------------------------------------- | -------- | ------- |
+| name           | 字段名                        | `string`                                                                                 | `false`  | -       |
+| disabled       | 是否禁用                      | `boolean`                                                                                | `false`  | -       |
+| value          | 该项目对应的值                | `number` \| `string` \| `boolean`                                                        | `false`  | -       |
+| checked        | 是否选中（单独使用 Radio 时） | `boolean`                                                                                | `false`  | -       |
+| defaultChecked | 初始化时是否默认选中          | `boolean`                                                                                | `false`  | `false` |
+| onChange       | 变化时的回调函数              | `(e: { target: { value: typeof value, checked: boolean }, nativeEvent: Event }) => void` | `false`  | -       |
+
+## RadioGroup Props
+
+| Name     | Description          | Type                                                                   | Required | Default |
+| -------- | -------------------- | ---------------------------------------------------------------------- | -------- | ------- |
+| name     | 字段名               | `string`                                                               | `false`  | -       |
+| disabled | 禁用                 | `boolean`                                                              | `false`  | -       |
+| value    | 选中的值             | `number` \| `string` \| `boolean`                                      | `false`  | -       |
+| options  | 以配置形式设置子元素 | `Array<{ label: string, value: string, disabled?: boolean }>`          | `false`  | `false` |
+| onChange | 变化时的回调函数     | `(e: { target: { value: typeof value }, nativeEvent: Event }) => void` | `false`  | -       |

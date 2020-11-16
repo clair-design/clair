@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Website</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="14" cy="14" r="13"></circle>
+    </defs>
+    <g id="Website" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="椭圆形" stroke="#6E6E6E" stroke-width="2" xlink:href="#path-1"></use>
+            <path d="M21.542227,25.0513878 C21.8417432,23.7492197 22,22.3930913 22,21 C22,11.9031406 15.2518264,4.38240153 6.48828742,3.17059119" id="路径" stroke="#6E6E6E" stroke-width="2" mask="url(#mask-2)"></path>
+            <path d="M21.0987268,3.23259493 C12.5370628,4.61994266 6,12.0465649 6,21 C6,22.2291921 6.1232091,23.4296071 6.35795103,24.5895688" id="路径" stroke="#6E6E6E" stroke-width="2" mask="url(#mask-2)"></path>
+            <path d="M1.00229129,13.4523289 C4.27864321,16.8712639 8.89072513,19 14,19 L14,19 C19.1153647,19 23.7323505,16.8661864 27.0094184,13.4400982" id="路径" stroke="#6E6E6E" stroke-width="2" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

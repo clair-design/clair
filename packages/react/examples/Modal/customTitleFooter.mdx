@@ -1,0 +1,44 @@
+```tsx live=true
+function Index() {
+  const [visible, setVisibility] = React.useState(false);
+
+  const showModal = () => setVisibility(true);
+  const cancel = () => setVisibility(false);
+  const confirm = () => setVisibility(false);
+
+  return (
+    <>
+      <Button type="primary" onClick={showModal}>
+        打开弹窗
+      </Button>
+      <Modal
+        visible={visible}
+        width="400px"
+        title={
+          <div>
+            <IconStatusInfo
+              style={{
+                verticalAlign: "bottom",
+                fontSize: "22px",
+                marginRight: "6px",
+                strokeWidth: "2"
+              }}
+            />
+            这是一个自定义标题
+          </div>
+        }
+        footer={
+          <Button type="primary" onClick={cancel}>
+            这是一个自定义footer
+          </Button>
+        }
+        onCancel={cancel}
+        onConfirm={confirm}
+      >
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal>
+    </>
+  );
+}
+```

@@ -1,0 +1,181 @@
+@import 'variables';
+@import 'button';
+@import 'icon';
+
+.c-modal__container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+}
+
+.c-modal {
+  position: relative;
+  box-sizing: border-box;
+  margin: 0 auto 48px;
+  color: $--secondary-text-color;
+
+  background: $--base-background-color;
+  border-radius: $--base-border-radius;
+  box-shadow: $--base-box-shadow;
+}
+
+.c-modal__header {
+  position: relative;
+  display: flex;
+  padding: 10px 18px;
+
+  color: $--base-text-color;
+
+  font-weight: bold;
+  font-size: $--base-modal-title-font-size;
+  line-height: $--base-line-height;
+
+  > .c-modal__closeBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    display: block;
+    padding: 12px;
+
+    color: inherit;
+    font-size: inherit;
+    background: none;
+
+    border: none;
+    outline-offset: -3px;
+    cursor: pointer;
+    appearance: none;
+  }
+
+  > .c-modal__title-type {
+    margin-right: 12px;
+    font-size: 24px;
+  }
+
+  &::before {
+    content: '\3000';
+  }
+}
+
+.c-modal__body {
+  padding: 18px;
+  font-size: $--base-font-size;
+  line-height: $--base-line-height;
+
+  border-top: 1px solid $--secondary-border-color;
+  border-bottom: 1px solid $--secondary-border-color;
+}
+
+.c-modal__footer {
+  padding: 10px 18px;
+  font-size: 0;
+  text-align: right;
+
+  > .c-button + .c-button {
+    margin-left: 10px;
+  }
+
+  &:empty {
+    display: none;
+  }
+}
+
+.c-modal--light {
+  padding: 32px 32px 24px;
+
+  > .c-modal__header {
+    align-items: center;
+    padding: 0 0 $--base-title-space-bottom 32px;
+  }
+
+  // use large icon by default
+  > .c-modal__header > .c-icon--svg:first-child {
+    position: absolute;
+    top: floor(($--base-real-title-line-height - $--base-icon-large-size) / 2);
+    left: 0;
+    font-size: $--base-icon-large-size;
+  }
+
+  > .c-modal__body {
+    padding: 0 0 0 32px;
+    border-width: 0;
+  }
+
+  .c-modal__footer {
+    padding: 32px 0 0;
+  }
+}
+
+// ---------------------------------------------------------------------
+// mask
+.c-mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+
+  opacity: 1;
+}
+
+.c-mask-active {
+  animation: c-mask-in $--transition-duration $--transition-easing;
+}
+
+.c-mask-deactive {
+  animation: c-mask-out $--transition-duration $--transition-easing forwards;
+}
+
+@keyframes c-mask-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes c-mask-out {
+  to {
+    display: none;
+    opacity: 0;
+  }
+}
+
+// ---------------------------------------------------------------------
+// modal animation
+.c-modal-enter-active {
+  animation: c-modal-in $--transition-duration $--transition-easing forwards;
+}
+
+.c-modal-leave-active {
+  animation: c-modal-out $--transition-duration $--transition-easing forwards;
+}
+
+@keyframes c-modal-in {
+  from {
+    transform: translateY(-40px);
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes c-modal-out {
+  from {
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0;
+  }
+}

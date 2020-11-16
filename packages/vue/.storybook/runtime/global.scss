@@ -1,0 +1,81 @@
+.custom-tooltip-example {
+  margin-top: 5px;
+  background: #fff;
+  filter: drop-shadow(0 0 4px #ccc);
+}
+
+.custom-tooltip-example::after {
+  display: none;
+}
+
+.custom-grid-example {
+  &.c-grid__row {
+    margin: 10px auto;
+    background: repeating-linear-gradient(
+      -45deg,
+      #f5f7f9,
+      #f5f7f9 8px,
+      #fff 0,
+      #fff 16px
+    );
+  }
+
+  .c-grid__col {
+    background: #d3e4ff;
+    color: #7192c4;
+    text-align: center;
+    padding: 16px 0;
+  }
+
+  .c-grid__col:nth-child(odd) {
+    background: #e1ecff;
+  }
+}
+
+.custom-progress-example {
+  .c-progress--line {
+    margin: 20px 0;
+  }
+
+  .c-progress--circle {
+    margin-right: 22px;
+  }
+}
+
+.example-cascader-panel {
+  height: 200px;
+  background: #fff;
+  margin-top: 12px;
+  box-shadow: 0px 0px 4px 0px rgba(40, 58, 92, 0.15);
+  margin-right: 10px;
+}
+
+.custom-popover-content {
+  padding: 12px 16px;
+}
+
+// override box-sizing: border-box;
+// which makes button un-square
+.c-pagination {
+  a[role='button'],
+  button {
+    box-sizing: content-box;
+  }
+}
+
+.markdown-body {
+  .c-upload__drop-accept-text,
+  .c-upload__drop-text {
+    margin: 0;
+  }
+}
+
+.c-modal__body {
+  text-align: justify;
+}
+
+// make sure long text won't overflow
+// for upload demo with long file name
+.c-notification {
+  word-break: break-all;
+}

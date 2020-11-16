@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<title>Popconfirm</title>
+<link rel="stylesheet" href="../styles/popconfirm.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body {
+    margin: 30px auto;
+    max-width: 1200px;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+
+  .c-popconfirm {
+    margin: 20px;
+    position: relative;
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+
+<div class="c-popconfirm c-popover" x-placement="top-center">
+  <div class="c-popconfirm__content">
+    这是一个 popconfirm 这是一个 popconfirm 这是一个 popconfirm 这是一个
+    popconfirm
+  </div>
+  <div class="c-popconfirm__footer">
+    <button class="c-button c-button--primary c-button--small">
+      确认
+    </button>
+    <button class="c-button c-button--default c-button--small">取消</button>
+  </div>
+</div>
+
+<div class="c-popconfirm c-popover" x-placement="top-right">
+  <div class="c-popconfirm__content">
+    这是一个 popconfirm 这是一个 popconfirm 这是一个 popconfirm 这是一个
+    popconfirm
+  </div>
+  <div class="c-popconfirm__footer">
+    <button class="c-button c-button--primary c-button--small">
+      确认
+    </button>
+    <button class="c-button c-button--default c-button--small">取消</button>
+  </div>
+</div>
+
+<div class="c-popconfirm c-popover" x-placement="right-top">
+  <div class="c-popconfirm__content">
+    这是一个 popconfirm 这是一个 popconfirm 这是一个 popconfirm 这是一个
+    popconfirm
+  </div>
+  <div class="c-popconfirm__footer">
+    <button class="c-button c-button--primary c-button--small">
+      确认
+    </button>
+    <button class="c-button c-button--default c-button--small">取消</button>
+  </div>
+</div>
+<div class="c-popconfirm c-popover" x-placement="right-center">
+  <div class="c-popconfirm__content">
+    这是一个 popconfirm 这是一个 popconfirm 这是一个 popconfirm 这是一个
+    popconfirm
+  </div>
+  <div class="c-popconfirm__footer">
+    <button class="c-button c-button--primary c-button--small">
+      确认
+    </button>
+    <button class="c-button c-button--default c-button--small">取消</button>
+  </div>
+</div>
+<div class="c-popconfirm c-popover" x-placement="right-bottom">
+  <div class="c-popconfirm__content">
+    这是一个 popconfirm 这是一个 popconfirm 这是一个 popconfirm 这是一个
+    popconfirm
+  </div>
+  <div class="c-popconfirm__footer">
+    <button class="c-button c-button--primary c-button--small">
+      确认
+    </button>
+    <button class="c-button c-button--default c-button--small">取消</button>
+  </div>
+</div>
+<div class="c-popconfirm c-popover" x-placement="bottom-right">
+  <div class="c-popconfirm__content">
+    这是一个 popconfirm 这是一个 popconfirm 这是一个 popconfirm 这是一个
+    popconfirm
+  </div>
+  <div class="c-popconfirm__footer">
+    <button class="c-button c-button--primary c-button--small">
+      确认
+    </button>
+    <button class="c-button c-button--default c-button--small">取消</button>
+  </div>
+</div>
+<div class="c-popconfirm c-popover" x-placement="bottom-center">
+  <div class="c-popconfirm__content">
+    这是一个 popconfirm 这是一个 popconfirm 这是一个 popconfirm 这是一个
+    popconfirm
+  </div>
+  <div class="c-popconfirm__footer">
+    <button class="c-button c-button--primary c-button--small">
+      确认
+    </button>
+    <button class="c-button c-button--default c-button--small">取消</button>
+  </div>
+</div>
+<div class="c-popconfirm c-popover" x-placement="bottom-left">
+  <div class="c-popconfirm__content">
+    这是一个 popconfirm 这是一个 popconfirm 这是一个 popconfirm 这是一个
+    popconfirm
+  </div>
+  <div class="c-popconfirm__footer">
+    <button class="c-button c-button--primary c-button--small">
+      确认
+    </button>
+    <button class="c-button c-button--default c-button--small">取消</button>
+  </div>
+</div>
+<div class="c-popconfirm c-popover" x-placement="left-bottom">
+  <div class="c-popconfirm__content">
+    这是一个 popconfirm 这是一个 popconfirm 这是一个 popconfirm 这是一个
+    popconfirm
+  </div>
+  <div class="c-popconfirm__footer">
+    <button class="c-button c-button--primary c-button--small">
+      确认
+    </button>
+    <button class="c-button c-button--default c-button--small">取消</button>
+  </div>
+</div>
+<div class="c-popconfirm c-popover" x-placement="left-center">
+  <div class="c-popconfirm__content">
+    这是一个 popconfirm 这是一个 popconfirm 这是一个 popconfirm 这是一个
+    popconfirm
+  </div>
+  <div class="c-popconfirm__footer">
+    <button class="c-button c-button--primary c-button--small">
+      确认
+    </button>
+    <button class="c-button c-button--default c-button--small">取消</button>
+  </div>
+</div>
+<div class="c-popconfirm c-popover" x-placement="left-top">
+  <div class="c-popconfirm__content">
+    这是一个 popconfirm 这是一个 popconfirm 这是一个 popconfirm 这是一个
+    popconfirm
+  </div>
+  <div class="c-popconfirm__footer">
+    <button class="c-button c-button--primary c-button--small">
+      确认
+    </button>
+    <button class="c-button c-button--default c-button--small">取消</button>
+  </div>
+</div>
+<div class="c-popconfirm c-popover" x-placement="top-left">
+  <div class="c-popconfirm__content">
+    这是一个 popconfirm 这是一个 popconfirm 这是一个 popconfirm 这是一个
+    popconfirm
+  </div>
+  <div class="c-popconfirm__footer">
+    <button class="c-button c-button--primary c-button--small">
+      确认
+    </button>
+    <button class="c-button c-button--default c-button--small">取消</button>
+  </div>
+</div>

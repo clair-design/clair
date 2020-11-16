@@ -1,0 +1,23 @@
+## 尺寸
+
+小的用于文本加载，默认用于卡片容器级加载，大的用于页面级加载。
+
+```tsx live=true
+<>
+  <Loading size="small">
+    <div
+      style={{ padding: "30px 50px", background: "#ddd", marginBottom: 20 }}
+    />
+  </Loading>
+  <Loading>
+    <div
+      style={{ padding: "30px 50px", background: "#ddd", marginBottom: 20 }}
+    />
+  </Loading>
+  <Loading size="large">
+    <div
+      style={{ padding: "30px 50px", background: "#ddd", marginBottom: 20 }}
+    />
+  </Loading>
+</>
+```

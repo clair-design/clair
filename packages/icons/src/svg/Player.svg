@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Player</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Player" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <rect id="矩形" stroke="#6E6E6E" stroke-width="2" x="1" y="3" width="26" height="20" rx="2"></rect>
+            <polygon id="三角形" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round" transform="translate(15.000000, 13.000000) rotate(-270.000000) translate(-15.000000, -13.000000) " points="15 10 19 16 11 16"></polygon>
+            <path d="M7,23 L5,27" id="路径-22" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M21,23 L23,27" id="路径-23" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M14,3 L14,1" id="路径-24" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

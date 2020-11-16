@@ -1,0 +1,187 @@
+@import 'mixins';
+
+$--tooltip-common-offset: 8px;
+$--tooltip-horizon-offset: 32px;
+$--tooltip-vertical-offset: 8px;
+$--tooltip-triangle-width: 12px;
+// tooltip 与 trigger 元素之间的距离
+$--tooltip-spacing: 8px;
+
+@mixin offset-triangle($position, $offset) {
+  #{$position}: $offset;
+
+  @supports (width: min(1px, 2px)) {
+    #{$position}: #{min(
+        #{$offset},
+        #{calc(100% - #{$--tooltip-triangle-width})}
+      )};
+  }
+}
+
+// caveat: use uniform border-width
+// which would case 1:2 triangle size
+@mixin tooltip-top(
+  $width: $--tooltip-triangle-width,
+  $height: $width / 2,
+  $color: currentColor,
+  $offset: -$height * 2
+) {
+  &::after {
+    @include triangle-at-bottom(
+      $width: $width,
+      $height: $height,
+      $bgColor: $color
+    );
+    bottom: $offset;
+  }
+}
+
+@mixin tooltip-right(
+  $width: $--tooltip-triangle-width,
+  $height: $width / 2,
+  $color: currentColor,
+  $offset: -$height * 2
+) {
+  &::after {
+    @include triangle-at-left(
+      $width: $width,
+      $height: $height,
+      $bgColor: $color
+    );
+    left: $offset;
+  }
+}
+
+@mixin tooltip-bottom(
+  $width: $--tooltip-triangle-width,
+  $height: $width / 2,
+  $color: currentColor,
+  $offset: -$height * 2
+) {
+  &::after {
+    @include triangle-at-top(
+      $width: $width,
+      $height: $height,
+      $bgColor: $color
+    );
+    top: $offset;
+  }
+}
+
+@mixin tooltip-left(
+  $width: $--tooltip-triangle-width,
+  $height: $width / 2,
+  $color: currentColor,
+  $offset: -$height * 2
+) {
+  &::after {
+    @include triangle-at-right(
+      $width: $width,
+      $height: $height,
+      $bgColor: $color
+    );
+    right: $offset;
+  }
+}
+
+@mixin triangle(
+  $selector,
+  $bgColor,
+  $width: $--tooltip-triangle-width,
+  $height: $width / 2
+) {
+  $p: x-placement;
+  $offset: $--tooltip-spacing + $height;
+
+  #{$selector} {
+    &::after {
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      color: $bgColor;
+      content: '';
+    }
+
+    // Setting a transform
+    // which helps to calculate where the tooltip appears
+
+    &[#{$p}^='top'] {
+      @include tooltip-top($width: $width, $height: $height);
+      margin-top: -$offset;
+    }
+
+    &[#{$p}^='right'] {
+      @include tooltip-right($width: $width, $height: $height);
+      margin-left: $offset;
+    }
+
+    &[#{$p}^='bottom'] {
+      @include tooltip-bottom($width: $width, $height: $height);
+      margin-top: $offset;
+    }
+
+    &[#{$p}^='left'] {
+      @include tooltip-left($width: $width, $height: $height);
+      margin-left: -$offset;
+    }
+
+    // left-top right-top
+    &[#{$p}$='top']::after {
+      @include offset-triangle(top, $--tooltip-vertical-offset);
+    }
+
+    // top-right bottom-right
+    &[#{$p}$='right']::after {
+      @include offset-triangle(right, $--tooltip-horizon-offset);
+    }
+
+    // left-bottom right-bottom
+    &[#{$p}$='bottom']::after {
+      @include offset-triangle(bottom, $--tooltip-vertical-offset);
+    }
+
+    // top-left bottom-left
+    &[#{$p}$='left']::after {
+      @include offset-triangle(left, $--tooltip-horizon-offset);
+    }
+
+    &[#{$p}='top-center']::after,
+    &[#{$p}='bottom-center']::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &[#{$p}='left-center']::after,
+    &[#{$p}='right-center']::after {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+@mixin remove-triangle($selector) {
+  $p: x-placement;
+
+  #{$selector} {
+    &::after {
+      display: none;
+    }
+
+    &[#{$p}^='top'] {
+      margin-top: -$--tooltip-spacing;
+    }
+
+    &[#{$p}^='right'] {
+      margin-left: $--tooltip-spacing;
+    }
+
+    &[#{$p}^='bottom'] {
+      margin-top: $--tooltip-spacing;
+    }
+
+    &[#{$p}^='left'] {
+      margin-left: -$--tooltip-spacing;
+    }
+  }
+}

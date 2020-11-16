@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<head>
+  <title>Slider</title>
+  <link rel="stylesheet" href="../styles/slider.scss" />
+  <script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+  <style>
+    body {
+      max-width: 1200px;
+      margin: 30px auto;
+    }
+
+    /*
+      This will hide the focus indicator if the element receives focus via the mouse,
+      but it will still show up on keyboard focus.
+    */
+    .js-focus-visible :focus:not(.focus-visible) {
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Slider</h1>
+
+  <h2>基本样式</h2>
+  <p>常见的输入条</p>
+
+  <div class="c-slider">
+    <div class="c-slider__background-bar">
+      <div class="c-slider__progress-bar" style="width: 50%;"></div>
+      <button
+        type="button"
+        role="slider"
+        aria-valuemin="1"
+        aria-valuenow="50"
+        aria-valuemax="100"
+        aria-valuetext="50%"
+        aria-orientation="horizontal"
+        class="c-slider__thumb"
+        style="left: 50%;"
+      ></button>
+    </div>
+  </div>
+
+  <div class="c-slider">
+    <div class="c-slider__background-bar">
+      <div class="c-slider__progress-bar" style="left: 20%; width: 30%;"></div>
+      <button
+        type="button"
+        role="slider"
+        aria-valuemin="1"
+        aria-valuenow="20"
+        aria-valuemax="100"
+        aria-valuetext="20%"
+        aria-orientation="horizontal"
+        class="c-slider__thumb"
+        style="left: 20%;"
+      ></button>
+      <button
+        type="button"
+        role="slider"
+        aria-valuemin="1"
+        aria-valuenow="50"
+        aria-valuemax="100"
+        aria-valuetext="50%"
+        aria-orientation="horizontal"
+        class="c-slider__thumb"
+        style="left: 50%;"
+      ></button>
+    </div>
+  </div>
+
+  <div class="c-slider c-slider--disabled">
+    <div class="c-slider__background-bar">
+      <div class="c-slider__progress-bar" style="width: 50%;"></div>
+      <button
+        type="button"
+        role="slider"
+        disabled
+        aria-valuemin="1"
+        aria-valuenow="50"
+        aria-valuemax="100"
+        aria-valuetext="50%"
+        aria-orientation="horizontal"
+        class="c-slider__thumb"
+        style="left: 50%;"
+      ></button>
+    </div>
+  </div>
+
+  <h2>固定刻度样式</h2>
+  <p>只能滑动到固定的刻度点上</p>
+
+  <div class="c-slider">
+    <div class="c-slider__background-bar">
+      <div class="c-slider__step-marks">
+        <div
+          class="c-slider__step-mark c-slider__step-mark--active"
+          style="left: 0%;"
+        ></div>
+        <div
+          class="c-slider__step-mark c-slider__step-mark--active"
+          style="left: 25%;"
+        ></div>
+        <div
+          class="c-slider__step-mark c-slider__step-mark--active"
+          style="left: 50%;"
+        ></div>
+        <div class="c-slider__step-mark" style="left: 75%;"></div>
+        <div class="c-slider__step-mark" style="left: 100%;"></div>
+      </div>
+      <div class="c-slider__progress-bar" style="left: 0%; width: 50%;"></div>
+      <button
+        type="button"
+        role="slider"
+        aria-valuemin="1"
+        aria-valuenow="50"
+        aria-valuemax="100"
+        aria-valuetext="50%"
+        aria-orientation="horizontal"
+        class="c-slider__thumb"
+        style="left: 50%;"
+      ></button>
+    </div>
+  </div>
+
+  <div class="c-slider">
+    <div class="c-slider__background-bar">
+      <div class="c-slider__step-marks">
+        <div class="c-slider__step-mark" style="left: 0%;"></div>
+        <div
+          class="c-slider__step-mark c-slider__step-mark--active"
+          style="left: 25%;"
+        ></div>
+        <div
+          class="c-slider__step-mark c-slider__step-mark--active"
+          style="left: 50%;"
+        ></div>
+        <div
+          class="c-slider__step-mark c-slider__step-mark--active"
+          style="left: 75%;"
+        ></div>
+        <div class="c-slider__step-mark" style="left: 100%;"></div>
+      </div>
+      <div class="c-slider__progress-bar" style="left: 25%; width: 50%;"></div>
+      <button
+        type="button"
+        role="slider"
+        aria-valuemin="1"
+        aria-valuenow="25"
+        aria-valuemax="100"
+        aria-valuetext="25%"
+        aria-orientation="horizontal"
+        class="c-slider__thumb"
+        style="left: 25%;"
+      ></button>
+      <button
+        type="button"
+        role="slider"
+        aria-valuemin="1"
+        aria-valuenow="75"
+        aria-valuemax="100"
+        aria-valuetext="75%"
+        aria-orientation="horizontal"
+        class="c-slider__thumb"
+        style="left: 75%;"
+      ></button>
+    </div>
+  </div>
+
+  <h2>垂直样式</h2>
+  <p>垂直方向的滑动输入条</p>
+
+  <div
+    style="
+      display: flex;
+      justify-content: space-around;
+      height: 300px;
+      padding: 24px;
+    "
+  >
+    <div class="c-slider c-slider--vertical">
+      <div class="c-slider__background-bar">
+        <div class="c-slider__progress-bar" style="height: 50%;"></div>
+        <button
+          type="button"
+          role="slider"
+          aria-valuemin="1"
+          aria-valuenow="50"
+          aria-valuemax="100"
+          aria-valuetext="50%"
+          aria-orientation="vertical"
+          class="c-slider__thumb"
+          style="bottom: 50%;"
+        ></button>
+      </div>
+    </div>
+
+    <div class="c-slider c-slider--vertical">
+      <div class="c-slider__background-bar">
+        <div
+          class="c-slider__progress-bar"
+          style="bottom: 20%; height: 30%;"
+        ></div>
+        <button
+          type="button"
+          role="slider"
+          aria-valuemin="1"
+          aria-valuenow="20"
+          aria-valuemax="100"
+          aria-valuetext="20%"
+          aria-orientation="vertical"
+          class="c-slider__thumb"
+          style="bottom: 20%;"
+        ></button>
+        <button
+          type="button"
+          role="slider"
+          aria-valuemin="1"
+          aria-valuenow="50"
+          aria-valuemax="100"
+          aria-valuetext="50%"
+          aria-orientation="vertical"
+          class="c-slider__thumb"
+          style="bottom: 50%;"
+        ></button>
+      </div>
+    </div>
+
+    <div class="c-slider c-slider--vertical">
+      <div class="c-slider__background-bar">
+        <div class="c-slider__step-marks">
+          <div
+            class="c-slider__step-mark c-slider__step-mark--active"
+            style="bottom: 0%;"
+          ></div>
+          <div
+            class="c-slider__step-mark c-slider__step-mark--active"
+            style="bottom: 25%;"
+          ></div>
+          <div
+            class="c-slider__step-mark c-slider__step-mark--active"
+            style="bottom: 50%;"
+          ></div>
+          <div class="c-slider__step-mark" style="bottom: 75%;"></div>
+          <div class="c-slider__step-mark" style="bottom: 100%;"></div>
+        </div>
+        <div
+          class="c-slider__progress-bar"
+          style="bottom: 0%; height: 50%;"
+        ></div>
+        <button
+          type="button"
+          role="slider"
+          aria-valuemin="1"
+          aria-valuenow="50"
+          aria-valuemax="100"
+          aria-valuetext="50%"
+          aria-orientation="vertical"
+          class="c-slider__thumb"
+          style="bottom: 50%;"
+        ></button>
+      </div>
+    </div>
+
+    <div class="c-slider c-slider--vertical">
+      <div class="c-slider__background-bar">
+        <div class="c-slider__step-marks">
+          <div class="c-slider__step-mark" style="bottom: 0%;"></div>
+          <div
+            class="c-slider__step-mark c-slider__step-mark--active"
+            style="bottom: 25%;"
+          ></div>
+          <div
+            class="c-slider__step-mark c-slider__step-mark--active"
+            style="bottom: 50%;"
+          ></div>
+          <div
+            class="c-slider__step-mark c-slider__step-mark--active"
+            style="bottom: 75%;"
+          ></div>
+          <div class="c-slider__step-mark" style="bottom: 100%;"></div>
+        </div>
+        <div
+          class="c-slider__progress-bar"
+          style="bottom: 25%; height: 50%;"
+        ></div>
+        <button
+          type="button"
+          role="slider"
+          aria-valuemin="1"
+          aria-valuenow="25"
+          aria-valuemax="100"
+          aria-valuetext="25%"
+          aria-orientation="vertical"
+          class="c-slider__thumb"
+          style="bottom: 25%;"
+        ></button>
+        <button
+          type="button"
+          role="slider"
+          aria-valuemin="1"
+          aria-valuenow="75"
+          aria-valuemax="100"
+          aria-valuetext="75%"
+          aria-orientation="vertical"
+          class="c-slider__thumb"
+          style="bottom: 75%;"
+        ></button>
+      </div>
+    </div>
+  </div>
+</body>

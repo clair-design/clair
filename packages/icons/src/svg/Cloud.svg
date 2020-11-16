@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Cloud</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Cloud" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M9.47211704,7.40216001 C8.57274444,6.5340227 7.34873606,6 6,6 C3.23857625,6 1,8.23857625 1,11 C1,12.4673189 1.63205493,13.7870135 2.6387562,14.7016752" id="路径" stroke="#6E6E6E" stroke-width="2"></path>
+            <path d="M17,24 L6.5,24 C3.46243388,24 1,21.5375661 1,18.5 C1,15.4624339 3.46243388,13 6.5,13 L7,13 C7.45053068,7.89429255 11.7772469,4 17,4 C22.5228475,4 27,8.4771525 27,14 C27,19.5228475 22.5228475,24 17,24 Z" id="形状结合" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Goods</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Goods" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="蒙版" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M6.31940671,6 L21.680431,6 C23.2371928,6 24.5352954,7.19078564 24.6692965,8.74176955 L25.9652587,23.7417696 C26.1078754,25.3924744 24.8853285,26.8462488 23.2346236,26.9888655 C23.1487468,26.9962851 23.06259,27 22.9763932,27 L5.02344452,27 C3.36659027,27 2.02344452,25.6568542 2.02344452,24 C2.02344452,23.9138032 2.02715946,23.8276464 2.03457901,23.7417696 L3.3305412,8.74176955 C3.4645423,7.19078564 4.76264488,6 6.31940671,6 Z" id="矩形" stroke="#606266" stroke-width="2"></path>
+            <path d="M9,11 L9,5.54545455 C9,2.53299227 10.6862915,1 14,1 C17.3137085,1 19,2.53299227 19,5.54545455 L19,11" id="路径" stroke="#606266" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>

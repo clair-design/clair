@@ -1,0 +1,45 @@
+```tsx live=true deps=notification
+function Index() {
+  const showInfo = () => {
+    notification.info({
+      title: "Info Notification",
+      content: "Some content..."
+    });
+  };
+  const showWarning = () => {
+    notification.warning({
+      title: "Warning Notification",
+      content: "Some content..."
+    });
+  };
+  const showSuccess = () => {
+    notification.success({
+      title: "Success Notification",
+      content: "Some content..."
+    });
+  };
+  const showError = () => {
+    notification.error({
+      title: "Error Notification",
+      content: "Some content..."
+    });
+  };
+
+  return (
+    <div className="s-wrapper--button">
+      <Button type="primary" onClick={showSuccess}>
+        打开success弹窗
+      </Button>
+      <Button type="default" onClick={showInfo}>
+        打开info弹窗
+      </Button>
+      <Button type="warning" onClick={showWarning}>
+        打开warning弹窗
+      </Button>
+      <Button type="danger" onClick={showError}>
+        打开error弹窗
+      </Button>
+    </div>
+  );
+}
+```

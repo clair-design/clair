@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>ArrowheadRight</title>
+    <desc>Created with Sketch.</desc>
+    <g id="ArrowheadRight" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="蒙版" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <polyline id="路径-9" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="15 24 25 14 15 4"></polyline>
+            <path d="M3,14 L24,14" id="路径-10" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>

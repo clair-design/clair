@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>SkipForward</title>
+    <desc>Created with Sketch.</desc>
+    <g id="SkipForward" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="蒙版" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M25,25 L25,3" id="路径-3" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M4.58667889,3.14947939 L18.4463169,13.1901803 C18.8935679,13.5141941 18.9934715,14.1394278 18.6694577,14.5866789 C18.6073562,14.6724004 18.5320384,14.7477182 18.4463169,14.8098197 L4.58667889,24.8505206 C4.13942784,25.1745344 3.51419414,25.0746309 3.19018034,24.6273798 C3.06655992,24.4567409 3,24.2514132 3,24.040701 L3,3.95929905 C3,3.4070143 3.44771525,2.95929905 4,2.95929905 C4.21071223,2.95929905 4.41603998,3.02585897 4.58667889,3.14947939 Z" id="路径-4" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Shield</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Shield" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M14,1 C11.9070915,2.47163146 9.76501094,3.62884195 7.57375821,4.47163146 C5.38250547,5.31442097 3.19125274,5.82387715 1,6 C2,20 6.33333333,27 14,27 C21.6666667,27 26,20 27,6 C24.8677336,5.84656421 22.7125337,5.3509745 20.5344003,4.51323088 C18.3562669,3.67548725 16.1781334,2.50441029 14,1 Z" id="路径-82" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round"></path>
+            <path d="M14,10 L14,18" id="路径-83" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M14,10 L14,18" id="路径-83" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" transform="translate(14.000000, 14.000000) rotate(-90.000000) translate(-14.000000, -14.000000) "></path>
+        </g>
+    </g>
+</svg>

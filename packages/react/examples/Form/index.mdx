@@ -1,0 +1,144 @@
+import Basic from "./basic";
+import Horizontal from "./horizontal";
+import Alignment from "./alignment";
+import Dynamic from "./dynamic";
+import Validate from "./validate";
+import Customize from "./customize";
+import Controller from "./controller";
+
+# Form
+
+<Basic />
+<Horizontal />
+<Alignment />
+<Dynamic />
+<Validate />
+<Customize />
+
+# Props
+
+## Form Props
+
+| Name          | Description                  | Type                                             | Required                   | Default |
+| ------------- | ---------------------------- | ------------------------------------------------ | -------------------------- | ------- |
+| className     | 类名                         | string                                           | false                      | none    |
+| style         | 样式                         | React.CSSProperties                              | false                      | none    |
+| labelPosition | 表单 Label 对齐方式          | string                                           | 'right' \| 'left' \| 'top' | 'right' |
+| labelWidth    | 表单 Label 宽度              | string \| number                                 | false                      | none    |
+| inline        | 是否是行内表单               | boolean                                          | false                      | false   |
+| defaultValue  | 表单组件的初始值集合         | {[FormItemName: string]: any}                    | false                      | none    |
+| onSubmit      | 提交表单校验成功后的回调函数 | `(isValid: boolean, arg: fieldValue[]) => void;` | false                      | none    |
+
+`type fieldValue = { name: string; value: any; };`
+
+## FormRef Methods
+
+| Name     | Description                   | Type                                                                      |
+| -------- | ----------------------------- | ------------------------------------------------------------------------- |
+| validate | 对一或多个表单组件进行校验    | `(eventType?: string, nameList?: string[]) => Promise<ValidateResult[]>;` |
+| reset    | 对一或多个表单组件进行重置    | `(nameList?: string[]) => void;`                                          |
+| getValue | 获取一或多个表单组件的`value` | `(nameList?: string[]) => value[];`                                       |
+| setValue | 设置单个表单组件的`value`     | `(name: string, value: any) => void;`                                     |
+
+`type validateResult = { message: string; isValid: boolean; name: string; };`
+
+## FormItem Props
+
+| Name                     | Description                                                                                 | Type                                                                  | Required | Default                    |
+| ------------------------ | ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- | -------- | -------------------------- |
+| as                       | 渲染的组件。 例如: `as="input"`， `as={<TextInput />}`， `as={TextInput}`                   | Parameters&lt;typeof React.createElement&gt;[0] \| React.ReactElement | true     | none                       |
+| name                     | 每个`Form`下的`FormItem`，需要有个独立的名称                                                | string                                                                | true     | none                       |
+| className                | 类名                                                                                        | string                                                                | false    | none                       |
+| style                    | 样式                                                                                        | React.CSSProperties                                                   | false    | none                       |
+| label                    | 表单 Item 标签文本                                                                          | React.ReactElement                                                    | false    | none                       |
+| prop                     | 表单 model 对象的属性，使用校验时设置                                                       | string                                                                | false    | none                       |
+| labelWidth               | 表单 Item Label 的宽度，优先级高于 Form 的 labelWidth                                       | string \| number                                                      | false    | none                       |
+| helperText               | 表单 Item 帮助内容                                                                          | React.ReactElement                                                    | false    | none                       |
+| rules                    | 表单校验规则对象，具体可参阅 [async-validator](https://github.com/yiminghe/async-validator) | RuleItem                                                              | false    | none                       |
+| valueName                | `value`对应的名称，如：`checked`                                                            | string                                                                | false    | 'value'                    |
+| mapValue                 | 将事件回调的入参（如：`事件对象`）映射为`value`的纯函数                                     | string                                                                | false    | (e: any) => e.target.value |
+| onChangeName             | `onChange`对应的名称，如：`onTextChange`                                                    | string                                                                | false    | 'onChange'                 |
+| onFocusName              | `onFocusName`对应的名称，如：`onTextFocus`                                                  | string                                                                | false    | 'onFocus'                  |
+| onBlurName               | `onBlurName`对应的名称，如：`onTextBlur`                                                    | string                                                                | false    | 'onBlur'                   |
+| `onChangeName`对应`prop` | `change`事件回调，在回调内可以通过`formRef.current.getValue`获取`value`                     | (e: any) => void                                                      | false    | none                       |
+| `onFocusName`对应`prop`  | `focus`事件回调，在回调内可以通过`formRef.current.getValue`获取`value`                      | (e: any) => void                                                      | false    | none                       |
+| `onBlurName`对应`prop`   | `blur`事件回调，在回调内可以通过`formRef.current.getValue`获取`value`                       | (e: any) => void                                                      | false    | none                       |
+
+# 表单校验
+
+## 设计思路
+
+对于`表单组件`，有`受控`与`非受控`两种形式，其中
+
+- `受控`形式对`表单组件`控制力更强，但需要为`表单组件`维护独立的`状态`。
+
+- `非受控`形式不需要维护独立的`状态`，但对`表单组件`的控制力弱于`受控`形式。
+
+`Clair`吸收这两者的长处，`表单组件`受控于`Clair`，开发者使用`Clair`提供的`API`以`非受控`形式操控`表单组件`。
+
+在`Clair`内部，通过`Controller`组件使`表单组件`受控，通过`useForm Hook`提供的`API`操控该表单下所有`受控组件`。
+
+## useForm Hook
+
+`Form`的底层实现，提供了注册表单组件和操作表单的方法
+
+### 参数
+
+| Name         | Description                                                       | Type                  | Required | Default |
+| ------------ | ----------------------------------------------------------------- | --------------------- | -------- | ------- |
+| defaultValue | 表单组件的初始值对象，优先级低于`Controller`的`defaultValue prop` | {[name: string]: any} | false    | none    |
+
+### 返回值
+
+| Name     | Description                                                                 | Type                                                                      |
+| -------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| validate | 同`FormRef`中的同名方法，对一或多个表单组件进行校验                         | `(eventType?: string, nameList?: string[]) => Promise<ValidateResult[]>;` |
+| reset    | 同`FormRef`中的同名方法，对一或多个表单组件进行重置                         | `(nameList?: string[]) => void;`                                          |
+| getValue | 同`FormRef`中的同名方法，获取一或多个表单组件的`value`                      | `(nameList?: string[]) => any[];`                                         |
+| setValue | 同`FormRef`中的同名方法，设置单个表单组件的`value`                          | `(name: string, value: any) => void;`                                     |
+| control  | 作为`control prop`传递给`Controller`和`ErrorMessage`，使其受该`useForm`控制 | Object                                                                    |
+
+## Controller
+
+<Controller />
+
+### prop
+
+| Name                     | Description                                                                                           | Type                                                                  | Required          | Default                    |
+| ------------------------ | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- | ----------------- | -------------------------- |
+| name                     | 每个`Controller`需要有个独立的名称                                                                    | string                                                                | true              | none                       |
+| as                       | 同`FormItem`中的同名`prop`，渲染的组件。 例如: `as="input"`， `as={<TextInput />}`， `as={TextInput}` | Parameters&lt;typeof React.createElement&gt;[0] \| React.ReactElement | true              | none                       |
+| control                  | 传入`useForm`返回值中的`control`，使当前组件受该`useForm`控制                                         | object                                                                | true              | none                       |
+| defaultValue             | 默认值，优先级高于`useForm`中定义的默认值                                                             | any                                                                   | false             | none                       |
+| valueName                | 同`FormItem`中的同名`prop`                                                                            | string                                                                | false             | 'value'                    |
+| mapValue                 | 同`FormItem`中的同名`prop`                                                                            | any                                                                   | false             | (e: any) => e.target.value |
+| onChangeName             | 同`FormItem`中的同名`prop`                                                                            | string                                                                | false             | 'onChange'                 |
+| onFocusName              | 同`FormItem`中的同名`prop`                                                                            | string                                                                | false             | 'onFocus'                  |
+| onBlurName               | 同`FormItem`中的同名`prop`                                                                            | string                                                                | false             | 'onBlur'                   |
+| `onChangeName`对应`prop` | 同`FormItem`中的同名`prop`                                                                            | string                                                                | (e: any) => void; | none                       |
+| `onFocusName`对应`prop`  | 同`FormItem`中的同名`prop`                                                                            | string                                                                | (e: any) => void; | none                       |
+| `onBlurName`对应`prop`   | 同`FormItem`中的同名`prop`                                                                            | string                                                                | (e: any) => void; | none                       |
+| 其他`prop`               | 其他`prop`会透传给`as prop`对应的组件                                                                 | any                                                                   | false             | none                       |
+
+## ErrorMessage
+
+显示表单组件的表单校验信息
+
+### prop
+
+| Name       | Description                                                                                           | Type                                                                  | Required | Default |
+| ---------- | ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- | -------- | ------- |
+| name       | 对应`Controller`的`name prop`                                                                         | string                                                                | true     | none    |
+| as         | 同`FormItem`中的同名`prop`，渲染的组件。 例子: `as="input"`， `as={<TextInput />}`， `as={TextInput}` | Parameters&lt;typeof React.createElement&gt;[0] \| React.ReactElement | true     | none    |
+| control    | 同`Controller`中的同名`prop`                                                                          | object                                                                | true     | none    |
+| 其他`prop` | 其他`prop`会透传给`as prop`对应的组件                                                                 | any                                                                   | false    | none    |
+
+### 表单校验字段
+
+`as`对应的组件会接收如下表单校验相关的`prop`
+
+| Name         | Description                                       | Type    | Default |
+| ------------ | ------------------------------------------------- | ------- | ------- |
+| message      | 表单校验失败时的错误信息，在表单组件`rules`中定义 | string  | ''      |
+| isValid      | 表单是否校验成功                                  | boolean | true    |
+| isValidating | 表单是否在校验中                                  | boolean | false   |

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Bug</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Bug" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M6,11 C5.37708011,12.4958894 5,14.2064814 5,16 C5,22.0751322 9.02943725,27 14,27 C18.9705627,27 23,22.0751322 23,16 C23,14.2180098 22.6154418,12.4887912 22,11 L6,11 Z" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round"></path>
+            <path d="M20,7 C20,3.6862915 17.3137085,1 14,1 C10.6862915,1 8,3.6862915 8,7 L20,7 Z" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round"></path>
+            <path d="M14,26 L14,15" id="路径-46" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M22,11 L25,9" id="路径-47" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M24,17 L27,17" id="路径-48" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M22,23 L25,25" id="路径-49" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M3,11 L6,9" id="路径-47" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" transform="translate(4.500000, 10.000000) scale(-1, 1) translate(-4.500000, -10.000000) "></path>
+            <path d="M1,17 L4,17" id="路径-48" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" transform="translate(2.500000, 17.000000) scale(-1, 1) translate(-2.500000, -17.000000) "></path>
+            <path d="M3,23 L6,25" id="路径-49" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" transform="translate(4.500000, 24.000000) scale(-1, 1) translate(-4.500000, -24.000000) "></path>
+        </g>
+    </g>
+</svg>

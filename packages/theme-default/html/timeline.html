@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<title>Timeline</title>
+<link rel="stylesheet" href="../styles/timeline.scss" />
+<link rel="stylesheet" href="../styles/icon.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body {
+    margin: 30px auto;
+    max-width: 1200px;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+<h1>Timeline 时间轴</h1>
+<h2>定义</h2>
+<p>按事件时间线展示信息、数据</p>
+<h2>使用场景</h2>
+<p>
+  使用垂直展示的时间流信息； 当有一系列信息需要从上至下按时间排列时；
+  需要由一条时间轴进行视觉上的串联时。
+</p>
+
+<h2>基础样式</h2>
+<p>最基础的时间轴</p>
+<ul class="c-timeline">
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>更新日志描述 2019-02-21</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>更新日志描述 2019-02-21</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>更新日志描述 2019-02-21</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>更新日志描述 2019-02-21</p>
+    </div>
+  </li>
+</ul>
+
+<h2>最后一个节点</h2>
+<p>
+  当数量过多时，在最后位置添加一个幽灵节点，表示时间轴未完成，还在记录过程中。
+</p>
+<ul class="c-timeline">
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>更新日志描述 2019-02-21</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>更新日志描述 2019-02-21</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>更新日志描述 2019-02-21</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>更新中...</p>
+    </div>
+  </li>
+</ul>
+
+<h2>自定义时间轴节点</h2>
+<p>可自定义更换图标和其他元素</p>
+<ul class="c-timeline">
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>更新日志描述 2019-02-21</p>
+    </div>
+  </li>
+  <li class="c-timeline-item c-timeline-item--has-icon">
+    <div class="c-timeline-item__node">
+      <i class="c-icon--svg">
+        <svg
+          viewBox="0 0 14 14"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+          <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+          <title>ic_timepicker_time</title>
+          <desc>Created with Sketch.</desc>
+          <g
+            id="ic_timepicker_time"
+            stroke="none"
+            stroke-width="1"
+            fill="none"
+            fill-rule="evenodd"
+          >
+            <g>
+              <rect id="矩形" x="0" y="0" width="14" height="14"></rect>
+              <circle
+                id="椭圆形"
+                stroke="#6E6E6E"
+                cx="7"
+                cy="7"
+                r="6.5"
+              ></circle>
+              <polyline
+                id="路径-18"
+                stroke="#6E6E6E"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                points="6.5 3 6.5 8 9.5 9.5"
+              ></polyline>
+            </g>
+          </g>
+        </svg>
+      </i>
+    </div>
+    <div class="c-timeline-item__content">
+      <p>修复了图标显示不正确 2019-02-21</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>更新日志描述 2019-02-21</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>更新中...</p>
+    </div>
+  </li>
+</ul>
+
+<h2>带状态的时间轴</h2>
+<p>
+  颜色表示不同状态，绿色用于已完成、成功状态，红色表示告警或错误状态，蓝色可表示正在进行或其他默认状态。
+</p>
+<ul class="c-timeline">
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>更新日志描述 2019-02-21</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node" style="border-color: #52b818;"></div>
+    <div class="c-timeline-item__content">
+      <p>成功上传按钮组件 2019-02-21</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node" style="border-color: #52b818;"></div>
+    <div class="c-timeline-item__content">
+      <p>成功上传选择器组件1</p>
+      <p>成功上传选择器组件2 2019-02-21</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node" style="border-color: #f84e44;"></div>
+    <div class="c-timeline-item__content">
+      <p>修复了无法加载问题1</p>
+      <p>修复了无法加载问题 2019-02-21</p>
+    </div>
+  </li>
+</ul>
+<h2>交替展现</h2>
+<p>内容在时间轴两侧交替展现</p>
+<ul class="c-timeline c-timeline--center">
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>更新日志描述 2019-02-21</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node" style="color: #52b818;"></div>
+    <div class="c-timeline-item__content">
+      <p>成功上传按钮组件 2019-02-21</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node" style="color: #52b818;"></div>
+    <div class="c-timeline-item__content">
+      <p>成功上传选择器组件1</p>
+      <p>成功上传选择器组件2 2019-02-21</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node" style="color: #f84e44;"></div>
+    <div class="c-timeline-item__content">
+      <p>修复了图片上传后无法加载问题 2019-02-21</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>更新日志描述 2019-02-21</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>更新日志描述 2019-02-21</p>
+    </div>
+  </li>
+</ul>
+<h2>右侧时间轴</h2>
+<p>时间轴点在右侧</p>
+<ul class="c-timeline c-timeline--right">
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>更新日志描述 2019-02-21</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node" style="color: #52b818;"></div>
+    <div class="c-timeline-item__content">
+      <p>修复了图标显示不正确 2019-02-21</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node" style="color: #52b818;"></div>
+    <div class="c-timeline-item__content">
+      <p>更新日志描述 2019-02-21</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node" style="color: #f84e44;"></div>
+    <div class="c-timeline-item__content">
+      <p>更新日志描述 2019-02-21</p>
+    </div>
+  </li>
+</ul>
+<h2>自定义时间轴</h2>
+<p>时间轴点在右侧</p>
+<ul class="c-timeline c-timeline--right">
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>正在同步数据 30分钟前</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>完成缓存清理 6小时前</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>成功修复系统漏洞 09:54:30</p>
+      <p>成功上传数据包</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>设备检修暂停访问 2019-07-30</p>
+      <p>系统升级维护</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>成功修复系统漏洞 2019-07-29</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>正在更新日志 2019-07-28</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>完成阶段性目标 2019-07-27</p>
+      <p>成功上传数据包</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>正在同步数据 2019-07-26</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>设备检修暂停访问 2019-07-25</p>
+    </div>
+  </li>
+  <li class="c-timeline-item">
+    <div class="c-timeline-item__node"></div>
+    <div class="c-timeline-item__content">
+      <p>成功修复系统漏洞 2019-07-24</p>
+    </div>
+  </li>
+</ul>

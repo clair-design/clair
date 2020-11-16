@@ -1,0 +1,21 @@
+## 基础用法
+
+通过 `type` 属性指定选择日期、周、月、季度或者年。
+
+```tsx live=true
+function App() {
+  const styles = {
+    marginRight: 20,
+    marginBottom: 20
+  };
+  return (
+    <>
+      <DatePicker style={styles} />
+      <DatePicker type="week" style={styles} />
+      <DatePicker type="month" style={styles} />
+      <DatePicker type="quarter" style={styles} />
+      <DatePicker type="year" />
+    </>
+  );
+}
+```

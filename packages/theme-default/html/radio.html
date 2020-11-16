@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<title>Radio</title>
+<link rel="stylesheet" href="../styles/radio.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body {
+    max-width: 1200px;
+    margin: 30px auto;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+
+  .c-radio-group + .c-radio-group {
+    margin-left: 20px;
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+<h1>Radio</h1>
+
+<h2>基础样式</h2>
+
+<h3>常规</h3>
+<div role="radiogroup" class="c-radio-group">
+  <label class="c-radio">
+    <input type="radio" name="fruit1" class="c-radio__input" value="🍌" />
+    <span class="c-radio__box"></span>
+    <span class="c-radio__label">香蕉</span>
+  </label>
+
+  <label class="c-radio c-radio--checked">
+    <input
+      type="radio"
+      name="fruit1"
+      checked
+      class="c-radio__input"
+      value="🍎"
+    />
+    <span class="c-radio__box"></span>
+    <span class="c-radio__label">苹果</span>
+  </label>
+</div>
+
+<h4>禁用</h4>
+<div role="radiogroup" class="c-radio-group">
+  <label class="c-radio">
+    <input
+      type="radio"
+      name="fruit2"
+      class="c-radio__input"
+      value="🍌"
+      disabled
+    />
+    <span class="c-radio__box"></span>
+    <span class="c-radio__label">香蕉</span>
+  </label>
+
+  <label class="c-radio c-radio--checked">
+    <input
+      type="radio"
+      name="fruit2"
+      class="c-radio__input"
+      value="🍎"
+      checked
+      disabled
+    />
+    <span class="c-radio__box"></span>
+    <span class="c-radio__label">苹果</span>
+  </label>
+</div>
+
+<h2>按钮样式</h2>
+<h3>常规</h3>
+<div role="radiogroup" class="c-radio-group">
+  <label class="c-radio c-radio--button">
+    <input type="radio" name="fruit3" class="c-radio__input" value="🍊" />
+    <span class="c-radio__box"></span>
+    <span class="c-radio__label">橘子</span>
+  </label>
+
+  <label class="c-radio c-radio--button">
+    <input
+      type="radio"
+      name="fruit3"
+      class="c-radio__input"
+      value="🍌"
+      checked
+    />
+    <span class="c-radio__box"></span>
+    <span class="c-radio__label">香蕉</span>
+  </label>
+
+  <label class="c-radio c-radio--button">
+    <input type="radio" name="fruit3" class="c-radio__input" value="🍎" />
+    <span class="c-radio__box"></span>
+    <span class="c-radio__label">苹果</span>
+  </label>
+</div>
+
+<h3>不同尺寸</h3>
+<div role="radiogroup" class="c-radio-group c-radio-group--large">
+  <label class="c-radio c-radio--button">
+    <input type="radio" name="fruit3" class="c-radio__input" value="🍊" />
+    <span class="c-radio__box"></span>
+    <span class="c-radio__label">橘子</span>
+  </label>
+
+  <label class="c-radio c-radio--button">
+    <input
+      type="radio"
+      name="fruit3"
+      class="c-radio__input"
+      value="🍌"
+      checked
+    />
+    <span class="c-radio__box"></span>
+    <span class="c-radio__label">香蕉</span>
+  </label>
+
+  <label class="c-radio c-radio--button">
+    <input type="radio" name="fruit3" class="c-radio__input" value="🍎" />
+    <span class="c-radio__box"></span>
+    <span class="c-radio__label">苹果</span>
+  </label>
+</div>
+<div role="radiogroup" class="c-radio-group">
+  <label class="c-radio c-radio--button">
+    <input type="radio" name="fruit3" class="c-radio__input" value="🍊" />
+    <span class="c-radio__box"></span>
+    <span class="c-radio__label">橘子</span>
+  </label>
+
+  <label class="c-radio c-radio--button">
+    <input
+      type="radio"
+      name="fruit3"
+      class="c-radio__input"
+      value="🍌"
+      checked
+    />
+    <span class="c-radio__box"></span>
+    <span class="c-radio__label">香蕉</span>
+  </label>
+
+  <label class="c-radio c-radio--button">
+    <input type="radio" name="fruit3" class="c-radio__input" value="🍎" />
+    <span class="c-radio__box"></span>
+    <span class="c-radio__label">苹果</span>
+  </label>
+</div>
+<div role="radiogroup" class="c-radio-group c-radio-group--small">
+  <label class="c-radio c-radio--button">
+    <input type="radio" name="fruit3" class="c-radio__input" value="🍊" />
+    <span class="c-radio__box"></span>
+    <span class="c-radio__label">橘子</span>
+  </label>
+
+  <label class="c-radio c-radio--button">
+    <input
+      type="radio"
+      name="fruit3"
+      class="c-radio__input"
+      value="🍌"
+      checked
+    />
+    <span class="c-radio__box"></span>
+    <span class="c-radio__label">香蕉</span>
+  </label>
+
+  <label class="c-radio c-radio--button">
+    <input type="radio" name="fruit3" class="c-radio__input" value="🍎" />
+    <span class="c-radio__box"></span>
+    <span class="c-radio__label">苹果</span>
+  </label>
+</div>
+
+<h3>禁用状态</h3>
+<div role="radiogroup" class="c-radio-group">
+  <label class="c-radio c-radio--button">
+    <input type="radio" name="fruit4" class="c-radio__input" value="🍊" />
+    <span class="c-radio__box"></span>
+    <span class="c-radio__label">橘子</span>
+  </label>
+
+  <label class="c-radio c-radio--button">
+    <input
+      type="radio"
+      name="fruit4"
+      class="c-radio__input"
+      value="🍌"
+      disabled
+    />
+    <span class="c-radio__box"></span>
+    <span class="c-radio__label">香蕉</span>
+  </label>
+
+  <label class="c-radio c-radio--button">
+    <input
+      type="radio"
+      name="fruit4"
+      class="c-radio__input"
+      value="🍎"
+      checked
+      disabled
+    />
+    <span class="c-radio__box"></span>
+    <span class="c-radio__label">苹果</span>
+  </label>
+</div>

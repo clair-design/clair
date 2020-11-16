@@ -1,0 +1,286 @@
+@import 'variables';
+@import 'mixins/mixins';
+@import 'icon';
+
+.c-input-affix-container,
+.c-input {
+  $bg-color: $--input-default-background-color;
+  $border-color: $--input-default-border-color;
+  z-index: 1;
+  box-sizing: border-box;
+
+  width: $--input-default-width;
+  color: $--input-default-color;
+  font-size: $--input-default-font-size;
+  line-height: $--input-default-line-height - 2;
+  background-color: $bg-color;
+
+  border: 1px solid $border-color;
+  border-radius: $--input-border-radius;
+
+  outline: none;
+  transition: $--input-transition;
+
+  &:hover {
+    border-color: $--input-focus-border-color;
+  }
+
+  &:focus,
+  &:focus-within {
+    @include focus-ring;
+    border-color: $--input-focus-border-color;
+    outline: none;
+  }
+
+  &:active {
+    border-color: $--input-focus-border-color;
+  }
+
+  &::placeholder {
+    color: $--disabled-text-color;
+  }
+
+  &::-moz-focus-inner {
+    padding: 0;
+    border-style: none;
+  }
+
+  // override `normalize.css`'s normalization
+  // https://github.com/necolas/normalize.css/blob/fc091cce1534909334c1911709a39c22d406977b/normalize.css#L218
+  &:-moz-focusring {
+    outline: none;
+  }
+
+  &--small {
+    font-size: $--input-small-font-size;
+  }
+
+  &--large {
+    font-size: $--input-large-font-size;
+  }
+}
+
+.c-input {
+  display: inline-block;
+
+  &--small {
+    padding: $--input-small-padding;
+    line-height: $--input-small-height - 2;
+  }
+
+  &--normal {
+    padding: $--input-default-padding;
+  }
+
+  &--large {
+    padding: $--input-large-padding;
+    line-height: $--input-large-height - 2;
+  }
+}
+
+.c-textarea {
+  $padding-block: (
+      $--input-default-line-height - 2 - $--input-default-font-size
+    ) / 2;
+  width: $--input-default-width;
+  height: $--input-textarea-default-height;
+  min-height: $--input-default-height;
+  padding-top: $padding-block;
+  padding-bottom: $padding-block;
+  overflow: auto;
+  line-height: $--mini-form-element-height;
+  transition: $--input-transition, height 0s;
+  resize: vertical;
+}
+
+// 各类状态的边框 + box-shadow
+@mixin input-state-border($color) {
+  &,
+  &:hover,
+  &:focus,
+  &:focus-within {
+    border-color: $color;
+  }
+
+  &:focus,
+  &:focus-within {
+    @include focus-ring($color);
+  }
+}
+
+.c-input--success,
+.c-input-affix-container--success {
+  @include input-state-border($--input-success-color);
+}
+
+.c-input--warning,
+.c-input-affix-container--warning {
+  @include input-state-border($--input-warning-color);
+}
+
+.c-input--error,
+.c-input-affix-container--error {
+  @include input-state-border($--input-error-color);
+}
+
+.c-input-affix-container {
+  display: inline-flex;
+  align-items: center;
+
+  .c-input {
+    width: 100%;
+    padding: 0 $--input-default-suffix-padding;
+    border: none;
+  }
+
+  .c-input:focus {
+    box-shadow: none;
+  }
+
+  .c-input-suffix {
+    padding-right: $--input-default-suffix-padding;
+  }
+
+  .c-input-prefix {
+    padding-left: $--input-default-suffix-padding;
+  }
+}
+
+.c-input-prefix,
+.c-input-suffix {
+  color: $--tertiary-text-color;
+
+  &:hover,
+  &:focus {
+    color: $--icon-color;
+    cursor: pointer;
+  }
+}
+
+.c-input-affix-container--small {
+  $padding: $--input-default-suffix-padding - 2;
+  $height: $--input-small-height - 2;
+
+  .c-input {
+    line-height: $height;
+  }
+
+  .c-input:first-child {
+    padding-left: $padding;
+  }
+
+  .c-input:last-child {
+    padding-right: $padding;
+  }
+
+  .c-input-suffix {
+    padding-right: $padding;
+  }
+
+  .c-input-prefix {
+    padding-left: $padding;
+  }
+}
+
+.c-input-affix-container--normal {
+  $padding: $--input-default-suffix-padding;
+  $height: $--input-default-height - 2;
+
+  .c-input {
+    line-height: $height;
+  }
+
+  .c-input:first-child {
+    padding-left: $padding;
+  }
+
+  .c-input:last-child {
+    padding-right: $padding;
+  }
+
+  .c-input-suffix {
+    padding-right: $padding;
+  }
+
+  .c-input-prefix {
+    padding-left: $padding;
+  }
+}
+
+.c-input-affix-container--large {
+  $padding: $--input-default-suffix-padding + 2px;
+  $height: $--input-large-height - 2;
+
+  .c-input {
+    line-height: $height;
+  }
+
+  .c-input:first-child {
+    padding-left: $padding;
+  }
+
+  .c-input:last-child {
+    padding-right: $padding;
+  }
+
+  .c-input-suffix {
+    padding-right: $padding;
+  }
+
+  .c-input-prefix {
+    padding-left: $padding;
+  }
+}
+
+.c-input-group {
+  display: inline-flex;
+  box-sizing: border-box;
+
+  .c-input {
+    border-radius: 0;
+  }
+}
+
+.c-input-group {
+  $border-color: $--input-default-border-color;
+
+  .c-select:first-child,
+  .c-input:first-child,
+  .c-button:first-child {
+    border-radius: $--input-border-radius 0 0 $--input-border-radius;
+  }
+
+  .c-input:last-child,
+  .c-button:last-child {
+    border-radius: 0 $--input-border-radius $--input-border-radius 0;
+  }
+}
+
+.c-input:disabled,
+.c-input-affix-container--disabled,
+.c-input-affix-container--disabled .c-input {
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    color: $--disabled-text-color;
+    background-color: $--disabled-background-color;
+    border-color: $--input-default-border-color;
+    cursor: default;
+  }
+}
+
+.c-input-affix-container--disabled .c-input-suffix,
+.c-input-affix-container--disabled .c-input-prefix {
+  &,
+  &:focus,
+  &:hover {
+    color: $--disabled-text-color;
+    cursor: default;
+  }
+}
+
+.c-input--block {
+  display: block;
+  width: 100%;
+}

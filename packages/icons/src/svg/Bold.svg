@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Bold</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Bold" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M6,1 L6,27" id="路径-142" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M6,1 L14.5,1 C18.0898509,1 21,3.91014913 21,7.5 C21,11.0898509 18.0898509,14 14.5,14 L6,14" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M6,14 L15.5,14 C19.0898509,14 22,16.9101491 22,20.5 C22,24.0898509 19.0898509,27 15.5,27 L6,27" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

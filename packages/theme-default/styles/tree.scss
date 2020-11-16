@@ -1,0 +1,84 @@
+@import 'variables';
+@import 'icon';
+@import 'checkbox';
+
+.c-tree,
+.c-tree [role='group'] {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.c-tree {
+  color: $--tree-text-color;
+  font-size: $--tree-font-size;
+
+  [role='treeitem'] {
+    outline: none;
+  }
+}
+
+.c-tree__content {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  cursor: pointer;
+
+  &:hover,
+  [role='treeitem']:focus > & {
+    background-color: $--tree-node-background-color;
+  }
+}
+
+.c-tree__toggle,
+.c-tree__custom-icon {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 14px;
+  color: $--tree-icon-color;
+}
+
+.c-tree__toggle {
+  margin-right: 8px;
+  transition: transition(transform);
+
+  [aria-expanded='true'] > .c-tree__content > & {
+    transform: rotate(90deg);
+  }
+
+  [aria-busy='true'] > .c-tree__content > & {
+    color: $--primary-color;
+  }
+}
+
+.c-tree__custom-icon {
+  margin-right: 10px;
+}
+
+.c-tree__content > .c-checkbox {
+  margin-right: 10px;
+
+  // checkbox 无内容时 label 仍存在，会出现多余的 padding
+  > .c-checkbox__label {
+    display: none;
+  }
+}
+
+.c-tree__label {
+  flex-grow: 1;
+  transition: transition(color);
+
+  [aria-selected='true'] > .c-tree__content > & {
+    color: $--tree-active-text-color;
+  }
+
+  [aria-disabled='true'] > .c-tree__content > & {
+    color: $--disabled-text-color;
+  }
+}
+
+.c-tree [role='group'] {
+  overflow: hidden;
+  transition: transition(height);
+}

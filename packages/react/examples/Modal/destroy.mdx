@@ -1,0 +1,28 @@
+```tsx live=true
+function Index() {
+  const [visible, setVisibility] = React.useState(false);
+
+  const showModal = () => setVisibility(true);
+  const cancel = () => setVisibility(false);
+  const confirm = () => setVisibility(false);
+
+  return (
+    <>
+      <Button type="primary" onClick={showModal}>
+        打开弹窗
+      </Button>
+      <Modal
+        title="Destroy Modal"
+        visible={visible}
+        width="400px"
+        destroyAfterClose={true}
+        onCancel={cancel}
+        onConfirm={confirm}
+      >
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal>
+    </>
+  );
+}
+```

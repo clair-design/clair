@@ -1,0 +1,16 @@
+<!-- 无数据表格 -->
+
+```tsx live=true
+function Index() {
+  const columns = [
+    { title: "来源类型", prop: "type" },
+    { title: "浏览量", prop: "pv" },
+    { title: "访客数", prop: "uv" },
+    { title: "IP 数", prop: "ip" }
+  ];
+
+  const dataSource = [];
+
+  return <Table columns={columns} dataSource={dataSource} rowKey="type" />;
+}
+```

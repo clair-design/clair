@@ -1,0 +1,212 @@
+@import 'variables';
+@import 'mixins/mixins';
+@import 'input';
+@import 'icon';
+
+@mixin mixin-pagination-item-margin($margin) {
+  .c-pagination__jump,
+  .c-pagination__total {
+    margin: 0 $margin;
+  }
+}
+
+.c-pagination {
+  @include mixin-pagination-item-margin(px2em(8px));
+
+  display: inline-flex;
+  align-items: center;
+  color: $--base-text-color;
+  font-size: $--base-font-size;
+
+  .c-icon--svg {
+    position: relative;
+    top: 1px;
+    width: 0.9em;
+    height: 0.9em;
+    font-size: 0.9em;
+    vertical-align: 1px;
+  }
+
+  button,
+  [role='button'] {
+    float: left;
+    min-width: $--pagination-page-size;
+    margin-right: px2em(8px);
+    color: inherit;
+    line-height: $--pagination-page-size;
+    text-align: center;
+    text-decoration: none;
+    background-color: unset;
+    border: 1px solid $--form-element-border-color;
+    border-radius: $--base-border-radius;
+    outline: none;
+    cursor: pointer;
+    transition: $--input-transition;
+
+    &:hover {
+      color: $--primary-color;
+      border-color: $--primary-color;
+    }
+
+    &:focus,
+    &:focus-within {
+      @include focus-ring;
+      border-color: $--input-focus-border-color;
+      outline: none;
+    }
+  }
+
+  [disabled],
+  [disabled]:hover,
+  [aria-disabled='true'],
+  [aria-disabled='true']:hover {
+    color: $--disabled-text-color;
+    border-color: $--form-element-border-color;
+    cursor: default;
+  }
+
+  .c-pagination__ellipsis {
+    width: 1em;
+    font-size: px2em(12px);
+    border-color: transparent;
+  }
+
+  .c-pagination__ellipsis .c-icon--svg,
+  .c-pagination__ellipsis:focus span,
+  .c-pagination__ellipsis:focus-within span,
+  .c-pagination__ellipsis:hover span {
+    display: none;
+  }
+
+  .c-pagination__ellipsis:focus .c-icon--svg,
+  .c-pagination__ellipsis:focus-within .c-icon--svg,
+  .c-pagination__ellipsis:hover .c-icon--svg {
+    display: inline-block;
+  }
+
+  .c-pagination__page--active,
+  .c-pagination__page--active:hover {
+    color: text-color($--primary-color);
+    background: $--primary-color;
+    border-color: $--primary-color;
+    cursor: default;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  // share between jumper and size-select
+  .c-input {
+    min-width: px2em(48px);
+    height: $--pagination-page-size + 2px;
+    margin: 0 px2em(6px);
+    line-height: normal;
+    border-radius: 0;
+  }
+
+  // input in jumper
+  .c-input[type='number'] {
+    width: px2em(48px);
+    text-align: center;
+  }
+
+  // size-select
+  .c-select {
+    // 108px with default font-size to be precise
+    // here do some round up
+    width: 8em;
+  }
+
+  /* stylelint-disable property-no-vendor-prefix */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  /* stylelint-disable selector-no-qualifying-type*/
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+  /* stylelint-enable selector-no-qualifying-type*/
+
+  /* stylelint-enable property-no-vendor-prefix */
+  &--hidden {
+    display: none;
+  }
+}
+
+.c-pagination__jump,
+.c-pagination__total {
+  color: $--secondary-text-color;
+
+  em {
+    color: $--base-text-color;
+    font-weight: bold;
+    font-style: normal;
+  }
+}
+
+.c-pagination--small {
+  @include mixin-pagination-item-margin(px2em(7px));
+
+  button,
+  [role='button'] {
+    min-width: $--pagination-page-small-size;
+    margin-right: 1em;
+    line-height: $--pagination-page-small-size;
+    border: 0;
+  }
+
+  .c-pagination__page-only {
+    margin-right: px2em(10px);
+  }
+
+  .c-pagination__prev,
+  .c-pagination__next {
+    margin-right: px2em(10px);
+  }
+
+  .c-input {
+    width: px2em(26px);
+    min-width: px2em(26px);
+    height: $--pagination-page-small-size + 2px;
+    padding: 0;
+    line-height: normal;
+  }
+}
+
+.c-pagination--simple {
+  @include mixin-pagination-item-margin(px2em(1px));
+
+  button,
+  [role='button'] {
+    min-width: $--pagination-page-small-size;
+    line-height: $--pagination-page-small-size;
+    border: 0;
+  }
+
+  .c-input {
+    float: left;
+    width: px2em(26px);
+    min-width: px2em(26px);
+    height: $--pagination-page-small-size;
+    margin: 0;
+    padding: 0;
+    line-height: $--pagination-page-small-size;
+  }
+
+  .c-pagination__slash {
+    float: left;
+    margin: 0 px2em(10px) 0 1em;
+    font-size: px2em(12px);
+    line-height: $--pagination-page-small-size;
+  }
+
+  .c-pagination__total-page {
+    float: left;
+    margin-right: px2em(10px);
+    color: $--base-text-color;
+    line-height: $--pagination-page-small-size;
+  }
+}

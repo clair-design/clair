@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<title>Pagination</title>
+<link rel="stylesheet" href="../styles/pagination.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body {
+    max-width: 1200px;
+    margin: 30px auto;
+  }
+
+  svg {
+    stroke: currentColor;
+  }
+</style>
+
+<h1>分页</h1>
+
+<h2>基础用法</h2>
+
+<nav class="c-pagination" role="navigation" aria-label="分页器">
+  <div>
+    <a
+      tabindex="0"
+      class="c-pagination__prev"
+      role="button"
+      aria-label="上一页"
+    >
+      <i aria-hidden="true" class="c-icon--svg" font-size="12">
+        <svg viewBox="0 0 14 14" style="stroke-width: 1.16667;">
+          <g fill="none" fill-rule="evenodd">
+            <polyline
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              transform="translate(6.250000, 7.000000) rotate(90.000000) translate(-6.250000, -7.000000) "
+              points="-0.25 3.75 6.25 10.25 12.75 3.75"
+            ></polyline>
+          </g>
+        </svg>
+      </i>
+    </a>
+    <a
+      tabindex="0"
+      class="c-pagination__page"
+      role="button"
+      aria-label="跳转到第1页"
+    >
+      1
+    </a>
+    <a
+      tabindex="0"
+      class="c-pagination__page c-pagination__page--active"
+      role="button"
+      aria-label="跳转到第2页"
+      aria-current="true"
+    >
+      2
+    </a>
+    <a
+      tabindex="0"
+      class="c-pagination__page"
+      role="button"
+      aria-label="跳转到第3页"
+    >
+      3
+    </a>
+    <a
+      tabindex="0"
+      class="c-pagination__page"
+      role="button"
+      aria-label="跳转到第4页"
+    >
+      4
+    </a>
+    <a tabindex="0" class="c-pagination__ellipsis" role="button">...</a>
+    <a
+      tabindex="0"
+      class="c-pagination__page"
+      role="button"
+      aria-label="跳转到第50页"
+    >
+      50
+    </a>
+    <a
+      tabindex="0"
+      class="c-pagination__next"
+      role="button"
+      aria-label="下一页"
+    >
+      <i class="c-icon--svg" font-size="12">
+        <svg viewBox="0 0 14 14">
+          <g fill="none" fill-rule="evenodd">
+            <polyline
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              transform="translate(7.750000, 7.000000) scale(-1, 1) rotate(-270.000000) translate(-7.750000, -7.000000) "
+              points="1.25 3.75 7.75 10.25 14.25 3.75"
+            ></polyline>
+          </g>
+        </svg>
+      </i>
+    </a>
+  </div>
+</nav>
+
+<h2>附加功能</h2>
+<nav class="c-pagination" role="navigation" aria-label="分页器">
+  <div>
+    <a
+      tabindex="0"
+      class="c-pagination__prev"
+      role="button"
+      aria-label="上一页"
+    >
+      <i aria-hidden="true" class="c-icon--svg">
+        <svg viewBox="0 0 14 14" style="stroke-width: 1.16667;">
+          <g fill="none" fill-rule="evenodd">
+            <polyline
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              transform="translate(6.250000, 7.000000) rotate(90.000000) translate(-6.250000, -7.000000) "
+              points="-0.25 3.75 6.25 10.25 12.75 3.75"
+            ></polyline>
+          </g>
+        </svg>
+      </i>
+    </a>
+    <a
+      tabindex="0"
+      class="c-pagination__page"
+      role="button"
+      aria-label="跳转到第1页"
+    >
+      1
+    </a>
+    <a
+      tabindex="0"
+      class="c-pagination__page"
+      role="button"
+      aria-label="跳转到第2页"
+    >
+      2
+    </a>
+    <a
+      tabindex="0"
+      class="c-pagination__page"
+      role="button"
+      aria-label="跳转到第3页"
+    >
+      3
+    </a>
+    <a
+      tabindex="0"
+      class="c-pagination__page c-pagination__page--active"
+      role="button"
+      aria-label="跳转到第4页"
+      aria-current="true"
+    >
+      4
+    </a>
+    <a
+      class="c-pagination__next"
+      role="button"
+      aria-label="下一页"
+      aria-disabled="true"
+    >
+      <i aria-hidden="true" class="c-icon--svg">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <polyline
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              transform="translate(7.750000, 7.000000) scale(-1, 1) rotate(-270.000000) translate(-7.750000, -7.000000) "
+              points="1.25 3.75 7.75 10.25 14.25 3.75"
+            ></polyline>
+          </g>
+        </svg>
+      </i>
+    </a>
+  </div>
+  <div class="c-pagination__total">
+    总共
+    <em>1234</em>
+    条
+  </div>
+  <div class="c-pagination__jump">
+    跳至
+    <input class="c-input" type="number" />
+    页
+  </div>
+</nav>
+<p></p>
+<h3>迷你样式</h3>
+<nav
+  class="c-pagination c-pagination--small"
+  role="navigation"
+  aria-label="分页器"
+>
+  <div>
+    <a
+      tabindex="0"
+      class="c-pagination__prev"
+      role="button"
+      aria-label="上一页"
+    >
+      <i aria-hidden="true" class="c-icon--svg" font-size="12">
+        <svg viewBox="0 0 14 14" style="stroke-width: 1.16667;">
+          <g fill="none" fill-rule="evenodd">
+            <polyline
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              transform="translate(6.250000, 7.000000) rotate(90.000000) translate(-6.250000, -7.000000) "
+              points="-0.25 3.75 6.25 10.25 12.75 3.75"
+            ></polyline>
+          </g>
+        </svg>
+      </i>
+    </a>
+    <a
+      tabindex="0"
+      class="c-pagination__page"
+      role="button"
+      aria-label="跳转到第1页"
+    >
+      1
+    </a>
+    <a tabindex="0" class="c-pagination__ellipsis" role="button">...</a>
+    <a
+      tabindex="0"
+      class="c-pagination__page"
+      role="button"
+      aria-label="跳转到第4页"
+    >
+      4
+    </a>
+    <a
+      tabindex="0"
+      class="c-pagination__page"
+      role="button"
+      aria-label="跳转到第5页"
+    >
+      5
+    </a>
+    <a
+      tabindex="0"
+      class="c-pagination__page c-pagination__page--active"
+      role="button"
+      aria-label="跳转到第6页"
+      aria-current="true"
+    >
+      6
+    </a>
+    <a
+      tabindex="0"
+      class="c-pagination__page"
+      role="button"
+      aria-label="跳转到第7页"
+    >
+      7
+    </a>
+    <a
+      tabindex="0"
+      class="c-pagination__page"
+      role="button"
+      aria-label="跳转到第8页"
+    >
+      8
+    </a>
+    <a tabindex="0" class="c-pagination__ellipsis" role="button">...</a>
+    <a
+      tabindex="0"
+      class="c-pagination__page"
+      role="button"
+      aria-label="跳转到第12页"
+    >
+      12
+    </a>
+    <a
+      tabindex="0"
+      class="c-pagination__next"
+      role="button"
+      aria-label="下一页"
+    >
+      <i aria-hidden="true" class="c-icon--svg">
+        <svg viewBox="0 0 14 14" style="stroke-width: 1.16667;">
+          <g fill="none" fill-rule="evenodd">
+            <polyline
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              transform="translate(7.750000, 7.000000) scale(-1, 1) rotate(-270.000000) translate(-7.750000, -7.000000) "
+              points="1.25 3.75 7.75 10.25 14.25 3.75"
+            ></polyline>
+          </g>
+        </svg>
+      </i>
+    </a>
+  </div>
+  <div class="c-pagination__total">
+    总共
+    <em>1234</em>
+    条
+  </div>
+  <div class="c-pagination__jump">
+    跳至
+    <input class="c-input" />
+    页
+  </div>
+</nav>
+<h3>简易样式</h3>
+<nav
+  class="c-pagination c-pagination--simple"
+  role="navigation"
+  aria-label="分页器"
+>
+  <div>
+    <a
+      tabindex="0"
+      class="c-pagination__prev"
+      role="button"
+      aria-label="上一页"
+    >
+      <i aria-hidden="true" class="c-icon--svg" font-size="12">
+        <svg viewBox="0 0 14 14" style="stroke-width: 1.16667;">
+          <g fill="none" fill-rule="evenodd">
+            <polyline
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              transform="translate(6.250000, 7.000000) rotate(90.000000) translate(-6.250000, -7.000000) "
+              points="-0.25 3.75 6.25 10.25 12.75 3.75"
+            ></polyline>
+          </g>
+        </svg>
+      </i>
+    </a>
+    <input class="c-input" />
+    <span class="c-pagination__slash">/</span>
+    <span class="c-pagination__total-page">5</span>
+    <a
+      tabindex="0"
+      class="c-pagination__next"
+      role="button"
+      aria-label="下一页"
+    >
+      <i aria-hidden="true" class="c-icon--svg">
+        <svg viewBox="0 0 14 14" style="stroke-width: 1.16667;">
+          <g fill="none" fill-rule="evenodd">
+            <polyline
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              transform="translate(7.750000, 7.000000) scale(-1, 1) rotate(-270.000000) translate(-7.750000, -7.000000) "
+              points="1.25 3.75 7.75 10.25 14.25 3.75"
+            ></polyline>
+          </g>
+        </svg>
+      </i>
+    </a>
+  </div>
+  <div class="c-pagination__total">
+    总共
+    <em>1234</em>
+    条
+  </div>
+</nav>

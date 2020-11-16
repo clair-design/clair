@@ -1,0 +1,17 @@
+```tsx live=true deps=notification
+function Index() {
+  const showNotification = () =>
+    notification.info({
+      title: "Notification last forever",
+      content: "Some content...",
+      duration: 0
+    });
+  return (
+    <div className="s-wrapper--button">
+      <Button type="primary" onClick={showNotification}>
+        弹出不自动关闭的通知
+      </Button>
+    </div>
+  );
+}
+```

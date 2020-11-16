@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>PoliceLight</title>
+    <desc>Created with Sketch.</desc>
+    <g id="PoliceLight" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M14,1 C19.5228475,1 24,5.4771525 24,11 L24,23 L4,23 L4,11 C4,5.4771525 8.4771525,1 14,1 Z" id="矩形" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round"></path>
+            <path d="M1,27 L27,27" id="路径-27" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <polyline id="路径-5" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(13.500000, 12.003369) scale(-1, 1) rotate(-90.000000) translate(-13.500000, -12.003369) " points="8.49328613 12.0084106 13.5033691 9.50336914 13.5033691 14.5033691 18.5067139 12.0016968"></polyline>
+        </g>
+    </g>
+</svg>

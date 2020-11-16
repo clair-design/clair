@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<title>Rating</title>
+<link rel="stylesheet" href="../styles/rating.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body {
+    margin: 30px auto;
+    max-width: 1200px;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+
+  h2 {
+    margin: 10px 0;
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+<h1>评分组件</h1>
+
+<h2>基础用法</h2>
+
+<div class="c-rating">
+  <div class="c-rating__unit c-rating__unit--star" style="color: #ffb409;">
+    <span>
+      <i aria-hidden="true" class="c-icon--svg c-icon-star">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M6.66.43L4.659 4.558a.389.389 0 01-.306.216L.35 5.227a.389.389 0 00-.226.667l3.164 3.042c.097.093.139.229.111.36l-.888 4.2a.389.389 0 00.57.42l3.736-2.098a.389.389 0 01.382 0l3.752 2.126a.389.389 0 00.577-.394l-.62-4.28a.389.389 0 01.1-.321l2.87-3.066a.389.389 0 00-.24-.652l-3.936-.456a.389.389 0 01-.304-.214L7.359.428A.389.389 0 006.66.43z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--star" style="color: #ffb409;">
+    <span>
+      <i aria-hidden="true" class="c-icon--svg c-icon-star">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M6.66.43L4.659 4.558a.389.389 0 01-.306.216L.35 5.227a.389.389 0 00-.226.667l3.164 3.042c.097.093.139.229.111.36l-.888 4.2a.389.389 0 00.57.42l3.736-2.098a.389.389 0 01.382 0l3.752 2.126a.389.389 0 00.577-.394l-.62-4.28a.389.389 0 01.1-.321l2.87-3.066a.389.389 0 00-.24-.652l-3.936-.456a.389.389 0 01-.304-.214L7.359.428A.389.389 0 006.66.43z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--star" style="color: #ffb409;">
+    <span>
+      <i aria-hidden="true" class="c-icon--svg c-icon-star">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M6.66.43L4.659 4.558a.389.389 0 01-.306.216L.35 5.227a.389.389 0 00-.226.667l3.164 3.042c.097.093.139.229.111.36l-.888 4.2a.389.389 0 00.57.42l3.736-2.098a.389.389 0 01.382 0l3.752 2.126a.389.389 0 00.577-.394l-.62-4.28a.389.389 0 01.1-.321l2.87-3.066a.389.389 0 00-.24-.652l-3.936-.456a.389.389 0 01-.304-.214L7.359.428A.389.389 0 006.66.43z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--star">
+    <span>
+      <i aria-hidden="true" class="c-icon--svg c-icon-star">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M6.66.43L4.659 4.558a.389.389 0 01-.306.216L.35 5.227a.389.389 0 00-.226.667l3.164 3.042c.097.093.139.229.111.36l-.888 4.2a.389.389 0 00.57.42l3.736-2.098a.389.389 0 01.382 0l3.752 2.126a.389.389 0 00.577-.394l-.62-4.28a.389.389 0 01.1-.321l2.87-3.066a.389.389 0 00-.24-.652l-3.936-.456a.389.389 0 01-.304-.214L7.359.428A.389.389 0 006.66.43z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--star">
+    <span>
+      <i aria-hidden="true" class="c-icon--svg c-icon-star">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M6.66.43L4.659 4.558a.389.389 0 01-.306.216L.35 5.227a.389.389 0 00-.226.667l3.164 3.042c.097.093.139.229.111.36l-.888 4.2a.389.389 0 00.57.42l3.736-2.098a.389.389 0 01.382 0l3.752 2.126a.389.389 0 00.577-.394l-.62-4.28a.389.389 0 01.1-.321l2.87-3.066a.389.389 0 00-.24-.652l-3.936-.456a.389.389 0 01-.304-.214L7.359.428A.389.389 0 006.66.43z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+</div>
+
+<h2>文案辅助</h2>
+
+<div class="c-rating">
+  <div class="c-rating__unit c-rating__unit--star" style="color: #ffb409;">
+    <span>
+      <i aria-hidden="true" class="c-icon--svg c-icon-star">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M6.66.43L4.659 4.558a.389.389 0 01-.306.216L.35 5.227a.389.389 0 00-.226.667l3.164 3.042c.097.093.139.229.111.36l-.888 4.2a.389.389 0 00.57.42l3.736-2.098a.389.389 0 01.382 0l3.752 2.126a.389.389 0 00.577-.394l-.62-4.28a.389.389 0 01.1-.321l2.87-3.066a.389.389 0 00-.24-.652l-3.936-.456a.389.389 0 01-.304-.214L7.359.428A.389.389 0 006.66.43z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--star" style="color: #ffb409;">
+    <span>
+      <i aria-hidden="true" class="c-icon--svg c-icon-star">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M6.66.43L4.659 4.558a.389.389 0 01-.306.216L.35 5.227a.389.389 0 00-.226.667l3.164 3.042c.097.093.139.229.111.36l-.888 4.2a.389.389 0 00.57.42l3.736-2.098a.389.389 0 01.382 0l3.752 2.126a.389.389 0 00.577-.394l-.62-4.28a.389.389 0 01.1-.321l2.87-3.066a.389.389 0 00-.24-.652l-3.936-.456a.389.389 0 01-.304-.214L7.359.428A.389.389 0 006.66.43z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--star" style="color: #ffb409;">
+    <span>
+      <i aria-hidden="true" class="c-icon--svg c-icon-star">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M6.66.43L4.659 4.558a.389.389 0 01-.306.216L.35 5.227a.389.389 0 00-.226.667l3.164 3.042c.097.093.139.229.111.36l-.888 4.2a.389.389 0 00.57.42l3.736-2.098a.389.389 0 01.382 0l3.752 2.126a.389.389 0 00.577-.394l-.62-4.28a.389.389 0 01.1-.321l2.87-3.066a.389.389 0 00-.24-.652l-3.936-.456a.389.389 0 01-.304-.214L7.359.428A.389.389 0 006.66.43z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--star">
+    <span>
+      <i aria-hidden="true" class="c-icon--svg c-icon-star">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M6.66.43L4.659 4.558a.389.389 0 01-.306.216L.35 5.227a.389.389 0 00-.226.667l3.164 3.042c.097.093.139.229.111.36l-.888 4.2a.389.389 0 00.57.42l3.736-2.098a.389.389 0 01.382 0l3.752 2.126a.389.389 0 00.577-.394l-.62-4.28a.389.389 0 01.1-.321l2.87-3.066a.389.389 0 00-.24-.652l-3.936-.456a.389.389 0 01-.304-.214L7.359.428A.389.389 0 006.66.43z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--star">
+    <span>
+      <i aria-hidden="true" class="c-icon--svg c-icon-star">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M6.66.43L4.659 4.558a.389.389 0 01-.306.216L.35 5.227a.389.389 0 00-.226.667l3.164 3.042c.097.093.139.229.111.36l-.888 4.2a.389.389 0 00.57.42l3.736-2.098a.389.389 0 01.382 0l3.752 2.126a.389.389 0 00.577-.394l-.62-4.28a.389.389 0 01.1-.321l2.87-3.066a.389.389 0 00-.24-.652l-3.936-.456a.389.389 0 01-.304-.214L7.359.428A.389.389 0 006.66.43z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+</div>
+<span>一般</span>
+
+<br />
+
+<div aria-readonly="true" class="c-rating c-rating--readonly">
+  <div class="c-rating__unit c-rating__unit--star" style="color: #ffb409;">
+    <span>
+      <i aria-hidden="true" class="c-icon--svg c-icon-star">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M6.66.43L4.659 4.558a.389.389 0 01-.306.216L.35 5.227a.389.389 0 00-.226.667l3.164 3.042c.097.093.139.229.111.36l-.888 4.2a.389.389 0 00.57.42l3.736-2.098a.389.389 0 01.382 0l3.752 2.126a.389.389 0 00.577-.394l-.62-4.28a.389.389 0 01.1-.321l2.87-3.066a.389.389 0 00-.24-.652l-3.936-.456a.389.389 0 01-.304-.214L7.359.428A.389.389 0 006.66.43z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--star" style="color: #ffb409;">
+    <span>
+      <i aria-hidden="true" class="c-icon--svg c-icon-star">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M6.66.43L4.659 4.558a.389.389 0 01-.306.216L.35 5.227a.389.389 0 00-.226.667l3.164 3.042c.097.093.139.229.111.36l-.888 4.2a.389.389 0 00.57.42l3.736-2.098a.389.389 0 01.382 0l3.752 2.126a.389.389 0 00.577-.394l-.62-4.28a.389.389 0 01.1-.321l2.87-3.066a.389.389 0 00-.24-.652l-3.936-.456a.389.389 0 01-.304-.214L7.359.428A.389.389 0 006.66.43z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--star">
+    <span>
+      <i aria-hidden="true" class="c-icon--svg c-icon-star">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M6.66.43L4.659 4.558a.389.389 0 01-.306.216L.35 5.227a.389.389 0 00-.226.667l3.164 3.042c.097.093.139.229.111.36l-.888 4.2a.389.389 0 00.57.42l3.736-2.098a.389.389 0 01.382 0l3.752 2.126a.389.389 0 00.577-.394l-.62-4.28a.389.389 0 01.1-.321l2.87-3.066a.389.389 0 00-.24-.652l-3.936-.456a.389.389 0 01-.304-.214L7.359.428A.389.389 0 006.66.43z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+    <span class="c-rating__part" style="width: 30%; color: #ffb409;">
+      <i class="c-icon--svg c-icon-star">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M6.66.43L4.659 4.558a.389.389 0 01-.306.216L.35 5.227a.389.389 0 00-.226.667l3.164 3.042c.097.093.139.229.111.36l-.888 4.2a.389.389 0 00.57.42l3.736-2.098a.389.389 0 01.382 0l3.752 2.126a.389.389 0 00.577-.394l-.62-4.28a.389.389 0 01.1-.321l2.87-3.066a.389.389 0 00-.24-.652l-3.936-.456a.389.389 0 01-.304-.214L7.359.428A.389.389 0 006.66.43z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--star">
+    <span>
+      <i aria-hidden="true" class="c-icon--svg c-icon-star">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M6.66.43L4.659 4.558a.389.389 0 01-.306.216L.35 5.227a.389.389 0 00-.226.667l3.164 3.042c.097.093.139.229.111.36l-.888 4.2a.389.389 0 00.57.42l3.736-2.098a.389.389 0 01.382 0l3.752 2.126a.389.389 0 00.577-.394l-.62-4.28a.389.389 0 01.1-.321l2.87-3.066a.389.389 0 00-.24-.652l-3.936-.456a.389.389 0 01-.304-.214L7.359.428A.389.389 0 006.66.43z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--star">
+    <span>
+      <i aria-hidden="true" class="c-icon--svg c-icon-star">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M6.66.43L4.659 4.558a.389.389 0 01-.306.216L.35 5.227a.389.389 0 00-.226.667l3.164 3.042c.097.093.139.229.111.36l-.888 4.2a.389.389 0 00.57.42l3.736-2.098a.389.389 0 01.382 0l3.752 2.126a.389.389 0 00.577-.394l-.62-4.28a.389.389 0 01.1-.321l2.87-3.066a.389.389 0 00-.24-.652l-3.936-.456a.389.389 0 01-.304-.214L7.359.428A.389.389 0 006.66.43z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+</div>
+<span>2.3</span>
+
+<h2>只读样式</h2>
+
+<div aria-readonly="true" class="c-rating c-rating--readonly">
+  <div class="c-rating__unit c-rating__unit--star" style="color: #ffb409;">
+    <span>
+      <i aria-hidden="true" class="c-icon--svg c-icon-star">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M6.66.43L4.659 4.558a.389.389 0 01-.306.216L.35 5.227a.389.389 0 00-.226.667l3.164 3.042c.097.093.139.229.111.36l-.888 4.2a.389.389 0 00.57.42l3.736-2.098a.389.389 0 01.382 0l3.752 2.126a.389.389 0 00.577-.394l-.62-4.28a.389.389 0 01.1-.321l2.87-3.066a.389.389 0 00-.24-.652l-3.936-.456a.389.389 0 01-.304-.214L7.359.428A.389.389 0 006.66.43z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--star" style="color: #ffb409;">
+    <span>
+      <i aria-hidden="true" class="c-icon--svg c-icon-star">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M6.66.43L4.659 4.558a.389.389 0 01-.306.216L.35 5.227a.389.389 0 00-.226.667l3.164 3.042c.097.093.139.229.111.36l-.888 4.2a.389.389 0 00.57.42l3.736-2.098a.389.389 0 01.382 0l3.752 2.126a.389.389 0 00.577-.394l-.62-4.28a.389.389 0 01.1-.321l2.87-3.066a.389.389 0 00-.24-.652l-3.936-.456a.389.389 0 01-.304-.214L7.359.428A.389.389 0 006.66.43z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--star">
+    <span>
+      <i aria-hidden="true" class="c-icon--svg c-icon-star">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M6.66.43L4.659 4.558a.389.389 0 01-.306.216L.35 5.227a.389.389 0 00-.226.667l3.164 3.042c.097.093.139.229.111.36l-.888 4.2a.389.389 0 00.57.42l3.736-2.098a.389.389 0 01.382 0l3.752 2.126a.389.389 0 00.577-.394l-.62-4.28a.389.389 0 01.1-.321l2.87-3.066a.389.389 0 00-.24-.652l-3.936-.456a.389.389 0 01-.304-.214L7.359.428A.389.389 0 006.66.43z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--star">
+    <span>
+      <i aria-hidden="true" class="c-icon--svg c-icon-star">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M6.66.43L4.659 4.558a.389.389 0 01-.306.216L.35 5.227a.389.389 0 00-.226.667l3.164 3.042c.097.093.139.229.111.36l-.888 4.2a.389.389 0 00.57.42l3.736-2.098a.389.389 0 01.382 0l3.752 2.126a.389.389 0 00.577-.394l-.62-4.28a.389.389 0 01.1-.321l2.87-3.066a.389.389 0 00-.24-.652l-3.936-.456a.389.389 0 01-.304-.214L7.359.428A.389.389 0 006.66.43z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--star">
+    <span>
+      <i aria-hidden="true" class="c-icon--svg c-icon-star">
+        <svg viewBox="0 0 14 14" style="stroke-width: 0.875;">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M6.66.43L4.659 4.558a.389.389 0 01-.306.216L.35 5.227a.389.389 0 00-.226.667l3.164 3.042c.097.093.139.229.111.36l-.888 4.2a.389.389 0 00.57.42l3.736-2.098a.389.389 0 01.382 0l3.752 2.126a.389.389 0 00.577-.394l-.62-4.28a.389.389 0 01.1-.321l2.87-3.066a.389.389 0 00-.24-.652l-3.936-.456a.389.389 0 01-.304-.214L7.359.428A.389.389 0 006.66.43z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+</div>
+
+<h2>其他样式</h2>
+
+<div class="c-rating">
+  <div class="c-rating__unit c-rating__unit--heart" style="color: #ff6860;">
+    <span>
+      <i class="c-icon--svg c-icon-heart" style="stroke-width: 0;">
+        <svg viewBox="0 0 14 14">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M3.075 10.177c-1.128-1.04-2.01-2.134-2.489-2.92C.008 6.309 0 5.403 0 4.814A3.929 3.929 0 017 2.35a3.93 3.93 0 017 2.462c0 .59-.008 1.496-.586 2.446-.479.785-1.36 1.878-2.489 2.919a24.485 24.485 0 01-2.604 2.077c-.29.202-.847.565-1.137.752a.426.426 0 01-.185.047.445.445 0 01-.19-.05c-.292-.19-.847-.552-1.135-.753a24.477 24.477 0 01-2.6-2.073z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--heart" style="color: #ff6860;">
+    <span>
+      <i class="c-icon--svg c-icon-heart" style="stroke-width: 0;">
+        <svg viewBox="0 0 14 14">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M3.075 10.177c-1.128-1.04-2.01-2.134-2.489-2.92C.008 6.309 0 5.403 0 4.814A3.929 3.929 0 017 2.35a3.93 3.93 0 017 2.462c0 .59-.008 1.496-.586 2.446-.479.785-1.36 1.878-2.489 2.919a24.485 24.485 0 01-2.604 2.077c-.29.202-.847.565-1.137.752a.426.426 0 01-.185.047.445.445 0 01-.19-.05c-.292-.19-.847-.552-1.135-.753a24.477 24.477 0 01-2.6-2.073z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--heart" style="color: #ff6860;">
+    <span>
+      <i class="c-icon--svg c-icon-heart" style="stroke-width: 0;">
+        <svg viewBox="0 0 14 14">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M3.075 10.177c-1.128-1.04-2.01-2.134-2.489-2.92C.008 6.309 0 5.403 0 4.814A3.929 3.929 0 017 2.35a3.93 3.93 0 017 2.462c0 .59-.008 1.496-.586 2.446-.479.785-1.36 1.878-2.489 2.919a24.485 24.485 0 01-2.604 2.077c-.29.202-.847.565-1.137.752a.426.426 0 01-.185.047.445.445 0 01-.19-.05c-.292-.19-.847-.552-1.135-.753a24.477 24.477 0 01-2.6-2.073z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--heart">
+    <span>
+      <i class="c-icon--svg c-icon-heart" style="stroke-width: 0;">
+        <svg viewBox="0 0 14 14">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M3.075 10.177c-1.128-1.04-2.01-2.134-2.489-2.92C.008 6.309 0 5.403 0 4.814A3.929 3.929 0 017 2.35a3.93 3.93 0 017 2.462c0 .59-.008 1.496-.586 2.446-.479.785-1.36 1.878-2.489 2.919a24.485 24.485 0 01-2.604 2.077c-.29.202-.847.565-1.137.752a.426.426 0 01-.185.047.445.445 0 01-.19-.05c-.292-.19-.847-.552-1.135-.753a24.477 24.477 0 01-2.6-2.073z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--heart">
+    <span>
+      <i class="c-icon--svg c-icon-heart" style="stroke-width: 0;">
+        <svg viewBox="0 0 14 14">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M3.075 10.177c-1.128-1.04-2.01-2.134-2.489-2.92C.008 6.309 0 5.403 0 4.814A3.929 3.929 0 017 2.35a3.93 3.93 0 017 2.462c0 .59-.008 1.496-.586 2.446-.479.785-1.36 1.878-2.489 2.919a24.485 24.485 0 01-2.604 2.077c-.29.202-.847.565-1.137.752a.426.426 0 01-.185.047.445.445 0 01-.19-.05c-.292-.19-.847-.552-1.135-.753a24.477 24.477 0 01-2.6-2.073z"
+              fill="currentColor"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+</div>
+
+<br />
+
+<div class="c-rating">
+  <div class="c-rating__unit c-rating__unit--custom" style="color: #ffb409;">
+    <span>C</span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--custom" style="color: #ffb409;">
+    <span>C</span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--custom" style="color: #ffb409;">
+    <span>C</span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--custom">
+    <span>C</span>
+  </div>
+  <div class="c-rating__unit c-rating__unit--custom">
+    <span>C</span>
+  </div>
+</div>

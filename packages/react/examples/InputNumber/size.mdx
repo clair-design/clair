@@ -1,0 +1,33 @@
+## 尺寸
+
+分大中小三种尺寸可选
+
+```tsx live=true
+function Index() {
+  const style = {
+    marginRight: "20px"
+  };
+  return (
+    <>
+      <InputNumber defaultValue={1} size="large" style={style} />
+      <InputNumber defaultValue={1} size="normal" style={style} />
+      <InputNumber defaultValue={1} size="small" style={style} />
+      <br />
+      <br />
+      <InputNumber
+        defaultValue={1}
+        size="large"
+        controlPosition="up-down"
+        style={style}
+      />
+      <InputNumber
+        defaultValue={1}
+        size="normal"
+        controlPosition="up-down"
+        style={style}
+      />
+      <InputNumber defaultValue={1} size="small" controlPosition="up-down" />
+    </>
+  );
+}
+```

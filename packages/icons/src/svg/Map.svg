@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Map</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Map" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M1,3 L1,23 L6.35880952,24.5114591 C7.49929158,24.8331335 8.69699123,24.8974323 9.86535727,24.6997088 L18.1346427,23.3002912 C19.3030088,23.1025677 20.5007084,23.1668665 21.6411905,23.4885409 L27,25 L27,5 L21.6411905,3.48854091 C20.5007084,3.16686648 19.3030088,3.10256775 18.1346427,3.30029123 L9.86535727,4.69970877 C8.69699123,4.89743225 7.49929158,4.83313352 6.35880952,4.51145909 L1,3 Z" id="路径-62" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M8,6 L8,24" id="路径-63" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M20,4 L20,23" id="路径-63" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

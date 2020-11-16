@@ -1,0 +1,25 @@
+## props 控制 `visible`
+
+```tsx live=true className=s-container--button
+function App() {
+  const [visible, updateVisible] = React.useState(true);
+  const onVisibilityChange = ({
+    detail: { visible: visibleFromEvent, source }
+  }) => {
+    if (source !== "click") {
+      return;
+    }
+    updateVisible(visibleFromEvent);
+  };
+  return (
+    <Tooltip
+      trigger="click"
+      content="visible"
+      visible={visible}
+      onVisibilityChange={onVisibilityChange}
+    >
+      <Button>{visible ? "visible" : "invisible"}</Button>
+    </Tooltip>
+  );
+}
+```

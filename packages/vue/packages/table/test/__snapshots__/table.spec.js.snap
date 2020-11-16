@@ -1,0 +1,533 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[Table] basic base data list 1`] = `
+<div class="c-table">
+  <div class="c-table--content c-table--normal">
+    <table class="">
+      <colgroup>
+        <col style="width: auto;">
+        <col style="width: auto;">
+        <col style="width: auto;">
+        <col style="width: auto;">
+        <col style="width: auto;">
+      </colgroup>
+      <thead class="">
+        <tr>
+          <th rowspan="1" class="">来源类型</th>
+          <th rowspan="1" class="">浏览量</th>
+          <th rowspan="1" class="">访客数</th>
+          <th rowspan="1" class="">转化次数</th>
+          <th rowspan="1" class="">IP 数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="1" rowspan="1" class="">直接访问1</td>
+          <td colspan="1" rowspan="1" class="">1</td>
+          <td colspan="1" rowspan="1" class="">2</td>
+          <td colspan="1" rowspan="1" class="">5</td>
+          <td colspan="1" rowspan="1" class="">8</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="">搜索引擎1</td>
+          <td colspan="1" rowspan="1" class="">11</td>
+          <td colspan="1" rowspan="1" class="">21</td>
+          <td colspan="1" rowspan="1" class="">51</td>
+          <td colspan="1" rowspan="1" class="">81</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="">直接访问1</td>
+          <td colspan="1" rowspan="1" class="">1</td>
+          <td colspan="1" rowspan="1" class="">2</td>
+          <td colspan="1" rowspan="1" class="">5</td>
+          <td colspan="1" rowspan="1" class="">8</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="">搜索引擎1</td>
+          <td colspan="1" rowspan="1" class="">11</td>
+          <td colspan="1" rowspan="1" class="">21</td>
+          <td colspan="1" rowspan="1" class="">51</td>
+          <td colspan="1" rowspan="1" class="">81</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="">直接访问1</td>
+          <td colspan="1" rowspan="1" class="">1</td>
+          <td colspan="1" rowspan="1" class="">2</td>
+          <td colspan="1" rowspan="1" class="">5</td>
+          <td colspan="1" rowspan="1" class="">8</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="">搜索引擎1</td>
+          <td colspan="1" rowspan="1" class="">11</td>
+          <td colspan="1" rowspan="1" class="">21</td>
+          <td colspan="1" rowspan="1" class="">51</td>
+          <td colspan="1" rowspan="1" class="">81</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`[Table] basic no data list 1`] = `
+<div class="c-table">
+  <div class="c-table--content c-table--normal">
+    <table class="">
+      <colgroup>
+        <col style="width: auto;">
+        <col style="width: auto;">
+        <col style="width: auto;">
+        <col style="width: auto;">
+        <col style="width: auto;">
+      </colgroup>
+      <thead class="">
+        <tr>
+          <th rowspan="1" class="">来源类型</th>
+          <th rowspan="1" class="">浏览量</th>
+          <th rowspan="1" class="">访客数</th>
+          <th rowspan="1" class="">转化次数</th>
+          <th rowspan="1" class="">IP 数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="c-table__row--empty">
+          <td colspan="5" class="c-table__text--center">
+            <div class="c-empty "><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEiIGhlaWdodD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTMgLTQpIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIG9wYWNpdHk9Ii4yIiBkPSJNMCAwaDU2djU2SDB6Ii8+PHBhdGggZmlsbD0iI0MxQzdENiIgZD0iTTEwIDIzaDlsLTYuNzIgMTJoLTl6TTQ2LjAwOSAyM2gtOWw2LjcyIDEyaDl6Ii8+PHBhdGggZmlsbD0iI0RDRTBFRCIgZD0iTTEwIDIzaDM2djEzSDEweiIvPjxwYXRoIGQ9Ik0yMS41IDM3YTguNSA4LjUgMCAxIDAgMC0xNyA4LjUgOC41IDAgMCAwIDAgMTd6IiBzdHJva2U9IiNDMUM3RDYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWRhc2hhcnJheT0iMCwzIi8+PHBhdGggZD0iTTIyIDM3YzEwLjY3MyAwIDE5LjAwNi03LjU1MyAyNS0yMi42NTgiIHN0cm9rZT0iI0MxQzdENiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtZGFzaGFycmF5PSIwLDMiLz48cmVjdCBmaWxsPSIjRUZGMUY5IiB4PSIzIiB5PSIzNCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjE4IiByeD0iMiIvPjxyZWN0IGZpbGw9IiNDMUM3RDgiIHg9IjE4IiB5PSI0MSIgd2lkdGg9IjIwIiBoZWlnaHQ9IjQiIHJ4PSIyIi8+PHBhdGggZD0iTTUzLjk3NyA0LjM5bC0xLjM3MyA3Ljk2N2EuMzI4LjMyOCAwIDAgMS0uMzIzLjI3NC4zNi4zNiAwIDAgMS0uMTI0LS4wMjdsLTIuMzI1LS45NS0xLjI0MiAxLjUxNmEuMy4zIDAgMCAxLS4yNTIuMTE3LjI4Ni4yODYgMCAwIDEtLjExNC0uMDIuMzI3LjMyNyAwIDAgMS0uMjE2LS4zMDh2LTEuNzkybDQuNDk0LTUuNTE5LTUuNTQ2IDQuODMxLTIuMDI3LS44M2MtLjEyNy0uMDQ4LS4xOTYtLjE0Mi0uMjA1LS4yODRhLjMwNy4zMDcgMCAwIDEgLjE2NC0uMzA0bDguNi01LjAxMWEuMzE3LjMxNyAwIDAgMSAuMTY1LS4wNDVjLjA3IDAgLjEzLjAxOC4xODYuMDU3LjExNC4wODIuMTYuMTkxLjEzOC4zMjd6IiBmaWxsPSIjQzFDN0Q2Ii8+PC9nPjwvc3ZnPg==" alt="暂无相关数据" class="c-empty__img">
+              <div class="c-empty__description">暂无相关数据</div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`[Table] basic table with fullScreen 1`] = `
+<div class="c-table">
+  <div class="c-table--content c-table--small">
+    <table class="">
+      <colgroup>
+        <col style="width: auto;">
+        <col style="width: auto;">
+        <col style="width: auto;">
+        <col style="width: auto;">
+        <col style="width: auto;">
+      </colgroup>
+      <thead class="">
+        <tr>
+          <th rowspan="1" class="">来源类型</th>
+          <th rowspan="1" class="">浏览量</th>
+          <th rowspan="1" class="">访客数</th>
+          <th rowspan="1" class="">转化次数</th>
+          <th rowspan="1" class="">IP 数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="1" rowspan="1" class="">直接访问1</td>
+          <td colspan="1" rowspan="1" class="">1</td>
+          <td colspan="1" rowspan="1" class="">2</td>
+          <td colspan="1" rowspan="1" class="">5</td>
+          <td colspan="1" rowspan="1" class="">8</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="">搜索引擎1</td>
+          <td colspan="1" rowspan="1" class="">11</td>
+          <td colspan="1" rowspan="1" class="">21</td>
+          <td colspan="1" rowspan="1" class="">51</td>
+          <td colspan="1" rowspan="1" class="">81</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="">直接访问1</td>
+          <td colspan="1" rowspan="1" class="">1</td>
+          <td colspan="1" rowspan="1" class="">2</td>
+          <td colspan="1" rowspan="1" class="">5</td>
+          <td colspan="1" rowspan="1" class="">8</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="">搜索引擎1</td>
+          <td colspan="1" rowspan="1" class="">11</td>
+          <td colspan="1" rowspan="1" class="">21</td>
+          <td colspan="1" rowspan="1" class="">51</td>
+          <td colspan="1" rowspan="1" class="">81</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="">直接访问1</td>
+          <td colspan="1" rowspan="1" class="">1</td>
+          <td colspan="1" rowspan="1" class="">2</td>
+          <td colspan="1" rowspan="1" class="">5</td>
+          <td colspan="1" rowspan="1" class="">8</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="">搜索引擎1</td>
+          <td colspan="1" rowspan="1" class="">11</td>
+          <td colspan="1" rowspan="1" class="">21</td>
+          <td colspan="1" rowspan="1" class="">51</td>
+          <td colspan="1" rowspan="1" class="">81</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`[Table] fixed column fixed both left and right 1`] = `
+<div class="c-table">
+  <div class="c-table--content c-table--normal c-table--with-height" style="height: 200px;">
+    <table class="c-table--fix">
+      <colgroup>
+        <col style="width: 200px;">
+        <col style="width: 200px;">
+        <col style="width: 200px;">
+        <col style="width: 200px;">
+        <col style="width: 200px;">
+      </colgroup>
+      <thead class="c-table__thead--sticky">
+        <tr>
+          <th rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-left" style="left: 0px;">来源类型</th>
+          <th rowspan="1" class="">浏览量</th>
+          <th rowspan="1" class="">访客数</th>
+          <th rowspan="1" class="">转化次数</th>
+          <th rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-right" style="right: 0px;">IP 数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-left" style="left: 0px;">直接访问1</td>
+          <td colspan="1" rowspan="1" class="">1</td>
+          <td colspan="1" rowspan="1" class="">2</td>
+          <td colspan="1" rowspan="1" class="">5</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-right" style="right: 0px;">8</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-left" style="left: 0px;">搜索引擎1</td>
+          <td colspan="1" rowspan="1" class="">11</td>
+          <td colspan="1" rowspan="1" class="">21</td>
+          <td colspan="1" rowspan="1" class="">51</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-right" style="right: 0px;">81</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-left" style="left: 0px;">直接访问1</td>
+          <td colspan="1" rowspan="1" class="">1</td>
+          <td colspan="1" rowspan="1" class="">2</td>
+          <td colspan="1" rowspan="1" class="">5</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-right" style="right: 0px;">8</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-left" style="left: 0px;">搜索引擎1</td>
+          <td colspan="1" rowspan="1" class="">11</td>
+          <td colspan="1" rowspan="1" class="">21</td>
+          <td colspan="1" rowspan="1" class="">51</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-right" style="right: 0px;">81</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-left" style="left: 0px;">直接访问1</td>
+          <td colspan="1" rowspan="1" class="">1</td>
+          <td colspan="1" rowspan="1" class="">2</td>
+          <td colspan="1" rowspan="1" class="">5</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-right" style="right: 0px;">8</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-left" style="left: 0px;">搜索引擎1</td>
+          <td colspan="1" rowspan="1" class="">11</td>
+          <td colspan="1" rowspan="1" class="">21</td>
+          <td colspan="1" rowspan="1" class="">51</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-right" style="right: 0px;">81</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`[Table] fixed column fixed left 1`] = `
+<div class="c-table">
+  <div class="c-table--content c-table--normal c-table--with-height" style="height: 200px;">
+    <table class="c-table--fix">
+      <colgroup>
+        <col style="width: 200px;">
+        <col style="width: 200px;">
+        <col style="width: 200px;">
+        <col style="width: 200px;">
+        <col style="width: 200px;">
+      </colgroup>
+      <thead class="c-table__thead--sticky">
+        <tr>
+          <th rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-left" style="left: 0px;">来源类型</th>
+          <th rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-left" style="left: 200px;">浏览量</th>
+          <th rowspan="1" class="">访客数</th>
+          <th rowspan="1" class="">转化次数</th>
+          <th rowspan="1" class="">IP 数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-left" style="left: 0px;">直接访问1</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-left" style="left: 200px;">1</td>
+          <td colspan="1" rowspan="1" class="">2</td>
+          <td colspan="1" rowspan="1" class="">5</td>
+          <td colspan="1" rowspan="1" class="">8</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-left" style="left: 0px;">搜索引擎1</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-left" style="left: 200px;">11</td>
+          <td colspan="1" rowspan="1" class="">21</td>
+          <td colspan="1" rowspan="1" class="">51</td>
+          <td colspan="1" rowspan="1" class="">81</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-left" style="left: 0px;">直接访问1</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-left" style="left: 200px;">1</td>
+          <td colspan="1" rowspan="1" class="">2</td>
+          <td colspan="1" rowspan="1" class="">5</td>
+          <td colspan="1" rowspan="1" class="">8</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-left" style="left: 0px;">搜索引擎1</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-left" style="left: 200px;">11</td>
+          <td colspan="1" rowspan="1" class="">21</td>
+          <td colspan="1" rowspan="1" class="">51</td>
+          <td colspan="1" rowspan="1" class="">81</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-left" style="left: 0px;">直接访问1</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-left" style="left: 200px;">1</td>
+          <td colspan="1" rowspan="1" class="">2</td>
+          <td colspan="1" rowspan="1" class="">5</td>
+          <td colspan="1" rowspan="1" class="">8</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-left" style="left: 0px;">搜索引擎1</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-left" style="left: 200px;">11</td>
+          <td colspan="1" rowspan="1" class="">21</td>
+          <td colspan="1" rowspan="1" class="">51</td>
+          <td colspan="1" rowspan="1" class="">81</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`[Table] fixed column fixed right 1`] = `
+<div class="c-table">
+  <div class="c-table--content c-table--normal c-table--with-height" style="height: 200px;">
+    <table class="c-table--fix">
+      <colgroup>
+        <col style="width: 200px;">
+        <col style="width: 200px;">
+        <col style="width: 200px;">
+        <col style="width: 200px;">
+        <col style="width: 200px;">
+      </colgroup>
+      <thead class="c-table__thead--sticky">
+        <tr>
+          <th rowspan="1" class="">来源类型</th>
+          <th rowspan="1" class="">浏览量</th>
+          <th rowspan="1" class="">访客数</th>
+          <th rowspan="1" class="">转化次数</th>
+          <th rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-right" style="right: 0px;">IP 数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="1" rowspan="1" class="">直接访问1</td>
+          <td colspan="1" rowspan="1" class="">1</td>
+          <td colspan="1" rowspan="1" class="">2</td>
+          <td colspan="1" rowspan="1" class="">5</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-right" style="right: 0px;">8</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="">搜索引擎1</td>
+          <td colspan="1" rowspan="1" class="">11</td>
+          <td colspan="1" rowspan="1" class="">21</td>
+          <td colspan="1" rowspan="1" class="">51</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-right" style="right: 0px;">81</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="">直接访问1</td>
+          <td colspan="1" rowspan="1" class="">1</td>
+          <td colspan="1" rowspan="1" class="">2</td>
+          <td colspan="1" rowspan="1" class="">5</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-right" style="right: 0px;">8</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="">搜索引擎1</td>
+          <td colspan="1" rowspan="1" class="">11</td>
+          <td colspan="1" rowspan="1" class="">21</td>
+          <td colspan="1" rowspan="1" class="">51</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-right" style="right: 0px;">81</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="">直接访问1</td>
+          <td colspan="1" rowspan="1" class="">1</td>
+          <td colspan="1" rowspan="1" class="">2</td>
+          <td colspan="1" rowspan="1" class="">5</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-right" style="right: 0px;">8</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="">搜索引擎1</td>
+          <td colspan="1" rowspan="1" class="">11</td>
+          <td colspan="1" rowspan="1" class="">21</td>
+          <td colspan="1" rowspan="1" class="">51</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky c-table__cell--sticky-right" style="right: 0px;">81</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`[Table] fixed thead fixed 1`] = `
+<div class="c-table">
+  <div class="c-table--content c-table--normal c-table--with-height" style="height: 200px;">
+    <table class="">
+      <colgroup>
+        <col style="width: auto;">
+        <col style="width: auto;">
+        <col style="width: auto;">
+        <col style="width: auto;">
+        <col style="width: auto;">
+      </colgroup>
+      <thead class="c-table__thead--sticky">
+        <tr>
+          <th rowspan="1" class="">来源类型</th>
+          <th rowspan="1" class="">浏览量</th>
+          <th rowspan="1" class="">访客数</th>
+          <th rowspan="1" class="">转化次数</th>
+          <th rowspan="1" class="">IP 数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="1" rowspan="1" class="">直接访问1</td>
+          <td colspan="1" rowspan="1" class="">1</td>
+          <td colspan="1" rowspan="1" class="">2</td>
+          <td colspan="1" rowspan="1" class="">5</td>
+          <td colspan="1" rowspan="1" class="">8</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="">搜索引擎1</td>
+          <td colspan="1" rowspan="1" class="">11</td>
+          <td colspan="1" rowspan="1" class="">21</td>
+          <td colspan="1" rowspan="1" class="">51</td>
+          <td colspan="1" rowspan="1" class="">81</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="">直接访问1</td>
+          <td colspan="1" rowspan="1" class="">1</td>
+          <td colspan="1" rowspan="1" class="">2</td>
+          <td colspan="1" rowspan="1" class="">5</td>
+          <td colspan="1" rowspan="1" class="">8</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="">搜索引擎1</td>
+          <td colspan="1" rowspan="1" class="">11</td>
+          <td colspan="1" rowspan="1" class="">21</td>
+          <td colspan="1" rowspan="1" class="">51</td>
+          <td colspan="1" rowspan="1" class="">81</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="">直接访问1</td>
+          <td colspan="1" rowspan="1" class="">1</td>
+          <td colspan="1" rowspan="1" class="">2</td>
+          <td colspan="1" rowspan="1" class="">5</td>
+          <td colspan="1" rowspan="1" class="">8</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="">搜索引擎1</td>
+          <td colspan="1" rowspan="1" class="">11</td>
+          <td colspan="1" rowspan="1" class="">21</td>
+          <td colspan="1" rowspan="1" class="">51</td>
+          <td colspan="1" rowspan="1" class="">81</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="c-table__shadow--sticky-top" style="top: 0px;"></div>
+</div>
+`;
+
+exports[`[Table] thead group thead with columns 1`] = `
+<div class="c-table">
+  <div class="c-table--content c-table--normal c-table--bordered">
+    <table class="c-table--fix">
+      <colgroup>
+        <col style="width: 200px;">
+        <col style="width: 200px;">
+        <col style="width: 300px;">
+        <col style="width: 200px;">
+        <col style="width: 200px;">
+        <col style="width: 300px;">
+      </colgroup>
+      <thead class="">
+        <tr>
+          <th rowspan="3" class="c-table__cell--sticky" style="left: 0px;">来源类型</th>
+          <th rowspan="3" class="c-table__cell--sticky" style="left: 200px;">转化</th>
+          <th rowspan="1" colspan="3" class="">基础流量</th>
+          <th rowspan="3" class="c-table__cell--sticky" style="right: 0px;">IP 数</th>
+        </tr>
+        <tr>
+          <th rowspan="2" class="">浏览量</th>
+          <th rowspan="1" colspan="2" class="">转化量</th>
+        </tr>
+        <tr>
+          <th rowspan="1" class="">访客数</th>
+          <th rowspan="1" class="">转化次数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky" style="left: 0px;">直接访问1</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky" style="left: 200px;">4</td>
+          <td colspan="1" rowspan="1" class="">1</td>
+          <td colspan="1" rowspan="1" class="">2</td>
+          <td colspan="1" rowspan="1" class="">5</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky" style="right: 0px;">8</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky" style="left: 0px;">搜索引擎1</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky" style="left: 200px;">141</td>
+          <td colspan="1" rowspan="1" class="">11</td>
+          <td colspan="1" rowspan="1" class="">21</td>
+          <td colspan="1" rowspan="1" class="">51</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky" style="right: 0px;">81</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky" style="left: 0px;">直接访问1</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky" style="left: 200px;">4</td>
+          <td colspan="1" rowspan="1" class="">1</td>
+          <td colspan="1" rowspan="1" class="">2</td>
+          <td colspan="1" rowspan="1" class="">5</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky" style="right: 0px;">8</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky" style="left: 0px;">搜索引擎1</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky" style="left: 200px;">141</td>
+          <td colspan="1" rowspan="1" class="">11</td>
+          <td colspan="1" rowspan="1" class="">21</td>
+          <td colspan="1" rowspan="1" class="">51</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky" style="right: 0px;">81</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky" style="left: 0px;">直接访问1</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky" style="left: 200px;">4</td>
+          <td colspan="1" rowspan="1" class="">1</td>
+          <td colspan="1" rowspan="1" class="">2</td>
+          <td colspan="1" rowspan="1" class="">5</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky" style="right: 0px;">8</td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky" style="left: 0px;">搜索引擎1</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky" style="left: 200px;">141</td>
+          <td colspan="1" rowspan="1" class="">11</td>
+          <td colspan="1" rowspan="1" class="">21</td>
+          <td colspan="1" rowspan="1" class="">51</td>
+          <td colspan="1" rowspan="1" class="c-table__cell--sticky" style="right: 0px;">81</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;

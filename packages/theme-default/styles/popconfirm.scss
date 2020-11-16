@@ -1,0 +1,52 @@
+@import 'variables';
+@import 'mixins/tooltipTriangle';
+@import 'popover';
+@import 'button';
+
+$--drop-shadow: get-drop-shadow($--base-box-shadow);
+
+// TODO: DRY (tooltip)
+.c-popconfirm {
+  &,
+  &.c-popover {
+    display: inline-block;
+    max-width: $--popconfirm-max-width;
+    padding: $--popconfirm-base-padding;
+    color: $--popconfirm-color;
+    font-size: $--base-font-size;
+    line-height: $--popconfirm-line-height;
+    background-color: $--popconfirm-background-color;
+    border-radius: $--base-border-radius;
+    box-shadow: $--popconfirm-box-shadow;
+  }
+
+  &__footer {
+    float: right;
+    margin-top: $--popconfirm-footer-margin-top;
+  }
+
+  .c-button {
+    float: right;
+    margin-left: $--popconfirm-button-margin-left;
+  }
+}
+
+@supports (filter: drop-shadow(#{$--drop-shadow})) {
+  .c-popconfirm.c-popover {
+    box-shadow: none;
+    filter: drop-shadow(#{$--drop-shadow});
+  }
+}
+
+@include triangle('.c-popconfirm', $bgColor: $--popconfirm-background-color);
+
+// for vue transition
+.c-popConfirm-enter-active,
+.c-popConfirm-leave-active {
+  transition: transition(opacity);
+}
+
+.c-popConfirm-enter,
+.c-popConfirm-leave-to {
+  opacity: 0;
+}

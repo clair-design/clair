@@ -1,0 +1,33 @@
+## 拖拽上传
+
+把文件拖入指定区域，完成上传，同样支持点击上传。
+
+```tsx live=true deps=notification
+function Demo() {
+  const onSuccess = ({ detail }) => {
+    const { file, allFiles, response } = detail;
+    notification.success({
+      title: "上传成功！",
+      content: `文件${file.rawFile.name}上传成功！`
+    });
+  };
+  const onError = ({ detail }) => {
+    const { file, allFiles, error } = detail;
+    notification.error({
+      title: "上传失败！",
+      content: `文件${file.rawFile.name}上传失败！`
+    });
+  };
+  return (
+    <div>
+      <Upload
+        droppable
+        accept=".jpg, .png, .dmg"
+        action="https://jsonplaceholder.typicode.com/posts/"
+        onSuccess={onSuccess}
+        onError={onError}
+      />
+    </div>
+  );
+}
+```

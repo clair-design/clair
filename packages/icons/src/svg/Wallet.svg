@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Wallet</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="28"></rect>
+    </defs>
+    <g id="Wallet" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="蒙版" opacity="0.200000003"></g>
+            <g id="编组-10" mask="url(#mask-2)" stroke="#6E6E6E" stroke-width="2">
+                <g transform="translate(1.000000, -0.720735)">
+                    <path d="M2,5.72073471 L24,5.72073471 C25.1045695,5.72073471 26,6.61616521 26,7.72073471 L26,25.7207347 C26,26.8253042 25.1045695,27.7207347 24,27.7207347 L2,27.7207347 C0.8954305,27.7207347 1.3527075e-16,26.8253042 0,25.7207347 L0,7.72073471 C-1.3527075e-16,6.61616521 0.8954305,5.72073471 2,5.72073471 Z" id="矩形"></path>
+                    <path d="M11.8524095,10.4373194 L11.8476176,3.00372487 C11.8476176,1.89915537 12.7430481,1.00372487 13.8476176,1.00372487 L17.3010485,1" id="路径" stroke-linecap="round" stroke-linejoin="round" transform="translate(14.574333, 5.718660) rotate(60.000000) translate(-14.574333, -5.718660) "></path>
+                    <path d="M16,11.7207347 L26,11.7207347 L26,21.7207347 L16,21.7207347 C13.2385763,21.7207347 11,19.4821585 11,16.7207347 C11,13.959311 13.2385763,11.7207347 16,11.7207347 Z" id="矩形"></path>
+                    <circle id="椭圆形" cx="16" cy="16.7207347" r="1"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

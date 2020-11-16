@@ -1,0 +1,43 @@
+import LineNormal from "./lineNormal.mdx";
+import LineSmall from "./lineSmall.mdx";
+import CircleNormal from "./circleNormal.mdx";
+import CircleSmall from "./circleSmall.mdx";
+import Color from "./color.mdx";
+import Size from "./size.mdx";
+import Text from "./text.mdx";
+
+# Progress
+
+## 定义
+
+展示当前任务、事件、操作的进展以及具体的状态值。
+
+## 使用场景
+
+- 当需要显示一个操作完成的百分比时，需要给用户反馈当前操作的状态反馈；
+- 当操作需要较长时间才能完成时，为用户显示该操作的当前进度和状态提供更友好的提示；
+- 当一个操作会打断当前界面，或者需要在后台运行，且耗时可能超过 2 秒时。
+
+<LineNormal />
+<LineSmall />
+<CircleNormal />
+<CircleSmall />
+<Color />
+<Size />
+<Text />
+
+## Props
+
+| Name        | Description                        | Type                                                     | Required | Default    |
+| ----------- | ---------------------------------- | -------------------------------------------------------- | -------- | ---------- |
+| max         | 最大值                             | `number`                                                 | `false`  | `100`      |
+| value       | 进度条当前值                       | `number`                                                 | `false`  | `0`        |
+| type        | 进度条类型                         | `"line"` \| `"circle"`                                   | `false`  | `"line"`   |
+| size        | 进度条尺寸                         | `"normal"` \| `"small"`                                  | `false`  | `"normal"` |
+| status      | 进度条状态                         | `"normal"` \| `"active"` \| `"success"` \| `"exception"` | `false`  | `"normal"` |
+| width       | 线形进度条宽度\|圆形进度条画布宽度 | `number`                                                 | `false`  | -          |
+| strokeWidth | 进度条线条宽度                     | `number`                                                 | `false`  | -          |
+| strokeColor | 进度条线条颜色                     | `string`                                                 | `false`  | -          |
+| showInfo    | 是否展示进度条内容                 | `boolean`                                                | `false`  | `true`     |
+| infoWidth   | 线形进度条的内容宽度               | `number`                                                 | `false`  | -          |
+| customInfo  | 自定义进度条内容                   | `ReactNode`                                              | `false`  | -          |

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Package</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Package" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M14,18 L27,14" id="路径-69" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M13.4118283,1.18097591 L1,5 L1,21.5228507 C1,22.4008604 1.57264505,23.1761985 2.4118283,23.4344087 L13.4118283,26.8190241 C13.7950769,26.9369467 14.2049231,26.9369467 14.5881717,26.8190241 L25.5881717,23.4344087 C26.4273549,23.1761985 27,22.4008604 27,21.5228507 L27,5 L14.5881717,1.18097591 C14.2049231,1.06305326 13.7950769,1.06305326 13.4118283,1.18097591 Z" id="路径-84" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round"></path>
+            <polyline id="路径-89" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="1 5 14 8.5 27 5"></polyline>
+            <path d="M14,8.5 L14,27" id="路径-90" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

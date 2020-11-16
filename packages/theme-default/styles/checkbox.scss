@@ -1,0 +1,149 @@
+@import 'variables';
+@import 'mixins/mixins';
+
+.c-checkbox__box {
+  position: relative;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+
+  color: transparent;
+  background-color: $--checkbox-bg-color;
+  border: $--checkbox-border;
+  border-radius: $--base-border-radius;
+
+  transition: transition(all);
+
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 0.5em;
+    height: calc(0.5em - 4px);
+    margin-top: -1px;
+
+    border-bottom: 2px solid currentColor;
+    border-left: 2px solid currentColor;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    content: '';
+  }
+}
+
+.c-checkbox {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+
+  margin: 0 1em 0 0;
+  padding: 0;
+
+  color: $--base-text-color;
+  font-size: $--checkbox-font-size--normal;
+
+  cursor: pointer;
+
+  // hidden input
+  [type='checkbox'] {
+    position: absolute;
+    z-index: -1;
+    outline: none;
+    opacity: 0;
+  }
+
+  // status hover
+  :not(:disabled):hover + .c-checkbox__box {
+    border-color: $--primary-color;
+  }
+
+  // status focus
+  :focus + .c-checkbox__box {
+    @include focus-ring;
+    border-color: $--input-focus-border-color;
+  }
+
+  // status checked
+  :checked + .c-checkbox__box {
+    color: $--checkbox-mark-color;
+  }
+
+  // status indeterminate
+  :indeterminate + .c-checkbox__box::after {
+    width: 0.6em;
+    height: 2px;
+    margin-top: 0;
+    background: $--checkbox-mark-color;
+    border: none;
+    transform: translate(-50%, -50%) rotate(0);
+  }
+
+  // status disabled
+  :disabled,
+  :disabled + .c-checkbox__box,
+  :disabled + .c-checkbox__box + &__label {
+    cursor: default;
+  }
+
+  :disabled + .c-checkbox__box,
+  :indeterminate:disabled + .c-checkbox__box {
+    background-color: $--checkbox-bg-color--disabled;
+  }
+
+  :indeterminate:disabled + .c-checkbox__box {
+    border: $--checkbox-border;
+  }
+
+  :disabled + .c-checkbox__box + &__label {
+    color: $--disabled-text-color;
+  }
+
+  :checked:not(:disabled) + .c-checkbox__box,
+  :indeterminate + .c-checkbox__box {
+    background-color: $--primary-color;
+    border: 1px solid $--primary-color;
+  }
+
+  :checked:disabled + .c-checkbox__box::after {
+    color: $--checkbox-mark-color--disabled;
+  }
+
+  :disabled:indeterminate + .c-checkbox__box::after {
+    background-color: $--checkbox-mark-color--disabled;
+  }
+
+  &--large {
+    font-size: $--checkbox-font-size--large;
+  }
+
+  &--small {
+    font-size: $--checkbox-font-size--small;
+  }
+
+  // size normal
+  &__label {
+    padding-left: $--checkbox-label-padding--normal;
+    line-height: 1;
+  }
+
+  // size large
+  &--large &__label {
+    padding-left: $--checkbox-label-padding--large;
+  }
+
+  // size small
+  &--small &__label {
+    padding-left: $--checkbox-label-padding--small;
+  }
+}
+
+// align within c-form-item
+.c-checkbox-group {
+  display: inline-block;
+
+  .c-checkbox__label {
+    line-height: inherit;
+  }
+}

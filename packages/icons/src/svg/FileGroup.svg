@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>FileGroup</title>
+    <desc>Created with Sketch.</desc>
+    <g id="FileGroup" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <rect id="矩形" stroke="#6E6E6E" stroke-width="2" x="3" y="1" width="22" height="26" rx="2"></rect>
+            <path d="M9,13 L19,13" id="路径-15" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M4,19 L10,19 L10,19 C10,21.209139 11.790861,23 14,23 C16.209139,23 18,21.209139 18,19 L24,19" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round"></path>
+            <path d="M9,7 L19,7" id="路径-15" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

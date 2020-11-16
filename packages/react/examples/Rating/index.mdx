@@ -1,0 +1,103 @@
+# Rating 评分
+
+## 定义
+
+展示评价，或进行快速评级操作
+
+## 使用场景
+
+- 用户可通过手动选中来表达对产品的评价或者评级
+- 用户可预设评分来显示产品的评分或者评级
+
+## 基本用法
+
+简单的常规用法
+
+```tsx live=true
+function Index() {
+  return <Rating />;
+}
+```
+
+## 文案辅助
+
+用辅助文字直接地表达对应分数
+
+```tsx live=true
+function Index() {
+  const [value, setValue] = React.useState(3);
+  const [txt, setTxt] = React.useState("一般");
+
+  const onChange = e => {
+    const val = e.target.value;
+    setValue(val);
+  };
+
+  const onActiveChange = e => {
+    setTxt(["极差", "很差", "一般", "优秀", "极好"][e.target.value - 1]);
+  };
+
+  return (
+    <>
+      <Rating
+        value={value}
+        onChange={onChange}
+        onActiveChange={onActiveChange}
+      />
+      <span className="rating-desc">{txt}</span>
+    </>
+  );
+}
+```
+
+## 只读样式
+
+只能读取评分，无法进行交互操作, 唯有只读 `readonly` 属性开启的时候才显示小数数值
+
+```tsx live=true
+function Index() {
+  return (
+    <>
+      <Rating readonly defaultValue={3.7} />
+    </>
+  );
+}
+```
+
+## 其他样式
+
+可以将星星替换为其他字符
+
+```tsx live=true
+function Index() {
+  return (
+    <>
+      <div>
+        <Rating type={"heart"} defaultValue={3} />
+      </div>
+      <Rating
+        type={"custom"}
+        customChar={<span>C</span>}
+        defaultValue={3}
+        count={6}
+        size={24}
+      />
+    </>
+  );
+}
+```
+
+### Props
+
+| Name           | Description                                        | Type                                                           | Required | Default                                |
+| -------------- | -------------------------------------------------- | -------------------------------------------------------------- | -------- | -------------------------------------- |
+| count          | 显示的星星数量                                     | `number`                                                       | `false`  | `5`                                    |
+| value          | 显示的选中星星数量                                 | `number`                                                       | `false`  | `0`                                    |
+| defaultValue   | 默认选中的星星数量                                 | `number`                                                       | `false`  | `0`                                    |
+| type           | 评分图标类型                                       | `"star"`\|`"heart"`\|`"custom"`                                | `false`  | `star`                                 |
+| color          | 自定义字符被选中时的颜色                           | `string`                                                       | `false`  | `star：#FFB409` <br/> `heart: #FF6860` |
+| size           | 自定义字符大小                                     | `number`                                                       | `false`  | `16`                                   |
+| readonly       | 只读，无法交互                                     | `boolean`                                                      | `false`  | `false`                                |
+| customChar     | 自定义图标字符类型，唯有`type`为`custom`时，才生效 | `ReactNode`                                                    | `false`  | -                                      |
+| onChange       | 选择时回调                                         | `({ target: { value: number }, nativeEvent?: Event }) => void` | `false`  |                                        |
+| onActiveChange | 悬浮时回调                                         | `({ target: { value: number }, nativeEvent?: Event }) => void` | `false`  |                                        |

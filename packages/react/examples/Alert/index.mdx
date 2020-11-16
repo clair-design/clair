@@ -1,0 +1,30 @@
+import Basic from "./basic.mdx";
+import Closable from "./closable.mdx";
+import Title from "./title.mdx";
+
+# Alert 警示提示
+
+## 定义
+
+当用户进行某种操作时，网站会出现对应的警告信息提示用户，该提示信息的状态不会主动消失。
+
+## 使用场景
+
+当某个页面需要向用户显示警告的信息时；非浮层的静态展现形式，始终展现，不会自动消失，有的组件用户可以点击关闭。
+
+<Basic />
+
+<Closable />
+
+<Title />
+
+## <i></i>Props
+
+| Name     | Description   | Type                                                | Required | Default  |
+| -------- | ------------- | --------------------------------------------------- | -------- | -------- |
+| type     | 类型          | `"success"` \| `"warning"` \| `"error"` \| `"info"` | `false`  | `"info"` |
+| title    | 标题内容      | `React.ReactNode`                                   | `false`  |          |
+| children | 正文内容      | `React.ReactNode`                                   | `true`   |          |
+| showIcon | 是否显示 Icon | `boolean`                                           | `false`  | `true`   |
+| closable | 是否可关闭    | `boolean`                                           | `false`  | `true`   |
+| onClose  | 关闭时触发    | `(e: React.MouseEvent) => void`                     | `false`  |          |

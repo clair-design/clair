@@ -1,0 +1,30 @@
+import Base from "./base";
+import Vertical from "./vertical";
+import Dot from "./dot";
+import Custom from "./custom";
+import ActiveChange from "./activeChange";
+
+# Steps
+
+<Base />
+<ActiveChange />
+<Vertical />
+<Dot />
+<Custom />
+
+## Steps Props
+
+| Name       | Description          | Type    | Required | Default |
+| ---------- | -------------------- | ------- | -------- | ------- |
+| activeKey  | 当前步骤索引         | string  | false    | "1"     |
+| isVertical | 步骤条是否纵向排列   | boolean | false    | false   |
+| isDot      | 步骤条是否为点状样式 | boolean | false    | false   |
+
+## Step Props
+
+| Name        | Description    | Type                                 | Required | Default |
+| ----------- | -------------- | ------------------------------------ | -------- | ------- |
+| stepKey     | 对应 activeKey | string                               | true     |         |
+| title       | 标题           | ReactNode                            | true     | -       |
+| description | 描述文字       | ReactNode                            | false    | -       |
+| status      | 当前步骤状态   | "wait"\|"process"\|"finish"\|"error" | false    | "wait"  |

@@ -1,0 +1,45 @@
+## 禁用样式
+
+通过 `disabled` 属性禁用选择器。
+
+```tsx live=true
+function App() {
+  const props = {
+    disabled: true,
+    style: {
+      marginRight: 20,
+      marginBottom: 20
+    }
+  };
+  return (
+    <>
+      <DatePicker value={new Date()} {...props} />
+      <DatePicker type="week" value={new Date()} {...props} />
+      <RangePicker value={[new Date(), new Date()]} {...props} />
+    </>
+  );
+}
+```
+
+## 设置不可选日期
+
+可以通过 `shouldDisableCell` 将某些日期禁用。
+
+```tsx live=true
+function App() {
+  // 设置今天以后的日期不可选
+  const shouldDisableCell = date => date.getTime() > Date.now();
+  const style = { marginRight: 20, marginBottom: 20 };
+  return (
+    <>
+      <DatePicker shouldDisableCell={shouldDisableCell} style={style} />
+      <DatePicker
+        type="month"
+        shouldDisableCell={shouldDisableCell}
+        style={style}
+      />
+      <RangePicker shouldDisableCell={shouldDisableCell} />
+    </>
+  );
+}
+```

@@ -1,0 +1,38 @@
+import Basic from "./basic.mdx";
+import Disabled from "./disabled.mdx";
+import Text from "./text.mdx";
+import Size from "./size.mdx";
+import Color from "./color.mdx";
+import Event from "./event.mdx";
+
+# Switch
+
+## 使用场景
+
+需要表示开关状态/两种状态之间的切换时
+
+<Basic />
+
+<Disabled />
+
+<Size />
+
+<Color />
+
+<Text />
+
+<Event />
+
+## Props
+
+| Name              | Description              | Type                                                           | Required | Default    |
+| ----------------- | ------------------------ | -------------------------------------------------------------- | -------- | ---------- |
+| defaultChecked    | 初始是否选中             | `boolean`                                                      | `false`  | `false`    |
+| checked           | 指定当前是否选中         | `boolean`                                                      | `false`  | `false`    |
+| disabled          | 是否禁用                 | `boolean`                                                      | `false`  | `false`    |
+| checkedChildren   | 打开时的内容             | `ReactNode`                                                    | `false`  | -          |
+| unCheckedChildren | 关闭时的内容             | `ReactNode`                                                    | `false`  | -          |
+| size              | 开关大小                 | `"normal"` \| `"small"`                                        | `false`  | `"normal"` |
+| checkedColor      | 打开时的背景色           | `string`                                                       | `false`  | -          |
+| unCheckedColor    | 关闭时的背景色           | `string`                                                       | `false`  | -          |
+| onChange          | 状态发生变化时的回调函数 | `({ target: { value: boolean }, nativeEvent: Event }) => void` | `false`  | -          |

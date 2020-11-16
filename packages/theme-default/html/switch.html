@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<title>Switch</title>
+<link rel="stylesheet" href="../styles/switch.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body {
+    margin: 30px auto;
+    max-width: 1200px;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+
+  .c-switch {
+    margin-right: 30px;
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+<h1>Switch 开关</h1>
+
+<h2>定义</h2>
+开关选择器。
+
+<h2>使用场景</h2>
+需要表示开关状态/两种状态之间的切换时
+
+<h2>基础样式</h2>
+<div>
+  <label class="c-switch" role="switch" aria-checked aria-label="开">
+    <input type="checkbox" class="c-switch__input" checked />
+    <span class="c-switch__box"></span>
+    <span class="c-switch__label"></span>
+  </label>
+</div>
+
+<h2>禁用样式</h2>
+<div>
+  <label class="c-switch" role="switch" aria-checked="false" aria-label="关">
+    <input type="checkbox" disabled class="c-switch__input" />
+    <span class="c-switch__box"></span>
+    <span class="c-switch__label"></span>
+  </label>
+  <label class="c-switch" role="switch" aria-checked aria-label="开">
+    <input type="checkbox" disabled checked class="c-switch__input" />
+    <span class="c-switch__box"></span>
+    <span class="c-switch__label"></span>
+  </label>
+  <label
+    class="c-switch"
+    role="switch"
+    aria-checked="false"
+    aria-labelledby="c-switch__label-1"
+  >
+    <input type="checkbox" disabled class="c-switch__input" />
+    <span class="c-switch__box"></span>
+    <span class="c-switch__label" id="c-switch__label-1">关</span>
+  </label>
+  <label
+    class="c-switch"
+    role="switch"
+    aria-checked
+    aria-labelledby="c-switch__label-2"
+  >
+    <input type="checkbox" disabled checked class="c-switch__input" />
+    <span class="c-switch__box"></span>
+    <span class="c-switch__label" id="c-switch__label-2">开</span>
+  </label>
+</div>
+
+<h2>文字样式</h2>
+
+<div>
+  <label
+    class="c-switch"
+    role="switch"
+    aria-checked
+    aria-labelledby="c-switch__label-3"
+  >
+    <input type="checkbox" class="c-switch__input" checked />
+    <span class="c-switch__box"></span>
+    <span class="c-switch__label" id="c-switch__label-3">开</span>
+  </label>
+
+  <br />
+  <label
+    class="c-switch"
+    role="switch"
+    aria-checked
+    aria-labelledby="c-switch__label-11"
+  >
+    <input type="checkbox" class="c-switch__input" checked />
+    <span class="c-switch__box"></span>
+    <span class="c-switch__label" id="c-switch__label-11">off</span>
+  </label>
+</div>
+
+<h2>尺寸</h2>
+
+<div>
+  <label class="c-switch" role="switch" aria-checked="false" aria-label="关">
+    <input type="checkbox" class="c-switch__input" />
+    <span class="c-switch__box"></span>
+    <span class="c-switch__label"></span>
+  </label>
+  <label
+    class="c-switch c-switch--small"
+    role="switch"
+    aria-checked="false"
+    aria-label="关"
+  >
+    <input type="checkbox" class="c-switch__input" />
+    <span class="c-switch__box"></span>
+    <span class="c-switch__label"></span>
+  </label>
+  <label
+    class="c-switch"
+    role="switch"
+    aria-checked="false"
+    aria-labelledby="c-switch__label-4"
+  >
+    <input type="checkbox" class="c-switch__input" />
+    <span class="c-switch__box"></span>
+    <span class="c-switch__label" id="c-switch__label-4">关</span>
+  </label>
+  <label
+    class="c-switch c-switch--small"
+    role="switch"
+    aria-checked
+    aria-labelledby="c-switch__label-5"
+  >
+    <input type="checkbox" class="c-switch__input" checked />
+    <span class="c-switch__box"></span>
+    <span class="c-switch__label" id="c-switch__label-5">on</span>
+  </label>
+</div>

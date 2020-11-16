@@ -1,0 +1,163 @@
+@import 'variables';
+
+$--line-height: $--base-font-size * $--base-line-height;
+$--circle-vertical-space: ($--line-height - $--timeline-size) / 2;
+$--icon-vertical-space: ($--line-height - $--timeline-icon-size) / 2;
+$--icon-width-diff: ($--timeline-icon-size - $--timeline-size) / 2;
+$--circle-line-width-diff: ($--timeline-size - $--timeline-border-size) / 2;
+$--icon-line-width-diff: ($--timeline-icon-size - $--timeline-border-size) / 2;
+
+@mixin line {
+  position: absolute;
+  left: $--circle-line-width-diff;
+  box-sizing: border-box;
+  width: $--timeline-border-size;
+  background-color: #ddd;
+  content: '';
+}
+
+@mixin node-on-right {
+  justify-content: flex-end;
+  order: 1;
+}
+
+@mixin wrapper-on-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.c-timeline {
+  padding-left: unset;
+  font-size: $--base-font-size;
+}
+.c-timeline-item {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  padding-bottom: $--timeline-padding;
+  line-height: $--base-line-height;
+  list-style: none;
+
+  // top line
+  &:not(:first-child)::before {
+    @include line;
+    top: 0;
+    height: $--circle-vertical-space;
+    content: '';
+  }
+
+  // bottom line
+  &:not(:last-child)::after {
+    $offset: $--circle-vertical-space + $--timeline-size;
+    @include line;
+    top: $offset;
+    height: calc(100% - #{$offset});
+  }
+
+  // top line with icon
+  &--has-icon:not(:first-child)::before {
+    height: $--icon-vertical-space;
+  }
+
+  // bottom line with icon
+  &--has-icon:not(:last-child)::after {
+    $offset: $--icon-vertical-space + $--timeline-icon-size;
+    top: $offset;
+    height: calc(100% - #{$offset});
+  }
+
+  &__node {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    box-sizing: border-box;
+    width: $--timeline-padding;
+    color: $--primary-color;
+  }
+
+  &__node::after {
+    position: relative;
+    content: '';
+  }
+
+  // regular node
+  &:not(&--has-icon) &__node::after {
+    top: $--circle-vertical-space;
+    box-sizing: border-box;
+    width: $--timeline-size;
+    height: $--timeline-size;
+    border: $--timeline-border-size solid;
+    border-radius: 50%;
+  }
+  &:not(&--has-icon) &__node--solid::after {
+    border-width: $--timeline-size / 2;
+  }
+
+  // use icon as node
+  &--has-icon &__node {
+    top: $--icon-vertical-space;
+    left: -$--icon-width-diff;
+    font-size: $--timeline-icon-size;
+  }
+
+  &__content {
+    flex-grow: 1;
+  }
+
+  &__content p {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.c-timeline--center .c-timeline-item:nth-child(odd) {
+  left: 50%;
+  width: 50%;
+}
+
+.c-timeline--center .c-timeline-item:nth-child(even) {
+  left: $--timeline-size;
+  justify-content: flex-end;
+  width: 50%;
+  padding-left: 0;
+
+  &::before,
+  &::after {
+    right: $--circle-line-width-diff;
+    left: auto;
+  }
+  .c-timeline-item__node {
+    @include node-on-right;
+  }
+
+  &.c-timeline-item--has-icon .c-timeline-item__node {
+    left: $--icon-width-diff;
+  }
+
+  .c-timeline-item__content {
+    @include wrapper-on-right;
+  }
+}
+
+.c-timeline--right .c-timeline-item {
+  justify-content: flex-end;
+  padding-left: 0;
+
+  &::before,
+  &::after {
+    right: $--circle-line-width-diff;
+    left: auto;
+  }
+  &__node {
+    @include node-on-right;
+  }
+
+  &--has-icon .c-timeline-item__node {
+    left: $--icon-width-diff;
+  }
+
+  .c-timeline-item__content {
+    @include wrapper-on-right;
+  }
+}

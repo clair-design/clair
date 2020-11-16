@@ -1,0 +1,70 @@
+import BasicDemo from "./basic.mdx";
+import RangeDemo from "./range.mdx";
+import DisabledDemo from "./disabled.mdx";
+import FormatDemo from "./format.mdx";
+import ShortcutDemo from "./shortcut.mdx";
+import SizeDemo from "./size.mdx";
+
+# DatePicker 日期选择器
+
+## 定义
+
+快速输入或选择日期、月份、周、季度、年，或者它们的范围。
+
+## 使用场景
+
+在用户需要提供一个日期或者日期范围时。
+
+<BasicDemo />
+<RangeDemo />
+<DisabledDemo />
+<FormatDemo />
+<ShortcutDemo />
+<SizeDemo />
+
+## Props
+
+### 公共属性
+
+以下是 DatePicker 和 RangePicker 共有的属性。
+
+| Name              | Description                                                           | Type                                                         | Required | Default    |
+| ----------------- | --------------------------------------------------------------------- | ------------------------------------------------------------ | -------- | ---------- |
+| type              | 类型                                                                  | `"date"` \| `"week"` \| `"month"` \| `"quarter"` \| `"year"` | `false`  | `"date"`   |
+| disabled          | 是否禁用                                                              | `boolean`                                                    | `false`  | `false`    |
+| clearable         | 是否可以清空选项                                                      | `boolean`                                                    | `false`  | `true`     |
+| size              | 尺寸                                                                  | `"large"` \| `"normal"` \| `"small"`                         | `false`  | `"normal"` |
+| className         | 容器的 CSS class                                                      | `string`                                                     | `false`  | -          |
+| style             | 容器的自定义样式                                                      | `CSSProperties`                                              | `false`  | -          |
+| format            | 输入框内展示的格式，参考 [date-fns](https://date-fns.org/docs/format) | `string`                                                     | `false`  | -          |
+| shortcut          | 自定义的快捷方式                                                      | `ReactNode`                                                  | `false`  | -          |
+| firstDayOfWeek    | 周几作为一周的开始，`0` 为周日，`1` 为周一，以此类推                  | `number`                                                     | `false`  | `0`        |
+| shouldDisableCell | 是否禁用某些日期                                                      | `(value: Date) => boolean`                                   | `false`  | -          |
+| setCellClassName  | 自定义某个日期的 CSS class                                            | `(value: Date) => string`                                    | `false`  | -          |
+| onFocus           | 选择器获得焦点时的回调函数                                            | `(e: FocusEvent) => void`                                    | `false`  | -          |
+| onBlur            | 选择器失去焦点时的回调函数                                            | `(e: FocusEvent) => void`                                    | `false`  | -          |
+
+### DatePicker Props
+
+| Name         | Description            | Type                                    | Required | Default      |
+| ------------ | ---------------------- | --------------------------------------- | -------- | ------------ |
+| value        | 选择的值               | `Date` \| `number` \| `string`          | `false`  | -            |
+| defaultValue | 默认值                 | `Date` \| `number` \| `string`          | `false`  | -            |
+| placeholder  | 输入框提示文字         | `string`                                | `false`  | `请选择日期` |
+| onChange     | 选择值变化时的回调函数 | `({ target: { value: Date } }) => void` | `false`  | -            |
+
+### RangePicker Props
+
+| Name         | Description            | Type                                            | Required | Default                |
+| ------------ | ---------------------- | ----------------------------------------------- | -------- | ---------------------- |
+| value        | 选择的值               | `Array`                                         | `false`  | -                      |
+| defaultValue | 默认值                 | `Array`                                         | `false`  | -                      |
+| placeholder  | 输入框提示文字         | `string[]`                                      | `false`  | `[开始日期, 结束日期]` |
+| onChange     | 选择值变化时的回调函数 | `({ target: { value: [Date, Date] } }) => void` | `false`  | -                      |
+
+## Methods
+
+| Name  | Description      | 类型         |
+| ----- | ---------------- | ------------ |
+| focus | 使输入框获得焦点 | `() => void` |
+| blur  | 使输入框失去焦点 | `() => void` |

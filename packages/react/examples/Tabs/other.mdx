@@ -1,0 +1,27 @@
+## 手动切换 activeKey (受控组件)
+
+```tsx live=true
+const App = () => {
+  const [activeKey, setActiveKey] = React.useState("tab1");
+  const focusOnSecondTab = () => {
+    setActiveKey("tab2");
+  };
+  const onChange = ({ detail: { key } }) => setActiveKey(key);
+  return (
+    <>
+      <Button onClick={focusOnSecondTab}>切换到第二个 Tab</Button>
+      <Tabs activeKey={activeKey} onChange={onChange}>
+        <TabPane label="Tab1" tabKey="tab1">
+          <div>Tab1 Content</div>
+        </TabPane>
+        <TabPane label="Tab2" tabKey="tab2">
+          <div>Tab2 Content</div>
+        </TabPane>
+        <TabPane label="Tab3" tabKey="tab3">
+          <div>Tab3 Content</div>
+        </TabPane>
+      </Tabs>
+    </>
+  );
+};
+```

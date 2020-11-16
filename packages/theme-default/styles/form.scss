@@ -1,0 +1,132 @@
+@import 'variables';
+@import 'mixins/mixins';
+
+$--form-item-tip-gap-bottom: 4px;
+
+// form-item 内控件
+@mixin mixin-form-item-control-style($color) {
+  .c-input,
+  .c-input-affix-container,
+  .c-select,
+  .c-date-picker,
+  .c-time-picker-range {
+    &,
+    &:hover {
+      border: 1px solid $color;
+    }
+
+    &:focus,
+    &:focus-within {
+      @include focus-ring($color);
+      border-color: $color;
+    }
+  }
+
+  .c-input-affix-container,
+  .c-select,
+  .c-date-picker,
+  .c-time-picker-range {
+    .c-input {
+      border: none;
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.c-form-item {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-bottom: $--form-item-tip-height + $--form-item-tip-gap-bottom;
+
+  &__label {
+    flex-shrink: 0;
+    box-sizing: border-box;
+    padding-right: $--small-font-size;
+    font-size: $--base-font-size;
+    line-height: $--input-large-height;
+    text-align: right;
+  }
+  &__content {
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    line-height: $--input-large-height;
+  }
+
+  &__wrapper {
+    width: 100%;
+  }
+
+  .c-input,
+  .c-button,
+  .c-input-affix-container {
+    vertical-align: middle;
+  }
+}
+
+.c-form-item.is-required {
+  .c-form-item__label::before {
+    margin-right: 5px;
+    color: $--danger-color;
+    content: '*';
+  }
+}
+
+.c-form-item.is-error {
+  @include mixin-form-item-control-style($--danger-color);
+}
+
+.c-form-item.is-success {
+  @include mixin-form-item-control-style($--success-color);
+}
+
+.c-form--inline {
+  display: flex;
+  flex-wrap: wrap;
+
+  .c-form-item {
+    margin-right: 20px;
+  }
+}
+
+.c-form--label-left {
+  .c-form-item__label {
+    text-align: left;
+  }
+}
+
+.c-form--label-right {
+  .c-form-item__label {
+    text-align: right;
+  }
+}
+
+.c-form--label-top {
+  .c-form-item {
+    flex-direction: column;
+  }
+  .c-form-item__label {
+    padding-bottom: 10px;
+    line-height: 1;
+    text-align: left;
+  }
+}
+
+.c-form-item--with-help {
+  margin-bottom: $--form-item-tip-gap-bottom;
+}
+
+.c-form-item__error {
+  color: $--danger-color;
+  font-size: $--small-font-size;
+  line-height: $--form-item-tip-height;
+}
+
+.c-form-item__helper-text {
+  color: $--tertiary-text-color;
+  font-size: $--small-font-size;
+  line-height: $--form-item-tip-height;
+}

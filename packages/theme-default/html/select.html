@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<title>Select</title>
+<link rel="stylesheet" href="../styles/select.scss" />
+<!-- <script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script> -->
+
+<style>
+  body {
+    max-width: 1000px;
+    margin: 30px auto;
+  }
+
+  section {
+    padding: 28px 30px;
+    border: 1px solid #edeff1;
+  }
+
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+
+  .c-select + .c-select {
+    margin-left: 1em;
+  }
+
+  .c-select__dropdown {
+    width: 240px;
+    margin-bottom: 1em;
+    position: relative;
+    z-index: 10;
+  }
+
+  .c-select__tags--focus {
+    margin-top: 10px;
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+<h1>Select</h1>
+<h2>基础样式</h2>
+
+<section style="height: 220px;">
+  <div
+    role="listbox"
+    class="c-select c-select--normal c-select--open"
+    aria-activedescendant="苹果"
+  >
+    <input
+      tabindex="0"
+      type="text"
+      class="c-input c-input--normal"
+      value="苹果"
+      readonly
+      placeholder="请选择…"
+    />
+    <span class="c-select__suffix c-select__suffix">
+      <i>
+        <svg width="14" height="14">
+          <g fill-rule="nonzero" fill="none">
+            <path opacity=".2" d="M0 0h14v14H0z" />
+            <path
+              d="M2.92 5.08a.6.6 0 0 0-.84.84L7 10.85l4.92-4.93a.6.6 0 0 0-.84-.84L7 9.15 2.92 5.08z"
+              fill="#909399"
+              opacity=".7"
+            />
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-select__dropdown">
+    <div
+      role="option"
+      tabindex="-1"
+      class="c-select__option c-select__option--selected"
+      aria-selected="true"
+    >
+      苹果
+    </div>
+    <div role="option" tabindex="-1" class="c-select__option">葡萄</div>
+    <div role="option" tabindex="-1" class="c-select__option">西瓜</div>
+    <div role="option" tabindex="-1" class="c-select__option">鸭梨</div>
+    <div role="option" tabindex="-1" class="c-select__option">桃子</div>
+  </div>
+</section>
+<h2>可清空样式</h2>
+
+<section>
+  <div role="listbox" class="c-select c-select--normal">
+    <input
+      tabindex="0"
+      type="text"
+      class="c-input c-input--normal"
+      readonly
+      placeholder="请选择…"
+    />
+    <span class="c-select__suffix">
+      <i>
+        <svg width="14" height="14">
+          <g fill="none" fill-rule="evenodd" opacity=".7">
+            <path opacity=".2" d="M0 0h14v14H0z" />
+            <path
+              d="M10.18 9.47l-.7.71L7 7.71l-2.47 2.47-.71-.7L6.29 7 3.82 4.53l.7-.71L7 6.29l2.47-2.47.71.7L7.71 7l2.47 2.47zM7 1a6 6 0 1 0 0 12A6 6 0 0 0 7 1z"
+              fill="#A3A7B0"
+            />
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+</section>
+<h2>多选样式</h2>
+
+<section style="height: 240px;">
+  <div
+    role="listbox"
+    class="c-select c-select--normal c-select__multiple c-select--open"
+    aria-multiselectable="true"
+    aria-activedescendant="苹果"
+  >
+    <div class="c-select__tags">
+      <div class="c-tag c-tag-closable">
+        <span class="c-tag__label">苹果🍎</span>
+        <i class="c-icon--svg c-icon--close-tag">
+          <svg viewBox="0 0 1024 1024">
+            <path
+              d="M744.740571 693.028571l-51.712 51.712L512 563.712l-181.028571 181.028571-51.785143-51.712L460.288 512 279.186286 331.044571l51.785143-51.785142L512 460.288l181.028571-181.028571 51.712 51.785142L563.712 512l181.028571 181.028571zM512 73.142857a438.857143 438.857143 0 1 0 0 877.714286A438.857143 438.857143 0 0 0 512 73.142857z"
+            ></path>
+          </svg>
+        </i>
+      </div>
+      <div class="c-tag c-tag-closable">
+        <span class="c-tag__label">葡萄🍇</span>
+        <i class="c-icon--svg c-icon--close-tag">
+          <svg viewBox="0 0 1024 1024">
+            <path
+              d="M744.740571 693.028571l-51.712 51.712L512 563.712l-181.028571 181.028571-51.785143-51.712L460.288 512 279.186286 331.044571l51.785143-51.785142L512 460.288l181.028571-181.028571 51.712 51.785142L563.712 512l181.028571 181.028571zM512 73.142857a438.857143 438.857143 0 1 0 0 877.714286A438.857143 438.857143 0 0 0 512 73.142857z"
+            ></path>
+          </svg>
+        </i>
+      </div>
+      <div class="c-tag c-tag-closable">
+        <span class="c-tag__label">桃子🍑</span>
+        <i class="c-icon--svg c-icon--close-tag">
+          <svg viewBox="0 0 1024 1024">
+            <path
+              d="M744.740571 693.028571l-51.712 51.712L512 563.712l-181.028571 181.028571-51.785143-51.712L460.288 512 279.186286 331.044571l51.785143-51.785142L512 460.288l181.028571-181.028571 51.712 51.785142L563.712 512l181.028571 181.028571zM512 73.142857a438.857143 438.857143 0 1 0 0 877.714286A438.857143 438.857143 0 0 0 512 73.142857z"
+            ></path>
+          </svg>
+        </i>
+      </div>
+      <input type="text" class="c-select__tags__input" placeholder="" />
+    </div>
+    <span class="c-select__suffix c-select__suffix">
+      <i>
+        <svg width="14" height="14">
+          <g fill-rule="nonzero" fill="none">
+            <path opacity=".2" d="M0 0h14v14H0z" />
+            <path
+              d="M2.92 5.08a.6.6 0 0 0-.84.84L7 10.85l4.92-4.93a.6.6 0 0 0-.84-.84L7 9.15 2.92 5.08z"
+              fill="#909399"
+              opacity=".7"
+            />
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-select__dropdown c-select__dropdown--multiple">
+    <div
+      role="option"
+      tabindex="-1"
+      class="c-select__option c-select__option--selected"
+      aria-selected="true"
+    >
+      苹果
+      <i class="c-select__selected-icon">
+        <svg width="14" height="14">
+          <g fill="none" fill-rule="evenodd">
+            <path opacity=".2" d="M0 0h14v14H0z" />
+            <path
+              fill="#006BFF"
+              d="M11.66 3L5.19 9.36l-3.85-3.8L0 6.9 5.19 12l7.8-7.68z"
+            />
+          </g>
+        </svg>
+      </i>
+    </div>
+    <div
+      role="option"
+      tabindex="-1"
+      class="c-select__option c-select__option--selected"
+      aria-selected="true"
+    >
+      葡萄
+      <i class="c-select__selected-icon">
+        <svg width="14" height="14">
+          <g fill="none" fill-rule="evenodd">
+            <path opacity=".2" d="M0 0h14v14H0z" />
+            <path
+              fill="#006BFF"
+              d="M11.66 3L5.19 9.36l-3.85-3.8L0 6.9 5.19 12l7.8-7.68z"
+            />
+          </g>
+        </svg>
+      </i>
+    </div>
+    <div role="option" tabindex="-1" class="c-select__option">西瓜</div>
+    <div role="option" tabindex="-1" class="c-select__option">鸭梨</div>
+    <div
+      role="option"
+      tabindex="-1"
+      class="c-select__option c-select__option--selected"
+      aria-selected="true"
+    >
+      桃子
+      <i class="c-select__selected-icon">
+        <svg width="14" height="14">
+          <g fill="none" fill-rule="evenodd">
+            <path opacity=".2" d="M0 0h14v14H0z" />
+            <path
+              fill="#006BFF"
+              d="M11.66 3L5.19 9.36l-3.85-3.8L0 6.9 5.19 12l7.8-7.68z"
+            />
+          </g>
+        </svg>
+      </i>
+    </div>
+  </div>
+</section>
+<h2>分组样式</h2>
+
+<section style="height: 260px;">
+  <div role="listbox" class="c-select c-select--normal c-select--open">
+    <input
+      tabindex="0"
+      type="text"
+      class="c-input c-input--normal"
+      readonly
+      placeholder="请选择…"
+    />
+    <span class="c-select__suffix c-select__suffix">
+      <i>
+        <svg width="14" height="14">
+          <g fill-rule="nonzero" fill="none">
+            <path opacity=".2" d="M0 0h14v14H0z" />
+            <path
+              d="M2.92 5.08a.6.6 0 0 0-.84.84L7 10.85l4.92-4.93a.6.6 0 0 0-.84-.84L7 9.15 2.92 5.08z"
+              fill="#909399"
+              opacity=".7"
+            />
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-select__dropdown c-select__dropdown--multiple">
+    <div class="c-select__option-group">
+      <div class="c-select__option-group__title">水果</div>
+      <div class="c-select__options">
+        <div role="option" tabindex="-1" class="c-select__option">苹果</div>
+        <div role="option" tabindex="-1" class="c-select__option">葡萄</div>
+      </div>
+    </div>
+    <div class="c-select__option-group">
+      <div class="c-select__option-group__title">家电</div>
+      <div class="c-select__options">
+        <div role="option" tabindex="-1" class="c-select__option">空调</div>
+        <div role="option" tabindex="-1" class="c-select__option">洗衣机</div>
+      </div>
+    </div>
+    <div class="c-select__option-group">
+      <div class="c-select__option-group__title">口味</div>
+      <div class="c-select__options">
+        <div role="option" tabindex="-1" class="c-select__option">微辣</div>
+        <div role="option" tabindex="-1" class="c-select__option">麻辣</div>
+      </div>
+    </div>
+  </div>
+  <div
+    role="listbox"
+    class="c-select c-select--normal c-select__multiple c-select--open"
+    aria-multiselectable="true"
+    aria-activedescendant="苹果"
+  >
+    <div class="c-select__tags">
+      <div class="c-tag c-tag-closable">
+        <span class="c-tag__label">苹果🍎</span>
+        <i class="c-icon--svg c-icon--close-tag">
+          <svg viewBox="0 0 1024 1024">
+            <path
+              d="M744.740571 693.028571l-51.712 51.712L512 563.712l-181.028571 181.028571-51.785143-51.712L460.288 512 279.186286 331.044571l51.785143-51.785142L512 460.288l181.028571-181.028571 51.712 51.785142L563.712 512l181.028571 181.028571zM512 73.142857a438.857143 438.857143 0 1 0 0 877.714286A438.857143 438.857143 0 0 0 512 73.142857z"
+            ></path>
+          </svg>
+        </i>
+      </div>
+      <div class="c-tag c-tag-closable">
+        <span class="c-tag__label">葡萄🍇</span>
+        <i class="c-icon--svg c-icon--close-tag">
+          <svg viewBox="0 0 1024 1024">
+            <path
+              d="M744.740571 693.028571l-51.712 51.712L512 563.712l-181.028571 181.028571-51.785143-51.712L460.288 512 279.186286 331.044571l51.785143-51.785142L512 460.288l181.028571-181.028571 51.712 51.785142L563.712 512l181.028571 181.028571zM512 73.142857a438.857143 438.857143 0 1 0 0 877.714286A438.857143 438.857143 0 0 0 512 73.142857z"
+            ></path>
+          </svg>
+        </i>
+      </div>
+      <input type="text" class="c-select__tags__input" placeholder="" />
+    </div>
+    <span class="c-select__suffix c-select__suffix">
+      <i>
+        <svg width="14" height="14">
+          <g fill-rule="nonzero" fill="none">
+            <path opacity=".2" d="M0 0h14v14H0z" />
+            <path
+              d="M2.92 5.08a.6.6 0 0 0-.84.84L7 10.85l4.92-4.93a.6.6 0 0 0-.84-.84L7 9.15 2.92 5.08z"
+              fill="#909399"
+              opacity=".7"
+            />
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-select__dropdown c-select__dropdown--multiple">
+    <div class="c-select__option-group">
+      <div class="c-select__option-group__title">水果</div>
+      <div class="c-select__options">
+        <div
+          role="option"
+          tabindex="-1"
+          class="c-select__option c-select__option--selected"
+          aria-selected="true"
+        >
+          苹果
+          <i class="c-select__selected-icon">
+            <svg width="14" height="14">
+              <g fill="none" fill-rule="evenodd">
+                <path opacity=".2" d="M0 0h14v14H0z" />
+                <path
+                  fill="#006BFF"
+                  d="M11.66 3L5.19 9.36l-3.85-3.8L0 6.9 5.19 12l7.8-7.68z"
+                />
+              </g>
+            </svg>
+          </i>
+        </div>
+
+        <div
+          role="option"
+          tabindex="-1"
+          class="c-select__option c-select__option--selected"
+          aria-selected="true"
+        >
+          葡萄
+          <i class="c-select__selected-icon">
+            <svg width="14" height="14">
+              <g fill="none" fill-rule="evenodd">
+                <path opacity=".2" d="M0 0h14v14H0z" />
+                <path
+                  fill="#006BFF"
+                  d="M11.66 3L5.19 9.36l-3.85-3.8L0 6.9 5.19 12l7.8-7.68z"
+                />
+              </g>
+            </svg>
+          </i>
+        </div>
+      </div>
+    </div>
+    <div class="c-select__option-group">
+      <div class="c-select__option-group__title">家电</div>
+      <div class="c-select__options">
+        <div role="option" tabindex="-1" class="c-select__option">空调</div>
+        <div role="option" tabindex="-1" class="c-select__option">洗衣机</div>
+      </div>
+    </div>
+    <div class="c-select__option-group">
+      <div class="c-select__option-group__title">口味</div>
+      <div class="c-select__options">
+        <div role="option" tabindex="-1" class="c-select__option">微辣</div>
+        <div role="option" tabindex="-1" class="c-select__option">麻辣</div>
+      </div>
+    </div>
+  </div>
+</section>
+<h2>禁用样式</h2>
+
+<section>
+  <div
+    role="listbox"
+    class="c-select c-select--normal c-select--disabled"
+    aria-readonly="true"
+  >
+    <input
+      tabindex="0"
+      type="text"
+      class="c-input c-input--normal"
+      disabled
+      value="苹果"
+      placeholder="请选择…"
+    />
+    <span class="c-select__suffix">
+      <i>
+        <svg width="14" height="14">
+          <g fill-rule="nonzero" fill="none">
+            <path opacity=".2" d="M0 0h14v14H0z" />
+            <path
+              d="M2.92 5.08a.6.6 0 0 0-.84.84L7 10.85l4.92-4.93a.6.6 0 0 0-.84-.84L7 9.15 2.92 5.08z"
+              fill="#909399"
+              opacity=".7"
+            />
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div
+    role="listbox"
+    class="c-select c-select--normal c-select__multiple c-select--disabled"
+    aria-multiselectable="true"
+    aria-readonly="true"
+    aria-activedescendant="多选"
+  >
+    <div class="c-select__tags c-select__tags">
+      <div class="c-tag">
+        <span class="c-tag__label">多选</span>
+      </div>
+      <div class="c-tag">
+        <span class="c-tag__label">禁用</span>
+      </div>
+    </div>
+    <span class="c-select__suffix">
+      <i>
+        <svg width="14" height="14">
+          <g fill-rule="nonzero" fill="none">
+            <path opacity=".2" d="M0 0h14v14H0z" />
+            <path
+              d="M2.92 5.08a.6.6 0 0 0-.84.84L7 10.85l4.92-4.93a.6.6 0 0 0-.84-.84L7 9.15 2.92 5.08z"
+              fill="#909399"
+              opacity=".7"
+            />
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+</section>
+<h2>禁用选项样式</h2>
+
+<section style="height: 260px;">
+  <div role="listbox" class="c-select c-select--normal">
+    <input
+      tabindex="0"
+      type="text"
+      class="c-input c-input--normal c-select--open"
+      readonly
+      placeholder="请选择…"
+    />
+    <span class="c-select__suffix c-select__suffix">
+      <i>
+        <svg width="14" height="14">
+          <g fill-rule="nonzero" fill="none">
+            <path opacity=".2" d="M0 0h14v14H0z" />
+            <path
+              d="M2.92 5.08a.6.6 0 0 0-.84.84L7 10.85l4.92-4.93a.6.6 0 0 0-.84-.84L7 9.15 2.92 5.08z"
+              fill="#909399"
+              opacity=".7"
+            />
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-select__dropdown c-select__dropdown--multiple">
+    <div role="option" tabindex="-1" class="c-select__option">苹果</div>
+    <div role="option" tabindex="-1" class="c-select__option">葡萄</div>
+    <div
+      role="option"
+      tabindex="-1"
+      class="c-select__option c-select__option--disabled"
+      aria-readonly="true"
+    >
+      西瓜(禁用效果)
+    </div>
+    <div role="option" tabindex="-1" class="c-select__option">鸭梨</div>
+    <div role="option" tabindex="-1" class="c-select__option">桃子</div>
+  </div>
+
+  <div
+    role="listbox"
+    class="c-select c-select--normal c-select__multiple c-select--open"
+    aria-multiselectable="true"
+    aria-activedescendant="苹果"
+  >
+    <div class="c-select__tags">
+      <div class="c-tag c-tag-closable">
+        <span class="c-tag__label">苹果🍎</span>
+        <i class="c-icon--svg c-icon--close-tag">
+          <svg viewBox="0 0 1024 1024">
+            <path
+              d="M744.740571 693.028571l-51.712 51.712L512 563.712l-181.028571 181.028571-51.785143-51.712L460.288 512 279.186286 331.044571l51.785143-51.785142L512 460.288l181.028571-181.028571 51.712 51.785142L563.712 512l181.028571 181.028571zM512 73.142857a438.857143 438.857143 0 1 0 0 877.714286A438.857143 438.857143 0 0 0 512 73.142857z"
+            ></path>
+          </svg>
+        </i>
+      </div>
+      <input type="text" class="c-select__tags__input" placeholder="" />
+    </div>
+    <span class="c-select__suffix c-select__suffix">
+      <i>
+        <svg width="14" height="14">
+          <g fill-rule="nonzero" fill="none">
+            <path opacity=".2" d="M0 0h14v14H0z" />
+            <path
+              d="M2.92 5.08a.6.6 0 0 0-.84.84L7 10.85l4.92-4.93a.6.6 0 0 0-.84-.84L7 9.15 2.92 5.08z"
+              fill="#909399"
+              opacity=".7"
+            />
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+  <div class="c-select__dropdown c-select__dropdown--multiple">
+    <div class="c-select__option-group">
+      <div class="c-select__option-group__title">水果</div>
+      <div class="c-select__options">
+        <div
+          role="option"
+          tabindex="-1"
+          class="c-select__option c-select__option--selected"
+          aria-selected="true"
+        >
+          苹果
+          <i class="c-select__selected-icon">
+            <svg width="14" height="14">
+              <g fill="none" fill-rule="evenodd">
+                <path opacity=".2" d="M0 0h14v14H0z" />
+                <path
+                  fill="#006BFF"
+                  d="M11.66 3L5.19 9.36l-3.85-3.8L0 6.9 5.19 12l7.8-7.68z"
+                />
+              </g>
+            </svg>
+          </i>
+        </div>
+
+        <div role="option" tabindex="-1" class="c-select__option">葡萄</div>
+      </div>
+    </div>
+    <div class="c-select__option-group">
+      <div class="c-select__option-group__title">家电</div>
+      <div class="c-select__options">
+        <div
+          role="option"
+          tabindex="-1"
+          class="c-select__option c-select__option--disabled"
+          aria-readonly="true"
+        >
+          空调
+        </div>
+        <div role="option" tabindex="-1" class="c-select__option">洗衣机</div>
+      </div>
+    </div>
+    <div class="c-select__option-group">
+      <div class="c-select__option-group__title">口味</div>
+      <div class="c-select__options">
+        <div role="option" tabindex="-1" class="c-select__option">微辣</div>
+        <div role="option" tabindex="-1" class="c-select__option">麻辣</div>
+      </div>
+    </div>
+  </div>
+</section>
+<h2>不同尺寸</h2>
+
+<section>
+  <div role="listbox" class="c-select c-select--small">
+    <input
+      tabindex="0"
+      type="text"
+      class="c-input c-input--small"
+      readonly
+      placeholder="请选择…"
+    />
+    <span class="c-select__suffix">
+      <i>
+        <svg width="14" height="14">
+          <g fill-rule="nonzero" fill="none">
+            <path opacity=".2" d="M0 0h14v14H0z" />
+            <path
+              d="M2.92 5.08a.6.6 0 0 0-.84.84L7 10.85l4.92-4.93a.6.6 0 0 0-.84-.84L7 9.15 2.92 5.08z"
+              fill="#909399"
+              opacity=".7"
+            />
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+
+  <div role="listbox" class="c-select c-select--normal">
+    <input
+      tabindex="0"
+      type="text"
+      class="c-input c-input--normal"
+      readonly
+      placeholder="请选择…"
+    />
+    <span class="c-select__suffix">
+      <i>
+        <svg width="14" height="14">
+          <g fill-rule="nonzero" fill="none">
+            <path opacity=".2" d="M0 0h14v14H0z" />
+            <path
+              d="M2.92 5.08a.6.6 0 0 0-.84.84L7 10.85l4.92-4.93a.6.6 0 0 0-.84-.84L7 9.15 2.92 5.08z"
+              fill="#909399"
+              opacity=".7"
+            />
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+
+  <div role="listbox" class="c-select c-select--large">
+    <input
+      tabindex="0"
+      type="text"
+      class="c-input c-input--large"
+      readonly
+      placeholder="请选择…"
+    />
+    <span class="c-select__suffix">
+      <i>
+        <svg width="14" height="14">
+          <g fill-rule="nonzero" fill="none">
+            <path opacity=".2" d="M0 0h14v14H0z" />
+            <path
+              d="M2.92 5.08a.6.6 0 0 0-.84.84L7 10.85l4.92-4.93a.6.6 0 0 0-.84-.84L7 9.15 2.92 5.08z"
+              fill="#909399"
+              opacity=".7"
+            />
+          </g>
+        </svg>
+      </i>
+    </span>
+  </div>
+</section>

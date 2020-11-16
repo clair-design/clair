@@ -1,0 +1,36 @@
+@import 'variables';
+@import 'icon';
+
+.c-avatar {
+  @mixin mixin-avatar-size($size, $fontSize) {
+    width: $size;
+    height: $size;
+    font-size: $fontSize;
+    line-height: $size;
+  }
+  @include mixin-avatar-size($--avatar-normal-size, $--avatar-normal-font-size);
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  overflow: hidden;
+  color: #a3adc2;
+  text-align: center;
+  background-color: #e1e6ee;
+
+  &--circle {
+    border-radius: 50%;
+  }
+  &--square {
+    border-radius: 3px;
+  }
+  &--large {
+    @include mixin-avatar-size($--avatar-large-size, $--avatar-large-font-size);
+  }
+  &--small {
+    @include mixin-avatar-size($--avatar-small-size, $--avatar-small-font-size);
+  }
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}

@@ -1,0 +1,44 @@
+`Controller`用于使组件受控，配合`ErrorMessage`来显示表单验证信息
+
+```tsx live=true className=s-form-example deps=message
+function Index() {
+  const { control, validate } = useForm({ clause: true });
+
+  const onSubmit = e => {
+    e.preventDefault();
+    validate().then(valiList => {
+      const isValid = !valiList.some(({ isValid }) => !isValid);
+      if (isValid) {
+        message({ type: "success", message: "提交成功" });
+      }
+    });
+  };
+
+  return (
+    <form onSubmit={onSubmit}>
+      <Controller
+        as={<Checkbox>我已阅读免责条款</Checkbox>}
+        name="clause"
+        control={control}
+        valueName="checked"
+        onChange={e => e.target.value}
+        rules={[
+          {
+            required: true,
+            message: "请阅读免责条款",
+            trigger: "change",
+            validator(_, value) {
+              return !!value;
+            }
+          }
+        ]}
+      />
+      <ErrorMessage as={Tip} name="clause" control={control} />
+      <button htmltype="submit">提交</button>
+    </form>
+  );
+}
+function Tip({ message, isValid }) {
+  return <p>{isValid ? "✅ 校验通过" : `❌ ${message}`}</p>;
+}
+```

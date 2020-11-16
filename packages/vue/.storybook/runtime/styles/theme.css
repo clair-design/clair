@@ -1,0 +1,33 @@
+body {
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 20px;
+  color: #333;
+}
+
+/*
+pre::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+pre:-moz-focusring,
+button:-moz-focusring,
+input:-moz-focusring {
+  outline: none !important;
+} */
+
+.vue-demo-source-code,
+.vue-demo-source-code code {
+  background: #f2f2f2 !important;
+}
+
+.vue-demo-source-code {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.vue-demo-source-code code {
+  display: block !important;
+  padding: 16px !important;
+}

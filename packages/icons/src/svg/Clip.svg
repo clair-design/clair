@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Clip</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Clip" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="路径" stroke="#6E6E6E" stroke-width="2">
+            <path d="M19.8370332,4.99628111 L19.8454572,20.131732 C19.8454572,24.55001 16.2637352,28.131732 11.8454572,28.131732 C7.42717916,28.131732 3.84545716,24.55001 3.84545716,20.131732 L3.8334613,4.15480666" transform="translate(11.839459, 16.143269) rotate(45.000000) translate(-11.839459, -16.143269) "></path>
+            <path d="M28.9321653,10.8326662 C28.9321653,7.79510008 26.4697315,5.33266621 23.4321653,5.33266621 C20.3945992,5.33266621 17.9321653,7.79510008 17.9321653,10.8326662" transform="translate(23.432165, 8.082666) rotate(45.000000) translate(-23.432165, -8.082666) "></path>
+            <path d="M16.6713481,8.06042644 L16.6683022,19.8895204 C16.6683022,21.5463746 15.3251565,22.8895204 13.6683022,22.8895204 C12.011448,22.8895204 10.6683022,21.5463746 10.6683022,19.8895204 L10.6598782,5.75406943" transform="translate(13.665613, 14.321795) rotate(45.000000) translate(-13.665613, -14.321795) "></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<title>Dropdown</title>
+<link rel="stylesheet" href="../styles/dropdown.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body {
+    max-width: 1200px;
+    margin: 30px auto;
+  }
+
+  .m-t50 {
+    margin-top: 50px;
+  }
+
+  .m-b50 {
+    margin-bottom: 50px;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+
+<!-- button-group: false -->
+<menu class="c-dropdown-menu" x-placement="top-left">
+  <li class="c-dropdown-menu__item">11111111111</li>
+  <li class="c-dropdown-menu__item c-dropdown-menu__item--divided">
+    2222222222222
+  </li>
+  <li class="c-dropdown-menu__item">11111111111</li>
+  <li class="c-dropdown-menu__item is-disabled">11111111111</li>
+  <li class="c-dropdown-menu__item">11111111111</li>
+  <li class="c-dropdown-menu__item">333333</li>
+</menu>
+<h2>显示在上</h2>
+
+<div class="m-t50 m-b50" style="border-top: 1px solid #000;"></div>
+
+<h2>显示在下</h2>
+<menu class="c-dropdown-menu" x-placement="bottom-left">
+  <li class="c-dropdown-menu__item">11111111111</li>
+  <li class="c-dropdown-menu__item c-dropdown-menu__item--divided">
+    2222222222222
+  </li>
+  <li class="c-dropdown-menu__item">11111111111</li>
+  <li class="c-dropdown-menu__item is-disabled">11111111111</li>
+  <li class="c-dropdown-menu__item">11111111111</li>
+  <li class="c-dropdown-menu__item">333333</li>
+</menu>
+
+<br />
+
+<!-- c-dropdown-menu -->
+
+<!-- <menu class="c-dropdown-menu" x-placement="bottom-center">
+  <li class="c-dropdown-menu__item">11111111111</li>
+  <li class="c-dropdown-menu__item c-dropdown-menu__item--divided">
+    2222222222222
+  </li>
+  <li class="c-dropdown-menu__item">11111111111</li>
+  <li class="c-dropdown-menu__item is-disabled">11111111111</li>
+  <li class="c-dropdown-menu__item">11111111111</li>
+  <li class="c-dropdown-menu__item">333333</li>
+</menu> -->

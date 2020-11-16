@@ -1,0 +1,47 @@
+### 可监听 active-key 的变化
+
+```tsx live=true
+function App() {
+  const [activeKey, updateActiveKey] = React.useState("2");
+
+  const next = () => {
+    const nextKey = ((Number(activeKey) + 1) % 4 || 4).toString();
+    updateActiveKey(nextKey);
+  };
+  return (
+    <div>
+      <p>
+        <Button onClick={next}>下一步</Button>
+      </p>
+      <Steps activeKey={activeKey}>
+        <Step stepKey="1" title="第一步" />
+        <Step stepKey="2" title="第二步" />
+        <Step stepKey="3" title="第三步" />
+        <Step stepKey="4" title="完成" />
+      </Steps>
+    </div>
+  );
+}
+```
+
+```tsx live=true
+function App() {
+  const initKeys = () => new Array(3).fill(0).map((_, index) => index);
+  const [keys, updateKeys] = React.useState(initKeys);
+
+  const update = () => {
+    const newKeys = new Array(3).fill(0).map((_, index) => index + 100);
+    updateKeys(oldKeys => [...oldKeys, ...newKeys]);
+  };
+  return (
+    <div>
+      <Button onClick={update}>update</Button>
+      <Steps activeKey="2">
+        {keys.map(key => (
+          <Step stepKey={`${key}`} title={`title-${key}`} key={key}></Step>
+        ))}
+      </Steps>
+    </div>
+  );
+}
+```

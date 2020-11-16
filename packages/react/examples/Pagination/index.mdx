@@ -1,0 +1,63 @@
+# Pagination
+
+## 定义
+
+对表格、卡片列表的内容进行分页，每页可定义展示多少行、多少个。
+
+## 使用场景
+
+用户访问一个网页或者查看某些数据，如果数据量过大肯定需要按页查看，不可能一个页面显示 N 条数据内容这里就用到了分页器。
+
+## 基础样式
+
+常用的分页样式，超过 7 页以“…”展示。
+
+```tsx live=true
+<>
+  <Pagination total={500} span={4} />
+</>
+```
+
+## 附加功能样式
+
+根据使用场景，可自定义添加所需功能。
+
+```tsx live=true
+<>
+  <Pagination total={500} layout="pages,jumper,total" />
+</>
+```
+
+## 迷你样式
+
+用户空间狭小的情况。
+
+```tsx live=true
+<>
+  <Pagination total={500} size="small" layout="pages,total,jumper" />
+</>
+```
+
+## 简易样式
+
+一般用于卡片或表格等，不超过 10 页。
+
+```tsx live=true
+<>
+  <Pagination total={500} simple={true} layout="pages,total" />
+</>
+```
+
+## Props
+
+| Name             | Description            | Type                                                       | Required | Default  |
+| ---------------- | ---------------------- | ---------------------------------------------------------- | -------- | -------- |
+| current          | 当前页                 | `number`                                                   | `false`  | `1`      |
+| total            | 数据总数               | `number`                                                   | `true`   |          |
+| pageSize         | 每页条数               | `number`                                                   | `false`  | `10`     |
+| span             | 左右展示个数           | `number`                                                   | `false`  | `2`      |
+| layout           | 布局                   | `string` (`pages`,`total`,`jump`任意个数，以`,`分割)       | `false`  | `pages`  |
+| hideOnSinglePage | 只有一页时时候隐藏分页 | `boolean`                                                  | `false`  | `false`  |
+| size             | 尺寸                   | `"normal"` \| `"small"`                                    | `false`  | `normal` |
+| simple           | 简易模式               | `boolean`                                                  | `false`  | `false`  |
+| onChange         | 页码改变时的回调       | `({ detail: { page: number; pageSize: number } }) => void` | `false`  |          |

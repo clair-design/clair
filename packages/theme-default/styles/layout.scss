@@ -1,0 +1,86 @@
+@import 'variables';
+
+.c-layout {
+  display: flex;
+  flex-direction: column;
+
+  & > & {
+    flex-grow: 1;
+  }
+
+  &--has-aside {
+    flex-direction: row;
+  }
+
+  &__main {
+    flex-grow: 1;
+    transition: transition(margin);
+  }
+
+  &__aside {
+    width: $--layout-aside-width;
+    transition: transition(width);
+  }
+
+  &__aside--has-trigger {
+    // let trigger absolutely positioned
+    position: relative;
+    padding-bottom: $--layout-collapse-trigger-height;
+  }
+
+  &__collapse-trigger {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: $--layout-collapse-trigger-height;
+    cursor: pointer;
+
+    &:hover {
+      background: change-color($--base-text-color, $alpha: 0.05);
+    }
+  }
+
+  &__trigger-icon {
+    font-size: $--base-font-size;
+  }
+
+  // sidebar collapse
+  &__aside--collapsed {
+    width: $--layout-aside-collapsed-width;
+  }
+
+  // fixed header
+  &__header--fixed {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+
+  // sticky sidebar (when header is NOT fixed)
+  &__aside--sticky {
+    position: sticky;
+    top: 0;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+
+  // header and sidebar are fixed BOTH
+  // we don't make header or sidebar fixed, just make main content scroll
+  &--scroll-main {
+    height: 100vh;
+  }
+
+  &--scroll-main > .c-layout__header + .c-layout {
+    height: 0;
+  }
+
+  &--scroll-main .c-layout__main,
+  &--scroll-main .c-layout__aside {
+    overflow-y: scroll;
+  }
+}

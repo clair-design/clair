@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Target</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Target" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M17.0270713,1.35428919 C16.0557895,1.12264477 15.0422174,1 14,1 C6.82029825,1 1,6.82029825 1,14 C1,21.1797017 6.82029825,27 14,27 L14,27 C21.1797017,27 27,21.1797017 27,14 C27,12.9746422 26.8812911,11.9770103 26.6568668,11.020098" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M14,9 C11.2385763,9 9,11.2385763 9,14 C9,16.7614237 11.2385763,19 14,19 L14,19 C16.7614237,19 19,16.7614237 19,14" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M14,14 L18,10" id="路径-52" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <polyline id="形状" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(20.500000, 5.500000) rotate(-45.000000) translate(-20.500000, -5.500000) " points="15.5502525 6.91421356 18.3786797 4.08578644 25.4497475 4.08578644 22.6213203 6.91421356"></polyline>
+            <polyline id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(22.500000, 7.500000) rotate(-45.000000) translate(-22.500000, -7.500000) " points="24.6213203 6.08578644 27.4497475 8.91421356 20.3786797 8.91421356 20.3786797 8.91421356 17.5502525 6.08578644"></polyline>
+        </g>
+    </g>
+</svg>

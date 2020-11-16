@@ -1,0 +1,41 @@
+@import 'variables';
+@import 'cascader-panel';
+.c-cascader {
+  width: $--cascader-width;
+
+  &__suffix {
+    transition: transform 0.2s ease;
+  }
+
+  &__suffix--reverse {
+    transform: rotate(180deg);
+  }
+
+  .c-input-affix-container {
+    width: 100%;
+  }
+}
+
+.c-cascader__popover {
+  .c-popover__content {
+    padding: 0;
+  }
+}
+
+.c-cascader--filled .c-input {
+  &::placeholder {
+    color: $--base-text-color;
+  }
+
+  &:not([readonly]):focus::placeholder {
+    color: $--disabled-text-color;
+  }
+
+  &:disabled::placeholder {
+    color: $--disabled-text-color;
+  }
+
+  &[readonly] {
+    cursor: pointer;
+  }
+}

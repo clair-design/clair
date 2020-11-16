@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Watch</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Watch" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" x="0" y="0" width="28" height="28"></rect>
+            <rect id="矩形" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round" x="4" y="4" width="20" height="20" rx="2"></rect>
+            <path d="M7,4 L8.40626693,1.89059961 C8.77719849,1.33420227 9.40166114,1 10.0703675,1 L17.9296325,1 C18.5983389,1 19.2228015,1.33420227 19.5937331,1.89059961 L21,4 L7,4 Z" id="路径-157" stroke="#6E6E6E" stroke-width="2"></path>
+            <path d="M7,27 L8.40626693,24.8905996 C8.77719849,24.3342023 9.40166114,24 10.0703675,24 L17.9296325,24 C18.5983389,24 19.2228015,24.3342023 19.5937331,24.8905996 L21,27 L7,27 Z" id="路径-157" stroke="#6E6E6E" stroke-width="2" transform="translate(14.000000, 25.500000) scale(1, -1) translate(-14.000000, -25.500000) "></path>
+            <polyline id="路径-158" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="14 8.5 14 15 18.5 13"></polyline>
+        </g>
+    </g>
+</svg>

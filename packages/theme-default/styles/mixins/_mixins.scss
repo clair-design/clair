@@ -1,0 +1,33 @@
+@import '../variables';
+
+@mixin triangle-at-bottom($width, $height, $bgColor) {
+  border-top: $height solid $bgColor;
+  border-right: $width/2 solid transparent;
+  border-bottom: $height solid transparent;
+  border-left: $width/2 solid transparent;
+}
+
+@mixin triangle-at-left($width, $height, $bgColor) {
+  border-top: $width/2 solid transparent;
+  border-right: $height solid $bgColor;
+  border-bottom: $width/2 solid transparent;
+  border-left: $height solid transparent;
+}
+
+@mixin triangle-at-top($width, $height, $bgColor) {
+  border-top: $height solid transparent;
+  border-right: $width/2 solid transparent;
+  border-bottom: $height solid $bgColor;
+  border-left: $width/2 solid transparent;
+}
+
+@mixin triangle-at-right($width, $height, $bgColor) {
+  border-top: $width/2 solid transparent;
+  border-right: $height solid transparent;
+  border-bottom: $width/2 solid transparent;
+  border-left: $height solid $bgColor;
+}
+
+@mixin focus-ring($baseColor: $--primary-color, $width: 2px) {
+  box-shadow: 0 0 0 2px rgba($baseColor, 0.2);
+}

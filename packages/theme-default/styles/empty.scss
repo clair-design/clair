@@ -1,0 +1,21 @@
+@import 'variables';
+
+.c-empty {
+  padding: $--empty-padding;
+  text-align: center;
+
+  .c-empty__img {
+    width: $--empty-img-width--small;
+    margin-bottom: $--empty-margin--small;
+  }
+
+  &--large .c-empty__img {
+    width: $--empty-img-width--large;
+    margin-bottom: $--empty-margin--large;
+  }
+}
+
+.c-empty__description {
+  color: $--tertiary-text-color;
+  font-size: $--base-font-size;
+}

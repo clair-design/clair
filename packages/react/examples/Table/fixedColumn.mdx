@@ -1,0 +1,74 @@
+<!-- 固定列 -->
+
+```tsx live=true
+function FixedColumn() {
+  const btnStyle = {
+    marginRight: "12px",
+    color: "#006bff",
+    textDecoration: "none"
+  };
+  const columns = [
+    { title: "日期", prop: "date", width: 120, fixed: "left" },
+    { title: "用户 ID", prop: "uid", width: 120 },
+    { title: "名称", prop: "name", width: 200 },
+    { title: "地址", prop: "addr", width: 300 },
+    { title: "金额(元)", prop: "amount", align: "right", width: 150 },
+    { title: "状态", prop: "status", width: 100 },
+    {
+      title: "操作",
+      prop: "actions",
+      width: 160,
+      fixed: "right",
+      render: () => (
+        <div>
+          <a href="" style={btnStyle}>
+            查看
+          </a>
+          <a href="" style={btnStyle}>
+            编辑
+          </a>
+          <a href="" style={btnStyle}>
+            删除
+          </a>
+        </div>
+      )
+    }
+  ];
+
+  const dataSource = [
+    {
+      date: "2019-01-01",
+      uid: "00089757",
+      name: "企业名称 1",
+      addr: "北京市朝阳区酒仙桥路6号",
+      amount: 9873,
+      status: "已生效",
+      edit: false
+    },
+    {
+      date: "2019-01-02",
+      uid: "0008933",
+      name: "企业名称 2",
+      addr: "北京市朝阳区酒仙桥路7号",
+      amount: 432334,
+      status: "已生效",
+      edit: false
+    },
+    {
+      date: "2019-01-03",
+      uid: "00089876",
+      name: "企业名称 3",
+      addr: "北京市朝阳区酒仙桥路9号",
+      amount: 875445,
+      status: "未生效",
+      edit: false
+    }
+  ];
+
+  return (
+    <div style={{ width: 1000 }}>
+      <Table columns={columns} dataSource={dataSource} rowKey="name" />
+    </div>
+  );
+}
+```

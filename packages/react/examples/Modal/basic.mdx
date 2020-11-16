@@ -1,0 +1,30 @@
+```tsx live=true
+function Index() {
+  const [visible, setVisibility] = React.useState(false);
+
+  const showModal = () => setVisibility(true);
+  const cancel = () => setVisibility(false);
+  const confirm = () => setVisibility(false);
+
+  return (
+    <>
+      <Button type="primary" onClick={showModal}>
+        打开弹窗
+      </Button>
+      <Modal
+        title="Basic Modal"
+        visible={visible}
+        width="400px"
+        className="custom-class"
+        onCancel={cancel}
+        onConfirm={confirm}
+        style={{ top: "10%" }}
+      >
+        <a href="www.baidu.com">跳转</a>
+        <p>Some contents...</p>
+        <Button disabled>button</Button>
+      </Modal>
+    </>
+  );
+}
+```

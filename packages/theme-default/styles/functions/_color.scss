@@ -1,0 +1,154 @@
+@import './luma';
+
+// select appropriate text color by background color
+// @access public
+@function get-text-color(
+  $bg-color,
+  $dark-color,
+  $light-color,
+  $threshold: 0.65
+) {
+  // dark-on-light theme by default
+  $final-dark-color: $dark-color;
+  $final-light-color: $light-color;
+
+  // light-on-dark theme
+  @if (lightness($dark-color) > lightness($light-color)) {
+    $final-dark-color: $light-color;
+    $final-light-color: $dark-color;
+  }
+
+  // light background
+  @if (lightness($bg-color) > percentage($threshold)) {
+    @return $final-dark-color;
+  } @else {
+    // dark background
+    @return $final-light-color;
+  }
+}
+
+/// SEE https://www.w3.org/TR/WCAG20/#relativeluminancedef
+/// Calculate luminance using the  W3C luma method
+@function luminance($color) {
+  $red: nth($--luma-table, red($color) + 1);
+  $green: nth($--luma-table, green($color) + 1);
+  $blue: nth($--luma-table, blue($color) + 1);
+  @return 0.2126 * $red + 0.7152 * $green + 0.0722 * $blue;
+}
+
+/// SEE https://www.w3.org/TR/WCAG20/#contrast-ratiodef
+/// Calculate color contrast ratio
+@function contrast-ratio($color, $bg-color) {
+  $l1: luminance($color);
+  $l2: luminance($bg-color);
+  @if ($l1 > $l2) {
+    @return ($l1 + 0.05) / ($l2 + 0.05);
+  } @else {
+    @return ($l2 + 0.05) / ($l1 + 0.05);
+  }
+}
+
+@function w3c-text-color($bg-color, $threshold: 0.5) {
+  $perceived-lightness: luminance($bg-color);
+  $lightness: ($perceived-lightness - $threshold) * -10000000%;
+  /* shows either white or black color depending on perceived darkness */
+  @return hsl(0, 0%, $lightness);
+}
+
+// Get the lightness by the lightness difference with background.
+// If background is dark, return a greater lightness, vice versa.
+// @access public
+// @param {Percentage} $lightness-diff - lightness difference with background
+// @return {Percentage}
+@function get-lightness-base-on-bg($lightness-diff, $bg-color) {
+  $background-lightness: lightness($bg-color);
+  @if ($background-lightness > 50%) {
+    // dark-on-light mode
+    @return $background-lightness - $lightness-diff;
+  } @else {
+    // light on dark mode
+    @return $background-lightness + $lightness-diff;
+  }
+}
+
+// Shift the lightness of base color towards the destination lightness
+// @access public
+// @param {Color} $from - color of starting point
+// @param {Color} $to - color of destination
+// @param {Percentage} $amount - amount of lightness change
+// @return {Color}
+@function shift-lightness($from, $to, $amount) {
+  $from-lightness: lightness($from);
+  $to-lightness: lightness($to);
+  $lightness: 0;
+  @if $from-lightness > $to-lightness {
+    $lightness: $from-lightness - $amount;
+  } @else {
+    $lightness: $from-lightness + $amount;
+  }
+  $lightness: max(min($lightness, 100%), 0%);
+  @return change-color($from, $lightness: $lightness);
+}
+
+// Shift given color towards the destination color by given lightness amount
+// @access public
+// @param {Color} $from - color of starting point
+// @param {Color} $to - color of destination
+// @param {Percentage} $amount - amount of lightness change
+// @return {Color}
+@function shift-color($from, $to, $amount) {
+  $from-lightness: lightness($from);
+  $to-lightness: lightness($to);
+  // in case of $from and $to have same lightness
+  $lightness-diff: max(abs($to-lightness - $from-lightness), 0.01%);
+  $ratio: min(percentage($amount / $lightness-diff), 100%);
+  @return mix($to, $from, $ratio);
+}
+
+// Adjust lightness of $color to make it legible
+// @access public
+// @param {Color} $color - raw text color
+// @param {Color} $bg-color - background color
+// @return {Color} adjusted color
+@function legible-color($color, $bg-color) {
+  $threshold: 3;
+  $contrast: contrast-ratio($color, $bg-color);
+  @if ($contrast >= $threshold) {
+    @return $color;
+  }
+
+  $step: -1%; // assume dark-on-white, decrease the lightness
+  @if (lightness($color) > lightness($bg-color)) {
+    // white-on-dark
+    $step: 1%; // increase the lightness
+  }
+  @while $contrast < $threshold {
+    $color: change-color($color, $lightness: lightness($color) + $step);
+    $contrast: contrast-ratio($color, $bg-color);
+  }
+  @return $color;
+}
+
+// Convert box-shadow value to filter: drop-shadow
+// If box-shadow with spread-radius is passed in,
+// then remove the spread-radius since it could result in
+// invalid property value in many browsers
+// @access public
+// @param {list} $box-shadow - box-shadow value
+// @return {list} drop-shadow value without spread-radius
+@function get-drop-shadow($box-shadow) {
+  $len: length($box-shadow);
+  @if ($len <= 4) {
+    @return $box-shadow;
+  }
+  $list: ();
+  // spread radius may result in invalid property value in most browsers
+  @for $i from 1 through 5 {
+    $prop: nth($box-shadow, $i);
+    @if $i != 4 {
+      $list: append($list, $prop);
+    }
+  }
+
+  @return $list;
+}

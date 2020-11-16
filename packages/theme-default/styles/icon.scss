@@ -1,0 +1,104 @@
+@import 'variables';
+
+/// svg icons
+/// Links:
+/// https://www.w3cplus.com/css/icon-align-to-text.html
+/// https://codepen.io/airen/full/pZVvyL/
+/// https://zhuanlan.zhihu.com/p/30624268
+.c-icon--svg {
+  display: inline-block;
+  // 注：和文字处于一行时，默认对齐是 vertical-align: baseline;
+  // 针对个别中文字体，当 font-size 是 16px时，字体实际高度多为14px
+  // 当 vertical-align: baseline 时候，svg (即字母"x")的底部，会高于中文底部 1-2px
+  // 但真正的目标是，svg 中间和文字中间 (14px/2) 对齐
+  // 先让 svg 向下移动 1-2px，让底部对齐
+  // 再向下移动 (16px - 14px) / 2，弥补差别
+  vertical-align: #{(-1 - (16-14)/2) / 16}em;
+
+  svg {
+    display: block;
+    width: 1em;
+    height: 1em;
+  }
+
+  &.c-icon--close,
+  &.c-icon--close-tag {
+    cursor: pointer;
+    transition: opacity $--icon-close-transition-duration;
+  }
+
+  &.c-icon--clear {
+    background-color: #6e6e6e;
+  }
+
+  &.is-info {
+    color: $--info-color;
+  }
+
+  &.is-success {
+    color: $--success-color;
+  }
+
+  &.is-warning {
+    color: $--warning-color;
+  }
+
+  &.is-danger {
+    color: $--danger-color;
+  }
+}
+
+.c-icon--svg-circle {
+  position: relative;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  color: #fff;
+  border-radius: 50%;
+  stroke-width: 2px;
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.65em;
+    height: 0.65em;
+    transform: translate3d(-50%, -50%, 0);
+  }
+}
+
+.c-icon--svg.c-icon--fill svg {
+  :not(circle) {
+    stroke: $--base-background-color;
+  }
+
+  circle {
+    stroke: currentColor;
+  }
+}
+
+.c-icon--svg.c-icon--svg-static {
+  &,
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.c-icon--svg.c-icon--svg-light {
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+// spin icon, to indicate loading
+.c-icon--spin svg {
+  animation: spinning 0.9s infinite forwards linear;
+}
+
+@keyframes spinning {
+  to {
+    transform: rotate(360deg);
+  }
+}

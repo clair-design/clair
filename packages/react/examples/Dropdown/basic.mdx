@@ -1,0 +1,32 @@
+## 基础样式
+
+鼠标移动到下拉按钮上，展开下拉菜单。
+
+```tsx live=true deps=Dropdown
+function Index() {
+  const overlay = (
+    <Dropdown.Menu>
+      <Dropdown.Item>北京</Dropdown.Item>
+      <Dropdown.Item disabled>上海</Dropdown.Item>
+      <Dropdown.Item divided>广州</Dropdown.Item>
+      <Dropdown.Item divided disabled>
+        深圳
+      </Dropdown.Item>
+    </Dropdown.Menu>
+  );
+  const handleChange = e => console.log(e);
+  return (
+    <div>
+      <Dropdown
+        onVisibilityChange={handleChange}
+        overlay={overlay}
+        trigger={["hover"]}
+      >
+        <a>下拉菜单</a>
+        &nbsp;
+        <IconArrowDown />
+      </Dropdown>
+    </div>
+  );
+}
+```

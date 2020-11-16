@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "declaration": true,
+    "declarationDir": "dist/esm",
+    "sourceMap": false,
+    "rootDir": "src",
+    "outDir": "dist/esm"
+  },
+  "include": ["src", "types", "assets"],
+  "exclude": ["src/**/__test__", "src/setupTests.ts"],
+  "extends": "./tsconfig.json"
+}

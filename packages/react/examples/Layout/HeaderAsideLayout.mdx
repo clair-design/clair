@@ -1,0 +1,16 @@
+## 顶部-侧边布局
+
+同样拥有顶部导航及侧边栏，一般主导航放置于页面的顶端，从左自右依次为：logo、一级导航项、辅助菜单（用户、设置、通知等）。区别是两边未留边距，主要应用于工具类、管理类页面。
+
+```jsx live=true className=s-layout-example
+<Layout>
+  <Header>Header</Header>
+  <Layout>
+    <Aside>Aside</Aside>
+    <Layout>
+      <Main>Main</Main>
+      <Footer>Footer</Footer>
+    </Layout>
+  </Layout>
+</Layout>
+```

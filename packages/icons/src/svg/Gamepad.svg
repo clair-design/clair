@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Gamepad</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Gamepad" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M1,20 C1,16.1340068 4.13620749,13 8.00172495,13 L19.998275,13 C23.865221,13 27,16.1418733 27,20 L27,20 C27,23.8659932 23.8637925,27 19.998275,27 L8.00172495,27 C4.13477904,27 1,23.8581267 1,20 L1,20 Z" id="Rectangle-120" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle id="Oval-44" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="20" cy="20" r="3"></circle>
+            <path d="M5,20 L11,20" id="路径-146" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M5,20 L11,20" id="路径-146" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" transform="translate(8.000000, 20.000000) rotate(90.000000) translate(-8.000000, -20.000000) "></path>
+            <path d="M17,1 C18.1045695,1 19,1.8954305 19,3 C19,4.1045695 18.1045695,5 17,5 L7,5" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" transform="translate(13.000000, 3.000000) scale(-1, 1) translate(-13.000000, -3.000000) "></path>
+            <path d="M19,5 C20.1045695,5 21,5.8954305 21,7 C21,8.1045695 20.1045695,9 19,9 L14,9 C13.4477153,9 13,9.44771525 13,10 L13,12.416748" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="bevel"></path>
+        </g>
+    </g>
+</svg>

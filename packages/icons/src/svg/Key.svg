@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Key</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Key" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" cx="19" cy="19" r="8"></circle>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" cx="19" cy="19" r="3"></circle>
+            <path d="M13,13 L2,2" id="路径-57" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <polyline id="形状" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round" transform="translate(7.267767, 4.267767) rotate(-45.000000) translate(-7.267767, -4.267767) " points="5.14644661 1.76776695 9.3890873 1.76776695 9.3890873 6.76776695 5.14644661 6.76776695"></polyline>
+        </g>
+    </g>
+</svg>

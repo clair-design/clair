@@ -1,0 +1,59 @@
+import Basic from "./basic.mdx";
+import CustomTitleFooter from "./customTitleFooter.mdx";
+import Light from "./light.mdx";
+import Destroy from "./destroy.mdx";
+import Center from "./center.mdx";
+import Confirm from "./confirm.mdx";
+
+# Modal
+
+## 概述
+
+模态框（Modal）是覆盖在父窗体上的子窗体。通常，目的是显示来自一个单独的源的内容，可以在不离开父窗体的情况下有一些互动。子窗体可提供信息、交互等。
+
+在 Clair 中，模态框的标签为 `<Modal />`。
+
+## 基本用法
+
+<Basic />
+
+## 自定义内容
+
+<CustomTitleFooter />
+
+## 轻量级弹窗
+
+<Light />
+
+## 垂直居中的弹窗
+
+<Center />
+
+## 关闭时销毁的弹窗
+
+有时，在关闭模态框之后，希望将原有的 DOM 销毁掉。这时可以设置 `destroy-after-close` 属性。
+
+常用的场景：模态框中使用表单，关闭后再次打开时希望重置掉所有内容。
+
+<Destroy />
+
+## 提示类弹窗
+
+<Confirm />
+
+## 属性
+
+| Name              | Description                                                                        | Type                                                                                                                           | Required | Default |
+| ----------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | -------- | ------- |
+| title             | 顶部标题                                                                           | `string` \| `ReactNode`                                                                                                        | `false`  |         |
+| visible           | 控制模态框的显示、隐藏                                                             | `boolean`                                                                                                                      | `true`   |         |
+| top               | 合法的 CSS 长度值，控制模态框纵向位置                                              | `string`                                                                                                                       | `false`  | `"15%"` |
+| center            | 控制模态框是否居中显示                                                             | `boolean`                                                                                                                      | `false`  | `false` |
+| width             | 合法的 CSS 长度值，控制模态框宽度                                                  | `string`                                                                                                                       | `false`  | `"50%"` |
+| showCloseIcon     | 模态框是否可通过 x 图标发送 `close` 事件                                           | `boolean`                                                                                                                      | `false`  | `true`  |
+| maskClosable      | 模态框是否展示 x 图标                                                              | `boolean`                                                                                                                      | `false`  | `true`  |
+| destroyAfterClose | 关闭模态框后是否销毁                                                               | `boolean`                                                                                                                      | `false`  | `false` |
+| customClass       | 模态框的自定义类名                                                                 | `string`                                                                                                                       | `false`  |         |
+| footer            | 模态框按钮操作区的内容                                                             | `React.ReactNode`                                                                                                              | `false`  |         |
+| onConfirm         | 点击“确定”按钮                                                                     | `(e: React.MouseEvent) => void`                                                                                                | `false`  |         |
+| onCancel          | 关闭模态框(暂定回调函数给参数 `from`: 分别表示取消行为来自 取消按钮/关闭按钮/mask) | `((React.MouseEvent` \| `React.KeyboardEvent) & detail: { sourceType: "cancel"` \| `"close"` \| `"mask"` \| `"esc" }) => void` | `false`  |         |

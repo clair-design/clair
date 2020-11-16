@@ -1,0 +1,30 @@
+## 自定义格式
+
+通过 `format` 属性可以自定义输入框展示的日期格式。格式的设置方法请参考 [date-fns](https://date-fns.org/docs/format) 的文档。
+
+```tsx live=true
+function App() {
+  const props = {
+    style: {
+      marginRight: 20,
+      marginBottom: 20
+    }
+  };
+  return (
+    <>
+      <DatePicker value={new Date()} format="dd/MM/yyyy" {...props} />
+      <DatePicker
+        type="month"
+        value={new Date()}
+        format="yyyy 年 M 月"
+        {...props}
+      />
+      <RangePicker
+        value={["2020-01-01", "2020-07-05"]}
+        format="yyyy年MM月dd日"
+        {...props}
+      />
+    </>
+  );
+}
+```

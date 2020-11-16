@@ -1,0 +1,80 @@
+@import 'variables';
+
+.c-loading-mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.c-loading-mask--fullscreen {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.c-loading-container--relative {
+  position: relative;
+}
+
+.c-loading-container--hidden {
+  overflow: hidden !important;
+}
+
+.c-loading-spin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+//loading size
+.c-loading-spin--large {
+  font-size: $--loading-spin-dot-large;
+  .c-loading-spin__text {
+    margin: $--loading-text-margin-large 0;
+  }
+}
+
+.c-loading-spin--normal {
+  font-size: $--loading-spin-dot-normal;
+  .c-loading-spin__text {
+    margin: $--loading-text-margin-normal 0;
+  }
+}
+
+.c-loading-spin--small {
+  font-size: $--loading-spin-dot-small;
+  .c-loading-spin__text {
+    margin: $--loading-text-margin-small 0;
+  }
+}
+
+.c-loading-spin__text {
+  color: $--info-color;
+  font-size: $--base-font-size;
+}
+
+.c-loading-spin__icon {
+  color: $--info-color;
+}
+
+// loading animation
+.c-loading-enter-active {
+  animation: c-loading-animation 0.5s forwards;
+}
+
+.c-loading-leave-active {
+  animation: c-loading-animation 0.5s reverse;
+}
+
+@keyframes c-loading-animation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

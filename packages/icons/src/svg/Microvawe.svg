@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Microvawe</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Microvawe" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="蒙版" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M24,15 C22.8954305,15 22,15.8954305 22,17 C22,18.1045695 22.8954305,19 24,19 L24,19" id="Oval-43" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(23.000000, 17.000000) scale(-1, 1) translate(-23.000000, -17.000000) "></path>
+            <rect id="Rectangle-130" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x="1" y="4" width="26" height="20" rx="1.39750446"></rect>
+            <path d="M21,4 L21,24" id="Path-244" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <rect id="Rectangle-135" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x="5" y="8" width="12" height="12"></rect>
+            <path d="M24,7 L24,11" id="Path-246" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>

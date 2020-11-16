@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Frown</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Frown" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" cx="14" cy="14" r="13"></circle>
+            <path d="M18,18 C17.4816192,19 16.209139,20 14,20 C11.790861,20 10.5109007,19 10,18" id="形状" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" transform="translate(14.000000, 19.000000) scale(1, -1) translate(-14.000000, -19.000000) "></path>
+            <path d="M9,11 L9,12" id="路径-85" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M19,11 L19,12" id="路径-85" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

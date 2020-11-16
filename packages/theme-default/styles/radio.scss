@@ -1,0 +1,200 @@
+@import 'variables';
+@import 'mixins/size';
+@import 'mixins/mixins';
+
+/* ------------------------------------------------------------------------- */
+/// Radio
+
+.c-radio-group {
+  display: inline-block;
+  font-size: 0;
+
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.c-radio {
+  display: inline-flex;
+  align-items: center;
+
+  margin-right: $--radio-space-between-two-radio;
+
+  color: $--radio-text-color;
+
+  font-size: $--base-font-size;
+  line-height: 1;
+  vertical-align: middle;
+
+  cursor: pointer;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.c-radio__input {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+
+.c-radio__label {
+  padding-left: $--radio-space-between-input-label;
+  white-space: nowrap;
+
+  transition: transition(all);
+
+  // 禁用
+  .c-radio__input:disabled ~ & {
+    color: $--radio-disabled-text-color;
+    cursor: default;
+  }
+}
+
+// 图标样式
+.c-radio__box {
+  position: relative;
+  flex: none;
+  box-sizing: border-box;
+  width: $--radio-circle-outer-size;
+  height: $--radio-circle-outer-size;
+
+  border: 1px solid;
+
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: $--radio-circle-inner-size;
+    height: $--radio-circle-inner-size;
+    transform: translate(-50%, -50%);
+    content: '';
+  }
+
+  &,
+  &::after {
+    box-sizing: border-box;
+    border-radius: 50%;
+    transition: transition(all);
+  }
+
+  .c-radio__input:disabled ~ & {
+    cursor: default;
+  }
+}
+
+// 图标 border 对应状态
+.c-radio {
+  // 默认
+  &__input + &__box {
+    background-color: $--radio-bg-color;
+    border-color: $--radio-border-color;
+  }
+
+  // hover 边框
+  &__input:not(:disabled) + &__box:hover {
+    border-color: $--radio-hover-color;
+  }
+
+  // 选中
+  &__input:checked + &__box {
+    border-color: $--radio-checked-color;
+  }
+
+  // 禁用
+  &__input:disabled + &__box {
+    background-color: $--radio-disabled-bg-color;
+    border-color: $--radio-disabled-border-color;
+  }
+
+  // focus visible
+  &__input:focus-visible + &__box {
+    @include focus-ring;
+  }
+}
+
+// 图标圆心对应状态
+.c-radio {
+  // 非选中情况下没有颜色
+  &__input + &__box::after {
+    background-color: transparent;
+  }
+
+  // 选中
+  &__input:checked + &__box::after {
+    background-color: $--radio-checked-color;
+  }
+
+  // 选中且禁用
+  &__input:disabled:checked + &__box::after {
+    background-color: $--radio-disabled-checked-color;
+  }
+}
+
+.c-radio--button {
+  $radius: $--radio-button-border-radius;
+  margin-right: 0;
+
+  padding: 0;
+
+  &:not(:first-child) {
+    margin-left: -1px;
+  }
+
+  .c-radio__box {
+    display: none;
+  }
+
+  .c-radio__label {
+    padding: ($--base-form-element-height - $--base-font-size - 2px)/2
+      nth($--button-default-padding, 2);
+    border: 1px solid $--radio-border-color;
+  }
+
+  &:first-child .c-radio__label {
+    border-radius: $radius 0 0 $radius;
+  }
+
+  &:last-child .c-radio__label {
+    border-radius: 0 $radius $radius 0;
+  }
+
+  // 禁用
+  .c-radio__input:disabled ~ .c-radio__label {
+    border-color: $--radio-disabled-border-color;
+  }
+
+  // 禁用且选中
+  .c-radio__input:checked:disabled ~ .c-radio__label {
+    background-color: $--radio-disabled-bg-color;
+  }
+
+  // 可用且选中
+  .c-radio__input:checked:not(:disabled) ~ .c-radio__label {
+    z-index: 1;
+
+    color: text-color($--radio-checked-text-color);
+    background-color: $--radio-checked-color;
+    border-color: $--radio-checked-color;
+  }
+
+  &:hover .c-radio__input:not(:disabled):not(:checked) ~ .c-radio__label {
+    color: $--radio-checked-text-color;
+  }
+
+  .c-radio__input:focus-visible ~ .c-radio__label {
+    @include focus-ring;
+  }
+}
+
+.c-radio-group--large .c-radio__label {
+  padding: ($--large-form-element-height - $--large-font-size - 2px)/2
+    nth($--button-large-padding, 2);
+  font-size: $--large-font-size;
+}
+
+.c-radio-group--small .c-radio__label {
+  padding: ($--small-form-element-height - $--small-font-size - 2px)/2
+    nth($--button-small-padding, 2);
+  font-size: $--small-font-size;
+}

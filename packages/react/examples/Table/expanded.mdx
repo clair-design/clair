@@ -1,0 +1,62 @@
+<!-- 可展开 -->
+
+```tsx live=true
+function Basic() {
+  const [expandedRowKeys, setExpandedRowKeys] = React.useState([
+    "直接访问",
+    "搜索引擎"
+  ]);
+
+  const dataSource = [
+    { type: "直接访问", pv: 13, uv: 9, ip: 8 },
+    { type: "搜索引擎", pv: 11, uv: 7, ip: 6 },
+    { type: "外部网站", pv: 32, uv: 27, ip: 22 }
+  ];
+
+  const columns = [
+    {
+      type: "expand",
+      width: 50,
+      prop: "expand",
+      align: "right",
+      render: ({ value, row, index }) => {
+        return (
+          <div>
+            <p>类型：{row.type}</p>
+            <p>PV：{row.pv}</p>
+            <p>UV：{row.uv}</p>
+            <p>IP：{row.ip}</p>
+          </div>
+        );
+      }
+    },
+    { title: "来源类型", prop: "type" },
+    { title: "浏览量", prop: "pv" },
+    { title: "访客数", prop: "uv" },
+    { title: "IP 数", prop: "ip" }
+  ];
+
+  const onExpandRow = ({ detail }) => {
+    const { row, isExpanded } = detail;
+    const key = row["type"];
+    const keySet = new Set(expandedRowKeys);
+    if (isExpanded) {
+      keySet.add(key);
+    } else {
+      keySet.delete(key);
+    }
+    console.log(Array.from(keySet));
+    setExpandedRowKeys(Array.from(keySet));
+  };
+
+  return (
+    <Table
+      columns={columns}
+      dataSource={dataSource}
+      expandedRowKeys={expandedRowKeys}
+      onExpandRow={onExpandRow}
+      rowKey="type"
+    />
+  );
+}
+```

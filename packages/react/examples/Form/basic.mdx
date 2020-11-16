@@ -1,0 +1,73 @@
+## 基础样式
+
+```tsx live=true className=s-form-example
+function Index() {
+  const onSubmit = (isValid, data) => {
+    console.log(data);
+    isValid && message({ type: "success", message: "控制台打印结果" });
+  };
+
+  return (
+    <Form labelWidth={80} onSubmit={onSubmit} className="demo-form">
+      <FormItem
+        as="input"
+        className="c-input c-input--normal"
+        placeholder="请输入名称"
+        name="proName"
+        label="项目名称"
+      />
+      <FormItem
+        label={<span>联系电话</span>}
+        name="phoneNumber"
+        as="input"
+        className="c-input c-input--normal"
+        placeholder="请输入电话"
+      />
+      <FormItem
+        label="项目属性"
+        name="projectAttr"
+        defaultValue={[]}
+        as={
+          <CheckboxGroup>
+            <Checkbox value="1">大数据</Checkbox>
+            <Checkbox value="2">高科技</Checkbox>
+            <Checkbox value="3">城市安全</Checkbox>
+          </CheckboxGroup>
+        }
+      />
+      <FormItem
+        label="项目风险"
+        name="risk"
+        defaultValue="normal"
+        as={
+          <RadioGroup value="">
+            <Radio value="high">高危</Radio>
+            <Radio value="normal">一般</Radio>
+            <Radio value="low">低</Radio>
+            <Radio value="veryLow">极低</Radio>
+          </RadioGroup>
+        }
+      />
+      <FormItem
+        label="项目说明"
+        name="introduction"
+        as={
+          <textarea
+            placeholder="请输入内容"
+            className="c-input c-textarea c-input--normal"
+          />
+        }
+      />
+      <div class="c-form-item">
+        <label class="c-form-item__label" style={{ width: 80 }}></label>
+        <div class="c-form-item__content">
+          <Button type="primary" htmlType="submit">
+            立即提交
+          </Button>
+          <Button>取消</Button>
+        </div>
+      </div>
+    </Form>
+  );
+}
+```

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>ic_menu_nav5</title>
+    <desc>Created with Sketch.</desc>
+    <g id="ic_menu_nav5" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="14" height="14"></rect>
+            <path d="M5,0 L9,0 L9,3 L5,3 L5,0 Z M0,11 L4,11 L4,14 L0,14 L0,11 Z M5,11 L9,11 L9,14 L5,14 L5,11 Z M10,11 L14,11 L14,14 L10,14 L10,11 Z M6.25,6 L6.25,4 L7.75,4 L7.75,6 L12,6 L12,10 L10.5,10 L10.5,7.5 L7.75,7.5 L7.75,10 L6.25,10 L6.25,7.5 L3.5,7.5 L3.5,10 L2,10 L2,6 L6.25,6 Z" id="形状结合" fill="#6E6E6E" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

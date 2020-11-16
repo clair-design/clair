@@ -1,0 +1,282 @@
+@import 'variables';
+@import 'mixins/mixins';
+@import 'input';
+@import 'popover';
+@import 'icon';
+@import 'tag';
+
+$--select-dropdown-margin-top: 6px;
+$--select-dropdown-box-shadow: $--base-box-shadow;
+$--select-option-padding: 0 30px 0 12px;
+$--select-group-title-color: $--tertiary-text-color;
+$--select-tags-padding: 2px;
+$--select-tag-padding: 0 6px 0 8px;
+$--select-disabled-tag-padding: 0 8px;
+$--select-tag-margin: 2px 4px;
+$--select-group-padding-top: 8px;
+$--select-group-margin-top: $--select-group-padding-top;
+$--select-group-title-margin: 0 12px;
+$--select-border-radius: $--input-border-radius;
+
+@mixin mixin-select-tags-size($height, $fontSize) {
+  height: $height - 10px;
+  font-size: $fontSize;
+  line-height: $height - 10px;
+}
+
+@mixin mixin-select-option-size($height, $fontSize) {
+  height: $height;
+  font-size: $fontSize;
+  line-height: $height;
+}
+
+.c-select {
+  // Init
+  $bg-color: $--input-default-background-color;
+  position: relative;
+  display: inline-flex;
+  box-sizing: border-box;
+  width: $--select-width;
+  padding-right: $--select-padding-right;
+  vertical-align: middle;
+  background-color: $bg-color;
+  border: 1px solid $--form-element-border-color;
+  border-radius: $--select-border-radius;
+  outline: none;
+  transition: transition(border-color);
+
+  &:focus,
+  &:hover,
+  &:focus-within {
+    border-color: $--primary-color;
+  }
+
+  &:focus-within {
+    @include focus-ring;
+  }
+
+  &--disabled {
+    background: $--disabled-background-color;
+    cursor: default;
+  }
+
+  &--disabled:focus,
+  &--disabled:hover,
+  &--disabled:focus-within {
+    border-color: $--form-element-border-color;
+    box-shadow: none;
+  }
+
+  .c-input {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  * {
+    box-sizing: border-box;
+    user-select: none;
+  }
+
+  input:focus {
+    outline: 0;
+    box-shadow: none;
+  }
+
+  // Size
+  &--small .c-tag,
+  &--small &__tags__input {
+    @include mixin-select-tags-size(
+      $--select-small-height,
+      $--select-small-font-size
+    );
+  }
+
+  &--normal .c-tag,
+  &--normal &__tags__input {
+    @include mixin-select-tags-size(
+      $--select-normal-height,
+      $--select-normal-font-size
+    );
+  }
+
+  &--large .c-tag,
+  &--large &__tags__input {
+    @include mixin-select-tags-size(
+      $--select-large-height,
+      $--select-large-font-size
+    );
+  }
+
+  // Input
+  &__input {
+    width: 100%;
+    height: 100%;
+    padding-left: 14px;
+    cursor: pointer;
+  }
+
+  &__suffix {
+    display: flex;
+    align-items: center;
+    color: $--icon-color;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  &--disabled &__suffix,
+  &--open input:not([readonly]) {
+    cursor: default;
+  }
+
+  &__suffix .c-icon--svg {
+    transition: transition(all);
+  }
+
+  &--open .c-icon-reverse {
+    transform: rotate(180deg);
+  }
+
+  // Dropdown
+  &__dropdown {
+    box-sizing: border-box;
+    max-height: $--select-dropdown-height;
+    padding: $--select-dropdown-padding 0;
+    overflow: auto;
+    background: $--base-background-color;
+    border: 1px solid $--secondary-border-color;
+    box-shadow: $--select-dropdown-box-shadow;
+    user-select: none;
+  }
+  &__dropdown--small {
+    max-height: $--select-dropdown-small-height;
+  }
+  &__dropdown--large {
+    max-height: $--select-dropdown-large-height;
+  }
+
+  &__option,
+  &__option--empty {
+    position: relative;
+    height: $--select-option-height;
+    padding: $--select-option-padding;
+    color: $--select-option-font-color;
+    font-size: $--select-option-font-size;
+    line-height: $--select-option-height;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  &__dropdown--small &__option {
+    @include mixin-select-option-size(
+      $--select-option-small-height,
+      $--select-option-small-font-size
+    );
+  }
+
+  &__dropdown--large &__option {
+    @include mixin-select-option-size(
+      $--select-option-large-height,
+      $--select-option-large-font-size
+    );
+  }
+
+  &__option--selected {
+    color: $--primary-color;
+  }
+
+  &__option:hover,
+  &__option:focus,
+  &__option--active {
+    background: $--select-option-active-background;
+    outline: 0;
+  }
+
+  &__option--disabled {
+    color: $--disabled-text-color;
+    cursor: default;
+  }
+
+  &__option--disabled:hover {
+    background: transparent;
+  }
+  &__option--empty {
+    cursor: default;
+  }
+
+  // 分组
+  &__selected-icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+  }
+
+  &__option-group {
+    font-size: $--select-option-font-size;
+    line-height: $--select-option-height;
+  }
+
+  &__option-group + &__option-group &__option-group__title {
+    margin-top: $--select-group-margin-top;
+    padding-top: $--select-group-padding-top;
+    border-top: 1px solid $--secondary-border-color;
+  }
+
+  &__option-group__title {
+    margin: $--select-group-title-margin;
+    color: $--select-group-title-color;
+  }
+
+  // 多选
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: $--select-tags-padding;
+  }
+
+  .c-tag {
+    flex: 0 0 auto;
+    margin: $--select-tag-margin;
+    padding: $--select-tag-padding;
+  }
+
+  &--disabled .c-tag {
+    padding: $--select-disabled-tag-padding;
+    color: $--disabled-text-color;
+    background: $--gray-background-color;
+  }
+
+  &--disabled &__tags__input {
+    display: none;
+  }
+
+  &__tags__input {
+    flex: 1 1 auto;
+    width: 1px;
+    margin: $--select-tag-margin;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+  }
+  &-menu-enter,
+  &-menu-leave-active {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  &-menu-enter-active,
+  &-menu-leave-active {
+    transform: translateY(0);
+    opacity: 1;
+    transition: transition((opacity, transform));
+  }
+  &-menu-enter,
+  &-menu-leave-to,
+  &-menu-leave-active {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+}

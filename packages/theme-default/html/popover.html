@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<title>Popover</title>
+<link rel="stylesheet" href="../styles/popover.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body {
+    max-width: 1200px;
+    margin: 30px auto;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+
+  .c-popover {
+    position: relative;
+    display: inline-block;
+    width: 300px;
+    margin: 0 20px 20px 0;
+  }
+
+  .c-popover__container {
+    height: auto;
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+
+<div class="c-popover" x-placement="top-center">
+  <div class="c-popover__container">
+    <div class="c-popover__content">
+      这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。
+    </div>
+  </div>
+</div>
+
+<div class="c-popover" x-placement="top-right">
+  <div class="c-popover__container">
+    <div class="c-popover__content">
+      这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。
+    </div>
+  </div>
+</div>
+
+<div class="c-popover" x-placement="right-top">
+  <div class="c-popover__container">
+    <div class="c-popover__content">
+      这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。
+    </div>
+  </div>
+</div>
+
+<div class="c-popover" x-placement="right-center">
+  <div class="c-popover__container">
+    <div class="c-popover__content">
+      这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。
+    </div>
+  </div>
+</div>
+
+<div class="c-popover" x-placement="right-bottom">
+  <div class="c-popover__container">
+    <div class="c-popover__content">
+      这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。
+    </div>
+  </div>
+</div>
+
+<div class="c-popover" x-placement="bottom-right">
+  <div class="c-popover__container">
+    <div class="c-popover__content">
+      这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。
+    </div>
+  </div>
+</div>
+
+<div class="c-popover" x-placement="bottom-center">
+  <div class="c-popover__container">
+    <div class="c-popover__content">
+      这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。
+    </div>
+  </div>
+</div>
+
+<div class="c-popover" x-placement="bottom-left">
+  <div class="c-popover__container">
+    <div class="c-popover__content">
+      这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。
+    </div>
+  </div>
+</div>
+
+<div class="c-popover" x-placement="left-bottom">
+  <div class="c-popover__container">
+    <div class="c-popover__content">
+      这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。
+    </div>
+  </div>
+</div>
+
+<div class="c-popover" x-placement="left-center">
+  <div class="c-popover__container">
+    <div class="c-popover__content">
+      这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。
+    </div>
+  </div>
+</div>
+
+<div class="c-popover" x-placement="left-top">
+  <div class="c-popover__container">
+    <div class="c-popover__content">
+      这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。
+    </div>
+  </div>
+</div>
+
+<div class="c-popover" x-placement="top-left">
+  <div class="c-popover__container">
+    <div class="c-popover__content">
+      这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。这是一个popover，可以放置任何你想要的元素进来。
+    </div>
+  </div>
+</div>
+
+<div class="c-popover" x-placement="top-left">
+  <div class="c-popover__container">
+    <h4 class="c-popover__title">标题</h4>
+    <div class="c-popover__content">
+      这是一个popover，拥有标题和内容，这是一个popover，拥有标题和内容，这是一个popover，拥有标题和内容，这是一个popover，拥有标题和内容
+    </div>
+  </div>
+</div>
+
+<div class="c-popover" x-placement="top-left">
+  <div class="c-popover__container">
+    <h4 class="c-popover__title">只有标题</h4>
+  </div>
+</div>
+
+<div class="c-popover" x-placement="top-left">
+  <div class="c-popover__container">
+    <div class="c-popover__content">
+      这是一个popover，只有内容，这是一个popover，只有内容这是一个popover，只有内容这是一个popover，只有内容这是一个popover，只有内容这是一个popover，只有内容
+    </div>
+  </div>
+</div>

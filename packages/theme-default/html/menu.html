@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<head>
+  <title>Menu</title>
+  <link rel="stylesheet" href="../styles/menu.scss" />
+  <script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+  <style>
+    body {
+      max-width: 1200px;
+      margin: 30px auto;
+    }
+
+    /*
+      This will hide the focus indicator if the element receives focus via the mouse,
+      but it will still show up on keyboard focus.
+    */
+    .js-focus-visible :focus:not(.focus-visible) {
+      outline: none;
+    }
+
+    /* Demo style */
+    .c-form {
+      max-width: 960px;
+    }
+    .c-input-affix-container {
+      width: 320px;
+    }
+    .c-input {
+      width: 320px;
+    }
+    .demo-button-add {
+      width: 320px;
+      border-style: dashed;
+    }
+    .c-menu--vertical {
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Menu</h1>
+  <p>
+    注：样式中有部分内联样式如
+    <code style="color: #f56565;">padding-left: 48px;</code>
+    需使用 js 动态设置
+  </p>
+
+  <h2>顶部导航</h2>
+  <p>水平的顶部导航菜单</p>
+
+  <div class="c-menu" aria-orientation="horizontal" role="menubar">
+    <div class="c-menu-item c-menu-item--active" role="menuitem" tabindex="0">
+      <div class="c-menu-item__inner">
+        <i aria-hidden="true" class="c-icon--svg" style="stroke-width: 2;">
+          <svg viewBox="0 0 14 14" style="stroke-width: 0.666667;">
+            <g stroke="currentColor" fill="none" fill-rule="evenodd">
+              <circle cx="7" cy="7" r="2.5"></circle>
+              <path
+                d="M6.49612897,0.872776598 L1.5,3.78718517 L1.5,10.2128148 L7,13.4211482 L12.5,10.2128148 L12.5,3.78718517 L7.50387103,0.872776598 C7.19250851,0.691148466 6.80749149,0.691148466 6.49612897,0.872776598 Z"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </g>
+          </svg>
+        </i>
+        一级导航 1
+      </div>
+    </div>
+    <div
+      class="c-submenu"
+      role="menuitem"
+      aria-haspopup="true"
+      aria-expanded="true"
+    >
+      <div class="c-submenu__title c-submenu__title--active" tabindex="0">
+        <div class="c-menu-item__inner">
+          一级导航 2
+          <svg
+            width="14px"
+            height="14px"
+            viewBox="0 0 14 14"
+            class="c-menu-arrow c-menu-arrow--expanded"
+          >
+            <g stroke="currentColor" fill-rule="evenodd" fill="none">
+              <polyline
+                stroke-linecap="round"
+                points="2 5 7 10 12 5"
+              ></polyline>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="c-submenu__dropdown c-submenu__dropdown--open" role="menu">
+        <div
+          class="c-menu-item c-menu-item--active"
+          role="menuitem"
+          tabindex="-1"
+        >
+          <i aria-hidden="true" class="c-icon--svg" style="stroke-width: 2;">
+            <svg viewBox="0 0 14 14" style="stroke-width: 0.666667;">
+              <g stroke="currentColor" fill="none" fill-rule="evenodd">
+                <circle cx="7" cy="7" r="2.5"></circle>
+                <path
+                  d="M6.49612897,0.872776598 L1.5,3.78718517 L1.5,10.2128148 L7,13.4211482 L12.5,10.2128148 L12.5,3.78718517 L7.50387103,0.872776598 C7.19250851,0.691148466 6.80749149,0.691148466 6.49612897,0.872776598 Z"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+            </svg>
+          </i>
+          二级导航 1
+        </div>
+        <div
+          class="c-submenu"
+          role="menuitem"
+          aria-haspopup="true"
+          aria-expanded="true"
+        >
+          <div class="c-submenu__title c-submenu__title--active">
+            <i aria-hidden="true" class="c-icon--svg" style="stroke-width: 2;">
+              <svg viewBox="0 0 14 14" style="stroke-width: 0.666667;">
+                <g stroke="currentColor" fill="none" fill-rule="evenodd">
+                  <circle cx="7" cy="7" r="2.5"></circle>
+                  <path
+                    d="M6.49612897,0.872776598 L1.5,3.78718517 L1.5,10.2128148 L7,13.4211482 L12.5,10.2128148 L12.5,3.78718517 L7.50387103,0.872776598 C7.19250851,0.691148466 6.80749149,0.691148466 6.49612897,0.872776598 Z"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </g>
+              </svg>
+            </i>
+            <div class="c-menu-item__inner">
+              二级导航 2
+              <svg
+                width="14px"
+                height="14px"
+                viewBox="0 0 14 14"
+                class="c-menu-arrow c-menu-arrow--expanded"
+              >
+                <g stroke="currentColor" fill-rule="evenodd" fill="none">
+                  <polyline
+                    stroke-linecap="round"
+                    points="2 5 7 10 12 5"
+                  ></polyline>
+                </g>
+              </svg>
+            </div>
+          </div>
+          <div
+            class="c-submenu__dropdown c-submenu__dropdown--open"
+            role="menu"
+          >
+            <div class="c-menu-item" role="menuitem" tabindex="-1">
+              三级导航 1
+            </div>
+            <div
+              class="c-menu-item c-menu-item--active"
+              role="menuitem"
+              tabindex="-1"
+            >
+              三级导航 2
+            </div>
+            <div class="c-menu-item" role="menuitem" tabindex="-1">
+              三级导航 3
+            </div>
+          </div>
+        </div>
+        <div class="c-menu-item" role="menuitem" tabindex="-1">二级导航 3</div>
+      </div>
+    </div>
+    <div class="c-menu-item" role="menuitem" tabindex="0">
+      <div class="c-menu-item__inner">一级导航 3</div>
+    </div>
+    <div class="c-menu-item" aria-disabled="true" tabindex="0">
+      <div class="c-menu-item__inner">一级导航 4</div>
+    </div>
+    <div class="c-menu-item" role="menuitem" tabindex="0">
+      <div class="c-menu-item__inner">一级导航 5</div>
+    </div>
+    <div class="c-menu-item" role="menuitem" tabindex="0">
+      <div class="c-menu-item__inner">一级导航 6</div>
+    </div>
+    <div class="c-menu-item" role="menuitem" tabindex="0">
+      <div class="c-menu-item__inner">一级导航 7</div>
+    </div>
+    <div
+      class="c-submenu"
+      role="menuitem"
+      aria-haspopup="true"
+      aria-expanded="true"
+    >
+      <div class="c-submenu__title c-submenu__title--active" tabindex="0">
+        <div class="c-menu-item__inner">
+          最右且贴边导航 8
+          <svg
+            width="14px"
+            height="14px"
+            viewBox="0 0 14 14"
+            class="c-menu-arrow c-menu-arrow--expanded"
+          >
+            <g stroke="currentColor" fill-rule="evenodd" fill="none">
+              <polyline
+                stroke-linecap="round"
+                points="2 5 7 10 12 5"
+              ></polyline>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div
+        class="c-submenu__dropdown c-submenu__dropdown--open c-submenu__dropdown--right"
+      >
+        <div class="c-menu-item" role="menuitem">二级导航 1</div>
+        <div
+          class="c-submenu"
+          role="menuitem"
+          aria-haspopup="true"
+          aria-expanded="true"
+        >
+          <div class="c-submenu__title c-submenu__title--active">
+            二级导航 2
+          </div>
+          <div
+            class="c-submenu__dropdown c-submenu__dropdown--open c-submenu__dropdown--right"
+          >
+            <div class="c-menu-item" role="menuitem">三级导航 1</div>
+            <div class="c-menu-item c-menu-item--active" role="menuitem">
+              三级导航 2
+            </div>
+            <div class="c-menu-item" role="menuitem">三级导航 3</div>
+          </div>
+        </div>
+        <div class="c-menu-item" role="menuitem">二级导航 3</div>
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-top: 240px;">暗夜主题</p>
+
+  <div class="c-menu c-menu--dark" aria-orientation="horizontal" role="menubar">
+    <div class="c-menu-item" role="menuitem" tabindex="0">
+      <div class="c-menu-item__inner">一级导航 1</div>
+    </div>
+    <div
+      class="c-submenu"
+      role="menuitem"
+      aria-haspopup="true"
+      aria-expanded="true"
+    >
+      <div class="c-submenu__title c-submenu__title--active" tabindex="0">
+        <div class="c-menu-item__inner">
+          一级导航 2
+          <i class="c-icon--svg c-menu-arrow c-menu-arrow--expanded">
+            <svg viewBox="0 0 14 14" style="stroke-width: 1.4;">
+              <g stroke="currentColor" fill="none" fill-rule="evenodd">
+                <polyline
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  points="0.5 4.5 7 11 13.5 4.5"
+                ></polyline>
+              </g>
+            </svg>
+          </i>
+        </div>
+      </div>
+      <div class="c-submenu__dropdown c-submenu__dropdown--open" role="menu">
+        <div class="c-menu-item" role="menuitem" tabindex="-1">二级导航 1</div>
+        <div
+          class="c-submenu"
+          role="menuitem"
+          aria-haspopup="true"
+          aria-expanded="true"
+        >
+          <div class="c-submenu__title c-submenu__title--active">
+            二级导航 2
+          </div>
+          <div
+            class="c-submenu__dropdown c-submenu__dropdown--open"
+            role="menu"
+          >
+            <div class="c-menu-item" role="menuitem" tabindex="-1">
+              三级导航 1
+            </div>
+            <div
+              class="c-menu-item c-menu-item--active"
+              role="menuitem"
+              tabindex="-1"
+            >
+              三级导航 2
+            </div>
+            <div class="c-menu-item" role="menuitem" tabindex="-1">
+              三级导航 3
+            </div>
+          </div>
+        </div>
+        <div class="c-menu-item" role="menuitem" tabindex="-1">二级导航 3</div>
+      </div>
+    </div>
+    <div class="c-menu-item" role="menuitem" tabindex="0">
+      <div class="c-menu-item__inner">一级导航 3</div>
+    </div>
+    <div class="c-menu-item" tabindex="0" aria-disabled="true">
+      <div class="c-menu-item__inner">一级导航 4</div>
+    </div>
+    <div class="c-menu-item" role="menuitem" tabindex="0">
+      <div class="c-menu-item__inner">一级导航 5</div>
+    </div>
+    <div class="c-menu-item" role="menuitem" tabindex="0">
+      <div class="c-menu-item__inner">一级导航 6</div>
+    </div>
+    <div class="c-menu-item" role="menuitem" tabindex="0">
+      <div class="c-menu-item__inner">一级导航 7</div>
+    </div>
+    <div
+      class="c-submenu"
+      role="menuitem"
+      aria-haspopup="true"
+      aria-expanded="true"
+    >
+      <div class="c-submenu__title c-submenu__title--active" tabindex="0">
+        <div class="c-menu-item__inner">
+          最右且贴边导航 8
+          <i class="c-icon--svg c-menu-arrow c-menu-arrow--expanded">
+            <svg viewBox="0 0 14 14" style="stroke-width: 1.4;">
+              <g stroke="currentColor" fill="none" fill-rule="evenodd">
+                <polyline
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  points="0.5 4.5 7 11 13.5 4.5"
+                ></polyline>
+              </g>
+            </svg>
+          </i>
+        </div>
+      </div>
+      <div
+        class="c-submenu__dropdown c-submenu__dropdown--open c-submenu__dropdown--right"
+      >
+        <div class="c-menu-item" role="menuitem">二级导航 1</div>
+        <div
+          class="c-submenu"
+          role="menuitem"
+          aria-haspopup="true"
+          aria-expanded="true"
+        >
+          <div class="c-submenu__title c-submenu__title--active">
+            二级导航 2
+          </div>
+          <div
+            class="c-submenu__dropdown c-submenu__dropdown--open c-submenu__dropdown--right"
+          >
+            <div class="c-menu-item" role="menuitem">三级导航 1</div>
+            <div class="c-menu-item c-menu-item--active" role="menuitem">
+              三级导航 2
+            </div>
+            <div class="c-menu-item" role="menuitem">三级导航 3</div>
+          </div>
+        </div>
+        <div class="c-menu-item" role="menuitem">二级导航 3</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 style="margin-top: 240px;">侧边导航</h2>
+  <p>垂直菜单，可内嵌子菜单，默认展开首个二级菜单。</p>
+
+  <div
+    style="
+      display: flex;
+      justify-content: space-around;
+      padding: 16px;
+      background: #f7fafc;
+    "
+  >
+    <div
+      class="c-menu"
+      aria-orientation="vertical"
+      role="menubar"
+      style="width: 200px;"
+    >
+      <div class="c-menu-item c-menu-item--active" role="menuitem" tabindex="0">
+        <i
+          aria-hidden="true"
+          class="c-icon--svg"
+          style="stroke-width: 2; font-size: 16px;"
+        >
+          <svg viewBox="0 0 14 14" style="stroke-width: 0.666667;">
+            <g stroke="currentColor" fill="none" fill-rule="evenodd">
+              <polygon
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                points="7 0.65853889 0.5 6.5 2.5 6.5 2.5 12.5 11.5 12.5 11.5 6.5 13.5 6.5"
+              ></polygon>
+              <polygon
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                points="5.5 12.5 8.5 12.5 8.5 8.5 5.5 8.5"
+              ></polygon>
+            </g>
+          </svg>
+        </i>
+        <div class="c-menu-item__inner">一级导航 1</div>
+      </div>
+      <div
+        class="c-submenu"
+        role="menuitem"
+        aria-haspopup="false"
+        aria-expanded="true"
+      >
+        <div class="c-submenu__title c-submenu__title--active" tabindex="0">
+          <i class="c-icon--svg" style="stroke-width: 2;">
+            <svg viewBox="0 0 14 14" style="stroke-width: 0.666667;">
+              <g stroke="currentColor" fill="none" fill-rule="evenodd">
+                <circle cx="7" cy="7" r="2.5"></circle>
+                <path
+                  d="M6.49612897,0.872776598 L1.5,3.78718517 L1.5,10.2128148 L7,13.4211482 L12.5,10.2128148 L12.5,3.78718517 L7.50387103,0.872776598 C7.19250851,0.691148466 6.80749149,0.691148466 6.49612897,0.872776598 Z"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+            </svg>
+          </i>
+          <div class="c-menu-item__inner">
+            一级导航 2
+            <svg
+              width="14px"
+              height="14px"
+              viewBox="0 0 14 14"
+              class="c-menu-arrow c-menu-arrow--expanded"
+            >
+              <g stroke="currentColor" fill-rule="evenodd" fill="none">
+                <polyline
+                  stroke-linecap="round"
+                  points="2 5 7 10 12 5"
+                ></polyline>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="c-submenu__dropdown c-submenu__dropdown--open" role="menu">
+          <div
+            class="c-menu-item"
+            role="menuitem"
+            tabindex="0"
+            style="padding-left: 48px;"
+          >
+            <i aria-hidden="true" class="c-icon--svg" style="stroke-width: 2;">
+              <svg viewBox="0 0 14 14" style="stroke-width: 0.666667;">
+                <g stroke="currentColor" fill="none" fill-rule="evenodd">
+                  <circle cx="7" cy="7" r="2.5"></circle>
+                  <path
+                    d="M6.49612897,0.872776598 L1.5,3.78718517 L1.5,10.2128148 L7,13.4211482 L12.5,10.2128148 L12.5,3.78718517 L7.50387103,0.872776598 C7.19250851,0.691148466 6.80749149,0.691148466 6.49612897,0.872776598 Z"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </g>
+              </svg>
+            </i>
+            二级导航 1
+          </div>
+          <div
+            class="c-submenu"
+            role="menuitem"
+            aria-haspopup="false"
+            aria-expanded="true"
+          >
+            <div
+              class="c-submenu__title c-submenu__title--active"
+              tabindex="0"
+              style="padding-left: 48px;"
+            >
+              <i
+                aria-hidden="true"
+                class="c-icon--svg"
+                style="stroke-width: 2;"
+              >
+                <svg viewBox="0 0 14 14" style="stroke-width: 0.666667;">
+                  <g stroke="currentColor" fill="none" fill-rule="evenodd">
+                    <circle cx="7" cy="7" r="2.5"></circle>
+                    <path
+                      d="M6.49612897,0.872776598 L1.5,3.78718517 L1.5,10.2128148 L7,13.4211482 L12.5,10.2128148 L12.5,3.78718517 L7.50387103,0.872776598 C7.19250851,0.691148466 6.80749149,0.691148466 6.49612897,0.872776598 Z"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </g>
+                </svg>
+              </i>
+              <div class="c-menu-item__inner">
+                二级导航 2
+                <svg
+                  width="14px"
+                  height="14px"
+                  viewBox="0 0 14 14"
+                  class="c-menu-arrow c-menu-arrow--expanded"
+                >
+                  <g stroke="currentColor" fill-rule="evenodd" fill="none">
+                    <polyline
+                      stroke-linecap="round"
+                      points="2 5 7 10 12 5"
+                    ></polyline>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div
+              class="c-submenu__dropdown c-submenu__dropdown--open"
+              role="menu"
+            >
+              <div
+                class="c-menu-item"
+                role="menuitem"
+                tabindex="0"
+                style="padding-left: 72px;"
+              >
+                三级导航 1
+              </div>
+              <div
+                class="c-menu-item c-menu-item--active"
+                role="menuitem"
+                tabindex="0"
+                style="padding-left: 72px;"
+              >
+                三级导航 2
+              </div>
+              <div
+                class="c-menu-item"
+                role="menuitem"
+                tabindex="0"
+                style="padding-left: 72px;"
+              >
+                三级导航 3
+              </div>
+            </div>
+          </div>
+          <div
+            class="c-menu-item"
+            role="menuitem"
+            tabindex="0"
+            style="padding-left: 48px;"
+          >
+            二级导航 3
+          </div>
+        </div>
+      </div>
+      <div class="c-menu-item" role="menuitem" tabindex="0">
+        <div class="c-menu-item__inner">一级导航 3</div>
+      </div>
+      <div class="c-menu-item" aria-disabled="true" tabindex="0">
+        <div class="c-menu-item__inner">一级导航 4</div>
+      </div>
+    </div>
+
+    <div
+      class="c-menu c-menu--dark"
+      aria-orientation="vertical"
+      role="menubar"
+      style="width: 200px;"
+    >
+      <div class="c-menu-item c-menu-item--active" role="menuitem" tabindex="0">
+        <div class="c-menu-item__inner">一级导航 1</div>
+      </div>
+      <div
+        class="c-submenu"
+        role="menuitem"
+        aria-haspopup="false"
+        aria-expanded="true"
+      >
+        <div class="c-submenu__title c-submenu__title--active" tabindex="0">
+          <div class="c-menu-item__inner">
+            一级导航 2
+            <svg
+              width="14px"
+              height="14px"
+              viewBox="0 0 14 14"
+              class="c-menu-arrow c-menu-arrow--expanded"
+            >
+              <g stroke="currentColor" fill-rule="evenodd" fill="none">
+                <polyline
+                  stroke-linecap="round"
+                  points="2 5 7 10 12 5"
+                ></polyline>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="c-submenu__dropdown c-submenu__dropdown--open" role="menu">
+          <div
+            class="c-menu-item"
+            role="menuitem"
+            tabindex="0"
+            style="padding-left: 48px;"
+          >
+            二级导航 1
+          </div>
+          <div
+            class="c-submenu"
+            role="menuitem"
+            aria-haspopup="false"
+            aria-expanded="true"
+          >
+            <div
+              class="c-submenu__title c-submenu__title--active"
+              tabindex="0"
+              style="padding-left: 48px;"
+            >
+              <div class="c-menu-item__inner">
+                二级导航 2
+                <svg
+                  width="14px"
+                  height="14px"
+                  viewBox="0 0 14 14"
+                  class="c-menu-arrow c-menu-arrow--expanded"
+                >
+                  <g stroke="currentColor" fill-rule="evenodd" fill="none">
+                    <polyline
+                      stroke-linecap="round"
+                      points="2 5 7 10 12 5"
+                    ></polyline>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div
+              class="c-submenu__dropdown c-submenu__dropdown--open"
+              role="menu"
+            >
+              <div
+                class="c-menu-item"
+                role="menuitem"
+                tabindex="0"
+                style="padding-left: 72px;"
+              >
+                三级导航 1
+              </div>
+              <div
+                class="c-menu-item c-menu-item--active"
+                role="menuitem"
+                tabindex="0"
+                style="padding-left: 72px;"
+              >
+                三级导航 2
+              </div>
+              <div
+                class="c-menu-item"
+                role="menuitem"
+                tabindex="0"
+                style="padding-left: 72px;"
+              >
+                三级导航 3
+              </div>
+            </div>
+          </div>
+          <div
+            class="c-menu-item"
+            role="menuitem"
+            tabindex="0"
+            style="padding-left: 48px;"
+          >
+            二级导航 3
+          </div>
+        </div>
+      </div>
+      <div class="c-menu-item" role="menuitem" tabindex="0">
+        <div class="c-menu-item__inner">一级导航 3</div>
+      </div>
+      <div class="c-menu-item" aria-disabled="true" tabindex="0">
+        <div class="c-menu-item__inner">一级导航 4</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>折叠导航</h2>
+  <p>内嵌菜单可以被缩起 / 展开</p>
+
+  <div
+    style="
+      display: flex;
+      justify-content: space-around;
+      padding: 16px 240px 240px 16px;
+      background: #f7fafc;
+    "
+  >
+    <div
+      class="c-menu c-menu--collapsed"
+      aria-orientation="vertical"
+      role="menubar"
+    >
+      <div class="c-menu-item" role="menuitem" tabindex="0">
+        <div class="c-menu-item__inner">
+          <i
+            aria-hidden="true"
+            class="c-icon--svg"
+            style="stroke-width: 2; font-size: 16px;"
+          >
+            <svg viewBox="0 0 14 14" style="stroke-width: 0.666667;">
+              <g stroke="currentColor" fill="none" fill-rule="evenodd">
+                <polygon
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  points="7 0.65853889 0.5 6.5 2.5 6.5 2.5 12.5 11.5 12.5 11.5 6.5 13.5 6.5"
+                ></polygon>
+                <polygon
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  points="5.5 12.5 8.5 12.5 8.5 8.5 5.5 8.5"
+                ></polygon>
+              </g>
+            </svg>
+          </i>
+          一级导航 1
+        </div>
+      </div>
+      <div
+        class="c-submenu"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="true"
+      >
+        <div class="c-submenu__title c-submenu__title--active" tabindex="0">
+          <div class="c-menu-item__inner">
+            <i aria-hidden="true" class="c-icon--svg" style="stroke-width: 2;">
+              <svg viewBox="0 0 14 14" style="stroke-width: 0.666667;">
+                <g stroke="currentColor" fill="none" fill-rule="evenodd">
+                  <circle cx="7" cy="7" r="2.5"></circle>
+                  <path
+                    d="M6.49612897,0.872776598 L1.5,3.78718517 L1.5,10.2128148 L7,13.4211482 L12.5,10.2128148 L12.5,3.78718517 L7.50387103,0.872776598 C7.19250851,0.691148466 6.80749149,0.691148466 6.49612897,0.872776598 Z"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </g>
+              </svg>
+            </i>
+
+            一级导航 2
+            <svg
+              width="14px"
+              height="14px"
+              viewBox="0 0 14 14"
+              class="c-menu-arrow c-menu-arrow--expanded"
+            >
+              <g stroke="currentColor" fill-rule="evenodd" fill="none">
+                <polyline
+                  stroke-linecap="round"
+                  points="2 5 7 10 12 5"
+                ></polyline>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="c-submenu__dropdown c-submenu__dropdown--open" role="menu">
+          <div class="c-menu-item" role="menuitem">二级导航 1</div>
+          <div
+            class="c-submenu"
+            role="menuitem"
+            aria-haspopup="true"
+            aria-expanded="true"
+          >
+            <div class="c-submenu__title c-submenu__title--active">
+              <div class="c-menu-item__inner">
+                二级导航 2
+                <svg
+                  width="14px"
+                  height="14px"
+                  viewBox="0 0 14 14"
+                  class="c-menu-arrow c-menu-arrow--expanded"
+                >
+                  <g stroke="currentColor" fill-rule="evenodd" fill="none">
+                    <polyline
+                      stroke-linecap="round"
+                      points="2 5 7 10 12 5"
+                    ></polyline>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div
+              class="c-submenu__dropdown c-submenu__dropdown--open"
+              role="menu"
+            >
+              <div class="c-menu-item" role="menuitem">
+                三级导航 1
+              </div>
+              <div class="c-menu-item c-menu-item--active" role="menuitem">
+                三级导航 2
+              </div>
+              <div class="c-menu-item" role="menuitem">
+                三级导航 3
+              </div>
+            </div>
+          </div>
+          <div class="c-menu-item" role="menuitem">二级导航 3</div>
+        </div>
+      </div>
+      <div class="c-menu-item" role="menuitem" tabindex="0">
+        <div class="c-menu-item__inner">
+          <i
+            aria-hidden="true"
+            class="c-icon--svg"
+            style="stroke-width: 2; font-size: 16px;"
+          >
+            <svg viewBox="0 0 14 14" style="stroke-width: 0.666667;">
+              <g stroke="currentColor" fill="none" fill-rule="evenodd">
+                <polygon
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  points="7 0.65853889 0.5 6.5 2.5 6.5 2.5 12.5 11.5 12.5 11.5 6.5 13.5 6.5"
+                ></polygon>
+                <polygon
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  points="5.5 12.5 8.5 12.5 8.5 8.5 5.5 8.5"
+                ></polygon>
+              </g>
+            </svg>
+          </i>
+          一级导航 3
+        </div>
+      </div>
+      <div class="c-menu-item" aria-disabled="true" tabindex="0">
+        <div class="c-menu-item__inner">
+          <i
+            aria-hidden="true"
+            class="c-icon--svg"
+            style="stroke-width: 2; font-size: 16px;"
+          >
+            <svg viewBox="0 0 14 14" style="stroke-width: 0.666667;">
+              <g stroke="currentColor" fill="none" fill-rule="evenodd">
+                <polygon
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  points="7 0.65853889 0.5 6.5 2.5 6.5 2.5 12.5 11.5 12.5 11.5 6.5 13.5 6.5"
+                ></polygon>
+                <polygon
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  points="5.5 12.5 8.5 12.5 8.5 8.5 5.5 8.5"
+                ></polygon>
+              </g>
+            </svg>
+          </i>
+          一级导航 4
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="c-menu c-menu--collapsed c-menu--dark"
+      aria-orientation="vertical"
+      role="menubar"
+    >
+      <div class="c-menu-item" role="menuitem" tabindex="0">
+        <div class="c-menu-item__inner">
+          <i aria-hidden="true" class="c-icon--svg" style="stroke-width: 2;">
+            <svg viewBox="0 0 14 14" style="stroke-width: 0.666667;">
+              <g stroke="currentColor" fill="none" fill-rule="evenodd">
+                <circle cx="7" cy="7" r="2.5"></circle>
+                <path
+                  d="M6.49612897,0.872776598 L1.5,3.78718517 L1.5,10.2128148 L7,13.4211482 L12.5,10.2128148 L12.5,3.78718517 L7.50387103,0.872776598 C7.19250851,0.691148466 6.80749149,0.691148466 6.49612897,0.872776598 Z"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+            </svg>
+          </i>
+          一级导航 1
+        </div>
+      </div>
+      <div
+        class="c-submenu"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="true"
+      >
+        <div class="c-submenu__title c-submenu__title--active" tabindex="0">
+          <div class="c-menu-item__inner">
+            <i aria-hidden="true" class="c-icon--svg" style="stroke-width: 2;">
+              <svg viewBox="0 0 14 14" style="stroke-width: 0.666667;">
+                <g stroke="currentColor" fill="none" fill-rule="evenodd">
+                  <circle cx="7" cy="7" r="2.5"></circle>
+                  <path
+                    d="M6.49612897,0.872776598 L1.5,3.78718517 L1.5,10.2128148 L7,13.4211482 L12.5,10.2128148 L12.5,3.78718517 L7.50387103,0.872776598 C7.19250851,0.691148466 6.80749149,0.691148466 6.49612897,0.872776598 Z"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </g>
+              </svg>
+            </i>
+            一级导航 2
+            <svg
+              width="14px"
+              height="14px"
+              viewBox="0 0 14 14"
+              class="c-menu-arrow c-menu-arrow--expanded"
+            >
+              <g stroke="currentColor" fill-rule="evenodd" fill="none">
+                <polyline
+                  stroke-linecap="round"
+                  points="2 5 7 10 12 5"
+                ></polyline>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="c-submenu__dropdown c-submenu__dropdown--open" role="menu">
+          <div class="c-menu-item" role="menuitem">二级导航 1</div>
+          <div
+            class="c-submenu"
+            role="menuitem"
+            aria-haspopup="true"
+            aria-expanded="true"
+          >
+            <div class="c-submenu__title c-submenu__title--active">
+              <div class="c-menu-item__inner">
+                二级导航 2
+                <i class="c-icon--svg c-menu-arrow c-menu-arrow--expanded">
+                  <svg viewBox="0 0 14 14" style="stroke-width: 1.4;">
+                    <g stroke="currentColor" fill="none" fill-rule="evenodd">
+                      <polyline
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        points="0.5 4.5 7 11 13.5 4.5"
+                      ></polyline>
+                    </g>
+                  </svg>
+                </i>
+              </div>
+            </div>
+            <div
+              class="c-submenu__dropdown c-submenu__dropdown--open"
+              role="menu"
+            >
+              <div class="c-menu-item" role="menuitem">
+                三级导航 1
+              </div>
+              <div class="c-menu-item c-menu-item--active" role="menuitem">
+                三级导航 2
+              </div>
+              <div class="c-menu-item" role="menuitem">
+                三级导航 3
+              </div>
+            </div>
+          </div>
+          <div class="c-menu-item" role="menuitem">二级导航 3</div>
+        </div>
+      </div>
+      <div class="c-menu-item" role="menuitem" tabindex="0">
+        <div class="c-menu-item__inner">
+          <i aria-hidden="true" class="c-icon--svg" style="stroke-width: 2;">
+            <svg viewBox="0 0 14 14" style="stroke-width: 0.666667;">
+              <g stroke="currentColor" fill="none" fill-rule="evenodd">
+                <circle cx="7" cy="7" r="2.5"></circle>
+                <path
+                  d="M6.49612897,0.872776598 L1.5,3.78718517 L1.5,10.2128148 L7,13.4211482 L12.5,10.2128148 L12.5,3.78718517 L7.50387103,0.872776598 C7.19250851,0.691148466 6.80749149,0.691148466 6.49612897,0.872776598 Z"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+            </svg>
+          </i>
+          一级导航 3
+        </div>
+      </div>
+      <div class="c-menu-item" aria-disabled="true" tabindex="0">
+        <div class="c-menu-item__inner">
+          <i aria-hidden="true" class="c-icon--svg" style="stroke-width: 2;">
+            <svg viewBox="0 0 14 14" style="stroke-width: 0.666667;">
+              <g stroke="currentColor" fill="none" fill-rule="evenodd">
+                <circle cx="7" cy="7" r="2.5"></circle>
+                <path
+                  d="M6.49612897,0.872776598 L1.5,3.78718517 L1.5,10.2128148 L7,13.4211482 L12.5,10.2128148 L12.5,3.78718517 L7.50387103,0.872776598 C7.19250851,0.691148466 6.80749149,0.691148466 6.49612897,0.872776598 Z"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+            </svg>
+          </i>
+          一级导航 4
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

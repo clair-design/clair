@@ -1,0 +1,97 @@
+/// Map 对象合并
+/// Credit: https://www.sitepoint.com/extra-map-functions-sass/
+/// @param {Map} $map - first map
+/// @param {ArgList} $maps - other maps
+/// @param {Bool} $deep - recursive mode
+/// @return {Map} 合并后的 map
+@function map-extend($map, $maps... /*, $deep */) {
+  $last: nth($maps, -1);
+  $deep: $last == true;
+  $max: if($deep, length($maps) - 1, length($maps));
+
+  // Loop through all maps in $maps...
+  @for $i from 1 through $max {
+    // Store current map
+    $current: nth($maps, $i);
+
+    // If not in deep mode, simply merge current map with map
+    @if not $deep {
+      $map: map-merge($map, $current);
+    } @else {
+      // If in deep mode, loop through all tuples in current map
+      /* stylelint-disable-next-line */
+      @each $key, $value in $current {
+        // If value is a nested map and same key from map is a nested map as well
+        /* stylelint-disable-next-line */
+        @if type-of($value) == 'map' and type-of(map-get($map, $key)) == 'map' {
+          // Recursive extend
+          $value: map-extend(map-get($map, $key), $value, true);
+        }
+
+        // Merge current tuple with map
+        $map: map-merge(
+          $map,
+          (
+            $key: $value
+          )
+        );
+      }
+    }
+  }
+
+  @return $map;
+}
+
+/// 深度合并
+@function map-deep-merge($maps...) {
+  @return map-extend(append($maps, true));
+}
+
+// get top/right/bottom/left value from a shorthand value of
+// CSS property like margin/border-width/padding etc...
+// @param {List} $shorthand - shorthand value, eg. 10px 20px
+// @param {String} $side - side of the box, eg. left
+// @return {String} - value of the specified side
+@function get-side($shorthand, $side) {
+  $length: length($shorthand);
+
+  @if $length == 1 {
+    @return $shorthand;
+  }
+
+  @if $length == 2 {
+    @return map-get(
+      (
+        top: nth($shorthand, 1),
+        right: nth($shorthand, 2),
+        bottom: nth($shorthand, 1),
+        left: nth($shorthand, 2)
+      ),
+      $side
+    );
+  }
+
+  @if $length == 3 {
+    @return map-get(
+      (
+        top: nth($shorthand, 1),
+        right: nth($shorthand, 2),
+        bottom: nth($shorthand, 3),
+        left: nth($shorthand, 2)
+      ),
+      $side
+    );
+  }
+
+  @if $length == 4 {
+    @return map-get(
+      (
+        top: nth($shorthand, 1),
+        right: nth($shorthand, 2),
+        bottom: nth($shorthand, 3),
+        left: nth($shorthand, 4)
+      ),
+      $side
+    );
+  }
+}

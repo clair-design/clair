@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Repeat</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Repeat" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <polyline id="路径-88" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="21 1 25 5 21 9"></polyline>
+            <path d="M25,17 L9,17 C5.6862915,17 3,19.6862915 3,23" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" transform="translate(14.000000, 20.000000) scale(-1, -1) translate(-14.000000, -20.000000) "></path>
+            <polyline id="路径-88" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(5.000000, 23.000000) scale(-1, 1) translate(-5.000000, -23.000000) " points="3 19 7 23 3 27"></polyline>
+            <path d="M25,5 L9,5 C5.6862915,5 3,7.6862915 3,11" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

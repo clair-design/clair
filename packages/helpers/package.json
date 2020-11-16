@@ -1,0 +1,48 @@
+{
+  "name": "@clair/helpers",
+  "version": "0.3.3",
+  "description": "common utils for clair-design",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "source": "src/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "precommit": "pretty-quick --staged --pattern packages/helpers/**",
+    "clean": "rimraf dist .rpt2_cache",
+    "start": "rollup -c rollup.config.js -w",
+    "build": "rm -rf dist && rollup -c rollup.config.js",
+    "test": "jest",
+    "test:clean": "jest --clearCache",
+    "prepublishOnly": "yarn clean && yarn build"
+  },
+  "author": "wemlion <angusfu1126@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "tslib": "^1.10.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-typescript": "^7.9.0",
+    "@types/jest": "^25.1.4",
+    "@types/sinon": "^9.0.0",
+    "babel-jest": "^25.1.0",
+    "jest": "^25.1.0",
+    "prettier": "^2.0.4",
+    "pretty-quick": "^3.0.2",
+    "rimraf": "^3.0.0",
+    "rollup": "^2.6.1",
+    "rollup-plugin-typescript2": "^0.27.0",
+    "sinon": "^9.0.2",
+    "typescript": "^4.0.3"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  }
+}

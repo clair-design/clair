@@ -1,0 +1,28 @@
+```tsx live=true
+function Index() {
+  const [visible, setVisibility] = React.useState(false);
+
+  const showModal = () => setVisibility(true);
+  const cancel = () => setVisibility(false);
+  const confirm = () => setVisibility(false);
+
+  return (
+    <React.Fragment>
+      <Button type="primary" onClick={showModal}>
+        打开弹窗
+      </Button>
+      <Modal
+        title="Light Modal"
+        visible={visible}
+        width="400px"
+        light={true}
+        onCancel={cancel}
+        onConfirm={confirm}
+      >
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal>
+    </React.Fragment>
+  );
+}
+```

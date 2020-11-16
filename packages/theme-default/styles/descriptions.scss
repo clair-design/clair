@@ -1,0 +1,63 @@
+@import 'variables';
+
+// compute descriptions size
+@mixin mixin-descriptions-size-style($size) {
+  .c-descriptions-item__label,
+  .c-descriptions-item__content {
+    padding-bottom: $size;
+  }
+  &.c-descriptions--bordered {
+    .c-descriptions-item__label,
+    .c-descriptions-item__content {
+      padding-top: $size;
+      padding-bottom: $size;
+    }
+  }
+}
+
+.c-descriptions {
+  @include mixin-descriptions-size-style($--descriptions-padding);
+  width: 100%;
+  overflow: hidden;
+  color: $--base-text-color;
+  font-size: $--base-font-size;
+  text-align: left;
+  table-layout: fixed;
+  border-collapse: collapse;
+
+  &-item {
+    padding: 0;
+    border-bottom: 2px solid transparent;
+  }
+
+  &-item &-item__label,
+  &-item &-item__content {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  &-item__content {
+    color: $--secondary-text-color;
+  }
+}
+
+.c-descriptions--bordered {
+  .c-descriptions-item__label,
+  .c-descriptions-item__content {
+    padding-right: 24px;
+    padding-left: 24px;
+    border: $--descriptions-border;
+  }
+
+  .c-descriptions-item__label {
+    background-color: $--light-background-color;
+  }
+}
+
+.c-descriptions--large {
+  @include mixin-descriptions-size-style($--descriptions-large-padding);
+}
+
+.c-descriptions--small {
+  @include mixin-descriptions-size-style($--descriptions-small-padding);
+}

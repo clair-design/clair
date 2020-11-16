@@ -1,0 +1,50 @@
+## 分组导航
+
+水平菜单中的分组导航, 只可放在 `<SubMenu>` 内部
+
+```tsx live=true
+function Index() {
+  const [activeIndex, setActiveIndex] = React.useState("2-2");
+  const onSelect = ({ detail }) => {
+    setActiveIndex(detail.name);
+  };
+  return (
+    <Menu activeIndex={activeIndex} onSelect={onSelect}>
+      <MenuItem index={1}>
+        <IconHome />
+        一级导航 1
+      </MenuItem>
+      <SubMenu
+        title={
+          <React.Fragment>
+            <IconFile />
+            一级导航 2
+          </React.Fragment>
+        }
+        index={2}
+      >
+        <MenuItemGroup title="分组1">
+          <MenuItem index={"2-1"}>
+            <IconFile />
+            二级导航 2-1
+          </MenuItem>
+          <MenuItem index={"2-2"}>
+            <IconFile />
+            二级导航 2-2
+          </MenuItem>
+        </MenuItemGroup>
+        <MenuItemGroup title={<p>分组2</p>}>
+          <MenuItem index={"2-3"}>
+            <IconCalendar />
+            二级导航 2-3
+          </MenuItem>
+          <MenuItem index={"2-4"}>
+            <IconSetting />
+            二级导航 2-4
+          </MenuItem>
+        </MenuItemGroup>
+      </SubMenu>
+    </Menu>
+  );
+}
+```

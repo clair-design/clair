@@ -1,0 +1,64 @@
+## 动态增减表单项
+
+动态增加、减少表单项。
+
+```tsx live=true className=s-form-example
+function Index() {
+  const indexRef = React.useRef(0);
+  const formRef = React.useRef();
+  const [userList, updateUserList] = React.useState([
+    { name: `field_${indexRef.current}` }
+  ]);
+
+  const removeUser = removedUserName => {
+    updateUserList(userList.filter(({ name }) => name !== removedUserName));
+  };
+  const addUser = () => {
+    updateUserList([...userList, { name: `field_${++indexRef.current}` }]);
+  };
+
+  const onSubmit = (isValid, valueList) => {
+    isValid &&
+      message({
+        type: "success",
+        message: JSON.stringify(valueList)
+      });
+  };
+
+  return (
+    <>
+      <Form ref={formRef} onSubmit={onSubmit} labelWidth={80}>
+        {userList.map(({ name }) => (
+          <div style={{ display: "flex", alignItems: "baseline" }} key={name}>
+            <FormItem
+              label="用户姓名"
+              as="input"
+              name={name}
+              className="c-input c-input--normal"
+              placeholder="请输入姓名"
+              style={{ width: 320 }}
+            />
+            <Button
+              className="demo-button-rm"
+              size="small"
+              style={{ marginLeft: 16, float: "left" }}
+              onClick={() => removeUser(name)}
+            >
+              <IconMinus />
+            </Button>
+          </div>
+        ))}
+        <div>
+          <Button className="demo-button-add" onClick={addUser}>
+            <IconPlus style={{ marginRight: 8 }} />
+            添加用户
+          </Button>
+          <Button type="primary" htmlType="submit">
+            提交
+          </Button>
+        </div>
+      </Form>
+    </>
+  );
+}
+```

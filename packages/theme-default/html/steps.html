@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<title>Steps</title>
+<link rel="stylesheet" href="../styles/steps.scss" />
+
+<style>
+  body {
+    max-width: 1200px;
+    margin: 30px auto;
+  }
+
+  .c-steps {
+    margin-bottom: 50px;
+  }
+</style>
+
+<!-- HTML -->
+<h1>Steps</h1>
+<h2>基础样式</h2>
+<div class="c-steps c-steps--horizontal">
+  <div class="c-step c-step--has-no-desc c-step--finish">
+    <div class="c-step__icon">
+      <i>
+        <svg viewBox="0 0 24 24">
+          <g fill="none" fill-rule="evenodd">
+            <circle stroke="currentColor" cx="12" cy="12" r="11" />
+            <g transform="translate(6 6)">
+              <polyline
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                points="1.23001218 5.83181417 5.14285714 9.74465914 10.9712057 3.5"
+              />
+            </g>
+          </g>
+        </svg>
+      </i>
+    </div>
+    <div class="c-step__content">
+      <div class="c-step__title">第一步</div>
+    </div>
+  </div>
+  <div class="c-step c-step--has-no-desc c-step--process">
+    <div class="c-step__icon">
+      <span class="c-step__icon-num">2</span>
+    </div>
+    <div class="c-step__content">
+      <div class="c-step__title">第二步</div>
+    </div>
+  </div>
+  <div class="c-step c-step--has-no-desc c-step--wait">
+    <div class="c-step__icon">
+      <span class="c-step__icon-num">3</span>
+    </div>
+    <div class="c-step__content">
+      <div class="c-step__title">第三步</div>
+    </div>
+  </div>
+  <div class="c-step c-step--has-no-desc c-step--wait">
+    <div class="c-step__icon">
+      <span class="c-step__icon-num">4</span>
+    </div>
+    <div class="c-step__content">
+      <div class="c-step__title">第四步</div>
+    </div>
+  </div>
+</div>
+
+<h2>描述样式</h2>
+<div class="c-steps c-steps--horizontal">
+  <div class="c-step c-step--finish">
+    <div class="c-step__icon">
+      <i>
+        <svg viewBox="0 0 24 24">
+          <g fill="none" fill-rule="evenodd">
+            <circle stroke="currentColor" cx="12" cy="12" r="11" />
+            <g transform="translate(6 6)">
+              <polyline
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                points="1.23001218 5.83181417 5.14285714 9.74465914 10.9712057 3.5"
+              />
+            </g>
+          </g>
+        </svg>
+      </i>
+    </div>
+    <div class="c-step__content">
+      <div class="c-step__title">第一步</div>
+      <div class="c-step__desc">本步骤相关的文字内容描述</div>
+    </div>
+  </div>
+  <div class="c-step c-step--process">
+    <div class="c-step__icon">
+      <span class="c-step__icon-num">2</span>
+    </div>
+    <div class="c-step__content">
+      <div class="c-step__title">第二步</div>
+      <div class="c-step__desc">本步骤相关的文字内容描述</div>
+    </div>
+  </div>
+  <div class="c-step c-step--wait">
+    <div class="c-step__icon">
+      <span class="c-step__icon-num">3</span>
+    </div>
+    <div class="c-step__content">
+      <div class="c-step__title">第三步</div>
+      <div class="c-step__desc">本步骤相关的文字内容描述</div>
+    </div>
+  </div>
+  <div class="c-step c-step--wait">
+    <div class="c-step__icon">
+      <span class="c-step__icon-num">4</span>
+    </div>
+    <div class="c-step__content">
+      <div class="c-step__title">第四步</div>
+      <div class="c-step__desc">本步骤相关的文字内容描述</div>
+    </div>
+  </div>
+</div>
+
+<h2>竖状样式</h2>
+<div class="c-steps c-steps--vertical" style="height: 500px;">
+  <div class="c-step c-step--finish">
+    <div class="c-step__icon">
+      <i>
+        <svg viewBox="0 0 24 24">
+          <g fill="none" fill-rule="evenodd">
+            <circle stroke="currentColor" cx="12" cy="12" r="11" />
+            <g transform="translate(6 6)">
+              <polyline
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                points="1.23001218 5.83181417 5.14285714 9.74465914 10.9712057 3.5"
+              />
+            </g>
+          </g>
+        </svg>
+      </i>
+    </div>
+    <div class="c-step__content">
+      <div class="c-step__title">第一步</div>
+      <div class="c-step__desc">本步骤相关的文字内容描述</div>
+    </div>
+  </div>
+  <div class="c-step c-step--process">
+    <div class="c-step__icon">
+      <span class="c-step__icon-num">2</span>
+    </div>
+    <div class="c-step__content">
+      <div class="c-step__title">第二步</div>
+      <div class="c-step__desc">本步骤相关的文字内容描述</div>
+    </div>
+  </div>
+  <div class="c-step c-step--wait">
+    <div class="c-step__icon">
+      <span class="c-step__icon-num">3</span>
+    </div>
+    <div class="c-step__content">
+      <div class="c-step__title">第三步</div>
+      <div class="c-step__desc">本步骤相关的文字内容描述</div>
+    </div>
+  </div>
+  <div class="c-step c-step--wait">
+    <div class="c-step__icon">
+      <span class="c-step__icon-num">4</span>
+    </div>
+    <div class="c-step__content">
+      <div class="c-step__title">第四步</div>
+      <div class="c-step__desc">本步骤相关的文字内容描述</div>
+    </div>
+  </div>
+</div>
+
+<h2>步骤错误样式</h2>
+<div class="c-steps c-steps--horizontal">
+  <div class="c-step c-step--finish c-step--errornext">
+    <div class="c-step__icon">
+      <i>
+        <svg viewBox="0 0 24 24">
+          <g fill="none" fill-rule="evenodd">
+            <circle stroke="currentColor" cx="12" cy="12" r="11" />
+            <g transform="translate(6 6)">
+              <polyline
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                points="1.23001218 5.83181417 5.14285714 9.74465914 10.9712057 3.5"
+              />
+            </g>
+          </g>
+        </svg>
+      </i>
+    </div>
+    <div class="c-step__content">
+      <div class="c-step__title">第一步</div>
+      <div class="c-step__desc">本步骤相关的文字内容描述</div>
+    </div>
+  </div>
+  <div class="c-step c-step--error">
+    <div class="c-step__icon">
+      <i>
+        <svg viewBox="0 0 24 24">
+          <g fill="none" fill-rule="evenodd">
+            <circle stroke="currentColor" cx="12" cy="12" r="11" />
+            <g transform="translate(7 7)">
+              <path
+                d="M5 5L1 1l4 4 4-4-4 4zm0 0l4 4-4-4-4 4 4-4z"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+          </g>
+        </svg>
+      </i>
+    </div>
+    <div class="c-step__content">
+      <div class="c-step__title">第二步</div>
+      <div class="c-step__desc">本步骤相关的文字内容描述</div>
+    </div>
+  </div>
+  <div class="c-step c-step--wait">
+    <div class="c-step__icon">
+      <span class="c-step__icon-num">3</span>
+    </div>
+    <div class="c-step__content">
+      <div class="c-step__title">第三步</div>
+      <div class="c-step__desc">本步骤相关的文字内容描述</div>
+    </div>
+  </div>
+  <div class="c-step c-step--wait">
+    <div class="c-step__icon">
+      <span class="c-step__icon-num">4</span>
+    </div>
+    <div class="c-step__content">
+      <div class="c-step__title">第四步</div>
+      <div class="c-step__desc">本步骤相关的文字内容描述</div>
+    </div>
+  </div>
+</div>
+
+<h2>点状样式</h2>
+<div class="c-steps c-steps--dotted">
+  <div class="c-step c-step--finish">
+    <div class="c-step__dot"></div>
+    <div class="c-step__content">
+      <div class="c-step__title">第一步</div>
+      <div class="c-step__desc">本步骤相关的文字内容描述</div>
+    </div>
+  </div>
+  <div class="c-step c-step--finish">
+    <div class="c-step__dot"></div>
+    <div class="c-step__content">
+      <div class="c-step__title">第二步</div>
+      <div class="c-step__desc">本步骤相关的文字内容描述</div>
+    </div>
+  </div>
+  <div class="c-step c-step--process">
+    <div class="c-step__dot"></div>
+    <div class="c-step__content">
+      <div class="c-step__title">第三步</div>
+      <div class="c-step__desc">本步骤相关的文字内容描述</div>
+    </div>
+  </div>
+  <div class="c-step c-step--wait">
+    <div class="c-step__dot"></div>
+    <div class="c-step__content">
+      <div class="c-step__title">第四步</div>
+      <div class="c-step__desc">本步骤相关的文字内容描述</div>
+    </div>
+  </div>
+</div>
+
+<h2>点状错误样式</h2>
+<div class="c-steps c-steps--dotted">
+  <div class="c-step c-step--finish">
+    <div class="c-step__dot"></div>
+    <div class="c-step__content">
+      <div class="c-step__title">第一步</div>
+      <div class="c-step__desc">本步骤相关的文字内容描述</div>
+    </div>
+  </div>
+  <div class="c-step c-step--finish c-step--errornext">
+    <div class="c-step__dot"></div>
+    <div class="c-step__content">
+      <div class="c-step__title">第二步</div>
+      <div class="c-step__desc">本步骤相关的文字内容描述</div>
+    </div>
+  </div>
+  <div class="c-step c-step--error">
+    <div class="c-step__dot"></div>
+    <div class="c-step__content">
+      <div class="c-step__title">第三步</div>
+      <div class="c-step__desc">本步骤相关的文字内容描述</div>
+    </div>
+  </div>
+  <div class="c-step c-step--wait">
+    <div class="c-step__dot"></div>
+    <div class="c-step__content">
+      <div class="c-step__title">第四步</div>
+      <div class="c-step__desc">本步骤相关的文字内容描述</div>
+    </div>
+  </div>
+</div>

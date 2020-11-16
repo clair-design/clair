@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Percent</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Percent" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M24,3 L3,25" id="路径-18" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" cx="6" cy="6" r="3"></circle>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" cx="22" cy="22" r="3"></circle>
+        </g>
+    </g>
+</svg>

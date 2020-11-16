@@ -1,0 +1,61 @@
+@import 'variables';
+
+.c-card {
+  box-sizing: border-box;
+  // make `border-radius` works on cover image
+  overflow: hidden;
+  background-color: $--base-background-color;
+  border-radius: $--base-border-radius;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    padding: $--card-header-padding;
+    border-bottom: 1px solid $--primary-border-color;
+  }
+
+  &__title {
+    flex-grow: 1;
+    margin: 0;
+    padding: $--card-title-padding;
+    color: $--base-text-color;
+    font-size: $--card-title-font-size;
+    line-height: $--card-title-line-height;
+  }
+
+  &__body {
+    padding: $--card-body-padding;
+    color: $--secondary-text-color;
+    font-size: $--base-font-size;
+  }
+
+  &__cover {
+    margin-bottom: $--card-cover-margin-bottom;
+  }
+
+  &__cover > * {
+    // remove white space below baseline of image, video, etc...
+    display: block;
+    max-width: 100%;
+  }
+
+  &__cover ~ &__header {
+    border-bottom: none;
+  }
+
+  &__cover ~ &__body {
+    // reduce space between `header` and `body` because
+    // the border is removed by design
+    $--card-body-padding-top: get-side($--card-body-padding, 'top');
+    margin-top: -($--card-body-padding-top - $--card-cover-margin-bottom);
+  }
+
+  &--bordered {
+    border: 1px solid $--primary-border-color;
+  }
+
+  &--raised {
+    border: none;
+    box-shadow: $--base-box-shadow;
+  }
+}

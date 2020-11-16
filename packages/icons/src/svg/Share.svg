@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Share</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Share" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" cx="7" cy="14" r="4"></circle>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" cx="22" cy="23" r="3"></circle>
+            <circle id="椭圆形备份" stroke="#6E6E6E" stroke-width="2" cx="22" cy="5" r="3"></circle>
+            <path d="M10,12 L20,6" id="路径" stroke="#6E6E6E" stroke-width="2"></path>
+            <path d="M10,22 L20,16" id="路径" stroke="#6E6E6E" stroke-width="2" transform="translate(15.000000, 19.000000) scale(-1, 1) translate(-15.000000, -19.000000) "></path>
+        </g>
+    </g>
+</svg>

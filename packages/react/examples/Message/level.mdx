@@ -1,0 +1,25 @@
+import { message } from "@src";
+
+## <i></i>不同类型
+
+提供了 `message.success` + `message.info` + `message.warning` + `message.error` 四个语法糖。
+
+```tsx live=true className=s-container--button
+<>
+  <Button type="primary" onClick={() => message.info({ message: "infoℹ" })}>
+    info
+  </Button>
+  <Button onClick={() => message.success({ message: "success😉" })}>
+    success
+  </Button>
+  <Button
+    type="warning"
+    onClick={() => message.warning({ message: "warning⚠️" })}
+  >
+    warning
+  </Button>
+  <Button type="danger" onClick={() => message.error({ message: "error😢" })}>
+    error
+  </Button>
+</>
+```

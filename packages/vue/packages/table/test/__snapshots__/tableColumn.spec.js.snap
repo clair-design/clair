@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[table] thead group width c-table-column c-table-column with thead group 1`] = `
+<div class="c-table" defaultsortinfo="[object Object]">
+  <div class="c-table--content c-table--normal c-table--bordered">
+    <table class="">
+      <colgroup>
+        <col style="width: 60px;">
+        <col style="width: 200px;">
+        <col style="width: 200px;">
+        <col style="width: 200px;">
+        <col style="width: 200px;">
+        <col style="width: 200px;">
+        <col style="width: 200px;">
+      </colgroup>
+      <thead class="">
+        <tr>
+          <th rowspan="2" class="c-table__text--left"></th>
+          <th rowspan="1" colspan="2" class="c-table__text--left">
+            <p><span>custom thead</span></p>
+          </th>
+          <th rowspan="2" class="c-table__text--left TEST">TEST412uv</th>
+          <th rowspan="2" class="c-table__text--left">TESTnv</th>
+          <th rowspan="2" class="c-table__text--left"><span class="customTypeThead">
+          来源分析
+          <i>~!~</i></span></th>
+          <th rowspan="1" colspan="1" class="c-table__cell--sticky c-table__text--left" style="right: 0px;">TESTip</th>
+        </tr>
+        <tr>
+          <th rowspan="1" class="c-table__text--left">TEST11312cv</th>
+          <th rowspan="1" class="c-table__text--left">TEST12312nv</th>
+          <th rowspan="1" class="c-table__text--left">TEST-type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="1" rowspan="1" class="c-table__text--left"><i class="c-icon--svg c-icon--svg-fill c-table__expand--arrow">
+              <svg viewBox="0 0 14 14" style="stroke-width: NaN;">
+                <g fill="none" fill-rule="evenodd">
+                  <path d="M4.825 1.707l5.732 4.913a.5.5 0 010 .76l-5.732 4.913a.5.5 0 01-.825-.38V2.087a.5.5 0 01.825-.38z" fill="currentColor" fill-rule="nonzero"></path>
+                </g>
+              </svg></i></td>
+          <td colspan="1" rowspan="1" class="c-table__text--left"><span>
+          here is cv~
+        </span></td>
+          <td colspan="1" rowspan="1" class="c-table__text--left">1</td>
+          <td colspan="1" rowspan="1" class="c-table__text--left TEST"><span><div><span>~~2~~2~1~~</span>
+  </div></span></td>
+  <td colspan="1" rowspan="1" class="c-table__text--left">3</td>
+  <td colspan="1" rowspan="1" class="c-table__text--left">4</td>
+  <td colspan="1" rowspan="1" class="c-table__text--left">直接访问1</td>
+  </tr>
+  <tr>
+    <td colspan="1" rowspan="1" class="c-table__text--left"><i class="c-icon--svg c-icon--svg-fill c-table__expand--arrow">
+        <svg viewBox="0 0 14 14" style="stroke-width: NaN;">
+          <g fill="none" fill-rule="evenodd">
+            <path d="M4.825 1.707l5.732 4.913a.5.5 0 010 .76l-5.732 4.913a.5.5 0 01-.825-.38V2.087a.5.5 0 01.825-.38z" fill="currentColor" fill-rule="nonzero"></path>
+          </g>
+        </svg></i></td>
+    <td colspan="1" rowspan="1" class="c-table__text--left"><span>
+          here is cv~
+        </span></td>
+    <td colspan="1" rowspan="1" class="c-table__text--left">11</td>
+    <td colspan="1" rowspan="1" class="c-table__text--left TEST"><span><div><span>~~2~~21~1~~</span>
+</div></span></td>
+<td colspan="1" rowspan="1" class="c-table__text--left">31</td>
+<td colspan="1" rowspan="1" class="c-table__text--left">141</td>
+<td colspan="1" rowspan="1" class="c-table__text--left">搜索引擎1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+`;

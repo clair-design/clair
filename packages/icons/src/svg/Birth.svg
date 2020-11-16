@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Birth</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Birth" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="蒙版" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M1,26 L27,26" id="路径-152" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <polyline id="路径-153" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="4 26 4 13 24 13 24 26"></polyline>
+            <polyline id="路径-154" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="5 17 8 20 11 17 14 20 17 17 20 20 23 17"></polyline>
+            <polyline id="路径-155" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="12 13 12 6 16 6 16 13"></polyline>
+            <path d="M14,2 L14,3" id="路径-156" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

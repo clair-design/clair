@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Stereo</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Stereo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M5.92455567,1 L22.0754443,1 C23.1501064,1 24.0326641,1.84926564 24.0739667,2.92313376 L24.9201205,24.9231338 C24.9625726,26.0268872 24.1022178,26.9560703 22.9984644,26.9985223 C22.9728542,26.9995074 22.9472274,27 22.9215982,27 L5.07840182,27 C3.97383232,27 3.07840182,26.1045695 3.07840182,25 C3.07840182,24.9743708 3.07889446,24.948744 3.07987947,24.9231338 L3.92603332,2.92313376 C3.96733594,1.84926564 4.84989356,1 5.92455567,1 Z" id="矩形" stroke="#6E6E6E" stroke-width="2"></path>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" cx="14" cy="7" r="2"></circle>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" cx="14" cy="18" r="4"></circle>
+        </g>
+    </g>
+</svg>

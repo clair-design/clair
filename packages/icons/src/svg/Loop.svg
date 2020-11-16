@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Loop</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Loop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M25.8378376,13.0225105 C25.3088909,9.83238811 23.5216113,7.06729113 21.0031174,5.25433809" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M6.99292469,5.25718841 C4.48135797,7.06670029 2.69770626,9.82342721 2.16522796,13.0041108" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M8.00116344,25.3952866 C9.76594069,26.415891 11.8147574,27 14,27 L14,27 C16.189872,27 18.2427393,26.4134136 20.0100485,25.3887944" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" cx="14" cy="4" r="3"></circle>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" transform="translate(23.526279, 19.500000) rotate(120.000000) translate(-23.526279, -19.500000) " cx="23.5262794" cy="19.5" r="3"></circle>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" transform="translate(4.473721, 19.500000) rotate(-120.000000) translate(-4.473721, -19.500000) " cx="4.47372056" cy="19.5" r="3"></circle>
+        </g>
+    </g>
+</svg>

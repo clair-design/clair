@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Gift</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Gift" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="蒙版" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M3,14 L25,14 L25,25 C25,26.1045695 24.1045695,27 23,27 L5,27 C3.8954305,27 3,26.1045695 3,25 L3,14 Z" id="矩形" stroke="#6E6E6E" stroke-width="2"></path>
+            <path d="M2,8 L26,8 C26.5522847,8 27,8.44771525 27,9 L27,13 C27,13.5522847 26.5522847,14 26,14 L2,14 C1.44771525,14 1,13.5522847 1,13 L1,9 C1,8.44771525 1.44771525,8 2,8 Z" id="矩形" stroke="#6E6E6E" stroke-width="2"></path>
+            <path d="M9.5,1 L10,1 C12.209139,1 14,2.790861 14,5 L14,8 L9.5,8 C7.56700338,8 6,6.43299662 6,4.5 C6,2.56700338 7.56700338,1 9.5,1 Z" id="矩形" stroke="#6E6E6E" stroke-width="2"></path>
+            <path d="M17.5,1 L18,1 C20.209139,1 22,2.790861 22,5 L22,8 L17.5,8 C15.5670034,8 14,6.43299662 14,4.5 C14,2.56700338 15.5670034,1 17.5,1 Z" id="矩形" stroke="#6E6E6E" stroke-width="2" transform="translate(18.000000, 4.500000) scale(-1, 1) translate(-18.000000, -4.500000) "></path>
+            <path d="M14,9 L14,26" id="直线-3" stroke="#6E6E6E" stroke-width="2"></path>
+        </g>
+    </g>
+</svg>

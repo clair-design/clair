@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Scan</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Scan" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M20,3 L23,3 C24.1045695,3 25,3.8954305 25,5 L25,8 M25,20 L25,23 C25,24.1045695 24.1045695,25 23,25 L20,25 M8,25 L5,25 C3.8954305,25 3,24.1045695 3,23 L3,20 M3,8 C3,6.15025354 3,5.15025354 3,5 C3,3.8954305 3.8954305,3 5,3 L8,3" id="形状" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M3,14 L25,14" id="路径-134" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

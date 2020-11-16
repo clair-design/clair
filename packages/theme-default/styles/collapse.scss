@@ -1,0 +1,70 @@
+@import 'variables';
+@import 'icon';
+
+.c-collapse {
+  display: block;
+}
+
+.c-collapse-item {
+  color: $--collapse-item-color;
+  border: 1px solid $--collapse-border-color;
+  border-top: 0;
+  &:first-child {
+    border-top: 1px solid $--collapse-border-color;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    padding: 0 $--collapse-item-padding;
+    font-size: $--base-font-size;
+    line-height: $--collapse-item-title-height;
+    background-color: $--collapse-background-color;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__title {
+    flex-grow: 1;
+  }
+
+  &--disabled {
+    color: $--collapse-disabled-text-color;
+  }
+
+  &__content {
+    box-sizing: border-box;
+    max-height: 0;
+    overflow: hidden;
+    font-size: $--collapse-item-font;
+    line-height: $--collapse-item-line-height;
+    transition: transition(max-height);
+  }
+  &__inner {
+    padding: $--collapse-item-padding;
+  }
+
+  &--active {
+    max-height: unset;
+    transition: transition(max-height);
+  }
+}
+
+.c-collapse-item__icon {
+  margin-right: 0.7em;
+  color: $--icon-color;
+  font-size: $--collapse-item-font - 4px;
+  transform: rotate(0deg);
+  transition: transition(transform);
+
+  &--active {
+    height: auto;
+    transform: rotate(90deg);
+  }
+}
+
+.c-collapse-item--disabled .c-collapse-item__icon {
+  color: inherit;
+}

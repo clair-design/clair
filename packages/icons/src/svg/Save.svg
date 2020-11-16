@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Save</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Save" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M5,3 L20,3 L25,8 L25,23 C25,24.1045695 24.1045695,25 23,25 L5,25 C3.8954305,25 3,24.1045695 3,23 L3,5 C3,3.8954305 3.8954305,3 5,3 Z" id="矩形" stroke="#6E6E6E" stroke-width="2"></path>
+            <path d="M8,2 L8,9 C8,10.1045695 8.8954305,11 10,11 L17,11 C18.1045695,11 19,10.1045695 19,9 L19,2" id="路径-2" stroke="#6E6E6E" stroke-width="2"></path>
+            <path d="M7,17 L7,24 C7,25.1045695 7.8954305,26 9,26 L19,26 C20.1045695,26 21,25.1045695 21,24 L21,17" id="路径-2" stroke="#6E6E6E" stroke-width="2" transform="translate(14.000000, 21.500000) scale(1, -1) translate(-14.000000, -21.500000) "></path>
+            <path d="M15,6 L15,8" id="路径-3" stroke="#6E6E6E" stroke-width="2"></path>
+        </g>
+    </g>
+</svg>

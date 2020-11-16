@@ -1,0 +1,185 @@
+# Select
+
+## 基础用法
+
+```tsx live=true
+<Select>
+  <Option value="orange" label="🍊 橘子" />
+  <Option value="pear" label="🍐 大梨" />
+  <Option value="watermelon">
+    <div>🍉 西瓜</div>
+  </Option>
+</Select>
+```
+
+## 禁用状态
+
+禁用选择器 & 禁用选项
+
+```tsx live=true
+<>
+  <Select disabled={true} />
+  <br />
+  <Select style={{ marginTop: "10px" }}>
+    <Option disabled value="橘子" label="橘子" />
+    <Option disabled value="大梨" label="大梨" />
+  </Select>
+</>
+```
+
+## 可清空样式
+
+```tsx live=true
+<Select clearable={true}>
+  <Option disabled value="橘子" label="橘子" />
+  <Option value="大梨" label="大梨" />
+</Select>
+```
+
+## 多选
+
+```tsx live=true
+function App() {
+  const [value, updateValue] = React.useState(["orange", "pear"]);
+  const onChange = e => {
+    updateValue(e.target.value);
+  };
+  return (
+    <Select multiple value={value} onChange={onChange}>
+      <Option value="orange" label="🍊 橘子" />
+      <Option value="pear" label="🍐 大梨" />
+    </Select>
+  );
+}
+```
+
+## 分组
+
+```tsx live=true
+function Index() {
+  const [value, updateValue] = React.useState("orange");
+  return (
+    <Select value={value} onChange={e => updateValue(e.target.value)}>
+      <OptionGroup title="小">
+        <Option value="orange" label="🍊 橘子" />
+        <Option value="pear" label="🍐 梨" />
+        <Option value="banana" label="🍌 香蕉" />
+      </OptionGroup>
+      <OptionGroup title="大">
+        <Option value="watermelon" label="🍉 西瓜" />
+        <Option value="pineapple" label="🍍 菠萝" />
+        <Option value="cantaloupe" label="🍈 哈密瓜" />
+      </OptionGroup>
+    </Select>
+  );
+}
+```
+
+## 可过滤
+
+```tsx live=true
+<Select filterable={true}>
+  <Option value="🍊橘子" label="🍊橘子" />
+  <Option value="🍐梨" label="🍐梨" />
+</Select>
+```
+
+## 远程搜索
+
+```tsx live=true
+function Index() {
+  const options = [
+    { value: "orange", label: "🍊 橘子" },
+    { value: "pear", label: "🍐 梨" },
+    { value: "banana", label: "🍌 香蕉" },
+    { value: "watermelon", label: "🍉 西瓜" },
+    { value: "pineapple", label: "🍍 菠萝" },
+    { value: "cantaloupe", label: "🍈 哈密瓜" }
+  ];
+  const [loading, updateLoading] = React.useState(false);
+  const [filteredOptions, updateFilteredOptions] = React.useState(options);
+  const onSearch = query => {
+    if (!query) {
+      return updateFilteredOptions(options);
+    }
+    updateLoading(true);
+    setTimeout(() => {
+      updateLoading(false);
+      updateFilteredOptions(
+        options.filter(option => option.label.indexOf(query) > -1)
+      );
+    }, 800);
+  };
+  return (
+    <Select async={true} loading={loading} onSearch={onSearch}>
+      {filteredOptions.map(option => (
+        <Option key={option.value} {...option} />
+      ))}
+    </Select>
+  );
+}
+```
+
+## 不同尺寸
+
+大中小三种组合，可以和表单输入框进行对应。
+
+```tsx live=true
+<>
+  <Select size="large" style={{ marginBottom: "10px" }}>
+    <Option value="orange" label="🍊 橘子" />
+    <Option value="pear" label="🍐 大梨" />
+  </Select>
+  <br />
+  <Select size="normal" style={{ marginBottom: "10px" }}>
+    <Option value="orange" label="🍊 橘子" />
+    <Option value="pear" label="🍐 大梨" />
+  </Select>
+  <br />
+  <Select size="small">
+    <Option value="orange" label="🍊 橘子" />
+    <Option value="pear" label="🍐 大梨" />
+  </Select>
+</>
+```
+
+## Select props
+
+| Name               | Description               | Type                                              | Required | Default     |
+| ------------------ | ------------------------- | ------------------------------------------------- | -------- | ----------- |
+| className          | 类名                      | `string`                                          | `false`  | `false`     |
+| clearable          | 是否可清除                | `boolean`                                         | `false`  | `false`     |
+| value              | 当前选中的值              | `string` \| `string[]` \| `number` \| `number[]`  | `false`  | -           |
+| defaultValue       | Default                   | `string` \| `string[]` \| `number` \| `number[]`  | `false`  | -           |
+| disabled           | 是否禁用                  | `boolean`                                         | `false`  | `false`     |
+| filterable         | 是否可筛选                | `boolean`                                         | `false`  | `false`     |
+| filter             | 筛选函数                  | `(option: OptionProps, query: string) => boolean` | `false`  | -           |
+| multiple           | 是否可多选                | `boolean`                                         | `false`  | `false`     |
+| loading            | 是否加载中                | `boolean`                                         | `false`  | `false`     |
+| loadingText        | 加载中文字                | `string`                                          | `false`  | `'加载中…'` |
+| size               | 选择框尺寸                | `'small'` \| `'normal'` \| `'large'`              | `false`  | `'normal'`  |
+| onBlur             | 失去焦点回调              | `({ target: { value: typeof value }}) => void`    | `false`  | -           |
+| onChange           | value 改变时回调          | `({ target: { value: typeof value }}) => void`    | `false`  | -           |
+| onClear            | value 清空时回调          | `({ target: { value: typeof value }}) => void`    | `false`  |             |
+| onFocus            | 获得焦点时回调            | `({ target: { value: typeof value }}) => void`    | `false`  | -           |
+| onSearch           | 输入时回调， 用于远程搜索 | `({ detail: { query: string }}) => void`          | `false`  | -           |
+| async              | 是否可远程搜索            | `boolean`                                         | `false`  | -           |
+| onVisibilityChange | 下拉菜单展开收缩回调      | `({ detail: { visible: boolean }}) => void`       | `false`  | -           |
+| placeholder        | 选择框默认提示            | `string`                                          | `false`  | `'请选择…'` |
+| style              | 样式                      | `React.CSSProperties`                             | `false`  | `null`      |
+
+## Option Props
+
+| Name      | Description | Type                  | Required | Default |
+| --------- | ----------- | --------------------- | -------- | ------- |
+| value     | 选项值      | `string` \| `number`  | `true`   | -       |
+| label     | 选项标签    | `string`              | `false`  | -       |
+| disabled  | 是否禁用    | `boolean`             | `false`  | `false` |
+| className | option 类名 | `string`              | `false`  | -       |
+| style     | 样式        | `React.CSSProperties` | `false`  | `null`  |
+
+## OptionGroup Props
+
+| Name  | Description | Type     | Required | Default |
+| ----- | ----------- | -------- | -------- | ------- |
+| title | 组名        | `string` | `false`  | -       |

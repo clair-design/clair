@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>ic_tree_folder-open_14px</title>
+    <desc>Created with Sketch.</desc>
+    <g id="ic_tree_folder-open_14px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_tree_folder-open">
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="14" height="14"></rect>
+            <path d="M11,13 L0.5,13 L2.21221246,6 C2.34730229,5.44771525 2.90452949,5 3.45681424,5 L13.2136199,5 C13.7659046,5 14.1041079,5.44771525 13.9690181,6 L12.5014074,12 C12.3663176,12.5522847 11.8090904,13 11.2568056,13 L11,13 L1,13 L11,13 Z M12,4 L2.70141602,4 C2.14913127,4 1.59190407,4.44771525 1.45681424,5 L0,10.9558612 L0,2 C1.11022302e-16,1.44771525 0.44771525,1 1,1 L5,1 C5.55228475,1 6,1.44771525 6,2 L11,2 C11.5522847,2 12,2.44771525 12,3 L12,4 Z" id="形状结合" fill="#FFB409" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

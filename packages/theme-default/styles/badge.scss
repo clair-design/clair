@@ -1,0 +1,34 @@
+@import 'variables';
+
+.c-badge {
+  position: relative;
+  display: inline-block;
+
+  &__content {
+    position: absolute;
+    top: 0;
+    right: $--badge-content-right;
+    display: inline-block;
+    padding: 0 $--badge-content-x-padding;
+    color: $--badge-content-color;
+    font-size: $--badge-content-font-size;
+    line-height: $--badge-content-line-height;
+    background-color: $--badge-content-background-color;
+    border-radius: $--badge-content-border-radius;
+    transform: translateY(-50%) translateX(100%);
+  }
+  &__content--dot {
+    right: $--badge-content-dot-size / 2;
+    width: $--badge-content-dot-size;
+    height: $--badge-content-dot-size;
+    padding: 0;
+    border-radius: 50%;
+  }
+  &__content--empty {
+    position: static;
+    transform: none;
+  }
+  &__content--hidden {
+    display: none;
+  }
+}

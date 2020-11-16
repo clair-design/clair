@@ -1,0 +1,216 @@
+@import 'variables';
+@import 'mixins/mixins';
+@import 'input';
+@import 'popover';
+@import 'icon';
+
+.c-time-picker {
+  position: relative;
+  width: $--time-picker-width;
+
+  .c-input {
+    width: 100%;
+  }
+
+  &-popup {
+    display: flex;
+    box-sizing: border-box;
+
+    height: $--time-picker-dropdown-default-height;
+    padding: 0 $--time-picker-base-padding-left;
+    overflow: hidden;
+    font-size: $--time-picker-base-font-size;
+    background-color: $--time-picker-default-background-color;
+    border: $--time-picker-border-width $--time-picker-border-style
+      $--time-picker-border-color;
+    box-shadow: $--time-picker-dropdown-box-shadow;
+    user-select: none;
+  }
+
+  &-popup [role='listbox'] {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &-popup--small {
+    padding: 0 $--time-picker-small-padding-left;
+  }
+
+  &-popup--large {
+    padding: 0 $--time-picker-large-padding-left;
+  }
+
+  &-popup [role='listbox'] {
+    width: $--time-picker-dropdown-width;
+    padding: 0 0 12em;
+    overflow-y: auto;
+    color: $--time-picker-dropdown-font-color;
+    line-height: $--time-picker-dropdown-default-line-height;
+    text-align: $--time-picker-default-text-align;
+    scroll-behavior: smooth;
+  }
+
+  &-popup [role='listbox']::-webkit-scrollbar,
+  &-popup [role='listbox']::-webkit-scrollbar-thumb,
+  &-popup [role='listbox']:hover::-webkit-scrollbar {
+    background-color: $--time-picker-default-background-color;
+  }
+
+  &-popup [role='listbox']::-webkit-scrollbar {
+    width: $--time-picker-default-scroll-width;
+  }
+
+  &-popup [role='listbox']::-webkit-scrollbar-thumb {
+    border-radius: $--time-picker-default-scroll-radius;
+  }
+
+  &-popup [role='listbox']:hover::-webkit-scrollbar-thumb {
+    background-color: $--time-picker-default-scroll-background-color;
+  }
+
+  &-popup [role='option']:not([aria-disabled]) {
+    cursor: pointer;
+  }
+
+  &-popup [role='option']:hover {
+    background-color: $--time-picker-default-hover-background-color;
+  }
+
+  &-popup [role='option']:focus,
+  &-popup [role='option']:active,
+  &-popup [aria-selected='true'] {
+    font-weight: bold;
+    background-color: $--time-picker-default-selected-background-color;
+  }
+
+  &-popup [role='option']:focus,
+  &-popup [role='option']:active {
+    color: $--time-picker-default-selected-font-color;
+  }
+
+  &-range {
+    $bg-color: $--input-default-background-color;
+    $border-color: $--input-default-border-color;
+
+    position: relative;
+    display: flex;
+    box-sizing: content-box;
+    width: $--time-picker-range-width;
+
+    background-color: $bg-color;
+    border: 1px solid $border-color;
+    border-radius: $--input-border-radius;
+
+    &:hover {
+      border-color: tint($--input-focus-border-color, 25%);
+    }
+
+    &:focus,
+    &:focus-within {
+      @include focus-ring;
+      border-color: $--input-focus-border-color;
+      outline: none;
+    }
+
+    &:active {
+      border-color: $--input-focus-border-color;
+    }
+  }
+
+  &-range .c-input-affix-container,
+  &-range .c-input {
+    $height: $--time-picker-base-height - 2;
+    $width: $--time-picker-range-width / 2 -
+      ($--time-picker-separator-width - $--time-picker-border-width * 2);
+    width: $width;
+    line-height: $height;
+    text-align: $--time-picker-default-text-align;
+    border: none;
+  }
+
+  &-range--small .c-input-affix-container,
+  &-range--small .c-input {
+    $height: $--time-picker-small-height - 2;
+    line-height: $height;
+  }
+
+  &-range--large .c-input-affix-container,
+  &-range--large .c-input {
+    $height: $--time-picker-large-height - 2;
+    line-height: $height;
+  }
+
+  &-range .c-input-affix-container:focus-within,
+  &-range .c-input-affix-container:active,
+  &-range .c-input:focus,
+  &-range .c-input:active {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &-range .c-input-affix-container .c-input {
+    width: 100%;
+  }
+
+  &-popup--range {
+    padding: 0;
+  }
+
+  &-popup--range &-list-group {
+    display: flex;
+    box-sizing: border-box;
+    padding: 0 $--time-picker-base-padding-left;
+  }
+
+  &-popup--small &-list-group {
+    padding: 0 $--time-picker-small-padding-left;
+  }
+
+  &-popup--large &-list-group {
+    padding: 0 $--time-picker-large-padding-left;
+  }
+
+  &-popup--range &-list-group:first-child {
+    border-right: $--time-picker-border-width $--time-picker-border-style
+      $--time-picker-border-color;
+  }
+
+  &__separator {
+    align-self: center;
+    stroke-width: 1;
+    font-size: 12px;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    z-index: 1;
+    transform: translate(0, -50%);
+  }
+
+  &[aria-disabled='true'],
+  &-popup [aria-disabled='true'],
+  &-popup [aria-disabled='true']:hover {
+    color: $--disabled-text-color;
+    background-color: transparent;
+  }
+
+  &-range[aria-disabled='true'] {
+    color: $--disabled-text-color;
+    background-color: $--disabled-background-color;
+  }
+
+  &-range[aria-disabled='true']:hover {
+    background-color: $--disabled-background-color;
+    border-color: $--input-default-border-color;
+  }
+
+  &[aria-disabled='true'] .c-icon--svg.c-icon--svg-light,
+  &[aria-disabled='true'] .c-icon--svg.c-icon--svg-light:hover,
+  &-range[aria-disabled='true'] .c-icon--svg.c-icon--svg-light,
+  &-range[aria-disabled='true'] .c-icon--svg.c-icon--svg-light:hover {
+    opacity: 0.3;
+  }
+}

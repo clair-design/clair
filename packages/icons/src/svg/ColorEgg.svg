@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>ColorEgg</title>
+    <desc>Created with Sketch.</desc>
+    <g id="ColorEgg" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M24,16.2749958 C24,22.7284929 19.7810795,27 14,27 C8.21892045,27 4,22.7284929 4,16.2749958 C4,12.2932161 5.31099432,8.47998964 7.48693182,5.47951737 C9.46386364,2.75347725 11.9692614,1 14,1 C16.0307386,1 18.5361364,2.75347725 20.5130682,5.47951737 C22.6889773,8.47995917 24,12.2932161 24,16.2749958 Z" id="路径" stroke="#6E6E6E" stroke-width="2" fill-rule="nonzero"></path>
+            <polyline id="路径-2" stroke="#6E6E6E" stroke-width="2" points="5 10 8.31578947 13 11.1578947 10.5 14 13 16.8421053 10.5 19.6842105 13 23 10"></polyline>
+        </g>
+    </g>
+</svg>

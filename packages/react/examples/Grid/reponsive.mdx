@@ -1,0 +1,54 @@
+## Responsive
+
+设置响应式布局。
+
+响应式字段的对应的屏幕尺寸，如下所示：
+
+| 字段 | 屏幕尺寸        |
+| ---- | --------------- |
+| xs   | < 600px         |
+| sm   | 600px ~ 960px   |
+| md   | 960px ~ 1200px  |
+| lg   | 1200px ~ 1920px |
+| xl   | 1920px ~ 2560px |
+| xxl  | > 2560px        |
+
+```jsx live=true className=s-grid-example
+<Row
+  gutter="5px"
+  sm={{ gutter: "2px" }}
+  lg={{ gutter: "10px " }}
+  xxl={{ gutter: "18px" }}
+>
+  <Col
+    xs={{ span: 12 }}
+    sm={{ span: 6 }}
+    md={{ span: 3 }}
+    lg={{ span: 3 }}
+    xl={{ span: 3 }}
+    xxl={{ span: 3 }}
+  >
+    1
+  </Col>
+  <Col
+    xs={{ span: 12 }}
+    sm={{ span: 6 }}
+    md={{ span: 3 }}
+    lg={{ span: 3 }}
+    xl={{ span: 3 }}
+    xxl={{ span: 3 }}
+  >
+    2
+  </Col>
+  <Col
+    xs={{ span: 12 }}
+    sm={{ span: 6 }}
+    md={{ span: 3 }}
+    lg={{ span: 3 }}
+    xl={{ span: 3 }}
+    xxl={{ span: 3 }}
+  >
+    3
+  </Col>
+</Row>
+```

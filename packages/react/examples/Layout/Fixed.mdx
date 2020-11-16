@@ -1,0 +1,30 @@
+## 固定顶部和侧边栏
+
+为 `Header` 和 `Aside` 设置 `fixed` 属性，可以使他们相对于屏幕固定。
+
+```jsx live=true className=s-layout-example
+<Layout style={{ height: 240 }}>
+  <Header fixed>header</Header>
+  <Layout>
+    <Aside fixed>aside</Aside>
+    <Main style={{ height: "auto" }}>
+      <div>
+        <p>...</p>
+        <p>...</p>
+        <p>...</p>
+        <p>main</p>
+        <p>...</p>
+        <p>...</p>
+        <p>↓</p>
+        <p>...</p>
+        <p>...</p>
+        <p>...</p>
+        <p>...</p>
+        <p>...</p>
+        <p>...</p>
+        <p>end</p>
+      </div>
+    </Main>
+  </Layout>
+</Layout>
+```

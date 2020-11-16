@@ -1,0 +1,14 @@
+## 带图片样式
+
+卡片包含图片、视频等内容
+
+```tsx live=true
+function Demo() {
+  const cover = <img src="https://p4.ssl.qhimg.com/t01c1fc52a32d91bd6e.png" />;
+  return (
+    <Card title="这是标题" actions="这是操作" cover={cover}>
+      这是内容
+    </Card>
+  );
+}
+```

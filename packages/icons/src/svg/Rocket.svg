@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Rocket</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="28"></rect>
+    </defs>
+    <g id="Rocket" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="矩形" opacity="0.200000003"></g>
+            <g id="编组-4" mask="url(#mask-2)" stroke="#6E6E6E" stroke-width="2">
+                <g transform="translate(-3.000000, -3.000000)">
+                    <path d="M12.6850671,1.53355195 C8.15981458,4.76587519 5.89718832,8.64466306 5.89718832,13.1699156 C5.89718832,17.0487035 6.54365296,20.2810267 7.83658226,22.8668853 C9.45274387,23.5133499 11.0689055,23.8365823 12.6850671,23.8365823 C14.3012287,23.8365823 15.9173903,23.5133499 17.533552,22.8668853 C18.8264812,20.2810267 19.4729459,17.0487035 19.4729459,13.1699156 C19.4729459,8.64466306 17.2103196,4.76587519 12.6850671,1.53355195 Z" id="路径-110" stroke-linejoin="round" transform="translate(12.685067, 12.685067) rotate(-45.000000) translate(-12.685067, -12.685067) "></path>
+                    <circle id="椭圆形" cx="13" cy="13" r="3"></circle>
+                    <polyline id="路径-111" stroke-linejoin="round" transform="translate(12.750000, 24.250000) rotate(-45.000000) translate(-12.750000, -24.250000) " points="14.517767 20.0073593 8.8609127 28.4926407 16.6390873 26.3713203"></polyline>
+                    <polyline id="路径-111" stroke-linejoin="round" transform="translate(24.250000, 12.750000) scale(-1, 1) rotate(45.000000) translate(-24.250000, -12.750000) " points="26.017767 8.50735931 20.3609127 16.9926407 28.1390873 14.8713203"></polyline>
+                    <path d="M26.3817988,31.498708 C24.4961807,28.6702809 23.5533716,26.3132583 23.5533716,24.4276402 C23.5533716,20.1849995 29.2102259,20.2363572 29.2102259,24.4276402 C29.2102259,26.3132583 28.2674168,28.6702809 26.3817988,31.498708 Z" id="路径-112" stroke-linejoin="round" transform="translate(26.381799, 26.381799) rotate(-45.000000) translate(-26.381799, -26.381799) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

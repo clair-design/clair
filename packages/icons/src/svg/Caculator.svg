@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Caculator</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Caculator" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <rect id="矩形" stroke="#6E6E6E" stroke-width="2" x="3" y="3" width="22" height="22" rx="2"></rect>
+            <path d="M7,10 L11,10" id="路径-131" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M17,10 L20,10" id="路径-131" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M17,17 L20,17" id="路径-131" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M17,20 L20,20" id="路径-131" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M7,10 L11,10" id="路径-131" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" transform="translate(9.000000, 10.000000) rotate(90.000000) translate(-9.000000, -10.000000) "></path>
+            <path d="M8,17 L11,20" id="路径-132" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M8,17 L11,20" id="路径-132" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" transform="translate(9.500000, 18.500000) scale(-1, 1) translate(-9.500000, -18.500000) "></path>
+        </g>
+    </g>
+</svg>

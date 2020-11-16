@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>ic_arrow-down</title>
+    <desc>Created with Sketch.</desc>
+    <g id="ic_arrow-down" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="编组">
+            <g transform="translate(7.000000, 7.000000) rotate(90.000000) translate(-7.000000, -7.000000) ">
+                <rect id="矩形" opacity="0.200000003" x="0" y="0" width="14" height="14"></rect>
+                <path d="M4.82539569,1.70748202 L10.5571003,6.6203717 C10.7667632,6.80008277 10.791044,7.11573277 10.6113329,7.32539569 C10.5946706,7.34483509 10.5765397,7.36296595 10.5571003,7.3796283 L4.82539569,12.292518 C4.61573277,12.4722291 4.30008277,12.4479483 4.1203717,12.2382854 C4.04269608,12.1476638 4,12.0322453 4,11.9128897 L4,2.08711032 C4,1.81096794 4.22385763,1.58711032 4.5,1.58711032 C4.61935564,1.58711032 4.73477413,1.6298064 4.82539569,1.70748202 Z" id="路径-17" fill="#6E6E6E" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

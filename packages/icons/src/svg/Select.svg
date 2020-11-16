@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Select</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Select" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <polygon id="路径-67" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round" points="9 9 15.9230769 27 18.6923077 19.3846154 27 15.9230769"></polygon>
+            <path d="M11,25 L5,25 C3.8954305,25 3,24.1045695 3,23 L3,5 C3,3.8954305 3.8954305,3 5,3 L5,3 L23,3 C24.1045695,3 25,3.8954305 25,5 L25,11" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>

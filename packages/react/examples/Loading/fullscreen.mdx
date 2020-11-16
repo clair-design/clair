@@ -1,0 +1,19 @@
+## 全屏显示
+
+```tsx live=true
+function Demo() {
+  const [loading, setLoading] = React.useState(false);
+  const onClick = e => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  };
+  return (
+    <div>
+      <Button onClick={onClick}>全屏Loading</Button>
+      <Loading fullscreen={true} size="large" loading={loading}></Loading>
+    </div>
+  );
+}
+```

@@ -1,0 +1,76 @@
+## 文件上传进度事件与列表渲染
+
+```tsx live=true
+function Demo() {
+  let uploadNode;
+  const bindRef = node => {
+    uploadNode = node;
+  };
+  const [files, setFiles] = React.useState([]);
+
+  const onChange = ({ detail }) => {
+    const { allFiles } = detail;
+    setFiles(detail.allFiles);
+  };
+
+  const onReady = ({ detail }) => {
+    setFiles(detail.allFiles);
+  };
+
+  const onAfterRemove = ({ detail }) => {
+    setFiles(detail.allFiles);
+  };
+
+  const onClose = fileId => {
+    if (uploadNode && fileId) {
+      uploadNode.remove([fileId]);
+    }
+  };
+
+  const listDom =
+    files &&
+    files.length > 0 &&
+    files.map(file => {
+      if (file.fileId) {
+        return (
+          <li key={file.fileId} style={{ margin: "5px 0" }}>
+            <Alert
+              showIcon={false}
+              onClose={e => onClose(file.fileId)}
+              type={
+                file.fileState === "fail"
+                  ? "error"
+                  : file.fileState === "success"
+                  ? "success"
+                  : "info"
+              }
+            >
+              {file.fileState === "fail" ? (
+                <IconClose />
+              ) : file.fileState === "success" ? (
+                <IconChecked />
+              ) : (
+                <IconSpin />
+              )}{" "}
+              {file.rawFile.name} 上传进度：{parseInt(file.percent || 0)}%
+            </Alert>
+          </li>
+        );
+      }
+    });
+
+  return (
+    <div>
+      <Upload
+        ref={bindRef}
+        multiple
+        action="https://jsonplaceholder.typicode.com/posts/"
+        onReady={onReady}
+        onChange={onChange}
+        onAfterRemove={onAfterRemove}
+      ></Upload>
+      <ul style={{ listStyle: "none", paddingLeft: 0 }}>{listDom}</ul>
+    </div>
+  );
+}
+```

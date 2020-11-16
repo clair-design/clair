@@ -1,0 +1,35 @@
+## 上传文件夹
+
+指定`directory`属性可以上传整个文件夹的内容，使用此属性请注意兼容性问题
+[caniuse](https://caniuse.com/#feat=input-file-directory)
+
+```tsx live=true deps=notification
+function Demo() {
+  const onSuccess = ({ detail }) => {
+    const { file, allFiles, response } = detail;
+    notification.success({
+      title: "上传成功！",
+      content: `文件${file.rawFile.name}上传成功！`
+    });
+  };
+  const onError = ({ detail }) => {
+    const { file, allFiles, error } = detail;
+    notification.error({
+      title: "上传失败！",
+      content: `文件${file.rawFile.name}上传失败！`
+    });
+  };
+  return (
+    <div>
+      <Upload
+        directory
+        action="https://jsonplaceholder.typicode.com/posts/"
+        onSuccess={onSuccess}
+        onError={onError}
+      >
+        <Button type="primary">上传文件夹</Button>
+      </Upload>
+    </div>
+  );
+}
+```

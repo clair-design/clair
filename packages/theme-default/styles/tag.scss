@@ -1,0 +1,90 @@
+@import 'variables';
+@import 'icon';
+
+@mixin tag-color($color) {
+  color: $color;
+  background-color: shift-color($--base-background-color, $color, 5%);
+}
+
+.c-tag {
+  $color-default: $--base-text-color;
+  $bg-color-default: $--light-gray-background-color;
+
+  display: inline-flex;
+  align-items: center;
+  padding: 0 8px;
+  color: $color-default;
+
+  background-color: $bg-color-default;
+  border-radius: 1px;
+
+  .c-tag__label {
+    max-width: 20em;
+    overflow: hidden;
+    font-size: $--small-font-size;
+    line-height: (26/12);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &-closable {
+    padding: 0 5px 0 8px;
+  }
+
+  &-closable .c-tag__label {
+    margin-right: 3px;
+  }
+
+  &--large {
+    padding: 0 10px;
+  }
+
+  &--large &__label {
+    line-height: (30/12);
+  }
+
+  &--small {
+    padding: 0 8px;
+  }
+
+  &--small &__label {
+    line-height: (22/12);
+  }
+
+  &--blue {
+    @include tag-color($--tag-blue-color);
+  }
+
+  &--green {
+    @include tag-color($--tag-green-color);
+  }
+
+  &--orange {
+    @include tag-color($--tag-orange-color);
+  }
+
+  &--red {
+    @include tag-color($--tag-red-color);
+  }
+
+  &--purple {
+    @include tag-color($--tag-purple-color);
+  }
+
+  &--grey {
+    @include tag-color($--tag-grey-color);
+  }
+
+  &--cyan {
+    @include tag-color($--tag-cyan-color);
+  }
+
+  &--magenta {
+    @include tag-color($--tag-magenta-color);
+  }
+
+  .c-icon--close-tag {
+    transform: scale(0.7);
+    cursor: pointer;
+  }
+}

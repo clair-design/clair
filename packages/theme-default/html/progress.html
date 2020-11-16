@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<title>Progress</title>
+<link rel="stylesheet" href="../styles/progress.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body {
+    margin: 30px auto;
+    max-width: 1200px;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+
+<h1>Progress</h1>
+
+<h2>基础样式</h2>
+
+<div
+  class="c-progress c-progress--line"
+  role="progressbar"
+  aria-valuenow="50"
+  aria-valuemin="0"
+  aria-valuemax="100"
+>
+  <div class="c-progress__bg" style="border-radius: 4px;">
+    <div
+      class="c-progress__inner"
+      style="width: 50%; border-radius: 4px;"
+    ></div>
+  </div>
+  <div class="c-progress__text">
+    50%
+  </div>
+</div>
+<div
+  class="c-progress c-progress--line c-progress--active"
+  role="progressbar"
+  aria-valuenow="68"
+  aria-valuemin="0"
+  aria-valuemax="100"
+>
+  <div class="c-progress__bg" style="border-radius: 4px;">
+    <div
+      class="c-progress__inner"
+      style="width: 68%; border-radius: 4px;"
+    ></div>
+  </div>
+  <div class="c-progress__text">
+    加载中…
+  </div>
+</div>
+<div
+  class="c-progress c-progress--line c-progress--exception"
+  role="progressbar"
+  aria-valuenow="84"
+  aria-valuemin="0"
+  aria-valuemax="100"
+>
+  <div class="c-progress__bg" style="border-radius: 4px;">
+    <div
+      class="c-progress__inner"
+      style="width: 84%; border-radius: 4px;"
+    ></div>
+  </div>
+  <div class="c-progress__text">
+    ×
+  </div>
+</div>
+<div
+  class="c-progress c-progress--line c-progress--success"
+  role="progressbar"
+  aria-valuenow="100"
+  aria-valuemin="0"
+  aria-valuemax="100"
+>
+  <div class="c-progress__bg" style="border-radius: 4px;">
+    <div
+      class="c-progress__inner"
+      style="width: 100%; border-radius: 4px;"
+    ></div>
+  </div>
+  <div class="c-progress__text">
+    √
+  </div>
+</div>
+
+<h2>小型样式</h2>
+
+<div
+  class="c-progress c-progress--line c-progress--small"
+  role="progressbar"
+  aria-valuenow="50"
+  aria-valuemin="0"
+  aria-valuemax="100"
+>
+  <div class="c-progress__bg" style="border-radius: 3px;">
+    <div
+      class="c-progress__inner"
+      style="width: 50%; border-radius: 3px;"
+    ></div>
+  </div>
+  <div class="c-progress__text">
+    50%
+  </div>
+</div>
+<div
+  class="c-progress c-progress--line c-progress--small c-progress--active"
+  role="progressbar"
+  aria-valuenow="68"
+  aria-valuemin="0"
+  aria-valuemax="100"
+>
+  <div class="c-progress__bg" style="border-radius: 3px;">
+    <div
+      class="c-progress__inner"
+      style="width: 68%; border-radius: 3px;"
+    ></div>
+  </div>
+  <div class="c-progress__text">
+    加载中…
+  </div>
+</div>
+<div
+  class="c-progress c-progress--line c-progress--small c-progress--exception"
+  role="progressbar"
+  aria-valuenow="84"
+  aria-valuemin="0"
+  aria-valuemax="100"
+>
+  <div class="c-progress__bg" style="border-radius: 3px;">
+    <div
+      class="c-progress__inner"
+      style="width: 84%; border-radius: 3px;"
+    ></div>
+  </div>
+  <div class="c-progress__text">
+    ×
+  </div>
+</div>
+<div
+  class="c-progress c-progress--line c-progress--small c-progress--success"
+  role="progressbar"
+  aria-valuenow="100"
+  aria-valuemin="0"
+  aria-valuemax="100"
+>
+  <div class="c-progress__bg" style="border-radius: 3px;">
+    <div
+      class="c-progress__inner"
+      style="width: 100%; border-radius: 3px;"
+    ></div>
+  </div>
+  <div class="c-progress__text">
+    √
+  </div>
+</div>
+
+<h2>进度圈样式</h2>
+
+<!--
+  variable: width, strokeWidth, percent
+  stroke-width = strokeWidth * 100 / width
+  r = 50 - stroke-width / 2
+  stroke-dasharray = (percent * 2 * PI * r) (2 * PI * r)
+-->
+
+<div
+  class="c-progress c-progress--circle"
+  style="width: 120px; height: 120px;"
+  role="progressbar"
+  aria-valuenow="68"
+  aria-valuemin="0"
+  aria-valuemax="100"
+>
+  <svg class="c-progress__circle" viewBox="0 0 100 100">
+    <circle
+      class="c-progress__bg"
+      cx="50"
+      cy="50"
+      r="calc(50 - 6 * 100 / 120 / 2)"
+      stroke-width="calc(6 * 100 / 120)"
+      fill="none"
+    ></circle>
+    <circle
+      class="c-progress__inner"
+      cx="50"
+      cy="50"
+      r="calc(50 - 6 * 100 / 120 / 2)"
+      stroke-width="calc(6 * 100 / 120)"
+      stroke-dasharray="calc(0.68 * 2 * 3.14 * calc(50 - 6 * 100 / 120 / 2)) calc(2 * 3.14 * calc(50 - 6 * 100 / 120 / 2))"
+      fill="none"
+    ></circle>
+  </svg>
+  <div class="c-progress__text">
+    68%
+  </div>
+</div>
+<div
+  class="c-progress c-progress--circle c-progress--exception"
+  style="width: 120px; height: 120px;"
+  role="progressbar"
+  aria-valuenow="84"
+  aria-valuemin="0"
+  aria-valuemax="100"
+>
+  <svg class="c-progress__circle" viewBox="0 0 100 100">
+    <circle
+      class="c-progress__bg"
+      cx="50"
+      cy="50"
+      r="calc(50 - 6 * 100 / 120 / 2)"
+      stroke-width="calc(6 * 100 / 120)"
+      fill="none"
+    ></circle>
+    <circle
+      class="c-progress__inner"
+      cx="50"
+      cy="50"
+      r="calc(50 - 6 * 100 / 120 / 2)"
+      stroke-width="calc(6 * 100 / 120)"
+      fill="none"
+      stroke-dasharray="calc(0.84 * 2 * 3.14 * calc(50 - 6 * 100 / 120 / 2)) calc(2 * 3.14 * calc(50 - 6 * 100 / 120 / 2))"
+    ></circle>
+  </svg>
+  <div class="c-progress__text">
+    ×
+  </div>
+</div>
+<div
+  class="c-progress c-progress--circle c-progress--success"
+  style="width: 120px; height: 120px;"
+  role="progressbar"
+  aria-valuenow="100"
+  aria-valuemin="0"
+  aria-valuemax="100"
+>
+  <svg class="c-progress__circle" viewBox="0 0 100 100">
+    <circle
+      class="c-progress__bg"
+      cx="50"
+      cy="50"
+      r="calc(50 - 6 * 100 / 120 / 2)"
+      stroke-width="calc(6 * 100 / 120)"
+      fill="none"
+    ></circle>
+    <circle
+      class="c-progress__inner"
+      cx="50"
+      cy="50"
+      r="calc(50 - 6 * 100 / 120 / 2)"
+      stroke-width="calc(6 * 100 / 120)"
+      fill="none"
+      stroke-dasharray="calc(1 * 2 * 3.14 * calc(50 - 6 * 100 / 120 / 2)) calc(2 * 3.14 * calc(50 - 6 * 100 / 120 / 2))"
+    ></circle>
+  </svg>
+  <div class="c-progress__text">
+    √
+  </div>
+</div>
+
+<h2>小型进度圈样式</h2>
+
+<!--
+  variable: width, strokeWidth, percent
+  stroke-width = strokeWidth * 100 / width
+  r = 50 - stroke-width / 2
+  stroke-dasharray = percent * 2 * PI * r
+-->
+
+<div
+  class="c-progress c-progress--circle c-progress--small"
+  style="width: 84px; height: 84px;"
+  role="progressbar"
+  aria-valuenow="68"
+  aria-valuemin="0"
+  aria-valuemax="100"
+>
+  <svg class="c-progress__circle" viewBox="0 0 100 100">
+    <circle
+      class="c-progress__bg"
+      cx="50"
+      cy="50"
+      r="calc(50 - 4 * 100 / 84 / 2)"
+      stroke-width="calc(4 * 100 / 84)"
+      fill="none"
+    ></circle>
+    <circle
+      class="c-progress__inner"
+      cx="50"
+      cy="50"
+      r="calc(50 - 4 * 100 / 84 / 2)"
+      stroke-width="calc(4 * 100 / 84)"
+      fill="none"
+      stroke-dasharray="calc(0.68 * 2 * 3.14 * calc(50 - 4 * 100 / 84 / 2)) calc(2 * 3.14 * calc(50 - 4 * 100 / 84 / 2))"
+    ></circle>
+  </svg>
+  <div class="c-progress__text">
+    68%
+  </div>
+</div>
+<div
+  class="c-progress c-progress--circle c-progress--small c-progress--exception"
+  style="width: 84px; height: 84px;"
+  role="progressbar"
+  aria-valuenow="84"
+  aria-valuemin="0"
+  aria-valuemax="100"
+>
+  <svg class="c-progress__circle" viewBox="0 0 100 100">
+    <circle
+      class="c-progress__bg"
+      cx="50"
+      cy="50"
+      r="calc(50 - 4 * 100 / 84 / 2)"
+      stroke-width="calc(4 * 100 / 84)"
+      fill="none"
+    ></circle>
+    <circle
+      class="c-progress__inner"
+      cx="50"
+      cy="50"
+      r="calc(50 - 4 * 100 / 84 / 2)"
+      stroke-width="calc(4 * 100 / 84)"
+      fill="none"
+      stroke-dasharray="calc(0.84 * 2 * 3.14 * calc(50 - 4 * 100 / 84 / 2)) calc(2 * 3.14 * calc(50 - 4 * 100 / 84 / 2))"
+    ></circle>
+  </svg>
+  <div class="c-progress__text">
+    ×
+  </div>
+</div>
+<div
+  class="c-progress c-progress--circle c-progress--small c-progress--success"
+  style="width: 84px; height: 84px;"
+  role="progressbar"
+  aria-valuenow="100"
+  aria-valuemin="0"
+  aria-valuemax="100"
+>
+  <svg class="c-progress__circle" viewBox="0 0 100 100">
+    <circle
+      class="c-progress__bg"
+      cx="50"
+      cy="50"
+      r="calc(50 - 4 * 100 / 84 / 2)"
+      stroke-width="calc(4 * 100 / 84)"
+      fill="none"
+    ></circle>
+    <circle
+      class="c-progress__inner"
+      cx="50"
+      cy="50"
+      r="calc(50 - 4 * 100 / 84 / 2)"
+      stroke-width="calc(4 * 100 / 84)"
+      fill="none"
+      stroke-dasharray="calc(1 * 2 * 3.14 * calc(50 - 4 * 100 / 84 / 2)) calc(2 * 3.14 * calc(50 - 4 * 100 / 84 / 2))"
+    ></circle>
+  </svg>
+  <div class="c-progress__text">
+    √
+  </div>
+</div>

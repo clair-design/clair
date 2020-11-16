@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Edit</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="28" height="28"></rect>
+    </defs>
+    <g id="Edit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="蒙版" opacity="0.200000003"></g>
+            <path d="M13,27 L27,27" id="路径-6" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" mask="url(#mask-2)"></path>
+            <path d="M8.12780674,2.25356928 L8.12424722,25.6697578 C8.12418058,26.1080968 8.26812188,26.5343187 8.53393189,26.8828673 L12.1241445,31.5906049 L15.7145625,26.882598 C15.9802463,26.5342149 16.1241806,26.1082274 16.1242472,25.6700965 L16.1278067,2.25356928 C16.1282786,1.14899983 15.2329843,0.253433229 14.1284148,0.253265322 C14.1283134,0.253265307 14.1282121,0.253265299 14.1281108,0.253569298 L10.1281108,0.253569298 C9.02365998,0.253873343 8.12827867,1.14911856 8.12780674,2.25356928 Z" id="矩形" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round" mask="url(#mask-2)" transform="translate(12.126128, 15.922087) rotate(45.000000) translate(-12.126128, -15.922087) "></path>
+            <path d="M14.5361966,9.50921355 L22.5361966,9.50921355" id="路径-5" stroke="#6E6E6E" stroke-width="2" mask="url(#mask-2)" transform="translate(18.536197, 9.509214) rotate(45.000000) translate(-18.536197, -9.509214) "></path>
+            <path d="M1.80827453,22.2371356 L9.80827453,22.2371356" id="路径-5" stroke="#6E6E6E" stroke-width="2" mask="url(#mask-2)" transform="translate(5.808275, 22.237136) rotate(45.000000) translate(-5.808275, -22.237136) "></path>
+        </g>
+    </g>
+</svg>

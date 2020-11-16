@@ -1,0 +1,20 @@
+#app {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 10px;
+}
+
+.icon-container {
+  display: inline-flex;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  justify-content: center;
+  align-items: center;
+  color: #6e6e6e;
+}
+
+svg {
+  width: 14px;
+  height: 14px;
+}

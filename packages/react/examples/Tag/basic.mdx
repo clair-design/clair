@@ -1,0 +1,15 @@
+## 基础样式
+
+常规标签，允许做点击跳转或关闭操作。
+
+```tsx live=true
+<>
+  <Tag style={{ margin: "0 5px" }}>标签1</Tag>
+  <Tag style={{ margin: "0 5px" }}>标签2</Tag>
+  <Tag style={{ margin: "0 5px" }}>标签3</Tag>
+  <Tag style={{ margin: "0 5px" }}>标签4</Tag>
+  <Tag style={{ margin: "0 5px" }} closable onClose={() => alert("close me!")}>
+    标签5
+  </Tag>
+</>
+```

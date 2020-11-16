@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<title>Breadcrumb</title>
+<link rel="stylesheet" href="../styles/breadcrumb.scss" />
+<link rel="stylesheet" href="../styles/icon.scss" />
+<script src="https://unpkg.com/focus-visible/dist/focus-visible.min.js"></script>
+
+<style>
+  body {
+    max-width: 1200px;
+    margin: 30px auto;
+  }
+
+  /*
+    This will hide the focus indicator if the element receives focus via the mouse,
+    but it will still show up on keyboard focus.
+  */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+</style>
+
+<!-- 在下面写你的 HTML -->
+<h1>Breadcrumb</h1>
+<h2>基础样式</h2>
+<nav role="navigation" class="c-breadcrumb">
+  <span class="c-breadcrumb__item">
+    <span role="link"><a href="/">首页</a></span>
+    <span class="c-breadcrumb__separator">/</span>
+  </span>
+  <span class="c-breadcrumb__item">
+    <span role="link" tabindex="0">数据模型</span>
+    <span class="c-breadcrumb__separator">/</span>
+  </span>
+  <span class="c-breadcrumb__item">
+    <span>数据展示</span>
+    <span class="c-breadcrumb__separator">/</span>
+  </span>
+</nav>
+<h2>带图标样式</h2>
+<nav role="navigation" class="c-breadcrumb">
+  <span class="c-breadcrumb__item">
+    <span role="link" tabindex="0">
+      <i aria-hidden="true" class="c-icon--svg">
+        <svg viewBox="0 0 14 14" style="stroke-width: 1;">
+          <g fill="none" fill-rule="evenodd" stroke="currentColor">
+            <polyline
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              points="1.4350142 5.9350142 6 10.5 12.7997399 3.21456434"
+            ></polyline>
+          </g>
+        </svg>
+      </i>
+      <span>首页</span>
+    </span>
+    <span class="c-breadcrumb__separator">/</span>
+  </span>
+  <span class="c-breadcrumb__item">
+    <span role="link" tabindex="0">数据模型</span>
+    <span class="c-breadcrumb__separator">/</span>
+  </span>
+  <span class="c-breadcrumb__item">
+    <span>数据展示</span>
+    <span class="c-breadcrumb__separator">/</span>
+  </span>
+</nav>

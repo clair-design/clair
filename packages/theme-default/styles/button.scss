@@ -1,0 +1,247 @@
+@import 'variables';
+
+// button 尺寸相关
+@mixin mixin-btn-size($fontSize, $height, $padding, $minWidth) {
+  min-width: $minWidth;
+  height: $height;
+  padding: $padding;
+
+  font-size: $fontSize;
+  line-height: $height - 2;
+
+  &.c-button--round {
+    border-radius: $height;
+  }
+
+  &.c-button--icon {
+    width: $height;
+    min-width: 0;
+    padding-right: 0;
+    padding-left: 0;
+    text-align: center;
+    border-radius: $height;
+  }
+}
+
+// button 伪类
+@mixin mixin-btn-pseudo-classes($bgColor) {
+  &:not(:disabled):hover,
+  &:not(:disabled):focus {
+    color: text-color($bgColor);
+    background-color: dim($bgColor, 11%);
+  }
+
+  &:not(:disabled):active {
+    color: text-color($bgColor);
+    background-color: highlight($bgColor, 6%);
+  }
+}
+
+.c-button {
+  display: inline-block;
+  box-sizing: border-box;
+
+  color: inherit;
+
+  // like border-width, some user agent set default border-style to `outset`
+  border-style: solid;
+  // certain user agent set the default border-width to 2px
+  // here to normalize it to 1px
+  border-width: 1px;
+  border-radius: $--button-border-radius;
+  outline: none;
+  cursor: pointer;
+  transition: $--button-transition;
+  appearance: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  &::-moz-focus-inner {
+    padding: 0;
+    border-style: none;
+  }
+
+  // override `normalize.css`'s normalization
+  // https://github.com/necolas/normalize.css/blob/fc091cce1534909334c1911709a39c22d406977b/normalize.css#L218
+  &:-moz-focusring {
+    outline: none;
+  }
+
+  &:disabled {
+    color: $--disabled-text-color;
+    background-color: $--disabled-background-color;
+    cursor: default;
+  }
+}
+
+// -------------------------------------------------------------------------
+// Different sizes
+.c-button--normal {
+  @include mixin-btn-size(
+    $--button-default-font-size,
+    $--button-default-height,
+    $--button-default-padding,
+    $--button-default-min-width
+  );
+}
+
+.c-button--small {
+  @include mixin-btn-size(
+    $--button-small-font-size,
+    $--button-small-height,
+    $--button-small-padding,
+    $--button-small-min-width
+  );
+}
+
+.c-button--large {
+  @include mixin-btn-size(
+    $--button-large-font-size,
+    $--button-large-height,
+    $--button-large-padding,
+    $--button-large-min-width
+  );
+}
+
+// -------------------------------------------------------------------------
+// Different semantics
+.c-button--default {
+  $bgColor: $--button-default-background-color;
+  $borderColor: $--button-default-border-color;
+  $emphasisBorderColor: $--primary-color;
+
+  color: text-color($bgColor);
+  background-color: $bgColor;
+  border: 1px solid $borderColor;
+
+  &:not(:disabled):hover {
+    color: $--primary-color;
+    background-color: $bgColor;
+    border-color: $emphasisBorderColor;
+  }
+
+  &:not(:disabled):focus {
+    background: shade($bgColor, 2%);
+    border-color: $emphasisBorderColor;
+  }
+
+  &:not(:disabled):active {
+    background: tint($--primary-color, 94%);
+    border-color: $emphasisBorderColor;
+  }
+}
+
+// button with semantics
+.c-button--primary {
+  /* stylelint-disable-next-line order/order */
+  @include mixin-btn-pseudo-classes($--primary-color);
+  color: text-color($--primary-color);
+  background-color: $--primary-color;
+  border-color: transparent;
+}
+
+.c-button--success {
+  /* stylelint-disable-next-line order/order */
+  @include mixin-btn-pseudo-classes($--success-color);
+  color: text-color($--success-color);
+  background-color: $--success-color;
+  border-color: transparent;
+}
+
+.c-button--warning {
+  /* stylelint-disable-next-line order/order */
+  @include mixin-btn-pseudo-classes($--warning-color);
+  color: text-color($--warning-color);
+  background-color: $--warning-color;
+  border-color: transparent;
+}
+
+.c-button--danger {
+  /* stylelint-disable-next-line order/order */
+  @include mixin-btn-pseudo-classes($--danger-color);
+  color: text-color($--danger-color);
+  background-color: $--danger-color;
+  border-color: transparent;
+}
+
+// button with semantics for the shape change
+.c-button--circle {
+  min-width: $--button-circle-min-width;
+  padding: 0;
+  border-radius: $--button-circle-height / 2;
+}
+
+.c-button--ghost {
+  $hoverColor: $--disabled-background-color;
+  $activeColor: highlight($--disabled-background-color, 6%);
+
+  background-color: transparent;
+  border-color: transparent;
+  border-style: solid;
+
+  &:not(:disabled):hover,
+  &:not(:disabled):focus {
+    background-color: $hoverColor;
+  }
+
+  &:not(:disabled):active {
+    background-color: $activeColor;
+  }
+}
+
+// -------------------------------------------------------------------------
+// block button
+.c-button--block {
+  display: block;
+  width: 100%;
+}
+
+// -------------------------------------------------------------------------
+// button group
+.c-button-group {
+  display: inline-block;
+}
+
+.c-button-group {
+  .c-button {
+    position: relative;
+    float: left;
+    min-width: 0;
+    border-radius: 0;
+
+    &:not(:first-child) {
+      margin-left: -1px;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      z-index: 1;
+    }
+  }
+
+  > :first-child {
+    border-top-left-radius: $--button-border-radius;
+    border-bottom-left-radius: $--button-border-radius;
+  }
+
+  > :last-child,
+  // support dropdown nested in the end of button group
+  > :last-child .c-button:last-child {
+    border-top-right-radius: $--button-border-radius;
+    border-bottom-right-radius: $--button-border-radius;
+  }
+}
+
+.c-button-group .c-button:not(.c-button--default) {
+  border-color: change-color($--base-background-color, $alpha: 0.3);
+  border-width: 0 1px;
+
+  &:first-child {
+    border-left: none;
+  }
+
+  &:last-child {
+    border-right: none;
+  }
+}

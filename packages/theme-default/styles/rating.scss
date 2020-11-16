@@ -1,0 +1,41 @@
+@import 'variables';
+@import 'icon';
+
+.c-rating {
+  display: inline-flex;
+  line-height: $--base-form-element-height;
+}
+
+.c-rating__unit {
+  margin-right: $--rating-margin-right;
+  color: $--rating-default-color;
+  font-size: $--rating-font-size-default;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: scale($--rating-transform-scale);
+  }
+}
+
+.c-rating--readonly {
+  .c-rating__unit {
+    cursor: default;
+    &:hover {
+      transform: scale(1);
+    }
+  }
+}
+
+.c-rating__unit {
+  position: relative;
+  outline: none;
+
+  .c-rating__part {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+}

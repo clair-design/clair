@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Speaker</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Speaker" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="蒙版" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <circle id="椭圆形-copy-4" stroke="#6E6E6E" stroke-width="2" cx="14" cy="14" r="13"></circle>
+            <path d="M13,1 L9,14.122979 L15,14.122979 L15,17.5 L19,17.5 C19.3333333,20.5 18,22.1666667 15,22.5 C15,24.1666667 15.8333333,25.3333333 17.5,26" id="路径-30" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" cx="18" cy="9" r="1"></circle>
+            <path d="M12,19 L6.5,18" id="路径-117" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M12,23 L9,21.5" id="路径-117" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" transform="translate(10.500000, 22.250000) scale(1, -1) translate(-10.500000, -22.250000) "></path>
+        </g>
+    </g>
+</svg>

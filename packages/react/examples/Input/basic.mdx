@@ -1,0 +1,10 @@
+```tsx live=true
+function App() {
+  const [value, setValue] = React.useState("");
+  const onChange = e => {
+    setValue(e.target.value);
+  };
+
+  return <Input placeholder="请输入内容" value={value} onChange={onChange} />;
+}
+```

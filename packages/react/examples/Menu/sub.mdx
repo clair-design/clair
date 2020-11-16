@@ -1,0 +1,110 @@
+## 嵌套导航
+
+```tsx live=true
+function Index() {
+  const [activeIndex, setActiveIndex] = React.useState(1);
+  const onSelect = ({ detail }) => {
+    setActiveIndex(detail.name);
+  };
+  return (
+    <Menu activeIndex={activeIndex} onSelect={onSelect}>
+      <MenuItem index={1}>
+        <IconHome />
+        一级导航 1
+      </MenuItem>
+      <SubMenu
+        title={
+          <React.Fragment>
+            <IconSetting />
+            一级导航 2
+          </React.Fragment>
+        }
+        index={2}
+      >
+        <MenuItem index={"2-1"}>
+          <IconFile />
+          二级导航 1
+        </MenuItem>
+        <MenuItem index={"2-2"}>
+          <IconFile />
+          二级导航 2
+        </MenuItem>
+      </SubMenu>
+      <SubMenu
+        title={
+          <React.Fragment>
+            <IconFile />
+            一级导航 3
+          </React.Fragment>
+        }
+        index={3}
+      >
+        <MenuItem index={"3-1"}>
+          <IconFile />
+          二级导航 1
+        </MenuItem>
+        <SubMenu
+          title={
+            <React.Fragment>
+              <IconFile />
+              二级导航 2
+            </React.Fragment>
+          }
+          index={"3-2"}
+        >
+          <MenuItem index={"3-2-1"}>
+            <IconFile />
+            三级导航 1
+          </MenuItem>
+          <MenuItem index={"3-2-2"}>
+            <IconFile />
+            三级导航 2
+          </MenuItem>
+          <SubMenu
+            title={
+              <React.Fragment>
+                <IconFile />
+                三级导航 3
+              </React.Fragment>
+            }
+            index={"3-2-3"}
+          >
+            <MenuItem index={"3-2-3-1"}>
+              <IconFile />
+              四级导航 1
+            </MenuItem>
+            <SubMenu
+              title={
+                <React.Fragment>
+                  <IconFile />
+                  四级导航 2
+                </React.Fragment>
+              }
+              index={"3-2-3-2"}
+            >
+              <MenuItem index={"3-2-3-2-1"}>
+                <IconFile />
+                五级导航 1
+              </MenuItem>
+              <MenuItemGroup title="分组">
+                <MenuItem index={"3-2-3-2-2"}>
+                  <IconFile />
+                  五级导航 2
+                </MenuItem>
+                <MenuItem index={"3-2-3-2-3"}>
+                  <IconFile />
+                  五级导航 3
+                </MenuItem>
+              </MenuItemGroup>
+            </SubMenu>
+          </SubMenu>
+        </SubMenu>
+      </SubMenu>
+      <MenuItem disabled index={4}>
+        <IconSetting />
+        一级导航 4
+      </MenuItem>
+    </Menu>
+  );
+}
+```

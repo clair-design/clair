@@ -1,0 +1,12 @@
+## 触发事件
+
+```tsx live=true
+function Demo() {
+  const [checked, setChecked] = React.useState(false);
+  const onChange = e => {
+    setChecked(e.target.value);
+  };
+
+  return <Switch defaultChecked checked={checked} onChange={onChange} />;
+}
+```

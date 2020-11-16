@@ -1,16 +1,57 @@
-# clair
+# Clair Design
 
-[![npm status](https://img.shields.io/npm/v/clair.svg)](https://www.npmjs.org/package/clair)
-[![build status](https://api.travis-ci.org/clair-design/clair.svg?branch=master)](https://travis-ci.org/clair-design/clair)
-[![dependency status](https://david-dm.org/clair-design/clair.svg)](https://david-dm.org/clair-design/clair)
-[![Package Quality](http://npm.packagequality.com/shield/clair.svg)](http://packagequality.com/#?package=clair)
-[![License](https://img.shields.io/npm/l/clair.svg)](LICENSE)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+## Prerequirements
 
+[yarn](https://yarnpkg.com/) is required. Just forget `npm run`.
 
-💥💥💥 WARNING: UNDER DEVELOPMENT, DON'T USE IT! 💥💥💥
+## Before getting started
 
-A design system including principles, Vue components and design resources.
+Check out how to contribute [here](./CONTRIBUTING.md).
 
-- [clair-design.github.io](https://clair-design.github.io) (recommended)
-- [clair.75team.com](https://clair.75team.com/) (sync from clair-design.github.io every 30 minutes)
+## Get Started
+
+### Install
+
+```sh
+yarn
+```
+
+### Start
+
+```sh
+# for vue
+yarn start vue
+# for react
+yarn start react
+```
+
+### Preview Site
+
+```shell
+# for vue
+yarn serve vue
+# for react
+yarn serve react
+```
+
+### ⚠️⚠️⚠️ Commit
+
+Please use `yarn commit` or `npm run commit` instead of `git commit`.
+
+Use `git cz` if you have [commitizen](https://github.com/commitizen/cz-cli) installed globally.
+
+## Lerna
+
+### Run yarn commands
+
+```sh
+yarn lerna run --stream build --scope @clair/helpers
+# OR
+yarn workspace @clair/helpers build
+```
+
+### Link packages
+
+```sh
+yarn lerna add @clair/theme-default packages/helpers [--dev]
+```

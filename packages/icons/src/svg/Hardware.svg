@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Hardware</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Hardware" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <rect id="矩形" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round" x="1" y="15" width="26" height="10" rx="2"></rect>
+            <polyline id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="1 16.7025273 5 3 23 3 27 16.7025273"></polyline>
+            <path d="M11,20 L10,20" id="路径-96" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M6,20 L5,20" id="路径-96" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

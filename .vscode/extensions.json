@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "streetsidesoftware.code-spell-checker",
+    "dbaeumer.vscode-eslint",
+    "stylelint.vscode-stylelint",
+    "octref.vetur",
+    "ms-vscode.vscode-typescript-next",
+    "ms-vscode-remote.vscode-remote-extensionpack"
+  ]
+}

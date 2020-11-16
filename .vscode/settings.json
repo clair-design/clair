@@ -1,36 +1,26 @@
 {
-  // disable editor's default behaviors
-  "javascript.format.enable": false,
-  "javascript.validate.enable": false,
-  "editor.tabSize": 2,
-  "editor.insertSpaces": true,
-  "editor.wordWrap": "on",
-  "editor.wordWrapColumn": 150,
-  "editor.renderWhitespace": "boundary",
-  "files.associations": {
-    "*.vue": "vue",
-    "*.css": "postcss"
-  },
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
     "**/.hg": true,
     "**/CVS": true,
-    "**/.DS_Store": true
+    "**/.DS_Store": true,
+    "**/.rpt2_cache": true,
+    "**/.cache": true
   },
+  "editor.tabSize": 2,
   "eslint.validate": [
     "javascript",
     "javascriptreact",
-    "vue"
+    "vue",
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+    {
+      "language": "typescriptreact",
+      "autoFix": true
+    }
   ],
-  "emmet.syntaxProfiles": {
-    "vue": "css"
-  },
-  "emmet.showAbbreviationSuggestions": true,
-  "vetur.validation.template": true,
-  "vetur.format.scriptInitialIndent": false,
-  "vetur.validation.script": true,
-  "vetur.validation.style": true,
-  "git.ignoreLimitWarning": true,
-  "standard.enable": false
+  "files.eol": "\n"
 }

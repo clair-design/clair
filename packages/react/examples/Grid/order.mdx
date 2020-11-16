@@ -1,0 +1,13 @@
+## Order
+
+动态改变盒子的展示顺序（ascending）。
+
+> 使用 `order` 会导致 DOM 结构和实际展示不符，导致潜在的无障碍（accessibility）问题。
+
+```jsx live=true className=s-grid-example
+<Row>
+  <Col order={1}>1</Col>
+  <Col>2</Col>
+  <Col order={-1}>3</Col>
+</Row>
+```

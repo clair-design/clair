@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Card</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Card" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="蒙版" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M3.8,3 L24.2,3 C25.7463973,3 27,4.2536027 27,5.8 L27,22.2 C27,23.7463973 25.7463973,25 24.2,25 L3.8,25 C2.2536027,25 1,23.7463973 1,22.2 L1,5.8 C1,4.2536027 2.2536027,3 3.8,3 Z" id="矩形" stroke="#6E6E6E" stroke-width="2"></path>
+            <path d="M0,9 L28,9" id="路径-54" stroke="#6E6E6E" stroke-width="2"></path>
+            <path d="M18,19 L22,19" id="路径-55" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>

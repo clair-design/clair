@@ -1,0 +1,58 @@
+## 基础样式
+
+Tab 页签个数建议<=5，用于容器内部的主功能切换。通过 `defaultActiveKey` 属性可以指定默认展示的页签。
+
+```tsx live=true
+<Tabs defaultActiveKey="tab2">
+  <TabPane label="Tab1" tabKey="tab1">
+    <div>Tab1 Content</div>
+  </TabPane>
+  <TabPane label="Tab2" tabKey="tab2">
+    <div>Tab2 Content</div>
+  </TabPane>
+  <TabPane label="Tab3" tabKey="tab3">
+    <div>Tab3 Content</div>
+  </TabPane>
+  <TabPane label="Tab4" tabKey="tab4">
+    <div>Tab4 Content</div>
+  </TabPane>
+</Tabs>
+```
+
+给 TabPane 设置 `disabled` 属性，可以将其禁用。
+
+```tsx live=true
+<Tabs>
+  <TabPane label="Tab1" tabKey="tab1">
+    <div>Tab1 Content</div>
+  </TabPane>
+  <TabPane label="Tab2" tabKey="tab2">
+    <div>Tab2 Content</div>
+  </TabPane>
+  <TabPane label="Tab3" tabKey="tab3" disabled>
+    <div>Tab3 Content</div>
+  </TabPane>
+  <TabPane label="Tab4" tabKey="tab4">
+    <div>Tab4 Content</div>
+  </TabPane>
+</Tabs>
+```
+
+给 TabPane 设置 `lazy` 属性，可以将其延迟渲染。
+
+```tsx live=true
+<Tabs>
+  <TabPane label="Tab1" tabKey="tab1" lazy>
+    <div>Tab1 Content</div>
+  </TabPane>
+  <TabPane label="Tab2" tabKey="tab2" lazy>
+    <div>Tab2 Content</div>
+  </TabPane>
+  <TabPane label="Tab3" tabKey="tab3">
+    <div>Tab3 Content</div>
+  </TabPane>
+  <TabPane label="Tab4" tabKey="tab4">
+    <div>Tab4 Content</div>
+  </TabPane>
+</Tabs>
+```

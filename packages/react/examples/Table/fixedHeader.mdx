@@ -1,0 +1,29 @@
+<!-- 固定表头 -->
+
+```tsx live=true
+function Basic() {
+  const random = () => Math.round(Math.random() * 1000);
+  const columns = [
+    { title: "日期", prop: "date" },
+    { title: "浏览量", prop: "pv" },
+    { title: "访客数", prop: "uv" },
+    { title: "IP 数", prop: "ip" }
+  ];
+
+  const dataSource = [...new Array(20)].map((_, i) => ({
+    date: `2019-07-${10 + i}`,
+    pv: random(),
+    uv: random(),
+    ip: random()
+  }));
+
+  return (
+    <Table
+      height={200}
+      columns={columns}
+      dataSource={dataSource}
+      rowKey="date"
+    />
+  );
+}
+```

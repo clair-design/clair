@@ -1,0 +1,43 @@
+import AsideLayout from "./AsideLayout.mdx";
+import HeaderAsideLayout from "./HeaderAsideLayout.mdx";
+import HeaderMainFooter from "./HeaderMainFooter.mdx";
+import CustomTrigger from "./CustomTrigger.mdx";
+import FixedLayout from "./Fixed.mdx";
+
+# Layout 布局
+
+## 定义
+
+对整体页面的信息的类型、重要性、操作性进行分层归类，协助进行页面级整体布局。
+
+## 使用场景
+
+针对用户使用的动机，可分为浏览类、操作类、管理类三大布局（上中下、侧边、顶部-侧边）类型。
+
+## 尺寸
+
+顶部一级导航：`50px`，二级导航：`42px`，侧边一级导航：`200px`，二级导航 `150px`。
+
+<AsideLayout />
+<HeaderAsideLayout />
+<HeaderMainFooter />
+<CustomTrigger />
+<FixedLayout />
+
+## Header Props
+
+| Name  | Description             | Type      | Required | Default |
+| ----- | ----------------------- | --------- | -------- | ------- |
+| fixed | header 是否相对屏幕固定 | `boolean` | `false`  | `false` |
+
+## Aside Props
+
+| Name           | Description            | Type                                           | Required | Default |
+| -------------- | ---------------------- | ---------------------------------------------- | -------- | ------- |
+| fixed          | 是否相对屏幕固定       | `boolean`                                      | `false`  | `false` |
+| width          | 侧边栏宽度             | `string`\|`number`                             | `false`  | `200`   |
+| collapsible    | 是否允许侧边栏展开收起 | `boolean`                                      | `false`  | `false` |
+| collapsed      | 是否收起               | `boolean`                                      | `false`  | `false` |
+| collapsedWidth | 侧边栏收起后宽度       | `string`\|`number`                             | `false`  | `60`    |
+| onCollapse     | 展开收起时的回调函数   | `({ detail: { collapsed: boolean } }) => void` | `false`  |         |
+| trigger        | 自定义展开收起按钮     | `RectNode`                                     | `false`  |         |

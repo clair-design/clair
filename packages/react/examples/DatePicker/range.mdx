@@ -1,0 +1,21 @@
+## 选择日期范围
+
+通过 `RangePicker` 组件可以选择日期、周、月和年的范围。
+
+```tsx live=true
+function App() {
+  const styles = {
+    marginRight: 20,
+    marginBottom: 20
+  };
+  return (
+    <>
+      <RangePicker style={styles} />
+      <RangePicker type="week" style={styles} />
+      <RangePicker type="month" style={styles} />
+      <RangePicker type="quarter" style={styles} />
+      <RangePicker type="year" style={styles} />
+    </>
+  );
+}
+```

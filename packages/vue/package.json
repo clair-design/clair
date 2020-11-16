@@ -1,0 +1,111 @@
+{
+  "name": "@clair/vue",
+  "version": "0.11.1",
+  "description": "Vue components for Clair design",
+  "main": "dist/index.cjs.js",
+  "module": "dist/unbundled/src/esm/index.js",
+  "browser": "dist/unbundled/src/esm/index.js",
+  "unpkg": "dist/index.umd.js",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "scripts": {
+    "precommit": "pretty-quick --staged --pattern packages/vue/** && lint-staged",
+    "clean": "rimraf dist public",
+    "start": "yarn storybook",
+    "transform": "babel --config-file ./babel/.babel.unbundled.js --ignore \"src/**/*.spec.js\",\"src/**/*.test.js\",\"packages/**/*.spec.js\",\"packages/**/*.test.js\"",
+    "build:src": "yarn transform --out-dir dist/unbundled/src ./src",
+    "build:component": "yarn transform --out-dir dist/unbundled/packages ./packages",
+    "build:unbundled": "yarn build:src && yarn build:component",
+    "build:bundled": "rollup -c",
+    "build": "yarn build:bundled && yarn build:unbundled",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:clean": "jest --clearCache",
+    "jest": "jest --config jest.config.dev.js --watch",
+    "storybook": "./scripts/storybook.sh",
+    "build-storybook": "build-storybook -c .storybook -o public",
+    "lint": "eslint ./",
+    "fix": "yarn lint --fix",
+    "format": "pretty-quick --pattern \"**/*.*(js|jsx|scss|css)\"",
+    "icons": "node bin/generateIcons.js",
+    "prepublishOnly": "yarn clean && yarn build"
+  },
+  "author": {
+    "name": "Yuchen Liu",
+    "email": "liuyuchenzh@gmail.com"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "vue": "^2.6.7"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.9.6",
+    "@clair/helpers": "^0.3.3",
+    "@clair/icons": "^0.0.10",
+    "@clair/theme-default": "^0.7.2",
+    "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
+    "async-validator": "^3.2.0",
+    "date-fns": "^2.6.0",
+    "lodash-es": "^4.17.15"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.11.5",
+    "@babel/core": "^7.11.6",
+    "@babel/parser": "^7.11.5",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/traverse": "^7.11.5",
+    "@clair/eslint-plugin": "^0.2.0",
+    "@mapbox/rehype-prism": "^0.4.0",
+    "@rollup/plugin-alias": "^3.1.1",
+    "@rollup/plugin-babel": "^5.2.0",
+    "@rollup/plugin-commonjs": "^15.0.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@storybook/addon-viewport": "^6.0.12",
+    "@storybook/vue": "^6.0.12",
+    "@vue/babel-plugin-transform-vue-jsx": "^1.1.2",
+    "@vue/babel-preset-jsx": "^1.1.2",
+    "@vue/test-utils": "1.0.4",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^26.3.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "babel-preset-vue": "^2.0.2",
+    "cache-loader": "^4.1.0",
+    "core-js": "^3.6.2",
+    "css-loader": "^3.4.1",
+    "env": "^1.1.0",
+    "eslint": "^7.7.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "esm": "^3.2.25",
+    "focus-visible": "^5.0.2",
+    "jest": "^26.4.0",
+    "jest-serializer-vue": "^2.0.2",
+    "lint-staged": "^10.2.2",
+    "md2vue": "^0.12.2",
+    "postcss-focus-visible": "^5.0.0",
+    "postcss-loader": "^3.0.0",
+    "prettier": "^2.0.2",
+    "pretty-quick": "^3.0.2",
+    "rimraf": "^3.0.0",
+    "rollup": "^2.8.0",
+    "sass": "^1.24.2",
+    "sass-loader": "^8.0.0",
+    "vue": "^2.6.7",
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.6.7"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": "eslint --fix"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  }
+}

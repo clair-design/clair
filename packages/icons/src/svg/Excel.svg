@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Excel</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Excel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M5,1 L23,1 C24.1045695,1 25,1.8954305 25,3 L25,25 C25,26.1045695 24.1045695,27 23,27 L9,27 L3.58578644,21.5857864 C3.21071368,21.2107137 3,20.7020059 3,20.1715729 L3,3 C3,1.8954305 3.8954305,1 5,1 Z" id="矩形" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round" transform="translate(14.000000, 14.000000) scale(-1, -1) translate(-14.000000, -14.000000) "></path>
+            <path d="M24,1 L24,6 C24,6.55228475 23.5522847,7 23,7 L19,7" id="路径-20" stroke="#6E6E6E" stroke-width="2" transform="translate(21.500000, 4.000000) scale(-1, 1) translate(-21.500000, -4.000000) "></path>
+            <path d="M10,12 L18,19" id="路径-25" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M10,12 L18,19" id="路径-25" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(14.000000, 15.500000) scale(-1, 1) translate(-14.000000, -15.500000) "></path>
+        </g>
+    </g>
+</svg>

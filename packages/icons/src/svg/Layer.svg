@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Layer</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Layer" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M23.1923882,4.80761184 L18.5617533,17.3764778 C18.3592743,17.9260637 17.9260637,18.3592743 17.3764778,18.5617533 L4.80761184,23.1923882" id="路径" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(14.000000, 14.000000) rotate(45.000000) translate(-14.000000, -14.000000) "></path>
+            <path d="M1,21 L13.1618836,26.6131771 C13.6936739,26.8586187 14.3063261,26.8586187 14.8381164,26.6131771 L27,21" id="路径-58" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M13.1618836,1.38682293 L1,7 L13.1618836,12.6131771 C13.6936739,12.8586187 14.3063261,12.8586187 14.8381164,12.6131771 L27,7 L14.8381164,1.38682293 C14.3063261,1.14138129 13.6936739,1.14138129 13.1618836,1.38682293 Z" id="路径-59" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>

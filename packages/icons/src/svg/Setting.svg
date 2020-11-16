@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Setting</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Setting" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="蒙版" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M14.9867049,1.2411183 L24.9867049,6.92359308 C25.6122011,7.27902972 25.9985998,7.94302632 25.9985998,8.66245715 L25.9985998,19.3349997 C25.9985998,20.0542931 25.6123475,20.7181849 24.9870391,21.0736738 L14.9870391,26.7586917 C14.3741395,27.1071263 13.62306,27.1071263 13.0101604,26.7586917 L3.01016044,21.0736738 C2.38485207,20.7181849 1.99859979,20.0542931 1.99859979,19.3349997 L1.99859979,8.66245715 C1.99859979,7.94302632 2.38499845,7.27902972 3.01049466,6.92359308 L13.0104947,1.2411183 C13.6232228,0.892937068 14.3739767,0.892937068 14.9867049,1.2411183 Z" id="多边形" stroke="#6E6E6E" stroke-width="2" transform="translate(13.998600, 14.000000) rotate(90.000000) translate(-13.998600, -14.000000) "></path>
+            <circle id="椭圆形" stroke="#6E6E6E" stroke-width="2" cx="14" cy="14" r="5"></circle>
+        </g>
+    </g>
+</svg>

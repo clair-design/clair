@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Filter</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Filter" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M11,13.7240999 L11,21.9296325 C11,22.5983389 11.3342023,23.2228015 11.8905996,23.5937331 L17,27 L17,13.7240999 C17,13.2562269 17.1640324,12.8031611 17.4635574,12.4437311 L27,1 L1,1 L10.5364426,12.4437311 C10.8359676,12.8031611 11,13.2562269 11,13.7240999 Z" id="路径-19" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,182 @@
+import Basic from "./basic.mdx";
+import Empty from "./empty.mdx";
+import CustomColumn from "./customColumn.mdx";
+import CustomTitle from "./customTitle.mdx";
+import Selection from "./selection.mdx";
+import Sortable from "./sortable.mdx";
+import Size from "./size.mdx";
+import Bordered from "./bordered.mdx";
+import FixedHeader from "./fixedHeader.mdx";
+import FixedColumn from "./fixedColumn.mdx";
+import HeaderGroup from "./headerGroup.mdx";
+import Expanded from "./expanded.mdx";
+import HiddenColumn from "./hiddenColumn.mdx";
+import FullScreen from "./fullScreen.mdx";
+import HasPage from "./hasPage.mdx";
+import SpanMethod from "./spanMethod.mdx";
+
+# Table
+
+## 定义
+
+表格用于查看或操作一个数据对象集合的详细信息。表格作为多维信息展示的载体，使复杂的信息更易于阅读与理解，常和排序、搜索、筛选、分页等其他元素一起协同，提升信息接收效率和理解过程。
+
+## 使用场景
+
+- 为适应多分辨率的要求，表格默认采用百分比布局；
+- 单位统一放在表头内，表头文本不建议换行显示，对于单行文本的单元格，文字超过表格的最大字符数时，显示头部和尾部字段，中间用“…”，如“ABABA…123”来表示更多，且鼠标移上后出现 tips 信息；
+- 表格没有数据的情况显示“没有数据”居中显示，且此时不显示分页组件；
+- 如果表格中有操作按钮，大于 3 个时，采用下拉或者“…”的呈现更多操作入口；
+- 树形表格的树形节点不得超过 3 层，一般尽量避免横向滚动条，如无法避免横向滚动条时，需冻结主信息列及操作列，其它列滚动；
+- 不同内容采用合理的对齐方式，能够提升阅读和填写效率：
+  - 左对齐：数字／链接／名称／信息/日期
+  - 居中对齐：姓名/操作
+  - 右对齐：金额
+
+## 基础表格
+
+表格的最基本用法。通过 `columns` 属性指定表格每一列的设置，`dataSource` 属性指定表格数据。
+
+<Basic />
+
+## 无数据表格
+
+当传入表格的数据为空时，会展示无数据的样式。可通过 `emptyText` 属性可以指定无数据时的文字提示。
+
+<Empty />
+
+## 自定义数据展示
+
+<CustomColumn />
+
+## 表格排序
+
+对表格进行排序，可快速查找或对比数据。
+
+<Sortable />
+
+## 紧凑型
+
+紧凑型的表格，用于在弹窗等尺寸较小的容器内。
+
+<Size />
+
+## 带边框
+
+默认表格只显示横向的边框，将表格的 `bordered` 属性设置为 `true` 可以使表格带完整的边框。
+
+<Bordered />
+
+## 自定义表头
+
+在 `columns` 中通过配置 `title` 属性可以实现表头的定制。
+
+<CustomTitle />
+
+## 可选择
+
+在 `columns` 中配置 `type` 的值为 `selection` 可实现数据的选择。
+
+> 需要注意的是，这里建议您传入 `rowKey`，防止 key 标记重复的问题。
+
+<Selection />
+
+## 固定表头
+
+纵向内容过多时，可选择固定表头。
+
+<FixedHeader />
+
+## 固定列
+
+横向内容过多时，可选择固定列。
+
+<FixedColumn />
+
+## 表头分组
+
+数据结构比较复杂的时候，可使用多级表头来展现数据的层次关系。
+
+<HeaderGroup />
+
+## 可展开
+
+<Expanded />
+
+## 选择性展示列
+
+<HiddenColumn />
+
+## 全屏展示
+
+<FullScreen />
+
+## 可翻页
+
+<HasPage />
+
+## 合并单元格
+
+<SpanMethod />
+
+## Table Props
+
+## Table Props
+
+| Name                   | Description                                                        | Type                                                                         | Required | Default                                  |
+| ---------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------------- | -------- | ---------------------------------------- |
+| columns                | 详情见下表                                                         | `Array`                                                                      | `false`  | 使用 c-table-column 时不用传，否则必须传 |
+| dataSource             | 数据源                                                             | `Array`                                                                      | `true`   | `[]`                                     |
+| emptyText              | 自定义无数据时显示文案                                             | `string`                                                                     | `false`  | `'暂无数据'`                             |
+| bordered               | 是否含有边框                                                       | `boolean`                                                                    | `false`  | `false`                                  |
+| height                 | 表格的高度                                                         | `number`                                                                     | `false`  | -                                        |
+| size                   | 表格的尺寸                                                         | `'large'` \| `'normal'` \| `'small'`                                         | `false`  | `'normal'`                               |
+| defaultSort            | 默认排序的 key 和顺序( `'ascending'` 和 `'descending'` )           | `{ column: string, order: 'ascending' \| 'descending'}`                      | `false`  | -                                        |
+| rowClassName           | 设置行的类名                                                       | `(rowItem: object, rowIndex: number) => string`                              | `false`  | -                                        |
+| rowKey                 | 每行数据对应的唯一标识字段，建议必填，否则可能会出现不可预知的问题 | `string` \| `(rowItem: object) => string`                                    | `false`  | `'key'`                                  |
+| defaultSelectedRowKeys | 默认选中的行                                                       | `string[]`                                                                   | `false`  | `[]`                                     |
+| defaultExpandedRowKeys | 默认展开的行                                                       | `string[]`                                                                   | `false`  | `[]`                                     |
+| selectedRowKeys        | 已选择的行，受控属性                                               | `string[]`                                                                   | `false`  | -                                        |
+| expandedRowKeys        | 已展开的行，受控属性                                               | `string[]`                                                                   | `false`  | -                                        |
+| spanMethod             | 合并单元格                                                         | `(row: Array, column: Array, rowIndex: number, columnIndex: number) => void` | `false`  | -                                        |
+| pagination             | 设置分页的相关设置                                                 | `{pn, ps, layout, span, total, size}` 详情参见 pagination 组件               | `false`  | -                                        |
+
+## 列描述数据结构
+
+| Name      | Description    | Type                                                                                          | Required | Default  |
+| --------- | -------------- | --------------------------------------------------------------------------------------------- | -------- | -------- |
+| type      | 首列类型       | `'selection'` \| `'expand'`                                                                   | `false`  | -        |
+| prop      | 数据字段       | `string`                                                                                      | `true`   | -        |
+| title     | 表头展现       | `string` \| `() => string`                                                                    | `true`   | -        |
+| width     | 单元格宽度     | `number`                                                                                      | `false`  | -        |
+| className | 列的类名       | `string`                                                                                      | `false`  | -        |
+| fixed     | 固定           | `'left'` \| `'right'`                                                                         | `false`  | -        |
+| children  | 用于表头分组   | `Array<column>`                                                                               | `false`  | -        |
+| hidden    | 隐藏列         | `boolean`                                                                                     | `false`  | `false`  |
+| align     | 单元格对齐方式 | `'left'` \| `'right'` \| `'center'`                                                           | `false`  | `'left'` |
+| sortable  | 是否支持排序   | `boolean`                                                                                     | `false`  | `false`  |
+| render    | 自定义渲染     | `({ index: number, row: object; value: React.Key, isExpanded?: boolean }) => React.ReactNode` | `false`  | -        |
+
+## Table Events
+
+| Event Name   | Description        | Parameters                                                                                                           |
+| ------------ | ------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| onSelectRow  | 选择时触发         | `{ detail: { currentItem: object, currentIndex: number, selectedDataList: object[], selectedIndexList: number[] } }` |
+| onExpandRow  | 折叠展开子行时触发 | `{ detail: { row: object, index: number, isExpanded: boolean } }`                                                    |
+| onSortChange | 排序事触发         | `{ detail: { column: string, order: 'ascending'` \| `'descending' } }`                                               |  |
+| onPageChange | 页码改变时触发     | `{ detail: { pn: number, ps: number } }`                                                                             |
+
+## TableColumn Props
+
+| Name      | Description                | Type                                | Required | Default  |
+| --------- | -------------------------- | ----------------------------------- | -------- | -------- |
+| type      | 首列类型                   | `'selection'` \| `'expand'`         | `false`  | -        |
+| prop      | 数据字段，唯一值，不可重复 | `string`                            | `true`   | -        |
+| title     | 表头展现                   | `string`                            | `true`   | -        |
+| width     | 单元格宽度                 | `number`                            | `false`  | -        |
+| className | 列的类名                   | `string`                            | `false`  | -        |
+| fixed     | 固定                       | `'left'` \| `'right'`               | `false`  | -        |
+| sortable  | 是否支持排序               | `boolean`                           | `false`  | `false`  |
+| hidden    | 隐藏列                     | `boolean`                           | `false`  | `false`  |
+| align     | 单元格对齐方式             | `'left'` \| `'right'` \| `'center'` | `false`  | `'left'` |
+| render    | 自定义渲染内容             | Function                            | `false`  |          |

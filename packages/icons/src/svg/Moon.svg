@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>Moon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Moon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="矩形" opacity="0.200000003" x="0" y="0" width="28" height="28"></rect>
+            <path d="M11.2841219,1.28412189 C11.0979538,2.16004327 11,3.06858247 11,4 C11,11.1797017 16.8202983,17 24,17 C24.9314175,17 25.8399567,16.9020462 26.7158781,16.7158781 C25.4669955,22.5918742 20.2482842,27 14,27 C6.82029825,27 1,21.1797017 1,14 C1,7.75171579 5.40812585,2.53300453 11.2841219,1.28412189 Z" id="形状结合" stroke="#6E6E6E" stroke-width="2" stroke-linejoin="round"></path>
+            <path d="M19,6 L25,6" id="路径-65" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M22,9 L22,3" id="路径-65" stroke="#6E6E6E" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

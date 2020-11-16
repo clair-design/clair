@@ -1,0 +1,93 @@
+# Slider 滑动输入条
+
+## 基本用法
+
+简单的常规用法
+
+```tsx live=true
+function Index() {
+  const [value, setValue] = React.useState(21);
+
+  const change = ({ target }) => {
+    setValue(target.value);
+  };
+
+  return <Slider value={value} onChange={change} />;
+}
+```
+
+## 只读与禁用
+
+```tsx live=true
+function Index() {
+  return (
+    <>
+      <Slider defaultValue={30} readonly />
+      <Slider defaultValue={40} disabled />
+    </>
+  );
+}
+```
+
+## 固定刻度样式
+
+展示刻度
+
+```tsx live=true
+function Index() {
+  return <Slider defaultValue={21} step={4} showStepMark />;
+}
+```
+
+## tooltip 格式化
+
+自定义 tooltip
+
+```tsx live=true
+function Index() {
+  return (
+    <Slider defaultValue={13} max={30} tipFormat={value => `${value} ℃`} />
+  );
+}
+```
+
+## 垂直样式
+
+垂直方向的滑动输入条
+
+```tsx live=true
+function Index() {
+  return (
+    <Row style={{ height: "300px" }}>
+      <Col span={3} justify={"space-around"}>
+        <Slider defaultValue={18} mode={"vertical"} />
+      </Col>
+      <Col span={3} justify={"space-around"}>
+        <Slider
+          step={4}
+          defaultValue={[3, 8]}
+          max={30}
+          mode={"vertical"}
+          showStepMark
+        />
+      </Col>
+    </Row>
+  );
+}
+```
+
+### Props
+
+| Name           | Description              | Type                                                     | Required | Default              |
+| -------------- | ------------------------ | -------------------------------------------------------- | -------- | -------------------- |
+|  mode          |   排版模式               |  `horizontal` \| `vertical`                              | `false`  |  `horizontal`        |
+|  step          |   步长                   |  `number`                                                | `false`  |  `1`                 |
+| showStepMark   |   是否显示刻度标记       |  `boolean`                                               | `false`  |  `false`             |
+|  value         |   当前值                 |  `number` \| `number[]`                                  | `false`  | -                    |
+|  defaultValue  | 默认值                   |  `number` \| `number[]`                                  | `false`  | -                    |
+|  min           |   最小值                 |  `number`                                                | `false`  |  `0`                 |
+|  max           |   最大值                 |  `number`                                                | `false`  |  `100`               |
+|  readonly      |   是否只读               |  `boolean`                                               | `false`  |  `false`             |
+|  disabled      |   是否禁用               |  `boolean`                                               | `false`  |  `false`             |
+| tipFormat      | Slider tip 格式化函数    |  `Function`                                              | `false`  |  `(value) => value`  |
+| onChange       |   绑定值发生变化时触发   |  `({ target: { value: number` \| `number[] }}) => void`  | `false`  |  -                   |

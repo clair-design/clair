@@ -1,0 +1,270 @@
+@import 'variables';
+@import 'mixins/mixins';
+@import 'icon';
+
+.c-input-number {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  line-height: 1;
+  vertical-align: middle;
+  background-color: $--base-background-color;
+  border: 1px solid $--input-number-border-color;
+  transition: transition(border);
+  user-select: none;
+
+  &:focus-within[aria-disabled='false'] {
+    @include focus-ring;
+    border-color: $--input-number-border-hover-color;
+    outline: none;
+  }
+
+  .c-icon--svg {
+    line-height: 1;
+  }
+}
+
+// hide control
+.c-input-number {
+  &--hide-controls {
+    padding: unset;
+  }
+
+  &--hide-controls &__controls {
+    display: none;
+  }
+}
+
+.c-input-number__input {
+  box-sizing: border-box;
+  width: 100%;
+
+  .c-input-number__inner {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 10px;
+    color: $--base-text-color;
+    font-size: inherit;
+    text-align: center;
+    background-color: $--base-background-color;
+    border: none;
+    outline: none;
+  }
+}
+
+.c-input-number__controls {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $--icon-color;
+  cursor: pointer;
+  transition: transition(border);
+  stroke-width: 2px;
+
+  &:focus {
+    background-color: $--input-number-controls-focus-background-color;
+    outline: none;
+  }
+
+  @at-root [aria-disabled='true'] &,
+    &[aria-disabled='true'] {
+    pointer-events: none;
+  }
+
+  &[aria-disabled='true'] svg {
+    opacity: 0.4;
+  }
+}
+
+@mixin input-number-size(
+  $width,
+  $height,
+  $font-size,
+  $control-width,
+  $is-horizontal: true
+) {
+  $control-height: $height - 2px;
+  @if not $is-horizontal {
+    $control-height: ($height - 2px) / 2;
+  }
+  // for input-number container
+  width: $width;
+  height: $height;
+  font-size: $font-size;
+
+  &:hover[aria-disabled='false'] {
+    border-color: $--input-number-border-hover-color;
+  }
+
+  .c-input-number__inner {
+    line-height: $height - 2;
+  }
+
+  .c-input-number__controls {
+    width: $control-width;
+    height: $control-height;
+  }
+}
+
+/**
+ * @return {string} selector to target
+ */
+@function when-show-controls($selector, $is-nested: false) {
+  $separator: '';
+  @if $is-nested {
+    $separator: ' ';
+  }
+  @return #{':not(.c-input-number--hide-controls)'}#{$separator}#{$selector};
+}
+
+// 默认尺寸normal + 左右按钮
+.c-input-number--normal.c-input-number--left-right {
+  @include input-number-size(
+    $--input-number-normal-width,
+    $--input-number-normal-height,
+    $--input-number-normal-font-size,
+    $--input-number-normal-controls-width
+  );
+
+  @at-root #{when-show-controls(&)} {
+    padding: 0 $--input-number-normal-controls-width;
+  }
+}
+
+// 大尺寸large + 左右按钮
+.c-input-number--large.c-input-number--left-right {
+  @include input-number-size(
+    $--input-number-large-width,
+    $--input-number-large-height,
+    $--input-number-large-font-size,
+    $--input-number-large-controls-width
+  );
+
+  @at-root #{when-show-controls(&)} {
+    padding: 0 $--input-number-large-controls-width;
+  }
+}
+
+// 小尺寸small + 左右按钮
+.c-input-number--small.c-input-number--left-right {
+  @include input-number-size(
+    $--input-number-small-width,
+    $--input-number-small-height,
+    $--input-number-small-font-size,
+    $--input-number-small-controls-width
+  );
+
+  @at-root #{when-show-controls(&)} {
+    padding: 0 $--input-number-small-controls-width;
+  }
+}
+
+// 默认尺寸normal + 上下按钮
+.c-input-number--normal.c-input-number--up-down {
+  @include input-number-size(
+    $--input-number-normal-width,
+    $--input-number-normal-height,
+    $--input-number-normal-font-size,
+    $--input-number-normal-controls-width,
+    false
+  );
+
+  @at-root #{when-show-controls(&)} {
+    padding: 0 $--input-number-normal-controls-width 0 0;
+  }
+}
+
+// 大尺寸large + 上下按钮
+.c-input-number--large.c-input-number--up-down {
+  @include input-number-size(
+    $--input-number-large-width,
+    $--input-number-large-height,
+    $--input-number-large-font-size,
+    $--input-number-large-controls-width,
+    false
+  );
+  @at-root #{when-show-controls(&)} {
+    padding: 0 $--input-number-large-controls-width 0 0;
+  }
+}
+
+// 小尺寸small + 上下按钮
+.c-input-number--small.c-input-number--up-down {
+  @include input-number-size(
+    $--input-number-small-width,
+    $--input-number-small-height,
+    $--input-number-small-font-size,
+    $--input-number-small-controls-width,
+    false
+  );
+
+  @at-root #{when-show-controls(&)} {
+    padding: 0 $--input-number-small-controls-width 0 0;
+  }
+}
+
+// disabled
+%disabled-style {
+  color: $--disabled-text-color;
+  background: $--input-number-controls-disabled-background-color;
+}
+
+.c-input-number[aria-disabled='true'] {
+  @extend %disabled-style;
+  outline: none;
+
+  .c-input-number__controls,
+  .c-input-number__input .c-input-number__inner {
+    @extend %disabled-style;
+    cursor: default;
+    fill: currentColor;
+  }
+  .c-input-number__input {
+    outline: none;
+  }
+}
+
+// 按钮位置
+.c-input-number--left-right {
+  .c-input-number__controls {
+    top: 0;
+  }
+
+  &[aria-disabled='false'] .c-input-number__controls:hover {
+    color: $--input-number-border-hover-color;
+    border-color: $--input-number-border-hover-color;
+  }
+
+  .c-input-number__increase {
+    right: 0;
+    border-left: 1px solid $--input-number-border-color;
+  }
+
+  .c-input-number__decrease {
+    left: 0;
+    border-right: 1px solid $--input-number-border-color;
+  }
+}
+
+.c-input-number--up-down {
+  .c-input-number__controls {
+    right: 0;
+    font-size: 0.8em;
+    border-left: 1px solid $--input-number-border-color;
+    stroke-width: 1px;
+  }
+
+  &[aria-disabled='false'] .c-input-number__controls:hover {
+    color: $--input-number-border-hover-color;
+  }
+
+  .c-input-number__increase {
+    top: 0;
+    border-bottom: 1px solid $--input-number-border-color;
+  }
+
+  .c-input-number__decrease {
+    bottom: 0;
+  }
+}
